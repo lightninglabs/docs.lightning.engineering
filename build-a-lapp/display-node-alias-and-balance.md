@@ -6,7 +6,7 @@ To implement this feature, we first updated the backend to make this data availa
 
 Let’s go to the `feat-2` branch to see what’s changed.
 
-```text
+```bash
 git checkout feat-2
 ```
 
@@ -16,7 +16,7 @@ To update our backend, we’ll need to add a new route to handle requests to fet
 
 `source: /backend/routes.ts`
 
-```text
+```typescript
 /**
 * GET /api/info
 */
@@ -39,7 +39,7 @@ In the `routes.ts` file, we added a new route handler function `getInfo()` which
 
 `source: /backend/index.ts`
 
-```text
+```typescript
 app.get('/api/info', catchAsyncErrors(routes.getInfo));
 ```
 
@@ -51,7 +51,7 @@ With the backend updated, we can now fetch the alias and balance from the backen
 
 `source: /src/lib/api.ts`
 
-```text
+```typescript
 export const getInfo = async () => {
  return await httpGet('info');
 };
@@ -61,7 +61,7 @@ In the API wrapper module, we just added a function to make the http request and
 
 `source: /src/store/store.ts`
 
-```text
+```typescript
  init = async () => {
    // try to fetch the node's info on startup
    try {
@@ -100,7 +100,7 @@ In the mobx store, we added the `fetchInfo()` function that will retrieve the `a
 
 `source: /src/App.tsx`
 
-```text
+```jsx
 <Navbar.Collapse id="basic-navbar-nav">
  <Nav className="ml-auto">
    {!store.connected ? (

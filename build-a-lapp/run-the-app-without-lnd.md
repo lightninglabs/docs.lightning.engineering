@@ -4,7 +4,7 @@ Before we begin adding Lightning Network integration, let’s first get the app 
 
 Checkout the initial-app branch and start the app:
 
-```text
+```typescript
 git checkout initial-app
 yarn dev
 ```

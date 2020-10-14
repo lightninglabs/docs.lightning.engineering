@@ -24,7 +24,7 @@ We are going to take advantage of the existing NPM package [@radar/lnrpc](https:
 
 `source: /backend/node-manager.ts`
 
-```text
+```typescript
 async connect(host: string, cert: string, macaroon: string, prevToken?: string) {
    // generate a random token, without
    const token = prevToken || uuidv4().replace(/-/g, '');
@@ -67,7 +67,7 @@ If the connection to the node fails for any reason, an error will be thrown and 
 
 `source: /backend/posts-db.ts`
 
-```text
+```typescript
 private _data: DbData = {
    posts: [],
    nodes: [],
@@ -106,7 +106,7 @@ In order to persist the connection information for each node, we’ve added some
 
 `source: /backend/routes.ts`
 
-```text
+```typescript
 private _data: DbData = {
    posts: [],
    nodes: [],
@@ -145,7 +145,7 @@ In order to persist the connection information for each node, we’ve added some
 
 `source: /backend/routes.ts`
 
-```text
+```typescript
 /**
 * POST /api/connect
 */
@@ -159,7 +159,7 @@ export const connect = async (req: Request, res: Response) => {
 
 `source: /backend/index.ts`
 
-```text
+```typescript
 app.post('/api/connect', catchAsyncErrors(routes.connect));
 ```
 
@@ -173,7 +173,7 @@ We’ll go through each one starting from the api wrapper and work our way up to
 
 `source: /src/lib/api.ts`
 
-```text
+```typescript
 export const connect = async (host: string, cert: string, macaroon: string) => {
  const request = { host, cert, macaroon };
  const { token } = await httpPost('connect', request);
@@ -186,7 +186,7 @@ We added a `connect()` function to the api module which makes the http request t
 
 `source: /src/lib/api.ts`
 
-```text
+```typescript
  const response = await fetch(url, {
    method: 'GET',
    headers: {
@@ -201,7 +201,7 @@ Also in the api module we updated the http `GET` and `POST` request helpers to i
 
 `source: /src/store/store.ts`
 
-```text
+```typescript
  connectToLnd = async (host: string, cert: string, macaroon: string) => {
    this.clearError();
    try {
@@ -223,7 +223,7 @@ In the mobx store, we’ve added two functions to connect and disconnect the cli
 
 `source: /src/pages/Connect.tsx`
 
-```text
+```jsx
  const handleSubmit = useCallback(
    async (e: React.FormEvent<HTMLElement>) => {
      e.preventDefault();
@@ -253,7 +253,7 @@ Visit the [Macaroons](https://github.com/lightningnetwork/lnd/blob/master/docs/m
 
 `source: /src/App.tsx`
 
-```text
+```jsx
 const pages: Record<string, ReactNode> = {
    posts: <PostList />,
    create: <CreatePost />,

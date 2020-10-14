@@ -6,7 +6,8 @@
 
 * [Overview](build-a-lapp/overview.md)
 * [Local Cluster Setup with Polar](build-a-lapp/local-cluster-setup-with-polar.md)
-* [Run the App Locally](build-a-lapp/run-the-app-locally.md)
+* [Run the Completed App](build-a-lapp/run-the-completed-app.md)
+* [Run the App Without LND](build-a-lapp/run-the-app-without-lnd.md)
 * [Connect to LND](build-a-lapp/connect-to-lnd.md)
 * [Display Node Alias and Balance](build-a-lapp/display-node-alias-and-balance.md)
 * [Update "Create a Post" Flow](build-a-lapp/update-create-a-post-flow.md)

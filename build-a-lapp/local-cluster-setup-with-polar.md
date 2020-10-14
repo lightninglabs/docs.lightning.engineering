@@ -78,15 +78,3 @@ Before moving on, click on bob’s `lnd` node and over to his **Connect** dashbo
 ![Bob Connect](images/bobConnect.png)
 
 Now, click the red **Stop** button in the top right corner and prepare for the next section.
-
-## Import the Pre-Defined Network
-
-Assuming you have already cloned the `builders-guide-sample-app` repo to your local machine, click the **Import Network** button at the top of your screen to display the following interface.
-
-![Import Interface](images/importScreen.png)
-
-Browse to your local `builders-guide-sample-app` folder, and select **builders-guide.polar.zip** in the *resources* folder. You should be faced with the below screen. Press Start to download the requisite docker images and simulate your new regtest Lightning Network.
-
-![Imported Builder's Guide Network](images/buildersGuide.png)
-
-

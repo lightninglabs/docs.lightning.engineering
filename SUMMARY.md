@@ -10,8 +10,9 @@
 * [Run the App Without LND](build-a-lapp/run-the-app-without-lnd.md)
 * [Connect to LND](build-a-lapp/connect-to-lnd.md)
 * [Display Node Alias and Balance](build-a-lapp/display-node-alias-and-balance.md)
-* [Update "Create a Post" Flow](build-a-lapp/update-create-a-post-flow.md)
+* [Sign and Verify Posts](build-a-lapp/sign-and-verify-posts.md)
 * [Modify Upvote Action](build-a-lapp/modify-upvote-action.md)
+* [Wrap Up](build-a-lapp/wrap-up.md)
 
 ## Intermediate: Run LND
 

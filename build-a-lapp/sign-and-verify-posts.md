@@ -57,9 +57,9 @@ On the frontend, we removed the `username` parameter in the API wrapper’s `cre
 
 In the mobx store, we removed the `username` parameter as well.
 
-`source: /src/pages/CreatepPost.ts`
+`source: /src/pages/CreatepPost.tsx`
 
-```typescript
+```jsx
 const CreatePost: React.FC = () => {
  const store = useStore();
 
@@ -351,9 +351,9 @@ In our API wrapper module, we added the `verifyPost()` function to make the http
 
 In the mobx store, we added a new `verifyPost()` function which calls the API wrapper to make the http request, then updates the app state with the modified post record that is returned.
 
-`source: /src/components/PostCard.ts`
+`source: /src/components/PostCard.tsx`
 
-```typescript
+```jsx
 const PostCard: React.FC<Props> = ({ post }) => {
  return (
    <Card key={post.id} className="my-4">
@@ -393,9 +393,9 @@ In the `PostCard` component, we’ve made a few updates for post verification:
 * Also in the subtitle, it displays a badge with the text “verified” if the post’s `verified` flag is true.
 * Next to the “Upvote” button we render a “Verify Signature” button. This is a new component that we’ll explain below.
 
-`source: /src/components/VerifyButton.ts`
+`source: /src/components/VerifyButton.tsx`
 
-```typescript
+```jsx
 const VerifyButton: React.FC<Props> = ({ post }) => {
  const store = useStore();
 

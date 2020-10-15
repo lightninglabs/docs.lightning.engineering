@@ -18,14 +18,14 @@
 
 * [Untitled](intermediate-run-lnd/untitled.md)
 
-## Advanced: Maintain LND
+## Advanced: Best Practices
 
-* [Overview](advanced-maintain-lnd/overview.md)
-* [Channels](advanced-maintain-lnd/channels.md)
-* [Sends](advanced-maintain-lnd/sends.md)
-* [Receives](advanced-maintain-lnd/receives.md)
-* [Liquidity Management](advanced-maintain-lnd/liquidity-management.md)
-* [Keys and Backups](advanced-maintain-lnd/keys-and-backups.md)
+* [Overview](advanced-best-practices/overview.md)
+* [Channels](advanced-best-practices/channels.md)
+* [Sends](advanced-best-practices/sends.md)
+* [Receives](advanced-best-practices/receives.md)
+* [Liquidity Management](advanced-best-practices/liquidity-management.md)
+* [Keys and Backups](advanced-best-practices/keys-and-backups.md)
 
 ## Conceptual Overview
 

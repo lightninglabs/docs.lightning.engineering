@@ -20,7 +20,7 @@ git checkout feat-1
 
 ## Added backend class to connect to `lnd` and create tokens
 
-We are going to take advantage of the existing NPM package [@radar/lnrpc](https://www.npmjs.com/package/@radar/lnrpc) to save us from writing a bunch of gRPC plumbing code to communicate with `lnd` nodes. We chose this one because it has Typescript types for all of `lnd`’s gRPC endpoints, that make the development experience a bit easier. There are a few others out there for different languages.
+We are going to take advantage of the existing NPM package [@radar/lnrpc](https://www.npmjs.com/package/@radar/lnrpc) to save us from writing a bunch of gRPC plumbing code to communicate with `lnd` nodes. We chose this one because it has Typescript types for all of `lnd`’s gRPC endpoints, that make the development experience a bit easier. There are a [few others](https://github.com/bcongdon/awesome-lightning-network#libraries) out there for different languages.
 
 `source: /backend/node-manager.ts`
 

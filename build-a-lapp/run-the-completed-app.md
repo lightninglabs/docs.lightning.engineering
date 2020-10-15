@@ -1,4 +1,4 @@
-# Run the Completed App
+# Setup: Run the Completed App
 
 Now that you are familiar with Polar, we are going to build a web application that leverages a pre-defined Polar network as its backend. First, we will ensure your development environment is correctly configured. Next, we will import this pre-defined network. Then, we will run the completed sample app so you can see how it works.
 

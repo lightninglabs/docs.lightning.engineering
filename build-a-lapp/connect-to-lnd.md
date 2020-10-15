@@ -1,4 +1,4 @@
-# Connect to LND
+# Feature 1: Connect to LND
 
 In order to send payments over the Lightning Network, we will need to communicate with a Lightning Node. In our case, we will be using `lnd` which is built and maintained by [Lightning Labs](https://lightning.engineering). The simplest way to create a local network is to use [Polar](https://lightningpolar.com), which you’ve hopefully already installed and played with. If not, go back and read the [Local Cluster Setup with Polar](local-cluster-setup-with-polar.md) section.
 

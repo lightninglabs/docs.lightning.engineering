@@ -1,4 +1,4 @@
-# Modify Upvote Action
+# Feature 4: Modify Upvote Action
 
 Currently in our app, when a user clicks the Upvote button, we immediately make the API request to the backend to increment the number of votes for the post. We want to change that behavior to require the user to make a payment of 100 satoshis \(0.00000100 BTC\) to the post’s author before the upvote is submitted. Since we want the payment to go directly to the node of the user that created the post, we will need perform a few steps when the Upvote button is clicked:
 

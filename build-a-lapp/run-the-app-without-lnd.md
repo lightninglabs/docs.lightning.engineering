@@ -1,4 +1,4 @@
-# Run the App Without LND
+# Setup: Run the App Without LND
 
 Before we begin adding Lightning Network integration, let’s first get the app running on your computer.
 

@@ -1,4 +1,4 @@
-# Local Cluster Setup with Polar
+# Setup: Local Cluster with Polar
 
 ## Install Polar
 

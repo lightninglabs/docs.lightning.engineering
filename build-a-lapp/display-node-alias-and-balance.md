@@ -1,4 +1,4 @@
-# Display Node Alias and Balance
+# Feature 2: Display Node Alias and Balance
 
 The goal of this feature is pretty straight-forward. When a user connects their node to the site, we want them to be able to see their alias and channel balance, so that it is clear to them how much funds they have available to pay for upvotes.
 

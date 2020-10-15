@@ -1,4 +1,4 @@
-# Sign and Verify Posts
+# Feature 3: Sign and Verify Posts
 
 In this feature, we have introduced a couple new `lnd` endpoints, [SignMessage](https://api.lightning.community/#signmessage) and [VerifyMessage](https://api.lightning.community/#verifymessage). These can be useful in cases where one user wants to be certain that some content has not been altered by a third-party. Following our mantra of “Can’t Be Evil”, we want to ensure our users that we have not tampered with the posts they author. So when a user creates a post, we will sign the message using their node and store the `signature`. If another user wants to verify that the post has not been modified, they will verify the signature using their own node.
 

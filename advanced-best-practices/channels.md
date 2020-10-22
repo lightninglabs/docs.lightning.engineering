@@ -4,11 +4,11 @@ Once your node is set up and funded, it’s time to open some channels so that y
 
 ## Peer Selection
 
-A good peer makes all the difference to the operation of a node. Every off chain transaction that your node participates in involves cooperation with one of your peers. When sending a payment, your node selects one of your channels to dispatch the payment on, sends it a request to add a HTLC for the payment, and later the peer will settle or fail the HTLC depending on the outcome of the payment. Likewise for reciepts, the peer that delivers a payment to your node will send your node a request to add a HTLC, and your node will later settle or fail the HTLC back. Adding, failing and settling HTLC all require interaction with your peer, because you need to agree on and sign a new shared state to reflect the new balance in the channels involved. 
+A good peer makes all the difference to the operation of a node. Every off chain transaction that your node participates in involves cooperation with one of your peers. When sending a payment, your node selects one of your channels to dispatch the payment on, sends it a request to add a HTLC for the payment, and later the peer will settle or fail the HTLC depending on the outcome of the payment. Likewise for receipts, the peer that delivers a payment to your node will send your node a request to add a HTLC, and your node will later settle or fail the HTLC back. Adding, failing and settling HTLC all require interaction with your peer, because you need to agree on and sign a new shared state to reflect the new balance in the channels involved. 
 
-If your peer is unavailable to update this shared state, the channels that you have with them can't be used for any further payments or reciepts, because you cannot negotiate new state with them. Further, if you have any pending HTLCs on your commitment \(which would be the case if a HTLC was added, but the peer went offline before it could be settled or failed back\), you will have to wait until your peer comes back online to resolve those payments. In the worst case, if your peer remains offline, your node will need to broadcast its latest commitment state on chain to resolve the HTLCs that are stuck. This is undesirable, because your payments will take a long time to resolve, and your node will need to pay on-chain fees to resolve these HTLCs. 
+If your peer is unavailable to update this shared state, the channels that you have with them can't be used for any further payments or receipts, because you cannot negotiate new state with them. Further, if you have any pending HTLCs on your commitment \(which would be the case if a HTLC was added, but the peer went offline before it could be settled or failed back\), you will have to wait until your peer comes back online to resolve those payments. In the worst case, if your peer remains offline, your node will need to broadcast its latest commitment state on chain to resolve the HTLCs that are stuck. This is undesirable, because your payments will take a long time to resolve, and your node will need to pay on-chain fees to resolve these HTLCs. 
 
-Selecting good peers to open channels with \(and limiting the channels that your node accepts\) will provide you with a more relably operating node, and keep your on-chain costs down. The sub-sections that follow outline some strategies for identifying good peers in the network. 
+Selecting good peers to open channels with \(and limiting the channels that your node accepts\) will provide you with a more reliably operating node, and keep your on-chain costs down. The sub-sections that follow outline some strategies for identifying good peers in the network. 
 
 ### Network Information
 
@@ -50,7 +50,7 @@ This value is normalized between 0 and 1, meaning that a score of 0 means that t
 
 ### Availability
 
-Available peers are counted as good peers because you are less likely to need to resort to on chain resolution, and they can be relied upon to quickly process payments. Since your node is not connected to every node in the network, it is difficult to determine what the uptime of a peer will be before you open a channel with it and see for yourself. Measures like the disabled flag discussed in the Network Information section, or curated scores such as the BOS scores can be used as a proxy for node availablilty. 
+Available peers are counted as good peers because you are less likely to need to resort to on chain resolution, and they can be relied upon to quickly process payments. Since your node is not connected to every node in the network, it is difficult to determine what the uptime of a peer will be before you open a channel with it and see for yourself. Measures like the disabled flag discussed in the Network Information section, or curated scores such as the BOS scores can be used as a proxy for node availability. 
 
 However, if you already have a channel open with a peer, you can see its current uptime and the amount of time that this uptime has been monitored for using the _ListChannels_ endpoint. Note that we only monitor uptime of peers that we have channels open with because they have an incentive to remain connected to us. If you are looking to open another channel with one of your existing peers, this is a good measure to check before doing so. 
 
@@ -101,7 +101,7 @@ Channels in the Lightning Network can forward payments on behalf of other nodes 
 | :--- | :--- |
 | private | Whether a channel should be private, false by default. |
 
-If you do intend to route payments, the minimum htlc parameter can be used to place a limit on the size of payment that you are willing to route. In the event that your peer goes offline while you have unresolved payments in your channel that are nearing expiry, your `lnd` node will force close the channel and resolve it on chain. In this case, `lnd` will broadcast a sweep transaction that spends these funds back to our node on chain, which costs use fees. Toggling this minimum amount allows you to set the minimum amount that you’ll allow your node to go on chain for. Setting a higher minimum HTLC value also helps to protect your node against being spammed with small payments. 
+If you do intend to route payments, the minimum HTLC parameter can be used to place a limit on the size of payment that you are willing to route. In the event that your peer goes offline while you have unresolved payments in your channel that are nearing expiry, your `lnd` node will force close the channel and resolve it on chain. In this case, `lnd` will broadcast a sweep transaction that spends these funds back to our node on chain, which costs use fees. Toggling this minimum amount allows you to set the minimum amount that you’ll allow your node to go on chain for. Setting a higher minimum HTLC value also helps to protect your node against being spammed with small payments. 
 
 <table>
   <thead>
@@ -154,7 +154,7 @@ If your node accepts inbound connections from peers, or you have previously crea
 
 Accepting channels from bad peers can be detrimental to your node in a variety of ways. If the peer has bad uptime, or often restarts, your node may attempt to forward a payment through the peer, which gets stuck because the peer subsequently goes offline and it cannot be settled or failed back to you. In the worst case, your node will need to force close the channel to resolve the HTLC on chain, which costs fees.
 
-Although it is not always the case, badly run nodes tend to open channels with lnd’s default fee settings. This will make them attractive to your node’s pathfinding logic, because these fees tend to be lower than performant nodes on the network that charge for the quality they provide, thus compounding the problem. `lnd`’s routing subsystem will learn to ignore these bad peers as payments fail, but your node will still need to learn that lesson the hard way.
+Although it is not always the case, badly run nodes tend to open channels with lnd’s default fee settings. This will make them attractive to your node’s path finding logic, because these fees tend to be lower than performant nodes on the network that charge for the quality they provide, thus compounding the problem. `lnd`’s routing subsystem will learn to ignore these bad peers as payments fail, but your node will still need to learn that lesson the hard way.
 
 Recent literature covering attacks on the Lightning Network point to the low cost of setting up a node and opening channels to would-be victims as a low barrier to entry for potential attackers. Only accepting channels from more established and maintained nodes \(as covered in our peer selection section\) increases the cost of attack, and thus decreases its likelihood, because an attacker has to dedicate time and money towards creating a node that can open a channel with yours.
 
@@ -172,7 +172,7 @@ The following channel acceptors could be useful for a production-level lightning
 
 ## Monitoring Channels
 
-The _SubscribeChannels_ endpoint provides callers with a stream of updates which will notify you of channel opens, closes and updates. This stream can be used to monitor your current set of channels in realtime and ensure that your node has sufficient channels open for your purposes. 
+The _SubscribeChannels_ endpoint provides callers with a stream of updates which will notify you of channel opens, closes and updates. This stream can be used to monitor your current set of channels in real time and ensure that your node has sufficient channels open for your purposes. 
 
 The following notifications are provided:
 

@@ -151,7 +151,7 @@ Payments can be made to an invoice supplied by the destination node, or using th
 | :--- | :--- | :--- |
 | Interaction with Destination  | Invoice must be obtained from destination | No interaction required |
 | Support | BOLT 11 complaint invoices should be accepted by all implementations.  | Requires that Feature Bit 9, TLV Onion, is set by the destination node. |
-| Proof of Payment | Recipient sets preimage, providing cryptographically verifiable proof of payment | Sender sets preimage, no proof of payment.  |
+| Proof of Payment | Recipient sets preimage, providing cryptographicly verifiable proof of payment | Sender sets preimage, no proof of payment.  |
 
 #### Invoice Payment
 
@@ -170,8 +170,8 @@ If you are sending a keysend payment to a node which supports them, you will nee
 
 The process of creating and settling a payment happens in two stages:
 
-* Hops along the route add a HTLC for the payment to their commitment, irrevocably committing them to settling the htlc or timing it out once its timeout elapses.
-* Once the HTLC is locked in, the receiving node will settle the HTLC using the preimage, and each node along the route will remove the htlc from its commitment and shift the balance of funds to reflect this payment. 
+* Hops along the route add a HTLC for the payment to their commitment, irrevocably committing them to settling the HTLC or timing it out once its timeout elapses.
+* Once the HTLC is locked in, the receiving node will settle the HTLC using the preimage, and each node along the route will remove the HTLC from its commitment and shift the balance of funds to reflect this payment. 
 
 If your payment fails in this first stage, perhaps because a node along the route was offline, or did not have sufficient balance to forward the payment, it is safe to retry. However, once the HTLC is locked in along the route, the payment must be resolved. Ideally this occurs quickly, with the reveal of the preimage. However, if the receiving node does not release the preimage, or a node along the route goes offline, the payment will only be resolved after it times out. This is what is sometimes referred to as a “stuck payment”, it cannot be retried, and the sender needs to wait a long time before it can resolve the payment as failed or successful. 
 

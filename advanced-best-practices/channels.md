@@ -79,7 +79,7 @@ The parameters you select for your channel determine how your channel can be use
 
 The first decision that needs to be made is the amount of funds that you would like to place in your node. Note that you will need to run your node with the _--protocol.wumbo-channels_ flag to allow creation of channels that are larger than 0.16 BTC.
 
-| Parameter | **Description** |
+| Parameter | Description |
 | :--- | :--- |
 | local\_funding\_amount | The amount of funds to contribute to the channel, exclusive of the fees that will be paid on chain to fund the channel. If a push amount is set, this value will be inclusive of the push amount. |
 | push\_sat | The amount of satoshis to give to your channel peer. This is not recommended unless you would like to part with your sats! |

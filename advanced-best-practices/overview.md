@@ -16,7 +16,7 @@ This guide assumes some basic knowledge of how Bitcoin and the Lightning Network
 
 To allow easy upgrades to the network, nodes advertise the features that they support so that there are no misunderstandings when trying to communicate. These feature bits are advertised in two places:
 
-* **Node announcements**: broadcast to the entire network, indicating the features that a node supports and those which it requires. These feature bits can be viewed using DescribeGraph.
+* **Node announcements**: broadcast to the entire network, indicating the features that a node supports and those which it requires. These feature bits can be viewed using the _DescribeGraph_ API call.
 * **Invoices**: to allow updates to the way in which we make payments, invoices also include feature bits, so that payers know how the invoice can be paid. These feature bits are largely internally managed by `lnd`, so you do not need to worry about them. 
 
 The feature bits that a node supports determines the way in which your node can interact with it; on a node-level, it determines the channel types you can open, and on an invoice-level, it determines the ways in which you can pay that invoice. If your implementation depends on a feature in this guide that notes that it needs a specific feature bit, be sure to check that the nodes you interact with support the feature bits you need!

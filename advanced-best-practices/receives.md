@@ -5,7 +5,7 @@ Your node may receive payments over Lightning by providing an invoice to payees,
 |  | Invoice | Keysend |
 | :--- | :--- | :--- |
 | Interaction with Payer  | Party paying must request an invoice from your service.  | No interaction required |
-| Support | BOLT 11 complaint invoices should be payable by all implementations.  | The sending node requires understanding of Feature Bit 9, TLV Onion. |
+| Support | BOLT 11 complaint invoices should be payable by all implementations.  | The sending node requires understanding of Feature Bit 9, TLV Onion - lnd must be run with the -_-accept-keysend_ flag. |
 | Proof of Payment | Recipient sets preimage, providing cryptographically verifiable proof of payment | Sender sets preimage, no proof of payment.  |
 | Control of Receive Flow | Invoices can only be paid once, and a node without an invoice cannot pay your node. | Any node can send to your node, which may result in unexpected receipts.  |
 
@@ -18,12 +18,16 @@ The following parameters are useful when adding an invoice:
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">value_msat</th>
-      <th style="text-align:left">The amount to be paid, expressed in millisatoshis. Payment will fail if
-        the invoice is underpaid.</th>
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left">Description</th>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td style="text-align:left">value_msat</td>
+      <td style="text-align:left">The amount to be paid, expressed in millisatoshis. Payment will fail if
+        the invoice is underpaid.</td>
+    </tr>
     <tr>
       <td style="text-align:left">expiry</td>
       <td style="text-align:left">The time after which the invoice will expire.</td>
@@ -47,10 +51,6 @@ The following parameters are useful when adding an invoice:
     </tr>
   </tbody>
 </table>
-
-## Keysend
-
-If you would like to receive keysend payments, your node needs to be configured with the _--accept-keysend_ parameter, so that `lnd` knows that the sending entity will be providing the preimage for the invoice. Keysend receipts are still displayed in the _ListInvoices_ endpoint, with the _is-keysend_ field set to true. 
 
 ## Monitoring
 

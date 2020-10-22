@@ -19,41 +19,52 @@ Mission control’s defaults can be updated to better cater this subsystem to yo
 <table>
   <thead>
     <tr>
-      <th style="text-align:left"><b>routerrpc.minrtprob</b>
-      </th>
-      <th style="text-align:left">
-        <p><b>The probability of success that is required for a route to dispatch a payment. Note that we will not attempt a payment at all if we cannot find a route with this probability of success, so setting your node to require 100%, while appealing, would result in very few payments being made.<br /></b>
-        </p>
-        <p><b>default: 0.01 /1%</b>
-        </p>
-      </th>
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><b>routerrpc.apriorihopprob</b>
-      </td>
-      <td style="text-align:left"><b>The probability that we assign to hops that we currently have no information about. Lower values indicate that we are less trustful of unknown-hops, higher values indicate that we are more willing to take a chance.<br /><br />default: 0.6/ 60%</b>
+      <td style="text-align:left">routerrpc.minrtprob</td>
+      <td style="text-align:left">
+        <p>The probability of success that is required for a route to dispatch a
+          payment. Note that we will not attempt a payment at all if we cannot find
+          a route with this probability of success, so setting your node to require
+          100%, while appealing, would result in very few payments being made.
+          <br
+          />
+        </p>
+        <p>default: 0.01 /1%</p>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>routerrpc.aprioriweight</b>
-      </td>
+      <td style="text-align:left">routerrpc.apriorihopprob</td>
+      <td style="text-align:left">The probability that we assign to hops that we currently have no information
+        about. Lower values indicate that we are less trustful of unknown-hops,
+        higher values indicate that we are more willing to take a chance.
+        <br />
+        <br />default: 0.6/ 60%</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">routerrpc.aprioriweight</td>
       <td style="text-align:left">
-        <p><b>A value in [0;1] which determines how we use mission control data. Setting this value to 1 ignores historical results and relies solely on apriori hop probabilities; setting it to 0 relies only on historical information.</b>
-        </p>
-        <p><b><br />default: 0.5</b>
-        </p>
+        <p>A value in [0;1] which determines how we use mission control data. Setting
+          this value to 1 ignores historical results and relies solely on apriori
+          hop probabilities; setting it to 0 relies only on historical information.</p>
+        <p>
+          <br />default: 0.5</p>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>penaltyhalflife</b>
-      </td>
+      <td style="text-align:left">penaltyhalflife</td>
       <td style="text-align:left">
-        <p><b>Since data gathered by mission control is time-sensitive, we need to account for the fact that the data we gather will become out-of-date. This value determines how long it takes for a hop to recover to 50% probability. <br /></b>
+        <p>Since data gathered by mission control is time-sensitive, we need to account
+          for the fact that the data we gather will become out-of-date. This value
+          determines how long it takes for a hop to recover to 50% probability.
+          <br
+          />
         </p>
-        <p><b>default 1 hour</b>
-        </p>
+        <p>default 1 hour</p>
       </td>
     </tr>
   </tbody>
@@ -61,9 +72,9 @@ Mission control’s defaults can be updated to better cater this subsystem to yo
 
 ### **Prepay Probes**
 
-For best results when dispatching a payment, we recommend the use of a prepay probe. This involves dispatching a payment to your destination node that it will not recognize, and inspecting the error returned to ensure that the payment made it all the way to the destination node. This is helpful for providing mission control with up-to-date information about the path to your destination, and for providing end users with accurate fee information. 
+For best results when dispatching a payment, we recommend the use of a prepay probe. This involves dispatching a fake payment to your destination node that it will not recognize, and inspecting the error returned to ensure that the payment made it all the way to the destination node. This is helpful for providing mission control with up-to-date information about the path to your destination, and for providing end users with accurate fee information. 
 
-To send a prepay probe, create a payment to your destination with the same amount as your real payment, and set a strong-random payment hash. We expect this payment to fail with _FAILURE\_REASON\_INCORRECT\_PAYMENT\_DETAILS_, because the recipient node does not know the preimage. If your prepay fails with another error, your main payment is unlikely to succeed, so you can inform the end user that the payment is not possible. Testing out payments like this also prevents your likelihood of stuck payments, covered in detail in the Monitoring Payments section. 
+To send a prepay probe, create a payment to your destination with the same amount as your real payment, and set a strongly-random payment hash.  We would expect this payment to fail with _FAILURE\_REASON\_INCORRECT\_PAYMENT\_DETAILS_ if it reaches the destination node, because the recipient node does not know the preimage. If your prepay fails with another error, your main payment is unlikely to succeed, so you can inform the end user that the payment is not possible. Testing out payments like this also prevents your likelihood of stuck payments, covered in detail in the Monitoring Payments section. 
 
 ## Dispatching Payments
 
@@ -75,8 +86,14 @@ This section covers the use of the _SendPaymentV2_ API endpoint, which finds a r
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">timeout_seconds</th>
-      <th style="text-align:left">
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">timeout_seconds</td>
+      <td style="text-align:left">
         <p>The maximum amount of time that we should spend trying to dispatch the
           payment. Note that this is not the total time that the payment will take,
           because a successfully dispatched payment may still take time to be settled
@@ -87,10 +104,8 @@ This section covers the use of the _SendPaymentV2_ API endpoint, which finds a r
           to wait longer, and send more payment attempts, setting a higher value
           may lead to greater payment successes. However, if you need to quickly
           give user feedback, a lower value should be set.</p>
-      </th>
+      </td>
     </tr>
-  </thead>
-  <tbody>
     <tr>
       <td style="text-align:left">max_parts</td>
       <td style="text-align:left">
@@ -132,7 +147,7 @@ Fee policies are structured with the following parameters:
 
 Payments can be made to an invoice supplied by the destination node, or using the experiential keysend feature, which is supported by all major implementations \(although un-upgraded nodes may not be able to receive these payments\). You may choose to support one or both of these sending methods, please consult the comparison table below to assess suitability for your use case:
 
-|  | **Invoice** | **Keysend** |
+|  | Invoice | Keysend |
 | :--- | :--- | :--- |
 | Interaction with Destination  | Invoice must be obtained from destination | No interaction required |
 | Support | BOLT 11 complaint invoices should be accepted by all implementations.  | Requires that Feature Bit 9, TLV Onion, is set by the destination node. |
@@ -144,25 +159,25 @@ If you have an invoice for the node you are paying, you can send a payment using
 
 #### Keysend Payment
 
-If you are sending a keysend payment to a node which supports them, you will need to specify the payment amount and destination so that your node knows where to send the payment, as well as opting-in to the keysend.  
+If you are sending a keysend payment to a node which supports them, you will need to specify the payment amount and destination so that your node knows where to send the payment, as well as opting-in to the keysend.
 
-
-| amt\_msat | The amount to send the peer.  |
+| Parameter | Description |
 | :--- | :--- |
+| amt\_msat | The amount to send the peer.  |
 | dest | The public key of the node that you want to send the payment to.  |
 
 ## Monitoring Payments
 
 The process of creating and settling a payment happens in two stages:
 
-* Hops along the route add a htlc for the payment to their commitment, irrevocably committing them to settling the htlc or timing it out once its timeout elapses.
-* Once the htlc is locked in, the receiving node will settle the htlc using the preimage, and each node along the route will remove the htlc from its commitment and shift the balance of funds to reflect this payment. 
+* Hops along the route add a HTLC for the payment to their commitment, irrevocably committing them to settling the htlc or timing it out once its timeout elapses.
+* Once the HTLC is locked in, the receiving node will settle the HTLC using the preimage, and each node along the route will remove the htlc from its commitment and shift the balance of funds to reflect this payment. 
 
-If your payment fails in this first stage, perhaps because a node along the route was offline, or did not have sufficient balance to forward the payment, it is safe to retry. However, once the htlc is locked in along the route, the payment must be resolved. Ideally this occurs quickly, with the reveal of the preimage. However, if the receiving node does not release the preimage, or a node along the route goes offline, the payment will only be resolved after it times out. This is what is sometimes referred to as a “stuck payment”, it cannot be retried, and the sender needs to wait a long time before it can resolve the payment as failed or successful. 
+If your payment fails in this first stage, perhaps because a node along the route was offline, or did not have sufficient balance to forward the payment, it is safe to retry. However, once the HTLC is locked in along the route, the payment must be resolved. Ideally this occurs quickly, with the reveal of the preimage. However, if the receiving node does not release the preimage, or a node along the route goes offline, the payment will only be resolved after it times out. This is what is sometimes referred to as a “stuck payment”, it cannot be retried, and the sender needs to wait a long time before it can resolve the payment as failed or successful. 
 
 The _TrackPaymentV2_ endpoint in `lnd` provides a reliable stream of information regarding the state of a payment. It can also be used as a payment lookup function for payments in a final state, because the stream will terminate if the payment state is final. It returns the following states for a payment:
 
-* In Flight: the payment is still in the process of locking in htlcs along the route to the destination
+* In Flight: the payment is still in the process of finding and path locking in HTLCs along the route to the destination
 * Succeeded: the payment was successful
 * Failed: the payment permanently failed, and will not be reattempted.
 

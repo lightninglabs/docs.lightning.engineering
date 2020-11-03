@@ -28,7 +28,8 @@
 
 ## Intermediate: Get LiT
 
-* [Untitled](intermediate-get-lit/untitled.md)
+* [Installing the Lightning Terminal](intermediate-get-lit/untitled.md)
+* [Liquidity Management](intermediate-get-lit/liquidity-management.md)
 
 ## Advanced: Best Practices
 
@@ -36,6 +37,5 @@
 * [Channels](advanced-best-practices/channels.md)
 * [Sends](advanced-best-practices/sends.md)
 * [Receives](advanced-best-practices/receives.md)
-* [Liquidity Management](advanced-best-practices/liquidity-management.md)
 * [Keys and Backups](advanced-best-practices/keys-and-backups.md)
 

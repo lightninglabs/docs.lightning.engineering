@@ -1,2 +1,2 @@
-# Untitled
+# Installing the Lightning Terminal
 

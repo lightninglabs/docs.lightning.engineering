@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Home](README.md)
+* [Welcome to the Builder's Guide to the LND Galaxy!](README.md)
 
 ## n00bs: Conceptual Overview <a id="conceptual-overview"></a>
 
@@ -14,7 +14,7 @@
 * [Payment Lifecycle](conceptual-overview/payment-lifecycle.md)
 * [Conclusion](conceptual-overview/conclusion.md)
 
-## Beginners: Build a Lapp <a id="build-a-lapp"></a>
+## Beginners: Build Your First Lapp <a id="build-a-lapp"></a>
 
 * [Overview](build-a-lapp/overview.md)
 * [Setup: Local Cluster with Polar](build-a-lapp/local-cluster-setup-with-polar.md)

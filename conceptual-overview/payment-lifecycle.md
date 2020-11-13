@@ -20,7 +20,7 @@ Other possibly unexpected rules include that the payee should accept up to twice
 
 A full specification of the payment request data format, required and optional parts, and required behavior can be found in [BOLT 11](https://github.com/lightningnetwork/lightning-rfc/blob/master/11-payment-encoding.md).
 
-## **Payment flow**
+## **Payment Flow**
 
 Let’s now see what an ideal payment flow looks like.
 

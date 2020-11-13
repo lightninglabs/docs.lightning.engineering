@@ -54,7 +54,7 @@ The following parameters are useful when adding an invoice:
 
 ## Monitoring
 
-LND maintains two indexes on the invoices that it stores:
+`lnd` maintains two indexes on the invoices that it stores:
 
 * Add index: a monotonically increasing index which indicates the order in which invoices were added. 
 * Settle index: a monotonically increasing index which indicates the order in which invoices were settled. 

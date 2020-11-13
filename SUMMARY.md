@@ -38,5 +38,7 @@
 * [Channels](advanced-best-practices/channels.md)
 * [Sends](advanced-best-practices/sends.md)
 * [Receives](advanced-best-practices/receives.md)
-* [Keys and Backups](advanced-best-practices/keys-and-backups.md)
+* [Partially Signed Bitcoin Transactions](advanced-best-practices/psbt.md)
+* [Operational Safety](advanced-best-practices/safety.md)
+* [Recovering Funds](advanced-best-practices/recovery.md)
 

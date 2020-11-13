@@ -6,7 +6,7 @@ Single channels work well if you have a financial relationship with some entity 
 
 Once you don’t have to trust the intermediaries, you no longer even care who they are. This allows Lightning nodes to be fully anonymous, which is a huge win for privacy.
 
-Concretely, Suppose Alice has a channel with Bob, who has a channel with Carol, who has a channel with Dave: `A<->B<->C<->D`. How can Alice pay Dave?
+Concretely, suppose Alice has a channel with Bob, who has a channel with Carol, who has a channel with Dave: `A<->B<->C<->D`. How can Alice pay Dave?
 
 Alice first notifies Dave that she wants to send him some money.
 

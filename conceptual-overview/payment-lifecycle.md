@@ -12,7 +12,7 @@ Payment requests are composed of two sections:
 2. **Data part**: Contains a UTC Unix timestamp and optionally some tagged parts, as well as a signature over the human readable and data parts.
    * Tagged parts include a payment hash, the pubkey of the payee node, a description of the purpose of payment, an expiration time \(default to 1 hour if not specified\), and extra routing information. Some tagged parts are required and others are not.
 
-Because the payment request contains the payment hash, **payment requests must be strictly single use**. After an invoice is fulfilled, the hash preimage becomes publically known. An attacker could save the preimages they’ve seen and reuse it for another payment that is reusing the invoice. Therefore, **failure to generate new payment requests means that an on-path attacker can steal the payment en route.**
+Because the payment request contains the payment hash, **payment requests must be strictly single use**. After an invoice is fulfilled, the hash preimage becomes publicly known. An attacker could save the preimages they’ve seen and reuse it for another payment that is reusing the invoice. Therefore, **failure to generate new payment requests means that an on-path attacker can steal the payment en route.**
 
 Another detail worth noting is that payees should not accept payments after the payment request has expired \(`timestamp` + `expiry`\), and payers likewise should not attempt them. This will affect any web application with `lnd` integration, since if an invoice for a good or service is not fulfilled within the given timeframe, a new one should be generated.
 
@@ -38,7 +38,7 @@ Let’s now see what an ideal payment flow looks like.
    lncli decodepayreq --pay_req=<PAY_REQ>
    ```
 
-3. **Send payment:** The payer sends their payment, possibly routed through the Lightning Network. Developers can do this through an LND interface and end users can use the desktop or mobile app.
+3. **Send payment:** The payer sends their payment, possibly routed through the Lightning Network. Developers can do this through an `lnd` interface and end users can use the desktop or mobile app.
 
    ```text
    lncli sendpayment --pay_req=<PAY_REQ>

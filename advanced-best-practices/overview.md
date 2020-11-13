@@ -2,7 +2,7 @@
 
 In this guide, we will walk you through the best practices for maintaining a mainnet `lnd` Lightning Network node. [`lnd`](https://github.com/lightningnetwork/lnd) is a golang implementation of the Lightning Network [Specification](https://github.com/lightningnetwork/lightning-rfc), maintained by Lightning Labs which fully conforms to the [Lightning Network Specification \(BOLTS\)](https://github.com/lightningnetwork/lightning-rfc).
 
-Hopefully if you are reading this, you have already completed our [Build a Lapp guide](../build-a-lapp/overview.md) and our [Installation guide](../intermediate-get-lit/untitled.md). 
+Hopefully if you are reading this, you have already completed our [Build a Lapp guide](../build-a-lapp/overview.md) and our [Installation guide](../intermediate-get-lit/readme.md). 
 
 This guide assumes some basic knowledge of how Bitcoin and the Lightning Network operate. We recommend understanding of the following concepts before proceeding with the guide, as some foundational concepts will ease the learning curve. 
 

@@ -1,0 +1,62 @@
+name: Sync Documents
+
+on:
+  schedule:
+  # Run this workflow automatically once a day at midnight.
+  # * is a special character in YAML so you have to quote this string
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  sync-docs:
+    name: Sync documents from upstream
+    runs-on: ubuntu-latest
+    strategy:
+      # Allow other tests in the matrix to continue if one fails.
+      fail-fast: false
+      matrix:
+        cfg:
+          - { repo: lnd, org: lightningnetwork, src: docs, dest: advanced-best-practices }
+          - { repo: lightning-terminal, org: lightninglabs, src: doc, dest: intermediate-get-lit }
+
+    steps:
+      - name: Checkout docs.lightning.engineering repo
+        uses: actions/checkout@v2
+
+      - name: Checkout ${{ matrix.cfg.repo }} repo
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ matrix.cfg.org }}/${{ matrix.cfg.repo }}
+          path: ${{ matrix.cfg.repo }}
+
+      - name: Pull code differences
+        run: ./scripts/diff.sh ${{ matrix.cfg.repo }} ${{ matrix.cfg.src }} ${{ matrix.cfg.dest }}
+        id: create-diff
+
+      - name: Create Pull Request
+        if: steps.create-diff.outputs.have_diff == 'true'
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: update documentation
+          title: Update ${{ matrix.cfg.repo }} documentation
+          body: This PR was created to automatically sync ${{ matrix.cfg.repo }} documentation.
+          branch: docs-${{ matrix.cfg.repo }}
+          base: master
+
+      - name: Check outputs
+        if: steps.create-diff.outputs.have_diff == 'true'
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+
+      - name: Merge Pull Request
+        if: steps.create-diff.outputs.have_diff == 'true'
+        uses: juliangruber/merge-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.cpr.outputs.pull-request-number }}

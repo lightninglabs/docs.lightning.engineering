@@ -28,8 +28,8 @@
 
 ## Intermediate: Get LiT
 
-* [Installing the Lightning Terminal](intermediate-get-lit/README.md)
-* [Walkthrough](intermediate-get-lit/WALKTHROUGH.md)
+* [Installing the Lightning Terminal](intermediate-get-lit/intermediate-get-lit.md)
+* [Walkthrough](intermediate-get-lit/walkthrough.md)
 * [Liquidity Management](intermediate-get-lit/liquidity-management.md)
 
 ## Advanced: Best Practices

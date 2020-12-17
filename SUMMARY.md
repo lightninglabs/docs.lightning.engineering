@@ -45,5 +45,5 @@
 * [Macaroons](advanced-best-practices/macaroons.md)
 * [Partially Signed Bitcoin Transactions](advanced-best-practices/psbt.md)
 * [Watchtowers](advanced-best-practices/watchtower.md)
-* [Nat Traversal](advanced-best-practices/nat_traversal.md)
+* [NAT Traversal](advanced-best-practices/nat_traversal.md)
 

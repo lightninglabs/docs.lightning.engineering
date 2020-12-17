@@ -38,7 +38,11 @@
 * [Channels](advanced-best-practices/channels.md)
 * [Sends](advanced-best-practices/sends.md)
 * [Receives](advanced-best-practices/receives.md)
-* [Partially Signed Bitcoin Transactions](advanced-best-practices/psbt.md)
 * [Operational Safety](advanced-best-practices/safety.md)
 * [Recovering Funds](advanced-best-practices/recovery.md)
+* [High Availability lnd](advanced-best-practices/etcd.md)
+* [Macaroons](advanced-best-practices/macaroons.md)
+* [Partially Signed Bitcoin Transactions](advanced-best-practices/psbt.md)
+* [Watchtowers](advanced-best-practices/watchtower.md)
+* [Nat Traversal](advanced-best-practices/nat_traversal.md)
 

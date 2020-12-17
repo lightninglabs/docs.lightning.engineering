@@ -8,16 +8,6 @@
 4. Your `bitcoin.conf` file has ZMQ publishing turned on.
 5. Your Ubuntu server **is not** already running `lnd` locally.
 
-## Dependencies
-
-Make sure the three below dependencies are installed on your Ubuntu machine before following the rest of the tutorial.
-
-| Dependency | Description |
-| :--- | :--- |
-| [golang](https://golang.org/doc/install) | LiT's backend web server is written in Go. The minimum version supported is Go v1.13. |
-| [nodejs](https://nodejs.org/en/download/) | LiT's frontend is written in TypeScript and built on top of the React JS web framework. To bundle the assets into Javascript & CSS compatible with web browsers, NodeJS is required. |
-| [yarn](https://classic.yarnpkg.com/en/docs/install) | A popular package manager for NodeJS application dependencies. |
-
 ## Install Lightning Terminal
 
 Because we assume you are not already running `lnd`, we will be configuring LiT with [integrated `lnd` mode](https://github.com/lightninglabs/lightning-terminal/blob/master/doc/config-lnd-integrated.md). This means that `lnd` is started within the same process as `litd`, alongside the UI server, `faraday`, `pool`, and `loop`.

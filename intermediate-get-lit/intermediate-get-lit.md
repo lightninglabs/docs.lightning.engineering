@@ -5,6 +5,7 @@
 1. You have a Ubuntu server with &gt;1 TB of disk space.
 2. Your server has a local firewall with OpenSSH allowed, alongside ports 9735 and 10009.
 3. Your Ubuntu server has `bitcoind` installed, synced on mainnet, and running as a daemon.
+   1. To install `bitcoind` on Ubuntu, follow [the official bitcoin.org guide](https://bitcoin.org/en/full-node#linux-instructions).
 4. Your `bitcoin.conf` file has ZMQ publishing turned on.
 5. Your Ubuntu server **is not** already running `lnd` locally.
 
@@ -87,4 +88,14 @@ The very last step is to create your new `lnd` wallet. Open a new Terminal windo
 `lncli create`
 
 Once you have secured your passwords and your seed phrase, Lightning Terminal is easy to browse to either on [https://localhost:8443](https://localhost:8443) if using a local machine or to your public URL if using a remote machine.
+
+## Alternate Set-Ups
+
+Ubuntu:
+
+1. If you are already running `lnd` locally, and want to run `litd` as a remote process, follow [the Remote Integration guide](https://github.com/lightninglabs/lightning-terminal/blob/master/doc/config-lnd-remote.md).
+
+MacOs/Windows:
+
+1. We would love for you to [create a PR](https://github.com/lightninglabs/docs.lightning.engineering/pulls) for getting LiT on your machine.
 

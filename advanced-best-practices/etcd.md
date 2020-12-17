@@ -1,4 +1,4 @@
-# High Availability lnd
+# High Availability LND
 
 With the recent introduction of the `kvdb` interface LND can support multiple database backends allowing experimentation with the storage model as well as improving robustness trough eg. replicating essential data.
 

@@ -15,7 +15,7 @@ Open your browser to [http://localhost:3000](http://localhost:3000) if it doesnâ
 
 If all went well with your development environment setup, you should see the initial screen below:
 
-![](../.gitbook/assets/preLND01%20%281%29%20%281%29.png)
+![](../.gitbook/assets/preLND01%20%281%29%20%281%29%20%281%29.png)
 
 Click on the **Create a Post** button to go to the Create screen.
 

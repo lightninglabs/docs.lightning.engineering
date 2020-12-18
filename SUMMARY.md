@@ -29,7 +29,8 @@
 ## Intermediate: Get LiT
 
 * [Overview](intermediate-get-lit/get-lit-overview.md)
-* [Installing the Lightning Terminal](intermediate-get-lit/intermediate-get-lit.md)
+* [Linux - Integrated Mode](intermediate-get-lit/ubuntu-integrated.md)
+* [Linux - Remote Mode](intermediate-get-lit/linux-remote.md)
 * [Walkthrough](intermediate-get-lit/walkthrough.md)
 * [Liquidity Management](intermediate-get-lit/liquidity-management.md)
 * [Next Steps](intermediate-get-lit/next-steps.md)

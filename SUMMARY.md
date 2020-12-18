@@ -33,6 +33,8 @@
 * [Linux - Remote Mode](intermediate-get-lit/linux-remote.md)
 * [MacOS - Integrated Mode](intermediate-get-lit/macos-integrated-mode.md)
 * [MacOS - Remote Mode](intermediate-get-lit/macos-remote-mode.md)
+* [Windows - Integrated Mode](intermediate-get-lit/windows-integrated-mode.md)
+* [Windows - Remote Mode](intermediate-get-lit/windows-remote-mode.md)
 * [Walkthrough](intermediate-get-lit/walkthrough.md)
 * [Liquidity Management](intermediate-get-lit/liquidity-management.md)
 * [Next Steps](intermediate-get-lit/next-steps.md)

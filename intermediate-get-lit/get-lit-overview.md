@@ -8,8 +8,8 @@ We've organized this section with different instruction sets depending on your O
 * [Linux - remote mode](linux-remote.md)
 * [MacOS - local mode](macos-integrated-mode.md)
 * [MacOS - remote mode](macos-remote-mode.md)
-* Windows - local mode
-* Windows - remote mode
+* [Windows - local mode](windows-integrated-mode.md)
+* [Windows - remote mode](windows-remote-mode.md)
 
 You should only need to follow one guide before moving on to the [Walkthrough](walkthrough.md) section and onwards. If you notice any issues or discrepancies as you follow this guide, PLEASE let us know! We will be continually improving and expanding this Intermediate guide as the Lightning Terminal expands its functionality, so be sure to come back often!
 

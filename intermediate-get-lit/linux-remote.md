@@ -2,7 +2,7 @@
 
 ## Assumptions
 
-1. You have a Ubuntu server.
+1. You have a Ubuntu server **already running** `lnd`.
 2. Your Ubuntu server has `bitcoind` installed, synced on mainnet, and running as a daemon.
 3. 1. To install `bitcoind` on Ubuntu, follow [the official bitcoin.org guide](https://bitcoin.org/en/full-node#linux-instructions).
 4. Your `bitcoin.conf` file has ZMQ publishing turned on.
@@ -33,14 +33,27 @@ sudo ufw allow 10009
 sudo ufw allow 443
 ```
 
-If you are not already running `lnd` on this server, continue to the next section. If you are looking to upgrade an existing `lnd` instance, [skip ahead.](ubuntu-integrated.md#install-lightning-terminal-upgrade-lnd-to-litd)
-
-### Fresh lnd Install
-
-Because we assume you are not already running `lnd`, we will be creating a fresh configuration file for `lnd` to start within the same process as `litd`, alongside the UI server, `faraday`, `pool`, and `loop`.  
+To connect Lightning Terminal to a remote `lnd` instance first make sure your remote `lnd.conf` file contains the following additional configuration settings:
 
 ```text
-# Create the Lightning Terminal directory and configuration file
+tlsextraip=<YOUR_LND_IP>
+rpclisten=0.0.0.0:10009
+```
+
+Copy the following files that are located in your `~/.lnd/data/chain/bitcoin/mainnet` directory on your remote machine to `/some/folder/with/lnd/data/` on your local machine \(where you’ll be running LiT\):
+
+* tls.cert
+* admin.macaroon
+* chainnotifier.macaroon
+* invoices.macaroon
+* readonly.macaroon
+* router.macaroon
+* signer.macaroon
+* walletkit.macaroon
+
+Create a `lit.conf` file.
+
+```text
 mkdir ~/.lit
 vi ~/.lit/lit.conf
 ```
@@ -52,7 +65,8 @@ Paste this example `lit.conf` file into your terminal, and fill in the placehold
 ```text
 # Application Options
 httpslisten=0.0.0.0:443
-lnd-mode=integrated
+lnd-mode=remote
+lit-dir=~/.lit
 
 # Let's Encrypt
 # You can configure the HTTPS server to automatically install a free SSL certificate provided by Let's Encrypt. 
@@ -60,25 +74,14 @@ lnd-mode=integrated
 #letsencrypt=true
 #letsencrypthost=<YOUR_DOMAIN>
 
-# Lnd
-lnd.lnddir=~/.lnd
-lnd.alias=<YOUR_ALIAS>
-lnd.externalip=<YOUR_IP>
-lnd.rpclisten=0.0.0.0:10009
-lnd.listen=0.0.0.0:9735
-lnd.debuglevel=debug
+# Remote options
+remote.lit-debuglevel=debug
 
-# Lnd - bitcoin
-lnd.bitcoin.active=true
-lnd.bitcoin.mainnet=true
-lnd.bitcoin.node=bitcoind
-
-# Lnd - bitcoind
-lnd.bitcoind.rpchost=localhost
-lnd.bitcoind.rpcuser=<YOUR_RPCUSER>
-lnd.bitcoind.rpcpass=<YOUR_RPCPASSWORD>
-lnd.bitcoind.zmqpubrawblock=localhost:28332
-lnd.bitcoind.zmqpubrawtx=localhost:28333
+# Remote lnd options
+remote.lnd.network=testnet
+remote.lnd.rpcserver=<YOUR_LND_IP>:10009
+remote.lnd.macaroondir=/some/folder/with/lnd/data
+remote.lnd.tlscertpath=/some/folder/with/lnd/data/tls.cert
 
 # Loop
 loop.loopoutmaxparts=5
@@ -96,98 +99,13 @@ faraday.bitcoin.user=<YOUR_RPCUSER>
 faraday.bitcoin.password=<YOUR_RPCPASSWORD>
 ```
 
-If you are using a cloud provider, double check using their configuration tools that inbound ports 443, 9735, and 10009 are allowed. Once you've done that, it's time to get LiT!
+If you are using a cloud provider, double check using their configuration tools that inbound ports 443, 9735, and 10009 are allowed. Once you've done that, and you've ensured your remote `lnd` instance is running, it's time to get LiT!
 
 ```text
 litd --uipassword=<YOUR_UI_PASSWORD>
 ```
 
-The very last step is to create your new `lnd` wallet. Crucially, `faraday`, `pool`, and `loop` **do not** start nor connect to `lnd` until after an `lnd` wallet has been created and unlocked. Open a new Terminal window and type the command:
-
-```text
-lncli create
-```
-
-Once you have secured your passwords and your seed phrase, Lightning Terminal is easy to browse to either on [https://localhost:8443](https://localhost:8443) if using a local machine or to your public URL if using a remote machine.
-
-In the next major section of this guide, we've included example commands for interacting with the command line. See you there!
-
-### Upgrade Existing lnd
-
-If you already have existing `lnd`, `loop`, or `faraday` nodes, you can easily upgrade them to the LiT single executable while keeping all of your past data. 
-
-Assuming you use an `lnd.conf` file for configurations, copy that file to your LiT directory  and rename it to `lit.conf`. 
-
-```text
-# Create the Lightning Terminal directory and configuration file
-mkdir ~/.lit
-cp ~/.lnd/lnd.conf ~/.lit/lit.conf
-```
-
-Then edit `lit.conf` and add the `lnd.` prefix to each of the configuration parameters. You also have to remove any section headers \(the lines starting with `[` and ending with `]`, for example `[Application Options]`\) as these don't work with the additional levels of sub configurations. You can replace them with a comment \(starting with the `#` character\) to get the same grouping effect as before. Additionally, you'll need to add any configuration parameters for `loop`, `pool` , and `faraday` to your new lit.conf file as well, with prefixes added for each parameter, respectively. 
-
-When finished, your new `lit.conf` should look like this:
-
-```text
-# Application Options
-httpslisten=0.0.0.0:443
-lnd-mode=integrated
-
-# Let's Encrypt
-# You can configure the HTTPS server to automatically install a free SSL certificate provided by Let's Encrypt. 
-# This is recommended if you plan to access the website from a remote computer, but does require extra setup.
-#letsencrypt=true
-#letsencrypthost=<YOUR_DOMAIN>
-
-# Lnd
-lnd.lnddir=~/.lnd
-lnd.alias=<YOUR_ALIAS>
-lnd.externalip=<YOUR_IP>
-lnd.rpclisten=0.0.0.0:10009
-lnd.listen=0.0.0.0:9735
-lnd.debuglevel=debug
-
-# Lnd - bitcoin
-lnd.bitcoin.active=true
-lnd.bitcoin.mainnet=true
-lnd.bitcoin.node=bitcoind
-
-# Lnd - bitcoind
-lnd.bitcoind.rpchost=localhost
-lnd.bitcoind.rpcuser=<YOUR_RPCUSER>
-lnd.bitcoind.rpcpass=<YOUR_RPCPASSWORD>
-lnd.bitcoind.zmqpubrawblock=localhost:28332
-lnd.bitcoind.zmqpubrawtx=localhost:28333
-
-# Loop
-loop.loopoutmaxparts=5
-
-# Pool
-pool.newnodesonly=true
-
-# Faraday
-faraday.min_monitored=48h
-
-# Faraday - bitcoin
-faraday.connect_bitcoin=true
-faraday.bitcoin.host=localhost
-faraday.bitcoin.user=<YOUR_RPCUSER>
-faraday.bitcoin.password=<YOUR_RPCPASSWORD>
-```
-
-If you are using a cloud provider, double check using their configuration tools that inbound ports 443, 9735, and 10009 are allowed. Once you've done that, it's time to get LiT!
-
-```text
-litd --uipassword=<YOUR_UI_PASSWORD>
-```
-
-Crucially, `faraday`, `pool`, and `loop` **do not** start nor connect to `lnd` until after an `lnd` wallet has been unlocked. Open a new Terminal window and type the command:
-
-```text
-lncli unlock
-```
-
-Once unlocked, Lightning Terminal is easy to browse to either on [https://localhost:8443](https://localhost:8443) if using a local machine or to your public URL if using a remote machine.
+Visit [https://localhost:8443](https://localhost:8443/) to access LiT.
 
 ## Example commands for interacting with the command line
 
@@ -196,32 +114,36 @@ Because not all functionality of `lnd` \(or `loop`/`faraday` for that matter\) i
 We are going through an example for each of the command line tools and will explain the reasons for the extra flags. The examples assume that LiT is started with the following configuration \(only relevant parts shown here\):
 
 ```text
-lnd-mode=integrated
+httpslisten=0.0.0.0:443
+lit-dir=~/.lit
 
-lnd.lnddir=~/.lnd
-lnd.rpclisten=0.0.0.0:10009
-
-lnd.bitcoin.testnet=true
+remote.lnd.network=testnet
+remote.lnd.rpcserver=some-other-host:10009
+remote.lnd.macaroondir=/some/folder/with/lnd/data
+remote.lnd.tlscertpath=/some/folder/with/lnd/data/tls.cert
 ```
 
-Because all components listen on the same gRPC port and use the same TLS certificate, some command line calls now need some extra options that weren't necessary before.
+Because in the remote `lnd` mode all other LiT components \(`loop`, `pool`, `faraday` and the UI server\) listen on the same port \(`443` in this example\) and use the same TLS certificate \(`~/.lit/tls.cert` in this example\), some command line calls now need some extra options that weren't necessary before.
 
-**NOTE**: All mentioned command line tools have the following behavior in common: You either specify the `--network` flag and the `--tlscertpath` and `--macaroonpath` are implied by looking inside the default directories for that network. Or you specify the `--tlscertpath` and `--macaroonpath` flags explicitly, then you **must not** set the `--network` flag. Otherwise, you will get an error like: `[lncli] could not load global options: unable to read macaroon path (check the network setting!): open /home/<user>/.lnd/data/chain/bitcoin/testnet/admin.macaroon: no such file or directory`
+**NOTE**: All mentioned command line tools have the following behavior in common: You either specify the `--network` flag and the `--tlscertpath` and `--macaroonpath` are implied by looking inside the default directories for that network. Or you specify the `--tlscertpath` and `--macaroonpath` flags explicitly, then you **must not** set the `--network` flag. Otherwise, you will get an error like `[lncli] could not load global options: unable to read macaroon path (check the network setting!): open /home/<user>/.lnd/data/chain/bitcoin/testnet/admin.macaroon: no such file or directory`
 
 #### Example `lncli` command
 
-The `lncli` commands in the "integrated" mode are the same as if `lnd` was running standalone. The `--lnddir` flag does not need to be specified as long as it is the default directory \(`~/.lnd` on Linux\).
+The `lncli` commands in the "remote" mode are the same as if `lnd` was running standalone on a remote host. We need to specify all flags explicitly.
 
 ```text
-$ lncli --network=testnet getinfo
+$ lncli --rpcserver=some-other-host:10009 \
+  --tlscertpath=/some/folder/with/lnd/data/tls.cert \
+  --macaroonpath=/some/folder/with/lnd/data/admin.macaroon \
+  getinfo
 ```
 
 #### Example `loop` command
 
-This is where things get a bit tricky. Because as mentioned above, `loopd` also runs on the same gRPC server as `lnd`. That's why we have to both specify the `host:port` as well as the TLS certificate of `lnd`. But `loopd` verifies its own macaroon, so we have to specify that one from the `.loop` directory.
+This is where things get a bit tricky. Because as mentioned above, `loopd` also runs on the same port as the UI server. That's why we have to both specify the `host:port` as well as the TLS certificate of LiT. But `loopd` verifies its own macaroon, so we have to specify that one from the `.loop` directory.
 
 ```text
-$ loop --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
+$ loop --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
   --macaroonpath=~/.loop/testnet/loop.macaroon \
   quote out 500000
 ```
@@ -229,15 +151,15 @@ $ loop --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-loop="loop --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert --macaroonpath=~/.loop/testnet/loop.macaroon"
+alias lit-loop="loop --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.loop/testnet/loop.macaroon"
 ```
 
 #### Example `pool` command
 
-Again, `poold` also runs on the same gRPC server as `lnd` and we have to specify the `host:port` and the TLS certificate of `lnd` but use the macaroon from the `.pool` directory.
+Again, `poold` also runs on the same port as the UI server and we have to specify the `host:port` and the TLS certificate of LiT but use the macaroon from the `.pool` directory.
 
 ```text
-$ pool --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
+$ pool --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
   --macaroonpath=~/.pool/testnet/pool.macaroon \
   accounts list
 ```
@@ -245,7 +167,7 @@ $ pool --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert --macaroonpath=~/.pool/testnet/pool.macaroon"
+alias lit-pool="pool --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.pool/testnet/pool.macaroon"
 ```
 
 #### Example `frcli` command
@@ -253,7 +175,7 @@ alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert -
 Faraday's command line tool follows the same pattern as loop. We also have to specify the server and TLS flags for `lnd` but use `faraday`'s macaroon:
 
 ```text
-$ frcli --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
+$ frcli --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
   --macaroonpath=~/.faraday/testnet/faraday.macaroon \
   audit
 ```
@@ -261,6 +183,6 @@ $ frcli --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-frcli="frcli --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert --macaroonpath=~/.faraday/testnet/faraday.macaroon"
+alias lit-frcli="frcli --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.faraday/testnet/faraday.macaroon"
 ```
 

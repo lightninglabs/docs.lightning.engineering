@@ -6,8 +6,8 @@ We've organized this section with different instruction sets depending on your O
 
 * [Linux - local mode ](ubuntu-integrated.md)
 * [Linux - remote mode](linux-remote.md)
-* MacOS - local mode
-* MacOS - remote mode
+* [MacOS - local mode](macos-integrated-mode.md)
+* [MacOS - remote mode](macos-remote-mode.md)
 * Windows - local mode
 * Windows - remote mode
 

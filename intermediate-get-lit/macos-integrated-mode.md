@@ -1,26 +1,24 @@
-# Linux - Integrated Mode
+# MacOS - Integrated Mode
 
 ## Assumptions
 
-1. You have a Ubuntu server.
-2. Your Ubuntu server has `bitcoind` installed, synced on mainnet, and running as a daemon.
-3. 1. To install `bitcoind` on Ubuntu, follow [the official bitcoin.org guide](https://bitcoin.org/en/full-node#linux-instructions).
+1. You have a MacOS system.
+2. Your MacOS system has `bitcoind` installed, synced on mainnet, and running as a daemon.
+3. 1. To install `bitcoind` on MacOS, follow [the official bitcoin.org guide](https://bitcoin.org/en/full-node#mac-os-x-instructions).
 4. Your `bitcoin.conf` file has ZMQ publishing turned on.
    1. Txindex is not required, but pruned mode is not supported.
 
 ## Get LiT
 
-Download the version of the latest [Lightning Terminal release](https://github.com/lightninglabs/lightning-terminal/releases/latest) that matches your local configuration \(likely linux-amd64\). Extract the compressed files, and install the binaries using the below instructions.
+Download the version of the latest [Lightning Terminal release](https://github.com/lightninglabs/lightning-terminal/releases/latest) that matches your local configuration \(darwin-amd64\). Extract the compressed files, and install the binaries using the below instructions.
 
 ```text
 # Extract the compressed files, and install them in your GOPATH
-tar -xvf lightning-terminal-<YOUR_LOCAL_VERSION>.tar.gz --strip 1 -C $GOPATH/bin
-
-# Linux requires this in order for LiT to listen on a port below 1024
-sudo setcap 'CAP_NET_BIND_SERVICE=+eip' $GOPATH/bin/litd
+# GOPATH by default should be /usr/local/go/bin
+tar -xvf lightning-terminal-darwin-amd64-<YOUR_LOCAL_VERSION>.tar.gz --strip 1 -C $GOPATH/bin
 ```
 
-Ensure that your server has only the required ports open for outbound communication with the Lightning Network.
+Ensure that your system has only the required ports open for outbound communication with the Lightning Network.
 
 ```text
 sudo ufw logging on
@@ -41,11 +39,11 @@ Because we assume you are not already running `lnd`, we will be creating a fresh
 
 ```text
 # Create the Lightning Terminal directory and configuration file
-mkdir ~/.lit
-vi ~/.lit/lit.conf
+mkdir ~/Library/Application Support/Lit/
+vi ~/Library/Application Support/Lit/lit.conf
 ```
 
-Storing the configuration in a persistent `~/.lit/lit.conf` file means you do not need to type in the command line arguments every time you start the server. Make sure you don't add any section headers \(the lines starting with \[ and ending with \], for example \[Application Options\]\) as these don't work with the additional levels of sub configurations.
+Storing the configuration in a persistent `~/Library/Application Support/Lit/lit.conf` file means you do not need to type in the command line arguments every time you start the server. Make sure you don't add any section headers \(the lines starting with \[ and ending with \], for example \[Application Options\]\) as these don't work with the additional levels of sub configurations.
 
 Paste this example `lit.conf` file into your terminal, and fill in the placeholders with your specific information.
 
@@ -61,7 +59,7 @@ lnd-mode=integrated
 #letsencrypthost=<YOUR_DOMAIN>
 
 # Lnd
-lnd.lnddir=~/.lnd
+lnd.lnddir=~/Library/Application Support/Lnd
 lnd.alias=<YOUR_ALIAS>
 lnd.externalip=<YOUR_IP>
 lnd.rpclisten=0.0.0.0:10009
@@ -96,7 +94,7 @@ faraday.bitcoin.user=<YOUR_RPCUSER>
 faraday.bitcoin.password=<YOUR_RPCPASSWORD>
 ```
 
-If you are using a cloud provider, double check using their configuration tools that inbound ports 443, 9735, and 10009 are allowed. Once you've done that, it's time to get LiT!
+Once you've done that, it's time to get LiT!
 
 ```text
 litd --uipassword=<YOUR_UI_PASSWORD>
@@ -120,8 +118,8 @@ Assuming you use an `lnd.conf` file for configurations, copy that file to your L
 
 ```text
 # Create the Lightning Terminal directory and configuration file
-mkdir ~/.lit
-cp ~/.lnd/lnd.conf ~/.lit/lit.conf
+mkdir ~/Library/Application Support/Lit/
+cp ~/Library/Application Support/Lnd/lnd.conf ~/Library/Application Support/Lit/lit.conf
 ```
 
 Then edit `lit.conf` and add the `lnd.` prefix to each of the configuration parameters. You also have to remove any section headers \(the lines starting with `[` and ending with `]`, for example `[Application Options]`\) as these don't work with the additional levels of sub configurations. You can replace them with a comment \(starting with the `#` character\) to get the same grouping effect as before. Additionally, you'll need to add any configuration parameters for `loop`, `pool` , and `faraday` to your new lit.conf file as well, with prefixes added for each parameter, respectively. 
@@ -140,7 +138,7 @@ lnd-mode=integrated
 #letsencrypthost=<YOUR_DOMAIN>
 
 # Lnd
-lnd.lnddir=~/.lnd
+lnd.lnddir=~/Library/Application Support/Lnd
 lnd.alias=<YOUR_ALIAS>
 lnd.externalip=<YOUR_IP>
 lnd.rpclisten=0.0.0.0:10009
@@ -175,7 +173,7 @@ faraday.bitcoin.user=<YOUR_RPCUSER>
 faraday.bitcoin.password=<YOUR_RPCPASSWORD>
 ```
 
-If you are using a cloud provider, double check using their configuration tools that inbound ports 443, 9735, and 10009 are allowed. Once you've done that, it's time to get LiT!
+Once you've done that, it's time to get LiT!
 
 ```text
 litd --uipassword=<YOUR_UI_PASSWORD>
@@ -198,7 +196,7 @@ We are going through an example for each of the command line tools and will expl
 ```text
 lnd-mode=integrated
 
-lnd.lnddir=~/.lnd
+lnd.lnddir=~/Library/Application Support/Lnd
 lnd.rpclisten=0.0.0.0:10009
 
 lnd.bitcoin.testnet=true
@@ -206,7 +204,7 @@ lnd.bitcoin.testnet=true
 
 Because all components listen on the same gRPC port and use the same TLS certificate, some command line calls now need some extra options that weren't necessary before.
 
-**NOTE**: All mentioned command line tools have the following behavior in common: You either specify the `--network` flag and the `--tlscertpath` and `--macaroonpath` are implied by looking inside the default directories for that network. Or you specify the `--tlscertpath` and `--macaroonpath` flags explicitly, then you **must not** set the `--network` flag. Otherwise, you will get an error like: `[lncli] could not load global options: unable to read macaroon path (check the network setting!): open /home/<user>/.lnd/data/chain/bitcoin/testnet/admin.macaroon: no such file or directory`
+**NOTE**: All mentioned command line tools have the following behavior in common: You either specify the `--network` flag and the `--tlscertpath` and `--macaroonpath` are implied by looking inside the default directories for that network. Or you specify the `--tlscertpath` and `--macaroonpath` flags explicitly, then you **must not** set the `--network` flag. Otherwise, you will get an error like: `[lncli] could not load global options: unable to read macaroon path (check the network setting!): open /Users/<user>/Library/Application Support/Lnd/data/chain/bitcoin/testnet/admin.macaroon: no such file or directory`
 
 #### Example `lncli` command
 
@@ -221,15 +219,15 @@ $ lncli --network=testnet getinfo
 This is where things get a bit tricky. Because as mentioned above, `loopd` also runs on the same gRPC server as `lnd`. That's why we have to both specify the `host:port` as well as the TLS certificate of `lnd`. But `loopd` verifies its own macaroon, so we have to specify that one from the `.loop` directory.
 
 ```text
-$ loop --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
-  --macaroonpath=~/.loop/testnet/loop.macaroon \
+$ loop --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert \
+  --macaroonpath=~/Library/Application Support/Loop/testnet/loop.macaroon \
   quote out 500000
 ```
 
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-loop="loop --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert --macaroonpath=~/.loop/testnet/loop.macaroon"
+alias lit-loop="loop --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert --macaroonpath=~/Library/Application Support/Loop/testnet/loop.macaroon"
 ```
 
 #### Example `pool` command
@@ -237,15 +235,15 @@ alias lit-loop="loop --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert -
 Again, `poold` also runs on the same gRPC server as `lnd` and we have to specify the `host:port` and the TLS certificate of `lnd` but use the macaroon from the `.pool` directory.
 
 ```text
-$ pool --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
-  --macaroonpath=~/.pool/testnet/pool.macaroon \
+$ pool --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert \
+  --macaroonpath=~/Library/Application Support/Pool/testnet/pool.macaroon \
   accounts list
 ```
 
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert --macaroonpath=~/.pool/testnet/pool.macaroon"
+alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert --macaroonpath=~/Library/Application Support/Pool/testnet/pool.macaroon"
 ```
 
 #### Example `frcli` command
@@ -253,14 +251,14 @@ alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert -
 Faraday's command line tool follows the same pattern as loop. We also have to specify the server and TLS flags for `lnd` but use `faraday`'s macaroon:
 
 ```text
-$ frcli --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert \
-  --macaroonpath=~/.faraday/testnet/faraday.macaroon \
+$ frcli --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert \
+  --macaroonpath=~/Library/Application Support/Faraday/testnet/faraday.macaroon \
   audit
 ```
 
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-frcli="frcli --rpcserver=localhost:10009 --tlscertpath=~/.lnd/tls.cert --macaroonpath=~/.faraday/testnet/faraday.macaroon"
+alias lit-frcli="frcli --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tl
 ```
 

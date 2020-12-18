@@ -1,4 +1,4 @@
-# Linux - Remote Mode
+# MacOS - Remote Mode
 
 ## Assumptions
 
@@ -10,14 +10,12 @@
 
 ## Get LiT
 
-Download the version of the latest [Lightning Terminal release](https://github.com/lightninglabs/lightning-terminal/releases/latest) that matches your local configuration \(likely linux-amd64\). Extract the compressed files, and install the binaries using the below instructions.
+Download the version of the latest [Lightning Terminal release](https://github.com/lightninglabs/lightning-terminal/releases/latest) that matches your local configuration \(likely darwin-amd64\). Extract the compressed files, and install the binaries using the below instructions.
 
 ```text
 # Extract the compressed files, and install them in your GOPATH
-tar -xvf lightning-terminal-<YOUR_LOCAL_VERSION>.tar.gz --strip 1 -C $GOPATH/bin
-
-# Linux requires this in order for LiT to listen on a port below 1024
-sudo setcap 'CAP_NET_BIND_SERVICE=+eip' $GOPATH/bin/litd
+# GOPATH by default should be /usr/local/go/bin
+tar -xvf lightning-terminal-darwin-amd64-<YOUR_LOCAL_VERSION>.tar.gz --strip 1 -C $GOPATH/bin
 ```
 
 Ensure that your server is has only the required ports open for outbound communication with the Lightning Network.

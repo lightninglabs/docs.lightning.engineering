@@ -1,37 +1,49 @@
-# Recovering Funds
+# Table of Contents
 
-## Table of Contents
+* [Recovering Funds From `lnd` (funds are safu!)](#recovering-funds-from-lnd-funds-are-safu)
+  * [On-Chain Recovery](#on-chain-recovery)
+    * [24-word Cipher Seeds](#24-word-cipher-seeds)
+    * [Wallet and Seed Passphrases](#wallet-and-seed-passphrases)
+    * [Starting On-Chain Recovery](#starting-on-chain-recovery)
+    * [Forced In-Place Rescan](#forced-in-place-rescan)
+  * [Off-Chain Recovery](#off-chain-recovery)
+    * [Obtaining SCBs](#obtaining-scbs)
+      * [On-Disk `channel.backup`](#on-disk-channelbackup)
+      * [Using the `ExportChanBackup` RPC](#using-the-exportchanbackup-rpc)
+      * [Streaming Updates via `SubscribeChannelBackups`.](#streaming-updates-via-subscribechannelbackups)
+    * [Recovering Using SCBs](#recovering-using-scbs)
 
-* [Recovering Funds From `lnd` \(funds are safu!\)](recovery.md#recovering-funds-from-lnd-funds-are-safu)
-  * [On-Chain Recovery](recovery.md#on-chain-recovery)
-    * [24-word Cipher Seeds](recovery.md#24-word-cipher-seeds)
-    * [Wallet and Seed Passphrases](recovery.md#wallet-and-seed-passphrases)
-    * [Starting On-Chain Recovery](recovery.md#starting-on-chain-recovery)
-    * [Forced In-Place Rescan](recovery.md#forced-in-place-rescan)
-  * [Off-Chain Recovery](recovery.md#off-chain-recovery)
-    * [Obtaining SCBs](recovery.md#obtaining-scbs)
-      * [On-Disk `channel.backup`](recovery.md#on-disk-channelbackup)
-      * [Using the `ExportChanBackup` RPC](recovery.md#using-the-exportchanbackup-rpc)
-      * [Streaming Updates via `SubscribeChannelBackups`.](recovery.md#streaming-updates-via-subscribechannelbackups)
-    * [Recovering Using SCBs](recovery.md#recovering-using-scbs)
+# Recovering Funds From `lnd` (funds are safu!)
 
-## Recovering Funds From `lnd` \(funds are safu!\)
+In this document, we'll go over the various built-in mechanisms for recovering
+funds from `lnd` due to any sort of data loss, or malfunction. Coins in `lnd`
+can exist in one of two pools: on-chain or off-chain. On-chain funds are
+outputs under the control of `lnd` that can be spent immediately, and without
+any auxiliary data. Off-chain funds on the other hand exist within a 2-of-2
+multi-sig output typically referred to as a payment channel. Depending on the
+exact nature of operation of a given `lnd` node, one of these pools of funds
+may be empty.
 
-In this document, we'll go over the various built-in mechanisms for recovering funds from `lnd` due to any sort of data loss, or malfunction. Coins in `lnd` can exist in one of two pools: on-chain or off-chain. On-chain funds are outputs under the control of `lnd` that can be spent immediately, and without any auxiliary data. Off-chain funds on the other hand exist within a 2-of-2 multi-sig output typically referred to as a payment channel. Depending on the exact nature of operation of a given `lnd` node, one of these pools of funds may be empty.
+Fund recovery for `lnd` will require two pieces of data: 
+  1. Your 24-word cipher seed
+  2. Your encrypted Static Channel Backup file (or the raw data)
 
-Fund recovery for `lnd` will require two pieces of data: 1. Your 24-word cipher seed 2. Your encrypted Static Channel Backup file \(or the raw data\)
+If one is only attempting to recover _on chain_ funds, then only the first item
+is required.
 
-If one is only attempting to recover _on chain_ funds, then only the first item is required.
+The SCB file is encrypted using a key _derived_ from the user's seed. As a
+result, it cannot be used in isolation.
 
-The SCB file is encrypted using a key _derived_ from the user's seed. As a result, it cannot be used in isolation.
+## On-Chain Recovery 
 
-### On-Chain Recovery
+### 24-word Cipher Seeds
 
-#### 24-word Cipher Seeds
-
-When a new `lnd` node is created, it's given a 24-word seed phrase, called an [`cipher seed`](https://github.com/lightningnetwork/lnd/tree/master/aezeed). The two seed formats look similar, but the only commonality they share are using the same default English dictionary. A valid seed phrase obtained over the CLI `lncli create` command looks something like:
-
-```text
+When a new `lnd` node is created, it's given a 24-word seed phrase, called an
+[`cipher seed`](https://github.com/lightningnetwork/lnd/tree/master/aezeed).
+The two seed formats look similar, but the only commonality they share are
+using the same default English dictionary. A valid seed phrase obtained over
+the CLI `lncli create` command looks something like: 
+```
 !!!YOU MUST WRITE DOWN THIS SEED TO BE ABLE TO RESTORE THE WALLET!!!
 
 ---------------BEGIN LND CIPHER SEED---------------
@@ -46,64 +58,76 @@ When a new `lnd` node is created, it's given a 24-word seed phrase, called an [`
 !!!YOU MUST WRITE DOWN THIS SEED TO BE ABLE TO RESTORE THE WALLET!!!
 ```
 
-#### Wallet and Seed Passphrases
+### Wallet and Seed Passphrases
 
-During the creation process, users are first prompted to enter a **wallet password**:
-
-```text
+During the creation process, users are first prompted to enter a **wallet
+password**:
+```
 Input wallet password:
 Confirm wallet password:
 ```
 
-This password is used to _encrypt_ the wallet on disk, which includes any derived master private keys or public key data.
+This password is used to _encrypt_ the wallet on disk, which includes any
+derived master private keys or public key data.
 
-Users can also _optionally_ enter a second passphrase which we call the _cipher seed passphrase_:
-
-```text
+Users can also _optionally_ enter a second passphrase which we call the _cipher
+seed passphrase_:
+```
 Your cipher seed can optionally be encrypted.
 Input your passphrase if you wish to encrypt it (or press enter to proceed without a cipher seed passphrase):
 ```
 
-If specified, then this will be used to encrypt the cipher seed itself. The cipher seed format is unique in that the 24-word phrase is actually a _ciphertext_. As a result, there's no standard word list as any arbitrary encoding can be used. If a passphrase is specified, then the cipher seed you write down is actually an _encryption_ of the entropy used to generate the BIP 32 root key for the wallet. Unlike a BIP 39 24-word phrase, the cipher seed is able to _detect_ incorrect passphrase. BIP 39 on the other hand, will instead silently decrypt to a new \(likely empty\) wallet.
+If specified, then this will be used to encrypt the cipher seed itself. The
+cipher seed format is unique in that the 24-word phrase is actually a
+_ciphertext_. As a result, there's no standard word list as any arbitrary
+encoding can be used. If a passphrase is specified, then the cipher seed you
+write down is actually an _encryption_ of the entropy used to generate the BIP
+32 root key for the wallet. Unlike a BIP 39 24-word phrase, the cipher seed is
+able to _detect_ incorrect passphrase. BIP 39 on the other hand, will instead
+silently decrypt to a new (likely empty) wallet.
 
-#### Starting On-Chain Recovery
+### Starting On-Chain Recovery
 
-The initial entry point to trigger recovery of on-chain funds in the command line is the `lncli create` command.
-
-```text
+The initial entry point to trigger recovery of on-chain funds in the command
+line is the `lncli create` command.
+```
 ⛰   lncli create
 ```
 
-Next, one can enter a _new_ wallet password to encrypt any newly derived keys as a result of the recovery process.
-
-```text
+Next, one can enter a _new_ wallet password to encrypt any newly derived keys
+as a result of the recovery process.
+```
 Input wallet password:
 Confirm wallet password:
 ```
 
-Once a new wallet password has been obtained, the user will be prompted for their _existing_ cipher seed:
-
-```text
+Once a new wallet password has been obtained, the user will be prompted for
+their _existing_ cipher seed:
+```
 Input your 24-word mnemonic separated by spaces: ability noise lift document certain month shoot perfect matrix mango excess turkey river pitch fluid rack drill text buddy pool soul fatal ship jelly
 ```
 
 If a _cipher seed passphrase_ was used when the seed was created, it MUST be entered now:
-
-```text
+```
 Input your cipher seed passphrase (press enter if your seed doesn't have a passphrase):
 ```
 
 Finally, the user has an option to choose a _recovery window_:
-
-```text
+```
 Input an optional address look-ahead used to scan for used keys (default 2500):
 ```
 
-The recovery window is a metric that the on-chain rescanner will use to determine when all the "used" addresses have been found. If the recovery window is two, lnd will fail to find funds in any addresses generated after the point in which two consecutive addresses were generated but never used. If an `lnd` on-chain wallet was extensively used, then users may want to _increase_ the default value.
+The recovery window is a metric that the on-chain rescanner will use to
+determine when all the "used" addresses have been found. If the recovery window
+is two, lnd will fail to find funds in any addresses generated after the point
+in which two consecutive addresses were generated but never used. If an `lnd`
+on-chain wallet was extensively used, then users may want to _increase_ the
+default value.  
 
-If all the information provided was valid, then you'll be presented with the seed again:
+If all the information provided was valid, then you'll be presented with the
+seed again: 
+```
 
-```text
 !!!YOU MUST WRITE DOWN THIS SEED TO BE ABLE TO RESTORE THE WALLET!!!
 
 ---------------BEGIN LND CIPHER SEED---------------
@@ -120,9 +144,8 @@ If all the information provided was valid, then you'll be presented with the see
 lnd successfully initialized!
 ```
 
-In `lnd`'s logs, you should see something along the lines of \(irrelevant lines skipped\):
-
-```text
+In `lnd`'s logs, you should see something along the lines of (irrelevant lines skipped):
+```
 [INF] LNWL: Opened wallet
 [INF] LTND: Wallet recovery mode enabled with address lookahead of 2500 addresses
 [INF] LNWL: RECOVERY MODE ENABLED -- rescanning for used addresses with recovery_window=2500
@@ -137,9 +160,13 @@ In `lnd`'s logs, you should see something along the lines of \(irrelevant lines 
 [INF] LNWL: Finished rescan for 800 addresses (synced to block 3032830c812a4a6ea305d8ead13b52e9e69d6400ff3c997970b6f76fbc770920, height 748)
 ```
 
-That final line indicates the rescan is complete! If not all funds have appeared, then the user may need to _repeat_ the process with a higher recovery window. Depending on how old the wallet is \(the cipher seed stores the wallet's birthday!\) and how many addresses were used, the rescan may take anywhere from a few minutes to a few hours. To track the recovery progress, one can use the command `lncli getrecoveryinfo`. When finished, the following is returned,
-
-```text
+That final line indicates the rescan is complete! If not all funds have
+appeared, then the user may need to _repeat_ the process with a higher recovery
+window. Depending on how old the wallet is (the cipher seed stores the wallet's
+birthday!) and how many addresses were used, the rescan may take anywhere from
+a few minutes to a few hours. To track the recovery progress, one can use the
+command `lncli getrecoveryinfo`. When finished, the following is returned,
+```
 {
     "recovery_mode": true,
     "recovery_finished": true,
@@ -147,57 +174,92 @@ That final line indicates the rescan is complete! If not all funds have appeared
 }
 ```
 
-If the rescan wasn't able to complete fully \(`lnd` was shutdown for example\), then from `lncli unlock`, it's possible to _restart_ the rescan from where it left off with the `--recovery-window` argument:
-
-```text
+If the rescan wasn't able to complete fully (`lnd` was shutdown for example),
+then from `lncli unlock`, it's possible to _restart_ the rescan from where it
+left off with the `--recovery-window` argument:
+```
 ⛰  lncli unlock --recovery_window=2500
 ```
 
-Note that if this argument is not specified, then the wallet will not _re-enter_ the recovery mode and may miss funds during the portion of the rescan.
+Note that if this argument is not specified, then the wallet will not
+_re-enter_ the recovery mode and may miss funds during the portion of the
+rescan.
 
-#### Forced In-Place Rescan
+### Forced In-Place Rescan
 
-The recovery methods described above assume a clean slate for a node, so there's no existing UTXO or key data in the node's database. However, there're times when an _existing_ node may want to _manually_ rescan the chain. We have a command line flag for that! Just start `lnd` and add the following flag:
-
-```text
+The recovery methods described above assume a clean slate for a node, so
+there's no existing UTXO or key data in the node's database. However, there're
+times when an _existing_ node may want to _manually_ rescan the chain. We have
+a command line flag for that! Just start `lnd` and add the following flag:
+```
 ⛰  lnd --reset-wallet-transactions
 ```
 
-The `--reset-wallet-transactions` flag will _reset_ the best synced height of the wallet back to its birthday, or genesis if the birthday isn't known \(for some older wallets\).
+The `--reset-wallet-transactions` flag will _reset_ the best synced height of
+the wallet back to its birthday, or genesis if the birthday isn't known (for
+some older wallets).
 
-Just run `lnd` with the flag, unlock it, then the wallet should begin rescanning. An entry resembling the following will show up in the logs once it's complete:
-
-```text
+Just run `lnd` with the flag, unlock it, then the wallet should begin
+rescanning. An entry resembling the following will show up in the logs once it's
+complete:
+```
 [INF] LNWL: Finished rescan for 800 addresses (synced to block 3032830c812a4a6ea305d8ead13b52e9e69d6400ff3c997970b6f76fbc770920, height 748)
 ```
 
-**Remember to remove the flag once the rescan was completed successfully to avoid rescanning again for every restart of lnd**.
+**Remember to remove the flag once the rescan was completed successfully to
+avoid rescanning again for every restart of lnd**.
 
-### Off-Chain Recovery
+## Off-Chain Recovery
 
-After version `v0.6-beta` of `lnd`, the daemon now ships with a new feature called Static Channel Backups \(SCBs\). We call these _static_ as they only need to be obtained _once_: when the channel is created. From there on, a backup is good until the channel is closed. The backup contains all the information we need to initiate the Data Loss Protection \(DLP\) feature in the protocol, which ultimately leads to us recovering the funds from the channel _on-chain_. This is a foolproof _safe_ backup mechanism.
+After version `v0.6-beta` of `lnd`, the daemon now ships with a new feature
+called Static Channel Backups (SCBs). We call these _static_ as they only need
+to be obtained _once_: when the channel is created. From there on, a backup is
+good until the channel is closed. The backup contains all the information we
+need to initiate the Data Loss Protection (DLP) feature in the protocol, which
+ultimately leads to us recovering the funds from the channel _on-chain_. This
+is a foolproof _safe_ backup mechanism.
 
-We say _safe_, as care has been taken to ensure that there are no foot guns in this method of backing up channels, vs doing things like `rsync`ing or copying the `channel.db` file periodically. Those methods can be dangerous as one never knows if they have the latest state of a channel or not. Instead, we aim to provide a simple, safe method to allow users to recover the settled funds in their channels in the case of partial or complete data loss. The backups themselves are encrypted using a key derived from the user's seed, this way we protect privacy of the users channels in the back up state, and ensure that a random node can't attempt to import another user's channels.
+We say _safe_, as care has been taken to ensure that there are no foot guns in
+this method of backing up channels, vs doing things like `rsync`ing or copying
+the `channel.db` file periodically. Those methods can be dangerous as one never
+knows if they have the latest state of a channel or not. Instead, we aim to
+provide a simple, safe method to allow users to recover the settled funds in
+their channels in the case of partial or complete data loss. The backups
+themselves are encrypted using a key derived from the user's seed, this way we
+protect privacy of the users channels in the back up state, and ensure that a
+random node can't attempt to import another user's channels.
 
-Given a valid SCB, the user will be able to recover funds that are fully settled within their channels. By "fully settled" we mean funds that are in the base commitment outputs, and not HTLCs. We can only restore these funds as right after the channel is created, as we have all the data required to make a backup, but lack information about the future HTLCs that the channel will process.
+Given a valid SCB, the user will be able to recover funds that are fully
+settled within their channels. By "fully settled" we mean funds that are in the
+base commitment outputs, and not HTLCs.  We can only restore these funds as
+right after the channel is created, as we have all the data required to make a
+backup, but lack information about the future HTLCs that the channel will
+process.
 
-#### Obtaining SCBs
+### Obtaining SCBs
 
-**On-Disk channel.backup**
+#### On-Disk `channel.backup`
 
-There are multiple ways of obtaining SCBs from `lnd`. The most commonly used method will likely be via the `channels.backup` file that's stored on-disk alongside the rest of the chain data. This is a special file that contains SCB entries for _all_ currently open channels. Each time a channel is opened or closed, this file is updated on disk in a safe manner \(atomic file rename\). As a result, unlike the `channel.db` file, it's _always_ safe to copy this file for backup at ones desired location. The default location on Linux is:
-
-```text
+There are multiple ways of obtaining SCBs from `lnd`. The most commonly used
+method will likely be via the `channels.backup` file that's stored on-disk
+alongside the rest of the chain data. This is a special file that contains SCB
+entries for _all_ currently open channels. Each time a channel is opened or
+closed, this file is updated on disk in a safe manner (atomic file rename). As
+a result, unlike the `channel.db` file, it's _always_ safe to copy this file
+for backup at ones desired location. The default location on Linux is: 
+```
 ~/.lnd/data/chain/bitcoin/mainnet/channel.backup
 ```
 
-An example of using file system level notification to [copy the backup to a distinct volume/partition/drive can be found here](https://gist.github.com/alexbosworth/2c5e185aedbdac45a03655b709e255a3).
+An example of using file system level notification to [copy the backup to a
+distinct volume/partition/drive can be found
+here](https://gist.github.com/alexbosworth/2c5e185aedbdac45a03655b709e255a3).
 
-**Using the ExportChanBackup RPC**
+#### Using the `ExportChanBackup` RPC
 
-Another way to obtain SCBS for all or a target channel is via the new `exportchanbackup` `lncli` command:
-
-```text
+Another way to obtain SCBS for all or a target channel is via the new
+`exportchanbackup` `lncli` command:
+```
 ⛰  lncli --network=simnet exportchanbackup --chan_point=29be6d259dc71ebdf0a3a0e83b240eda78f9023d8aeaae13c89250c7e59467d5:0
 {
     "chan_point": "29be6d259dc71ebdf0a3a0e83b240eda78f9023d8aeaae13c89250c7e59467d5:0",
@@ -215,23 +277,29 @@ Another way to obtain SCBS for all or a target channel is via the new `exportcha
 ⛰  lncli --network=simnet exportchanbackup --all --output_file=channels.backup
 ```
 
-As shown above, a user can either: specify a specific channel to backup, backup all existing channels, or backup directly to an on-disk file. All backups use the same format.
+As shown above, a user can either: specify a specific channel to backup, backup
+all existing channels, or backup directly to an on-disk file. All backups use
+the same format.
 
-**Streaming Updates via SubscribeChannelBackups**
+#### Streaming Updates via `SubscribeChannelBackups`
 
-Using the gRPC interace directly, [a new call: `SubscribeChannelBackups`](https://api.lightning.community/#subscribechannelbackups). This call allows users to receive a new notification each time the underlying SCB state changes. This can be used to implement more complex backup schemes, compared to the file system notification based approach.
+Using the gRPC interace directly, [a new call:
+`SubscribeChannelBackups`](https://api.lightning.community/#subscribechannelbackups).
+This call allows users to receive a new notification each time the underlying
+SCB state changes. This can be used to implement more complex backup
+schemes, compared to the file system notification based approach.
 
-#### Recovering Using SCBs
+### Recovering Using SCBs
 
-If a node is being created from scratch, then it's possible to pass in an existing SCB using the `lncli create` or `lncli unlock` commands:
-
-```text
+If a node is being created from scratch, then it's possible to pass in an
+existing SCB using the `lncli create` or `lncli unlock` commands:
+```
 ⛰  lncli create -multi_file=channels.backup
 ```
 
-Alternatively, the `restorechanbackup` command can be used if `lnd` has already been created at the time of SCB restoration:
-
-```text
+Alternatively, the `restorechanbackup` command can be used if `lnd` has already
+been created at the time of SCB restoration:
+```
 ⛰   lncli restorechanbackup -h
 NAME:
    lncli restorechanbackup - Restore an existing single or multi-channel static channel backup
@@ -273,47 +341,25 @@ OPTIONS:
 
 Once the process has been initiated, `lnd` will proceed to:
 
-1. Given the set of channels to recover, the server will then will insert a
-
-   series of "channel shells" into the database. These contain only the
-
-   information required to initiate the DLP \(data loss protection\) protocol
-
-   and nothing more. As a result, they're marked as "recovered" channels in
-
-   the database, and we'll disallow trying to use them for any other process.
-
-2. Once the channel shell is recovered, the
-
-   [chanbackup](https://github.com/lightningnetwork/lnd/tree/master/chanbackup)
-
-   package will attempt to insert a LinkNode that contains all prior
-
-   addresses that we were able to reach the peer at. During the process,
-
-   we'll also insert the edge for that channel \(only in the outgoing
-
-   direction\) into the database as well.
-
-3. lnd will then start up, and as usual attempt to establish connections to
-
-   all peers that we have channels open with. If `lnd` is already running,
-
-   then a new persistent connection attempt will be initiated.
-
-4. Once we connect with a peer, we'll then initiate the DLP protocol. The
-
-   remote peer will discover that we've lost data, and then immediately force
-
-   close their channel. Before they do though, they'll send over the channel
-
-   reestablishment handshake message which contains the unrevoked commitment
-
-   point which we need to derive keys \(will be fixed in
-
-   BOLT 1.1 by making the key static\) to sweep our funds.
-
-5. Once the commitment transaction confirms, given information within the SCB
-
-   we'll re-derive all keys we need, and then sweep the funds.
-
+  1. Given the set of channels to recover, the server will then will insert a
+     series of "channel shells" into the database. These contain only the
+     information required to initiate the DLP (data loss protection) protocol
+     and nothing more. As a result, they're marked as "recovered" channels in
+     the database, and we'll disallow trying to use them for any other process.
+  2. Once the channel shell is recovered, the
+     [chanbackup](https://github.com/lightningnetwork/lnd/tree/master/chanbackup)
+     package will attempt to insert a LinkNode that contains all prior
+     addresses that we were able to reach the peer at. During the process,
+     we'll also insert the edge for that channel (only in the outgoing
+     direction) into the database as well.
+  3. lnd will then start up, and as usual attempt to establish connections to
+     all peers that we have channels open with. If `lnd` is already running,
+     then a new persistent connection attempt will be initiated.
+  4. Once we connect with a peer, we'll then initiate the DLP protocol. The
+     remote peer will discover that we've lost data, and then immediately force
+     close their channel. Before they do though, they'll send over the channel
+     reestablishment handshake message which contains the unrevoked commitment
+     point which we need to derive keys (will be fixed in
+     BOLT 1.1 by making the key static) to sweep our funds.
+  5. Once the commitment transaction confirms, given information within the SCB
+     we'll re-derive all keys we need, and then sweep the funds.

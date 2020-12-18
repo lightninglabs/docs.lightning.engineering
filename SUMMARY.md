@@ -4,7 +4,7 @@
 
 ## n00bs: Conceptual Overview <a id="conceptual-overview"></a>
 
-* [Introduction](conceptual-overview/introduction.md)
+* [Overview](conceptual-overview/overview-overview.md)
 * [Lightning Network](conceptual-overview/lightning-network.md)
 * [Payment Channels](conceptual-overview/payment-channels.md)
 * [Multihop Payments](conceptual-overview/multihop-payments.md)
@@ -16,7 +16,7 @@
 
 ## Beginners: Build Your First Lapp <a id="build-a-lapp"></a>
 
-* [Overview](build-a-lapp/overview.md)
+* [Overview](build-a-lapp/build-a-lapp-overview.md)
 * [Setup: Local Cluster with Polar](build-a-lapp/local-cluster-setup-with-polar.md)
 * [Setup: Run the Completed App](build-a-lapp/run-the-completed-app.md)
 * [Setup: Run the App Without LND](build-a-lapp/run-the-app-without-lnd.md)
@@ -28,6 +28,7 @@
 
 ## Intermediate: Get LiT
 
+* [Overview](intermediate-get-lit/get-lit-overview.md)
 * [Installing the Lightning Terminal](intermediate-get-lit/intermediate-get-lit.md)
 * [Walkthrough](intermediate-get-lit/walkthrough.md)
 * [Liquidity Management](intermediate-get-lit/liquidity-management.md)
@@ -35,7 +36,7 @@
 
 ## Advanced: Best Practices
 
-* [Overview](advanced-best-practices/overview.md)
+* [Overview](advanced-best-practices/advanced-best-practices-overview.md)
 * [Channels](advanced-best-practices/channels.md)
 * [Sends](advanced-best-practices/sends.md)
 * [Receives](advanced-best-practices/receives.md)

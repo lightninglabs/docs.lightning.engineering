@@ -182,7 +182,7 @@ The final change we made on the frontend is to the `VoteButton` component. When 
 
 With these changes made, we can test the functionality in the browser.
 
-![](../.gitbook/assets/modifyUpvote01.png)
+![](../../.gitbook/assets/modifyUpvote01.png)
 
 Now when you click on the “Upvote” button for a post, you should see a modal dialog popup like above.
 
@@ -344,7 +344,7 @@ export const upvotePost = async (postId: number, hash: string) => {
 
 Finally, we updated the `upvotePost()` function in the API wrapper module to accept the `hash` as a parameter and send it to the backend in the http request body.
 
-![](../.gitbook/assets/modifyUpvote02.png)
+![](../../.gitbook/assets/modifyUpvote02.png)
 
 With those changes made, let’s test it out in the browser.
 
@@ -419,11 +419,11 @@ In the App component we added a third-party component from the `react-confetti` 
 
 Let’s try it out in the browser. Using the browser connected to carol’s node, upvote one of alice’s posts, then pay the invoice in Polar. Be sure to keep the browser connected to alice’s node visible on your screen as well.
 
-![](../.gitbook/assets/modifyUpvote03.png)
+![](../../.gitbook/assets/modifyUpvote03.png)
 
 Here is alice before the upvote. The top post has 10 votes and her channel balance is 90,000 sats.
 
-![](../.gitbook/assets/modifyUpvote04.png)
+![](../../.gitbook/assets/modifyUpvote04.png)
 
 After the upvote, the balance updates automatically to 90,100 sats and the confetti rains down on the screen. 🥳 🎉 🎊
 

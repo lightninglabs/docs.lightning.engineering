@@ -128,7 +128,7 @@ In the mobx store, we added the `fetchInfo()` function that will retrieve the `a
 
 Finally, we updated the App component to display the node’s alias and balance in the Navbar when it is connected. We also nested the **Disconnect** link under a dropdown menu.
 
-![Polar welcome screen](../.gitbook/assets/display01.png)
+![Polar welcome screen](../../.gitbook/assets/display01.png)
 
 If you go back to your browser, refresh the page and connect your node, you should now see the alias and balance at the top right of the screen.
 

@@ -21,7 +21,7 @@ There are distinct software components we should be aware of when developing on
 There are several ways to drive `lnd`.
 
 * `lncli` is the `lnd` command line tool. All commands are executed instantaneously. A full list of commands can be viewed with `lncli --help`. To see a breakdown of the parameters for a particular command, run `lncli <command> --help`
-* gRPC is the preferred programmatic way to interact with `lnd`. It includes simple methods that return a response immediately, as well as response-streaming and bidrectional streaming methods. [The Beginner's Guide](../build-a-lapp/build-a-lapp-overview.md) focuses on interacting with the gRPC API via [Typescript](https://www.typescriptlang.org/).
+* gRPC is the preferred programmatic way to interact with `lnd`. It includes simple methods that return a response immediately, as well as response-streaming and bidrectional streaming methods. [The Beginner's Guide](../../build-a-lapp/build-a-lapp-overview.md) focuses on interacting with the gRPC API via [Typescript](https://www.typescriptlang.org/).
 * `lnd` also features a REST proxy someone can use if they are accustomed to standard RESTful APIs. However, REST does not have full streaming RPC coverage.
 
 All of these `lnd` interfaces are documented in the [API Reference](https://api.lightning.community/), featuring a description of the parameters, responses, and code examples for Python, Javascript, and command line arguments if those exist.

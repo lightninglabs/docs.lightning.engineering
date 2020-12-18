@@ -1,6 +1,6 @@
 # Feature 1: Connect to LND
 
-In order to send payments over the Lightning Network, we will need to communicate with a Lightning Node. In our case, we will be using `lnd` which is built and maintained by [Lightning Labs](https://lightning.engineering). The simplest way to create a local network is to use [Polar](https://lightningpolar.com), which you’ve hopefully already installed and played with. If not, go back and read the [Local Cluster Setup with Polar](local-cluster-setup-with-polar.md) section.
+In order to send payments over the Lightning Network, we will need to communicate with a Lightning Node. In our case, we will be using `lnd` which is built and maintained by [Lightning Labs](https://lightning.engineering). The simplest way to create a local network is to use [Polar](https://lightningpolar.com), which you’ve hopefully already installed and played with. If not, go back and read the [Local Cluster Setup with Polar](../local-cluster-setup-with-polar/) section.
 
 When connecting to an `lnd` node, there are 3 pieces of information that you will need:
 
@@ -239,7 +239,7 @@ First, when the form is submitted, the `handleSubmit()` function will pass the h
 
 Second, as you’ll notice in the screenshot below, we are asking the user to “bake” a macaroon for us.
 
-![](../.gitbook/assets/connectToLnd01.png)
+![](../../.gitbook/assets/connectToLnd01.png)
 
 Let’s dig into what baking a macaroon is and why we’d ever want to use it. By default, `lnd` will automatically generate three macaroons for your node:
 
@@ -284,15 +284,15 @@ The final file we updated on the frontend was the App component. We add the **Co
 
 Now let’s test the app to confirm we can connect the alice node in Polar to the website without any errors.
 
-![](../.gitbook/assets/connectToLnd02.png)
+![](../../.gitbook/assets/connectToLnd02.png)
 
 In Polar, click on the alice node, then in the sidebar click on the **Connect** tab, and finally click on the **HEX** option. Here you will see the **GRPC Host** and **TLS Certificate** which you can copy & paste into the web form. In order to get the custom macaroon with limited privileges we’ll need to take a few more steps.
 
-![](../.gitbook/assets/connectToLnd03.png)
+![](../../.gitbook/assets/connectToLnd03.png)
 
 Right click on the alice node, then click on the **Launch Terminal** option.
 
-![](../.gitbook/assets/connectToLnd04.png)
+![](../../.gitbook/assets/connectToLnd04.png)
 
 In the terminal window, copy and paste the following command and press Return:
 
@@ -300,7 +300,7 @@ In the terminal window, copy and paste the following command and press Return:
 
 It will output a hex-encoded macaroon that only has the privileges listed above. Copy the macaroon into the web form and click the **Submit** button.
 
-![](../.gitbook/assets/connectToLnd05.png)
+![](../../.gitbook/assets/connectToLnd05.png)
 
 You should be redirected to the home screen and the link in the Navbar should say **Disconnect**. Feel free to test the failure case by providing an invalid host or macaroon.
 

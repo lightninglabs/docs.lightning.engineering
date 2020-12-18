@@ -8,5 +8,5 @@ When integrating `lnd`, hot and cold storage must be considered. To maximize sec
 
 It is possible to construct Lightning channels where the keys are cold, but they would need to be brought back online to conduct a channel update. Only with hot wallets can the Lightning Network attain a high volume of transactions.
 
-This is only a surface level introduction to Lightning integration. For a more illustrative example of how Lightning Network may work in production, check out the [Best Practices section](../advanced-best-practices/advanced-best-practices-overview.md).
+This is only a surface level introduction to Lightning integration. For a more illustrative example of how Lightning Network may work in production, check out the [Best Practices section](../../advanced-best-practices/advanced-best-practices-overview/).
 

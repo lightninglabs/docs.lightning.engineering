@@ -24,11 +24,11 @@ yarn
 
 With the `builders-guide-sample-app` repo cloned to your local machine, return to Polar and click the **Import Network** button at the top of your screen to display the following interface.
 
-![Import Interface](../.gitbook/assets/importScreen.png)
+![Import Interface](../../.gitbook/assets/importScreen.png)
 
 Click to browse to your local `builders-guide-sample-app` folder, and select **builders-guide.polar.zip** in the _resources_ folder. You should be faced with the below screen.
 
-![Imported Builder&apos;s Guide Network](../.gitbook/assets/buildersGuide.png)
+![Imported Builder&apos;s Guide Network](../../.gitbook/assets/buildersGuide.png)
 
 Press Start to download the requisite docker images and simulate your new regtest Lightning Network.
 
@@ -45,13 +45,13 @@ yarn dev
 
 Open your browser to [http://localhost:3000](http://localhost:3000) if it doesn’t open automatically.
 
-![Completed Sample App Interface](../.gitbook/assets/completedApp.png)
+![Completed Sample App Interface](../../.gitbook/assets/completedApp.png)
 
 You should see the screen above after launching the app.
 
 In order to test out all of the functionality, you’ll need to have the predefined network started according to the instructions above. If you've successfully done so, your Polar instance should look like the screenshot below.
 
-![Started Builder&apos;s Guide Network](../.gitbook/assets/buildersGuideStarted.png)
+![Started Builder&apos;s Guide Network](../../.gitbook/assets/buildersGuideStarted.png)
 
 The app requires multiple users to explore all of its functionality. Open a second window side by side with the first one, and navigate to [http://localhost:3000](http://localhost:3000). Feel free to poke around the app yourself. Here are some guided steps you can perform to see all of the features.
 

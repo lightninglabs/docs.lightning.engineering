@@ -120,11 +120,11 @@ const CreatePost: React.FC = () => {
 
 Finally, in the `CreatePost` component, we removed the `username` state variable and associated field from the form.
 
-![](../.gitbook/assets/signAndVerify01.png)
+![](../../.gitbook/assets/signAndVerify01.png)
 
 Now when you visit the **Create a Post** screen in the browser, you will only see form fields to collect the Post’s title and content.
 
-![](../.gitbook/assets/signAndVerify02.png)
+![](../../.gitbook/assets/signAndVerify02.png)
 
 When you click submit, the new post will appear on the main screen with the subtitle “Posted by alice”. It set the username of the post to the alias of the node correctly.
 
@@ -417,11 +417,11 @@ const VerifyButton: React.FC<Props> = ({ post }) => {
 
 We created a new `VerifyButton` component which is pretty simple. If the post is not verified, it renders a button on the screen. When the button is clicked, it calls the `store.verifyPost()` function to initiate the signature verification.
 
-![](../.gitbook/assets/signAndVerify03.png)
+![](../../.gitbook/assets/signAndVerify03.png)
 
 Refresh the page in your browser and create a couple posts. You will now see the updates we’ve made. The post subtitles display that the posts are signed and there is a “Verify Signature” button. If you click on the button, you will receive an error message stating _“You cannot verify your own posts!”_. This is the intended behavior as we do not want to allow users to verify their own posts.
 
-![](../.gitbook/assets/signAndVerify04.png)
+![](../../.gitbook/assets/signAndVerify04.png)
 
 To test the Verify Signature feature, you’ll need to disconnect and reconnect using a different node, such as carol. Then you’ll be able to click on the “Verify Signature” button and see the “verified” badge now displayed.
 

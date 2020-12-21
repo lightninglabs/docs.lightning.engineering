@@ -50,7 +50,7 @@
 * [Additional Guides](advanced-best-practices/lnd-docs/README.md)
   * [Configuring Tor](advanced-best-practices/configuring_tor.md)
   * [Debugging LND](advanced-best-practices/debugging_lnd.md)
-  * [Fuzz](advanced-best-practices/fuzz.md)
+  * [Fuzzing LND](advanced-best-practices/fuzz.md)
   * [High Availability LND](advanced-best-practices/etcd.md)
   * [Macaroons](advanced-best-practices/macaroons.md)
   * [Operational Safety](advanced-best-practices/safety.md)

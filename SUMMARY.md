@@ -47,7 +47,7 @@
   * [Sends](advanced-best-practices/advanced-best-practices-overview/sends.md)
   * [Receives](advanced-best-practices/advanced-best-practices-overview/receives.md)
   * [Liquidity Management](advanced-best-practices/advanced-best-practices-overview/liquidity-management.md)
-* [LND Docs](advanced-best-practices/lnd-docs/README.md)
+* [Additional Guides](advanced-best-practices/lnd-docs/README.md)
   * [NAT Traversal](advanced-best-practices/lnd-docs/nat_traversal/README.md)
     * [Operational Safety](advanced-best-practices/lnd-docs/nat_traversal/safety.md)
   * [Recovering Funds](advanced-best-practices/lnd-docs/recovery.md)

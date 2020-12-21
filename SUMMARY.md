@@ -17,13 +17,15 @@
 ## Beginners: Build Your First Lapp <a id="build-a-lapp"></a>
 
 * [Overview](build-a-lapp/build-a-lapp-overview.md)
-* [Setup: Local Cluster with Polar](build-a-lapp/local-cluster-setup-with-polar/README.md)
-  * [Setup: Run the Completed App](build-a-lapp/local-cluster-setup-with-polar/run-the-completed-app.md)
-  * [Setup: Run the App Without LND](build-a-lapp/local-cluster-setup-with-polar/run-the-app-without-lnd.md)
-* [Feature 1: Connect to LND](build-a-lapp/connect-to-lnd/README.md)
-  * [Feature 2: Display Node Alias and Balance](build-a-lapp/connect-to-lnd/display-node-alias-and-balance.md)
-  * [Feature 3: Sign and Verify Posts](build-a-lapp/connect-to-lnd/sign-and-verify-posts.md)
-  * [Feature 4: Modify Upvote Action](build-a-lapp/connect-to-lnd/modify-upvote-action.md)
+* [Setup](build-a-lapp/setup/README.md)
+  * [Setup: Local Cluster with Polar](build-a-lapp/setup/local-cluster-setup-with-polar.md)
+  * [Setup: Run the App Without LND](build-a-lapp/setup/run-the-app-without-lnd.md)
+  * [Setup: Run the Completed App](build-a-lapp/setup/run-the-completed-app.md)
+* [Add Features](build-a-lapp/add-features/README.md)
+  * [Feature 1: Connect to LND](build-a-lapp/add-features/connect-to-lnd.md)
+  * [Feature 2: Display Node Alias and Balance](build-a-lapp/add-features/display-node-alias-and-balance.md)
+  * [Feature 3: Sign and Verify Posts](build-a-lapp/add-features/sign-and-verify-posts.md)
+  * [Feature 4: Modify Upvote Action](build-a-lapp/add-features/modify-upvote-action.md)
 * [Wrap Up](build-a-lapp/wrap-up.md)
 
 ## Intermediate: Get LiT

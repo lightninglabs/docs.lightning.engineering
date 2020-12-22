@@ -15,6 +15,5 @@ This section is for those that want to run your own node, join the Lightning Poo
 
 Finally, we have you covered if you're running a professional service and want to leverage best practices when it comes to APIs, channel backups, key management, et al.
 
-Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), API documentation for [`lnd`](https://api.lightning.community/), [`loop`](https://lightning.engineering/loopapi/), and [`pool`](https://lightning.engineering/poolapi/).  
-
+Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), API documentation for [`lnd`](https://api.lightning.community/), [`loop`](https://lightning.engineering/loopapi/), and [`pool`](https://lightning.engineering/poolapi/).
 

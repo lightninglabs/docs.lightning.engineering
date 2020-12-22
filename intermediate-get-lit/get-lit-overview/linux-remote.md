@@ -28,7 +28,7 @@ PATH=$PATH:$PWD
 sudo setcap 'CAP_NET_BIND_SERVICE=+eip' ./litd
 ```
 
-Ensure that your server is has only the required ports open for outbound communication with the Lightning Network.
+Ensure that your server has only the required ports open for outbound communication with the Lightning Network.
 
 ```text
 sudo ufw logging on

@@ -13,11 +13,19 @@
 Download the version of the latest [Lightning Terminal release](https://github.com/lightninglabs/lightning-terminal/releases/latest) that matches your local configuration \(likely linux-amd64\). Extract the compressed files, and install the binaries using the below instructions.
 
 ```text
+# If you have go installed...
 # Extract the compressed files, and install them in your GOPATH
 tar -xvf lightning-terminal-<YOUR_LOCAL_VERSION>.tar.gz --strip 1 -C $GOPATH/bin
 
 # Linux requires this in order for LiT to listen on a port below 1024
 sudo setcap 'CAP_NET_BIND_SERVICE=+eip' $GOPATH/bin/litd
+
+# If you do not have go installed...
+# Extract and install the compressed files, and add their location to your PATH
+tar -xvf lightning-terminal-darwin-amd64-<YOUR_LOCAL_VERSION>.tar.gz
+cd lightning-terminal-darwin-amd64-<YOUR_LOCAL_VERSION>
+PATH=$PATH:$PWD
+sudo setcap 'CAP_NET_BIND_SERVICE=+eip' ./litd
 ```
 
 Ensure that your server is has only the required ports open for outbound communication with the Lightning Network.

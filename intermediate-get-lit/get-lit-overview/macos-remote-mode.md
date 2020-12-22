@@ -16,9 +16,14 @@ Download the version of the latest [Lightning Terminal release](https://github.c
 # Extract the compressed files, and install them in your GOPATH
 # GOPATH by default should be /usr/local/go/bin
 tar -xvf lightning-terminal-darwin-amd64-<YOUR_LOCAL_VERSION>.tar.gz --strip 1 -C $GOPATH/bin
+
+# If GOPATH is not defined, add your current folder to your PATH for simplicity
+tar -xvf lightning-terminal-darwin-amd64-<YOUR_LOCAL_VERSION>.tar.gz
+cd lightning-terminal-darwin-amd64-<YOUR_LOCAL_VERSION>
+PATH=$PATH:$PWD
 ```
 
-Ensure that your Ubuntu server is has only the required ports open for outbound communication with the Lightning Network.
+Ensure that your Ubuntu server has only the required ports open for outbound communication with the Lightning Network.
 
 ```text
 sudo ufw logging on

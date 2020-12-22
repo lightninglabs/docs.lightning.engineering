@@ -52,7 +52,7 @@ Important to know:
 
   please see the [node migration section](safety.md#migrating-a-node-to-a-new-device).
 
-* For more technical information [see the aezeed README](https://github.com/lightninglabs/docs.lightning.engineering/tree/d401a0f5bc2b21e252eaec9e729d40ae9cd1659b/aezeed/README.md).
+* For more technical information [see the aezeed README](https://github.com/lightninglabs/docs.lightning.engineering/tree/c3b4128128bc51ad89f1a5335803a8abc5b296b8/aezeed/README.md).
 
 ### Wallet password
 
@@ -66,7 +66,7 @@ If the key/certificate pair \(`tls.cert` and `tls.key` in the main `lnd` data di
 ### Macaroons
 
 Macaroons are used as the main authentication method in `lnd`. A macaroon is a cryptographically verifiable token, comparable to a [JWT](https://jwt.io/) or other form of API access token. In `lnd` this token consists of a _list of permissions_ \(what operations does the user of the token have access to\) and a set of _restrictions_ \(e.g. token expiration timestamp, IP address restriction\). `lnd` does not keep track of the individual macaroons issued, only the key that was used to create \(and later verify\) them. That means, individual tokens cannot currently be invalidated, only all of them at once.  
-See the [high-level macaroons documentation](macaroons.md) or the [technical README](https://github.com/lightninglabs/docs.lightning.engineering/tree/d401a0f5bc2b21e252eaec9e729d40ae9cd1659b/macaroons/README.md) for more information.
+See the [high-level macaroons documentation](macaroons.md) or the [technical README](https://github.com/lightninglabs/docs.lightning.engineering/tree/c3b4128128bc51ad89f1a5335803a8abc5b296b8/macaroons/README.md) for more information.
 
 Important to know:
 

@@ -14,7 +14,7 @@
   * [Payment Lifecycle](conceptual-overview/overview-overview/payment-lifecycle.md)
   * [Conclusion](conceptual-overview/overview-overview/conclusion.md)
 
-## Beginners: Build Your First Lapp <a id="build-a-lapp"></a>
+## Beginners: Build a Lapp <a id="build-a-lapp"></a>
 
 * [Overview](build-a-lapp/build-a-lapp-overview.md)
 * [Setup](build-a-lapp/setup/README.md)

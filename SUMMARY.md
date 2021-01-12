@@ -46,7 +46,6 @@
   * [Channels](advanced-best-practices/advanced-best-practices-overview/channels.md)
   * [Sends](advanced-best-practices/advanced-best-practices-overview/sends.md)
   * [Receives](advanced-best-practices/advanced-best-practices-overview/receives.md)
-  * [Liquidity Management](advanced-best-practices/advanced-best-practices-overview/liquidity-management.md)
 * [Additional Guides](advanced-best-practices/lnd-docs/README.md)
   * [Configuring Tor](advanced-best-practices/lnd-docs/configuring_tor.md)
   * [Debugging LND](advanced-best-practices/lnd-docs/debugging_lnd.md)

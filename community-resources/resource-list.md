@@ -16,14 +16,6 @@ description: >-
 * [TLV shop](https://github.com/joostjager/tlvshop.com) - webshop with no browser, shopping cart, checkout page, nor credit card required
 * [Thunderhub](https://github.com/apotdevin/thunderhub) - node management via a NextJS server handling a backend Graphql server and frontend React App
 
-## Explorers
-
-* [Extensive List of Explorers](https://gist.github.com/bretton/798ec38165ffabc719d91e0f4f67552d)
-* [1ML](https://1ml.com/) - network organized by largest capacity, highest availability, etc.
-* [ACINQ](https://explorer.acinq.co/) - visualization of geographic distribution, with nodes searchable by alias
-* [lngraph](https://github.com/xsb/lngraph) - personal private Lightning Network explorer using Neo4j Browser
-* [VR Explorer](https://bl.ocks.org/tyzbit/d1c83732d2767bb955125d41f5921888) - the Lightning Network... in VR!
-
 ## Developer Libraries & Tools
 
 * [Balance of Satoshis](https://github.com/alexbosworth/balanceofsatoshis) - command line tool for working with `lnd` balances
@@ -34,6 +26,14 @@ description: >-
 * [lsat-js](https://github.com/Tierion/lsat-js) - a javascript library for working with LSATs
 * [Polar](https://github.com/jamaljsr/polar) - one-click Bitcoin Lightning networks for local app development and testing
 * [WebLN](https://webln.dev/#/) - a library for secure communication between Lightning apps and user nodes
+
+## Explorers
+
+* [Extensive List of Explorers](https://gist.github.com/bretton/798ec38165ffabc719d91e0f4f67552d)
+* [1ML](https://1ml.com/) - network organized by largest capacity, highest availability, etc.
+* [ACINQ](https://explorer.acinq.co/) - visualization of geographic distribution, with nodes searchable by alias
+* [lngraph](https://github.com/xsb/lngraph) - personal private Lightning Network explorer using Neo4j Browser
+* [VR Explorer](https://bl.ocks.org/tyzbit/d1c83732d2767bb955125d41f5921888) - the Lightning Network... in VR!
 
 ## Wallets
 

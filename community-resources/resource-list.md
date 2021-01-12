@@ -29,6 +29,8 @@ description: >-
 * [Balance of Satoshis](https://github.com/alexbosworth/balanceofsatoshis) - command line tool for working with `lnd` balances
 * [Chantools](https://github.com/guggero/chantools) - helper functions that can be used to rescue funds locked in `lnd` 
 * [ln-service](https://github.com/alexbosworth/ln-service) - Node.js REST interface to `lnd`
+* [LNbits](https://github.com/lnbits/lnbits) - simple Python server that provides an account system, extension framework, and more on top of `lnd`
+* [lndhub](https://github.com/BlueWallet/LndHub) - wrapper for `lnd` that provides separate accounts for users sharing a node
 * [lsat-js](https://github.com/Tierion/lsat-js) - a javascript library for working with LSATs
 * [Polar](https://github.com/jamaljsr/polar) - one-click Bitcoin Lightning networks for local app development and testing
 * [WebLN](https://webln.dev/#/) - a library for secure communication between Lightning apps and user nodes

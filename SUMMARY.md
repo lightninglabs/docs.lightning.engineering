@@ -59,3 +59,7 @@
   * [Recovering Funds](advanced-best-practices/lnd-docs/recovery.md)
   * [Watchtowers](advanced-best-practices/lnd-docs/watchtower.md)
 
+## Community Resources
+
+* [Resource List](community-resources/resource-list.md)
+

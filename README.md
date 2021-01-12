@@ -11,7 +11,7 @@ Start here if the terms "payment channel" and "hash time-locked contract" are fo
 
 Check this out if you're a web developer looking to integrate Lightning into your application.
 
-This section is for those that want to run your own node, join the Lightning Pool, and take advantage of tools like Loop and Faraday.
+Run your own node, join the Lightning Pool, and take advantage of tools like Loop and Faraday.
 
 Finally, we have you covered if you're running a professional service and want to leverage best practices when it comes to APIs, channel backups, key management, et al.
 

@@ -17,5 +17,5 @@ Finally, we have you covered if you're running a professional service and want t
 
 If you're looking for inspiration, we've included a sampling of community projects for you to look to. We hope you add whatever you build to this page!
 
-Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), API documentation for [`lnd`](https://api.lightning.community/), [`loop`](https://lightning.engineering/loopapi/), and [`pool`](https://lightning.engineering/poolapi/).
+Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), and API documentation for [`lnd`](https://api.lightning.community/), [`loop`](https://lightning.engineering/loopapi/), and [`pool`](https://lightning.engineering/poolapi/).
 

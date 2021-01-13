@@ -45,5 +45,11 @@ description: >-
 * [Zap](https://github.com/LN-Zap/zap-iOS) - mobile client focused on UX and ease of use, available on iOS
 * [Zeus](https://github.com/ZeusLN/zeus) - mobile client for node operators, available on Android and iOS
 
+## Additional Lists
+
+* Ben Congdon's [Awesome Lightning Network](https://github.com/bcongdon/awesome-lightning-network)
+* Electric Capital's [Lightning Ecosystem Repository](https://github.com/electric-capital/crypto-ecosystems/blob/master/data/ecosystems/l/lightning.toml)
+* Jameson Lopp's [Lightning Network Resources](https://www.lopp.net/lightning-information.html)
+
 
 

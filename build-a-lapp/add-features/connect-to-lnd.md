@@ -26,7 +26,7 @@ We are going to take advantage of the existing NPM package [@radar/lnrpc](https:
 
 ```typescript
 async connect(host: string, cert: string, macaroon: string, prevToken?: string) {
-   // generate a random token, without
+   // generate a random token, without dashes
    const token = prevToken || uuidv4().replace(/-/g, '');
 
    try {
@@ -66,45 +66,6 @@ If the connection to the node fails for any reason, an error will be thrown and 
 ## Stored the node’s info in the database to persist across server restarts
 
 `source: /backend/posts-db.ts`
-
-```typescript
-private _data: DbData = {
-   posts: [],
-   nodes: [],
- };
-
-.
-.
-.
-
- getAllNodes() {
-   return this._data.nodes;
- }
-
- getNodeByPubkey(pubkey: string) {
-   return this.getAllNodes().find(node => node.pubkey === pubkey);
- }
-
- getNodeByToken(token: string) {
-   return this.getAllNodes().find(node => node.token === token);
- }
-
- async addNode(node: LndNode) {
-   this._data.nodes = [
-     // add new node
-     node,
-     // exclude existing nodes with the same server
-     ...this._data.nodes.filter(n => n.host !== node.host),
-   ];
-   await this.persist();
- }
-```
-
-In order to persist the connection information for each node, we’ve added some fields and functions to our database class. We won’t go into too much detail here, since this is not directly related to the Lightning integration. The code should be pretty self-explanatory.
-
-## Added API endpoint to connect to an `lnd` node and return a unique token
-
-`source: /backend/routes.ts`
 
 ```typescript
 private _data: DbData = {

@@ -29,6 +29,18 @@ jobs:
             org: lightninglabs
             src: doc
             dest: docs/lit
+          - repo: loop 
+            org: lightninglabs
+            src: docs
+            dest: docs/loop
+          - repo: faraday 
+            org: lightninglabs
+            src: docs
+            dest: docs/faraday
+          - repo: pool 
+            org: lightninglabs
+            src: docs
+            dest: docs/pool
 
     steps:
       - name: Checkout docs.lightning.engineering repo

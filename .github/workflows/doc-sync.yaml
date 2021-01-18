@@ -24,11 +24,11 @@ jobs:
           - repo: lnd
             org: lightningnetwork
             src: docs
-            dest: advanced-best-practices
+            dest: docs/lnd
           - repo: lightning-terminal
             org: lightninglabs
             src: doc
-            dest: intermediate-get-lit
+            dest: docs/lit
 
     steps:
       - name: Checkout docs.lightning.engineering repo

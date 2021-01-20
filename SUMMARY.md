@@ -37,7 +37,7 @@
   * [MacOS - Remote Mode](intermediate-get-lit/get-lit-overview/macos-remote-mode.md)
   * [Windows - Integrated Mode](intermediate-get-lit/get-lit-overview/windows-integrated-mode.md)
   * [Windows - Remote Mode](intermediate-get-lit/get-lit-overview/windows-remote-mode.md)
-* [Walkthrough](intermediate-get-lit/walkthrough.md)
+* [Walkthrough](docs/lit/WALKTHROUGH.md)
 * [Next Steps](intermediate-get-lit/next-steps.md)
 
 ## Advanced: Best Practices
@@ -47,16 +47,16 @@
   * [Sends](advanced-best-practices/advanced-best-practices-overview/sends.md)
   * [Receives](advanced-best-practices/advanced-best-practices-overview/receives.md)
 * [Additional Guides](advanced-best-practices/README.md)
-  * [Configuring Tor](advanced-best-practices/lnd-docs/configuring_tor.md)
-  * [Debugging LND](advanced-best-practices/lnd-docs/debugging_lnd.md)
-  * [Fuzzing LND](advanced-best-practices/lnd-docs/fuzz.md)
-  * [High Availability LND](advanced-best-practices/lnd-docs/etcd.md)
-  * [Macaroons](advanced-best-practices/lnd-docs/macaroons.md)
-  * [Operational Safety](advanced-best-practices/lnd-docs/safety.md)
-  * [NAT Traversal](advanced-best-practices/lnd-docs/nat_traversal.md)
-  * [Partially Signed Bitcoin Transactions](advanced-best-practices/lnd-docs/psbt.md)
-  * [Recovering Funds](advanced-best-practices/lnd-docs/recovery.md)
-  * [Watchtowers](advanced-best-practices/lnd-docs/watchtower.md)
+  * [Configuring Tor](docs/lnd/configuring_tor.md)
+  * [Debugging LND](docs/lnd/debugging_lnd.md)
+  * [Fuzzing LND](docs/lnd/fuzz.md)
+  * [High Availability LND](docs/lnd/etcd.md)
+  * [Macaroons](docs/lnd/macaroons.md)
+  * [Operational Safety](docs/lnd/safety.md)
+  * [NAT Traversal](docs/lnd/nat_traversal.md)
+  * [Partially Signed Bitcoin Transactions](docs/lnd/psbt.md)
+  * [Recovering Funds](docs/lnd/recovery.md)
+  * [Watchtowers](docs/lnd/watchtower.md)
 
 ## Community Resources
 

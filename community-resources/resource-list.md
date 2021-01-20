@@ -26,6 +26,8 @@ description: >-
 * [lsat-js](https://github.com/Tierion/lsat-js) - a javascript library for working with LSATs
 * [Polar](https://github.com/jamaljsr/polar) - one-click Bitcoin Lightning networks for local app development and testing
 * [WebLN](https://webln.dev/#/) - a library for secure communication between Lightning apps and user nodes
+* [Dazaar](https://dazaar.com/) - A library to sell data over a P2P network.
+
 
 ## Explorers
 

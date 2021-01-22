@@ -39,6 +39,7 @@ description: >-
 
 ## Wallets
 
+* [Blixt Wallet](https://github.com/hsjoberg/blixt-wallet) - Bitcoin Lightning Wallet with focus on usability and user experience
 * [BlueWallet](https://github.com/BlueWallet/BlueWallet) - mobile and desktop client, custodial, available on Android and iOS
 * [Breez](https://github.com/breez/breezmobile) - mobile client and hub, available on Android and iOS
 * [Joule](https://lightningjoule.com/) - browser extension, available on Brave, Chrome, and Firefox

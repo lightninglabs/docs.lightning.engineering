@@ -15,6 +15,7 @@ description: >-
 * [Sphinx Relay ](https://github.com/stakwork/sphinx-relay)- e2e encrypted group chat enabled by a Node.js wrapper around `lnd` 
 * [TLV shop](https://github.com/joostjager/tlvshop.com) - webshop with no browser, shopping cart, checkout page, nor credit card required
 * [Thunderhub](https://github.com/apotdevin/thunderhub) - node management via a NextJS server handling a backend Graphql server and frontend React App
+* [LNBig Server](https://github.com/LNBIG-COM/lnbig-server) - lnbig autopilot and rebalancing engine
 
 ## Developer Libraries & Tools
 

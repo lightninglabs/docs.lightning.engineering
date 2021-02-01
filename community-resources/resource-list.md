@@ -28,7 +28,7 @@ description: >-
 * [Polar](https://github.com/jamaljsr/polar) - one-click Bitcoin Lightning networks for local app development and testing
 * [WebLN](https://webln.dev/#/) - a library for secure communication between Lightning apps and user nodes
 * [Dazaar](https://dazaar.com/) - A library to sell data over a P2P network.
-
+* [rebalance-lnd](https://github.com/C-Otto/rebalance-lnd) Python script for circular rebalancing in LND
 
 ## Explorers
 

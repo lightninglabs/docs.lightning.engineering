@@ -54,6 +54,4 @@ description: >-
 * Ben Congdon's [Awesome Lightning Network](https://github.com/bcongdon/awesome-lightning-network)
 * Electric Capital's [Lightning Ecosystem Repository](https://github.com/electric-capital/crypto-ecosystems/blob/master/data/ecosystems/l/lightning.toml)
 * Jameson Lopp's [Lightning Network Resources](https://www.lopp.net/lightning-information.html)
-
-
-
+* opennoms [Lightning Node Management book](https://openoms.gitbook.io/lightning-node-management/)

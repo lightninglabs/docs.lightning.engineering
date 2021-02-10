@@ -65,6 +65,7 @@ jobs:
           title: Update ${{ matrix.repo }} documentation
           body: This PR was created to automatically sync ${{ matrix.repo }} documentation.
           branch: docs-${{ matrix.repo }}
+          author: GitHub <noreply@github.com>
           base: master
 
       - name: Check outputs

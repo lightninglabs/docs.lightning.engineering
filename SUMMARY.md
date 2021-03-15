@@ -46,6 +46,7 @@
   * [Channels](advanced-best-practices/advanced-best-practices-overview/channels.md)
   * [Sends](advanced-best-practices/advanced-best-practices-overview/sends.md)
   * [Receives](advanced-best-practices/advanced-best-practices-overview/receives.md)
+  * [Autoloop](docs/loop/autoloop.md)
 * [Additional Guides](advanced-best-practices/README.md)
   * [Configuring Tor](docs/lnd/configuring_tor.md)
   * [Debugging LND](docs/lnd/debugging_lnd.md)

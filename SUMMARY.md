@@ -62,5 +62,5 @@
 ## Community Resources
 
 * [Resource List](community-resources/resource-list.md)
-* [The Lightning Bulb](community-resources/the-lightning-bulb.md)
+* [The Lightning Bulb 💡](community-resources/the-lightning-bulb.md)
 

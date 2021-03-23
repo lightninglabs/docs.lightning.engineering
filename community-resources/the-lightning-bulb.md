@@ -2,7 +2,7 @@
 description: Experimental Ideas for Community Building
 ---
 
-# The Lightning Bulb
+# The Lightning Bulb 💡
 
 The Lightning Network enables new and exciting ways to build on bitcoin, but the endless possibilities can be overwhelming. That’s why we are launching the Lightning Bulb to help inspire the community and kick start new Lightning projects. The Lightning Bulb will host open research questions, experimental ideas, and other inspiration for the Lightning developer community.
 

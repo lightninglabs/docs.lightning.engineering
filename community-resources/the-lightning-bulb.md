@@ -40,6 +40,6 @@ We are here to help. If you have questions or need to bounce ideas around, feel 
 
 **Keysend Services**
 
-* A paid API call where all requests and responses use LN payments
+* Paid API calls where all requests and responses use LN payments
 * Suggestions: a Keysend Services Directory, ability to sell Mission Control data to a peer in need of updated routing data, etc.
 

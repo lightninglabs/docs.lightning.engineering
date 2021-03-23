@@ -37,7 +37,7 @@
   * [MacOS - Remote Mode](intermediate-get-lit/get-lit-overview/macos-remote-mode.md)
   * [Windows - Integrated Mode](intermediate-get-lit/get-lit-overview/windows-integrated-mode.md)
   * [Windows - Remote Mode](intermediate-get-lit/get-lit-overview/windows-remote-mode.md)
-* [Walkthrough](docs/lit/WALKTHROUGH.md)
+* [Walkthrough](intermediate-get-lit/walkthrough.md)
 * [Next Steps](intermediate-get-lit/next-steps.md)
 
 ## Advanced: Best Practices
@@ -46,20 +46,21 @@
   * [Channels](advanced-best-practices/advanced-best-practices-overview/channels.md)
   * [Sends](advanced-best-practices/advanced-best-practices-overview/sends.md)
   * [Receives](advanced-best-practices/advanced-best-practices-overview/receives.md)
-  * [Autoloop](docs/loop/autoloop.md)
-* [Additional Guides](advanced-best-practices/README.md)
-  * [Configuring Tor](docs/lnd/configuring_tor.md)
-  * [Debugging LND](docs/lnd/debugging_lnd.md)
-  * [Fuzzing LND](docs/lnd/fuzz.md)
-  * [High Availability LND](docs/lnd/etcd.md)
-  * [Macaroons](docs/lnd/macaroons.md)
-  * [Operational Safety](docs/lnd/safety.md)
-  * [NAT Traversal](docs/lnd/nat_traversal.md)
-  * [Partially Signed Bitcoin Transactions](docs/lnd/psbt.md)
-  * [Recovering Funds](docs/lnd/recovery.md)
-  * [Watchtowers](docs/lnd/watchtower.md)
+  * [Autoloop](advanced-best-practices/advanced-best-practices-overview/autoloop.md)
+* [Additional Guides](advanced-best-practices/advanced-best-practices/README.md)
+  * [Configuring Tor](advanced-best-practices/advanced-best-practices/configuring_tor.md)
+  * [Debugging LND](advanced-best-practices/advanced-best-practices/debugging_lnd.md)
+  * [Fuzzing LND](advanced-best-practices/advanced-best-practices/fuzz.md)
+  * [High Availability LND](advanced-best-practices/advanced-best-practices/etcd.md)
+  * [Macaroons](advanced-best-practices/advanced-best-practices/macaroons.md)
+  * [Operational Safety](advanced-best-practices/advanced-best-practices/safety.md)
+  * [NAT Traversal](advanced-best-practices/advanced-best-practices/nat_traversal.md)
+  * [Partially Signed Bitcoin Transactions](advanced-best-practices/advanced-best-practices/psbt.md)
+  * [Recovering Funds](advanced-best-practices/advanced-best-practices/recovery.md)
+  * [Watchtowers](advanced-best-practices/advanced-best-practices/watchtower.md)
 
 ## Community Resources
 
 * [Resource List](community-resources/resource-list.md)
+* [The Lightning Bulb](community-resources/the-lightning-bulb.md)
 

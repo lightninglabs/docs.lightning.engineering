@@ -18,6 +18,7 @@ jobs:
     strategy:
       # Allow other tests in the matrix to continue if one fails.
       fail-fast: false
+      max-parallel: 1
       matrix:
         repo: [lnd, lightning-terminal]
         include:

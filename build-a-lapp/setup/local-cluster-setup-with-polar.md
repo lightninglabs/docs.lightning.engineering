@@ -2,7 +2,7 @@
 
 ## Install Polar
 
-This tutorial will leverage the Polar application for setting up a local cluster of Lightning Network nodes on regtest. Polar [can be downloaded](https://github.com/lightninglabs/docs.lightning.engineering/tree/9423e81a91e5a382442d5fa2fdacde019133dbcb/build-a-lapp/lightningpolar.com) for MacOS, Linux, and Windows. The source code is hosted [on Github](https://github.com/jamaljsr/polar/releases/).
+This tutorial will leverage the Polar application for setting up a local cluster of Lightning Network nodes on regtest. Polar [can be downloaded](https://lightningpolar.com) for MacOS, Linux, and Windows. The source code is hosted [on Github](https://github.com/jamaljsr/polar/releases/).
 
 ![Polar website](../../.gitbook/assets/polarWebsite.png)
 

@@ -10,12 +10,12 @@ redirects:
     conceptual-overview/overview-overview/payment-lifecycle: ./the-lightning-network/lightning-overview/payment-lifecycle.md
     conceptual-overview/overview-overview/conclusion: ./the-lightning-network/lightning-overview/conclusion.md
 
-    build-a-lapp: ./lapps/guides/polar-lapps/local-cluster-setup-with-polar.md
-    build-a-lapp/build-a-lapp-overview: ./lapps/guides/polar-lapps/local-cluster-setup-with-polar.md
+    build-a-lapp: ./lapps/guides/README.md
+    build-a-lapp/build-a-lapp-overview: ./lapps/guides/README.md
     build-a-lapp/setup/local-cluster-setup-with-polar: ./lapps/guides/polar-lapps/local-cluster-setup-with-polar.md
     build-a-lapp/setup/run-the-completed-app: ./lapps/guides/polar-lapps/run-the-completed-app.md
     build-a-lapp/setup/run-the-app-without-lnd: ./lapps/guides/polar-lapps/run-the-app-without-lnd.md
-    build-a-lapp/add-features: ./lapps/guides/add-features.md
+    build-a-lapp/add-features: ./lapps/guides/add-features/README.md
     build-a-lapp/add-features/connect-to-lnd: ./lapps/guides/add-features/connect-to-lnd.md
     build-a-lapp/add-features/display-node-alias-and-balance: ./lapps/guides/add-features/display-node-alias-and-balance.md
     build-a-lapp/add-features/sign-and-verify-posts: ./lapps/guides/add-features/sign-and-verify-posts.md

@@ -22,7 +22,7 @@ redirects:
     build-a-lapp/add-features/modify-upvote-action: ./lapps/guides/add-features/modify-upvote-action.md
     build-a-lapp/wrap-up: ./lapps/next-steps.md
 
-    intermediate-get-lit/get-lit-overview: ./lightning-network-tools/lightning-terminal/get-lit.md
+    intermediate-get-lit/get-lit-overview: ./lightning-network-tools/lightning-terminal/get-lit/README.md
     intermediate-get-lit/get-lit-overview/ubuntu-integrated: ./lightning-network-tools/lightning-terminal/get-lit/ubuntu-integrated.md
     intermediate-get-lit/get-lit-overview/linux-remote: ./lightning-network-tools/lightning-terminal/get-lit/linux-remote.md
     intermediate-get-lit/get-lit-overview/macos-integrated-mode: ./lightning-network-tools/lightning-terminal/get-lit/macos-integrated-mode.md
@@ -32,12 +32,12 @@ redirects:
     intermediate-get-lit/walkthrough: ./lightning-network-tools/lightning-terminal/walkthrough.md
     intermediate-get-lit/next-steps: ./lightning-network-tools/lightning-terminal/next-steps.md
 
-    advanced-best-practices/advanced-best-practices-overview: ./lightning-network-tools/lnd.md
-    advanced-best-practices/advanced-best-practices-overview/channels: ./lightning-network-tools/lnd.md
+    advanced-best-practices/advanced-best-practices-overview: ./lightning-network-tools/lnd/README.md
+    advanced-best-practices/advanced-best-practices-overview/channels: ./lightning-network-tools/lnd/README.md
     advanced-best-practices/advanced-best-practices-overview/sends: ./lightning-network-tools/lnd/payments.md
     advanced-best-practices/advanced-best-practices-overview/receives: ./lightning-network-tools/lnd/receiving.md
-    advanced-best-practices/advanced-best-practices-overview/autoloop: ./docs/loop/autoloop.md
-    advanced-best-practices/advanced-best-practices: ./lightning-network-tools/lnd.md
+    advanced-best-practices/advanced-best-practices-overview/autoloop: ./lightning-network-tools/loop/autoloop.md
+    advanced-best-practices/advanced-best-practices: ./lightning-network-tools/lnd/README.md
     advanced-best-practices/advanced-best-practices/configuring_tor: ./docs/lnd/configuring_tor.md
     advanced-best-practices/advanced-best-practices/debugging_lnd: ./docs/lnd/debugging-lnd.md
     advanced-best-practices/advanced-best-practices/fuzz: ./docs/lnd/fuzz.md

@@ -10,8 +10,8 @@ redirects:
 	conceptual-overview/overview-overview/payment-lifecycle: ./the-lightning-network/lightning-overview/payment-lifecycle.md
 	conceptual-overview/overview-overview/conclusion: ./the-lightning-network/lightning-overview/conclusion.md
 
-	build-a-lapp: ./lapps/guides.md
-	build-a-lapp/build-a-lapp-overview: ./lapps/guides.md
+	build-a-lapp: ./lapps/guides/polar-lapps/local-cluster-setup-with-polar.md
+	build-a-lapp/build-a-lapp-overview: ./lapps/guides/polar-lapps/local-cluster-setup-with-polar.md
 	build-a-lapp/setup/local-cluster-setup-with-polar: ./lapps/guides/polar-lapps/local-cluster-setup-with-polar.md
 	build-a-lapp/setup/run-the-completed-app: ./lapps/guides/polar-lapps/run-the-completed-app.md
 	build-a-lapp/setup/run-the-app-without-lnd: ./lapps/guides/polar-lapps/run-the-app-without-lnd.md

@@ -1,0 +1,49 @@
+redirects:
+	conceptual-overview/overview-overview: ./the-lightning-network/lightning-overview.md
+	conceptual-overview/overview-overview/lightning-network: ./the-lightning-network/lightning-overview.md
+	conceptual-overview/overview-overview/payment-channels: ./the-lightning-network/payment-channels.md
+	conceptual-overview/overview-overview/multihop-payments: ./the-lightning-network/multihop-payments.md
+	conceptual-overview/overview-overview/network-topology: ./the-lightning-network/lightning-overview/network-topology.md
+	conceptual-overview/overview-overview/components: ./the-lightning-network/lightning-overview/components.md
+	conceptual-overview/overview-overview/channel-lifecycle: ./the-lightning-network/lightning-overview/channel-lifecycle.md
+	conceptual-overview/overview-overview/payment-lifecycle: ./the-lightning-network/lightning-overview/payment-lifecycle.md
+	conceptual-overview/overview-overview/conclusion: ./the-lightning-network/lightning-overview/conclusion.md
+
+	build-a-lapp/build-a-lapp-overview: ./lapps/guides.md
+	build-a-lapp/setup/local-cluster-setup-with-polar: ./lapps/guides/polar-lapps/local-cluster-setup-with-polar.md
+	build-a-lapp/setup/run-the-completed-app: ./lapps/guides/polar-lapps/run-the-completed-app.md
+	build-a-lapp/setup/run-the-app-without-lnd: ./lapps/guides/polar-lapps/run-the-app-without-lnd.md
+	build-a-lapp/add-features: ./lapps/guides/add-features.md
+	build-a-lapp/add-features/connect-to-lnd: ./lapps/guides/add-features/connect-to-lnd.md
+	build-a-lapp/add-features/display-node-alias-and-balance: ./lapps/guides/add-features/display-node-alias-and-balance.md
+	build-a-lapp/add-features/sign-and-verify-posts: ./lapps/guides/add-features/sign-and-verify-posts.md
+	build-a-lapp/add-features/modify-upvote-action: ./lapps/guides/add-features/modify-upvote-action.md
+	build-a-lapp/wrap-up: ./lapps/next-steps.md
+
+	intermediate-get-lit/get-lit-overview: ./lightning-network-tools/lightning-terminal/get-lit.md
+	intermediate-get-lit/get-lit-overview/ubuntu-integrated: ./lightning-network-tools/lightning-terminal/get-lit/ubuntu-integrated.md
+	intermediate-get-lit/get-lit-overview/linux-remote: ./lightning-network-tools/lightning-terminal/get-lit/linux-remote.md
+	intermediate-get-lit/get-lit-overview/macos-integrated-mode: ./lightning-network-tools/lightning-terminal/get-lit/macos-integrated-mode.md
+	intermediate-get-lit/get-lit-overview/macos-remote-mode: ./lightning-network-tools/lightning-terminal/get-lit/macos-remote-mode.md
+	intermediate-get-lit/get-lit-overview/windows-integrated-mode: ./lightning-network-tools/lightning-terminal/get-lit/windows-integrated-mode.md
+	intermediate-get-lit/get-lit-overview/windows-remote-mode: ./lightning-network-tools/lightning-terminal/get-lit/windows-remote-mode.md
+	intermediate-get-lit/walkthrough: ./lightning-network-tools/lightning-terminal/walkthrough.md
+	intermediate-get-lit/next-steps: ./lightning-network-tools/lightning-terminal/next-steps.md
+
+	advanced-best-practices/advanced-best-practices-overview: ./lightning-network-tools/lnd.md
+	advanced-best-practices/advanced-best-practices-overview/channels: ./lightning-network-tools/lnd.md
+	advanced-best-practices/advanced-best-practices-overview/sends: ./lightning-network-tools/lnd/payments.md
+	advanced-best-practices/advanced-best-practices-overview/receives: ./lightning-network-tools/lnd/receiving.md
+	advanced-best-practices/advanced-best-practices-overview/autoloop: ./docs/loop/autoloop.md
+	advanced-best-practices/advanced-best-practices: ./lightning-network-tools/lnd.md
+	advanced-best-practices/advanced-best-practices/configuring_tor: ./docs/lnd/configuring_tor.md
+	advanced-best-practices/advanced-best-practices/debugging_lnd: ./docs/lnd/debugging-lnd.md
+	advanced-best-practices/advanced-best-practices/fuzz: ./docs/lnd/fuzz.md
+	advanced-best-practices/advanced-best-practices/etcd: ./docs/lnd/etcd.md
+	advanced-best-practices/advanced-best-practices/macaroons: ./docs/lnd/macaroons.md
+	advanced-best-practices/advanced-best-practices/safety: ./docs/lnd/safety.md
+	advanced-best-practices/advanced-best-practices/nat_traversal: ./docs/lnd/nat-traversal.md
+	advanced-best-practices/advanced-best-practices/psbt: ./docs/lnd/psbt.md
+	advanced-best-practices/advanced-best-practices/recovery: ./docs/lnd/recovery.md
+	advanced-best-practices/advanced-best-practices/watchtower: ./docs/lnd/watchtower.md
+

@@ -9,9 +9,15 @@ description: >-
 
 Start here if the terms "payment channel" and "hash time-locked contract" are foreign to you.
 
+{% page-ref page="lightning-network-tools/lnd/" %}
+
 Look here if you're getting started with LND, want to configure it optimally or learn how to integrate LND into your production environment.
 
+{% page-ref page="lightning-network-tools/lightning-terminal/" %}
+
 Lightning Terminal is a browser-based, self-hosted dashboard for Lightning Labs products. Read this guide to learn how to set up Lightning Terminal and get the most out of it.
+
+{% page-ref page="lightning-network-tools/loop/" %}
 
 Loop is a service that makes it easier to send and receive funds on Lightning, serving as an on and off ramp between the Lightning Network and the Bitcoin blockchain. Read our guides to Loop to optimally use Loop.
 

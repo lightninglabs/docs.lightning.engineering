@@ -13,6 +13,8 @@
 * [Payment Channels](the-lightning-network/payment-channels.md)
 * [Multihop Payments](the-lightning-network/multihop-payments/README.md)
   * [Multipath Payments \(MPP\)](the-lightning-network/multihop-payments/multipath-payments-mpp.md)
+* [Liquidity](the-lightning-network/liquidity/README.md)
+  * [Managing liquidity on the Lightning Network](the-lightning-network/liquidity/manage-liquidity.md)
 
 ## Lightning Network Tools
 

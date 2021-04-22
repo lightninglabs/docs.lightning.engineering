@@ -4,7 +4,7 @@ description: >-
   and how to best open, manage, balance and close your channels.
 ---
 
-# Managing liquidity on the Lightning Network
+# Managing Liquidity on the Lightning Network
 
 ## On-chain Bitcoin <a id="docs-internal-guid-f32642c8-7fff-bda4-5003-3937885e00bc"></a>
 

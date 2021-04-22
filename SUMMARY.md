@@ -40,9 +40,9 @@
     * [MacOS - Remote Mode](lightning-network-tools/lightning-terminal/get-lit/macos-remote-mode.md)
     * [Windows - Integrated Mode](lightning-network-tools/lightning-terminal/get-lit/windows-integrated-mode.md)
     * [Windows - Remote Mode](lightning-network-tools/lightning-terminal/get-lit/windows-remote-mode.md)
-  * [Next Steps](lightning-network-tools/lightning-terminal/next-steps.md)
-* [Loop](lightning-network-tools/loop/README.md)
-  * [Autoloop](lightning-network-tools/loop/autoloop.md)
+  * [Next Steps](docs/lit/next-steps.md)
+* [Loop](docs/loop/README.md)
+  * [Autoloop](docs/loop/autoloop.md)
 
 ## LAPPs
 

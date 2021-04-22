@@ -32,7 +32,7 @@
   * [NAT Traversal](docs/lnd/nat-traversal.md)
   * [Recovering Funds](docs/lnd/recovery.md)
 * [Lightning Terminal](docs/lit/README.md)
-  * [Walkthrough](docs/lit/walkthrough.md)
+  * [Walkthrough](docs/lit/WALKTHROUGH.md)
   * [Get LiT](docs/lit/get-lit/README.md)
     * [Linux - Integrated Mode](lightning-network-tools/lightning-terminal/get-lit/ubuntu-integrated.md)
     * [Linux - Remote Mode](lightning-network-tools/lightning-terminal/get-lit/linux-remote.md)

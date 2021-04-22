@@ -21,7 +21,7 @@
 * [LND](lightning-network-tools/lnd/README.md)
   * [Sending Payments](lightning-network-tools/lnd/payments.md)
   * [Receiving Payments](lightning-network-tools/lnd/receiving.md)
-  * [Partially Signed Bitcoin Transactions](lightning-network-tools/lnd/psbt.md)
+  * [Partially Signed Bitcoin Transactions](docs/lnd/psbt.md)
   * [Macaroons](lightning-network-tools/lnd/macaroons.md)
   * [Configuring Watchtowers](lightning-network-tools/lnd/configuring-watchtower.md)
   * [Operational Safety](lightning-network-tools/lnd/safety.md)

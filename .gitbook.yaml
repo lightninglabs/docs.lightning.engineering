@@ -1,4 +1,5 @@
 redirects:
+    conceptual-overview/: ./the-lightning-network/lightning-overview/README.md
     conceptual-overview: ./the-lightning-network/lightning-overview/README.md
     conceptual-overview/overview-overview: ./the-lightning-network/lightning-overview/README.md
     conceptual-overview/overview-overview/lightning-network: ./the-lightning-network/lightning-overview/README.md

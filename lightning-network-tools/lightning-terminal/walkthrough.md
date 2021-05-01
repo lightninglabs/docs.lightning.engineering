@@ -2,7 +2,7 @@
 
 This document provides a brief overview of the information provided in Lightning Terminal along with step-by-step instructions on how to perform a Loop via the user interface.
 
-We assume you already have a basic understanding of the Lightning Network, LND nodes, and channels. You should already have Lightning Terminal installed and can access the dashboard via a web browser. Installation instructions can be found in the [README](https://github.com/lightninglabs/docs.lightning.engineering/tree/21d14e03246f40d847884666e952f99d6ed70f13/docs/README.md).
+We assume you already have a basic understanding of the Lightning Network, LND nodes, and channels. You should already have Lightning Terminal installed and can access the dashboard via a web browser. Installation instructions can be found in the [README](https://github.com/lightninglabs/docs.lightning.engineering/tree/3a84b014b489ac94fb58d86e41d60cb056212ff5/docs/README.md).
 
 * [What is Loop](walkthrough.md#what-is-loop)
 * [Visual Overview](walkthrough.md#visual-overview)
@@ -47,7 +47,7 @@ Refer to the Loop daemon [documentation](https://github.com/lightninglabs/loop/b
 
 Here is an overview of what is displayed on screen after you first log in to the dashboard.
 
-![loop](../../.gitbook/assets/loop.png)
+![loop](../../.gitbook/assets/loop%20%282%29.png)
 
 1. The confirmed balances on the Lightning Network and on-chain
 2. The navigation menu containing links to the different screens
@@ -102,7 +102,7 @@ Follow the steps below to perform a swap via the Lightning Terminal.
 
    > We'll click **Loop Out** in this walk through
 
-![swap3](../../.gitbook/assets/swap3%20%281%29.png)
+![swap3](../../.gitbook/assets/swap3.png)
 
 1. Drag the slider to adjust the amount you want to swap. The Loop server will vary the
 
@@ -113,7 +113,7 @@ Follow the steps below to perform a swap via the Lightning Terminal.
 2. Confirm the selected channels that will be used, if any were chosen.
 3. Click the **Next** button.
 
-![swap4](../../.gitbook/assets/swap4%20%281%29.png)
+![swap4](../../.gitbook/assets/swap4.png)
 
 1. Review the Loop amount and the fee. Keep in mind that you will only be charged the fee.
 
@@ -145,7 +145,7 @@ You will see a loading animation for a few seconds while the information is bein
 
 3. To close the **Processing Loops** section while waiting for on-chain confirmations, click on the **Close** icon.
 
-![swap7](../../.gitbook/assets/swap7%20%281%29.png)
+![swap7](../../.gitbook/assets/swap7.png)
 
 You may perform more than one swap at a time, as long as you have the available funds.
 
@@ -153,7 +153,7 @@ You may perform more than one swap at a time, as long as you have the available 
 
    icon.
 
-![swap8](../../.gitbook/assets/swap8%20%281%29.png)
+![swap8](../../.gitbook/assets/swap8.png)
 
 Once all swaps are complete, the green check icon is displayed in the **Processing Loop** section
 
@@ -169,7 +169,7 @@ The **Loop History** page displays a chronological list of all the swaps that ha
 
 ## Manage UI Settings
 
-![settings](../../.gitbook/assets/settings%20%281%29.png)
+![settings](../../.gitbook/assets/settings.png)
 
 The **Settings** page allows you to configure UI settings and view some basic node information.
 
@@ -195,7 +195,7 @@ Below are the same list of channels viewed using the different **Channel Balance
 
 **Optimize for Receiving**: For merchants who primarily receive inbound Lightning payments, the channels with high local balances will be shaded red. The goal is to keep your local balances as low as possible, so that you can receive more funds inbound.
 
-![sending](../../.gitbook/assets/sending%20%281%29.png)
+![sending](../../.gitbook/assets/sending.png)
 
 **Optimize for Sending**: For exchanges, fiat gateways, and other operators who primarily send outgoing Lightning payments, the channels with high local balances will be shaded red. The goal is to keep your local balances as high as possible, so that you can send more funds outbound.
 

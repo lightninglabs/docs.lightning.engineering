@@ -14,11 +14,7 @@ description: >-
 
 {% page-ref page="macaroons.md" %}
 
-{% page-ref page="configuring-watchtower.md" %}
-
 {% page-ref page="safety.md" %}
-
-{% page-ref page="configuring-watchtower.md" %}
 
 {% page-ref page="safety.md" %}
 

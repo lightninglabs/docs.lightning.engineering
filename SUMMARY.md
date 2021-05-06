@@ -19,7 +19,7 @@
 ## Lightning Network Tools
 
 * [LND](lightning-network-tools/lnd/README.md)
-  * [Getting started with LND and the Lightning Network](lightning-network-tools/lnd/getting-started-with-lnd-and-the-lightning-network.md)
+  * [Getting started with LND and the Lightning Network](lightning-network-tools/lnd/get-started-with-lnd.md)
   * [Sending Payments](lightning-network-tools/lnd/payments.md)
   * [Receiving Payments](lightning-network-tools/lnd/receiving.md)
   * [Partially Signed Bitcoin Transactions](lightning-network-tools/lnd/psbt.md)

@@ -16,8 +16,8 @@
 * [Liquidity](the-lightning-network/liquidity/README.md)
   * [Managing Liquidity on the Lightning Network](the-lightning-network/liquidity/manage-liquidity.md)
 * [Routing](the-lightning-network/routing/README.md)
-  * [Identifying Good Peers on the Lightning Network](the-lightning-network/routing/identify-good-peers.md)
   * [What Makes a Good Routing Node](the-lightning-network/routing/what-makes-a-good-routing-node.md)
+  * [Identifying Good Peers on the Lightning Network](the-lightning-network/routing/identify-good-peers.md)
 
 ## Lightning Network Tools
 

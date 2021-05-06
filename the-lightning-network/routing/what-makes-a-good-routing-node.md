@@ -6,7 +6,7 @@ description: >-
 
 # What Makes a Good Routing Node
 
-Every channel in the network has a total capacity, limited by the amount of bitcoin committed at its creation. This balance can be held by either side of the channel, impacting its ability to pass on payments.
+Every channel in the network has a total capacity, limited by the amount of bitcoin committed at its creation. This balance can be held by either side of the channel, impacting its ability to pass on payments. The total capacity is the sum of the local capacity of each channel peer, or the local and remote capacity of your channel.
 
 As a result, a route that worked for one payment might not work for the next, and the path a satoshi takes through the network might seem unpredictable. Additionally, the network is constantly changing, as balances shift, new channels are opened and old channels are closed.
 

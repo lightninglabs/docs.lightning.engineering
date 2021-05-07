@@ -200,7 +200,7 @@ Next, we will need to identify a peer to open a channel with. Ideally, a good pe
 
 We will need to obtain this peer’s public key as well as its url, IP address or onion address.
 
-\[How to identify good peers in the Lightning Network.\]
+\[[How to identify good peers in the Lightning Network.](../../the-lightning-network/routing/identify-good-peers.md)\]
 
 ### Open a channel
 

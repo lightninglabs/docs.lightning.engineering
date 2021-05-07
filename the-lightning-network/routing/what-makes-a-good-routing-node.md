@@ -28,11 +28,11 @@ Generally, large channels are better for routing, but concentrating all capital 
 
 How to allocate your capital most efficiently is one of the biggest challenges of not just a routing node, but any business. Additionally, you will need to incentivize others, either by payment or other means, to allocate capital towards your node, and not to close channels that you created with them.
 
-\[[Also read: Managing liquidity on the Lightning Network](../liquidity/manage-liquidity.md)\]
+\[[Also read: Managing liquidity on the Lightning Network](../liquidity/manage-liquidity.md).\]
 
 Routing nodes are providing a service to those sending and receiving payments. Node operators compete with each other over the payment channels that they create, but also over the fees they demand.
 
-\[Also read: How to identify good peers\]
+\[[Also read: How to identify good peers](identify-good-peers.md).\]
 
 While it is possible to score nodes, it is incredibly difficult to create a score that accurately reflects a node’s ability to effectively route payments in the Lightning Network. If such criteria was transparent and easily replicable, nodes would strive to converge to it, leaving the network homogeneous and possibly unable to function.
 

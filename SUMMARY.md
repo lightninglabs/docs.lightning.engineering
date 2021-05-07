@@ -29,6 +29,7 @@
   * [Unconfirmed Bitcoin Transactions](lightning-network-tools/lnd/unconfirmed-bitcoin-transactions.md)
   * [Macaroons](lightning-network-tools/lnd/macaroons.md)
   * [Configuring Watchtowers](lightning-network-tools/lnd/configuring-watchtowers.md)
+  * [Secure Your Lightning Network Node](lightning-network-tools/lnd/secure-your-lightning-network-node.md)
   * [Operational Safety](lightning-network-tools/lnd/safety.md)
   * [Configuring Tor](lightning-network-tools/lnd/configuring-tor.md)
   * [Debugging LND](lightning-network-tools/lnd/debugging-lnd.md)

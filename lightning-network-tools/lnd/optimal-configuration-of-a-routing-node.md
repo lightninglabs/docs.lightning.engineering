@@ -23,11 +23,17 @@ The parameters in this command are explained below:
 `CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"` This allows us to conserve memory.
 
 `--enable-cxx  
---with-zmq` ZMQ is used to stream data from bitcoind to LND.`--without-gui` We will not need the graphical interface for our setup.`--disable-shared   
+--with-zmq` ZMQ is used to stream data from bitcoind to LND.
+
+`--without-gui` We will not need the graphical interface for our setup.
+
+`--disable-shared   
 --with-pic  
 --disable-tests  
 --disable-bench  
---enable-upnp-default` UPnP allows for automatic port mapping.  
+--enable-upnp-default` UPnP allows for automatic port mapping.
+
+  
 `--disable-wallet` As we will not be using the bitcoind wallet we can disable it.
 
 The command `make -j "$(($(nproc)+1))"` might help to speed up the build on some machines compared to make.

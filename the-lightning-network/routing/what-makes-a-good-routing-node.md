@@ -16,7 +16,7 @@ Operating a good routing node does not require a highly specialized set of skill
 
 A good routing node needs to fulfill a wide range of requirements.
 
-1. Availability: A routing node needs to be available. That means it needs to be running and maintain active channels with the network. If you want to let others open channels with you, you will also need to allow for [incoming connections](https://docs.google.com/document/d/1jworM1AIA9dLvpZvrdujVHyWVIAV6PJXoQ78aZZHVfA/edit#heading=h.g8vrxgu64v6c).
+1. Availability: A routing node needs to be available. That means it needs to be running and maintain active channels with the network. If you want to let others open channels with you, you will also need to allow for [incoming connections](../../lightning-network-tools/lnd/get-started-with-lnd.md).
 2. Reliability: To ensure reliable routing, the node needs to have enough channels to other good routing nodes in the network. Private channels are not announced to the network and therefore not counted. Private channels  can present additional opportunities for routing when others open channels with them, creating what is referred to as a Gateway node.
 3. Active: Ideally, all of these channels are available and not disabled. Avoid peering publicly with non-routing nodes.
 4. Capitalization: Channels need to be well capitalized in order to efficiently route payments. That means they need to have sufficient capacity, with enough incoming and outgoing liquidity.

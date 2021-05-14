@@ -16,7 +16,7 @@ destDir="$3"
 mkdir -p "$destDir"
 
 # Copy everything from source to destination, replacing what's there.
-cp -rf "$sourceDir"/* "$destDir"
+cp -a "$sourceDir" "$destDir"
 
 # Remove the source repo that we cloned.
 rm -rf "$1"

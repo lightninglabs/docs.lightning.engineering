@@ -20,7 +20,6 @@ jobs:
       fail-fast: false
       max-parallel: 1
       matrix:
-        repo: [lnd, lightning-terminal]
         include:
           - repo: lnd
             org: lightningnetwork
@@ -42,6 +41,10 @@ jobs:
             org: lightninglabs
             src: docs
             dest: docs/pool
+          - repo: run-lnd
+            org: alexbosworth
+            src: README.md
+            dest: docs/run-lnd
 
     steps:
       - name: Checkout docs.lightning.engineering repo

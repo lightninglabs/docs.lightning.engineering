@@ -38,6 +38,7 @@
   * [LND and etcd](lightning-network-tools/lnd/etcd.md)
   * [NAT Traversal](lightning-network-tools/lnd/nat-traversal.md)
   * [Recovering Funds](lightning-network-tools/lnd/recovery.md)
+  * [Run LND](lightning-network-tools/lnd/run-lnd.md)
 * [Lightning Terminal](lightning-network-tools/lightning-terminal/README.md)
   * [Get LiT](lightning-network-tools/lightning-terminal/get-lit/README.md)
     * [Linux - Integrated Mode](lightning-network-tools/lightning-terminal/get-lit/ubuntu-integrated.md)

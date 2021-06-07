@@ -6,6 +6,8 @@ description: >-
 
 # LND
 
+{% page-ref page="get-started-with-lnd.md" %}
+
 {% page-ref page="payments.md" %}
 
 {% page-ref page="receiving.md" %}

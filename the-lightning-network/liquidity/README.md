@@ -10,5 +10,5 @@ In business, liquidity usually refers to the ability to meet short-term obligati
 
 In the context of this guide, liquidity refers to the ability to move funds, which is an important concept for routing payments in the Lightning Network. To be able to route payments, and collect routing fees, you will want your funds to be as liquid as possible, or otherwise be compensated for the illiquidity.
 
-In this article, we explore the concept of liquidity in the Lightning Network and describe ways to better manage it.
+In these articles, we explore the concept of liquidity in the Lightning Network and describe ways to better manage it.
 

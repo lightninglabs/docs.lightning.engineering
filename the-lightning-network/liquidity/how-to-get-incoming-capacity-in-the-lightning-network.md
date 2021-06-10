@@ -1,10 +1,10 @@
 ---
 description: >-
-  To receive payments in the Lightning Network, you need incoming capacity. This
+  To receive payments in the Lightning Network, you need inbound capacity. This
   article explains capacity and how you can acquire it.
 ---
 
-# How to get incoming capacity in the Lightning Network
+# How to get inbound capacity in the Lightning Network
 
 The ability to send and receive transactions in the Lightning Network depends on the existence of channels, as well as their capacity. Understanding channel mechanisms in detail is no longer a requirement to make use of the network to send and receive payments through specialized wallets, but it remains essential to effectively operate your own full node.
 
@@ -28,14 +28,14 @@ The overall capacity of this channel is now 1 million satoshis, which all belong
 
 Alice’s receiving capacity is zero, as receiving just a single satoshi would push her balance over the total capacity of the channel. Conversely, the receiving capacity of Bob is 1 million satoshis.
 
-Alice makes a payment of 300 thousand satoshis to Bob. Her balance is now 700 thousand satoshis, but the total capacity of the channel remains unchanged. That means Alice can now receive up to 300 thousand satoshis in payments until the 1M channel capacity is exhausted. We refer to these 300 thousand satoshis as Alice’s receiving capacity, local balance, or incoming capacity.
+Alice makes a payment of 300 thousand satoshis to Bob. Her balance is now 700 thousand satoshis, but the total capacity of the channel remains unchanged. That means Alice can now receive up to 300 thousand satoshis in payments until the 1M channel capacity is exhausted. We refer to these 300 thousand satoshis as Alice’s receiving capacity, local balance, or inbound capacity.
 
 On the contrary, Bob’s receiving capacity has shrunk to 700 thousand while his sending capacity has increased to 300 thousand satoshis. The total capacity of the channel will not change unless another on-chain transaction is made \(only the local and remote balance are shifting\).
 
 Alice’s remote balance = Bob’s local balance  
 Alice’s local balance = Alice’s sending capacity = Bob’s receiving capacity
 
-## Acquiring outgoing capacity
+## Acquiring outbound capacity
 
 We start with a node that has zero channels. To acquire outbound liquidity, we require Bitcoin, more precisely, a UTXO, which we use to open a channel with a good peer in the network. Ideally, this peer has perfect uptime, good connections and a good amount of capital.
 
@@ -47,31 +47,31 @@ If our node is purely for making and receiving payments, we could prefer not to 
 
 \[[Guide: How to use PBST to open a channel directly from an external wallet](../../lightning-network-tools/lnd/psbt.md)\]
 
-Now, we have outgoing capacity that can be spent and transferred through the Lightning Network. A channel typically requires the funding transaction to have three confirmations on the Blockchain to become active.
+Now, we have outbound capacity that can be spent and transferred through the Lightning Network. A channel typically requires the funding transaction to have three confirmations on the Blockchain to become active.
 
-## Acquiring incoming capacity
+## Acquiring inbound capacity
 
-We obtain outgoing capacity by opening a channel with peers in the Lightning Network, a relatively straightforward process that allows us to send Lightning payments.
+We obtain outbound capacity by opening a channel with peers in the Lightning Network, a relatively straightforward process that allows us to send Lightning payments.
 
-To be able to also receive Lightning transactions, however, we need to acquire incoming capacity. There are multiple options to do that:
+To be able to also receive Lightning transactions, however, we need to acquire inbound capacity. There are multiple options to do that:
 
 1. **Spend satoshis**
 
 The easiest and most obvious way to acquire inbound capacity is to spend our channel balance. We can use it to pay for things or exchange it for cash at an exchange that supports Lightning deposits.
 
-Any lightning payment out of our channel will translate to the equivalent in incoming capacity. That means for every satoshi we spend, we gain one satoshi in inbound capacity, until our channel is empty and the total capacity of the channel is inbound capacity.
+Any lightning payment out of our channel will translate to the equivalent in inbound capacity. That means for every satoshi we spend, we gain one satoshi in inbound capacity, until our channel is empty and the total capacity of the channel is inbound capacity.
 
-If you are using Lightning to send and receive payments, this single channel might be all you need to participate in the Lightning Network. But, your Lightning channel balance will not be able to exceed the capacity of your channel. If you want to receive more satoshis, you will have to increase your incoming capacity further.
+If you are using Lightning to send and receive payments, this single channel might be all you need to participate in the Lightning Network. But, your Lightning channel balance will not be able to exceed the capacity of your channel. If you want to receive more satoshis, you will have to increase your inbound capacity further.
 
 1. **Loop Out**
 
-Using Loop Out, you can easily increase the incoming capacity of your node beyond your initial capital. Lightning Loop is a marketplace that allows users to engage in Submarine Swaps. Generally, Submarine Swaps allow the exchange of two assets in a way that makes two transactions conditional on each other. Transaction A and B will either execute together, or not execute at all. This allows for two transactions to be swapped in a trustless way, reducing due diligence costs and removing the need for external enforcement of contracts.
+Using Loop Out, you can easily increase the inbound capacity of your node beyond your initial capital. Lightning Loop is a marketplace that allows users to engage in Submarine Swaps. Generally, Submarine Swaps allow the exchange of two assets in a way that makes two transactions conditional on each other. Transaction A and B will either execute together, or not execute at all. This allows for two transactions to be swapped in a trustless way, reducing due diligence costs and removing the need for external enforcement of contracts.
 
-In the context of acquiring inbound capacity, we will be performing a swap between an outgoing Lightning transaction and an incoming on-chain transaction. Our existing channel balance will limit the size of the Loop transaction. As each channel needs to maintain a small reserve, we might decide on spending about 80-90% of our channel balance on this Submarine Swap.
+In the context of acquiring inbound capacity, we will be performing a swap between an outbound Lightning transaction and an inbound on-chain transaction. Our existing channel balance will limit the size of the Loop transaction. As each channel needs to maintain a small reserve, we might decide on spending about 80-90% of our channel balance on this Submarine Swap.
 
 Once we have made our Lightning transaction to Loop, we should receive our balance back in the form of an on-chain transaction minus fees. We can use this new UTXO to open a second channel with a different node in the network.
 
-As a result,we still have our original capital \(minus fees\), but about 80-90% more total capacity between our two channels. And, about 40-45% of our total channel capacity is now available for receiving Lightning payments.
+As a result, we still have our original capital \(minus fees\), but about 80-90% more total capacity between our two channels. And, about 40-45% of our total channel capacity is now available for receiving Lightning payments.
 
 1. **Buy a channel on Pool**
 

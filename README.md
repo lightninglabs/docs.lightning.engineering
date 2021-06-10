@@ -7,6 +7,8 @@ description: >-
 
 # Welcome to the Builder's Guide to the LND Galaxy!
 
+
+
 Start here if the terms "payment channel" and "hash time-locked contract" are foreign to you.
 
 {% page-ref page="lightning-network-tools/lnd/" %}

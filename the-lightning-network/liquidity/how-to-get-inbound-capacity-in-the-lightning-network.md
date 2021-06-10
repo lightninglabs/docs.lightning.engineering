@@ -1,20 +1,20 @@
 ---
 description: >-
-  To receive payments in the Lightning Network, you need inbound capacity. This
+  To receive payments on the Lightning Network, you need inbound capacity. This
   article explains capacity and how you can acquire it.
 ---
 
-# How to get inbound capacity in the Lightning Network
+# How to get inbound capacity on the Lightning Network
 
-The ability to send and receive transactions in the Lightning Network depends on the existence of channels, as well as their capacity. Understanding channel mechanisms in detail is no longer a requirement to make use of the network to send and receive payments through specialized wallets, but it remains essential to effectively operate your own full node.
+The ability to send and receive transactions on the Lightning Network depends on the existence of channels, as well as their capacity. Understanding channel mechanisms in detail is no longer a requirement to make use of the network to send and receive payments through specialized wallets, but it remains essential to effectively operate your own full node.
 
-## Capacity in the Lightning Network
+## Capacity on the Lightning Network
 
 Bitcoin exists in the form of UTXOs, meaning unspent transaction outputs. Each of these UTXOs has an amount, typically expressed in BTC, bitcoin, SAT or satoshi. 100 million satoshis \(SAT\) equals 1 bitcoin \(BTC\).
 
 When making a Bitcoin transaction, you can only spend up to the total sum of all UTXOs for which you have the key, but there are no limitations on how many UTXOs you can receive. Each UTXO you receive can be as large as needed and as small as the minimum relay size, called the Dust Limit.
 
-In the Lightning Network, each channel is such a UTXO held in a 2-of-2 multi-signature contract between two parties. The value of the UTXO defines the channel capacity, the largest possible payment that can be handled by this channel.
+On the Lightning Network, each channel is such a UTXO held in a 2-of-2 multi-signature contract between two parties. The value of the UTXO defines the channel capacity, the largest possible payment that can be handled by this channel.
 
 The capacity of the channel not only limits the size of each payment through the channel, but also the balance held by either party in the channel.
 
@@ -37,9 +37,9 @@ Alice’s local balance = Alice’s sending capacity = Bob’s receiving capacit
 
 ## Acquiring outbound capacity
 
-We start with a node that has zero channels. To acquire outbound liquidity, we require Bitcoin, more precisely, a UTXO, which we use to open a channel with a good peer in the network. Ideally, this peer has perfect uptime, good connections and a good amount of capital.
+We start with a node that has zero channels. To acquire outbound liquidity, we require Bitcoin, more precisely, a UTXO, which we use to open a channel with a good peer on the network. Ideally, this peer has perfect uptime, good connections and a good amount of capital.
 
-\[[Guide: How to identify good peers in the Lightning Network.](../routing/identify-good-peers.md)\]
+\[[Guide: How to identify good peers on the Lightning Network.](../routing/identify-good-peers.md)\]
 
 We can open a channel with the command `lncli openchannel [node key] local-amt`. Optionally, we can set a target for how quick we want the channel to be ready by specifying `--conf_target` or set the fee manually with `--sat_per_byte`.
 
@@ -51,7 +51,7 @@ Now, we have outbound capacity that can be spent and transferred through the Lig
 
 ## Acquiring inbound capacity
 
-We obtain outbound capacity by opening a channel with peers in the Lightning Network, a relatively straightforward process that allows us to send Lightning payments.
+We obtain outbound capacity by opening a channel with peers on the Lightning Network, a relatively straightforward process that allows us to send Lightning payments.
 
 To be able to also receive Lightning transactions, however, we need to acquire inbound capacity. There are multiple options to do that:
 
@@ -61,7 +61,7 @@ The easiest and most obvious way to acquire inbound capacity is to spend our cha
 
 Any lightning payment out of our channel will translate to the equivalent in inbound capacity. That means for every satoshi we spend, we gain one satoshi in inbound capacity, until our channel is empty and the total capacity of the channel is inbound capacity.
 
-If you are using Lightning to send and receive payments, this single channel might be all you need to participate in the Lightning Network. But, your Lightning channel balance will not be able to exceed the capacity of your channel. If you want to receive more satoshis, you will have to increase your inbound capacity further.
+If you are using Lightning to send and receive payments, this single channel might be all you need to participate on the Lightning Network. But, your Lightning channel balance will not be able to exceed the capacity of your channel. If you want to receive more satoshis, you will have to increase your inbound capacity further.
 
 1. **Loop Out**
 

@@ -10,15 +10,15 @@ We assume you already have a basic understanding of the Lightning Network, LND n
 * [View Loop History](walkthrough.md#view-loop-history)
 * [Manage UI Settings](walkthrough.md#manage-ui-settings)
 
-## What is Loop?
+## What is [Loop](https://lightning.engineering/loop)?
 
-**Lightning Loop** is a non-custodial service offered by [Lightning Labs](https://lightning.engineering/) to move funds in and out of the Lightning Network from the Bitcoin blockchain. This allows you to easily alter the balances of your channels without needing to close and reopen them, which extends the lifetime of your channels. It also enables operations from multiple nodes to be _batched_ as well, which reduces the fees you need to pay.
+\*\*\*\*[**Lightning Loop**](https://lightning.engineering/loop) is a non-custodial service offered by [Lightning Labs](https://lightning.engineering/) to move funds in and out of the Lightning Network from the Bitcoin blockchain. This allows you to easily alter the balances of your channels without needing to close and reopen them, which extends the lifetime of your channels. It also enables operations from multiple nodes to be _batched_ as well, which reduces the fees you need to pay.
 
 Refer to the Loop daemon [documentation](https://github.com/lightninglabs/loop/blob/master/README.md) for a more detailed explanation.
 
 ### Terminology
 
-* **Loop Out**: transfer funds from the local balance of one or more Lightning channels to
+* \*\*\*\*[**Loop**](https://lightning.engineering/loop) **Out**: transfer funds from the local balance of one or more Lightning channels to
 
   your on-chain Bitcoin wallet to...
 
@@ -26,7 +26,7 @@ Refer to the Loop daemon [documentation](https://github.com/lightninglabs/loop/b
   * deposit funds to a Bitcoin on-chain address without closing active channels
   * pay to on-chain fallback addresses in the case of insufficient route liquidity
 
-* **Loop In**: transfer funds from your on-chain Bitcoin wallet to the local balance of
+* \*\*\*\*[**Loop**](https://lightning.engineering/loop) **In**: transfer funds from your on-chain Bitcoin wallet to the local balance of
 
   one or more of your Lightning channels to...
 
@@ -41,7 +41,7 @@ Refer to the Loop daemon [documentation](https://github.com/lightninglabs/loop/b
 
 * **Swap**: a single instance of a transfer between your off-chain and on-chain balances,
 
-  which can be either a Loop Out or Loop In
+  which can be either a [Loop](https://lightning.engineering/loop) Out or [Loop](https://lightning.engineering/loop) In
 
 ## Visual Overview
 
@@ -54,7 +54,7 @@ Here is an overview of what is displayed on screen after you first log in to the
 
    | Page | Description |
    | :--- | :--- |
-   | Lightning Loop | displays a list of all of your channels and allows you to perform swaps |
+   | Lightning [Loop](https://lightning.engineering/loop) | displays a list of all of your channels and allows you to perform swaps |
    | History | displays a list of all of your past swaps |
    | Settings | change settings to customize the dashboard UI as well as view node info. |
 
@@ -96,7 +96,7 @@ Follow the steps below to perform a swap via the Lightning Terminal.
 
    If you choose more than one channel, there's no guarantee how funds will be split amongst the channels. `lnd` will use its knowledge of the network to determine how best to split up the payment, if necessary. It's possible that only one of the channels will be used if the payment can be successfully routed through a single channel.
 
-   If no channels are specified, Lightning Loop will automatically select channels according to its own optimization algorithm.
+   If no channels are specified, [Lightning Loop](https://lightning.engineering/loop) will automatically select channels according to its own optimization algorithm.
 
 2. Click on either the **Loop Out** or **Loop In** buttons depending on whether you want to transfer funds in or out of the Lightning Network.
 
@@ -104,7 +104,7 @@ Follow the steps below to perform a swap via the Lightning Terminal.
 
 ![swap3](../../.gitbook/assets/swap3.png)
 
-1. Drag the slider to adjust the amount you want to swap. The Loop server will vary the
+1. Drag the slider to adjust the amount you want to swap. The [Loop](https://lightning.engineering/loop) server will vary the
 
    maximum you can swap based on the terms set by Lightning Labs as well as by the amount
 
@@ -115,9 +115,9 @@ Follow the steps below to perform a swap via the Lightning Terminal.
 
 ![swap4](../../.gitbook/assets/swap4.png)
 
-1. Review the Loop amount and the fee. Keep in mind that you will only be charged the fee.
+1. Review the [Loop](https://lightning.engineering/loop) amount and the fee. Keep in mind that you will only be charged the fee.
 
-   The Loop amount will remain on your node once the swap completes. The balance will just
+   The [Loop](https://lightning.engineering/loop) amount will remain on your node once the swap completes. The balance will just
 
    be shifted between your on-chain and Lightning balances.
 

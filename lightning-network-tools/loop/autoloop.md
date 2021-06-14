@@ -1,6 +1,6 @@
 # Autoloop
 
-The loop client contains functionality to dispatch loop out swaps automatically, according to a set of rules configured for your node's channels, within a budget of your choosing.
+The [loop](https://lightning.engineering/loop) client contains functionality to dispatch loop out swaps automatically, according to a set of rules configured for your node's channels, within a budget of your choosing.
 
 The autoloop functionality is disabled by default, and can be enabled using the following command:
 
@@ -92,7 +92,7 @@ loop setparams --maxprepay={limit in satoshis}
 
 ### Off-Chain Fees
 
-The loop client dispatches two off-chain payments to the loop server - one for the swap prepayment, and one for the swap itself. The amount that the client will pay in off-chain fees for each of these payments can be limited to a percentage of the payment amount using the following commands:
+The [loop](https://lightning.engineering/loop) client dispatches two off-chain payments to the loop server - one for the swap prepayment, and one for the swap itself. The amount that the client will pay in off-chain fees for each of these payments can be limited to a percentage of the payment amount using the following commands:
 
 Prepayment routing fees:
 

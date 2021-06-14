@@ -63,21 +63,21 @@ Any lightning payment out of our channel will translate to the equivalent in inb
 
 If you are using Lightning to send and receive payments, this single channel might be all you need to participate on the Lightning Network. But, your Lightning channel balance will not be able to exceed the capacity of your channel. If you want to receive more satoshis, you will have to increase your inbound capacity further.
 
-1. **Loop Out**
+1. [**Loop Out**](https://github.com/lightninglabs/loop)\*\*\*\*
 
-Using Loop Out, you can easily increase the inbound capacity of your node beyond your initial capital. Lightning Loop is a marketplace that allows users to engage in Submarine Swaps. Generally, Submarine Swaps allow the exchange of two assets in a way that makes two transactions conditional on each other. Transaction A and B will either execute together, or not execute at all. This allows for two transactions to be swapped in a trustless way, reducing due diligence costs and removing the need for external enforcement of contracts.
+Using [Loop Out](https://github.com/lightninglabs/loop), you can easily increase the inbound capacity of your node beyond your initial capital. [Lightning Loop](https://github.com/lightninglabs/loop) is a marketplace that allows users to engage in Submarine Swaps. Generally, Submarine Swaps allow the exchange of two assets in a way that makes two transactions conditional on each other. Transaction A and B will either execute together, or not execute at all. This allows for two transactions to be swapped in a trustless way, reducing due diligence costs and removing the need for external enforcement of contracts.
 
-In the context of acquiring inbound capacity, we will be performing a swap between an outbound Lightning transaction and an inbound on-chain transaction. Our existing channel balance will limit the size of the Loop transaction. As each channel needs to maintain a small reserve, we might decide on spending about 80-90% of our channel balance on this Submarine Swap.
+In the context of acquiring inbound capacity, we will be performing a swap between an outbound Lightning transaction and an inbound on-chain transaction. Our existing channel balance will limit the size of the [Loop](https://github.com/lightninglabs/loop) transaction. As each channel needs to maintain a small reserve, we might decide on spending about 80-90% of our channel balance on this Submarine Swap.
 
-Once we have made our Lightning transaction to Loop, we should receive our balance back in the form of an on-chain transaction minus fees. We can use this new UTXO to open a second channel with a different node in the network.
+Once we have made our Lightning transaction to [Loop](https://github.com/lightninglabs/loop), we should receive our balance back in the form of an on-chain transaction minus fees. We can use this new UTXO to open a second channel with a different node in the network.
 
 As a result, we still have our original capital \(minus fees\), but about 80-90% more total capacity between our two channels. And, about 40-45% of our total channel capacity is now available for receiving Lightning payments.
 
-1. **Buy a channel on Pool**
+1. **Buy a channel on** [**Pool**](https://github.com/lightninglabs/pool/releases)\*\*\*\*
 
-We can also acquire inbound capacity by signaling a need for it and incentivizing others to open channels with us using their capital. Lightning Pool, a marketplace where bidders can pay well capitalized and connected nodes to open channels with them, allows us to do that. These nodes are compensated for opening these channels and commit to maintaining these channels for a specified period of time.
+We can also acquire inbound capacity by signaling a need for it and incentivizing others to open channels with us using their capital. Lightning [Pool](https://github.com/lightninglabs/pool/releases), a marketplace where bidders can pay well capitalized and connected nodes to open channels with them, allows us to do that. These nodes are compensated for opening these channels and commit to maintaining these channels for a specified period of time.
 
-Lightning Pool is a convenient way of acquiring large amounts of inbound liquidity quickly. It is the option of choice for node operators that depend on being able to receive Lightning transactions seamlessly, especially from a large group of users that might make deposits or payments.
+Lightning [Pool](https://github.com/lightninglabs/pool/releases) is a convenient way of acquiring large amounts of inbound liquidity quickly. It is the option of choice for node operators that depend on being able to receive Lightning transactions seamlessly, especially from a large group of users that might make deposits or payments.
 
 ## Channel fees
 

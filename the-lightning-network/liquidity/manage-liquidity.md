@@ -154,25 +154,25 @@ As you spend satoshis on the Lightning Network, your local balance becomes your 
 
 #### Signalling a need
 
-You can convince others to open a channel with you by signalling a need for inbound capacity. Other routing nodes might be enticed by the outlook of routing payments to you, and collecting these routing fees. If you are a merchant, it might be well worth publicizing your need for inbound liquidity. You may also use marked-based tools to signal your need for incoming capacity, such as Pool, as explained below.
+You can convince others to open a channel with you by signalling a need for inbound capacity. Other routing nodes might be enticed by the outlook of routing payments to you, and collecting these routing fees. If you are a merchant, it might be well worth publicizing your need for inbound liquidity. You may also use marked-based tools to signal your need for incoming capacity, such as [Pool](https://lightning.engineering/pool), as explained below.
 
-#### Loop Out
+#### [Loop Out](https://lightning.engineering/loop)
 
-Loop is a service that allows you to make a Lightning payment to a on-chain address, or make an on-chain Bitcoin payment to refill your channels. Loop Out is useful for sending earnings from your channels to cold storage or refilling your channels without the need to open new channels.
+[Loop](https://lightning.engineering/loop) is a service that allows you to make a Lightning payment to a on-chain address, or make an on-chain Bitcoin payment to refill your channels. [Loop ](https://lightning.engineering/loop)Out is useful for sending earnings from your channels to cold storage or refilling your channels without the need to open new channels.
 
-In the context of inbound capacity, Loop Out can be used to empty your Lightning channel into a bitcoin address, then using that new UTXO to open a new channel. After two channel openings you are left with both inbound and outbound capacity, and the ability to route payments.
+In the context of inbound capacity, [Loop](https://lightning.engineering/loop) Out can be used to empty your Lightning channel into a bitcoin address, then using that new UTXO to open a new channel. After two channel openings you are left with both inbound and outbound capacity, and the ability to route payments.
 
 {% page-ref page="../../lightning-network-tools/loop/" %}
 
-#### Pay for incoming capacity with Pool
+#### Pay for incoming capacity with [Pool](https://lightning.engineering/pool)
 
-Pool is a non-custodial, peer-to-peer marketplace for Lightning node operators to buy and sell channels. You can use Pool to have others to open channels with you and acquire inbound capacity, or collect fees to open channels with others.
+[Pool](https://lightning.engineering/pool) is a non-custodial, peer-to-peer marketplace for Lightning node operators to buy and sell channels. You can use [Pool](https://lightning.engineering/pool) to have others to open channels with you and acquire inbound capacity, or collect fees to open channels with others.
 
 ### Monitor your channels with Faraday
 
 Faraday is a tool to help you identify non-productive channels and more efficiently allocate capital. It comes bundled with [Lightning Terminal](../../lightning-network-tools/lightning-terminal/) and can be installed separately either on the same machine as your node, or in a remote location.
 
-Using the command `frcli revenue` we can obtain a revenue report for our channels. For each channel you can view how many satoshis have been routed inbound or outbound. If there is a significant imbalance, the channel has been drained and might need to be replenished, either through an incoming transaction, e.g. through Loop In, or by rebalancing with another channel.
+Using the command `frcli revenue` we can obtain a revenue report for our channels. For each channel you can view how many satoshis have been routed inbound or outbound. If there is a significant imbalance, the channel has been drained and might need to be replenished, either through an incoming transaction, e.g. through [Loop](https://lightning.engineering/loop) In, or by rebalancing with another channel.
 
 The parameter `fees_incoming_msat` might also help you identify channels that contribute to your routing earnings, and which channels see little activity. The report is generated for each channel pair, giving you detailed insights into how funds are flowing through your node. The report can be narrowed down to an individual channel and a limited time frame.
 

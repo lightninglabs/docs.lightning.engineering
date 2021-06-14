@@ -217,7 +217,7 @@ Such a command could look like this:
 
 Once our channel has at least three confirmations on the network it becomes active and we can make payments through it. To make a payment, we will need to obtain a lightning invoice, which we can pay with the command `lncli payinvoice <lightning invoice>`.
 
-As soon as we make some outgoing payments and our channel balance empties, our outgoing capacity becomes incoming capacity and we are able to receive payments as well. There are other ways to get incoming capacity, too, such as Loop and Pool.
+As soon as we make some outgoing payments and our channel balance empties, our outgoing capacity becomes incoming capacity and we are able to receive payments as well. There are other ways to get incoming capacity, too, such as [Loop](https://lightning.engineering/loop) and [Pool](https://lightning.engineering/pool).
 
 \[Learn to get incoming liquidity.\]
 

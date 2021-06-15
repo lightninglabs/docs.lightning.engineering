@@ -47,7 +47,7 @@ Refer to the Loop daemon [documentation](https://github.com/lightninglabs/loop/b
 
 Here is an overview of what is displayed on screen after you first log in to the dashboard.
 
-![loop](../../.gitbook/assets/loop%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![loop](../../.gitbook/assets/loop%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
 1. The confirmed balances on the Lightning Network and on-chain
 2. The navigation menu containing links to the different screens
@@ -169,7 +169,7 @@ The **Loop History** page displays a chronological list of all the swaps that ha
 
 ## Manage UI Settings
 
-![settings](../../.gitbook/assets/settings%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![settings](../../.gitbook/assets/settings%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
 The **Settings** page allows you to configure UI settings and view some basic node information.
 

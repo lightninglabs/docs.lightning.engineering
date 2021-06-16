@@ -33,6 +33,8 @@ Your own node’s capitalization depends on your personal needs. If you primaril
 
 To receive payments over the Lightning Network, your node does not need to carry much of its own capital. It does however need to have enough inbound liquidity to receive payments from the network.
 
+\[[Learn how to get incoming capacity.](https://docs.lightning.engineering/the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network)\]
+
 The overall capacity of a node is easy to assess, the quality of that capacity however is not. It is also not easy to tell whether this capital is held in the form of incoming or outgoing capacity.
 
 You can use the command `lncli getnodeinfo <node public key>` to probe a node’s capacity and number of channels or inspect a node on the web.

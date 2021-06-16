@@ -219,5 +219,5 @@ Once our channel has at least three confirmations on the network it becomes acti
 
 As soon as we make some outgoing payments and our channel balance empties, our outgoing capacity becomes incoming capacity and we are able to receive payments as well. There are other ways to get incoming capacity, too, such as [Loop](https://lightning.engineering/loop) and [Pool](https://lightning.engineering/pool).
 
-\[Learn to get incoming liquidity.\]
+\[[Learn to get incoming liquidity.](https://docs.lightning.engineering/the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network)\]
 

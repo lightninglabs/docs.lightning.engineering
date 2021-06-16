@@ -47,7 +47,7 @@ Refer to the Loop daemon [documentation](https://github.com/lightninglabs/loop/b
 
 Here is an overview of what is displayed on screen after you first log in to the dashboard.
 
-![loop](../../.gitbook/assets/loop%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![loop](../../.gitbook/assets/loop%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
 1. The confirmed balances on the Lightning Network and on-chain
 2. The navigation menu containing links to the different screens

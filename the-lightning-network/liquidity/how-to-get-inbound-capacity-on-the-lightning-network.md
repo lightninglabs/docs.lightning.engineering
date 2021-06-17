@@ -20,20 +20,20 @@ The capacity of the channel not only limits the size of each payment through the
 
 When a channel is opened, the party opening the channel typically defines its overall capacity and initially contributes this capacity as their own capital to the channel. However, the other party may communicate limits, such as a minimum channel size, before the channel is opened.
 
-### Total capacity, local and remote balance
+### Total, inbound, and outbound capacity
 
 Let’s consider Alice, who has 1 million satoshis in her wallet. She wants to open a channel with Bob. Using the command `lncli openchannel 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d 1000000` she opens a channel with Bob for her entire balance.
 
-The overall capacity of this channel is now 1 million satoshis, which all belong to Alice, for the time being. Her sending capacity is now 1 million satoshis, as sending more than 1 million satoshis would exceed her balance. Alice can send her balance out in one transaction or in up to 1 million transactions.
+The overall capacity of this channel is now 1 million satoshis, which all belong to Alice, for the time being. Her sending or outbound capacity is now 1 million satoshis, as sending more than 1 million satoshis would exceed her balance. Alice can send her balance out in one transaction or in up to 1 million transactions.
 
-Alice’s receiving capacity is zero, as receiving just a single satoshi would push her balance over the total capacity of the channel. Conversely, the receiving capacity of Bob is 1 million satoshis.
+Alice’s inbound or receiving capacity is zero, as receiving just a single satoshi would push her balance over the total capacity of the channel. Conversely, the inbound capacity for Bob is 1 million satoshis.
 
-Alice makes a payment of 300 thousand satoshis to Bob. Her balance is now 700 thousand satoshis, but the total capacity of the channel remains unchanged. That means Alice can now receive up to 300 thousand satoshis in payments until the 1M channel capacity is exhausted. We refer to these 300 thousand satoshis as Alice’s receiving capacity, local balance, or inbound capacity.
+Alice makes a payment of 300,000 satoshis to Bob. Her balance is now 700,000 satoshis, but the total capacity of the channel remains unchanged. That means Alice can now receive up to 300,000 satoshis in payments until the 1M channel capacity is exhausted. We refer to these 300,000 satoshis as Alice’s inbound capacity.
 
-On the contrary, Bob’s receiving capacity has shrunk to 700 thousand while his sending capacity has increased to 300 thousand satoshis. The total capacity of the channel will not change unless another on-chain transaction is made \(only the local and remote balance are shifting\).
+On the contrary, Bob’s inbound capacity has shrunk to 700,000 while his outbound capacity has increased to 300,000 satoshis. The total capacity of the channel will not change unless another on-chain transaction is made \(only the inbound and outbound capacity are shifting\).
 
-Alice’s remote balance = Bob’s local balance  
-Alice’s local balance = Alice’s sending capacity = Bob’s receiving capacity
+Alice’s inbound capacity = Bob’s outbound capacity  
+Alice’s outbound capacity = Bob's inbound capacity
 
 ## Acquiring outbound capacity
 

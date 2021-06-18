@@ -14,6 +14,7 @@
 * [Multihop Payments](the-lightning-network/multihop-payments/README.md)
   * [Multipath Payments \(MPP\)](the-lightning-network/multihop-payments/multipath-payments-mpp.md)
 * [Liquidity](the-lightning-network/liquidity/README.md)
+  * [Understanding Liquidity](the-lightning-network/liquidity/understanding-liquidity.md)
   * [Managing Liquidity on the Lightning Network](the-lightning-network/liquidity/manage-liquidity.md)
   * [How to get inbound capacity on the Lightning Network](the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network.md)
 * [Routing](the-lightning-network/routing/README.md)

@@ -6,13 +6,13 @@ description: >-
 
 # Understanding Liquidity
 
-In the context of the Lightning Network, liquidity refers to the ability to move your own funds along with other people’s funds. Correctly defining and [managing liquidity](manage-liquidity.md) can be complex on the Lightning Network, but this complexity is rewarded by the more fluid movement of value in comparison to other systems or networks.
+In the context of the Lightning Network, liquidity refers to the ability to move funds between participants on the network. Correctly defining and [managing liquidity](manage-liquidity.md) can be complex on the Lightning Network, but this complexity is rewarded by the more fluid movement of value in comparison to other systems or networks.
 
 The same satoshis held in our node may both provide liquidity to us while simultaneously consuming the liquidity of others \(or vice versa\). In general, we should expect to be compensated for providing liquidity while paying others to provide us with liquidity. Such arrangements should be mutually beneficial. But, one of the biggest challenges of the Lightning Network is appropriately pricing liquidity and building a reliable and efficient market around it.
 
 ## On-chain liquidity
 
-The liquidity of on-chain bitcoin is likely the easiest to understand. An on-chain bitcoin transaction can be moved at any time for a predictable, but varying fee. Paying this fee does not guarantee the inclusion in a block, but rather represents a bid in a perpetual auctioning process in which miners pick the highest fee paying ~2MB worth of transactions from the mempool. They are included in a block, which are created on average every 10 minutes.
+The liquidity of on-chain bitcoin is likely the easiest to understand. An on-chain bitcoin transaction can be moved at any time for a predictable, but varying fee. This proposed fee does not guarantee the inclusion in a block, but rather represents a bid in a perpetual auctioning process in which miners pick the highest fee paying ~2MB worth of transactions from the mempool. They are included in a block, which are created on average every 10 minutes.
 
 Some on-chain transactions, such as unilateral channel closures \(also called force closes\), have their own unique liquidity properties. Typically, the party initiating the force close will have to wait to spend their bitcoin, while the other side can spend their funds immediately. The length of the waiting period is defined when the channel is opened. It can range from just a day to a few weeks.
 
@@ -26,13 +26,13 @@ Based on that decision, our liquidity needs will differ. In some ways, the conce
 
 ### Payments
 
-For someone primarily using the Lightning Network to make payments, liquidity is largely a matter of whether funds are held in well-connected channels. Depending on the nature of these payments, it might make sense to open a channel with the entity you are most frequently transacting with or [identify a good routing node](../routing/identify-good-peers.md) that can reach these counterparties.
+For someone primarily using the Lightning Network to make payments, liquidity is largely a matter of whether funds are held in well-connected channels. Depending on the nature of those payments, it might make sense to open a channel with the entity you are most frequently transacting with or to [identify a good routing node](../routing/identify-good-peers.md) that can reach those counterparties.
 
-It might make sense to only open fewer, larger channels rather than spreading your funds across multiple smaller peers. But, on the other hand, if you concentrate all funds in a single channel, your satoshis could be at risk of temporarily becoming illiquid if your peer goes offline or a channel is closed.
+It might also make sense to only open fewer, larger channels rather than spreading your funds across multiple smaller peers. But, on the other hand, if you concentrate all funds in a single channel, your satoshis could be at risk of temporarily becoming illiquid if your peer goes offline or a channel is closed.
 
 For a node that is solely used for making payments, it may be appropriate to open private channels, e.g. channels that are not announced to the network and therefore cannot be used for routing.
 
-At times your channels will need to be replenished. It might be most cost effective to fill your channels directly via the Lightning Network, for example by earning satoshis or withdrawing BTC from exchanges using Lightning.
+At times, your channels will need to be replenished. It might be most cost effective to fill your channels directly via the Lightning Network, for example by earning satoshis or withdrawing BTC from exchanges using Lightning.
 
 Alternatively, [Lightning Loop](https://lightning.engineering/loop/) is a service that allows you to send on-chain Bitcoin directly into a Lightning channel \(Loop In\). [Loop](../../lightning-network-tools/loop/) can help manage channel liquidity for those using Lightning for payments by allowing them to stay connected to the network, instead of requiring them to open new channels.
 
@@ -48,7 +48,7 @@ Similar to above, it may be advantageous to empty out existing channels rather t
 
 ### Routing liquidity
 
-A routing node is providing liquidity to others, and as such is required to have both inbound and outbound capacity. In the context of a routing node, the concept of liquidity can be difficult to assess.
+A routing node is providing liquidity to others and, as such, is required to have both inbound and outbound capacity. In the context of a routing node, the concept of liquidity can be difficult to assess.
 
 Ideally, each channel will have some inbound and some outbound capacity with each large enough for a reasonably large payment. This means each channel should have a minimal inbound and outbound capacity in order to be able to route payments at any time.
 
@@ -56,7 +56,7 @@ There needs to be some mechanisms, automated or manual, to analyze the capacity 
 
 Private channels are another consideration. A routing node will primarily have public channels that can be used for routing payments, but it may also accept private channels from others who primarily use the Lightning Network to make and receive payments.
 
-Satoshis held in such private channels with mobile nodes are liquid from the perspective of the private node, as it can come online to send or receive payments. The routing node however will find its satoshis highly illiquid inside of these private channels, and satoshis held in these channels should not be counted towards the sending and receiving capacity of a node. It only has the option to force-close the channel, or wait until the peer comes online for a cooperative close.
+Satoshis held in such private channels with mobile nodes are liquid from the perspective of the private node as it can come online to send or receive payments. The routing node, however, will find its satoshis highly illiquid inside of these private channels, and satoshis held in these channels should not be counted towards the sending and receiving capacity of a node. It only has the option to force-close the channel or wait until the peer comes online for a cooperative close.
 
 Such private channels however can be a great source of routing income, especially when the peer both spends and receives regularly.
 

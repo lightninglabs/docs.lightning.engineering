@@ -30,6 +30,8 @@ description: >-
 
 {% page-ref page="nat-traversal.md" %}
 
+{% page-ref page="recovery-planning-for-failure.md" %}
+
 {% page-ref page="recovery.md" %}
 
 

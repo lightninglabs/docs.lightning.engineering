@@ -39,6 +39,7 @@
   * [Fuzzing LND](lightning-network-tools/lnd/fuzz.md)
   * [LND and etcd](lightning-network-tools/lnd/etcd.md)
   * [NAT Traversal](lightning-network-tools/lnd/nat-traversal.md)
+  * [Recovery: Planning for failure](lightning-network-tools/lnd/recovery-planning-for-failure.md)
   * [Recovering Funds](lightning-network-tools/lnd/recovery.md)
   * [Run LND](lightning-network-tools/lnd/run-lnd.md)
 * [Lightning Terminal](lightning-network-tools/lightning-terminal/README.md)

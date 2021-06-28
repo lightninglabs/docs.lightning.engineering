@@ -8,6 +8,8 @@ description: >-
 
 This overview assumes basic knowledge of Bitcoin mechanics. If terms like “UTXO” and “locktime” are unfamiliar to you, you should refer to the [Bitcoin developer guide](https://bitcoin.org/en/developer-guide), which serves a similar purpose.
 
+{% page-ref page="../../community-resources/faq.md" %}
+
 ![](../../.gitbook/assets/image.png)
 
 The Lightning Network scales blockchains and enables trustless instant payments by keeping most transactions off-chain and leveraging the security of the underlying blockchain as an arbitration layer.

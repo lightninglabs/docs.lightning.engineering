@@ -58,7 +58,7 @@ Generally, if we have a channel with a peer that we don’t expect to come back 
 
 \[[Manage liquidity in the Lightning Network.](../../the-lightning-network/liquidity/manage-liquidity.md)\]
 
-## Be \#craeful not \#reckless
+## Be \#careful not \#reckless
 
 The Lightning Network offers a multitude of options to recover from failure. LND continues to improve and eliminate bugs that might lead to a fatal node failure. If you encounter a bug, [file an issue](https://github.com/lightningnetwork/lnd/issues/) or contact us through[ Slack](https://lightning.engineering/slack.html),[ Discord](https://discord.gg/9u83Jxeu), and[ Twitter](http://twitter.com/lightning)!
 

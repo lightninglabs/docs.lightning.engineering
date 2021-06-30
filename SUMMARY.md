@@ -53,6 +53,8 @@
   * [Walkthrough](lightning-network-tools/lightning-terminal/walkthrough.md)
   * [Next Steps](lightning-network-tools/lightning-terminal/next-steps.md)
 * [Loop](lightning-network-tools/loop/README.md)
+  * [Get started](lightning-network-tools/loop/get-started.md)
+  * [The Loop CLI](lightning-network-tools/loop/the-loop-cli.md)
   * [Autoloop](lightning-network-tools/loop/autoloop.md)
 
 ## LAPPs

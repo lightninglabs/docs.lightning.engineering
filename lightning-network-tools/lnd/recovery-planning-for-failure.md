@@ -28,7 +28,7 @@ If you decide to deploy your Lightning node in the cloud, choose a reputable pro
 
 ## aezeed
 
-The key to your Lightning node is generated with lncli create when you first start up your node. This seed phrase consists of 24 English words and can be used to derive your node’s public key as well as the Bitcoin private keys of all your on-chain funds. Using only this key, you will be able to recover all on-chain funds in your LND wallet as well as all funds from channels your peers force close on you after your node goes offline.
+The key to your Lightning node is generated with `lncli create` when you first start up your node. This seed phrase consists of 24 English words and can be used to derive your node’s public key as well as the Bitcoin private keys of all your on-chain funds. Using only this key, you will be able to recover all on-chain funds in your LND wallet as well as all funds from channels your peers force close on you after your node goes offline.
 
 **Keep your aezeed securely backed up, ideally on a piece of paper or in encrypted storage, for example in your password manager.**
 

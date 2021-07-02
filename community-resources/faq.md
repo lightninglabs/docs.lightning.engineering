@@ -64,3 +64,7 @@ You can observe the Lightning Network graph from your own node. This will give y
 
 To perform a Lightning Network transaction, both peers as well as all routing nodes in between need to be online. For mobile wallets, this often requires keeping the wallet running until the payment is settled, after which the application or device can be turned off. From a safety perspective it is not important to keep a Lightning wallet permanently connected to the internet.
 
+## Unanswered questions?
+
+Still have questions? [You may submit your questions about the Lightning Network here](https://docs.google.com/forms/d/e/1FAIpQLSf1NQWyP_S_KjAHXQbRjVKPHwPm87xp1Ds94scjOhBYy_MJmA/viewform).
+

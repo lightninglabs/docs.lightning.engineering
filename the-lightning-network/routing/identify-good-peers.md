@@ -72,7 +72,7 @@ Good peers offer competitive fees and more importantly, keep these fees stable o
 
 Alternatively you can probe the entire graph with the command `lncli describegraph`. This will return all channels and their policies across the entire network.
 
-\[The full guide to channel fees\]
+\[[The full guide to channel fees](../../lightning-network-tools/lnd/channel-fees.md)\]
 
 ## Node Stability <a id="docs-internal-guid-0d5861ce-7fff-d8b3-0ee2-1a9c063ca4d5"></a>
 

@@ -145,7 +145,7 @@ Fee policies are structured with the following parameters:
 
 ### Invoice vs Keysend
 
-Payments can be made to an invoice supplied by the destination node, or using the experiential keysend feature, which is supported by all major implementations \(although un-upgraded nodes may not be able to receive these payments\). You may choose to support one or both of these sending methods, please consult the comparison table below to assess suitability for your use case:
+Payments can be made to an invoice supplied by the destination node, or using the experimental keysend feature, which is supported by all major implementations \(although un-upgraded nodes may not be able to receive these payments\). You may choose to support one or both of these sending methods, please consult the comparison table below to assess suitability for your use case:
 
 |  | Invoice | Keysend |
 | :--- | :--- | :--- |

@@ -77,3 +77,55 @@ In short, a LNURL is a bech32 encoded url pre-fixed with lnurl. The Lightning wa
 
 LNURLs are most commonly used to initiate withdrawals or create static payment links.
 
+## Decode a Lightning invoice <a id="docs-internal-guid-8ecef058-7fff-d6ea-2918-35bcc276e339"></a>
+
+You can decode any Lightning invoice to inspect its contents with the command `lncli decodepayreq`.
+
+For the above example, the result is the following:
+
+`{  
+    "destination": "03e7156ae33b0a208d0744199163177e909e80176e55d97a2f221ede0f934dd9ad",  
+    "payment_hash": "0001020304050607080900010203040506070809000102030405060708090102",  
+    "num_satoshis": "2000000",  
+    "timestamp": "1496314658",  
+    "expiry": "3600",  
+    "description": "",  
+    "description_hash": "3925b6f67e2c340036ed12093dd44e0368df1b6ea26c53dbe4811f58fd5db8c1",  
+    "fallback_addr": "1RustyRX2oai4EYYDpQGWvEL62BBGqN9T",  
+    "cltv_expiry": "9",  
+    "route_hints": [  
+        {  
+            "hop_hints": [  
+                {  
+                    "node_id": "029e03a901b85534ff1e92c43c74431f7ce72046060fcf7a95c37e148f78c77255",  
+                    "chan_id": "72623859790382856",  
+                    "fee_base_msat": 1,  
+                    "fee_proportional_millionths": 20,  
+                    "cltv_expiry_delta": 3  
+                },  
+                {  
+                    "node_id": "039e03a901b85534ff1e92c43c74431f7ce72046060fcf7a95c37e148f78c77255",  
+                    "chan_id": "217304205466536202",  
+                    "fee_base_msat": 2,  
+                    "fee_proportional_millionths": 30,  
+                    "cltv_expiry_delta": 4  
+                }  
+            ]  
+        }  
+    ],  
+    "payment_addr": null,  
+    "num_msat": "2000000000",  
+    "features": {  
+    }  
+}`
+
+## Read more
+
+[BECH32 as defined in BIP173.](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
+
+[BOLT11 specification and examples](https://github.com/lightningnetwork/lightning-rfc/blob/master/11-payment-encoding.md).
+
+[Sample Implementation.](https://github.com/rustyrussell/lightning-payencode)
+
+[Tool to decode Lightning invoices.](https://bitcoincore.tech/apps/bolt11-ui/index.html)
+

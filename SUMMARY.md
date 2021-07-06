@@ -9,6 +9,7 @@
   * [Components](the-lightning-network/lightning-overview/components.md)
   * [Channel Lifecycle](the-lightning-network/lightning-overview/channel-lifecycle.md)
   * [Payment Lifecycle](the-lightning-network/lightning-overview/payment-lifecycle.md)
+  * [Understanding Lightning Invoices](the-lightning-network/lightning-overview/understanding-lightning-invoices.md)
   * [Conclusion](the-lightning-network/lightning-overview/conclusion.md)
 * [Payment Channels](the-lightning-network/payment-channels.md)
 * [Multihop Payments](the-lightning-network/multihop-payments/README.md)

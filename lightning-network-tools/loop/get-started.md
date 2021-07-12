@@ -34,7 +34,7 @@ If you want to interact with Loop in Lightning Terminal through the command line
 
 Alternatively you may also copy over the `tls.cert` from `~/.lit` into `~/.loop/mainnet`
 
-If you are a Lightning Terminal used and want to avoid having to include the `--rpcserver` command every time or navigate to the location of the loop binary, you may also add an entry to your aliases file \(e.g. `~/.bash_aliases`\):
+If you are a Lightning Terminal user and want to avoid having to include the `--rpcserver` command every time or navigate to the location of the loop binary, you may also add an entry to your aliases file \(e.g. `~/.bash_aliases`\):
 
 `alias loop=’~/path/to/loop --rpcserver=localhost:8443’`
 

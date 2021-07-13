@@ -4,7 +4,7 @@ description: >-
   first steps in the Lightning Network.
 ---
 
-# Getting started with LND and the Lightning Network
+# Get started
 
 The Lightning Network Daemon \(LND\) is a complete implementation of a Lightning Network node. That means that LND is able to perform all actions necessary to participate and interact with all aspects of the Lightning Network and its nodes. It fully complies with all Lightning Network specifications \(BOLTs\) [as described here](https://github.com/lightningnetwork/lightning-rfc/blob/master/00-introduction.md). As these specifications are currently rapidly evolving, so is LND.
 

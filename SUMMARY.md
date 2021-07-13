@@ -25,7 +25,7 @@
 ## Lightning Network Tools
 
 * [LND](lightning-network-tools/lnd/README.md)
-  * [Getting started with LND and the Lightning Network](lightning-network-tools/lnd/get-started-with-lnd.md)
+  * [Get started](lightning-network-tools/lnd/get-started-with-lnd.md)
   * [Sending Payments](lightning-network-tools/lnd/payments.md)
   * [Receiving Payments](lightning-network-tools/lnd/receiving.md)
   * [Partially Signed Bitcoin Transactions](lightning-network-tools/lnd/psbt.md)
@@ -58,6 +58,9 @@
   * [Get started](lightning-network-tools/loop/get-started.md)
   * [The Loop CLI](lightning-network-tools/loop/the-loop-cli.md)
   * [Autoloop](lightning-network-tools/loop/autoloop.md)
+* [Faraday](lightning-network-tools/faraday/README.md)
+  * [Get Started](lightning-network-tools/faraday/get-started.md)
+  * [The Faraday CLI](lightning-network-tools/faraday/the-faraday-cli.md)
 
 ## LAPPs
 

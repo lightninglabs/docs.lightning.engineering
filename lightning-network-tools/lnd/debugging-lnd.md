@@ -1,25 +1,47 @@
-# Debugging LND
+# Table of Contents
+1. [Overview](#overview)
+1. [Debug Logging](#debug-logging)
+1. [Capturing pprof data with `lnd`](#capturing-pprof-data-with-lnd)
 
-## Getting Super Powers
+## Overview
 
-Becoming a super hero is a fairly straight forward process:
+`lnd` ships with a few useful features for debugging, such as a built-in
+profiler and tunable logging levels. If you need to submit a bug report
+for `lnd`, it may be helpful to capture debug logging and performance
+data ahead of time.
 
+## Debug Logging
+
+You can enable debug logging in `lnd` by passing the `--debuglevel` flag. For
+example, to increase the log level from `info` to `debug`:
+
+```shell
+⛰  lnd --debuglevel=debug
 ```
-$ give me super-powers
+
+You may also specify logging per-subsystem, like this:
+
+```shell
+⛰  lnd --debuglevel=<subsystem>=<level>,<subsystem2>=<level>,...
 ```
 
-{% hint style="info" %}
- Super-powers are granted randomly so please submit an issue if you're not happy with yours.
-{% endhint %}
+## Capturing pprof data with `lnd`
 
-Once you're strong enough, save the world:
+`lnd` has a built-in feature which allows you to capture profiling data at
+runtime using [pprof](https://golang.org/pkg/runtime/pprof/), a profiler for
+Go. The profiler has negligible performance overhead during normal operations
+(unless you have explicitly enabled CPU profiling).
 
-{% code title="hello.sh" %}
-```bash
-# Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
+To enable this ability, start `lnd` with the `--profile` option using a free port.
+
+```shell
+⛰  lnd --profile=9736
 ```
-{% endcode %}
 
+Now, with `lnd` running, you can use the pprof endpoint on port 9736 to collect
+runtime profiling data. You can fetch this data using `curl` like so:
 
-
+```shell
+⛰  curl http://localhost:9736/debug/pprof/goroutine?debug=1
+...
+```

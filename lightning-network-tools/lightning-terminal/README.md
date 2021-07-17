@@ -7,8 +7,6 @@ description: >-
 
 # Lightning Terminal
 
-## Getting Super Powers
-
 [Lightning Terminal](https://lightning.engineering/posts/2020-08-04-lightning-terminal/) is a browser-based, self-hosted dashboard for Lightning Labs products. It makes it easier to manage channels using [Lightning Loop](../loop/), as well as buy and sell channel liquidity in [Lightning Pool](https://lightning.engineering/pool).
 
 Lightning Terminal can be installed on the same machine as your Lightning node or you can connect to it remotely. You can install Lightning Terminal for Mac, Windows and Linux using the instructions below.

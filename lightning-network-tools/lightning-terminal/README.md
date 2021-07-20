@@ -25,7 +25,3 @@ Already installed? Join us on our guide to Lightning Terminal.
 
 {% page-ref page="get-lit/windows-remote-mode.md" %}
 
-
-
-
-

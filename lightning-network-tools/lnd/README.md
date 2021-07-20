@@ -16,6 +16,8 @@ description: >-
 
 {% page-ref page="macaroons.md" %}
 
+{% page-ref page="watchtower.md" %}
+
 {% page-ref page="safety.md" %}
 
 {% page-ref page="safety.md" %}

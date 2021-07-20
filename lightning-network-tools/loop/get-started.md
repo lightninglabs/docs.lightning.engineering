@@ -2,7 +2,7 @@
 description: Install and run Loop
 ---
 
-# Get started
+# Get Started
 
 ## Install Loop <a id="docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5"></a>
 

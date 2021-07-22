@@ -23,6 +23,10 @@ Lightning Terminal is a browser-based, self-hosted dashboard for Lightning Labs 
 
 Loop is a service that makes it easier to send and receive funds on Lightning, serving as an on and off ramp between the Lightning Network and the Bitcoin blockchain. Read our guides to Loop to optimally use Loop.
 
+{% page-ref page="lightning-network-tools/pool/" %}
+
+Pool is a non-custodial marketplace where users can buy inbound liquidity from node operators. Read our guides on how to join Pool as either a buyer or seller.
+
 We have you covered if you're starting with your first LAPP or running a professional service and want to leverage best practices when it comes to APIs, channel backups, key management, et al.
 
 If you're looking for inspiration, we've included a sampling of community projects for you to look to. We hope you add whatever you build to this page!

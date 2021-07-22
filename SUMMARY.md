@@ -26,6 +26,7 @@
 
 * [LND](lightning-network-tools/lnd/README.md)
   * [Get Started](lightning-network-tools/lnd/get-started-with-lnd.md)
+  * [Run LND](lightning-network-tools/lnd/run-lnd.md)
   * [Sending Payments](lightning-network-tools/lnd/payments.md)
   * [Receiving Payments](lightning-network-tools/lnd/receiving.md)
   * [Partially Signed Bitcoin Transactions](lightning-network-tools/lnd/psbt.md)
@@ -43,7 +44,6 @@
   * [NAT Traversal](lightning-network-tools/lnd/nat-traversal.md)
   * [Recovery: Planning for failure](lightning-network-tools/lnd/recovery-planning-for-failure.md)
   * [Recovering Funds](lightning-network-tools/lnd/recovery.md)
-  * [Run LND](lightning-network-tools/lnd/run-lnd.md)
 * [Lightning Terminal](lightning-network-tools/lightning-terminal/README.md)
   * [Get LiT](lightning-network-tools/lightning-terminal/get-lit/README.md)
     * [Linux - Integrated Mode](lightning-network-tools/lightning-terminal/get-lit/ubuntu-integrated.md)

@@ -10,7 +10,7 @@ description: >-
 
 ### What happens when I buy inbound channel liquidity?
 
-A channel is opened to you after paying an upfront premium for inbound channel liquidity of a specific size for a set duration of time \(2016 blocks\). Once the upfront premium is paid a channel is opened to the buyer. 
+A channel is opened to you after paying an upfront premium for inbound channel liquidity of a specific size for a set duration of time \(2016 blocks\). Once the upfront premium is paid a channel is opened to the buyer.
 
 ### How is the price of inbound channel liquidity determined?
 
@@ -28,7 +28,7 @@ It will not show you an exact total, but you can see how much you will pay in fe
 
 ### How will I know if my order was fulfilled?
 
-You can check the status of your order at any time by running the following command: 
+You can check the status of your order at any time by running the following command:
 
 ```text
 pool orders list
@@ -80,7 +80,7 @@ If you cannot or do not want to move the funds out of the channel off-chain, you
 
 Opening an account requires first funding your `lnd` wallet and subsequently funding a time-locked 2-of-2 multi-sig account. This account is then debited whenever an order of is fully or partially matched.
 
-When creating an account you must specify a time-lock so that you can gain access to your funds in the event that Pool is offline for a period of time. The account will expire once the specified amount of time has elapsed. 
+When creating an account you must specify a time-lock so that you can gain access to your funds in the event that Pool is offline for a period of time. The account will expire once the specified amount of time has elapsed.
 
 ### Why do accounts expire?
 
@@ -94,7 +94,7 @@ You will need to close your account and then re-open your account. In the future
 
 ### Can I choose who to buy from?
 
-You are not able to choose who to buy from but by default only well-connected nodes who are on the Bos Score List are eligible to sell liquidity. 
+You are not able to choose who to buy from but by default only well-connected nodes who are on the Bos Score List are eligible to sell liquidity.
 
 ### Can sellers choose their buyers or blacklist certain buyers?
 
@@ -114,20 +114,13 @@ In the future this node may be removed from the market.
 
 Buyers and sellers of channels should expect service charges of 5-25 basis points each.
 
-A one time payment of 1000 satoshi is also required to obtain an
-[LSAT](https://lsat.tech) token to communicate with the auction server. That
-token currently does not expire and can therefore be used indefinitely.
+A one time payment of 1000 satoshi is also required to obtain an [LSAT](https://lsat.tech) token to communicate with the auction server. That token currently does not expire and can therefore be used indefinitely.
 
 ### Who pays the on-chain fees?
 
-When the channel is opened, the cost of opening the channel is split between the
-buyer and seller. When closing the channel, the rules are the same as with any
-other LN channel: The initiator (in the Pool case the seller) pays the closing
-fee.
+When the channel is opened, the cost of opening the channel is split between the buyer and seller. When closing the channel, the rules are the same as with any other LN channel: The initiator \(in the Pool case the seller\) pays the closing fee.
 
-This will be different with anchor output channels however, once they are rolled
-out by default (they're still experimental and need to be opt in). With those,
-the party initiating the force close will pay the chain fee for doing so.
+This will be different with anchor output channels however, once they are rolled out by default \(they're still experimental and need to be opt in\). With those, the party initiating the force close will pay the chain fee for doing so.
 
 ### Who earns the routing fees from the channel that is opened with me?
 
@@ -171,12 +164,7 @@ Once all orders are in a final state \(either fully matched or canceled\), the t
 
 ### I want to move `poold` to another machine, what files do I need to move?
 
-As long as there are no differences in the operating system or the processor
-architecture, moving `poold` to another machine is as easy as moving the `.pool`
-directory.
+As long as there are no differences in the operating system or the processor architecture, moving `poold` to another machine is as easy as moving the `.pool` directory.
 
-However, because `poold` doesn't have any private keys on its own, it always has
-to be connected to the same `lnd` node. Moving `poold` between nodes is not
-supported and will result in errors. If you need to use a different `lnd` node,
-cancel all orders and close all accounts first, then start a fresh `poold` with
-a new `lnd` instance.
+However, because `poold` doesn't have any private keys on its own, it always has to be connected to the same `lnd` node. Moving `poold` between nodes is not supported and will result in errors. If you need to use a different `lnd` node, cancel all orders and close all accounts first, then start a fresh `poold` with a new `lnd` instance.
+

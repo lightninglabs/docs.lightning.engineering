@@ -29,7 +29,7 @@
   * [Get Started](lightning-network-tools/lnd/get-started-with-lnd.md)
   * [Run LND](lightning-network-tools/lnd/run-lnd.md)
   * [Sending Payments](lightning-network-tools/lnd/payments.md)
-  * [Atomic Multi-path Payments \(AMP\)](lightning-network-tools/lnd/atomic-multi-path-payments-amp.md)
+  * [Atomic Multi-path Payments \(AMP\)](lightning-network-tools/lnd/amp.md)
   * [Receiving Payments](lightning-network-tools/lnd/receiving.md)
   * [Partially Signed Bitcoin Transactions](lightning-network-tools/lnd/psbt.md)
   * [Unconfirmed Bitcoin Transactions](lightning-network-tools/lnd/unconfirmed-bitcoin-transactions.md)

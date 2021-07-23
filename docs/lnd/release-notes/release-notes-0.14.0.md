@@ -7,11 +7,21 @@ addholdinvoice call](https://github.com/lightningnetwork/lnd/pull/5533).
 
 # Build System
 
-[A new pre-submit check has been
-added](https://github.com/lightningnetwork/lnd/pull/5520) to ensure that all
-PRs ([aside from merge
-commits](https://github.com/lightningnetwork/lnd/pull/5543)) add an entry in
-the release notes folder that at leasts links to PR being added.
+* [A new pre-submit check has been
+  added](https://github.com/lightningnetwork/lnd/pull/5520) to ensure that all
+  PRs ([aside from merge
+  commits](https://github.com/lightningnetwork/lnd/pull/5543)) add an entry in
+  the release notes folder that at leasts links to PR being added.
+
+* [A new build target itest-race](https://github.com/lightningnetwork/lnd/pull/5542) 
+  to help uncover undetected data races with our itests.
+
+# Misc
+
+* The direct use of certain syscalls in packages such as `bbolt` or `lnd`'s own
+  `healthcheck` package made it impossible to import `lnd` code as a library
+  into projects that are compiled to WASM binaries. [That problem was fixed by
+  guarding those syscalls with build tags](https://github.com/lightningnetwork/lnd/pull/5526).
 
 # Code Health
 
@@ -29,6 +39,10 @@ the release notes folder that at leasts links to PR being added.
   code](https://github.com/lightningnetwork/lnd/pull/5547) when using etcd
   backend.
 
+[Optimized payment sequence generation](https://github.com/lightningnetwork/lnd/pull/5514/)
+to make LNDs payment throughput (and latency) with better when using etcd.
+
 # Contributors (Alphabetical Order)
 * ErikEk
 * Zero-1729
+* Oliver Gugger

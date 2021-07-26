@@ -69,7 +69,7 @@
   * [Installation](lightning-network-tools/pool/install.md)
   * [Accounts](lightning-network-tools/pool/accounts.md)
   * [Orders](lightning-network-tools/pool/orders.md)
-  * [Sidecar Channels](lightning-network-tools/pool/sidecar-channels.md)
+  * [Sidecar Channels](docs/pool/sidecar_channels.md)
   * [Channel Leases](lightning-network-tools/pool/channel_leases.md)
   * [Batch Execution](lightning-network-tools/pool/batch_execution.md)
   * [Account Recovery](lightning-network-tools/pool/account_recovery.md)

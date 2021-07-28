@@ -2,8 +2,26 @@
 
 ## RPC Server
 
-[Return payment address and add index from
-addholdinvoice call](https://github.com/lightningnetwork/lnd/pull/5533).
+* [Return payment address and add index from
+  addholdinvoice call](https://github.com/lightningnetwork/lnd/pull/5533).
+
+* [The versions of several gRPC related libraries were bumped and the main
+  `rpc.proto` was renamed to
+  `lightning.proto`](https://github.com/lightningnetwork/lnd/pull/5473) to fix
+  a warning related to protobuf file name collisions.
+
+## Security 
+
+### Admin macaroon permissions
+
+The default file permissions of admin.macaroon were [changed from 0600 to
+0640](https://github.com/lightningnetwork/lnd/pull/5534). This makes it easier
+to allow other users to manage LND. This is safe on common Unix systems
+because they always create a new group for each user.
+
+If you use a strange system or changed group membership of the group running LND
+you may want to check your system to see if it introduces additional risk for
+you.
 
 # Build System
 
@@ -38,6 +56,9 @@ addholdinvoice call](https://github.com/lightningnetwork/lnd/pull/5533).
   in place](https://github.com/lightningnetwork/lnd/pull/5545).
 * [Added minor fixes to contribution guidelines](https://github.com/lightningnetwork/lnd/pull/5503).
 * [Fixed typo in `dest_custom_records` description comment](https://github.com/lightningnetwork/lnd/pull/5541).
+* [Bumped version of `github.com/miekg/dns` library to fix a Dependabot
+  alert](https://github.com/lightningnetwork/lnd/pull/5576).
+* [Fixed timeout flakes in async payment benchmark tests](https://github.com/lightningnetwork/lnd/pull/5579).
 
 ## Database
 
@@ -55,5 +76,6 @@ to make LNDs payment throughput (and latency) with better when using etcd.
 
 # Contributors (Alphabetical Order)
 * ErikEk
+* Martin Habovstiak
 * Zero-1729
 * Oliver Gugger

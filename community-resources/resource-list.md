@@ -48,6 +48,7 @@ description: >-
 * [Wallet of Satoshi](https://walletofsatoshi.com/) - mobile client, custodial, available on Android and iOS
 * [Zap](https://github.com/LN-Zap/zap-iOS) - mobile client focused on UX and ease of use, available on iOS
 * [Zeus](https://github.com/ZeusLN/zeus) - mobile client for node operators, available on Android and iOS
+* [Voltage](https://voltage.cloud) - Lightning Network node hosting platform
 
 ## Additional Lists
 

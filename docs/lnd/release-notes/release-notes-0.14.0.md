@@ -33,6 +33,8 @@ you.
 
 * [A new build target itest-race](https://github.com/lightningnetwork/lnd/pull/5542) 
   to help uncover undetected data races with our itests.
+* [The itest error whitelist check was removed to reduce the number of failed
+  Travis builds](https://github.com/lightningnetwork/lnd/pull/5588).
 
 # Documentation
 
@@ -60,6 +62,7 @@ you.
   alert](https://github.com/lightningnetwork/lnd/pull/5576).
 * [Fixed timeout flakes in async payment benchmark tests](https://github.com/lightningnetwork/lnd/pull/5579).
 * [Fixed a missing import and git tag in the healthcheck package](https://github.com/lightningnetwork/lnd/pull/5582).
+* [Fixed a data race in payment unit test](https://github.com/lightningnetwork/lnd/pull/5573).
 
 ## Database
 
@@ -80,3 +83,4 @@ to make LNDs payment throughput (and latency) with better when using etcd.
 * Martin Habovstiak
 * Zero-1729
 * Oliver Gugger
+* Yong Yu

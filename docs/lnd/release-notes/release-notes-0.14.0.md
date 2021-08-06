@@ -22,6 +22,9 @@ for more information.
   `lightning.proto`](https://github.com/lightningnetwork/lnd/pull/5473) to fix
   a warning related to protobuf file name collisions.
 
+* [Stub code for interacting with `lnrpc` from a WASM context through JSON 
+  messages was added](https://github.com/lightningnetwork/lnd/pull/5601).
+
 ## Security 
 
 ### Admin macaroon permissions
@@ -48,6 +51,9 @@ you.
 
 * [The itest error whitelist check was removed to reduce the number of failed
   Travis builds](https://github.com/lightningnetwork/lnd/pull/5588).
+
+* [A flake in the Neutrino integration tests with anchor sweeps was 
+  addressed](https://github.com/lightningnetwork/lnd/pull/5509).
 
 # Documentation
 
@@ -105,6 +111,12 @@ you.
 
 * [Update MC store in blocks](https://github.com/lightningnetwork/lnd/pull/5515)
   to make payment throughput better when using etcd.
+
+## Bug Fixes
+
+A bug has been fixed that would cause `lnd` to [try to bootstrap using the
+currnet DNS seeds when in SigNet
+mode](https://github.com/lightningnetwork/lnd/pull/5564).
 
 # Contributors (Alphabetical Order)
 * ErikEk

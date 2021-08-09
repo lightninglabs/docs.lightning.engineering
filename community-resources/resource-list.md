@@ -43,37 +43,6 @@ description: >-
 * [Zeus](https://github.com/ZeusLN/zeus) - available in Google Play, F-Droid and the Apple AppStore
 * [Ride the Lightning](https://github.com/Ride-The-Lightning/RTL) - runs on your personal computer, accessible through your browser
 
-## Payment processors <a id="docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c"></a>
-
-* [Bitfinex Pay](https://pay.bitfinex.com/)
-* [Coingate](https://coingate.com/)
-* [Globee](https://globee.com/)
-* [LNPay](https://lnpay.co/)
-* [OpenNode](https://www.opennode.com/)
-* [BTCPayServer](https://docs.btcpayserver.org/)
-* [LNBits](https://lnbits.org/)
-
-## Exchanges & Brokerages <a id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
-
-* [Azteco](https://azte.co/)
-* [Bitaroo](https://www.bitaroo.com.au/)
-* [Bitfinex](https://www.bitfinex.com/)
-* [Boltz](https://boltz.exchange)
-* [Buda](https://www.buda.com/)
-* [Coincorner](https://www.coincorner.com/)
-* [FixedFloat](https://fixedfloat.com)
-* [Kollider](https://kollider.xyz/)
-* [LNMarkets](https://lnmarkets.com/)
-* [LOFT](https://loft.trade/)
-* [NiceHash](https://www.nicehash.com/)
-* [OKCoin](https://www.okcoin.com/)
-* [OKEX](https://www.okex.com)
-* [River Financial](https://river.com/)
-* [The Rock Trading](https://www.therocktrading.com)
-* [Strike](https://strike.me/)
-* [Southxchange](https://main.southxchange.com/)
-* [VBTC](https://vbtc.exchange/)
-
 ## Explorers <a id="docs-internal-guid-c8a6648f-7fff-39eb-c8cc-47fadeadad71"></a>
 
 * [1ML](https://1ml.com/) - Lightning network and node statistics
@@ -123,4 +92,35 @@ description: >-
 * Electric Capital's[ Lightning Ecosystem Repository](https://github.com/electric-capital/crypto-ecosystems/blob/master/data/ecosystems/l/lightning.toml)
 * Jameson Lopp's[ Lightning Network Resources](https://www.lopp.net/lightning-information.html)
 * opennoms[ Lightning Node Management book](https://openoms.gitbook.io/lightning-node-management/)
+
+## Payment processors <a id="docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c"></a>
+
+* [Bitfinex Pay](https://pay.bitfinex.com/)
+* [Coingate](https://coingate.com/)
+* [Globee](https://globee.com/)
+* [LNPay](https://lnpay.co/)
+* [OpenNode](https://www.opennode.com/)
+* [BTCPayServer](https://docs.btcpayserver.org/)
+* [LNBits](https://lnbits.org/)
+
+## Exchanges & Brokerages <a id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
+
+* [Azteco](https://azte.co/)
+* [Bitaroo](https://www.bitaroo.com.au/)
+* [Bitfinex](https://www.bitfinex.com/)
+* [Boltz](https://boltz.exchange)
+* [Buda](https://www.buda.com/)
+* [Coincorner](https://www.coincorner.com/)
+* [FixedFloat](https://fixedfloat.com)
+* [Kollider](https://kollider.xyz/)
+* [LNMarkets](https://lnmarkets.com/)
+* [LOFT](https://loft.trade/)
+* [NiceHash](https://www.nicehash.com/)
+* [OKCoin](https://www.okcoin.com/)
+* [OKEX](https://www.okex.com)
+* [River Financial](https://river.com/)
+* [The Rock Trading](https://www.therocktrading.com)
+* [Strike](https://strike.me/)
+* [Southxchange](https://main.southxchange.com/)
+* [VBTC](https://vbtc.exchange/)
 

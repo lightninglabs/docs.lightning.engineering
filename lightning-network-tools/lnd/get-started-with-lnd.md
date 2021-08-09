@@ -221,3 +221,45 @@ As soon as we make some outgoing payments and our channel balance empties, our o
 
 \[[Learn to get incoming liquidity.](https://docs.lightning.engineering/the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network)\]
 
+## Part 4: Upgrade LND
+
+Upgrading your LND instance depends on how you installed your node. If you are running LND as part of a software bundle, upgrades are typically provided by this bundle as well.
+
+LND upgrades are released frequently. Similar to Bitcoin Core, LND follows the convention of major, minor and patch version numbers. Additionally, a minor version will have one or several release candidates \(RC\). For example, `lnd 0.13.0 rc2` is the second release candidate of the minor version 13, while `lnd 0.13.1` patches eventual issues found in 0.13.0.
+
+It is recommended to upgrade LND regularly to tagged releases instead of the latest master branch. Downgrading LND is not recommended and may lead to unexpected consequences.
+
+### Upgrading the LND binary \(recommended\)
+
+If you are running the LND binary, you may download, verify and unpack LND in the same way as during the installation. You can download the latest releases for [various operating systems and architectures here](https://github.com/lightningnetwork/lnd/releases).
+
+You can then gracefully shut down LND with the command `lncli stop`. This may take a minute.
+
+Now move the binaries to the directory of your existing LND, such as `/bin/lnd`
+
+Your existing binaries will be overwritten in this action. You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.
+
+### Upgrading via Docker
+
+If you are running LND in a docker container, you can upgrade this container as follows. Don’t forget to gracefully shut down LND with the command `lncli stop` before the upgrade. This may take a minute.
+
+First navigate to the local copy of the lnd github repository, for example with `cd lnd`. Then execute the following commands:
+
+`git pull  
+git checkout <latest-release>  
+make docker-release tag=<latest-release>`
+
+You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.
+
+### Upgrading from source
+
+If you installed LND from source, you can compile a new binary as follows. Don’t forget to gracefully shut down LND with the command `lncli stop` before the upgrade. This may take a minute.
+
+First navigate to the local copy of the lnd github repository, for example with `cd lnd`. Then execute the following commands:
+
+`git checkout <latest version>`
+
+`make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"`
+
+You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.
+

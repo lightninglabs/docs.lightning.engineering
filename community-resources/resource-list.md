@@ -19,27 +19,27 @@ description: >-
 
 ### Non-custodial wallets
 
-* [Blixt Wallet](https://blixtwallet.github.io/) - available in Google Play and for iOS
-* [Bitcoin Lightning Wallet](https://lightning-wallet.com/) - available in Google Play and F-Droid
-* [Breez](https://breez.technology/) - available in Google Play and for iOS
-* [Electrum](https://electrum.org/) - available for Linux, OSX, Windows and Android
-* [Muun](https://muun.com/) - available on Google Play and the Apple AppStore
-* [Phoenix](https://phoenix.acinq.co/) - available on Google Play and the Apple AppStore
-* [Zebedee](https://zebedee.io/) - available on Google Play and the Apple AppStore 
+* [Blixt Wallet](https://blixtwallet.github.io/) \([Github](https://github.com/hsjoberg/blixt-wallet)\) - available in Google Play and for iOS
+* [Bitcoin Lightning Wallet](https://lightning-wallet.com/) \([Github](https://github.com/btcontract/lnwallet)\) - available in Google Play and F-Droid
+* [Breez](https://breez.technology/) \([Github](https://github.com/breez/breezmobile)\) - available in Google Play and for iOS
+* [Electrum](https://electrum.org/) \([Github](https://github.com/spesmilo/electrum)\) - available for Linux, OSX, Windows and Android
+* [Muun](https://muun.com/) \([Github](https://github.com/muun)\) - available on Google Play and the Apple AppStore
+* [Phoenix](https://phoenix.acinq.co/) \([Github](https://github.com/ACINQ/phoenix)\) - available on Google Play and the Apple AppStore
+* [Zebedee](https://zebedee.io/) \([Github](https://github.com/zebedeeio)\) - available on Google Play and the Apple AppStore 
 * [Eclair](https://github.com/ACINQ/eclair-mobile) - available for Android
 
 ### Custodial wallets
 
 * [Bitcoin Beach Wallet](https://www.bitcoinbeach.com/) - available in Google Play
-* [BlueWallet](https://github.com/BlueWallet/BlueWallet) - available in Google Play the Apple AppStore
+* [BlueWallet](https://github.com/BlueWallet/BlueWallet) \([Github](https://github.com/BlueWallet/BlueWallet)\) - available in Google Play the Apple AppStore
 * [Strike](https://strike.me/) - available in Google Play, the Apple AppStore and Chrome
 * [Wallet of Satoshi](https://walletofsatoshi.com/) - available in Google Play and the Apple AppStore
-* [Bottlepay](https://bottlepay.com/) - availeble in Google Play and the Apple AppStore
+* [Bottlepay](https://bottlepay.com/) - available in Google Play and the Apple AppStore
 
 ### Lightning node interfaces
 
-* [Joule](https://lightningjoule.com/) - available for Firefox, Chrome, Opera and Brave
-* [Zap](https://zaphq.io/) - available in Google Play, for OSX, Linux, Windows and iOS
+* [Joule](https://lightningjoule.com/) \([Github](https://github.com/joule-labs/joule-extension)\) - available for Firefox, Chrome, Opera and Brave
+* [Zap](https://zaphq.io/) \([Github](https://github.com/LN-Zap)\) - available in Google Play, for OSX, Linux, Windows and iOS
 * [Zeus](https://github.com/ZeusLN/zeus) - available in Google Play, F-Droid and the Apple AppStore
 * [Ride the Lightning](https://github.com/Ride-The-Lightning/RTL) - runs on your personal computer, accessible through your browser
 

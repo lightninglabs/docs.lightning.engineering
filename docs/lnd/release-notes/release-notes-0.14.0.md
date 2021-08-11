@@ -95,6 +95,8 @@ you.
 
 * [Fixed timeout flakes in async payment benchmark tests](https://github.com/lightningnetwork/lnd/pull/5579).
 
+* [Flake fix in async bidirectional payment test](https://github.com/lightningnetwork/lnd/pull/5607).
+
 * [Fixed a missing import and git tag in the healthcheck package](https://github.com/lightningnetwork/lnd/pull/5582).
 
 * [Fixed a data race in payment unit test](https://github.com/lightningnetwork/lnd/pull/5573).
@@ -124,6 +126,12 @@ you.
 A bug has been fixed that would cause `lnd` to [try to bootstrap using the
 currnet DNS seeds when in SigNet
 mode](https://github.com/lightningnetwork/lnd/pull/5564).
+
+## Documentation 
+
+The [code contribution guidelines have been updated to mention the new
+requirements surrounding updating the release notes for each new
+change](https://github.com/lightningnetwork/lnd/pull/5613). 
 
 # Contributors (Alphabetical Order)
 * Andras Banki-Horvath

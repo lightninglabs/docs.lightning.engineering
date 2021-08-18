@@ -47,18 +47,12 @@ Copy the following files that are located in your `~/.lnd/data/chain/bitcoin/mai
 
 * tls.cert
 * admin.macaroon
-* chainnotifier.macaroon
-* invoices.macaroon
-* readonly.macaroon
-* router.macaroon
-* signer.macaroon
-* walletkit.macaroon
 
 Create a `lit.conf` file.
 
 ```text
-mkdir ~/Library/Application Support/Lit/
-vi ~/Library/Application Support/Lit/lit.conf
+mkdir ~/Library/Application\ Support/Lit/
+vi ~/Library/Application\ Support/Lit/lit.conf
 ```
 
 Storing the configuration in a persistent `~/Library/Application Support/Lit/lit.conf` file means you do not need to type in the command line arguments every time you start the server. Make sure you don't add any section headers \(the lines starting with \[ and ending with \], for example \[Application Options\]\) as these don't work with the additional levels of sub configurations.
@@ -76,14 +70,16 @@ lit-dir=~/Library/Application Support/Lit/
 #letsencrypt=true
 #letsencrypthost=<YOUR_DOMAIN>
 
+# Network setting
+network=testnet
+
 # Remote options
 remote.lit-debuglevel=debug
 
 # Remote lnd options
-remote.lnd.network=testnet
 remote.lnd.rpcserver=<YOUR_LND_IP>:10009
-remote.lnd.macaroondir=/some/folder/with/lnd/data
-remote.lnd.tlscertpath=/some/folder/with/lnd/data/tls.cert
+remote.lnd.macaroonpath=/path/to/remote/files/you/copied/admin.macaroon
+remote.lnd.tlscertpath=/path/to/remote/files/you/copied/tls.cert
 
 # Loop
 loop.loopoutmaxparts=5
@@ -141,15 +137,15 @@ $ lncli --network=testnet getinfo
 This is where things get a bit tricky. Because as mentioned above, `loopd` also runs on the same gRPC server as `lnd`. That's why we have to both specify the `host:port` as well as the TLS certificate of `lnd`. But `loopd` verifies its own macaroon, so we have to specify that one from the `.loop` directory.
 
 ```text
-$ loop --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert \
-  --macaroonpath=~/Library/Application Support/Loop/testnet/loop.macaroon \
+$ loop --rpcserver=localhost:10009 --tlscertpath=~/Library/Application\ Support/Lnd/tls.cert \
+  --macaroonpath=~/Library/Application\ Support/Loop/testnet/loop.macaroon \
   quote out 500000
 ```
 
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-loop="loop --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert --macaroonpath=~/Library/Application Support/Loop/testnet/loop.macaroon"
+alias lit-loop="loop --rpcserver=localhost:10009 --tlscertpath=~/Library/Application\ Support/Lnd/tls.cert --macaroonpath=~/Library/Application\ Support/Loop/testnet/loop.macaroon"
 ```
 
 #### Example `pool` command
@@ -157,15 +153,15 @@ alias lit-loop="loop --rpcserver=localhost:10009 --tlscertpath=~/Library/Applica
 Again, `poold` also runs on the same gRPC server as `lnd` and we have to specify the `host:port` and the TLS certificate of `lnd` but use the macaroon from the `.pool` directory.
 
 ```text
-$ pool --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert \
-  --macaroonpath=~/Library/Application Support/Pool/testnet/pool.macaroon \
+$ pool --rpcserver=localhost:10009 --tlscertpath=~/Library/Application\ Support/Lnd/tls.cert \
+  --macaroonpath=~/Library/Application\ Support/Pool/testnet/pool.macaroon \
   accounts list
 ```
 
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert --macaroonpath=~/Library/Application Support/Pool/testnet/pool.macaroon"
+alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/Library/Application\ Support/Lnd/tls.cert --macaroonpath=~/Library/Application\ Support/Pool/testnet/pool.macaroon"
 ```
 
 #### Example `frcli` command
@@ -173,14 +169,14 @@ alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/Library/Applica
 Faraday's command line tool follows the same pattern as loop. We also have to specify the server and TLS flags for `lnd` but use `faraday`'s macaroon:
 
 ```text
-$ frcli --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tls.cert \
-  --macaroonpath=~/Library/Application Support/Faraday/testnet/faraday.macaroon \
+$ frcli --rpcserver=localhost:10009 --tlscertpath=~/Library/Application\ Support/Lnd/tls.cert \
+  --macaroonpath=~/Library/Application\ Support/Faraday/testnet/faraday.macaroon \
   audit
 ```
 
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```text
-alias lit-frcli="frcli --rpcserver=localhost:10009 --tlscertpath=~/Library/Application Support/Lnd/tl
+alias lit-frcli="frcli --rpcserver=localhost:10009 --tlscertpath=~/Library/Application\ Support/Lnd/tl
 ```
 

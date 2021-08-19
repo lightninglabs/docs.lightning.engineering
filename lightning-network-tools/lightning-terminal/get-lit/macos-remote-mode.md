@@ -124,7 +124,7 @@ Because all components listen on the same gRPC port and use the same TLS certifi
 
 **NOTE**: All mentioned command line tools have the following behavior in common: You either specify the `--network` flag and the `--tlscertpath` and `--macaroonpath` are implied by looking inside the default directories for that network. Or you specify the `--tlscertpath` and `--macaroonpath` flags explicitly, then you **must not** set the `--network` flag. Otherwise, you will get an error like: `[lncli] could not load global options: unable to read macaroon path (check the network setting!): open /Users/<user>/Library/Application Support/Lnd/data/chain/bitcoin/testnet/admin.macaroon: no such file or directory`
 
-#### Example `lncli` command
+### Example `lncli` command
 
 The `lncli` commands in the "integrated" mode are the same as if `lnd` was running standalone. The `--lnddir` flag does not need to be specified as long as it is the default directory \(`~/.lnd` on Linux\).
 
@@ -132,7 +132,7 @@ The `lncli` commands in the "integrated" mode are the same as if `lnd` was runni
 $ lncli --network=testnet getinfo
 ```
 
-#### Example `loop` command
+### Example `loop` command
 
 This is where things get a bit tricky. Because as mentioned above, `loopd` also runs on the same gRPC server as `lnd`. That's why we have to both specify the `host:port` as well as the TLS certificate of `lnd`. But `loopd` verifies its own macaroon, so we have to specify that one from the `.loop` directory.
 
@@ -148,7 +148,7 @@ You can easily create an alias for this by adding the following line to your `~/
 alias lit-loop="loop --rpcserver=localhost:10009 --tlscertpath=~/Library/Application\ Support/Lnd/tls.cert --macaroonpath=~/Library/Application\ Support/Loop/testnet/loop.macaroon"
 ```
 
-#### Example `pool` command
+### Example `pool` command
 
 Again, `poold` also runs on the same gRPC server as `lnd` and we have to specify the `host:port` and the TLS certificate of `lnd` but use the macaroon from the `.pool` directory.
 
@@ -164,7 +164,7 @@ You can easily create an alias for this by adding the following line to your `~/
 alias lit-pool="pool --rpcserver=localhost:10009 --tlscertpath=~/Library/Application\ Support/Lnd/tls.cert --macaroonpath=~/Library/Application\ Support/Pool/testnet/pool.macaroon"
 ```
 
-#### Example `frcli` command
+### Example `frcli` command
 
 Faraday's command line tool follows the same pattern as loop. We also have to specify the server and TLS flags for `lnd` but use `faraday`'s macaroon:
 

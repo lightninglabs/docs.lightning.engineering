@@ -25,6 +25,12 @@ for more information.
 * [Stub code for interacting with `lnrpc` from a WASM context through JSON 
   messages was added](https://github.com/lightningnetwork/lnd/pull/5601).
 
+* LND now [reports to systemd](https://github.com/lightningnetwork/lnd/pull/5536)
+  that RPC is ready (port bound, certificate generated, macaroons created,
+  in case of `wallet-unlock-password-file` wallet unlocked). This can be used to
+  avoid misleading error messages from dependent services if they use `After`
+  systemd option.
+
 ## Wallet
 
 * It is now possible to fund a psbt [without specifying any
@@ -105,6 +111,8 @@ you.
 
 * [Fixed typo in `dest_custom_records` description comment](https://github.com/lightningnetwork/lnd/pull/5541).
 
+* [Fixed payment test error message.](https://github.com/lightningnetwork/lnd/pull/5559)
+
 * [Bumped version of `github.com/miekg/dns` library to fix a Dependabot
   alert](https://github.com/lightningnetwork/lnd/pull/5576).
 
@@ -162,10 +170,11 @@ change](https://github.com/lightningnetwork/lnd/pull/5613).
 
 # Contributors (Alphabetical Order)
 * Andras Banki-Horvath
+* de6df1re
 * ErikEk
 * Eugene Siegel
 * Martin Habovstiak
-* Zero-1729
 * Oliver Gugger
 * xanoni
 * Yong Yu
+* Zero-1729

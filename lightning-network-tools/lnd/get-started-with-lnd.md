@@ -100,7 +100,7 @@ Neutrino itself does not need to run on your machine and as such will not have t
 **Bitcoind**  
 The most popular choice for the Bitcoin backend is bitcoind, the Bitcoin Core daemon. We do not recommend using bitcoind with pruning enabled. At maximum, only transactions older than the oldest Lightning channels may be discarded, e.g. 2017 and before. You can typically find your configuration file in `~/.bitcoin/bitcoin.conf`
 
-We recommend giving LND access to bitcoind PRC using rpcauth. You can read how to set this in the [bitcoind documentation](https://github.com/bitcoin/bitcoin/blob/master/share/examples/bitcoin.conf). 
+We recommend giving LND access to bitcoind RPC using rpcauth. You can read how to set this in the [bitcoind documentation](https://github.com/bitcoin/bitcoin/blob/master/share/examples/bitcoin.conf). 
 
 `rpcauth=[user]:[password hash]`
 

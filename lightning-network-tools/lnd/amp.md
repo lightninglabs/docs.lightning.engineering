@@ -70,3 +70,7 @@ Switching from MPP to AMP is easy. You will have to replace the `--key_send` fla
 
 If you are currently using keysend over the RPC layer, you will be able to smoothly switch over by simply setting the amp field. It is no longer necessary to manually generate and set a preimage. 
 
+{% page-ref page="amp.md" %}
+
+Watch: [Get AMPed: Making Atomic Multi-Path Payments](https://www.youtube.com/watch?v=PNSPXRflCSc)
+

@@ -50,9 +50,9 @@ For those familiar with Docker, or those interested in easily running a variety 
 
 To install LND via Docker you will need `docker`, `make` and `bash` on your system. You can install lnd with the following commands:
 
-`git clone https://github.com/lightningnetwork/lnd  
-cd lnd  
-git checkout <latest-release>  
+`git clone https://github.com/lightningnetwork/lnd    
+cd lnd    
+git checkout <latest-release>    
 make docker-release tag=<latest-release>`
 
 You are now able to find the binaries in the directory lnd&lt;latest-release&gt; for your use. Congratulations, [jump to: Configuring LND](get-started-with-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
@@ -62,10 +62,10 @@ You are now able to find the binaries in the directory lnd&lt;latest-release&gt;
 Installing LND from source is recommended when using it in development or on testnet. To install LND from source, you will need Go version 1.13 or higher. We recommend using Go 1.15.
 
 **Installing Go in Linux**  
-You can find the latest version of Golang [on its official website](https://golang.org/dl/). Make sure to verify the checksum before you install Go. 
+You can find the latest version of Golang [on its official website](https://golang.org/dl/). Make sure to verify the checksum before you install Go.
 
 You can now install go with the command:  
-`tar -C /usr/local -xzf go[version].linux-[platform].tar.gz  
+`tar -C /usr/local -xzf go[version].linux-[platform].tar.gz    
 export PATH=$PATH:/usr/local/go/bin`
 
 **Installing Go on MacOS**  
@@ -74,14 +74,14 @@ To install, simply run the command:
 
 **Set your Go path**  
 To ensure that the command go refers to the correct path, you will need to set your Go path:  
-`export GOPATH=~/gocode  
+`export GOPATH=~/gocode    
 export PATH=$PATH:$GOPATH/bin`
 
 **Installing LND**  
 We can now install LND. We can run the following command from our home directory:  
-`git clone https://github.com/lightningnetwork/lnd  
-cd lnd  
-git checkout [version]  
+`git clone https://github.com/lightningnetwork/lnd    
+cd lnd    
+git checkout [version]    
 make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"`
 
 LND is now installed from source.
@@ -93,14 +93,14 @@ LND is now installed from source.
 LND requires either btcd, bitcoind or neutrino. They can be running on the same machine or a separate instance, but must be reachable over a network interface. In addition to configuring LND, you will also have to configure this Bitcoin node.
 
 **Neutrino**  
-Neutrino is an experimental Bitcoin light client written in Go. To use Neutrino, you will need to specify a remote Neutrino node at startup, such as faucet.lightning.community. 
+Neutrino is an experimental Bitcoin light client written in Go. To use Neutrino, you will need to specify a remote Neutrino node at startup, such as faucet.lightning.community.
 
 Neutrino itself does not need to run on your machine and as such will not have to be configured separately. Using Neutrino over Bitcoind or btcd allows you to run your node in ‘light mode’, meaning it can run on low powered devices such as a mobile phone without the extensive storage or bandwidth requirements of syncing your full bitcoin node.
 
 **Bitcoind**  
 The most popular choice for the Bitcoin backend is bitcoind, the Bitcoin Core daemon. We do not recommend using bitcoind with pruning enabled. At maximum, only transactions older than the oldest Lightning channels may be discarded, e.g. 2017 and before. You can typically find your configuration file in `~/.bitcoin/bitcoin.conf`
 
-We recommend giving LND access to bitcoind RPC using rpcauth. You can read how to set this in the [bitcoind documentation](https://github.com/bitcoin/bitcoin/blob/master/share/examples/bitcoin.conf). 
+We recommend giving LND access to bitcoind RPC using rpcauth. You can read how to set this in the [bitcoind documentation](https://github.com/bitcoin/bitcoin/blob/master/share/examples/bitcoin.conf).
 
 `rpcauth=[user]:[password hash]`
 
@@ -135,7 +135,7 @@ First, we will have to tell LND where and how to find our Bitcoin node. This sli
 **btcd**  
 `rpcuser=` Username for RPC connections. It must match the username provided earlier in the btcd configuration.  
 `rpcpass=` Password for RPC connections. It must match the password set in the btcd configuration file.  
-`rpccert=`  File containing the daemon's certificate file \(default: `/Users/Library/Application Support/Btcd/rpc.cert`\)  
+`rpccert=` File containing the daemon's certificate file \(default: `/Users/Library/Application Support/Btcd/rpc.cert`\)  
 `rawrpccert=` The raw bytes of the daemon's PEM-encoded certificate chain which will be used to authenticate the RPC connection.  
 `rpchost=` \(Optional\) The daemon's rpc listening address. If a port is omitted, then the default port for the selected chain parameters will be used. \(default: `localhost`\)  
 `dir=` \(Optional\) The base directory that contains the node's data, logs, configuration file, etc. \(default: `/Users/Library/Application Support/Btcd`\)
@@ -147,7 +147,7 @@ When starting lnd with neutrino, you will need to set the following flags:`--bit
 
 To make your node available as a routing node, you will need to listen to incoming connections. In your [lnd.conf configuration file](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf), include the following lines:
 
-`listen=0.0.0.0:9735  
+`listen=0.0.0.0:9735    
 listen=[::1]:9736`
 
 This will allow your node to listen on all IPv4 \(port 9735\) and IPv6 \(port 9736\) interfaces.
@@ -162,8 +162,8 @@ Be aware of any firewall that might be enabled on your system, for example by us
 
 Using a firewall is a great idea, although the ports defined above need to remain accessible:
 
-`sudo ufw status  
-sudo ufw allow OpenSSH  
+`sudo ufw status    
+sudo ufw allow OpenSSH    
 sudo ufw allow 9735`
 
 #### Other available configurations
@@ -245,8 +245,8 @@ If you are running LND in a docker container, you can upgrade this container as 
 
 First navigate to the local copy of the lnd github repository, for example with `cd lnd`. Then execute the following commands:
 
-`git pull  
-git checkout <latest-release>  
+`git pull    
+git checkout <latest-release>    
 make docker-release tag=<latest-release>`
 
 You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.

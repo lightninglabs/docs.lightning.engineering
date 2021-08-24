@@ -15,6 +15,7 @@
 * [Channels](the-lightning-network/payment-channels/README.md)
   * [Etymology](the-lightning-network/payment-channels/etymology.md)
 * [Payments](the-lightning-network/multihop-payments/README.md)
+  * [Etymology](the-lightning-network/multihop-payments/etymology.md)
   * [Multipath Payments \(MPP\)](the-lightning-network/multihop-payments/multipath-payments-mpp.md)
 * [Liquidity](the-lightning-network/liquidity/README.md)
   * [Understanding Liquidity](the-lightning-network/liquidity/understanding-liquidity.md)

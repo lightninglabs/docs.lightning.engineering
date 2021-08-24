@@ -4,7 +4,7 @@ description: >-
   inside these payment channels and can be settled on the Blockchain.
 ---
 
-# Payment Channels
+# Channels
 
 Payment channels are the main workhorse of the Lightning Network. They allow multiple transactions to be aggregated into just a few on-chain transactions.
 

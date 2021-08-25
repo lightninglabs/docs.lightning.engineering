@@ -43,6 +43,15 @@ for more information.
 * It is now possible to fund a psbt [without specifying any
   outputs](https://github.com/lightningnetwork/lnd/pull/5442). This option is
   useful for CPFP bumping of unconfirmed outputs or general utxo consolidation.
+* The internal wallet can now also be created or restored by using an [extended
+  master root key (`xprv`) instead of an
+  `aezeed`](https://github.com/lightningnetwork/lnd/pull/4717) only. This allows
+  wallet integrators to use existing seed mechanism that might already be in
+  place. **It is still not supported to use the same seed/root key on multiple
+  `lnd` instances simultaneously** though.
+
+* [Publish transaction is now reachable through 
+  lncli](https://github.com/lightningnetwork/lnd/pull/5460).
 
 ## Security 
 
@@ -56,9 +65,6 @@ because they always create a new group for each user.
 If you use a strange system or changed group membership of the group running LND
 you may want to check your system to see if it introduces additional risk for
 you.
-
-* [Makes publishtransaction, in the wallet sub-server, reachable through 
-  lncli](https://github.com/lightningnetwork/lnd/pull/5460).
 
 ## Safety
 
@@ -83,6 +89,11 @@ you.
   addressed](https://github.com/lightningnetwork/lnd/pull/5509).
 
 * [The `lnwire` fuzz tests have been fixed and now run without crashing.](https://github.com/lightningnetwork/lnd/pull/5395)
+
+* [A flake in the race unit
+  tests](https://github.com/lightningnetwork/lnd/pull/5659) was addressed that
+  lead to failed tests sometimes when the CPU of the GitHub CI runner was
+  strained too much.
 
 ## Documentation
 
@@ -139,6 +150,11 @@ you.
 
 * [Link channel point logging](https://github.com/lightningnetwork/lnd/pull/5508)
 
+* [Fixed context leak in integration tests, and properly handled context
+  timeout](https://github.com/lightningnetwork/lnd/pull/5646).
+
+* [Removed nested db tx](https://github.com/lightningnetwork/lnd/pull/5643)
+
 ## Database
 
 * [Ensure single writer for legacy
@@ -160,6 +176,11 @@ you.
 * [The `lnwire` package now uses a write buffer pool](https://github.com/lightningnetwork/lnd/pull/4884)
   when encoding/decoding messages. Such that most of the heap escapes are fixed,
   resulting in less memory being used when running `lnd`.
+
+## Log system
+
+* [Save compressed log files from logrorate during 
+  itest](https://github.com/lightningnetwork/lnd/pull/5354).
 
 ## Bug Fixes
 

@@ -7,6 +7,25 @@ is only used for onion address connections, and clearnet for everything else.
 This new behavior can be added using the `tor.skip-proxy-for-clearnet-targets`
 flag.
 
+## LN Peer-to-Peer Netowrk
+
+### Bitcoin Blockheaders in Ping Messages
+
+[In this release, we implement a long discussed mechanism to use the Lightning
+Network as a redundant block header
+source](https://github.com/lightningnetwork/lnd/pull/5621). By sending our
+latest block header with each ping message, we give peers another source
+(outside of the Bitcoin P2P network) they can use to spot check their chain
+state. Peers can also use this information to detect if they've been eclipsed
+from the traditional Bitcoin P2P network itself.
+
+As is, we only send this data in Ping messages (which are periodically sent),
+in the future we could also move to send them as the partial payload for our
+pong messages, and also randomize the payload size requested as well.
+
+The `ListPeers` RPC call will now also include a hex encoded version of the
+last ping message the peer has sent to us.
+
 ## Backend Enhancements & Optimizations
 
 ### Full remote database support
@@ -176,6 +195,12 @@ you.
 * [The `lnwire` package now uses a write buffer pool](https://github.com/lightningnetwork/lnd/pull/4884)
   when encoding/decoding messages. Such that most of the heap escapes are fixed,
   resulting in less memory being used when running `lnd`.
+
+* [`lnd` will now no longer (in a steady state) need to open a new database
+  transaction each time a private key needs to be derived for signing or ECDH
+  operations]https://github.com/lightningnetwork/lnd/pull/5629). This results
+  in a massive performance improvement across several routine operations at the
+  cost of a small amount of memory allocated for a new cache.
 
 ## Log system
 

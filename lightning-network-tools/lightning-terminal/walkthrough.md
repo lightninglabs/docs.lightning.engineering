@@ -2,7 +2,7 @@
 
 This document provides a brief overview of the information provided in Lightning Terminal along with step-by-step instructions on how to perform a Loop via the user interface.
 
-We assume you already have a basic understanding of the Lightning Network, LND nodes, and channels. You should already have Lightning Terminal installed and can access the dashboard via a web browser. Installation instructions can be found in the [README](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/README.md).
+We assume you already have a basic understanding of the Lightning Network, LND nodes, and channels. You should already have Lightning Terminal installed and can access the dashboard via a web browser. Installation instructions can be found in the [README](https://github.com/lightninglabs/docs.lightning.engineering/tree/027de4851318c3575f2a1fa99cfeff8f075c6edd/docs/README.md).
 
 * [What is Loop](walkthrough.md#what-is-loop)
 * [Visual Overview](walkthrough.md#visual-overview)
@@ -47,7 +47,7 @@ Refer to the Loop daemon [documentation](https://github.com/lightninglabs/loop/b
 
 Here is an overview of what is displayed on screen after you first log in to the dashboard.
 
-![loop](../../.gitbook/assets/loop%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%283%29.png)
+![loop](../../.gitbook/assets/loop%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%281%29.png)
 
 1. The confirmed balances on the Lightning Network and on-chain
 2. The navigation menu containing links to the different screens
@@ -86,11 +86,11 @@ Lightning Terminal uses a traffic light system to help you prioritize your actio
 
 Follow the steps below to perform a swap via the Lightning Terminal.
 
-![swap1](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/swap1.png)
+![swap1](../../.gitbook/assets/swap1.png)
 
 1. Click on the **Loop** button to begin
 
-![swap2](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/swap2.png)
+![swap2](../../.gitbook/assets/swap2.png)
 
 1. \(Optional\) Select one or more channels if you want the swap to only transfer funds over the chosen channels. This is helpful if you want to only adjust the balance of specific channels.
 
@@ -102,7 +102,7 @@ Follow the steps below to perform a swap via the Lightning Terminal.
 
    > We'll click **Loop Out** in this walk through
 
-![swap3](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/swap3.png)
+![swap3](../../.gitbook/assets/swap3.png)
 
 1. Drag the slider to adjust the amount you want to swap. The Loop server will vary the
 
@@ -113,7 +113,7 @@ Follow the steps below to perform a swap via the Lightning Terminal.
 2. Confirm the selected channels that will be used, if any were chosen.
 3. Click the **Next** button.
 
-![swap4](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/swap4.png)
+![swap4](../../.gitbook/assets/swap4.png)
 
 1. Review the Loop amount and the fee. Keep in mind that you will only be charged the fee.
 
@@ -125,7 +125,7 @@ Follow the steps below to perform a swap via the Lightning Terminal.
 
    Loop process.
 
-![swap5](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/swap5.png)
+![swap5](../../.gitbook/assets/swap5.png)
 
 You will see a loading animation for a few seconds while the information is being submitted.
 
@@ -133,7 +133,7 @@ You will see a loading animation for a few seconds while the information is bein
 
    the loading animation goes away in 3-5 seconds.
 
-![swap6](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/swap6.png)
+![swap6](../../.gitbook/assets/swap6.png)
 
 1. Your swap will now be displayed in the **Processing Loops** section. It shows you the swap id, amount, and current status as a progress bar.
 
@@ -145,7 +145,7 @@ You will see a loading animation for a few seconds while the information is bein
 
 3. To close the **Processing Loops** section while waiting for on-chain confirmations, click on the **Close** icon.
 
-![swap7](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/swap7.png)
+![swap7](../../.gitbook/assets/swap7.png)
 
 You may perform more than one swap at a time, as long as you have the available funds.
 
@@ -153,7 +153,7 @@ You may perform more than one swap at a time, as long as you have the available 
 
    icon.
 
-![swap8](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/swap8.png)
+![swap8](../../.gitbook/assets/swap8.png)
 
 Once all swaps are complete, the green check icon is displayed in the **Processing Loop** section
 
@@ -163,13 +163,13 @@ Congratulations! We have just successfully completed our first **Loop Out**.
 
 ## View Loop History
 
-![history](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/history.png)
+![history](../../.gitbook/assets/history.png)
 
 The **Loop History** page displays a chronological list of all the swaps that have been executed by your node.
 
 ## Manage UI Settings
 
-![settings](../../.gitbook/assets/settings%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![settings](../../.gitbook/assets/settings%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.png)
 
 The **Settings** page allows you to configure UI settings and view some basic node information.
 
@@ -191,15 +191,15 @@ This setting determines how channels are colored and sorted on the **Loop** page
 
 Below are the same list of channels viewed using the different **Channel Balance Mode** options.
 
-![receiving](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/receiving.png)
+![receiving](../../.gitbook/assets/receiving.png)
 
 **Optimize for Receiving**: For merchants who primarily receive inbound Lightning payments, the channels with high local balances will be shaded red. The goal is to keep your local balances as low as possible, so that you can receive more funds inbound.
 
-![sending](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/sending.png)
+![sending](../../.gitbook/assets/sending.png)
 
 **Optimize for Sending**: For exchanges, fiat gateways, and other operators who primarily send outgoing Lightning payments, the channels with high local balances will be shaded red. The goal is to keep your local balances as high as possible, so that you can send more funds outbound.
 
-![routing](https://github.com/lightninglabs/docs.lightning.engineering/tree/9faa44270c43ff2e655b9f4db2285024376c95ad/docs/lit/images/routing.png)
+![routing](../../.gitbook/assets/routing.png)
 
 **Optimize for Routing**: For routing node operators, that want to keep their channels balanced close to 50%, the channels with a high balance in either direction will be flagged.
 

@@ -44,7 +44,7 @@ Optionally, you may specify your socks proxy with the following command:
 
 `tor.socks=127.0.0.1:9050`
 
-This command enables Tor stream isolation, meaning each connection will use a separate Tor circuit. This can prevent other Tor traffic from being mixed with LND’s Tor traffic.
+This command enables Tor stream isolation, meaning each connection will use a separate Tor circuit. This can prevent other Tor traffic from being mixed with LND’s Tor traffic. Set this option to `false` if you have a lot of channels or prefer your channels to go online quickly, rather than privately.
 
 `tor.streamisolation=true`
 

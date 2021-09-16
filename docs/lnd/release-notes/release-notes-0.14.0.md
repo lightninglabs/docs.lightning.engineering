@@ -74,6 +74,8 @@ proposed channel type is used.
   is added to the state server. This state indicates whether the `lnd` server
   and all its subservers have been fully started or not.
 
+* [Adds an option to the BakeMacaroon rpc "allow-external-permissions,"](https://github.com/lightningnetwork/lnd/pull/5304) which makes it possible to bake a macaroon with external permissions. That way, the baked macaroons can be used for services beyond LND. Also adds a new CheckMacaroonPermissions rpc that checks that the macaroon permissions and other restrictions are being followed. It can also check permissions not native to LND.
+
 ### Batched channel funding
 
 [Multiple channels can now be opened in a single
@@ -149,6 +151,11 @@ you.
   tests](https://github.com/lightningnetwork/lnd/pull/5659) was addressed that
   lead to failed tests sometimes when the CPU of the GitHub CI runner was
   strained too much.
+
+* [Reduce the number of parallel itest runs to 2 on
+  ARM](https://github.com/lightningnetwork/lnd/pull/5731).
+
+* [Fix Travis itest parallelism](https://github.com/lightningnetwork/lnd/pull/5734)
 
 ## Documentation
 
@@ -285,6 +292,10 @@ mode](https://github.com/lightningnetwork/lnd/pull/5564).
 
 [A bug has been fixed when registering for spend notifications in the `txnotifier`. A re-org notification would previously not be dispatched in certain scenarios.](https://github.com/lightningnetwork/lnd/pull/5465)
 
+[Catches up on blocks in the router](https://github.com/lightningnetwork/lnd/pull/5315) in order to fix an "out of order" error that crops up.
+
+[Fix healthcheck might be running after the max number of attempts are reached.](https://github.com/lightningnetwork/lnd/pull/5686)
+
 ## Documentation 
 
 The [code contribution guidelines have been updated to mention the new
@@ -292,6 +303,7 @@ requirements surrounding updating the release notes for each new
 change](https://github.com/lightningnetwork/lnd/pull/5613). 
 
 # Contributors (Alphabetical Order)
+* Alyssa Hertig
 * Andras Banki-Horvath
 * de6df1re
 * ErikEk

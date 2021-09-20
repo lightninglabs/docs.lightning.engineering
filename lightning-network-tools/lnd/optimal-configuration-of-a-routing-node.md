@@ -168,7 +168,15 @@ tlsextradomain=YOUR_DOMAIN_NAME`
 
 You may want to manage and monitor your node with remote tools requiring RPC. These configurations help you do that.
 
-## DDoS Protection: <a id="docs-internal-guid-cfab3ba7-7fff-f3b9-ae1f-2a9a937759cb"></a>
+## DDoS Protection: <a id="docs-internal-guid-8e501dd3-7fff-8a74-528d-5b8b097797a0"></a>
+
+Defending your node against \(distributed\) denial of service attacks is not an easy feat. Depending on your node setup, you may opt for one of multiple tools to keep satoshis flowing under all circumstances.
+
+As a precaution and for reasons beyond DDoS protection, do not make multiple services, such as bitcoind and lnd available on the same IP addresses or onion service.
+
+### Iptables
+
+With iptables you can configure how packets are filtered before they reach LND. While executing these rules can also be computationally intensive, it generally allows your machine to sustain a far higher load. 
 
 We suggest the following iptable rules for network flood protection:
 
@@ -180,4 +188,27 @@ sudo iptables -A INPUT -p icmp -m limit --limit 1/s --limit-burst 1 -j ACCEPT
 sudo iptables -A INPUT -p icmp -m limit --limit 1/s --limit-burst 1 -j LOG --log-prefix PING-DROP:  
 sudo iptables -A INPUT -p icmp -j DROP  
 sudo iptables -A OUTPUT -p icmp -j ACCEPT`
+
+### Tor <a id="docs-internal-guid-8c746b37-7fff-d870-17cd-addca00be636"></a>
+
+While the Tor network is not immune to DDoS attacks, it may be able to help you stay available to your peers in ways a clearnet IP address may not.Botnets and other tools deployed in DDoS attacks may not work over Tor, and although the network has its own bandwidth constraints, it also has its own ways to mitigate attacks.
+
+[Learn how to configure Tor on your node.](quick-tor-setup.md)
+
+### Content Delivery Networks
+
+Content Delivery Networks \(CDNs\) have paid infrastructure in place that can detect and mitigate even the most powerful DDoS attacks. To configure your node with a CDN, you will need to configure it with a domain name instead of an IP address.
+
+You will also need to add your domain name to the TLS certificate and instruct LND to advertise a domain name instead of an IP address. If you have previously advertised your IP address, it might be necessary to change that or otherwise restrict traffic.
+
+`tlsextradomain=  
+externalhosts=my-node-domain.com`
+
+### Cloud server infrastructure
+
+Many cloud service providers include some basic DDoS protection in their products, or offer them at an extra cost. Similar to CDNs this can be a worthwhile tactic of protecting your node. Do read the fineprint, as protection levels and policies differ. Some providers for example might disable access to your instance completely once they detect a DDoS attack.
+
+### During an attack
+
+While experiencing a sudden large amount of traffic to your node, you may close your ports or even change IP address. You may only remain reachable via the Tor network, or not at all. Unless the entire network or your peers are under attack, you will still be able to make outgoing connections and keep your channels active.
 

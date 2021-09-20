@@ -59,7 +59,7 @@
   * [NAT Traversal](lightning-network-tools/lnd/nat_traversal.md)
   * [Recovery: Planning for failure](lightning-network-tools/lnd/recovery-planning-for-failure.md)
   * [Migrating LND](lightning-network-tools/lnd/migrating-lnd.md)
-  * [Recovering Funds](lightning-network-tools/lnd/recovery.md)
+  * [Disaster recovery](lightning-network-tools/lnd/disaster-recovery.md)
 * [Lightning Terminal](lightning-network-tools/lightning-terminal/README.md)
   * [Get LiT](lightning-network-tools/lightning-terminal/get-lit/README.md)
     * [Linux - Integrated Mode](lightning-network-tools/lightning-terminal/get-lit/ubuntu-integrated.md)

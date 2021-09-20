@@ -16,7 +16,7 @@ The liquidity of on-chain bitcoin is likely the easiest to understand. An on-cha
 
 Some on-chain transactions, such as unilateral channel closures \(also called force closes\), have their own unique liquidity properties. Typically, the party initiating the force close will have to wait to spend their bitcoin, while the other side can spend their funds immediately. The length of the waiting period is defined when the channel is opened. It can range from just a day to a few weeks.
 
-Such force closes may be the only way to retrieve funds from an “illiquid” channel if a peer hasn’t been online for a while. They could also be requested by the peer in case of data loss \([see static channel backup](../../lightning-network-tools/lnd/recovery.md)\) or they may be the result of a HTLC that has to be settled on-chain.
+Such force closes may be the only way to retrieve funds from an “illiquid” channel if a peer hasn’t been online for a while. They could also be requested by the peer in case of data loss \([see static channel backup]()\) or they may be the result of a HTLC that has to be settled on-chain.
 
 ## Different nodes for different purposes
 

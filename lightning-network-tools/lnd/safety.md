@@ -56,7 +56,7 @@ Important to know:
 
 ### Wallet password
 
-The wallet password is one of the first things that has to be entered if a new wallet is created using `lnd`. It is completely independent from the `aezeed` cipher seed passphrase \(which is optional\). The wallet password is used to encrypt the sensitive parts of `lnd`'s databases, currently some parts of `wallet.db` and `macaroons.db`. Loss of this password does not necessarily mean loss of funds, as long as the `aezeed` passphrase is still available. But the node will need to be restored using the [SCB restore procedure](recovery.md).
+The wallet password is one of the first things that has to be entered if a new wallet is created using `lnd`. It is completely independent from the `aezeed` cipher seed passphrase \(which is optional\). The wallet password is used to encrypt the sensitive parts of `lnd`'s databases, currently some parts of `wallet.db` and `macaroons.db`. Loss of this password does not necessarily mean loss of funds, as long as the `aezeed` passphrase is still available. But the node will need to be restored using the [SCB restore procedure]().
 
 ### TLS
 
@@ -87,12 +87,12 @@ Such a backup can either be obtained as a file containing entries for multiple c
 
 What the SCB does **not** contain is the current channel balance \(or the associated commitment transaction\). So how can a channel be restored using SCBs?  
 That's the important part: _A channel cannot be restored using SCBs_, but the funds that are in the channel can be claimed. The restore procedure relies on the Data Loss Prevention \(DLP\) protocol which works by connecting to the remote node and asking them to **force close** the channel and hand over the needed information to sweep the on-chain funds that belong to the local node.  
-Because of this, [restoring a node from SCB](recovery.md) should be seen as an emergency measure as all channels will be closed and on-chain fees incur to the party that opened the channel initially.  
+Because of this, [restoring a node from SCB]() should be seen as an emergency measure as all channels will be closed and on-chain fees incur to the party that opened the channel initially.  
 To migrate an existing, working node to a new device, SCBs are _not_ the way to do it. See the section about [migrating a node](safety.md#migrating-a-node-to-a-new-device) on how to do it correctly.
 
 Important to know:
 
-* [Restoring a node from SCB](recovery.md) will force-close all channels
+* [Restoring a node from SCB]() will force-close all channels
 
   contained in that file.
 
@@ -155,7 +155,7 @@ As mentioned in the previous chapter, there is a file where `lnd` stores and upd
 
 One straight-forward way of backing that file up is to create a file watcher and react whenever the file is changed. Here is an example script that [automatically makes a copy of the file whenever it changes](https://gist.github.com/alexbosworth/2c5e185aedbdac45a03655b709e255a3).
 
-Other ways of obtaining SCBs for a node's channels are [described in the recovery documentation](recovery.md#obtaining-scbs).
+Other ways of obtaining SCBs for a node's channels are [described in the recovery documentation]().
 
 Because the backup file is encrypted with a key from the seed the node was created with, it can safely be stored on a cloud storage or any other storage medium. Many consumer focused wallet smartphone apps automatically store a backup file to the cloud, if the phone is set up to allow it.
 

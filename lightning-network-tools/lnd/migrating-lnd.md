@@ -12,7 +12,7 @@ Do NOT use this guide if you have experienced a fatal error.
 
 Do NOT run two LND instances with the same seed or public key.
 
-Read: LND disaster recovery
+[Read: LND disaster recovery](disaster-recovery.md)
 
 ## When to migrate LND
 

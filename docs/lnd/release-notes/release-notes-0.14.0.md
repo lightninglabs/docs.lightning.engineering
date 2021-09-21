@@ -267,6 +267,9 @@ you.
   payments. Deleting all failed payments beforehand makes migration safer and
   faster too.
 
+* [Prefetch payments on hot paths](https://github.com/lightningnetwork/lnd/pull/5640)
+  to reduce roundtrips to the remote DB backend.
+
 ## Performance improvements
 
 * [Update MC store in blocks](https://github.com/lightningnetwork/lnd/pull/5515)
@@ -313,13 +316,19 @@ you.
 
 * [Catches up on blocks in the
   router](https://github.com/lightningnetwork/lnd/pull/5315) in order to fix an
-  "out of order" error that crops up.
+  "out of order" error that [crops up](https://github.com/lightningnetwork/lnd/pull/5748).
 
 * [Fix healthcheck might be running after the max number of attempts are
   reached](https://github.com/lightningnetwork/lnd/pull/5686).
 
 * [Fix crash with empty AMP or MPP record in
   invoice](https://github.com/lightningnetwork/lnd/pull/5743).
+
+* The underlying gRPC connection of a WebSocket is now [properly closed when the
+  WebSocket end of a connection is
+  closed](https://github.com/lightningnetwork/lnd/pull/5683). A bug with the
+  write deadline that caused connections to suddenly break was also fixed in the
+  same PR.
 
 ## Documentation 
 

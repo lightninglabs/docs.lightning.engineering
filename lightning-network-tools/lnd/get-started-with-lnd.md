@@ -16,7 +16,7 @@ Your requirements and dependencies will vary between installation types, as will
 
 ### System requirements
 
-LND generally has low system requirements and performs well on small single-board devices with 2 GiB and a CPU with over 1 GHz quad core, such as a Raspberry Pi. Generally the system requirements for Bitcoind are higher than those for LND. A 64-bit architecture is recommended, and due to the frequent read and write operations LND should not be run from an SD card.
+LND generally has low system requirements and performs well on small single-board devices with 2 GiB and a CPU with over 1 GHz quad core, such as a Raspberry Pi. Generally the system requirements for Bitcoind are higher than those for LND. A 64-bit architecture is strongly recommended, as a large \(&gt;2GB\) `channel.db`on 32-bit systems can lead to a system halt. Due to the frequent read and write operations LND should **not** be run from an SD card, but ideally a high-performing SSD.
 
 ### Installing LND using third-party scripts
 

@@ -38,6 +38,27 @@ instantaneous. Read the [guide on leader
 election](https://github.com/lightningnetwork/lnd/blob/master/docs/leader_election.md)
 for more information.
 
+### Postgres database support
+
+This release adds [support for Postgres as a database
+backend](https://github.com/lightningnetwork/lnd/pull/5366) to lnd. Postgres
+has several advantages over the default bbolt backend:
+* Better handling of large data sets.
+* On-the-fly database compaction (auto vacuum).
+* Database replication.
+* Inspect data while lnd is running (bbolt opens the database exclusively).
+* Usage of industry-standard tools to manage the stored data, get performance
+  metrics, etc.
+
+Furthermore, the SQL platform opens up possibilities to improve lnd's
+performance in the future. Bbolt's single-writer model is a severe performance
+bottleneck, whereas Postgres offers a variety of locking models. Additionally,
+structured tables reduce the need for custom serialization/deserialization code
+in `lnd`, saving developer time and limiting the potential for bugs.
+
+Instructions for enabling Postgres can be found in
+[docs/postgres.md](../postgres.md).
+
 ## Protocol Extensions
 
 ### Explicit Channel Negotiation
@@ -78,6 +99,12 @@ proposed channel type is used.
   and all its subservers have been fully started or not.
 
 * [Adds an option to the BakeMacaroon rpc "allow-external-permissions,"](https://github.com/lightningnetwork/lnd/pull/5304) which makes it possible to bake a macaroon with external permissions. That way, the baked macaroons can be used for services beyond LND. Also adds a new CheckMacaroonPermissions rpc that checks that the macaroon permissions and other restrictions are being followed. It can also check permissions not native to LND.
+
+* [A new RPC middleware
+  interceptor](https://github.com/lightningnetwork/lnd/pull/5101) was added that
+  allows external tools to hook into `lnd`'s RPC server and intercept any
+  requests made with custom macaroons (and also the responses to those
+  requests).
 
 ### Batched channel funding
 
@@ -130,6 +157,8 @@ you.
 
 * Locally force closed channels are now [kept in the channel.backup file until
   their time lock has fully matured](https://github.com/lightningnetwork/lnd/pull/5528).
+
+* [Cooperative closes optimistically shutdown the associated `link` before closing the channel.](https://github.com/lightningnetwork/lnd/pull/5618)
 
 ## Build System
 

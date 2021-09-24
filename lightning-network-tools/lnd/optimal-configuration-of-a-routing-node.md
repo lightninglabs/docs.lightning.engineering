@@ -10,7 +10,7 @@ In this article we will discuss various configuration options for LND in the con
 
 ## Objectives <a id="docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447"></a>
 
-The obligations of a good routing node fall into two broad categories. First and in this article, we will need to install and configure LND. Later we will need to open channels, get inbound liquidity and manage the liquidity of our node in a smart way. Have a look at the [liquidity](https://docs.lightning.engineering/the-lightning-network/liquidity) and [routing](https://docs.lightning.engineering/the-lightning-network/routing) sections of the Builder’s Guide.
+The obligations of a good routing node fall into two broad categories. First and in this article, we will need to install and configure LND. Later we will need to open channels, get inbound liquidity and manage the liquidity of our node in a smart way. Have a look at the [liquidity](../../the-lightning-network/liquidity/) and [routing](../../the-lightning-network/routing/) sections of the Builder’s Guide.
 
 ### Node uptime
 

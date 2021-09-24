@@ -8,6 +8,18 @@ LND offers a wide range of configuration options that allow deployment in a larg
 
 In this article we will discuss various configuration options for LND in the context of a routing node.
 
+## Objectives <a id="docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447"></a>
+
+The obligations of a good routing node fall into two broad categories. First and in this article, we will need to install and configure LND. Later we will need to open channels, get inbound liquidity and manage the liquidity of our node in a smart way. Have a look at the [liquidity](https://docs.lightning.engineering/the-lightning-network/liquidity) and [routing](https://docs.lightning.engineering/the-lightning-network/routing) sections of the Builder’s Guide.
+
+### Node uptime
+
+Your node should be available as much as possible with little latency. This allows others to open channels with you and lets your node respond quickly to payments flowing to you. Your network, server and whether you deploy LND behind [Tor](quick-tor-setup.md) or a proxy all play a role in this metric.
+
+### Channel stability
+
+There are many reasons why a channel might be marked as ‘disabled’ by one peer or another. Keeping your channel available is an important metric to assess the quality of a node. Keep your node up to date and regularly observe the quality of your channels. Configurations such as tor stream isolation can also affect the quality of channels.
+
 ## Configuring a routing node <a id="docs-internal-guid-265f4120-7fff-139c-a0f4-e8dd72f3defd"></a>
 
 For a high-performance routing node you will need btcd or bitcoind running without pruning. Ideally both the Bitcoin backend and LND will run on the same machine, but it is also possible to connect them via ssh on separate servers, as long as latency is low enough.

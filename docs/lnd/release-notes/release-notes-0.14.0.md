@@ -142,6 +142,13 @@ documentation](../psbt.md#use-the-batchopenchannel-rpc-for-safe-batch-channel-fu
 
 ## Security 
 
+* The release signature verification script [was overhauled to fix some possible
+  attack vectors and user
+  errors](https://github.com/lightningnetwork/lnd/pull/5053). The public keys
+  used to verify the signatures against are no longer downloaded form Keybase
+  but instead are kept in the `lnd` git repository. This allows for a more
+  transparent way of keeping track of changes to the signing keys.
+
 ### Admin macaroon permissions
 
 The default file permissions of admin.macaroon were [changed from 0600 to
@@ -210,6 +217,11 @@ you.
 * The only way to retrieve hophints for a given node was to create an invoice
   with the `addInvoice` rpc interface. However, now the function has been
   [exposed in the go package `invoicesrpc`](https://github.com/lightningnetwork/lnd/pull/5697).
+
+* The `DeleteAllPayments` and `DeletePayment` RPC methods can now be called from
+  the command line with the [new 
+  `lncli deletepayments`](https://github.com/lightningnetwork/lnd/pull/5699)
+  command.
 
 ## Code Health
 

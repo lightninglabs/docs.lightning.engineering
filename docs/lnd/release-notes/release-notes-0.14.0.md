@@ -198,6 +198,10 @@ you.
 
 * [Fix Travis itest parallelism](https://github.com/lightningnetwork/lnd/pull/5734)
 
+* [All CI, containers, and automated release artifact building now all use Go
+  1.17.1](https://github.com/lightningnetwork/lnd/pull/5650). All build tags have
+  been updated accordingly to comply with the new Go 1.17.1 requirements.
+
 ## Documentation
 
 * [Outdated warning about unsupported pruning was replaced with clarification that LND **does**
@@ -229,6 +233,10 @@ you.
   the command line with the [new 
   `lncli deletepayments`](https://github.com/lightningnetwork/lnd/pull/5699)
   command.
+
+* [Add more verbose error printed to
+  console](https://github.com/lightningnetwork/lnd/pull/5802) when `lnd` fails
+  loading the user specified config.
 
 ## Code Health
 
@@ -285,6 +293,8 @@ you.
 
 * [Replace reference to JWT library with CVE](https://github.com/lightningnetwork/lnd/pull/5737)
 
+* [Replace reference to XZ library with CVE](https://github.com/lightningnetwork/lnd/pull/5789)
+
 * [Fixed restore backup file test flake with bitcoind](https://github.com/lightningnetwork/lnd/pull/5637).
 
 * [Timing fix in AMP itest](https://github.com/lightningnetwork/lnd/pull/5725).
@@ -298,6 +308,8 @@ you.
 * [Order of the start/stop on subsystems are changed to promote better safety](https://github.com/lightningnetwork/lnd/pull/1783).
 
 * [Fixed flake that occurred when testing the new optimistic link shutdown.](https://github.com/lightningnetwork/lnd/pull/5808)
+
+* [Replace reference to protobuf library with OSV](https://github.com/lightningnetwork/lnd/pull/5759)
 
 ## Database
 
@@ -388,6 +400,15 @@ you.
   closed](https://github.com/lightningnetwork/lnd/pull/5683). A bug with the
   write deadline that caused connections to suddenly break was also fixed in the
   same PR.
+
+* [A bug has been fixed in 
+  Neutrino](https://github.com/lightninglabs/neutrino/pull/226) that would 
+  result in transactions being rebroadcast even after they had been confirmed. 
+  [Lnd is updated to use the version of Neutrino containing this 
+  fix](https://github.com/lightningnetwork/lnd/pull/5807).
+
+* [Use the change output index when validating the reserved wallet balance for
+  SendCoins/SendMany calls](https://github.com/lightningnetwork/lnd/pull/5665)
 
 ## Documentation 
 

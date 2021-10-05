@@ -59,6 +59,18 @@ in `lnd`, saving developer time and limiting the potential for bugs.
 Instructions for enabling Postgres can be found in
 [docs/postgres.md](../postgres.md).
 
+### In-memory path finding
+
+Finding a path through the channel graph for sending a payment doesn't involve
+any database queries anymore. The [channel graph is now kept fully
+in-memory](https://github.com/lightningnetwork/lnd/pull/5642) for up a massive
+performance boost when calling `QueryRoutes` or any of the `SendPayment`
+variants. Keeping the full graph in memory naturally comes with increased RAM
+usage. Users running `lnd` on low-memory systems are advised to run with the
+`routing.strictgraphpruning=true` configuration option that more aggressively
+removes zombie channels from the graph, reducing the number of channels that
+need to be kept in memory.
+
 ## Protocol Extensions
 
 ### Explicit Channel Negotiation
@@ -107,6 +119,16 @@ proposed channel type is used.
   requests).
   
 * [Adds NOT_FOUND status code for LookupInvoice](https://github.com/lightningnetwork/lnd/pull/5768)
+
+* The `FundingPsbtFinalize` step is a safety measure that assures the final
+  signed funding transaction has the same TXID as was registered during
+  the funding flow and was used for the commitment transactions.
+  This step is cumbersome to use if the whole funding process is completed
+  external to lnd. [We allow the finalize step to be
+  skipped](https://github.com/lightningnetwork/lnd/pull/5363) for such cases.
+  The API user/script will need to make sure things are verified (and possibly
+  cleaned up) properly. An example script was added to the [PSBT
+  documentation](../psbt.md) to show the simplified process.
 
 ### Batched channel funding
 
@@ -295,6 +317,8 @@ you.
 
 * [Replace reference to XZ library with CVE](https://github.com/lightningnetwork/lnd/pull/5789)
 
+* [Replace reference to mongo library with CVE](https://github.com/lightningnetwork/lnd/pull/5761)
+
 * [Fixed restore backup file test flake with bitcoind](https://github.com/lightningnetwork/lnd/pull/5637).
 
 * [Timing fix in AMP itest](https://github.com/lightningnetwork/lnd/pull/5725).
@@ -367,7 +391,7 @@ you.
 ## Bug Fixes
 
 * A bug has been fixed that would cause `lnd` to [try to bootstrap using the
-  currnet DNS seeds when in SigNet
+  current DNS seeds when in SigNet
   mode](https://github.com/lightningnetwork/lnd/pull/5564).
 
 * [A validation check for sane `CltvLimit` and `FinalCltvDelta` has been added
@@ -406,6 +430,10 @@ you.
   result in transactions being rebroadcast even after they had been confirmed. 
   [Lnd is updated to use the version of Neutrino containing this 
   fix](https://github.com/lightningnetwork/lnd/pull/5807).
+ 
+* A bug has been fixed that would result in nodes not [reconnecting to their
+  persistent outbound peers if the peer's IP
+  address changed](https://github.com/lightningnetwork/lnd/pull/5538).
 
 * [Use the change output index when validating the reserved wallet balance for
   SendCoins/SendMany calls](https://github.com/lightningnetwork/lnd/pull/5665)
@@ -420,6 +448,7 @@ change](https://github.com/lightningnetwork/lnd/pull/5613).
 * Alyssa Hertig
 * Andras Banki-Horvath
 * de6df1re
+* Elle Mouton
 * ErikEk
 * Eugene Siegel
 * Harsha Goli

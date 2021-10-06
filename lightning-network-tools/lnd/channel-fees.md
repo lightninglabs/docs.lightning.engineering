@@ -8,9 +8,9 @@ description: >-
 
 In the Lightning Network, routing nodes are able to charge a fee for forwarding payments, so-called Hash-Time-Locked-Contracts \(HTLCs\). This compensation is necessary to incentivize the efficient allocation of capital in the network to be able to receive and send fees inside of the network.
 
-On the HTLC level, channel fees are the difference between the HTLC sent to the routing node, and the HTLC sent from the routing node onwards. As an example, if you are presented a 1000 satoshi invoice from a node one hop away that charges 1 satoshi, you will send an HTLC over 1001 satoshi to the routing node, which sends a 1000 satoshi HTLC to the final recipient.
+On the HTLC level, channel fees are the difference between the HTLC sent to the routing node, and the HTLC sent from the routing node onwards. As an example, if you are presented a 1000 satoshis invoice from a node one hop away that charges 1 satoshi, you will send an HTLC over 1001 satoshis to the routing node, which sends a 1000 satoshis HTLC to the final recipient.
 
-As fees are included in the payment, and all HTLCs contingent on the same pre-image, you can only charge fees for successful payments.
+As fees are included in the payment, and all HTLCs contingent on the same preimage, you can only charge fees for successful payments.
 
 Fees are applied only once per channel by the party which is forwarding the fee. Meaning, as you push a payment to your neighbor node, you are able to charge a fee, and as payments are pushed to you, your neighbor charges the fee, even if the channel was created by you.
 
@@ -30,7 +30,7 @@ lnd.conf:
 
 ## Fee rate
 
-The fee rate is a proportional fee charged based on the value of each forwarded HTLC. It is typically denominated in parts per million, although the command lncli updatechanpolicy uses decimal place. The command lncli feereport will return both the decimal value \(`fee_rate`\) and the amount per million \(`fee_per_mil`\) for your convenience.
+The fee rate is a proportional fee charged based on the value of each forwarded HTLC. It is typically denominated in parts per million, although the command `lncli updatechanpolicy` uses decimal places. The command `lncli feereport` will return both the decimal value \(`fee_rate`\) and the amount per million \(`fee_per_mil`\) for your convenience.
 
 `lncli updatechanpolicy --fee_rate 0.000001 55d9c8e11e6a926e3929a9584298278e6297b75b75f4f8c751f6b00da05ffe72:1`
 
@@ -54,7 +54,7 @@ The command `lncli feereport` will output a list of all your channels and your f
             "fee_rate": 0.000001  
         }`
 
-The output above means that for each payment you are pushing through this channel, you are charging 1000 milli-satoshi \(1 satoshi\) plus 500 milli-satoshi per million. A 1 milllion satoshi large HTLC for example would yield you 1500 milli-satoshi, or 1.5 satoshi.
+The output above means that for each payment you are pushing through this channel, you are charging 1000 milli-satoshis \(1 satoshi\) plus 500 milli-satoshis per million. A 1 milllion satoshis large HTLC for example would yield you 1500 milli-satoshis, or 1.5 satoshi.
 
 To see the fees of individual channels, and to see how much fees the other side charges for fees in your channel, you can use the query `lncli getchaninfo`, 
 
@@ -89,7 +89,7 @@ Example usage:
     }  
 }`
 
-The output above tells you that while both sides of this channel charge 1000 milli-satoshi per forwarded payment, the fee rate of node 1 is only half of that of node 2. The smallest payment this channel can route in either way is 1000 milli-satoshi, and each HTLC has to be claimed within 40 blocks before it has to be settled on chain.
+The output above tells you that while both sides of this channel charge 1000 milli-satoshis per forwarded payment, the fee rate of node 1 is only half of that of node 2. The smallest payment this channel can route in either way is 1000 milli-satoshis, and each HTLC has to be claimed within 40 blocks before it has to be settled on chain.
 
 Alternatively you can probe the entire graph with the command `lncli describegraph`. This will return all channels and their policies across the entire network.
 
@@ -100,7 +100,7 @@ You can update your channel policies anytime using the command line. Generally, 
 `lncli updatechanpolicy --base_fee_msat 1000 --fee_rate 0.000001 --time_lock_delta 500 --min_htlc_msat 1000 --chan_point 55d9c8e11e6a926e3929a9584298278e6297b75b75f4f8c751f6b00da05ffe72:1`  
 
 
-You can also set your default channel policies in your lnd configuration file.
+You can also set your default channel policies in your LND configuration file.
 
 lnd.conf:
 

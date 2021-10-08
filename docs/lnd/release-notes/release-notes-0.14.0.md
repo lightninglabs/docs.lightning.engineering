@@ -340,6 +340,9 @@ you.
 
 * [Replace reference to protobuf library with OSV](https://github.com/lightningnetwork/lnd/pull/5759)
 
+* [Only upload itest logs on failure, fix more
+  flakes](https://github.com/lightningnetwork/lnd/pull/5833).
+
 ## Database
 
 * [Ensure single writer for legacy
@@ -442,6 +445,10 @@ you.
 
 * [Use the change output index when validating the reserved wallet balance for
   SendCoins/SendMany calls](https://github.com/lightningnetwork/lnd/pull/5665)
+
+* A [bug](https://github.com/lightningnetwork/lnd/pull/5834) has been fixed where
+  certain channels couldn't be passed to `lncli getchaninfo` due to their 8-byte 
+  compact ID being too large for an int64. 
 
 ## Documentation 
 

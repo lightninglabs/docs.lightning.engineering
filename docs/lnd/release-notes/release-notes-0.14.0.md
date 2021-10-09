@@ -227,6 +227,12 @@ you.
 * [All integration tests (except the ARM itests) were moved from Travis CI to
   GitHub Actions](https://github.com/lightningnetwork/lnd/pull/5811).
 
+* [The LndMobile iOS build has been updated to work
+  with newer gomobile versions](https://github.com/lightningnetwork/lnd/pull/5842)
+  that output in the `xcframework` packaging format.
+  Applications that use the iOS build will have to be updated to include
+  an `xcframework` instead of a `framework`.
+
 ## Documentation
 
 * [Outdated warning about unsupported pruning was replaced with clarification that LND **does**
@@ -262,6 +268,10 @@ you.
 * [Add more verbose error printed to
   console](https://github.com/lightningnetwork/lnd/pull/5802) when `lnd` fails
   loading the user specified config.
+
+* [Make it possible to add more than one RPC Listener when calling lnd.Main](https://github.com/lightningnetwork/lnd/pull/5777). And
+  add MacChan field for passing back lnd's admin macaroon back to the program 
+  calling lnd, when needed.
 
 ## Code Health
 
@@ -342,6 +352,10 @@ you.
 
 * [Only upload itest logs on failure, fix more
   flakes](https://github.com/lightningnetwork/lnd/pull/5833).
+
+* [The interfaces for signing messages and the code for initializing a wallet 
+  was refactored as a preparation for supporting remote
+  signing](https://github.com/lightningnetwork/lnd/pull/5708).
 
 ## Database
 
@@ -450,6 +464,9 @@ you.
   certain channels couldn't be passed to `lncli getchaninfo` due to their 8-byte 
   compact ID being too large for an int64. 
 
+* [Dedup stored peer addresses before creating connection requests to prevent
+  redundant connection requests](https://github.com/lightningnetwork/lnd/pull/5839)
+
 ## Documentation 
 
 The [code contribution guidelines have been updated to mention the new
@@ -463,6 +480,7 @@ change](https://github.com/lightningnetwork/lnd/pull/5613).
 * Elle Mouton
 * ErikEk
 * Eugene Siegel
+* Hampus Sjöberg
 * Harsha Goli
 * Jesse de Wit
 * Martin Habovstiak

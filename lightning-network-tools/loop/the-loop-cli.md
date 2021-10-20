@@ -4,13 +4,13 @@ description: Understand fees in Lightning Loop and get the most out of it
 
 # The Loop CLI
 
-## Using Loop <a id="docs-internal-guid-0588c9ab-7fff-a9c6-0c68-1ad299980217"></a>
+## Using Loop <a href="docs-internal-guid-0588c9ab-7fff-a9c6-0c68-1ad299980217" id="docs-internal-guid-0588c9ab-7fff-a9c6-0c68-1ad299980217"></a>
 
 As soon as Loop is running, you will be able to make use of the CLI. Depending on your installation, you will be able to run it simply by typing loop into your console, or navigate to where the binaries are stored and execute with `./loop`
 
 ### Get a quote
 
-We can start by requesting the latest Loop terms. The command `loop terms` should give us information about the minimum and maximum amounts of satoshis we can Loop In or Loop Out. Additionally, it will give us the CLTV Delta, which is the number of blocks our bitcoin would be locked up in the event our Loop In is unsuccessful \(i.e. due to lack of inbound liquidity\).
+We can start by requesting the latest Loop terms. The command `loop terms` should give us information about the minimum and maximum amounts of satoshis we can Loop In or Loop Out. Additionally, it will give us the CLTV Delta, which is the number of blocks our bitcoin would be locked up in the event our Loop In is unsuccessful (i.e. due to lack of inbound liquidity).
 
 You can also use the command `loop getparams` to see current fees, prepaid amounts and [autoloop](autoloop.md) settings.
 
@@ -22,7 +22,7 @@ In addition we will have to pay a fee for our swap, which is quoted in satoshi a
 
 ### Loop Out fees
 
-We can request a quote for Loop Out with `loop quote out <amount in satoshi>`. As you perform Loop Out, the on-chain transaction will be made to a Bitcoin smart contract, called a Hash Time-lock Contract, or HTLC\). Once your Lightning payment was made successfully to Loop, you will be able to sweep the funds from the smart contract using the secret obtained in the payment. If your Lightning payment fails, for example due to insufficient outbound liquidity, the funds in the smart contract will be returned back to Loop.
+We can request a quote for Loop Out with `loop quote out <amount in satoshi>`. As you perform Loop Out, the on-chain transaction will be made to a Bitcoin smart contract, called a Hash Time-lock Contract, or HTLC). Once your Lightning payment was made successfully to Loop, you will be able to sweep the funds from the smart contract using the secret obtained in the payment. If your Lightning payment fails, for example due to insufficient outbound liquidity, the funds in the smart contract will be returned back to Loop.
 
 The cost of sweeping the smart contract is quoted in satoshi as `htlc_sweep_fee_sat`. This is an estimate based on the amount of data required to sweep the funds as well as the current level of on-chain fees necessary to have your transaction confirmed within the CLTV window.
 
@@ -32,8 +32,8 @@ You can customize the command `loop in <amount in satoshis>`. For example, you c
 
 If you are making the on-chain transaction from an external wallet, make sure to use the `--external` flag. You may set the transaction fees separately there too, or use the `--conf_target` value to a higher number for lower fees and longer processing times.
 
-`loop in --last_hop 02e7a7d3c1e6055b7b7457d95e04d9bbd24f200fd4a58daca7beee7bc776e17440 --amt 295916`  
-Once you run the command, you are quoted the upper bound of the fees for this transaction. Loop will now obtain a LSAT for 1 satoshi and initiate the swap. You are then presented with an ID for the swap and two HTLC smart contract addresses. You may make your on-chain transaction to either of these two addresses, though P2WSH \(starting with bc1\) is recommended for maximum efficiency. The payment needs to be the exact amount and carry an appropriate transaction fee. There is no time limit with regard to when the on-chain payment has to confirm, but keep in mind that if you specify a channel into which the off-chain funds are to be deposited, the state of that channel might change over the next day or two.
+`loop in --last_hop 02e7a7d3c1e6055b7b7457d95e04d9bbd24f200fd4a58daca7beee7bc776e17440 --amt 295916`\
+Once you run the command, you are quoted the upper bound of the fees for this transaction. Loop will now obtain a LSAT for 1 satoshi and initiate the swap. You are then presented with an ID for the swap and two HTLC smart contract addresses. You may make your on-chain transaction to either of these two addresses, though P2WSH (starting with bc1) is recommended for maximum efficiency. The payment needs to be the exact amount and carry an appropriate transaction fee. There is no time limit with regard to when the on-chain payment has to confirm, but keep in mind that if you specify a channel into which the off-chain funds are to be deposited, the state of that channel might change over the next day or two.
 
 You can monitor the status of your Loop In with the command loop monitor. It will give you updates about your transaction. As soon as your on-chain transaction has one confirmation on the Blockchain, you should receive your off-chain transaction into the channel you specified.
 
@@ -55,12 +55,12 @@ We can initiate a Loop Out with a transaction as follows:
 
 We are being presented with a detailed fee overview before we begin the swap:
 
-`Estimated on-chain sweep fee:        7372 sat  
-Max on-chain sweep fee:            737200 sat  
-Max off-chain swap routing fee:       2500 sat  
-Max no show penalty (prepay):       30000 sat  
-Max off-chain prepay routing fee:      610 sat  
-Max swap fee:                        3260 sat`
+`Estimated on-chain sweep fee:        7372 sat`\
+`Max on-chain sweep fee:            737200 sat`\
+`Max off-chain swap routing fee:       2500 sat`\
+`Max no show penalty (prepay):       30000 sat`\
+`Max off-chain prepay routing fee:      610 sat`\
+`Max swap fee:                        3260 sat`
 
 The estimated on-chain sweep fee is the payment required to sweep the Bitcoin once the Loop server has made its on-chain transaction to the HTLC smart contract. This transaction is made first, before we make our Lightning transaction, and the smart contract acts as a trustless arbiter. If we fail for whatever reason to make our Lightning payment to Loop, the server will be able to claim these funds back for itself, and charge us a penalty fee.
 
@@ -88,21 +88,21 @@ We can set various parameters for our swaps with the command loop `setparams <op
 
 These include:
 
-`--sweeplimit value`      the limit placed on our estimated sweep fee in sat/vByte. \(default: 0\)
+`--sweeplimit value`      the limit placed on our estimated sweep fee in sat/vByte. (default: 0)
 
-`--maxswapfee value`      the maximum percentage of swap volume we are willing to pay in server fees. \(default: 0\)
+`--maxswapfee value`      the maximum percentage of swap volume we are willing to pay in server fees. (default: 0)
 
-`--maxroutingfee value`   the maximum percentage of off-chain payment volume that we are willing to pay in routing fees. \(default: 0\)
+`--maxroutingfee value`   the maximum percentage of off-chain payment volume that we are willing to pay in routing fees. (default: 0)
 
-`--maxprepayfee value`    the maximum percentage of off-chain prepay volume that we are willing to pay in routing fees. \(default: 0\)
+`--maxprepayfee value`    the maximum percentage of off-chain prepay volume that we are willing to pay in routing fees. (default: 0)
 
-`--maxprepay value`       the maximum no-show \(prepay\) in satoshis that swap suggestions should be limited to. \(default: 0\)
+`--maxprepay value`       the maximum no-show (prepay) in satoshis that swap suggestions should be limited to. (default: 0)
 
-`--maxminer value`        the maximum miner fee in satoshis that swap suggestions should be limited to. \(default: 0\)
+`--maxminer value`        the maximum miner fee in satoshis that swap suggestions should be limited to. (default: 0)
 
-`--sweepconf` value       the number of blocks from htlc height that swap suggestion sweeps should target, used to estimate max miner fee. \(default: 0\)
+`--sweepconf` value       the number of blocks from htlc height that swap suggestion sweeps should target, used to estimate max miner fee. (default: 0)
 
-`--failurebackoff` value  the amount of time, in seconds, that should pass before a channel that previously had a failed swap will be included in suggestions. \(default: 0\)
+`--failurebackoff` value  the amount of time, in seconds, that should pass before a channel that previously had a failed swap will be included in suggestions. (default: 0)
 
 Please note that these parameters are not persistent and need to be specified again upon restart. For more information about the fees set in `setparams` visit the [Autoloop documentation](autoloop.md).
 
@@ -110,5 +110,4 @@ Please note that these parameters are not persistent and need to be specified ag
 
 You can use the `loop listswaps` command to get detailed information about past Loops, including their amounts, on-chain addresses, associated fees and eventual failure messages.
 
-You can also query the status of an individual swap with the command `loop swapinfo <swap id>`. 
-
+You can also query the status of an individual swap with the command `loop swapinfo <swap id>`.&#x20;

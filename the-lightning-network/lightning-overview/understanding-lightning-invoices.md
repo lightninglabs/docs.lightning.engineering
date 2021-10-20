@@ -1,5 +1,5 @@
 ---
-description: 'Learn how to identify, decode and create Lightning invoices'
+description: Learn how to identify, decode and create Lightning invoices
 ---
 
 # Understanding Lightning Invoices
@@ -12,7 +12,7 @@ Lightning invoices are defined by the [BOLT 11 standard](https://github.com/ligh
 
 ## URI Scheme
 
-Lightning invoices may be prefixed with `lightning:` to signal in hyperlinks which software can be used to pay the invoice. Ideally, in the long term, with this URI scheme, if you follow a Lightning link on the web, your browser or operating system will direct you to the Lightning wallet of your choice where you can confirm to pay this invoice. 
+Lightning invoices may be prefixed with `lightning:` to signal in hyperlinks which software can be used to pay the invoice. Ideally, in the long term, with this URI scheme, if you follow a Lightning link on the web, your browser or operating system will direct you to the Lightning wallet of your choice where you can confirm to pay this invoice.&#x20;
 
 ## The Lightning Invoice
 
@@ -30,12 +30,12 @@ A Lightning invoice starts with the letters `ln` for Lightning Network. This is 
 
 The prefix is followed by the amount. While a typical Lightning invoice will include an amount, it is possible to issue invoices without amounts. Lightning Invoices reference bitcoin, not satoshi. To save space for round invoices, an amount may be followed by a multiplier. A single satoshi Lightning invoice for example would appear as `10n`, a hundred satoshi as `1u`, and a milli-satoshi as `10p`.
 
-| unit | multiplier | satoshi |
-| :--- | :--- | :--- |
-| m \(milli\) | 0.001 | 100,000 |
-| u \(micro\) | 0.000001 | 100 |
-| n \(nano\) | 0.000000001 | 0.1 |
-| p \(pico\) | 0.000000000001 | 0.0001 |
+| unit      | multiplier     | satoshi |
+| --------- | -------------- | ------- |
+| m (milli) | 0.001          | 100,000 |
+| u (micro) | 0.000001       | 100     |
+| n (nano)  | 0.000000001    | 0.1     |
+| p (pico)  | 0.000000000001 | 0.0001  |
 
 Prefix and amount together are human-readable, allowing a savvy user to immediately identify it as a Lightning invoice and deduce its amount.
 
@@ -47,27 +47,27 @@ The first part of the data part is a unix timestamp.
 
 There are a number of tags that may be used to indicate additional data. Some of that data is required, while others can be optionally supplied by the payee.
 
-Currently defined are the following fields: 
+Currently defined are the following fields:&#x20;
 
-* `p` \(1\): The 256-bit SHA256 payment\_hash. This preimage is later revealed as part of the payment process and can act as proof of payment.
-* `s` \(16\): A 256-bit secret prevents forwarding nodes from probing the payment recipient.
-* `d` \(13\): A short description of purpose of payment may be added here, encoded with UTF-8, e.g. '1 cup of coffee' or '一杯咖啡'. If this field is not set, tag h has to be used instead.
-* `n` \(19\): The 33-byte public key of the payee node may be included here.
-* `h` \(23\): If field d does not provide space, a hash of the longer description may be included here. How the full description then gets communicated is not defined here.
-* `x` \(6\): The expiry time in seconds.
-* `c` \(24\): The min\_final\_cltv\_expiry for the last HTLC in the route. Typically defaults to 18.
-* `f` \(9\): A fallback on-chain address can be included here in case the Lightning payment fails for whatever reason.
-* `r` \(3\): One or more entries containing extra routing information for a private route. These routing hints include a 
-  * pubkey \(264 bits\)
-  * short\_channel\_id \(64 bits\)
-  * fee\_base\_msat \(32 bits, big-endian\)
-  * fee\_proportional\_millionths \(32 bits, big-endian\)
-  * cltv\_expiry\_delta \(16 bits, big-endian\)
-* `9` \(5\): One or more 5-bit values containing features supported or required for receiving this payment.
+* `p` (1): The 256-bit SHA256 payment\_hash. This preimage is later revealed as part of the payment process and can act as proof of payment.
+* `s` (16): A 256-bit secret prevents forwarding nodes from probing the payment recipient.
+* `d` (13): A short description of purpose of payment may be added here, encoded with UTF-8, e.g. '1 cup of coffee' or '一杯咖啡'. If this field is not set, tag h has to be used instead.
+* `n` (19): The 33-byte public key of the payee node may be included here.
+* `h` (23): If field d does not provide space, a hash of the longer description may be included here. How the full description then gets communicated is not defined here.
+* `x` (6): The expiry time in seconds.
+* `c` (24): The min\_final\_cltv\_expiry for the last HTLC in the route. Typically defaults to 18.
+* `f` (9): A fallback on-chain address can be included here in case the Lightning payment fails for whatever reason.
+* `r` (3): One or more entries containing extra routing information for a private route. These routing hints include a&#x20;
+  * pubkey (264 bits)
+  * short\_channel\_id (64 bits)
+  * fee\_base\_msat (32 bits, big-endian)
+  * fee\_proportional\_millionths (32 bits, big-endian)
+  * cltv\_expiry\_delta (16 bits, big-endian)
+* `9` (5): One or more 5-bit values containing features supported or required for receiving this payment.
 
-### Signature <a id="docs-internal-guid-bf1851de-7fff-593c-551b-0470d2c05dad"></a>
+### Signature <a href="docs-internal-guid-bf1851de-7fff-593c-551b-0470d2c05dad" id="docs-internal-guid-bf1851de-7fff-593c-551b-0470d2c05dad"></a>
 
-Finally, the invoice will include a signature. This signature is verified using the public key provided in the invoice. 
+Finally, the invoice will include a signature. This signature is verified using the public key provided in the invoice.&#x20;
 
 ## LNURL
 
@@ -77,47 +77,47 @@ In short, a LNURL is a bech32 encoded url pre-fixed with lnurl. The Lightning wa
 
 LNURLs are most commonly used to initiate withdrawals or create static payment links.
 
-## Decode a Lightning invoice <a id="docs-internal-guid-8ecef058-7fff-d6ea-2918-35bcc276e339"></a>
+## Decode a Lightning invoice <a href="docs-internal-guid-8ecef058-7fff-d6ea-2918-35bcc276e339" id="docs-internal-guid-8ecef058-7fff-d6ea-2918-35bcc276e339"></a>
 
 You can decode any Lightning invoice to inspect its contents with the command `lncli decodepayreq`.
 
 For the above example, the result is the following:
 
-`{  
-    "destination": "03e7156ae33b0a208d0744199163177e909e80176e55d97a2f221ede0f934dd9ad",  
-    "payment_hash": "0001020304050607080900010203040506070809000102030405060708090102",  
-    "num_satoshis": "2000000",  
-    "timestamp": "1496314658",  
-    "expiry": "3600",  
-    "description": "",  
-    "description_hash": "3925b6f67e2c340036ed12093dd44e0368df1b6ea26c53dbe4811f58fd5db8c1",  
-    "fallback_addr": "1RustyRX2oai4EYYDpQGWvEL62BBGqN9T",  
-    "cltv_expiry": "9",  
-    "route_hints": [  
-        {  
-            "hop_hints": [  
-                {  
-                    "node_id": "029e03a901b85534ff1e92c43c74431f7ce72046060fcf7a95c37e148f78c77255",  
-                    "chan_id": "72623859790382856",  
-                    "fee_base_msat": 1,  
-                    "fee_proportional_millionths": 20,  
-                    "cltv_expiry_delta": 3  
-                },  
-                {  
-                    "node_id": "039e03a901b85534ff1e92c43c74431f7ce72046060fcf7a95c37e148f78c77255",  
-                    "chan_id": "217304205466536202",  
-                    "fee_base_msat": 2,  
-                    "fee_proportional_millionths": 30,  
-                    "cltv_expiry_delta": 4  
-                }  
-            ]  
-        }  
-    ],  
-    "payment_addr": null,  
-    "num_msat": "2000000000",  
-    "features": {  
-    }  
-}`
+`{`\
+`    "destination": "03e7156ae33b0a208d0744199163177e909e80176e55d97a2f221ede0f934dd9ad",`\
+`    "payment_hash": "0001020304050607080900010203040506070809000102030405060708090102",`\
+`    "num_satoshis": "2000000",`\
+`    "timestamp": "1496314658",`\
+`    "expiry": "3600",`\
+`    "description": "",`\
+`    "description_hash": "3925b6f67e2c340036ed12093dd44e0368df1b6ea26c53dbe4811f58fd5db8c1",`\
+`    "fallback_addr": "1RustyRX2oai4EYYDpQGWvEL62BBGqN9T",`\
+`    "cltv_expiry": "9",`\
+`    "route_hints": [`\
+`        {`\
+`            "hop_hints": [`\
+`                {`\
+`                    "node_id": "029e03a901b85534ff1e92c43c74431f7ce72046060fcf7a95c37e148f78c77255",`\
+`                    "chan_id": "72623859790382856",`\
+`                    "fee_base_msat": 1,`\
+`                    "fee_proportional_millionths": 20,`\
+`                    "cltv_expiry_delta": 3`\
+`                },`\
+`                {`\
+`                    "node_id": "039e03a901b85534ff1e92c43c74431f7ce72046060fcf7a95c37e148f78c77255",`\
+`                    "chan_id": "217304205466536202",`\
+`                    "fee_base_msat": 2,`\
+`                    "fee_proportional_millionths": 30,`\
+`                    "cltv_expiry_delta": 4`\
+`                }`\
+`            ]`\
+`        }`\
+`    ],`\
+`    "payment_addr": null,`\
+`    "num_msat": "2000000000",`\
+`    "features": {`\
+`    }`\
+`}`
 
 ## Read more
 
@@ -128,4 +128,3 @@ For the above example, the result is the following:
 [Sample Implementation.](https://github.com/rustyrussell/lightning-payencode)
 
 [Tool to decode Lightning invoices.](https://bitcoincore.tech/apps/bolt11-ui/index.html)
-

@@ -6,7 +6,7 @@ description: >-
 
 # Managing Liquidity on the Lightning Network
 
-## On-chain Bitcoin <a id="docs-internal-guid-f32642c8-7fff-bda4-5003-3937885e00bc"></a>
+## On-chain Bitcoin <a href="docs-internal-guid-f32642c8-7fff-bda4-5003-3937885e00bc" id="docs-internal-guid-f32642c8-7fff-bda4-5003-3937885e00bc"></a>
 
 The liquidity of on-chain bitcoin is predictable. Bitcoin exists in the form of UTXOs, which are unspent outputs from a previous transaction. To spend bitcoin, you need to receive or mine them first, but generally, they can be moved by the owner at any time.
 
@@ -15,7 +15,7 @@ On-chain bitcoin require multiple confirmations by the Bitcoin network to be con
 Your Lightning node is able to receive and send on-chain bitcoin.
 
 * `lncli newaddress` Generate a new Bitcoin address
-* `lncli walletbalance` Check your balance.
+* `lncli walletbalance `Check your balance.
 * `lncli sendcoins` Send Bitcoin from this wallet
 
 This command follows the format `lncli sendcoins [command options] addr amt`
@@ -24,7 +24,7 @@ Useful tips:
 
 * The `amt` value is denominated in satoshi. One bitcoin equals 100 million satoshi.
 * If you want to spend your entire balance, you can set the option `--sweepall` and omit the `amt` value.
-* You can define the fee rate, in sat/vbyte by setting the option `--sat_per_byte` \(`--sat_per_vbyte` from `lnd 0.13.0`\)
+* You can define the fee rate, in sat/vbyte by setting the option `--sat_per_byte` (`--sat_per_vbyte` from `lnd 0.13.0`)
 * Instead of setting a fee you can set the value for `--conf_target`, which is the number of blocks within which you expect your transaction to have been confirmed.
 * You can record a memo for your transaction with the `--label` option.
 
@@ -37,7 +37,7 @@ Advanced users can also send to many addresses at once with the command `lncli s
 
 ## Channels
 
-Lightning channels are two-of-two multisignature contracts that hold a certain amount of bitcoin on the Bitcoin blockchain. They also include a refund transaction that can be broadcast by either party to close the channel at any time \(see below: Force closing a channel\).
+Lightning channels are two-of-two multisignature contracts that hold a certain amount of bitcoin on the Bitcoin blockchain. They also include a refund transaction that can be broadcast by either party to close the channel at any time (see below: Force closing a channel).
 
 We speak of outbound channels when the node in question has initiated the channel, and inbound channels when another party has opened the channel. This does not imply whether the funds in that channel are held by one peer or the other.
 
@@ -47,7 +47,7 @@ The liquidity of your channel balance can also depend on who you are peering wit
 
 ### Opening a channel
 
-To open a channel, you need bitcoin. Typically, you would deposit bitcoin into your Lightning node using the above commands, but it is also possible to fund a channel with funds from a Partially Signed Bitcoin Transaction \(PSBT\)-compatible wallet or raw signed transaction.
+To open a channel, you need bitcoin. Typically, you would deposit bitcoin into your Lightning node using the above commands, but it is also possible to fund a channel with funds from a Partially Signed Bitcoin Transaction (PSBT)-compatible wallet or raw signed transaction.
 
 You can open a channel with any other Lightning node, as long as it is online and accepts your channel request.
 
@@ -65,7 +65,7 @@ Useful tips:
 Example usage:
 
 * `lncli openchannel 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d 1000000`
-* `lncli openchannel --sat_per_byte 21 --local-amt 800000 --close_address bc1qsltz4tt23k0825q76ylj5mt0gwenlm8wr7umkl 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d` 
+* `lncli openchannel --sat_per_byte 21 --local-amt 800000 --close_address bc1qsltz4tt23k0825q76ylj5mt0gwenlm8wr7umkl 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d `
 
 To see if your channel is pending confirmation, you can use the command `lncli pendingchannels`.
 
@@ -91,22 +91,22 @@ You are able to charge fees for routing payments. You can use the command `lncli
 
 By default, your fee policy may look something like this:
 
-        `{  
-            "chan_id": "739918549049147393",  
-            "channel_point": "3ebdb34f1fc1948b5b49d127b52b19d24549779661af03a691cf934aa3b86e3f:1",  
-            "base_fee_msat": "1000",  
-            "fee_per_mil": "1",  
-            "fee_rate": 0.000001  
-        }`
+&#x20;      ` {`\
+`            "chan_id": "739918549049147393",`\
+`            "channel_point": "3ebdb34f1fc1948b5b49d127b52b19d24549779661af03a691cf934aa3b86e3f:1",`\
+`            "base_fee_msat": "1000",`\
+`            "fee_per_mil": "1",`\
+`            "fee_rate": 0.000001`\
+`        }`
 
-This means to route payments through this channel, your node will charge 1,000 milli-satoshi \(1 satoshi\), plus 1 milli-satoshi per million milli-satoshi \(`fee_rate` times one million equals fee\_per\_mil\). So when routing a payment of 10,000 satoshi, you will earn 1.01 satoshi in fees. This fee policy is applied to all outgoing payments, meaning you will only earn the fee as it is passed on. The fee policy on the incoming channel is decided by that peer. As a rule of thumb, you decide on the fee policy of your capital.
+This means to route payments through this channel, your node will charge 1,000 milli-satoshi (1 satoshi), plus 1 milli-satoshi per million milli-satoshi (`fee_rate` times one million equals fee\_per\_mil). So when routing a payment of 10,000 satoshi, you will earn 1.01 satoshi in fees. This fee policy is applied to all outgoing payments, meaning you will only earn the fee as it is passed on. The fee policy on the incoming channel is decided by that peer. As a rule of thumb, you decide on the fee policy of your capital.
 
 You can set your default fees in your lnd.conf file. The entries will look like this:
 
-`bitcoin.basefee=1000 (referring to base_fee_msat above)  
-bitcoin.feerate=1 (referring to fee_per_mil above)`
+`bitcoin.basefee=1000 (referring to base_fee_msat above)`\
+`bitcoin.feerate=1 (referring to fee_per_mil above)`
 
-Once you change these values in your configuration file, it affects new channels. If you would like to only change your fee rates for existing channels, apply the command `lncli updatechanpolicy`. 
+Once you change these values in your configuration file, it affects new channels. If you would like to only change your fee rates for existing channels, apply the command `lncli updatechanpolicy`.&#x20;
 
 The command `lncli updatechanpolicy` follows the format `lncli updatechanpolicy [command options] base_fee_msat fee_rate time_lock_delta [--max_htlc_msat=N] [channel_point]`
 
@@ -114,7 +114,7 @@ Useful tips:
 
 * You can define the minimum and maximum payments you are willing to forward with the `--min_htlc_msat` value and `--max_htlc_msat` arguments. They are defined in milli-satoshis, meaning 1/1000th of a satoshi.
 * You can update the fees for all channels at the same time by omitting the `channel_point` argument, or update fees for each channel individually.
-* You can set a custom Time Lock Delta with the `--time_lock_delta` value flag, with the default being 40. That means your node has 40 blocks to claim any forwarded Hashed TimeLock Contracts \(HTLCs\). If your node goes offline during that time you might be at risk of losing funds, as your peer will have claimed their forwarded funds, but you will have not yet claimed yours.
+* You can set a custom Time Lock Delta with the `--time_lock_delta` value flag, with the default being 40. That means your node has 40 blocks to claim any forwarded Hashed TimeLock Contracts (HTLCs). If your node goes offline during that time you might be at risk of losing funds, as your peer will have claimed their forwarded funds, but you will have not yet claimed yours.
 
 If the Time Lock Delta is too long, however, your channel will become less attractive to routing as the uncertainty of unclaimed HTLCs might put a strain on yours and other routing nodes.
 
@@ -139,7 +139,7 @@ You can balance your channels manually through the command line, or use an exter
 
 Alternatively, you may familiarize yourself with software and scripts specifically for the purpose of rebalancing your node:
 
-[https://github.com/C-Otto/rebalance-lnd](https://github.com/C-Otto/rebalance-lnd)  
+[https://github.com/C-Otto/rebalance-lnd](https://github.com/C-Otto/rebalance-lnd)\
 [https://github.com/alexbosworth/balanceofsatoshis](https://github.com/alexbosworth/balanceofsatoshis)
 
 ### Acquiring inbound capacity
@@ -162,7 +162,9 @@ You can convince others to open a channel with you by signalling a need for inbo
 
 In the context of inbound capacity, [Loop](https://lightning.engineering/loop) Out can be used to empty your Lightning channel into a bitcoin address, then using that new UTXO to open a new channel. After two channel openings you are left with both inbound and outbound capacity, and the ability to route payments.
 
-{% page-ref page="../../lightning-network-tools/loop/" %}
+{% content-ref url="../../lightning-network-tools/loop/" %}
+[loop](../../lightning-network-tools/loop/)
+{% endcontent-ref %}
 
 #### Pay for incoming capacity with [Pool](https://lightning.engineering/pool)
 
@@ -176,7 +178,7 @@ Using the command `frcli revenue` we can obtain a revenue report for our channel
 
 The parameter `fees_incoming_msat` might also help you identify channels that contribute to your routing earnings, and which channels see little activity. The report is generated for each channel pair, giving you detailed insights into how funds are flowing through your node. The report can be narrowed down to an individual channel and a limited time frame.
 
-The command `frcli insights` gives a different report for each channel. Here you can see how many satoshis have been routed through each channel, fees generated, and channel metrics comparisons \(measured in `per_conf`, meaning per block that the channel has been alive\).
+The command `frcli insights` gives a different report for each channel. Here you can see how many satoshis have been routed through each channel, fees generated, and channel metrics comparisons (measured in `per_conf`, meaning per block that the channel has been alive).
 
 ### Closing channels
 
@@ -189,7 +191,7 @@ In these cases you can use the `lncli closechannel` command to close channels, i
 
 `lncli closechannel [command options] funding_txid [output_index]`
 
-In a cooperative close both nodes are signing a new commitment transaction and publishing it to the network. The on-chain funds created in such a transaction will become available for a new channel opening almost immediately. In such a case it is also possible to set the fee with the `--conf_target` or `--sat_per_byte` arguments and define which address the funds should be sent to via `--delivery_addr` \(unless this was already specified at the channel opening\).
+In a cooperative close both nodes are signing a new commitment transaction and publishing it to the network. The on-chain funds created in such a transaction will become available for a new channel opening almost immediately. In such a case it is also possible to set the fee with the `--conf_target` or `--sat_per_byte` arguments and define which address the funds should be sent to via `--delivery_addr` (unless this was already specified at the channel opening).
 
 When closing a channel unilaterally, known as a force close, the funds will be locked up for a period of time before they can be redeemed by the closer, while the other party can redeem their funds immediately. Unless an anchor channel was created, you are unable to change the transaction fee of the closing transaction. To force close a channel use the `--force` flag.
 
@@ -204,4 +206,3 @@ Private channels may also bind your capital. Typically, they are created by paym
 Example usage:
 
 `lncli closechannel --funding_txid 83b5a55b21255915dbc0d005230b2c026a004c839edaa716247b96b66490c66a --output_index 1 --sat_per_byte 20 --delivery_addr bc1q6tcemsjadwgt938gkrmcqyvt79wxla42js8r4l`
-

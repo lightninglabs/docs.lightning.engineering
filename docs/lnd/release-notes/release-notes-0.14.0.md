@@ -185,6 +185,13 @@ documentation](../psbt.md#use-the-batchopenchannel-rpc-for-safe-batch-channel-fu
   take longer to start a `lnd` node when running in `simnet` or `regtest`,
   something developers need to watch out from this release.
 
+### Remote signing
+
+It is now possible to delegate any operation that needs access to private keys
+to a [remote signer that serves signing requests over
+RPC](https://github.com/lightningnetwork/lnd/pull/5689). More information can be
+found [in the new remote signing document](../remote-signing.md).
+
 ## Security 
 
 * The release signature verification script [was overhauled to fix some possible
@@ -205,7 +212,23 @@ If you use a strange system or changed group membership of the group running LND
 you may want to check your system to see if it introduces additional risk for
 you.
 
-## Safety
+## Custom peer messages
+
+Lightning nodes have a connection to each of their peers for exchanging
+messages. In regular operation, these messages coordinate processes such as
+channel opening and payment forwarding.
+
+The lightning spec however also defines a custom range (>= 32768) for
+experimental and application-specific peer messages.
+
+With this release, [custom peer message
+exchange](https://github.com/lightningnetwork/lnd/pull/5346) is added to open up
+a range of new possibilities. Custom peer messages allow the lightning protocol
+with its transport mechanisms (including tor) and public key authentication to
+be leveraged for application-level communication. Note that peers exchange these
+messages directly. There is no routing/path finding involved.
+
+# Safety
 
 * Locally force closed channels are now [kept in the channel.backup file until
   their time lock has fully matured](https://github.com/lightningnetwork/lnd/pull/5528).
@@ -253,6 +276,8 @@ you.
   that output in the `xcframework` packaging format.
   Applications that use the iOS build will have to be updated to include
   an `xcframework` instead of a `framework`.
+
+* [Upgrade the sub packages to 1.16](https://github.com/lightningnetwork/lnd/pull/5813)
 
 ## Documentation
 
@@ -377,6 +402,8 @@ you.
 * [The interfaces for signing messages and the code for initializing a wallet 
   was refactored as a preparation for supporting remote
   signing](https://github.com/lightningnetwork/lnd/pull/5708).
+
+* [Include htlc amount in bandwidth hints](https://github.com/lightningnetwork/lnd/pull/5512).
 
 ## Database
 
@@ -504,6 +531,7 @@ change](https://github.com/lightningnetwork/lnd/pull/5613).
 * Hampus Sjöberg
 * Harsha Goli
 * Jesse de Wit
+* Joost Jager
 * Martin Habovstiak
 * Naveen Srinivasan
 * Oliver Gugger

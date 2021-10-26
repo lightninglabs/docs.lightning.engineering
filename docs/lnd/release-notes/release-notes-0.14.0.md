@@ -92,6 +92,14 @@ usage. Users running `lnd` on low-memory systems are advised to run with the
 removes zombie channels from the graph, reducing the number of channels that
 need to be kept in memory.
 
+There is a [fallback option](https://github.com/lightningnetwork/lnd/pull/5840)
+`db.no-graph-cache=true` that can be used when running a Bolt (`bbolt`) based
+database backend. Using the database for path finding is considerably slower
+than using the in-memory graph cache but uses less RAM. The fallback option is
+not available for `etcd` or Postgres database backends because of the way they
+handle long-running database transactions that are required for the path finding
+operations.
+
 ## Protocol Extensions
 
 ### Explicit Channel Negotiation
@@ -101,7 +109,9 @@ need to be kept in memory.
 initiator to signal their desired channel type to use with the remote peer. If
 the remote peer supports said channel type and agrees, the previous implicit
 negotiation based on the shared set of feature bits is bypassed, and the
-proposed channel type is used.
+proposed channel type is used. [Feature bits 44/45 are used to
+signal](https://github.com/lightningnetwork/lnd/pull/5874) this new feature.
+
 
 ### Script Enforced Channel Leases
 
@@ -331,9 +341,13 @@ messages directly. There is no routing/path finding involved.
   add MacChan field for passing back lnd's admin macaroon back to the program 
   calling lnd, when needed.
 
+* Using `go get` to install go executables is now deprecated. Migrate to `go install` our lnrpc proto dockerfile [Migrate `go get` to `go install`](https://github.com/lightningnetwork/lnd/pull/5879)
+
 ## Code Health
 
 ### Code cleanup, refactor, typo fixes
+
+* [Fix logging typo to log channel point on cooperative closes](https://github.com/lightningnetwork/lnd/pull/5881)
 
 * [Refactor the interaction between the `htlcswitch` and `peer` packages for cleaner separation.](https://github.com/lightningnetwork/lnd/pull/5603)
 
@@ -417,6 +431,9 @@ messages directly. There is no routing/path finding involved.
 
 * [Include htlc amount in bandwidth hints](https://github.com/lightningnetwork/lnd/pull/5512).
 
+* [Fix REST/WebSocket API itest that lead to overall test
+  timeout](https://github.com/lightningnetwork/lnd/pull/5845).
+
 ## Database
 
 * [Ensure single writer for legacy
@@ -469,6 +486,12 @@ messages directly. There is no routing/path finding involved.
 
 * [Save compressed log files from logrorate during 
   itest](https://github.com/lightningnetwork/lnd/pull/5354).
+
+## Mission control
+
+* [Interpretation of channel disabled errors was changed to only penalize t
+  he destination node to consider mobile wallets with hub 
+  nodes.](https://github.com/lightningnetwork/lnd/pull/5598)
 
 ## Bug Fixes
 
@@ -527,6 +550,10 @@ messages directly. There is no routing/path finding involved.
 * [Dedup stored peer addresses before creating connection requests to prevent
   redundant connection requests](https://github.com/lightningnetwork/lnd/pull/5839)
 
+* A [`concurrent map writes` crash was
+  fixed](https://github.com/lightningnetwork/lnd/pull/5893) in the
+ [`btcwallet` dependency](https://github.com/btcsuite/btcwallet/pull/773).
+
 ## Documentation 
 
 The [code contribution guidelines have been updated to mention the new
@@ -534,6 +561,7 @@ requirements surrounding updating the release notes for each new
 change](https://github.com/lightningnetwork/lnd/pull/5613). 
 
 # Contributors (Alphabetical Order)
+* Alex Bosworth
 * Alyssa Hertig
 * Andras Banki-Horvath
 * de6df1re
@@ -544,6 +572,7 @@ change](https://github.com/lightningnetwork/lnd/pull/5613).
 * Harsha Goli
 * Jesse de Wit
 * Joost Jager
+* Jordi Montes
 * Martin Habovstiak
 * Naveen Srinivasan
 * Oliver Gugger

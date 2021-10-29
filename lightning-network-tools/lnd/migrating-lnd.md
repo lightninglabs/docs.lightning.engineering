@@ -16,7 +16,7 @@ Do NOT run two LND instances with the same seed or public key.
 
 ## When to migrate LND
 
-There are lots of reasons why you might want to migrate your Lightning Node. You might be changing your host, move from a VPS to a personal physical serverl or just prefer to run LND in a different way. Migrating LND is a relatively straightforward and easy process that should not take long.
+There are lots of reasons why you might want to migrate your Lightning Node. You might be changing your host, move from a VPS to a personal physical server or just prefer to run LND in a different way. Migrating LND is a relatively straightforward and easy process that should not take long.
 
 If you have experienced a fatal error and would like to recover your Lightning node, do not use this guide. Regardless, it is good to read the article “[Planning for failure](recovery-planning-for-failure.md)” to learn how to best prepare for any recovery scenarios.
 

@@ -33,7 +33,7 @@ sudo ufw status
 sudo ufw allow OpenSSH
 sudo ufw allow 9735
 sudo ufw allow 10009
-sudo ufw allow 443
+sudo ufw allow 8443
 ```
 
 To connect Lightning Terminal to a remote `lnd` instance first make sure your remote `lnd.conf` file contains the following additional configuration settings:
@@ -61,7 +61,7 @@ Paste this example `lit.conf` file into your terminal, and fill in the placehold
 
 ```text
 # Application Options: lnd-mode not required since remote is default
-httpslisten=0.0.0.0:443
+httpslisten=0.0.0.0:8443
 lit-dir=~/Library/Application Support/Lit/
 
 # Let's Encrypt
@@ -97,7 +97,7 @@ faraday.bitcoin.user=<YOUR_RPCUSER>
 faraday.bitcoin.password=<YOUR_RPCPASSWORD>
 ```
 
-If you are using a cloud provider, double check using their configuration tools that inbound ports 443, 9735, and 10009 are allowed. Once you've done that, and you've ensured your remote `lnd` instance is running, it's time to get LiT!
+If you are using a cloud provider, double check using their configuration tools that inbound ports 8443, 9735, and 10009 are allowed. Once you've done that, and you've ensured your remote `lnd` instance is running, it's time to get LiT!
 
 ```text
 litd --uipassword=<YOUR_UI_PASSWORD>

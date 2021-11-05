@@ -323,6 +323,11 @@ messages directly. There is no routing/path finding involved.
 
 * [Upgrade the sub packages to 1.16](https://github.com/lightningnetwork/lnd/pull/5813)
 
+* [CI has been upgraded to build against bitcoind 22.0](https://github.com/lightningnetwork/lnd/pull/5928)
+
+* [Update to the latest neutrino version](https://github.com/lightningnetwork/lnd/pull/5933)
+
+
 ## Documentation
 
 * [Outdated warning about unsupported pruning was replaced with clarification that LND **does**
@@ -364,6 +369,8 @@ messages directly. There is no routing/path finding involved.
   calling lnd, when needed.
 
 * Using `go get` to install go executables is now deprecated. Migrate to `go install` our lnrpc proto dockerfile [Migrate `go get` to `go install`](https://github.com/lightningnetwork/lnd/pull/5879)
+
+* [The premature update map has been revamped using an LRU cache](https://github.com/lightningnetwork/lnd/pull/5902)
 
 ## Code Health
 

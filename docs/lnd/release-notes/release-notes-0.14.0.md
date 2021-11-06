@@ -520,6 +520,11 @@ messages directly. There is no routing/path finding involved.
   buffer each time we decrypt an incoming message, as we
   recycle these buffers in the peer.
 
+* [The `DescribeGraph` and `GetNetworkInfo` calls have been
+  optimized](https://github.com/lightningnetwork/lnd/pull/5873) by caching the
+  response periodically, or using the new channel graph cache directly.  This
+  should significantly cut down on the garbage these two calls generate.
+
 ## Log system
 
 * [Save compressed log files from logrorate during 
@@ -604,6 +609,14 @@ messages directly. There is no routing/path finding involved.
 
 * [Fix pathfinding crash when inbound policy is unknown](
   https://github.com/lightningnetwork/lnd/pull/5922)
+
+* [Stagger connection attempts to multi-address peers to ensure that the peer
+   doesn't close the first successful connection in favour of the next if 
+   the first one was successful](
+   https://github.com/lightningnetwork/lnd/pull/5925)
+
+* [Fixed an issue with external listeners and the `--noseedbackup` development
+  flag](https://github.com/lightningnetwork/lnd/pull/5930).
 
 ## Documentation 
 

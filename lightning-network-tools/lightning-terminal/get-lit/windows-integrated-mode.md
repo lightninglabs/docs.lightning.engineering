@@ -21,7 +21,7 @@ cd lightning-terminal-windows-<YOUR_LOCAL_VERSION>
 set PATH=%PATH%;C:\your\path\here\
 ```
 
-Ensure that your system has only the required ports open for outbound communication with the Lightning Network: 443, 9735, 10009. Follow [the official bitcoin.org guide](https://bitcoin.org/en/full-node#network-configuration) for network configuration help.
+Ensure that your system has only the required ports open for outbound communication with the Lightning Network: 8443, 9735, 10009. Follow [the official bitcoin.org guide](https://bitcoin.org/en/full-node#network-configuration) for network configuration help.
 
 If you are not already running `lnd` on this system, continue to the next section. If you are looking to upgrade an existing `lnd` instance, [skip ahead.](windows-integrated-mode.md#fresh-lnd-install)
 
@@ -41,7 +41,7 @@ Paste this example `lit.conf` file into your terminal, and fill in the placehold
 
 ```text
 # Application Options
-httpslisten=0.0.0.0:443
+httpslisten=0.0.0.0:8443
 lnd-mode=integrated
 
 # Let's Encrypt
@@ -120,7 +120,7 @@ When finished, your new `lit.conf` should look like this:
 
 ```text
 # Application Options
-httpslisten=0.0.0.0:443
+httpslisten=0.0.0.0:8443
 lnd-mode=integrated
 
 # Let's Encrypt

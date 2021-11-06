@@ -39,7 +39,7 @@ sudo ufw status
 sudo ufw allow OpenSSH
 sudo ufw allow 9735
 sudo ufw allow 10009
-sudo ufw allow 443
+sudo ufw allow 8443
 ```
 
 To connect Lightning Terminal to a remote `lnd` instance first make sure your remote `lnd.conf` file contains the following additional configuration settings:
@@ -73,7 +73,7 @@ Paste this example `lit.conf` file into your terminal, and fill in the placehold
 
 ```
 # Application Options: lnd-mode not required since remote is default
-httpslisten=0.0.0.0:443
+httpslisten=0.0.0.0:8443
 lit-dir=~/.lit
 
 # Let's Encrypt
@@ -107,7 +107,7 @@ faraday.bitcoin.user=<YOUR_RPCUSER>
 faraday.bitcoin.password=<YOUR_RPCPASSWORD>
 ```
 
-If you are using a cloud provider, double check using their configuration tools that inbound ports 443, 9735, and 10009 are allowed. Once you've done that, and you've ensured your remote `lnd` instance is running, it's time to get LiT!
+If you are using a cloud provider, double check using their configuration tools that inbound ports 8443, 9735, and 10009 are allowed. Once you've done that, and you've ensured your remote `lnd` instance is running, it's time to get LiT!
 
 ```
 litd --uipassword=<YOUR_UI_PASSWORD>
@@ -122,7 +122,7 @@ Because not all functionality of `lnd` (or `loop`/`faraday` for that matter) is 
 We are going through an example for each of the command line tools and will explain the reasons for the extra flags. The examples assume that LiT is started with the following configuration (only relevant parts shown here):
 
 ```
-httpslisten=0.0.0.0:443
+httpslisten=0.0.0.0:8443
 lit-dir=~/.lit
 
 remote.lnd.network=testnet
@@ -131,7 +131,7 @@ remote.lnd.macaroondir=/some/folder/with/lnd/data
 remote.lnd.tlscertpath=/some/folder/with/lnd/data/tls.cert
 ```
 
-Because in the remote `lnd` mode all other LiT components (`loop`, `pool`, `faraday` and the UI server) listen on the same port (`443` in this example) and use the same TLS certificate (`~/.lit/tls.cert` in this example), some command line calls now need some extra options that weren't necessary before.
+Because in the remote `lnd` mode all other LiT components (`loop`, `pool`, `faraday` and the UI server) listen on the same port (`8443` in this example) and use the same TLS certificate (`~/.lit/tls.cert` in this example), some command line calls now need some extra options that weren't necessary before.
 
 **NOTE**: All mentioned command line tools have the following behavior in common: You either specify the `--network` flag and the `--tlscertpath` and `--macaroonpath` are implied by looking inside the default directories for that network. Or you specify the `--tlscertpath` and `--macaroonpath` flags explicitly, then you **must not** set the `--network` flag. Otherwise, you will get an error like `[lncli] could not load global options: unable to read macaroon path (check the network setting!): open /home/<user>/.lnd/data/chain/bitcoin/testnet/admin.macaroon: no such file or directory`
 
@@ -151,7 +151,7 @@ $ lncli --rpcserver=some-other-host:10009 \
 This is where things get a bit tricky. Because as mentioned above, `loopd` also runs on the same port as the UI server. That's why we have to both specify the `host:port` as well as the TLS certificate of LiT. But `loopd` verifies its own macaroon, so we have to specify that one from the `.loop` directory.
 
 ```
-$ loop --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
+$ loop --rpcserver=localhost:8443 --tlscertpath=~/.lit/tls.cert \
   --macaroonpath=~/.loop/testnet/loop.macaroon \
   quote out 500000
 ```
@@ -159,7 +159,7 @@ $ loop --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```
-alias lit-loop="loop --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.loop/testnet/loop.macaroon"
+alias lit-loop="loop --rpcserver=localhost:8443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.loop/testnet/loop.macaroon"
 ```
 
 #### Example `pool` command
@@ -167,7 +167,7 @@ alias lit-loop="loop --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert --m
 Again, `poold` also runs on the same port as the UI server and we have to specify the `host:port` and the TLS certificate of LiT but use the macaroon from the `.pool` directory.
 
 ```
-$ pool --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
+$ pool --rpcserver=localhost:8443 --tlscertpath=~/.lit/tls.cert \
   --macaroonpath=~/.pool/testnet/pool.macaroon \
   accounts list
 ```
@@ -175,7 +175,7 @@ $ pool --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```
-alias lit-pool="pool --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.pool/testnet/pool.macaroon"
+alias lit-pool="pool --rpcserver=localhost:8443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.pool/testnet/pool.macaroon"
 ```
 
 #### Example `frcli` command
@@ -183,7 +183,7 @@ alias lit-pool="pool --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert --m
 Faraday's command line tool follows the same pattern as loop. We also have to specify the server and TLS flags for `lnd` but use `faraday`'s macaroon:
 
 ```
-$ frcli --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
+$ frcli --rpcserver=localhost:8443 --tlscertpath=~/.lit/tls.cert \
   --macaroonpath=~/.faraday/testnet/faraday.macaroon \
   audit
 ```
@@ -191,5 +191,5 @@ $ frcli --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert \
 You can easily create an alias for this by adding the following line to your `~/.bashrc` file:
 
 ```
-alias lit-frcli="frcli --rpcserver=localhost:443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.faraday/testnet/faraday.macaroon"
+alias lit-frcli="frcli --rpcserver=localhost:8443 --tlscertpath=~/.lit/tls.cert --macaroonpath=~/.faraday/testnet/faraday.macaroon"
 ```

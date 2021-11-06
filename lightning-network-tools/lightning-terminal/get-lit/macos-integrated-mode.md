@@ -33,7 +33,7 @@ sudo ufw status
 sudo ufw allow OpenSSH
 sudo ufw allow 9735
 sudo ufw allow 10009
-sudo ufw allow 443
+sudo ufw allow 8443
 ```
 
 If you are not already running `lnd` on this server, continue to the next section. If you are looking to upgrade an existing `lnd` instance, [skip ahead.](ubuntu-integrated.md#install-lightning-terminal-upgrade-lnd-to-litd)
@@ -54,7 +54,7 @@ Paste this example `lit.conf` file into your terminal, and fill in the placehold
 
 ```text
 # Application Options
-httpslisten=0.0.0.0:443
+httpslisten=0.0.0.0:8443
 lnd-mode=integrated
 
 # Let's Encrypt
@@ -133,7 +133,7 @@ When finished, your new `lit.conf` should look like this:
 
 ```text
 # Application Options
-httpslisten=0.0.0.0:443
+httpslisten=0.0.0.0:8443
 lnd-mode=integrated
 
 # Let's Encrypt

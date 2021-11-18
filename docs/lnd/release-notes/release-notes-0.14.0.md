@@ -370,6 +370,8 @@ messages directly. There is no routing/path finding involved.
   add MacChan field for passing back lnd's admin macaroon back to the program 
   calling lnd, when needed.
 
+* [The `--amp-reuse` CLI flag has been removed as the latest flavor of AMP now natively supports static invoices](https://github.com/lightningnetwork/lnd/pull/5991)
+
 * Using `go get` to install go executables is now deprecated. Migrate to `go install` our lnrpc proto dockerfile [Migrate `go get` to `go install`](https://github.com/lightningnetwork/lnd/pull/5879)
 
 * [The premature update map has been revamped using an LRU cache](https://github.com/lightningnetwork/lnd/pull/5902)
@@ -632,6 +634,8 @@ messages directly. There is no routing/path finding involved.
 
 * [Fixes a bug that would cause pruned nodes to stall out](https://github.com/lightningnetwork/lnd/pull/5970)
 
+* [Add Postgres connection limit](https://github.com/lightningnetwork/lnd/pull/5992)
+
 ## Documentation 
 
 The [code contribution guidelines have been updated to mention the new
@@ -639,23 +643,46 @@ requirements surrounding updating the release notes for each new
 change](https://github.com/lightningnetwork/lnd/pull/5613). 
 
 # Contributors (Alphabetical Order)
-* Alex Bosworth
-* Alyssa Hertig
-* Andras Banki-Horvath
-* de6df1re
-* Elle Mouton
-* ErikEk
-* Eugene Siegel
-* Hampus Sjöberg
-* Harsha Goli
-* Jesse de Wit
-* Joost Jager
-* Jordi Montes
-* Martin Habovstiak
-* Naveen Srinivasan
-* Oliver Gugger
-* Priyansh Rastogi
-* Wilmer Paulino
-* xanoni
-* Yong Yu
-* Zero-1729
+Abubakar Nur Khalil
+Adrian-Stefan Mares
+Alex Bosworth
+Alyssa Hertig
+András Bánki-Horváth
+Bjarne Magnussen
+Carsten Otto
+Conner Fromknecht
+Elle Mouton
+ErikEk
+Eugene Siegel
+Hampus Sjöberg
+Harsha Goli
+Jesse de Wit
+Johan T. Halseth
+Johnny Holton
+Joost Jager
+Jordi Montes
+Juan Pablo Civile
+Kishin Kato
+Leonhard Weese
+Martin Habovštiak
+Michael Rhee
+Naveen Srinivasan
+Olaoluwa Osuntokun
+Oliver Gugger
+Priyansh Rastogi
+Roei Erez
+Simon Males
+Stevie Zollo
+Torkel Rogstad
+Wilmer Paulino
+Yong Yu
+Zero-1729
+benthecarman
+carla
+de6df1re
+github2k20
+mateuszmp
+nathanael
+offerm
+positiveblue
+xanoni

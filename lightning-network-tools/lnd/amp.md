@@ -44,13 +44,13 @@ Alternatively, you will be able to create an AMP invoice by amending `--amp` to 
 
 This is especially important for private nodes, as the invoice will include the necessary channel hints that can’t be expressed in the `lncli sendpayment` command.
 
-AMP invoices can be static and paid multiple times by switching the payment address in the invoice with a newly generated one. This payment address can be specified manually with the `--pay_addr` flag, or you can use the `--amp-reuse` flag to generate a payment address starting with `lnd v0.13.2`.
+AMP invoices can be static and paid multiple times by switching the payment address in the invoice with a newly generated one. This payment address can be specified manually with the `--pay_addr` flag. From `lnd 0.14.0` onwards it is no longer necessary to set the `--amp-reuse` flag to generate a payment address in LND.
 
 Example usage:
 
 `lncli addinvoice --amt <amount in satoshis> --memo=’my first amp’ --amp`
 
-`lncli payinvoice --pay_req <the amp invoice created by the receiver> --amp-reuse`
+`lncli payinvoice --pay_req <the amp invoice created by the receiver>`
 
 `lncli sendpayment --amt <amount in satoshis> --dest <public key of receiver> --amp`
 

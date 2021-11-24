@@ -52,7 +52,7 @@ The command `make -j "$(($(nproc)+1))"` might help to speed up the build on some
 
 Your routing node will need a static IP with open ports or a version 3 onion address if you want others to be able to connect and open channels with you.
 
-We assume LND is already installed on your server. We recommend using the [signed binaries](https://github.com/lightningnetwork/lnd/releases). You can find more details on how to [install LND in this guide](get-started-with-lnd.md).
+We assume LND is already installed on your server. We recommend using the [signed binaries](https://github.com/lightningnetwork/lnd/releases). You can find more details on how to [install LND in this guide](run-lnd.md).
 
 If you do not already have a configuration file, you will need to create one and place it in your LND directory. On Linux, that is typically `~/.lnd/lnd.conf` on MacOS `/Users/[username]/Library/Application Support/Lnd/lnd.conf` and in Windows `C:\Users\<username>\AppData\Local\Lnd`
 

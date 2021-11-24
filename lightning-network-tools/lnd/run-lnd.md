@@ -42,7 +42,7 @@ Now move the unpacked binaries somewhere where the system can find it, such as `
 
 You can use the file manager or command line, but may have to create this directory first, which may require superuser (sudo) or administrator privileges.
 
-Congratulations, you have successfully installed LND using the binary release. [Jump to: Configuring LND](get-started-with-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
+Congratulations, you have successfully installed LND using the binary release. [Jump to: Configuring LND](run-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
 
 ### Installing Lightning via Docker <a href="docs-internal-guid-fe99d99a-7fff-2f7a-022e-4fab339d71f9" id="docs-internal-guid-fe99d99a-7fff-2f7a-022e-4fab339d71f9"></a>
 
@@ -55,7 +55,7 @@ To install LND via Docker you will need `docker`, `make` and `bash` on your syst
 `git checkout <latest-release>  `\
 `make docker-release tag=<latest-release>`
 
-You are now able to find the binaries in the directory lnd\<latest-release> for your use. Congratulations, [jump to: Configuring LND](get-started-with-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
+You are now able to find the binaries in the directory lnd\<latest-release> for your use. Congratulations, [jump to: Configuring LND](run-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
 
 ### Installing LND from source
 

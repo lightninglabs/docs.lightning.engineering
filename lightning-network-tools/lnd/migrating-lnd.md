@@ -29,14 +29,14 @@ It is not advised to migrate between different operating systems, as the file st
 * Updating and [hardening](secure-your-lightning-network-node.md) your device
 * Installing and syncing your choice of Bitcoin node, unless you use Neutrino
 * Install and set up Tor, if desired
-* [Install LND](get-started-with-lnd.md)
+* [Install LND](run-lnd.md)
 * Install auxiliary services, such as [Loop](../loop/), [Pool](../pool/) or [Faraday](../faraday/)
 
 ## Migrating LND
 
 To begin our migration, we first shut down our old LND node gracefully. Use the command `lncli stop` and wait for the process to shut down completely, for example by observing the logs.
 
-Unless otherwise specified in your `lnd.conf` file \(check if unsure\), all the data necessary for your migration is in your `~/.lnd` directory.
+Unless otherwise specified in your `lnd.conf` file (check if unsure), all the data necessary for your migration is in your `~/.lnd` directory.
 
 To continue the migration, you should move all data from this directory to the new machine in the same location. Alternatively, the directory can be specified at startup with the flag `--lnddir=`
 
@@ -60,4 +60,3 @@ Unless your node’s IP address, domain or onion address will not change, you wi
 To complete our migration, we will start up LND and unlock our wallet with the usual password. You may observe your logs and verify that all channels and funds are present with `lncli getinfo`, `lncli walletbalance` and `lncli channelbalance`.
 
 Once you successfully start LND on your new machine, delete the lnd directory on the old platform. Under no circumstances should two nodes with the same public key be run at the same time, as this will cause your channels to close and its funds possibly forfeited.
-

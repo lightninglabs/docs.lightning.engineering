@@ -8,6 +8,8 @@ description: >-
 
 You can install `litd` from source or via the provided binary. If you are running LND as part of a software bundle like Umbrel, `litd` might already be installed on your node.
 
+[In this case, continue here: Connect to Terminal](run-litd.md)
+
 ## Install the binary
 
 Choose this option for a quick and convenient installation. You can find the binaries and verification instructions for the latest release on [Github](https://github.com/lightninglabs/lightning-terminal/releases/).
@@ -22,7 +24,7 @@ Or on Windows:
 
 You can now execute the program from its location, or place it where the system can conveniently find it, such as `/bin/litd` on Linux.
 
-Continue here: Run litd
+[Continue here: Connect to Terminal](run-litd.md)
 
 ## Install from source
 
@@ -61,4 +63,4 @@ git checkout \<latest release>
 
 The binaries should be found in your Go path, most commonly \~/go/bin/ You can navigate and check your Go path with cd $GOPATH
 
-Continue here: Run litd
+[Continue here: Connect to Terminal](run-litd.md)

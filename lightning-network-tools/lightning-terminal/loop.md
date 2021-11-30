@@ -11,7 +11,7 @@ Loop can help manage channel liquidity, for example, by emptying out a channel a
 
 [Learn more about how Submarine Swaps work.](../../the-lightning-network/lightning-overview/understanding-submarine-swaps.md)
 
-## How do use Loop in Lightning Terminal <a href="#docs-internal-guid-eae8e6fb-7fff-9fc5-7155-0aae66bbe668" id="docs-internal-guid-eae8e6fb-7fff-9fc5-7155-0aae66bbe668"></a>
+## How to use Loop in Lightning Terminal <a href="#docs-internal-guid-eae8e6fb-7fff-9fc5-7155-0aae66bbe668" id="docs-internal-guid-eae8e6fb-7fff-9fc5-7155-0aae66bbe668"></a>
 
 On the left side of Lightning Terminal you see ‘Loop.’ Clicking on it shows an overview over your history, current capacity, your channels and their balances.&#x20;
 

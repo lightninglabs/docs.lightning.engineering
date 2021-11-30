@@ -71,6 +71,8 @@
   * [Pool and Lightning Terminal](lightning-network-tools/lightning-terminal/pool.md)
   * [Lightning Node Connect: Under the hood](lightning-network-tools/lightning-terminal/lightning-node-connect.md)
   * [Privacy and Security](lightning-network-tools/lightning-terminal/privacy-and-security.md)
+  * [Privacy Policy](lightning-network-tools/lightning-terminal/privacy.md)
+  * [Terms of Use](lightning-network-tools/lightning-terminal/tos.md)
 * [Loop](lightning-network-tools/loop/README.md)
   * [Get Started](lightning-network-tools/loop/get-started.md)
   * [The Loop CLI](lightning-network-tools/loop/the-loop-cli.md)

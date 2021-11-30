@@ -14,7 +14,7 @@ To run `poold` integrated into the Lightning Terminal, download [the latest rele
 
 Pool needs to be connected to an `lnd` node running somewhere. We assume here that the `lnd` node is running and set up in a way that Pool can connect to it. Consult the [installation guide](install.md) for more information on how to set up and configure `lnd`.
 
-The `lnd` node must have at least one active channel and **must be able to pay a 1000 satoshi **[**LSAT fee**](https://lsat.tech). See [the FAQ](faq.md#fees) for more information on this fee.
+The `lnd` node must have at least one active channel and **must be able to pay a 1000 satoshi** [**LSAT fee**](https://lsat.tech). See [the FAQ](faq.md#fees) for more information on this fee.
 
 ## Run `poold`
 

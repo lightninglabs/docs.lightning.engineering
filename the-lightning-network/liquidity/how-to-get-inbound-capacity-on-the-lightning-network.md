@@ -73,7 +73,7 @@ Once we have made our Lightning transaction to [Lightning Loop](https://lightnin
 
 As a result, we still have our original capital (minus fees), but about 80-90% more total capacity between our two channels. And, about 40-45% of our total channel capacity is now available for receiving Lightning payments.
 
-1. **Buy a channel on **[**Lightning Pool**](https://lightning.engineering/pool)****
+1. **Buy a channel on** [**Lightning Pool**](https://lightning.engineering/pool)****
 
 We can also acquire inbound capacity by signaling a need for it and incentivizing others to open channels with us using their capital. [Lightning Pool](https://lightning.engineering/pool), a marketplace where bidders can pay well capitalized and connected nodes to open channels with them, allows us to do that. These nodes are compensated for opening these channels and commit to maintaining these channels for a specified period of time.
 

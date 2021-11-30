@@ -4,11 +4,11 @@ description: Install and run Loop
 
 # Get Started
 
-## Install Loop <a href="docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5" id="docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5"></a>
+## Install Loop <a href="#docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5" id="docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5"></a>
 
 Loop comes bundled with [Lightning Terminal](../lightning-terminal/). Meaning, if you have Lightning Terminal installed, you can already access Loop through the command line and you may skip the step below.&#x20;
 
-\[[Follow this guide to install Lightning Terminal](../lightning-terminal/get-lit/)]
+\[[Follow this guide to install Lightning Terminal](../lightning-terminal/get-lit.md)]
 
 To run Loop you need to be running LND from the [binary releases](https://github.com/lightningnetwork/lnd/releases), or compile from source with the command `make install tags="signrpc walletrpc chainrpc invoicesrpc"`
 
@@ -24,7 +24,7 @@ Loop, like bitcoind, LND and others, comes with two components: Loopd and a comm
 
 You will need to first run Loop with the command `loopd`
 
-If you want to run Loop in the background, you can also write the output to `/dev/null` by amending` &>/dev/null &` to the above command.
+If you want to run Loop in the background, you can also write the output to `/dev/null` by amending `&>/dev/null &` to the above command.
 
 ### Lightning Terminal
 

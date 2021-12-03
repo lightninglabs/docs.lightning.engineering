@@ -29,9 +29,9 @@ Finally, we will navigate to [https://terminal.lightning.engineering](https://te
 
 ## Connect to Lightning Terminal
 
-Navigate to https://terminal.lightning.engineering and click on 'Connect your Node.'
+Navigate to [https://terminal.lightning.engineering](https://terminal.lightning.engineering) and click on 'Connect your Node.'
 
-You will be asked for your 10-word connection phrase. Enter it and confirm.
+You will be asked for your 10-word pairing phrase. Enter it and confirm.
 
 You need to choose a secure and unique password. We recommend to use a password manager.
 

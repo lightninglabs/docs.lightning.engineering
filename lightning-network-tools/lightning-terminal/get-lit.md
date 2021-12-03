@@ -33,19 +33,19 @@ You can now execute the program from its location, or place it where the system 
 1. You will need Go. If you compiled LND from source this should already be installed on your system. You can find [detailed instructions here](https://golang.org/doc/install).
 2. You will need nodejs. You can [download and install it here](https://nodejs.org/en/download/).
 3. You will need yarn. You can [download it here](https://classic.yarnpkg.com/en/docs/install). Most conveniently, you can install it with `npm install --global yarn`
-4. You will need to run the latest release of LND (`lnd v0.14.1`). Have a look at this [upgrade guide](../lnd/run-lnd.md#upgrading-from-source).
+4. You will need to run the latest release of LND at least (`lnd v0.14.1`). Have a look at this [upgrade guide](../lnd/run-lnd.md#upgrading-from-source).
 
 First, turn off lnd
 
 `lncli stop`
 
-Then, pull from source and install the latest master
+Then, pull from source and install the latest release. [You can find all releases here](https://github.com/lightninglabs/lightning-terminal/releases/).
 
 `cd path/to/lnd`
 
 `git pull`
 
-`git checkout v0.14.1-beta`
+`git checkout <latest release>`
 
 `make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"`
 

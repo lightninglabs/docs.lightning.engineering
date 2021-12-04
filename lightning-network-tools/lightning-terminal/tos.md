@@ -1,6 +1,6 @@
 # Terms of Use
 
-Last Modified: 4 December 2021
+Last Modified: December 4, 2021
 
 **Acceptance of the Terms of Use**
 
@@ -60,7 +60,7 @@ If you print, copy, modify, download, or otherwise use or provide any other pers
 
 **Trademarks**
 
-The Company name, the terms “Lightning Labs," LND,” “Loop,” “Pool,” and all related names, logos, product and service names, designs, and slogans are trademarks of the Company or its affiliates or licensors. You must not use such marks without the prior written permission of the Company. All other names, logos, product and service names, designs, and slogans on this Website are the trademarks of their respective owners.
+The Company name, the terms “Lightning Labs," "LND,” “Loop,” “Pool,” and all related names, logos, product and service names, designs, and slogans are trademarks of the Company or its affiliates or licensors. You must not use such marks without the prior written permission of the Company. All other names, logos, product and service names, designs, and slogans on this Website are the trademarks of their respective owners.
 
 **Prohibited Uses**
 

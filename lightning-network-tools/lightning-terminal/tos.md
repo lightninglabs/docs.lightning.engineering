@@ -60,7 +60,7 @@ If you print, copy, modify, download, or otherwise use or provide any other pers
 
 **Trademarks**
 
-The Company name, the terms “LND,” “Lightning Labs,” “Loop,” “Pool,” and all related names, logos, product and service names, designs, and slogans are trademarks of the Company or its affiliates or licensors. You must not use such marks without the prior written permission of the Company. All other names, logos, product and service names, designs, and slogans on this Website are the trademarks of their respective owners.
+The Company name, the terms “Lightning Labs," LND,” “Loop,” “Pool,” and all related names, logos, product and service names, designs, and slogans are trademarks of the Company or its affiliates or licensors. You must not use such marks without the prior written permission of the Company. All other names, logos, product and service names, designs, and slogans on this Website are the trademarks of their respective owners.
 
 **Prohibited Uses**
 

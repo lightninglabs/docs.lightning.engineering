@@ -8,7 +8,7 @@ LND offers a wide range of configuration options that allow deployment in a larg
 
 In this article we will discuss various configuration options for LND in the context of a routing node.
 
-## Objectives <a href="docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447" id="docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447"></a>
+## Objectives <a href="#docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447" id="docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447"></a>
 
 The obligations of a good routing node fall into two broad categories. First and in this article, we will need to install and configure LND. Later we will need to open channels, get inbound liquidity and manage the liquidity of our node in a smart way. Have a look at the [liquidity](../../the-lightning-network/liquidity/) and [routing](../../the-lightning-network/routing/) sections of the Builder’s Guide.
 
@@ -20,26 +20,26 @@ Your node should be available as much as possible with little latency. This allo
 
 There are many reasons why a channel might be marked as ‘disabled’ by one peer or another. Keeping your channel available is an important metric to assess the quality of a node. Keep your node up to date and regularly observe the quality of your channels. Configurations such as tor stream isolation can also affect the quality of channels.
 
-## Configuring a routing node <a href="docs-internal-guid-265f4120-7fff-139c-a0f4-e8dd72f3defd" id="docs-internal-guid-265f4120-7fff-139c-a0f4-e8dd72f3defd"></a>
+## Configuring a routing node <a href="#docs-internal-guid-265f4120-7fff-139c-a0f4-e8dd72f3defd" id="docs-internal-guid-265f4120-7fff-139c-a0f4-e8dd72f3defd"></a>
 
 For a high-performance routing node you will need btcd or bitcoind running without pruning. Ideally both the Bitcoin backend and LND will run on the same machine, but it is also possible to connect them via ssh on separate servers, as long as latency is low enough.
 
 For performance reasons you may also specifically configure your Bitcoin node. For instance, when building bitcoind from source you can use the command&#x20;
 
-`./autogen.sh `\
+`./autogen.sh` \
 `./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" --enable-cxx --with-zmq --without-gui --disable-shared --with-pic --disable-tests --disable-bench --enable-upnp-default --disable-wallet`\
 `make -j "$(($(nproc)+1))"`\
 `sudo make install`\
 The parameters in this command are explained below:
 
-`CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" `This allows us to conserve memory.
+`CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"` This allows us to conserve memory.
 
 `--enable-cxx`\
 `--with-zmq` ZMQ is used to stream data from bitcoind to LND.
 
 `--without-gui` We will not need the graphical interface for our setup.
 
-`--disable-shared `\
+`--disable-shared` \
 `--with-pic`\
 `--disable-tests`\
 `--disable-bench`\
@@ -60,7 +60,7 @@ You may also use the lnd.conf sample file and activate the relevant lines by rem
 
 [See the full lnd.conf sample file.](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf)
 
-### Your node <a href="docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0" id="docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0"></a>
+### Your node <a href="#docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0" id="docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0"></a>
 
 `alias=YOUR_ALIAS`\
 `color=#000000`
@@ -118,6 +118,10 @@ Our routing node will not need historical gossip data, so we can ignore it with 
 `bitcoin.basefee=1000`
 
 This is our base fee in milli-satoshi. Meaning for each payment we forward we expect to be paid at least 1 satoshi. The feerate is the fee we charge per 1 million forwarded satoshi.
+
+`db.bolt.auto-compact=1`
+
+This setting will compact our `channel.db` database at every startup, which will improve performance of your node.
 
 `max-channel-fee-allocation=1.0`
 
@@ -180,7 +184,7 @@ This setting allows you to define after how long LND should forget about past ro
 
 You may want to manage and monitor your node with remote tools requiring RPC. These configurations help you do that.
 
-## DDoS Protection: <a href="docs-internal-guid-8e501dd3-7fff-8a74-528d-5b8b097797a0" id="docs-internal-guid-8e501dd3-7fff-8a74-528d-5b8b097797a0"></a>
+## DDoS Protection: <a href="#docs-internal-guid-8e501dd3-7fff-8a74-528d-5b8b097797a0" id="docs-internal-guid-8e501dd3-7fff-8a74-528d-5b8b097797a0"></a>
 
 Defending your node against (distributed) denial of service attacks is not an easy feat. Depending on your node setup, you may opt for one of multiple tools to keep satoshis flowing under all circumstances.
 
@@ -201,7 +205,7 @@ We suggest the following iptable rules for network flood protection:
 `sudo iptables -A INPUT -p icmp -j DROP`\
 `sudo iptables -A OUTPUT -p icmp -j ACCEPT`
 
-### Tor <a href="docs-internal-guid-8c746b37-7fff-d870-17cd-addca00be636" id="docs-internal-guid-8c746b37-7fff-d870-17cd-addca00be636"></a>
+### Tor <a href="#docs-internal-guid-8c746b37-7fff-d870-17cd-addca00be636" id="docs-internal-guid-8c746b37-7fff-d870-17cd-addca00be636"></a>
 
 While the Tor network is not immune to DDoS attacks, it may be able to help you stay available to your peers in ways a clearnet IP address may not.Botnets and other tools deployed in DDoS attacks may not work over Tor, and although the network has its own bandwidth constraints, it also has its own ways to mitigate attacks.
 

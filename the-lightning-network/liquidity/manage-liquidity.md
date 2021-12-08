@@ -6,7 +6,7 @@ description: >-
 
 # Managing Liquidity on the Lightning Network
 
-## On-chain Bitcoin <a href="docs-internal-guid-f32642c8-7fff-bda4-5003-3937885e00bc" id="docs-internal-guid-f32642c8-7fff-bda4-5003-3937885e00bc"></a>
+## On-chain Bitcoin <a href="#docs-internal-guid-f32642c8-7fff-bda4-5003-3937885e00bc" id="docs-internal-guid-f32642c8-7fff-bda4-5003-3937885e00bc"></a>
 
 The liquidity of on-chain bitcoin is predictable. Bitcoin exists in the form of UTXOs, which are unspent outputs from a previous transaction. To spend bitcoin, you need to receive or mine them first, but generally, they can be moved by the owner at any time.
 
@@ -15,7 +15,7 @@ On-chain bitcoin require multiple confirmations by the Bitcoin network to be con
 Your Lightning node is able to receive and send on-chain bitcoin.
 
 * `lncli newaddress` Generate a new Bitcoin address
-* `lncli walletbalance `Check your balance.
+* `lncli walletbalance` Check your balance.
 * `lncli sendcoins` Send Bitcoin from this wallet
 
 This command follows the format `lncli sendcoins [command options] addr amt`
@@ -65,7 +65,7 @@ Useful tips:
 Example usage:
 
 * `lncli openchannel 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d 1000000`
-* `lncli openchannel --sat_per_byte 21 --local-amt 800000 --close_address bc1qsltz4tt23k0825q76ylj5mt0gwenlm8wr7umkl 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d `
+* `lncli openchannel --sat_per_byte 21 --local-amt 800000 --close_address bc1qsltz4tt23k0825q76ylj5mt0gwenlm8wr7umkl 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d`&#x20;
 
 To see if your channel is pending confirmation, you can use the command `lncli pendingchannels`.
 
@@ -91,13 +91,13 @@ You are able to charge fees for routing payments. You can use the command `lncli
 
 By default, your fee policy may look something like this:
 
-&#x20;      ` {`\
-`            "chan_id": "739918549049147393",`\
-`            "channel_point": "3ebdb34f1fc1948b5b49d127b52b19d24549779661af03a691cf934aa3b86e3f:1",`\
-`            "base_fee_msat": "1000",`\
-`            "fee_per_mil": "1",`\
-`            "fee_rate": 0.000001`\
-`        }`
+&#x20;      `{`\
+&#x20;           `"chan_id": "739918549049147393",`\
+&#x20;           `"channel_point": "3ebdb34f1fc1948b5b49d127b52b19d24549779661af03a691cf934aa3b86e3f:1",`\
+&#x20;           `"base_fee_msat": "1000",`\
+&#x20;           `"fee_per_mil": "1",`\
+&#x20;           `"fee_rate": 0.000001`\
+&#x20;       `}`
 
 This means to route payments through this channel, your node will charge 1,000 milli-satoshi (1 satoshi), plus 1 milli-satoshi per million milli-satoshi (`fee_rate` times one million equals fee\_per\_mil). So when routing a payment of 10,000 satoshi, you will earn 1.01 satoshi in fees. This fee policy is applied to all outgoing payments, meaning you will only earn the fee as it is passed on. The fee policy on the incoming channel is decided by that peer. As a rule of thumb, you decide on the fee policy of your capital.
 
@@ -206,3 +206,7 @@ Private channels may also bind your capital. Typically, they are created by paym
 Example usage:
 
 `lncli closechannel --funding_txid 83b5a55b21255915dbc0d005230b2c026a004c839edaa716247b96b66490c66a --output_index 1 --sat_per_byte 20 --delivery_addr bc1q6tcemsjadwgt938gkrmcqyvt79wxla42js8r4l`
+
+{% embed url="https://www.youtube.com/watch?v=LRZy-VtCPe4" %}
+`Video:` Lightning 101: Node Profitability feat PLEBNET
+{% endembed %}

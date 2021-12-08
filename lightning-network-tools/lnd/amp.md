@@ -30,7 +30,11 @@ For a shard of size two this can be simplified as follows, with k being the prei
 
 The information necessary for the recipient node to generate the correct preimages and reveal them to claim their payments is passed on in encrypted form as part of the Onion TLV (Type Length Value). This removes the need for additional interaction between the payer and the payee beyond transmitting a node public key or an invoice.
 
-## Get your node ready for AMPs <a href="docs-internal-guid-0aff8c2e-7fff-3644-f0f2-cf0efff90d43" id="docs-internal-guid-0aff8c2e-7fff-3644-f0f2-cf0efff90d43"></a>
+{% embed url="https://www.youtube.com/watch?v=PNSPXRflCSc" %}
+Video: Get AMPed: Making Atomic Multi-Path Payments
+{% endembed %}
+
+## Get your node ready for AMPs <a href="#docs-internal-guid-0aff8c2e-7fff-3644-f0f2-cf0efff90d43" id="docs-internal-guid-0aff8c2e-7fff-3644-f0f2-cf0efff90d43"></a>
 
 To be able to make and send Atomic Multi-path Payments, you will need to upgrade your node to [LND 0.13 or above](https://github.com/lightningnetwork/lnd/releases).
 

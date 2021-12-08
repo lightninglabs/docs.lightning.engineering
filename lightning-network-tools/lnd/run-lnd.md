@@ -8,11 +8,15 @@ description: >-
 
 The Lightning Network Daemon (LND) is a complete implementation of a Lightning Network node. That means that LND is able to perform all actions necessary to participate and interact with all aspects of the Lightning Network and its nodes. It fully complies with all Lightning Network specifications (BOLTs) [as described here](https://github.com/lightningnetwork/lightning-rfc/blob/master/00-introduction.md). As these specifications are currently rapidly evolving, so is LND.
 
-## Part 1: Installation <a href="docs-internal-guid-ff85e2ff-7fff-ef9c-0f05-8da12a86ea43" id="docs-internal-guid-ff85e2ff-7fff-ef9c-0f05-8da12a86ea43"></a>
+## Part 1: Installation <a href="#docs-internal-guid-ff85e2ff-7fff-ef9c-0f05-8da12a86ea43" id="docs-internal-guid-ff85e2ff-7fff-ef9c-0f05-8da12a86ea43"></a>
 
 There are multiple methods for getting LND running on your machine. Your choice will depend on your requirements, the purpose of the installation, your technical expertise, your hardware, security needs and comfort with various tools.
 
 Your requirements and dependencies will vary between installation types, as will the effort to maintain them.
+
+{% embed url="https://www.youtube.com/watch?v=rf-GvVYuWa8" %}
+Video: RUN LND: Building a Node from Scratch
+{% endembed %}
 
 ### System requirements
 
@@ -44,15 +48,15 @@ You can use the file manager or command line, but may have to create this direct
 
 Congratulations, you have successfully installed LND using the binary release. [Jump to: Configuring LND](run-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
 
-### Installing Lightning via Docker <a href="docs-internal-guid-fe99d99a-7fff-2f7a-022e-4fab339d71f9" id="docs-internal-guid-fe99d99a-7fff-2f7a-022e-4fab339d71f9"></a>
+### Installing Lightning via Docker <a href="#docs-internal-guid-fe99d99a-7fff-2f7a-022e-4fab339d71f9" id="docs-internal-guid-fe99d99a-7fff-2f7a-022e-4fab339d71f9"></a>
 
 For those familiar with Docker, or those interested in easily running a variety of software alongside each other, the Docker installation is a convenient and quick way to get started with lightning.
 
 To install LND via Docker you will need `docker`, `make` and `bash` on your system. You can install lnd with the following commands:
 
-`git clone https://github.com/lightningnetwork/lnd  `\
-`cd lnd  `\
-`git checkout <latest-release>  `\
+`git clone https://github.com/lightningnetwork/lnd`  \
+`cd lnd`  \
+`git checkout <latest-release>`  \
 `make docker-release tag=<latest-release>`
 
 You are now able to find the binaries in the directory lnd\<latest-release> for your use. Congratulations, [jump to: Configuring LND](run-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
@@ -65,7 +69,7 @@ Installing LND from source is recommended when using it in development or on tes
 You can find the latest version of Golang [on its official website](https://golang.org/dl/). Make sure to verify the checksum before you install Go.
 
 You can now install go with the command:\
-`tar -C /usr/local -xzf go[version].linux-[platform].tar.gz  `\
+`tar -C /usr/local -xzf go[version].linux-[platform].tar.gz`  \
 `export PATH=$PATH:/usr/local/go/bin`
 
 **Installing Go on MacOS**\
@@ -74,19 +78,19 @@ To install, simply run the command:\
 
 **Set your Go path**\
 To ensure that the command go refers to the correct path, you will need to set your Go path:\
-`export GOPATH=~/gocode  `\
+`export GOPATH=~/gocode`  \
 `export PATH=$PATH:$GOPATH/bin`
 
 **Installing LND**\
 We can now install LND. We can run the following command from our home directory:\
-`git clone https://github.com/lightningnetwork/lnd  `\
-`cd lnd  `\
-`git checkout [version]  `\
+`git clone https://github.com/lightningnetwork/lnd`  \
+`cd lnd`  \
+`git checkout [version]`  \
 `make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"`
 
 LND is now installed from source.
 
-## Part 2: Configuring LND <a href="docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86" id="docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86"></a>
+## Part 2: Configuring LND <a href="#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86" id="docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86"></a>
 
 ### Bitcoin
 
@@ -147,7 +151,7 @@ When starting lnd with neutrino, you will need to set the following flags:`--bit
 
 To make your node available as a routing node, you will need to listen to incoming connections. In your [lnd.conf configuration file](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf), include the following lines:
 
-`listen=0.0.0.0:9735  `\
+`listen=0.0.0.0:9735`  \
 `listen=[::1]:9736`
 
 This will allow your node to listen on all IPv4 (port 9735) and IPv6 (port 9736) interfaces.
@@ -162,15 +166,15 @@ Be aware of any firewall that might be enabled on your system, for example by us
 
 Using a firewall is a great idea, although the ports defined above need to remain accessible:
 
-`sudo ufw status  `\
-`sudo ufw allow OpenSSH  `\
+`sudo ufw status`  \
+`sudo ufw allow OpenSSH`  \
 `sudo ufw allow 9735`
 
 #### Other available configurations
 
 There are plenty of options to configure lnd. Have a look at the [sample lnd.conf file here](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf) and read our article on the optimal configuration for your node.
 
-## Part 3: Running LND <a href="docs-internal-guid-9df27c7d-7fff-522a-838a-a42710fe3e75" id="docs-internal-guid-9df27c7d-7fff-522a-838a-a42710fe3e75"></a>
+## Part 3: Running LND <a href="#docs-internal-guid-9df27c7d-7fff-522a-838a-a42710fe3e75" id="docs-internal-guid-9df27c7d-7fff-522a-838a-a42710fe3e75"></a>
 
 Now that we have LND installed and configured with its Bitcoin backend we may start it for the first time.
 
@@ -245,8 +249,8 @@ If you are running LND in a docker container, you can upgrade this container as 
 
 First navigate to the local copy of the lnd github repository, for example with `cd lnd`. Then execute the following commands:
 
-`git pull  `\
-`git checkout <latest-release>  `\
+`git pull`  \
+`git checkout <latest-release>`  \
 `make docker-release tag=<latest-release>`
 
 You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.

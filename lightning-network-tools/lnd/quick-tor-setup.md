@@ -18,13 +18,16 @@ If you are behind Network Address Translation (NAT), you may find it difficult o
 
 Configuring Tor is useful if you prefer to not publicly disclose the physical location of your node, particularly in the context of a node in your home or office. While it may be trivial to assess the physical location of a device reachable via IPv4/6, this is more difficult.
 
-At the moment, it is not possible to configure LND for both the Tor network and IPv4/6 in a way that lets you be reachable via IPv4/6 while also reaching Tor nodes.
+Starting with `lnd 0.14.0` it is possible to configure LND in a way that lets you be reachable via IPv4/6 while also reaching Tor nodes. See [hybrid mode](quick-tor-setup.md#hybrid-mode) for details.
 
 **Your node on Tor:**\
-****Can reach all nodes, but only reachable by Tor nodes.
+****Can reach all nodes, but only reachable by Tor nodes. Recommended if you are behind a NAT and do not want to disclose the IP address of your node.
 
 **Your node on IPv4/6:**\
 ****Can only reach IPv4/6 nodes, but reachable by all nodes.
+
+**Your node in hybrid mode:**\
+Can reach all nodes, be reachable by all nodes. Recommended if you are behind a NAT but do not want to connect to clearnet nodes through the Tor network, or if you want to be able to connect outwards to other Tor nodes. In hybrid mode you can be reachable through an IP, an onion address or both.
 
 ## Configuring Tor
 
@@ -48,7 +51,19 @@ This command enables Tor stream isolation, meaning each connection will use a se
 
 `tor.streamisolation=true`
 
-If we next restart LND, we are now able to reach out to Lightning nodes in the Tor network as well as all other reachable nodes. If that’s all you wanted to do with Tor, you can stop after these steps.&#x20;
+If we now restart LND, we are now able to reach out to Lightning nodes in the Tor network as well as all other reachable nodes.
+
+### Hybrid mode
+
+Starting with `lnd 0.14.0` it is possible to run your node in hybrid mode. This means your node will make connections to nodes behind Tor using the Tor network, and all nodes reachable through an IPv4 or IPv6 address directly.
+
+Hybrid mode is recommended for all nodes that want to be reachable primarily through their IP, but also want to be able to reach out to nodes only reachable only over Tor. Hybrid mode is not a privacy tool.
+
+To set up hybrid mode, install Tor and configure it as explained above. Then add the following line to your configuration file:
+
+`tor.skip-proxy-for-clearnet-targets=1`
+
+Your node is now able to reach both clearnet and Tor nodes. You may skip the steps below and restart LND, or you may continue below to make your node reachable through an onion URI. This can be done in addition to a clearnet URI.
 
 ### Create a Tor hidden service
 
@@ -78,7 +93,11 @@ We will specify that we want LND to create a Tor version 3 (secure) hidden servi
 
 Optionally we may also specify the IP and port of Tor and LND, as well as the paths to the generated keys. By default the keys will be placed in your `~/.lnd` folder.
 
-`tor.control=localhost:9091`\
+`tor.control=localhost:9051`\
 `tor.targetipaddress=`\
 `tor.privatekeypath=/path/to/torkey`\
 `tor.watchtowerkeypath=/other/path/`
+
+If you are running LND in hybrid mode and want your node to also be reachable through a clearnet address don't forget to add the following line to your lnd.conf file:
+
+`extraip=<your IP here>`

@@ -5,11 +5,19 @@
 * [Misconfigured ZMQ
   setup now gets reported](https://github.com/lightningnetwork/lnd/pull/5710).
 
+## `lncli`
+
+* Add [auto-generated command-line completions](https://github.com/lightningnetwork/lnd/pull/4177) 
+  for Fish shell.  
+
 ## Misc
 
 * [An example systemd service file](https://github.com/lightningnetwork/lnd/pull/6033)
   for running lnd alongside a bitcoind service is now provided in
   `contrib/init/lnd.service`.
+
+* [Allow disabling migrations if the database backend passed to `channeldb` was
+  opened in read-only mode](https://github.com/lightningnetwork/lnd/pull/6084).
 
 ## Code Health
 
@@ -21,3 +29,4 @@
 
 * Daniel McNally
 * ErikEk
+* Torkel Rogstad

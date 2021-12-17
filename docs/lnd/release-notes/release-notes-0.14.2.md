@@ -5,6 +5,9 @@
 * [Return the nearest known fee rate when a given conf target cannot be found
   from Web API fee estimator.](https://github.com/lightningnetwork/lnd/pull/6062)
 
+* [We now _always_ set a channel type if the other party signals the feature
+  bit](https://github.com/lightningnetwork/lnd/pull/6075).
+
 ## Wallet
 
 * A bug that prevented opening anchor-based channels from external wallets when
@@ -35,6 +38,9 @@
 
 * [Fix memory corruption in Mission Control
   Store](https://github.com/lightningnetwork/lnd/pull/6068)
+ 
+* [Ensure that the min relay fee is always clamped by our fee
+  floor](https://github.com/lightningnetwork/lnd/pull/6076)
 
 ## RPC Server
 
@@ -49,6 +55,7 @@
 
 * Andras Banki-Horvath
 * Bjarne Magnussen
+* Elle Mouton
 * Harsha Goli
 * Martin Habovštiak
 * Naveen Srinivasan

@@ -161,7 +161,7 @@ If a node returns many failures LND will begin to ignore them more and more. To 
 `routerrpc.attemptcost=10`\
 `routerrpc.attemptcostppm=10`
 
-LND may try less paths less likely to succeed only if they allow for significant savings. You can set the minimum of these desired savings here.
+LND may try paths less likely to succeed only if they allow for significant savings. You can set the minimum of these desired savings here.
 
 `routerrpc.maxmchistory=10000`
 

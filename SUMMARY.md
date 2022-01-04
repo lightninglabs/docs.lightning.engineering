@@ -51,6 +51,7 @@
   * [Quick Tor Setup](lightning-network-tools/lnd/quick-tor-setup.md)
   * [Configuring Tor](lightning-network-tools/lnd/configuring\_tor.md)
   * [Enable ‘Neutrino mode’ in Bitcoin Core](lightning-network-tools/lnd/enable-neutrino-mode-in-bitcoin-core.md)
+  * [Send messages with keysend](lightning-network-tools/lnd/send-messages-with-keysend.md)
   * [Debugging LND](lightning-network-tools/lnd/debugging\_lnd.md)
   * [Fuzzing LND](lightning-network-tools/lnd/fuzz.md)
   * [LND and etcd](lightning-network-tools/lnd/etcd.md)

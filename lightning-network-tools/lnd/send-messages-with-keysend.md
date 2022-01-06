@@ -16,8 +16,10 @@ Keysend is currently implemented in LND in two ways, the widely accepted “`--k
 
 To make sure you are able to receive spontaneous payments, add the following lines to your `lnd.conf` file:
 
-`accept-amp=1`\
-`accept-keysend=true`
+```text
+accept-amp=true
+accept-keysend=true
+```
 
 Then restart your node with `lncli stop` and `lnd`.
 

@@ -119,7 +119,7 @@ This section covers the use of the _SendPaymentV2_ API endpoint, which finds a r
     </tr>
     <tr>
       <td style="text-align:left">outgoing_chan_ids</td>
-      <td style="text-align:left">The set of your channels that you would like the payment to. This can
+      <td style="text-align:left">The set of your channels that you would like the payment to go through. This can
         be useful for managing your own liquidity, but may affect the success or
         fee of the payment if the channels you select don&#x2019;t have a route
         to the destination, or have a more expensive one.</td>
@@ -133,7 +133,7 @@ This section covers the use of the _SendPaymentV2_ API endpoint, which finds a r
 
 ### Payment Fees
 
-Nodes in the Lightning Network that route payments on behalf of other nodes charge fees in exchange for the use of their capital. Each node in the network is free to set their fees as they see fit. If you send a multi-hop payment \(ie, a payment that is not to one of the nodes you have a direct channel with\), your will need to pay fees per-hop that the payment uses.
+Nodes in the Lightning Network that route payments on behalf of other nodes charge fees in exchange for the use of their capital. Each node in the network is free to set their fees as they see fit. If you send a multi-hop payment \(ie, a payment that is not to one of the nodes you have a direct channel with\), your node will need to pay fees per-hop that the payment uses.
 
 Fee policies are structured with the following parameters:
 

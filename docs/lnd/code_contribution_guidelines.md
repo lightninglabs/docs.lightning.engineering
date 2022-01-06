@@ -17,6 +17,7 @@
    1. [Code Review](#code-review)
    1. [Rework Code (if needed)](#rework-code-if-needed)
    1. [Acceptance](#acceptance)
+   1. [Review Bot](#review-bot)
 6. [Contribution Standards](#contribution-standards)
    1. [Contribution Checklist](#contribution-checklist)
    1. [Licensing of Contributions](#licensing-of-contributions)
@@ -316,6 +317,9 @@ Examples of common patterns w.r.t commit structures within the project:
     be a single commit which adds the new functionality, with follow up
     induvidual commits that begin to intergrate the functionality within the
     codebase.
+  * If a PR only fixes a trivial issue, such as updating documentation on a
+    small scale, fix typos, or any changes that do not modify the code, the
+    commit message should end with `[skip ci]` to skip the CI checks.
 
 ## Code Spacing 
 
@@ -462,9 +466,9 @@ to `gofmt` we've opted to enforce the following style guidelines.
      )
      ```
 
-Note that the above guidelines don't apply to log messages. For log messages,
-committers should attempt to minimize the of number lines utilized, while still
-adhering to the 80-character column limit.
+**Note that the above guidelines don't apply to log or error messages.** For
+log and error messages, committers should attempt to minimize the number of
+lines utilized, while still adhering to the 80-character column limit.
 
 ## Pointing to Remote Dependant Branches in Go Modules
 
@@ -551,6 +555,12 @@ This process will continue until the code is finally accepted.
 
 ## Acceptance
 
+Before your code is accepted, the [release notes we keep in-tree for the next
+upcoming milestone should be extended to describe the changes contained in your
+PR](https://github.com/lightningnetwork/lnd/tree/master/docs/release-notes).
+Unless otherwise mentioned by the reviewers of your PR, the description of your
+changes should live in the document set for the _next_ major release. 
+
 Once your code is accepted, it will be integrated with the master branch. After
 2+ (sometimes 1) LGTM's (approvals) are given on a PR, it's eligible to land in
 master. At this final phase, it may be necessary to rebase the PR in order to
@@ -561,6 +571,41 @@ these signatures intact, we prefer using merge commits. PR proposers can use
 `git rebase --signoff` to sign and rebase at the same time as a final step.
 
 Rejoice as you will now be listed as a [contributor](https://github.com/lightningnetwork/lnd/graphs/contributors)!
+
+## Review Bot
+
+In order to keep the review flow going, Lightning Labs uses a bot to remind 
+PR reviewers about their outstanding reviews or to remind authors to address 
+recent reviews. Here are some important things to know about the bot and some 
+controls for adjusting its behaviour:
+
+####🤖 Expected Behaviour:
+- The bot will not do anything if your PR is in draft mode.
+- It will ping a pending reviewer if they have not reviewed or commented on the 
+PR in x days since the last update or the last time the bot pinged them. 
+(default x = 3)
+- It will ping the author of the PR if they have not addressed a review on a PR 
+after x days since last review or the last time the bot pinged them. It will 
+also ping them to remind them to re-request review if needed. (default x = 3)
+
+####🤖 Controls:
+To control the bot, you need to add a comment on the PR starting with 
+`!lightninglabs-deploy` followed by the command. There are 2 control types: 
+mute/unmute & cadence. Only the latest comment for each control type will be 
+used. This also means you dont need to keep adding new control comments, just 
+edit the latest comment for that control type.
+
+- `!lightninglabs-deploy mute` will mute the bot on the PR completely.
+- `!lightninglabs-deploy mute 72h30m` will mute the bot for the given duration.
+- `!lightninglabs-deploy mute 2022-Feb-02` will mute the bot until the given 
+date (must be in this format!).
+- `!lightninglabs-deploy mute #4` will mute the bot until the given PR of the 
+same repo has been merged.
+- `!lightninglabs-deploy unmute` will unmute the bot (or just delete the comment
+that was muting it)
+- `!lightninglabs-deploy cadence 60h` change the cadence of the bot from the 
+default of 3 days to the given duration. 
+- it will auto-mute if the PR is in Draft mode
 
 # Contribution Standards
 

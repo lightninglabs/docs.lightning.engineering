@@ -8,11 +8,11 @@ description: >-
 
 ## Three steps of a Submarine swap
 
-A submarine swap is a trade between on-chain and off-chain digital assets \(i.e.between Bitcoin held on-chain and Bitcoin on the Lightning network\). Submarine swaps are a specific kind of atomic swap that can be performed without custody or counterparty risk.
+A submarine swap is a trade between on-chain and off-chain digital assets (i.e.between Bitcoin held on-chain and Bitcoin on the Lightning network). Submarine swaps are a specific kind of atomic swap that can be performed without custody or counterparty risk.
 
 Without counterparty risk, submarine swaps can be performed without additional barriers such as background checks or contractual arrangements. Either, the two parties successfully swap their assets or the swap fails. But, at no point, is either side able to walk away with the other party’s funds.
 
-To achieve these trustless properties, the on-chain transaction makes use of the same hash time-locked contracts \(HTLC\) as the Lightning Network. Before on-chain BTC are transfered, the recipient of the Lightning transaction generates a preimage, a random 32-byte secret. This preimage is hashed and used to construct the HTLCs for both on- and off-chain payments.
+To achieve these trustless properties, the on-chain transaction makes use of the same hash time-locked contracts (HTLC) as the Lightning Network. Before on-chain BTC are transfered, the recipient of the Lightning transaction generates a preimage, a random 32-byte secret. This preimage is hashed and used to construct the HTLCs for both on- and off-chain payments.
 
 ### **1. Generate a bitcoin smart contract**
 
@@ -20,19 +20,19 @@ The sender of the on-chain payment knows the hash of this preimage and after an 
 
 Both the sender of the on-chain transaction and the recipient are able to generate and verify this script. The sender can now safely move BTC to this contract, knowing they will either receive satoshis off-chain, or, if it fails, be able to claim their BTC back. Depending on the exact arrangement, the sender might also ask for a non-refundable Lightning payment upfront, which can be used to cover the transaction fees from entering and exiting the smart contract, as well as compensate for the opportunity cost of funds being locked up for some time period.
 
-Example of a typical bitcoin smart contract used in Loop:  
+Example of a typical bitcoin smart contract used in Loop:\
 
 
-`OP_SIZE 32 OP_EQUAL  
-OP_IF  
-OP_HASH160 <ripemd160(swapHash)> OP_EQUALVERIFY  
-    <receiverHtlcKey>  
-OP_ELSE  
-    OP_DROP  
-    <cltv timeout> OP_CHECKLOCKTIMEVERIFY OP_DROP  
-    <senderHtlcKey>  
-OP_ENDIF  
-OP_CHECKSIG`
+`OP_SIZE 32 OP_EQUAL`\
+`OP_IF`\
+`OP_HASH160 <ripemd160(swapHash)> OP_EQUALVERIFY`\
+`    <receiverHtlcKey>`\
+`OP_ELSE`\
+`    OP_DROP`\
+`    <cltv timeout> OP_CHECKLOCKTIMEVERIFY OP_DROP`\
+`    <senderHtlcKey>`\
+`OP_ENDIF`\
+`OP_CHECKSIG`
 
 ### **2. Generate and pay a Lightning invoice**
 
@@ -52,9 +52,8 @@ Submarine swaps make it easier to manage the [liquidity of your Lightning Node](
 
 ## Use Submarine swaps in Loop
 
-[Loop](https://github.com/lightninglabs/loop) is our liquidity service that makes it easy to swap off-chain satoshis for an on-chain payment \(Loop Out\), or vice versa \(Loop In\). This can be useful to get inbound liquidity, or make on-chain payments from your Lightning node without closing a channel.
+[Loop](https://github.com/lightninglabs/loop) is our liquidity service that makes it easy to swap off-chain satoshis for an on-chain payment (Loop Out), or vice versa (Loop In). This can be useful to get inbound liquidity, or make on-chain payments from your Lightning node without closing a channel.
 
-\[[Make your first Submarine swap in Loop.](../../lightning-network-tools/loop/)\]
+\[[Make your first Submarine swap in Loop.](../../lightning-network-tools/loop/)]
 
-\[[Watch Alex Bosworth explain Submarine swaps at London Bitcoin Devs.](https://www.youtube.com/watch?v=eB_HkYb7Y2M)\]
-
+\[[Watch Alex Bosworth explain Submarine swaps at London Bitcoin Devs.](https://www.youtube.com/watch?v=eB\_HkYb7Y2M)]

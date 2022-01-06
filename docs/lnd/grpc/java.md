@@ -29,7 +29,7 @@ with lnd in Java. We'll be using Maven as our build tool.
 ```
 Note the ***proto*** folder, where all the proto files are kept.
 
- - [rpc.proto](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/rpc.proto)
+ - [lightning.proto](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/lightning.proto)
  - [annotations.proto](https://github.com/grpc-ecosystem/grpc-gateway/blob/master/third_party/googleapis/google/api/annotations.proto)
  - [http.proto](https://github.com/grpc-ecosystem/grpc-gateway/blob/master/third_party/googleapis/google/api/http.proto)
 
@@ -102,6 +102,10 @@ In the build section,  we'll need to configure the following things :
 </build>
 ```
 #### Main.java
+Use the code below to set up a channel and client to connect to your `lnd` node.
+
+Note that when an IP address is used to connect to the node (e.g. 192.168.1.21 instead of localhost) you need to add `--tlsextraip=192.168.1.21` to your `lnd` configuration and re-generate the certificate (delete tls.cert and tls.key and restart lnd).
+
 ```java
 import io.grpc.Attributes;
 import io.grpc.CallCredentials;

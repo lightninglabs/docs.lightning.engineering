@@ -18,6 +18,11 @@
   due to the cancel signal is processed before the creation. It is now properly
   handled by moving creation before deletion.   
 
+* When the block height+delta specified by a network message is greater than
+  the gossiper's best height, it will be considered as premature and ignored.
+  [These premature messages are now saved into a cache and processed once the
+  height has reached.](https://github.com/lightningnetwork/lnd/pull/6054)
+
 ## Misc
 
 * [An example systemd service file](https://github.com/lightningnetwork/lnd/pull/6033)
@@ -43,6 +48,7 @@
 ## Documentation
 
 * Improved instructions on [how to build lnd for mobile](https://github.com/lightningnetwork/lnd/pull/6085).
+* [Log force-close related messages on "info" level](https://github.com/lightningnetwork/lnd/pull/6124).
 
 ## Code Health
 
@@ -53,6 +59,7 @@
 # Contributors (Alphabetical Order)
 
 * Andreas Schjønhaug
+* Carsten Otto
 * Daniel McNally
 * ErikEk
 * Joost Jager

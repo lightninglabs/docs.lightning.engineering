@@ -7,11 +7,18 @@ description: >-
 
 # Use Polar to Build Your First LAPP
 
-{% page-ref page="local-cluster-setup-with-polar.md" %}
+{% content-ref url="local-cluster-setup-with-polar.md" %}
+[local-cluster-setup-with-polar.md](local-cluster-setup-with-polar.md)
+{% endcontent-ref %}
 
-{% page-ref page="run-the-completed-app.md" %}
+{% content-ref url="run-the-completed-app.md" %}
+[run-the-completed-app.md](run-the-completed-app.md)
+{% endcontent-ref %}
 
-{% page-ref page="run-the-app-without-lnd.md" %}
+{% content-ref url="run-the-app-without-lnd.md" %}
+[run-the-app-without-lnd.md](run-the-app-without-lnd.md)
+{% endcontent-ref %}
 
-
-
+{% embed url="https://www.youtube.com/watch?v=6P0DZ74DmFA" %}
+Video: Build Bitcoin into Your App: Getting Started with the Lightning Network
+{% endembed %}

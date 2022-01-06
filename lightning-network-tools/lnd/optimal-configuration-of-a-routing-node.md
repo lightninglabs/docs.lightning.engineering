@@ -62,8 +62,11 @@ You may also use the lnd.conf sample file and activate the relevant lines by rem
 
 ### Your node <a href="#docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0" id="docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0"></a>
 
-`alias=YOUR_ALIAS`\
-`color=#000000`
+
+```text
+alias=YOUR_ALIAS
+color=#000000
+```
 
 Make your node visible and more easily discoverable with a unique alias. This might be a url to where peers can find out more information about you and your node, the name or your business or something memorable. Anybody can set any name and color without verification, but don’t abuse this!
 
@@ -71,14 +74,20 @@ Make your node visible and more easily discoverable with a unique alias. This mi
 
 Make sure to set the external IP of your LND node here. This IP address should be static. You may remove this line if you are using Tor.
 
-`tor.active=1`\
-`tor.v3=1`\
-`listen=localhost`
+```text
+tor.active=true
+tor.v3=true
+listen=localhost
+```
 
 If you prefer to make your node available through the Tor network, set these lines in your configuration.
 
-`sync-freelist=1`\
-`stagger-initial-reconnect=1`
+
+```text
+sync-freelist=1
+stagger-initial-reconnect=1
+```
+
 
 This will help our node start up faster by applying randomized staggering when reconnecting to persistent peers. This minimizes the chance of connecting to all non-responsive peers at once.
 
@@ -88,9 +97,12 @@ CNCT, CRTR and HSWV provide channel-related logs, while NTFN provides chain-rela
 
 ### Bitcoin
 
-`bitcoin.active=1`\
-`bitcoin.mainnet=1`\
-`bitcoin.node=bitcoind`
+
+```text
+bitcoin.active=true
+bitcoin.mainnet=true
+bitcoin.node=bitcoind
+```
 
 Activate your Lightning node for Bitcoin payments on mainnet. We specify the Bitcoin node of your choice. Other choices are Beutrino and btcd
 
@@ -135,8 +147,11 @@ We can set the maximum pending channels with this configuration.
 
 The number of confirmations we expect before a channel is considered active.
 
-`protocol.wumbo-channels=1`\
-`minchansize=5000000`
+
+```text
+protocol.wumbo-channels=true
+minchansize=5000000
+```
 
 This allows our node to accept and create channels larger than 0.16777215 BTC.
 
@@ -177,10 +192,13 @@ This setting allows you to define after how long LND should forget about past ro
 
 ### RPC
 
-`rpclisten=0.0.0.0:10009`\
-`tlsautorefresh=1`\
-`tlsdisableautofill=1`\
-`tlsextradomain=YOUR_DOMAIN_NAME`
+
+```text
+rpclisten=0.0.0.0:10009
+tlsautorefresh=true
+tlsdisableautofill=true
+tlsextradomain=YOUR_DOMAIN_NAME
+```
 
 You may want to manage and monitor your node with remote tools requiring RPC. These configurations help you do that.
 

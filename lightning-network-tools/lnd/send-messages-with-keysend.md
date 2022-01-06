@@ -65,4 +65,4 @@ The full command below will send this message together with 10 satoshis to [Ambo
 
 If the payee has created an AMP invoice, the data can also be appended to the command:
 
-lncli payinvoice \<invoice> --data 34349334=486170707920477265676F7269616E204E6577205965617220746F2065766572796F6E65206174204C696768746E696E67204C61627321
+`lncli payinvoice <invoice> --data 34349334=486170707920477265676F7269616E204E6577205965617220746F2065766572796F6E65206174204C696768746E696E67204C61627321`

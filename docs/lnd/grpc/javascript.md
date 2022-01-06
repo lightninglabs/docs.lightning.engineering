@@ -10,22 +10,24 @@ npm init (or npm init -f if you want to use the default values without prompt)
 Then you need to install the Javascript grpc and proto loader library
 dependencies:
 ```
-npm install grpc @grpc/proto-loader --save
+npm install @grpc/grpc-js @grpc/proto-loader --save
 ```
 
-You also need to copy the `lnd` `rpc.proto` file in your project directory (or
-at least somewhere reachable by your Javascript code).
+You also need to copy the `lnd` `lightning.proto` file in your project directory
+(or at least somewhere reachable by your Javascript code).
 
-The `rpc.proto` file is [located in the `lnrpc` directory of the `lnd`
-sources](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/rpc.proto).
+The `lightning.proto` file is [located in the `lnrpc` directory of the `lnd`
+sources](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/lightning.proto).
 
 ### Imports and Client
 
-Every time you work with Javascript gRPC, you will have to import `grpc`, load
-`rpc.proto`, and create a connection to your client like so:
+Every time you work with Javascript gRPC, you will have to import `@grpc/grpc-js`, load
+`lightning.proto`, and create a connection to your client like so.
+
+Note that when an IP address is used to connect to the node (e.g. 192.168.1.21 instead of localhost) you need to add `--tlsextraip=192.168.1.21` to your `lnd` configuration and re-generate the certificate (delete tls.cert and tls.key and restart lnd).
 
 ```js
-const grpc = require('grpc');
+const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const fs = require("fs");
 
@@ -43,7 +45,7 @@ const loaderOptions = {
   defaults: true,
   oneofs: true
 };
-const packageDefinition = protoLoader.loadSync('rpc.proto', loaderOptions);
+const packageDefinition = protoLoader.loadSync('lightning.proto', loaderOptions);
 
 //  Lnd cert is at ~/.lnd/tls.cert on Linux and
 //  ~/Library/Application Support/Lnd/tls.cert on Mac
@@ -183,7 +185,7 @@ The following snippet will add the macaroon to every request automatically:
 
 ```js
 const fs = require('fs');
-const grpc = require('grpc');
+const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const loaderOptions = {
   keepCase: true,
@@ -192,7 +194,7 @@ const loaderOptions = {
   defaults: true,
   oneofs: true
 };
-const packageDefinition = protoLoader.loadSync('rpc.proto', loaderOptions);
+const packageDefinition = protoLoader.loadSync('lightning.proto', loaderOptions);
 
 process.env.GRPC_SSL_CIPHER_SUITES = 'HIGH+ECDSA'
 

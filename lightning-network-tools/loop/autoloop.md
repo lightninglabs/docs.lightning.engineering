@@ -1,6 +1,6 @@
 # Autoloop
 
-The [loop](https://lightning.engineering/loop) client contains functionality to dispatch loop out swaps automatically, according to a set of rules configured for your node's channels, within a budget of your choosing.
+The loop client contains functionality to dispatch loop out swaps automatically, according to a set of rules configured for your node's channels, within a budget of your choosing.
 
 The autoloop functionality is disabled by default, and can be enabled using the following command:
 
@@ -18,7 +18,7 @@ Note that autoloop parameters and rules are not persisted, so must be set on res
 
 Autoloop can be configured to manage liquidity for individual channels, or for a peer as a whole. Peer-level liquidity management will examine the liquidity balance of all the channels you have with a peer. This differs from channel-level liquidity, where each channel's individual balance is checked. Note that if you set a liquidity rule for a peer, you cannot also set a specific rule for one of its channels.
 
-### Liqudity Thresholds
+### Liquidity Thresholds
 
 To setup the autolooper to dispatch swaps on your behalf, you need to set the liquidity balance you would like for each channel or peer. Desired liquidity balance is expressed using threshold incoming and outgoing percentages of capacity. The incoming threshold you specify indicates the minimum percentage of your capacity that you would like in incoming capacity. The outgoing threshold allows you to reserve a percentage of your balance for outgoing capacity, but may be set to zero if you are only concerned with incoming capacity.
 
@@ -92,7 +92,7 @@ loop setparams --maxprepay={limit in satoshis}
 
 ### Off-Chain Fees
 
-The [loop](https://lightning.engineering/loop) client dispatches two off-chain payments to the loop server - one for the swap prepayment, and one for the swap itself. The amount that the client will pay in off-chain fees for each of these payments can be limited to a percentage of the payment amount using the following commands:
+The loop client dispatches two off-chain payments to the loop server - one for the swap prepayment, and one for the swap itself. The amount that the client will pay in off-chain fees for each of these payments can be limited to a percentage of the payment amount using the following commands:
 
 Prepayment routing fees:
 

@@ -9,23 +9,46 @@ description: >-
 
 
 
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
+
 Start here if the terms "payment channel" and "hash time-locked contract" are foreign to you.
 
-{% page-ref page="lightning-network-tools/lnd/" %}
+{% content-ref url="lightning-network-tools/lnd/" %}
+[lnd](lightning-network-tools/lnd/)
+{% endcontent-ref %}
 
 Look here if you're getting started with LND, want to configure it optimally or learn how to integrate LND into your production environment.
 
-{% page-ref page="lightning-network-tools/lightning-terminal/" %}
+{% content-ref url="lightning-network-tools/lightning-terminal/" %}
+[lightning-terminal](lightning-network-tools/lightning-terminal/)
+{% endcontent-ref %}
 
 Lightning Terminal is a browser-based, self-hosted dashboard for Lightning Labs products. Read this guide to learn how to set up Lightning Terminal and get the most out of it.
 
-{% page-ref page="lightning-network-tools/loop/" %}
+{% content-ref url="lightning-network-tools/loop/" %}
+[loop](lightning-network-tools/loop/)
+{% endcontent-ref %}
 
 Loop is a service that makes it easier to send and receive funds on Lightning, serving as an on and off ramp between the Lightning Network and the Bitcoin blockchain. Read our guides to Loop to optimally use Loop.
 
+{% content-ref url="lightning-network-tools/pool/" %}
+[pool](lightning-network-tools/pool/)
+{% endcontent-ref %}
+
+Pool is a non-custodial marketplace where users can buy inbound liquidity from node operators. Read our guides on how to join Pool as either a buyer or seller.
+
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
+
 We have you covered if you're starting with your first LAPP or running a professional service and want to leverage best practices when it comes to APIs, channel backups, key management, et al.
+
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
 
 If you're looking for inspiration, we've included a sampling of community projects for you to look to. We hope you add whatever you build to this page!
 
-Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), and API documentation for [`lnd`](https://api.lightning.community/), [`loop`](https://lightning.engineering/loopapi/), and [`pool`](https://lightning.engineering/poolapi/).
-
+Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), and API documentation for [`lnd`](https://api.lightning.community), [`loop`](https://lightning.engineering/loopapi/), and [`pool`](https://lightning.engineering/poolapi/).

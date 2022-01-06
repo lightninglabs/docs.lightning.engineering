@@ -20,7 +20,8 @@
   - [Prevent data corruption](#prevent-data-corruption)
   - [Don't interrupt `lncli` commands](#dont-interrupt-lncli-commands)
   - [Regular accounting/monitoring](#regular-accountingmonitoring)
-  - [Pruned bitcoind node](#pruned-bitcoind-node)
+  - [The `-txindex` flag](#the--txindex-flag)
+  - [Running multiple lnd nodes](#running-multiple-lnd-nodes)
   - [The `--noseedbackup` flag](#the---noseedbackup-flag)
   
 ## Overview
@@ -284,16 +285,22 @@ fallback way to do it.
 
 **Option 1: Move the whole data directory to the new device**   
 This option works very well if the new device runs the same operating system on
-the same architecture. If that is the case, the whole `/home/<user>/.lnd`
-directory in Linux (or `$HOME/Library/Application Support/lnd` in MacOS,
-`%LOCALAPPDATA%\lnd` in Windows) can be moved to the new device and `lnd`
-started there. It is important to shut down `lnd` on the old device before
-moving the directory!   
+the same (or at least very similar) architecture. If that is the case, the whole
+`/home/<user>/.lnd` directory in Linux (or
+`$HOME/Library/Application Support/lnd` in MacOS, `%LOCALAPPDATA%\lnd` in
+Windows) can be moved to the new device and `lnd` started there. It is important
+to shut down `lnd` on the old device before moving the directory!   
 **Not supported/untested** is moving the data directory between different
-operating systems (for example `MacOS` -> `Linux`) or different system
-architectures (for example `32bit` -> `64bit` or `ARM` -> `amd64`). Data
+operating systems (for example `MacOS` <-> `Linux` or `Windows` <-> `Linux`) or
+different system architectures (for example `ARM` -> `amd64`). Data
 corruption or unexpected behavior can be the result. Users switching between
 operating systems or architectures should always use Option 2!
+
+Migrating between 32bit and 64bit of the same architecture (e.g. `ARM32` -> 
+`ARM64`) is known to be safe. To avoid issues with the main channel database
+(`channel.db`) becoming too large for 32bit systems, it is in fact recommended
+for Raspberry Pi users (for example RaspiBlitz or myNode) to migrate to the
+latest version that supports running 64bit `lnd`.
 
 **Option 2: Start from scratch**   
 If option 1 does not work or is too risky, the safest course of action is to
@@ -409,20 +416,13 @@ Regular monitoring of a node and keeping track of the movement of funds can help
 prevent problems. Tools like [`lndmon`](https://github.com/lightninglabs/lndmon)
 can assist with these tasks.
 
-### Pruned bitcoind node
-
-Running `lnd` connected to a `bitcoind` node that is running in prune mode is
-not supported! `lnd` needs to verify the funding transaction of every channel
-in the network and be able to retrieve that information from `bitcoind` which
-it cannot deliver when that information is pruned away.
-
-In theory pruning away all blocks _before_ the SegWit activation would work
-as LN channels rely on SegWit. But this has neither been tested nor would it
-be recommended/supported.
+### The `-txindex` flag
 
 In addition to not running a pruned node, it is recommended to run `bitcoind`
 with the `-txindex` flag for performance reasons, though this is not strictly
 required.
+
+### Running multiple lnd nodes
 
 Multiple `lnd` nodes can run off of a single `bitcoind` instance. There will be
 connection/thread/performance limits at some number of `lnd` nodes but in

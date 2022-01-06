@@ -1,25 +1,26 @@
 # Table of Contents
-* [Installation](#installation)
-  * [Installing a binary release](#installing-a-binary-release)
-  * [Building a tagged version with Docker](#building-a-tagged-version-with-docker)
-  * [Building a development version from source](#building-a-development-version-from-source)
-    * [Preliminaries](#preliminaries-for-installing-from-source)
-    * [Installing lnd](#installing-lnd-from-source)
-* [Available Backend Operating Modes](#available-backend-operating-modes)
-  * [btcd Options](#btcd-options)
-  * [Neutrino Options](#neutrino-options)
-  * [Bitcoind Options](#bitcoind-options)
-  * [Using btcd](#using-btcd)
-    * [Installing btcd](#installing-btcd)
-    * [Starting btcd](#starting-btcd)
-    * [Running lnd using the btcd backend](#running-lnd-using-the-btcd-backend)
-  * [Using Neutrino](#using-neutrino)
-  * [Using bitcoind or litecoind](#using-bitcoind-or-litecoind)
-* [Creating a Wallet](#creating-a-wallet)
-* [Macaroons](#macaroons)
-* [Network Reachability](#network-reachability)
-* [Simnet vs. Testnet Development](#simnet-vs-testnet-development)
-* [Creating an lnd.conf (Optional)](#creating-an-lndconf-optional)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+  - [Installing a binary release](#installing-a-binary-release)
+  - [Building a tagged version with Docker](#building-a-tagged-version-with-docker)
+  - [Building a development version from source](#building-a-development-version-from-source)
+    - [Preliminaries for installing from source](#preliminaries-for-installing-from-source)
+    - [Installing lnd from source](#installing-lnd-from-source)
+- [Available Backend Operating Modes](#available-backend-operating-modes)
+  - [btcd Options](#btcd-options)
+  - [Neutrino Options](#neutrino-options)
+  - [Bitcoind Options](#bitcoind-options)
+  - [Using btcd](#using-btcd)
+    - [Installing btcd](#installing-btcd)
+    - [Starting btcd](#starting-btcd)
+    - [Running lnd using the btcd backend](#running-lnd-using-the-btcd-backend)
+  - [Using Neutrino](#using-neutrino)
+  - [Using bitcoind or litecoind](#using-bitcoind-or-litecoind)
+- [Creating a wallet](#creating-a-wallet)
+- [Macaroons](#macaroons)
+- [Network Reachability](#network-reachability)
+- [Simnet vs. Testnet Development](#simnet-vs-testnet-development)
+- [Creating an lnd.conf (Optional)](#creating-an-lndconf-optional)
 
 # Installation
 
@@ -93,46 +94,46 @@ version if there are database migrations present.
   * **Go:** `lnd` is written in Go. To install, run one of the following commands:
 
 
-    **Note**: The minimum version of Go supported is Go 1.15. We recommend that
+    **Note**: The minimum version of Go supported is Go 1.16. We recommend that
     users use the latest version of Go, which at the time of writing is
-    [`1.16`](https://blog.golang.org/go1.16).
+    [`1.17.1`](https://blog.golang.org/go1.17.1).
 
 
     On Linux:
 
     (x86-64)
     ```
-    wget https://dl.google.com/go/go1.16.linux-amd64.tar.gz
-    sha256sum go1.16.linux-amd64.tar.gz | awk -F " " '{ print $1 }'
+    wget https://dl.google.com/go/go1.17.1.linux-amd64.tar.gz
+    sha256sum go1.17.1.linux-amd64.tar.gz | awk -F " " '{ print $1 }'
     ```
 
     The final output of the command above should be
-    `013a489ebb3e24ef3d915abe5b94c3286c070dfe0818d5bca8108f1d6e8440d2`. If it
+    `dab7d9c34361dc21ec237d584590d72500652e7c909bf082758fb63064fca0ef`. If it
     isn't, then the target REPO HAS BEEN MODIFIED, and you shouldn't install
     this version of Go. If it matches, then proceed to install Go:
     ```
-    sudo tar -C /usr/local -xzf go1.16.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xzf go1.17.1.linux-amd64.tar.gz
     export PATH=$PATH:/usr/local/go/bin
     ```
 
     (ARMv6)
     ```
-    wget https://dl.google.com/go/go1.16.linux-armv6l.tar.gz
-    sha256sum go1.16.linux-armv6l.tar.gz | awk -F " " '{ print $1 }'
+    wget https://dl.google.com/go/go1.17.1.linux-armv6l.tar.gz
+    sha256sum go1.17.1.linux-armv6l.tar.gz | awk -F " " '{ print $1 }'
     ```
 
     The final output of the command above should be
-    `d1d9404b1dbd77afa2bdc70934e10fbfcf7d785c372efc29462bb7d83d0a32fd`. If it
+    `ed3e4dbc9b80353f6482c441d65b51808290e94ff1d15d56da5f4a7be7353758`. If it
     isn't, then the target REPO HAS BEEN MODIFIED, and you shouldn't install
     this version of Go. If it matches, then proceed to install Go:
     ```
-    tar -C /usr/local -xzf go1.16.linux-armv6l.tar.gz
+    tar -C /usr/local -xzf go1.17.1.linux-armv6l.tar.gz
     export PATH=$PATH:/usr/local/go/bin
     ```
 
     On Mac OS X:
     ```
-    brew install go@1.16
+    brew install go@1.17.1
     ```
 
     On FreeBSD:
@@ -208,7 +209,7 @@ On FreeBSD, use gmake instead of make.
 Alternatively, if one doesn't wish to use `make`, then the `go` commands can be
 used directly:
 ```shell
-⛰  GO111MODULE=on go install -v ./...
+⛰  go install -v ./...
 ```
 
 **Updating**
@@ -228,7 +229,7 @@ used directly:
 ```shell
 ⛰  cd $GOPATH/src/github.com/lightningnetwork/lnd
 ⛰  git pull
-⛰  GO111MODULE=on go install -v ./...
+⛰  go install -v ./...
 ```
 
 **Tests**
@@ -241,6 +242,11 @@ To check that `lnd` was installed properly run the following command:
 This command requires `bitcoind` (almost any version should do) to be available
 in the system's `$PATH` variable. Otherwise some of the tests will fail.
 
+**Command-line completion for `lncli`**
+
+_Bash_: See `contrib/lncli.bash-completion`  
+_Fish_: Run: `lncli fish-completion > $HOME/.config/fish/completions/lncli.fish`
+
 # Available Backend Operating Modes
 
 In order to run, `lnd` requires, that the user specify a chain backend. At the
@@ -248,13 +254,8 @@ time of writing of this document, there are three available chain backends:
 `btcd`, `neutrino`, `bitcoind`. All including neutrino can run on mainnet with
 an out of the box `lnd` instance. We don't require `--txindex` when running
 with `bitcoind` or `btcd` but activating the `txindex` will generally make
-`lnd` run faster.
-
-**NOTE: WE DO NOT FULLY SUPPORT PRUNED OPERATING MODES FOR FULL NODES.** It's
-possible to run a node in a pruned mode and have it serve lnd, however one must
-take care to ensure that `lnd` has all blocks on disk since the birth of the
-wallet, and the age of the earliest channels (which were created around March
-2018).
+`lnd` run faster. Note that since version 0.13 pruned nodes are supported
+although they cause performance penalty and higher network usage.
 
 The set of arguments for each of the backend modes is as follows:
 

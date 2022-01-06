@@ -17,7 +17,8 @@ Many interactions in Pool are based around accounts:
 * Fees gained by selling channels are credited to your account
 * Funds used to open channels to others are deducted from your account
 
-As an account is just a UTXO, anytime a batch is cleared in the auction \(market made, channels bought+sold\), your account is spent, and re-created in the same transaction.
+As an account is just a UTXO, anytime a batch is cleared in the auction \(market made, channels bought+sold\), your account is spent, and re-created in the same transaction. This applies to other actions like
+deposit/withdraw funds from your account.
 
 ## Creating An Account
 
@@ -26,7 +27,7 @@ Creating an account has two parameters: the size of the account, and the expiry 
 We can create an account using `pool`, like so:
 
 ```text
-🏔 pool accounts new --amt=50000000 --expiry_height=1773394
+🏔 pool accounts new --amt=50000000 --expiry_height=1773394 --conf_target=6
 {
         "trader_key": "0288096be9917f8ebdfc6eb2701635fe658f4eae1e0274dcce41418b3fb5145732",
         "outpoint": "c6f62c80095c98a57f2eef485a7ff06611f97dc856754cad330f4eeb538ff514:0",

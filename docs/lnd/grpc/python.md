@@ -27,20 +27,20 @@ file in Python before you can use it to communicate with lnd.
     ```shell
     lnd ⛰  git clone https://github.com/googleapis/googleapis.git
     ```
-5. Copy the lnd rpc.proto file (you'll find this at
-  [lnrpc/rpc.proto](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/rpc.proto))
+5. Copy the lnd lightning.proto file (you'll find this at
+  [lnrpc/lightning.proto](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/lightning.proto))
   or just download it
     ```shell
-    lnd ⛰  curl -o rpc.proto -s https://raw.githubusercontent.com/lightningnetwork/lnd/master/lnrpc/rpc.proto
+    lnd ⛰  curl -o lightning.proto -s https://raw.githubusercontent.com/lightningnetwork/lnd/master/lnrpc/lightning.proto
     ```
 6. Compile the proto file
     ```shell
-    lnd ⛰  python -m grpc_tools.protoc --proto_path=googleapis:. --python_out=. --grpc_python_out=. rpc.proto
+    lnd ⛰  python -m grpc_tools.protoc --proto_path=googleapis:. --python_out=. --grpc_python_out=. lightning.proto
     ```
 
-After following these steps, two files `rpc_pb2.py` and `rpc_pb2_grpc.py` will
-be generated. These files will be imported in your project anytime you use
-Python gRPC.
+After following these steps, two files `lightning_pb2.py` and
+`lightning_pb2_grpc.py` will be generated. These files will be imported in your
+project anytime you use Python gRPC.
 
 ### Generating RPC modules for subservers
 
@@ -60,11 +60,13 @@ lnd ⛰  python -m grpc_tools.protoc --proto_path=googleapis:. --python_out=. --
 ### Imports and Client
 
 Every time you use Python gRPC, you will have to import the generated rpc modules
-and set up a channel and stub to your connect to your `lnd` node:
+and set up a channel and stub to your connect to your `lnd` node.
+
+Note that when an IP address is used to connect to the node (e.g. 192.168.1.21 instead of localhost) you need to add `--tlsextraip=192.168.1.21` to your `lnd` configuration and re-generate the certificate (delete tls.cert and tls.key and restart lnd).
 
 ```python
-import rpc_pb2 as ln
-import rpc_pb2_grpc as lnrpc
+import lightning_pb2 as ln
+import lightning_pb2_grpc as lnrpc
 import grpc
 import os
 

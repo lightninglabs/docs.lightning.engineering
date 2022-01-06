@@ -2,7 +2,7 @@
 
 ## Overview
 
-Like any exchange/auction, before you can start trading, you'll need an account! Accounts in the Pool are actually special on-chain contracts. A user deposits a certain amount of funds into an account which has a set expiry. By having users commit funds to an account in order to place orders, we ensure that they're unable to spoof orders \(placing an order that they can't fulfill\). We also add a cost to attempting to sybil attack the venue as well.
+Like any exchange/auction, before you can start trading, you'll need an account! Accounts in the Pool are actually special on-chain contracts. A user deposits a certain amount of funds into an account which has a set expiry. By having users commit funds to an account in order to place orders, we ensure that they're unable to spoof orders (placing an order that they can't fulfill). We also add a cost to attempting to sybil attack the venue as well.
 
 The script for an account is very simple, funds can be moved from the account:
 
@@ -17,7 +17,7 @@ Many interactions in Pool are based around accounts:
 * Fees gained by selling channels are credited to your account
 * Funds used to open channels to others are deducted from your account
 
-As an account is just a UTXO, anytime a batch is cleared in the auction \(market made, channels bought+sold\), your account is spent, and re-created in the same transaction.
+As an account is just a UTXO, anytime a batch is cleared in the auction (market made, channels bought+sold), your account is spent, and re-created in the same transaction.
 
 ## Creating An Account
 
@@ -25,8 +25,8 @@ Creating an account has two parameters: the size of the account, and the expiry 
 
 We can create an account using `pool`, like so:
 
-```text
-🏔 pool accounts new --amt=50000000 --expiry_height=1773394
+```
+🏔 pool accounts new --amt=50000000 --expiry_height=1773394 --conf_target=6
 {
         "trader_key": "0288096be9917f8ebdfc6eb2701635fe658f4eae1e0274dcce41418b3fb5145732",
         "outpoint": "c6f62c80095c98a57f2eef485a7ff06611f97dc856754cad330f4eeb538ff514:0",
@@ -39,11 +39,11 @@ We can create an account using `pool`, like so:
 
 It's also possible to specify a _relative_ account expiry based on the current best block with the `--expiry_blocks` argument. As an example, if I wanted my account to expiry in 2 weeks, I would pass: `--expiry_blocks=2016`.
 
-Here I created an account with 0.5 BTC, that'll expire at height `1773394`. The response shows that it's now pending open \(unconfirmed\), my `trader_key` \(used to sign orders\), and the outpoint of my new account.
+Here I created an account with 0.5 BTC, that'll expire at height `1773394`. The response shows that it's now pending open (unconfirmed), my `trader_key` (used to sign orders), and the outpoint of my new account.
 
-Once at least 3 blocks have passed \(in the alpha\), the account will be confirmed and ready for use:
+Once at least 3 blocks have passed (in the alpha), the account will be confirmed and ready for use:
 
-```text
+```
 🏔 pool accounts list
 {
         "accounts": [
@@ -61,13 +61,13 @@ Once at least 3 blocks have passed \(in the alpha\), the account will be confirm
 
 ## Depositing To An Account
 
-We can add more funds to an account using the `pool accounts deposit` command. Under the hood, we can actually batch _other_ transactions with account modifications \(make other payments, etc\), but for now we expose only the basic functionality over the CLI.
+We can add more funds to an account using the `pool accounts deposit` command. Under the hood, we can actually batch _other_ transactions with account modifications (make other payments, etc), but for now we expose only the basic functionality over the CLI.
 
 **NOTE**: You should _never_ send coins directly to your account output as it won't be picked up by the auctioneer.
 
 Let's say I want to deposit an extra 1 million satoshis into my account, I can do so with the following command:
 
-```text
+```
 🏔 pool accounts deposit --trader_key=0288096be9917f8ebdfc6eb2701635fe658f4eae1e0274dcce41418b3fb5145732 --amt=1000000 --sat_per_vbyte=5
 {
         "account": {
@@ -88,9 +88,9 @@ Note that these funds came from the backing `lnd` node that `poold` is connected
 
 ## Withdrawing From An Account
 
-Incrementally _withdrawing_ from an account is also supported. The command is similar to the deposit command. If I wanted to extract that 1 million from that account \(let's say it's my profit for the past week\) and send elsewhere, I can do so with the following command:
+Incrementally _withdrawing_ from an account is also supported. The command is similar to the deposit command. If I wanted to extract that 1 million from that account (let's say it's my profit for the past week) and send elsewhere, I can do so with the following command:
 
-```text
+```
 🏔 pool accounts withdraw --trader_key=0288096be9917f8ebdfc6eb2701635fe658f4eae1e0274dcce41418b3fb5145732 --amt=1000000 --sat_per_vbyte=5 --addr=tb1qe3ueyx8jhlj4h0s6mgywmtl8vlwxqkgkgp3m3s
 {
         "account": {
@@ -109,7 +109,6 @@ Incrementally _withdrawing_ from an account is also supported. The command is si
 
 Finally, if you wish to send _all_ your funds elsewhere, it's possible to close your account out before the main expiration period. We can close out the account we created above with the following command:
 
-```text
+```
 🏔 pool accounts close --trader_key=0288096be9917f8ebdfc6eb2701635fe658f4eae1e0274dcce41418b3fb5145732 --sat_per_vbyte 11
 ```
-

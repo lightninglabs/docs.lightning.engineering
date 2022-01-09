@@ -1,12 +1,22 @@
 # Release Notes
 
+## Remote signing
+
+The [remote signing](../remote-signing.md) setup was simplified in that the
+signing node now [does not need to be hooked up to its own chain
+backend](https://github.com/lightningnetwork/lnd/pull/6006). A new mock chain
+backend can be specified with `--bitcoin.node=nochainbackend`. That way a wallet
+will be created and all signing RPCs work but the node will not look at any
+chain data. It can therefore be fully offline except for a single incoming gRPC
+connection from the watch-only node.
+
 ## Wallet
 
 * A bug that prevented opening anchor-based channels from external wallets when
   the internal wallet was empty even though the transaction contained a
   sufficiently large output belonging to the internal wallet
-  [was fixed](https://github.com/lightningnetwork/lnd/pull/5539)
-  In other words, freshly-installed LND can now be initailized with multiple
+  [was fixed](https://github.com/lightningnetwork/lnd/pull/5539).
+  In other words, freshly-installed LND can now be initialized with multiple
   channels from an external (e.g. hardware) wallet *in a single transaction*.
 
 ## Build System
@@ -21,6 +31,9 @@
   using itest harness outside of
   lnd](https://github.com/lightningnetwork/lnd/pull/6050).
 
+* [Export `lntest` base node config so it can be re-used in LiT integration
+  tests](https://github.com/lightningnetwork/lnd/pull/6139).
+
 ## Bug fixes
 
 * [Return the nearest known fee rate when a given conf target cannot be found
@@ -29,10 +42,11 @@
 * [We now _always_ set a channel type if the other party signals the feature
   bit](https://github.com/lightningnetwork/lnd/pull/6075).
 
-* [Add json flag to
-  trackpayment](https://github.com/lightningnetwork/lnd/pull/6060)
+* [Add `--json` flag to
+  `trackpayment`](https://github.com/lightningnetwork/lnd/pull/6060).
+
 * [Clarify invalid config timeout
-  constraints](https://github.com/lightningnetwork/lnd/pull/6073)
+  constraints](https://github.com/lightningnetwork/lnd/pull/6073).
 
 * [Fix memory corruption in Mission Control
   Store](https://github.com/lightningnetwork/lnd/pull/6068)

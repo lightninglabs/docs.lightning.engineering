@@ -7,35 +7,38 @@ description: >-
 
 # LSAT
 
-In this document, we outline the design for a Lightning Service Authentication Token \(LSAT\) for future services created by [Lightning Labs](https://lightning.engineering/). This specification is open source, with contributions accepted at our [LSAT specification repository](https://github.com/lightninglabs/LSAT). LSATs are a new standard protocol for authentication and paid APIs developed by Lightning Labs. LSATs can serve both as authentication, as well as a payment mechanism \(one can view it as a ticket\) for paid APIs. In order to obtain a token, we require the user to pay us over Lightning in order to obtain a pre-image, which itself is a cryptographic component of the final LSAT token.
+LSAT is a new standard to support the use case of charging for services and authenticating users in distributed networks. It combines the strengths of Macaroons for better authentication with the strengths of the Lightning Network for better payments.
 
-The implementation of the authentication token is chosen to be macaroons, as they allow us to package attributes and capabilities along with the token. This system allows us to automate pricing on the fly and allows for a number of novel constructs such as automated tier upgrades. In another light, this can be viewed as a global HTTP 402 reverse proxy at the load balancing level for all our services.
+Aperture is an implementation of this standard. It functions as a reverse HTTP proxy with support for gRPC and REST requests. It allows the safe and efficient creation of paid APIs that separate the logic of payments, permissioning and fulfilling requests. Aperture is used today by Lightning Loop and Pool, a non-custodial swap service for Bitcoin.
 
-{% page-ref page="introduction.md" %}
+LSATs leverage the following tools and mechanisms:
 
-{% page-ref page="authentication-flow.md" %}
+## Macaroons <a href="#docs-internal-guid-444dcdd8-7fff-4158-aecb-571c65c3d819" id="docs-internal-guid-444dcdd8-7fff-4158-aecb-571c65c3d819"></a>
 
-{% page-ref page="protocol-specification.md" %}
+Macaroons are bearer authentication tokens. Unlike cookies, they can be verified using only a root key and basic cryptography. This makes it possible to separate the logic of issuing and verifying Macaroons, which is important for distributed systems where we want to avoid, or are unable to, lookup the validity and permissions of each token presented to us.
 
-{% page-ref page="macaroons.md" %}
+Macaroons include permissions, and can be attenuated and delegated by the bearer. They are easier to restrict and fulfill the complex needs of safeguarding cryptographic assets.
 
-## Implementations <a id="implementations"></a>
+{% content-ref url="macaroons.md" %}
+[macaroons.md](macaroons.md)
+{% endcontent-ref %}
 
-* ​[Aperture: A gRPC/HTTP authentication reverse proxy using LSATs](https://github.com/lightninglabs/aperture)​
-* ​[lsat-js: A utility library for working with LSATs](https://github.com/Tierion/lsat-js)​
-* ​[boltwall: Nodejs middleware-based authentication using LSATs](https://github.com/tierion/boltwall)​
+## LSAT <a href="#docs-internal-guid-10a6402c-7fff-d1f6-1a90-f2015a91174d" id="docs-internal-guid-10a6402c-7fff-d1f6-1a90-f2015a91174d"></a>
 
-## External links / References <a id="external-links-references"></a>
+Lightning Service Authentication Tokens are Macaroons that only become valid together with a cryptographic secret obtained as a preimage through payment a Lightning Network invoice tied to the Macaroon by its payment hash. Where Macaroons allow the separation of issuance, permissioning and validation, LSATs allow the separation of issuance and payment.
 
-* ​[LSAT: Your Ticket Aboard the Internet's Money Rails](https://docs.google.com/presentation/d/1QSm8tQs35-ZGf7a7a2pvFlSduH3mzvMgQaf-06Jjaow/edit#slide=id.p)​
+In practice, a service can hand out Macaroons together with Lightning Network invoices to their potential customers, but does not need to validate specifically whether these invoices have been paid. The mere cryptographic validity of the Macaroon guarantees that the payer has obtained the preimage through their payment.
 
-  slides to Olaoluwa Osuntokun's \(@roasbeef\) presentation at The Lightning Conference 2019 in Berlin.
+{% content-ref url="lsat.md" %}
+[lsat.md](lsat.md)
+{% endcontent-ref %}
 
-* ​[LSAT Playground](https://lsat-playground.bucko.now.sh/)​
-* ​[Macaroons: Cookies with Contextual Caveats](https://research.google/pubs/pub41892/)​
+## The Aperture proxy <a href="#docs-internal-guid-2415a258-7fff-3d3d-25b9-4e3b0c38b8ca" id="docs-internal-guid-2415a258-7fff-3d3d-25b9-4e3b0c38b8ca"></a>
 
-  the 2014 paper published on Google Scholar.
+The Aperture proxy is a reverse proxy that will forward requests with valid LSATs to their relevant API endpoint, while issuing Macaroons and Lightning Network invoices to new users.
 
-* ​[HTTP/1.1 RFC, Section 6.5.2: 402 Payment Required](https://tools.ietf.org/html/rfc7231#section-6.5.2)​
-* ​[Proposal for OAuth style delegated authentication using LSATs](https://github.com/lightningnetwork/lnd/issues/288)
+Aperture allows for pricing for API endpoints on the fly, including automatic tier upgrades, per-request pricing or surge pricing. In another light, this can be viewed as a global HTTP 402 reverse proxy at the load balancing level for web services and APIs.
 
+{% content-ref url="aperture.md" %}
+[aperture.md](aperture.md)
+{% endcontent-ref %}

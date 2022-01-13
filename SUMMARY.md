@@ -26,10 +26,9 @@
   * [What Makes a Good Routing Node](the-lightning-network/routing/what-makes-a-good-routing-node.md)
   * [Identifying Good Peers on the Lightning Network](the-lightning-network/routing/identify-good-peers.md)
 * [LSAT](the-lightning-network/lsat/README.md)
-  * [Introduction](the-lightning-network/lsat/introduction.md)
-  * [Authentication Flow](the-lightning-network/lsat/authentication-flow.md)
-  * [Protocol Specification](the-lightning-network/lsat/protocol-specification.md)
-  * [Macaroon Minting & Verification](the-lightning-network/lsat/macaroons.md)
+  * [Macaroons](the-lightning-network/lsat/macaroons.md)
+  * [LSAT](the-lightning-network/lsat/lsat.md)
+  * [Aperture](the-lightning-network/lsat/aperture.md)
 
 ## Lightning Network Tools
 

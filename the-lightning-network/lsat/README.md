@@ -9,7 +9,7 @@ description: >-
 
 LSAT is a new standard to support the use case of charging for services and authenticating users in distributed networks. It combines the strengths of Macaroons for better authentication with the strengths of the Lightning Network for better payments.
 
-Aperture is an implementation of this standard. It functions as a reverse HTTP proxy with support for gRPC and REST requests. It allows the safe and efficient creation of paid APIs that separate the logic of payments, permissioning and fulfilling requests. Aperture is used today by Lightning Loop and Pool, a non-custodial swap service for Bitcoin.
+Aperture is an implementation of this standard. It functions as a reverse HTTP proxy with support for gRPC and REST requests. It allows the safe and efficient creation of paid APIs that separate the logic of payments, permissioning and fulfilling requests. Aperture is used today by Lightning [Loop](../../lightning-network-tools/loop/) and [Pool](../../lightning-network-tools/pool/), a non-custodial swap service for Bitcoin.
 
 LSATs leverage the following tools and mechanisms:
 

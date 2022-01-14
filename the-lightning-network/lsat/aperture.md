@@ -31,6 +31,6 @@ To run Aperture, simply run the following command from within aperture's directo
 
 ## LSAT demo
 
-A demonstration on testnet can be found at [https://lsat-playground.bucko.vercel.app/](https://lsat-playground.bucko.vercel.app)
+A demonstration of LSATs can be found at [https://lsat-playground-bucko.vercel.app/](https://lsat-playground-bucko.vercel.app) ([Testnet version here](https://testnet-lsat-playground.vercel.app))
 
 Here you can go through the process of minting a Macaroon, turning it into an LSAT, restricting and validating it as well as see code snippets.

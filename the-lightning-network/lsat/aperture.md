@@ -29,7 +29,7 @@ To run Aperture, simply run the following command from within aperture's directo
 
 `./aperture`
 
-## Aperture demo
+## LSAT demo
 
 A demonstration on testnet can be found at [https://lsat-playground.bucko.vercel.app/](https://lsat-playground.bucko.vercel.app)
 

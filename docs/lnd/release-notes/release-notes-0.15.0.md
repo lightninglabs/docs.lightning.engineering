@@ -13,6 +13,9 @@
 * Add [chan_point flag](https://github.com/lightningnetwork/lnd/pull/6152)
   to closechannel command.
 
+* Add [private status](https://github.com/lightningnetwork/lnd/pull/6167)
+  to pendingchannels response.
+
 ## Bug Fixes
 
 * [Fixed an inactive invoice subscription not removed from invoice
@@ -44,6 +47,9 @@
 * [Consolidated many smaller docs/typo/trivial fixes from PRs that were stuck
   in review because of unmet contribution guideline
   requirements](https://github.com/lightningnetwork/lnd/pull/6080).
+
+* [A nightly build of the `lnd` docker image is now created
+  automatically](https://github.com/lightningnetwork/lnd/pull/6160).
 
 ## RPC Server
 

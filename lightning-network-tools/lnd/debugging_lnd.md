@@ -14,14 +14,14 @@ Logging is useful for security and operating purposes. LND logs can typically be
 
 By default, LND will log 10MB worth of its history, and additionally keep three blocks of logs around, compressed with gzip as `lnd.log.<i>.gz` in the same directory.
 
-You can adjust the location of your log files as well their maximum size (in MB) and how many historical log files you expect LND to keep, in your `lnd.conf` file.
+You can adjust the location of your log files as well their maximum size (in MB) and how many historical log files you expect LND to keep, in your [`lnd.conf`](lnd.conf.md) file.
 
 `logdir=~/.lnd/logs`\
 `maxlogfiles=3`\
 `maxlogfilesize=10`\
 `debuglevel=debug,PEER=info`
 
-Additionally, the debuglevel can be overridden and adjusted without requiring a restart using the command `lncli debuglevel –-level=`
+Additionally, the debuglevel can be overridden and adjusted without requiring a restart using the command `lncli debuglevel --level=`
 
 The available debug levels are, in order of descending detail: `trace`, `debug`, `info`, `warn`, `error`, `critical`, `off`
 

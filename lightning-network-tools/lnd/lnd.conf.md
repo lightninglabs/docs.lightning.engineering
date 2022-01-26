@@ -8,7 +8,7 @@ description: >-
 
 The LND configuration file is found in your LND directory, typically in \~/.lnd
 
-A sample configuration file [can be found here](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf) or in your local copy of the LND source code.
+A sample configuration file [can be found here](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf) or in your local copy of the LND source code. This file exists purely for illustrative purposes, and do not serve as a template for an ["ideal"](optimal-configuration-of-a-routing-node.md) node.
 
 {% code title="lnd.conf" %}
 ```javascript

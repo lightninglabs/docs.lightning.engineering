@@ -29,6 +29,7 @@
   * [Macaroons](the-lightning-network/lsat/macaroons.md)
   * [LSAT](the-lightning-network/lsat/lsat.md)
   * [Aperture](the-lightning-network/lsat/aperture.md)
+  * [Implementations and links](the-lightning-network/lsat/implementations-and-links.md)
 
 ## Lightning Network Tools
 

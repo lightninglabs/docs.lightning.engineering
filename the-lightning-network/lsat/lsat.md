@@ -86,6 +86,8 @@ In verifying the LSAT, the server requires the root key with which the original 
 
 Finally, the preimage is verified against the payment hash to ensure that all outstanding invoices have been paid.
 
+[Learn how the LSAT is obtained in Pool](https://github.com/lightninglabs/pool/blob/master/server.go#L504)
+
 {% content-ref url="aperture.md" %}
 [aperture.md](aperture.md)
 {% endcontent-ref %}

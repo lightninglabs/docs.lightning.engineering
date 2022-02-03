@@ -65,6 +65,7 @@ description: >-
 * [Sphinx Relay](https://github.com/stakwork/sphinx-relay) - e2e encrypted group chat enabled by a Node.js wrapper around lnd
 * [Thunderhub](https://github.com/apotdevin/thunderhub) - node management via a NextJS server handling a backend Graphql server and frontend React App
 * [TLV shop](https://github.com/joostjager/tlvshop.com) - webshop with no browser, shopping cart, checkout page, nor credit card required
+* [LightningStamp](https://lightningstamp.bitcoinproof.org) - create timestamped proofs of existence for your files (OpentimeStamps or Chainpoint)
 
 ## Software bundles that include Lightning <a href="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176" id="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176"></a>
 

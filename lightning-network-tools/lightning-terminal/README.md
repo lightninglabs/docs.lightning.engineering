@@ -42,6 +42,14 @@ Through Terminal, you can easily, securely and privately manage your Lightning n
 [pool.md](pool.md)
 {% endcontent-ref %}
 
+{% content-ref url="command-line-interface.md" %}
+[command-line-interface.md](command-line-interface.md)
+{% endcontent-ref %}
+
+{% content-ref url="troubleshooting.md" %}
+[troubleshooting.md](troubleshooting.md)
+{% endcontent-ref %}
+
 {% content-ref url="lightning-node-connect.md" %}
 [lightning-node-connect.md](lightning-node-connect.md)
 {% endcontent-ref %}

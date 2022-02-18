@@ -117,4 +117,5 @@
 
 * [Resource List](community-resources/resource-list.md)
 * [Lightning Bulb 💡](community-resources/lightning-bulb.md)
+* [Glossary](community-resources/glossary.md)
 * [FAQ](community-resources/faq.md)

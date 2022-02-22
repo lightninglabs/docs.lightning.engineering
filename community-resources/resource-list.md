@@ -28,13 +28,16 @@ description: >-
 * [Zebedee](https://zebedee.io) ([Github](https://github.com/zebedeeio)) - available on Google Play and the Apple AppStore&#x20;
 * [Eclair](https://github.com/ACINQ/eclair-mobile) - available for Android
 
-### Custodial wallets
+### Custodial & Other Wallets
 
 * [Bitcoin Beach Wallet](https://www.bitcoinbeach.com) - available in Google Play
 * [BlueWallet](https://github.com/BlueWallet/BlueWallet) ([Github](https://github.com/BlueWallet/BlueWallet)) - available in Google Play the Apple AppStore
 * [Strike](https://strike.me) - available in Google Play, the Apple AppStore and Chrome
 * [Wallet of Satoshi](https://walletofsatoshi.com) - available in Google Play and the Apple AppStore
 * [Bottlepay](https://bottlepay.com) - available in Google Play and the Apple AppStore
+* [Mash](https://getmash.com/wallet) - lightning wallet that integrates directly into sites, apps and launching shortly in browser extension, mobile app form.
+
+
 
 ### Lightning node interfaces
 
@@ -53,6 +56,8 @@ description: >-
 * [lngraph](https://github.com/xsb/lngraph) - Personal Lightning Network explorer using Neo4j Browser
 * [LNnodeinsight](https://lnnodeinsight.com) - Analytics from the perspective of your own node
 * [VR Explorer](https://bl.ocks.org/tyzbit/d1c83732d2767bb955125d41f5921888) - the Lightning Network... in VR!
+* [Bitcoin Prophecy](https://prophecybitcoin.com) - Uncover and the true price of bitcoin for free, and then with micro-contributions via lightning.
+
 
 ## Applications
 
@@ -66,6 +71,7 @@ description: >-
 * [Thunderhub](https://github.com/apotdevin/thunderhub) - node management via a NextJS server handling a backend Graphql server and frontend React App
 * [TLV shop](https://github.com/joostjager/tlvshop.com) - webshop with no browser, shopping cart, checkout page, nor credit card required
 * [LightningStamp](https://lightningstamp.bitcoinproof.org) - create timestamped proofs of existence for your files (OpentimeStamps or Chainpoint)
+* [Mash](https://getmash.com) - monetize your apps by integrating an open consumer lightning wallet, paywalls, and payment faciliation mechanisms with a few snippets of code
 
 ## Software bundles that include Lightning <a href="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176" id="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176"></a>
 

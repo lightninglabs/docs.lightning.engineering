@@ -20,7 +20,9 @@ To make use of these tools as seen in the examples below:
 
 ## litcli <a href="#docs-internal-guid-50d3e658-7fff-9d98-fc94-56686082029b" id="docs-internal-guid-50d3e658-7fff-9d98-fc94-56686082029b"></a>
 
-`litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="My LNC"`
+`litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="My LNC"` --expiry 7776000
+
+By default, a pairing phrase created with `litcli` is valid for only 1h. You may extend this with the `--expiry <seconds>` flag.
 
 ## pool
 

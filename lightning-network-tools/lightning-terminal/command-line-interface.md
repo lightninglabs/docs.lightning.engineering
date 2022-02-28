@@ -20,9 +20,9 @@ To make use of these tools as seen in the examples below:
 
 ## litcli <a href="#docs-internal-guid-50d3e658-7fff-9d98-fc94-56686082029b" id="docs-internal-guid-50d3e658-7fff-9d98-fc94-56686082029b"></a>
 
-`litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="My LNC"` --expiry 7776000
+`litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="My LNC" --expiry 7776000 --type admin`
 
-By default, a pairing phrase created with `litcli` is valid for only 1h. You may extend this with the `--expiry <seconds>` flag.
+By default, a pairing phrase created with `litcli` is valid for only 1h and is set to "readonly", meaning invoices cannot be paid or created and channels cannot be opened. You may extend this with the `--expiry <seconds>` and `--type` flags.
 
 ## pool
 

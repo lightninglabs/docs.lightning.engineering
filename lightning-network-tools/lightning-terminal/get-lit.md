@@ -4,7 +4,7 @@ description: >-
   integrated or remote mode.
 ---
 
-# Get litd
+# 🛠 Get litd
 
 You can install `litd` from source or via the provided binary. If you are running LND as part of a software bundle like Umbrel, `litd` might already be installed on your node.
 

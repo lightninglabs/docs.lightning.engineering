@@ -2,9 +2,9 @@
 description: Install and run faraday and frcli
 ---
 
-# Get Started
+# 🛠 Get Started
 
-## Installation <a href="docs-internal-guid-83e367ac-7fff-1ea9-0a8d-a1444b90286f" id="docs-internal-guid-83e367ac-7fff-1ea9-0a8d-a1444b90286f"></a>
+## Installation <a href="#docs-internal-guid-83e367ac-7fff-1ea9-0a8d-a1444b90286f" id="docs-internal-guid-83e367ac-7fff-1ea9-0a8d-a1444b90286f"></a>
 
 Faraday comes bundled in Lightning Terminal. Meaning if you have Lightning Terminal installed, you can already access Faraday through the command line and you may skip the step below. If you want to install Lightning Terminal, [follow this guide](../lightning-terminal/).
 

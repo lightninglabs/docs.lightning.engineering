@@ -4,7 +4,7 @@ description: >-
   are formed to create secure multi-hop transactions.
 ---
 
-# Hash Time-lock Contract (HTLC)
+# ⭐ Hash Time-lock Contract (HTLC)
 
 Hash Time-lock Contracts (HTLCs) are the centerpiece of any Lightning transaction. While your Lightning Network channel is a 2-of-2 multisignature address with funds on the bitcoin blockchain, a HTLC is an output of an unconfirmed transaction to a separate “smart contract” address with the following properties:
 

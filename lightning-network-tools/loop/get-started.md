@@ -2,11 +2,11 @@
 description: Install and run Loop
 ---
 
-# Get Started
+# 🛠 Get Started
 
 ## Install Loop <a href="#docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5" id="docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5"></a>
 
-Loop comes bundled with [Lightning Terminal](../lightning-terminal/). Meaning, if you have Lightning Terminal installed, you can already access Loop through the command line and you may skip the step below.&#x20;
+Loop comes bundled with [Lightning Terminal](../lightning-terminal/). Meaning, if you have Lightning Terminal installed, you can already access Loop through the command line and you may skip the step below.
 
 \[[Follow this guide to install Lightning Terminal](../lightning-terminal/get-lit.md)]
 

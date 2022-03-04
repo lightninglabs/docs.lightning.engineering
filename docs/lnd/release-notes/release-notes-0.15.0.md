@@ -16,7 +16,11 @@
 * Add [private status](https://github.com/lightningnetwork/lnd/pull/6167)
   to pendingchannels response.
 
+* [Update description for `state` command](https://github.com/lightningnetwork/lnd/pull/6237).
+
 ## Bug Fixes
+
+* [Pipelining an UpdateFulfillHTLC message now only happens when the related UpdateAddHTLC is locked-in.](https://github.com/lightningnetwork/lnd/pull/6246)
 
 * [Fixed an inactive invoice subscription not removed from invoice
   registry](https://github.com/lightningnetwork/lnd/pull/6053). When an invoice
@@ -125,6 +129,8 @@ gRPC performance metrics (latency to process `GetInfo`, etc)](https://github.com
   automatically replace it with the new version if the binary already exists!
   
 * [`ChannelLink` in the `htlcswitch` now performs a 2-way handoff instead of a 1-way handoff with its `ChannelArbitrator`.](https://github.com/lightningnetwork/lnd/pull/6221)
+
+* [The channel-commit-interval is now clamped to a reasonable timeframe of 1h.](https://github.com/lightningnetwork/lnd/pull/6220)
 
 # Contributors (Alphabetical Order)
 

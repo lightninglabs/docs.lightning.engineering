@@ -10,7 +10,7 @@ If you’re just getting started building on Lightning, we [have a beginner’s 
 
 We will track developer progress and showcase projects here and on our social channels. These questions will be updated with input from the team and community. If you have ideas of your own you would like to propose, send us an email at [hello@lightning.engineering](mailto:hello@lightning.engineering) or [submit a PR](https://github.com/lightninglabs/docs.lightning.engineering/) directly to the Github repository.
 
-We are here to help. If you have questions or need to bounce ideas around, feel free to jump in our dev [Slack](https://join.slack.com/t/lightningcommunity/shared\_invite/zt-bpe1a687-1UzHhrG15Fs\_DMRI1jhbpg) or join our developer office hours on [Discord](https://discord.gg/bpkWbUCtr7) to chat with our team and the rest of the community. Let’s get building!
+We are here to help. If you have questions or need to bounce ideas around, feel free to jump in our dev [Slack](https://lightning.engineering/slack.html) or join our developer office hours on [Discord](https://discord.gg/bpkWbUCtr7) to chat with our team and the rest of the community. Let’s get building!
 
 ## **Lightning Bulb Requests for Development:**
 

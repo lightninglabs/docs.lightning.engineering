@@ -81,6 +81,8 @@
   `remote_balance`](https://github.com/lightningnetwork/lnd/pull/5931) in
   `pending_force_closing_channels` under `pendingchannels` whereas before was
   empty(zero).
+* The graph's [diameter is calculated](https://github.com/lightningnetwork/lnd/pull/6066)
+  and added to the `getnetworkinfo` output.
 
 * [Add dev only RPC subserver and the devrpc.ImportGraph
   call](https://github.com/lightningnetwork/lnd/pull/6149)
@@ -89,6 +91,11 @@
   interceptor API to provide more control over failure messages. With this
   change, it allows encrypted failure messages to be returned to the sender.
   Additionally it is possible to signal a malformed htlc.
+
+## Database
+
+* [Add ForAll implementation for etcd to speed up
+  graph cache at startup](https://github.com/lightningnetwork/lnd/pull/6136)
 
 ## Documentation
 
@@ -137,8 +144,10 @@ gRPC performance metrics (latency to process `GetInfo`, etc)](https://github.com
 # Contributors (Alphabetical Order)
 
 * 3nprob
+* Andras Banki-Horvath
 * Andreas Schjønhaug
 * asvdf
+* bitromortac
 * BTCparadigm
 * Carla Kirk-Cohen
 * Carsten Otto

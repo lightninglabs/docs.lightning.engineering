@@ -73,7 +73,7 @@ We can create an AMP invoice with the command `lncli addinvoice --amp`\
 Optionally we can add a (publicly visible) memo or a fixed amount with the `--memo="add your memo here"` and `--amt <amount in satoshis>` flags.
 
 **Step 2: Turn the invoice into a QR code**\
-Your node will return an `r_hash`, a `payment request` and a `payment address`. There are many ways you can use to transform your payment request into a QR code, embed it on your website or add it to your social media. LibreOffice has an inbuilt functionality, and there are plenty of freely available online tools.
+Your node will return an `r_hash`, a `payment request` and a `payment address`. There are many ways you can use to transform your payment request into a QR code, embed it on your website or add it to your social media. LibreOffice has a built-in functionality, and there are plenty of freely available online tools.
 
 **Step 3: Pay a static AMP**\
 If your mobile wallet supports payments to AMP invoices, the invoice needs to be scanned and optionally the amount needs to be specified. To pay an AMP invoice from the command line, you only need to execute `lncli payinvoice <amp invoice>` If the AMP invoice does not contain an amount, you can specify the amount you would like to pay with the `--amt` flag.

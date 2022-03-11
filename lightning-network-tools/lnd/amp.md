@@ -62,6 +62,22 @@ Example usage:
 
 `lncli payinvoice --pay_req <the amp invoice created by the receiver> --amp-reuse`
 
+## Example: Generate a static donation QR code for your node
+
+Using AMP, we can generate static QR codes that others can pay to, repeatedly.
+
+Prerequisites: You need to run `lnd 0.13` or above with `accept-amp=1` enabled in your configuration file.
+
+**Step 1: Generate an AMP invoice**\
+We can create an AMP invoice with the command `lncli addinvoice --amp`\
+Optionally we can add a (publicly visible) memo or a fixed amount with the `--memo="add your memo here"` and `--amt <amount in satoshis>` flags.
+
+**Step 2: Turn the invoice into a QR code**\
+Your node will return an `r_hash`, a `payment request` and a `payment address`. There are many ways you can use to transform your payment request into a QR code, embed it on your website or add it to your social media. LibreOffice has an inbuilt functionality, and there are plenty of freely available online tools.
+
+**Step 3: Pay a static AMP**\
+If your mobile wallet supports payments to AMP invoices, the invoice needs to be scanned and optionally the amount needs to be specified. To pay an AMP invoice from the command line, you only need to execute `lncli payinvoice <amp invoice>` If the AMP invoice does not contain an amount, you can specify the amount you would like to pay with the `--amt` flag.
+
 ## Switch from Keysend to AMP
 
 Switching from MPP to AMP is easy. You will have to replace the `--key_send` flag with a `--amp` flag. You will no longer have to manually generate a preimage as the sender.

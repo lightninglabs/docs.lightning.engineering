@@ -75,6 +75,7 @@ description: >-
 
 ## Software bundles that include Lightning <a href="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176" id="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176"></a>
 
+* [myNode](https://mynodebtc.com)
 * [RaspiBlitz](https://raspiblitz.org)
 * [Umbrel](https://getumbrel.com)
 

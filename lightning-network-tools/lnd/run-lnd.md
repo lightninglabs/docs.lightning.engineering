@@ -24,7 +24,7 @@ LND generally has low system requirements and performs well on small single-boar
 
 ### Installing LND using third-party scripts
 
-You can install LND inside a variety of third-party software, such as [BTCPay Server](https://btcpayserver.org), [RaspbiBlitz](https://raspiblitz.org) or [Umbrel](https://getumbrel.com). This might become your installation of choice if you want to use Lightning payments primarily to receive payments in commerce, or if you want to easily run LND along a variety of other software that leverage your Bitcoin user experience as an individual user.
+You can install LND inside a variety of third-party software, such as [BTCPay Server](https://btcpayserver.org), [RaspbiBlitz](https://raspiblitz.org), [myNode](https://mynodebtc.com) or [Umbrel](https://getumbrel.com). This might become your installation of choice if you want to use Lightning payments primarily to receive payments in commerce, or if you want to easily run LND along a variety of other software that leverage your Bitcoin user experience as an individual user.
 
 ### Installing the LND binary (recommended)
 

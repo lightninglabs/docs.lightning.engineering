@@ -41,7 +41,7 @@ Depending on your installation, you may need to call this command with additiona
 
 `pool --tlscertpath ~/.lit/tls.cert --rpcserver=localhost:8443 accounts recover`
 
-Umbrel: `~/umbrel/bin/pool --rpcserver=localhost:8443 accounts recover`
+Umbrel: `~/umbrel/apps/pool --rpcserver=localhost:8443 accounts recover`
 
 BTCPay: `cd btcpayserver-docker`
 

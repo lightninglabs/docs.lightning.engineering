@@ -48,6 +48,12 @@
   validation](https://github.com/lightningnetwork/lnd/pull/6314) when calling
   `NewSigFromRawSignature`.
 
+* [Fixed deadlock in invoice
+  registry](https://github.com/lightningnetwork/lnd/pull/6332).
+
+* [Fixed an issue that would cause wallet UTXO state to be incorrect if a 3rd
+  party sweeps our anchor
+  output](https://github.com/lightningnetwork/lnd/pull/6274).
 
 ## Misc
 

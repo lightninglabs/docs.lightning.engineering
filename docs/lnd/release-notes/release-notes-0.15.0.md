@@ -98,6 +98,13 @@
   modules were integrated into `lnd` as a preparation for basic Taproot
   support](https://github.com/lightningnetwork/lnd/pull/6285).
 
+* [Make etcd leader election session
+  TTL](https://github.com/lightningnetwork/lnd/pull/6342) configurable.
+
+
+* [Fix race condition in the htlc interceptor unit
+  test](https://github.com/lightningnetwork/lnd/pull/6353).
+
 ## RPC Server
 
 * [Add value to the field
@@ -118,6 +125,10 @@
 * Add an [always on](https://github.com/lightningnetwork/lnd/pull/6232) mode to
   the HTLC interceptor API. This enables interception applications where every
   packet must be intercepted.
+
+* Add [destination output information](https://github.com/lightningnetwork/lnd/pull/5476)
+  to the transaction structure returned from the RPC `GetTransactions` and when
+  subscribed with `SubscribeTransactions`.
 
 ## Database
 
@@ -179,6 +190,7 @@ gRPC performance metrics (latency to process `GetInfo`, etc)](https://github.com
 * Andreas Schjønhaug
 * asvdf
 * bitromortac
+* Bjarne Magnussen
 * BTCparadigm
 * Carla Kirk-Cohen
 * Carsten Otto

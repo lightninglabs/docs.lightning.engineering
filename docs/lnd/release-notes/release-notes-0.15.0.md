@@ -55,6 +55,8 @@
   party sweeps our anchor
   output](https://github.com/lightningnetwork/lnd/pull/6274).
 
+* [Fixed node shutdown in forward interceptor itests](https://github.com/lightningnetwork/lnd/pull/6362).
+
 ## Misc
 
 * [An example systemd service file](https://github.com/lightningnetwork/lnd/pull/6033)
@@ -101,9 +103,13 @@
 * [Make etcd leader election session
   TTL](https://github.com/lightningnetwork/lnd/pull/6342) configurable.
 
-
 * [Fix race condition in the htlc interceptor unit
   test](https://github.com/lightningnetwork/lnd/pull/6353).
+
+* [A new config option, `pending-commit-interval` is
+  added](https://github.com/lightningnetwork/lnd/pull/6186). This value
+  specifies the maximum duration it allows for a remote peer to respond to a
+  locally initiated commitment update.
 
 ## RPC Server
 

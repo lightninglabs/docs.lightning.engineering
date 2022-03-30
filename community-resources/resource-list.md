@@ -6,7 +6,7 @@ description: >-
 
 # Resource List
 
-## Lightning Nodes <a href="docs-internal-guid-7210ac49-7fff-7899-6ea7-d8acfa68cd8e" id="docs-internal-guid-7210ac49-7fff-7899-6ea7-d8acfa68cd8e"></a>
+## Lightning Nodes <a href="#docs-internal-guid-7210ac49-7fff-7899-6ea7-d8acfa68cd8e" id="docs-internal-guid-7210ac49-7fff-7899-6ea7-d8acfa68cd8e"></a>
 
 * [LND](https://github.com/lightningnetwork/lnd) - developed in Go by Lightning Labs
 * [c-Lightning](https://github.com/ElementsProject/lightning) - developed in C by Blockstream
@@ -15,7 +15,7 @@ description: >-
 * [Rust Lightning](https://github.com/rust-bitcoin/rust-lightning) - developed in Rust
 * [Ptarmigan](https://nayuta.co) - developed in C++ by Nayuta Core
 
-## Wallets <a href="docs-internal-guid-007ec570-7fff-eb9a-7822-aff5a5e77f17" id="docs-internal-guid-007ec570-7fff-eb9a-7822-aff5a5e77f17"></a>
+## Wallets <a href="#docs-internal-guid-007ec570-7fff-eb9a-7822-aff5a5e77f17" id="docs-internal-guid-007ec570-7fff-eb9a-7822-aff5a5e77f17"></a>
 
 ### Non-custodial wallets
 
@@ -25,7 +25,7 @@ description: >-
 * [Electrum](https://electrum.org) ([Github](https://github.com/spesmilo/electrum)) - available for Linux, OSX, Windows and Android
 * [Muun](https://muun.com) ([Github](https://github.com/muun)) - available on Google Play and the Apple AppStore
 * [Phoenix](https://phoenix.acinq.co) ([Github](https://github.com/ACINQ/phoenix)) - available on Google Play and the Apple AppStore
-* [Zebedee](https://zebedee.io) ([Github](https://github.com/zebedeeio)) - available on Google Play and the Apple AppStore&#x20;
+* [Zebedee](https://zebedee.io) ([Github](https://github.com/zebedeeio)) - available on Google Play and the Apple AppStore
 * [Eclair](https://github.com/ACINQ/eclair-mobile) - available for Android
 
 ### Custodial & Other Wallets
@@ -37,16 +37,15 @@ description: >-
 * [Bottlepay](https://bottlepay.com) - available in Google Play and the Apple AppStore
 * [Mash](https://getmash.com/wallet) - lightning wallet that integrates directly into sites, apps and launching shortly in browser extension, mobile app form.
 
-
-
 ### Lightning node interfaces
 
+* [Alby](https://getalby.com) ([Github](https://github.com/getAlby/lightning-browser-extension)) -  connect various wallet interfaces to this browser extension for web-native payments. Available for Firefox, Chrome, Brave and others
 * [Joule](https://lightningjoule.com) ([Github](https://github.com/joule-labs/joule-extension)) - available for Firefox, Chrome, Opera and Brave
 * [Zap](https://zaphq.io) ([Github](https://github.com/LN-Zap)) - available in Google Play, for OSX, Linux, Windows and iOS
 * [Zeus](https://github.com/ZeusLN/zeus) - available in Google Play, F-Droid and the Apple AppStore
 * [Ride the Lightning](https://github.com/Ride-The-Lightning/RTL) - runs on your personal computer, accessible through your browser
 
-## Explorers <a href="docs-internal-guid-c8a6648f-7fff-39eb-c8cc-47fadeadad71" id="docs-internal-guid-c8a6648f-7fff-39eb-c8cc-47fadeadad71"></a>
+## Explorers <a href="#docs-internal-guid-c8a6648f-7fff-39eb-c8cc-47fadeadad71" id="docs-internal-guid-c8a6648f-7fff-39eb-c8cc-47fadeadad71"></a>
 
 * [1ML](https://1ml.com) - Lightning network and node statistics
 * [ACINQ](https://explorer.acinq.co) - Geographical distribution of Lightning nodes
@@ -57,7 +56,6 @@ description: >-
 * [LNnodeinsight](https://lnnodeinsight.com) - Analytics from the perspective of your own node
 * [VR Explorer](https://bl.ocks.org/tyzbit/d1c83732d2767bb955125d41f5921888) - the Lightning Network... in VR!
 * [Bitcoin Prophecy](https://prophecybitcoin.com) - Uncover and the true price of bitcoin for free, and then with micro-contributions via lightning.
-
 
 ## Applications
 
@@ -73,7 +71,7 @@ description: >-
 * [LightningStamp](https://lightningstamp.bitcoinproof.org) - create timestamped proofs of existence for your files (OpentimeStamps or Chainpoint)
 * [Mash](https://getmash.com) - monetize your apps by integrating an open consumer lightning wallet, paywalls, and payment faciliation mechanisms with a few snippets of code
 
-## Software bundles that include Lightning <a href="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176" id="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176"></a>
+## Software bundles that include Lightning <a href="#docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176" id="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176"></a>
 
 * [myNode](https://mynodebtc.com)
 * [RaspiBlitz](https://raspiblitz.org)
@@ -93,7 +91,7 @@ description: >-
 * [rebalance-lnd](https://github.com/C-Otto/rebalance-lnd) Python script for circular rebalancing in LND
 * [Faraday](https://github.com/lightninglabs/faraday) - A suite of tools built to help node operators and businesses run lnd, the leading implementation of the Lightning Network
 
-## Wikis, Guides & Resources <a href="docs-internal-guid-8bae6cd2-7fff-ce99-f185-1c89fff98fef" id="docs-internal-guid-8bae6cd2-7fff-ce99-f185-1c89fff98fef"></a>
+## Wikis, Guides & Resources <a href="#docs-internal-guid-8bae6cd2-7fff-ce99-f185-1c89fff98fef" id="docs-internal-guid-8bae6cd2-7fff-ce99-f185-1c89fff98fef"></a>
 
 * Lightning Network Wiki [ION](https://wiki.ion.radar.tech)
 * Ben Congdon's[ Awesome Lightning Network](https://github.com/bcongdon/awesome-lightning-network)
@@ -101,7 +99,7 @@ description: >-
 * Jameson Lopp's[ Lightning Network Resources](https://www.lopp.net/lightning-information.html)
 * opennoms[ Lightning Node Management book](https://openoms.gitbook.io/lightning-node-management/)
 
-## Payment processors <a href="docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c" id="docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c"></a>
+## Payment processors <a href="#docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c" id="docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c"></a>
 
 * [Bitfinex Pay](https://pay.bitfinex.com)
 * [Coingate](https://coingate.com)
@@ -111,8 +109,9 @@ description: >-
 * [BTCPayServer](https://docs.btcpayserver.org)
 * [LNBits](https://lnbits.org)
 
-## Exchanges & Brokerages <a href="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364" id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
+## Exchanges & Brokerages <a href="#docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364" id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
 
+* [AAX](https://www.aax.com)
 * [Azteco](https://azte.co)
 * [Bipa](https://bipa.app)
 * [Bitaroo](https://www.bitaroo.com.au)

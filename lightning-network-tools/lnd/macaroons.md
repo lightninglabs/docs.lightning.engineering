@@ -12,7 +12,7 @@ Just like a cookie, a macaroon should be sent over a secure channel \(such as a 
 
 ## Macaroon delegation
 
-A macaroon is delegated by adding restrictions \(called caveats\) and an authentication code similar to a signature \(technically an HMAC\) to it. The technical method of doing this is outside the scope of this overview documentation, but the [README in the macaroons package](https://github.com/lightninglabs/docs.lightning.engineering/tree/33bc7e27861f932d5d0676912bf45cf608534ceb/docs/macaroons/README.md) or the macaroon paper linked above describe it in more detail. The user must remember several things:
+A macaroon is delegated by adding restrictions \(called caveats\) and an authentication code similar to a signature \(technically an HMAC\) to it. The technical method of doing this is outside the scope of this overview documentation, but the [README in the macaroons package](https://github.com/lightningnetwork/lnd/blob/master/macaroons/README.md) or the macaroon paper linked above describe it in more detail. The user must remember several things:
 
 * Sharing a macaroon allows anyone in possession of that macaroon to use it to access the service \(in our case, `lnd`\) to do anything permitted by the macaroon. There is a specific type of restriction, called a "third party caveat," that requires an external service to verify the request; however, `lnd` doesn't currently implement those.
 * If you add a caveat to a macaroon and share the resulting macaroon, the person receiving it cannot remove the caveat.

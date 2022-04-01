@@ -2,7 +2,7 @@
 description: Projects using LSATs today, code examples and further reading
 ---
 
-# Implementations and links
+# Implementations and Links
 
 Not listed? [Fill out this form!](https://docs.google.com/forms/d/e/1FAIpQLSdT6kP3oUzd6xWytkDcflU9byHcp8nP9IyYntm\_6wa9Cw6qqg/viewform)
 
@@ -12,6 +12,7 @@ Not listed? [Fill out this form!](https://docs.google.com/forms/d/e/1FAIpQLSdT6k
 * ​[lsat-js: A utility library for working with LSATs](https://github.com/Tierion/lsat-js)​
 * ​[boltwall: Nodejs middleware-based authentication using LSATs](https://github.com/tierion/boltwall)​
 * [now-boltwall: The Boltwall deployment toolkit](https://github.com/tierion/now-boltwall)
+* [Aperture Dynamic Pricing Demo](https://github.com/ellemouton/aperture-demo)
 
 ## Projects using LSATs
 

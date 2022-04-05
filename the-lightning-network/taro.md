@@ -95,6 +95,8 @@ The root of this tree is added to a taproot tapscript, and together a taproot ad
 
 Instead of its own blockchain, Taro issuers store sparse Merkle sum trees off-chain and issue proofs to asset holders out of band. The owners of such assets can independently verify that their account is included in the tree, is filled with the appropriate amount and the corresponding taproot transaction exists and is confirmed on the Bitcoin blockchain.
 
+[Read the BIPs: Merkle Sum Sparse Merkle Trees](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-ms-smt.mediawiki)
+
 ## Issuing assets
 
 ### Asset ID
@@ -110,6 +112,8 @@ The asset script can have inputs and outputs, similar to a Bitcoin transaction. 
 The output of the asset script defines who the newly created assets are issued to. More precisely, this is done through a sparse Merkle sum tree, in which each account is identified by its 256-bit key, and each leaf corresponding to this key contains information about the amount the account holds.
 
 It is possible to issue multiple assets in one transaction, but each asset will have its own asset script and within it, sparse Merkle tree. Assets can be unique or non-unique.
+
+[Read the BIPs: Taro Asset Script](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-vm.mediawiki)
 
 ### Asset leaves
 
@@ -147,6 +151,8 @@ Taro addresses are bech32 encoded identifiers of the asset ID, the asset script 
 
 The issuer or asset holder can use the information in your Taro address to create or modify the sparse Merkle sum tree as explained below. This address format can also be used to request a specific proof over the amounts held by the address.
 
+[Read the BIPs: Taro On Chain Addresses](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-addr.mediawiki)
+
 ### Move assets inside the tree
 
 To transfer Taro assets, the recipient communicates their address to the current holder, who can initiate the transfer. The exact interaction between account holders and issuers is not strictly defined at this time. It could be left up to each application or even asset issuer to specify.
@@ -166,6 +172,8 @@ A Universe may be run by the asset issuer themselves or may be appointed by an i
 Given a known asset ID, the Universe for example may provide information about its Genesis output, as well as current meta information such as documentation, asset scripts or total coins in circulation. A service may also know about multiple assets (Multiverse) or only about a single output (Pocket Universe).
 
 A Universe has no privileges within the Taro protocol. It produces transaction data validated against the bitcoin blockchain. An adversarial Universe could only refrain from returning data requested by clients. Taro transaction data isn’t bound to a Universe. The data availability offerings provided by a Universe is motivated by entities who wish to have fast, cheap verification of their Taro assets.
+
+[Read the BIPs: Taro Asset Universes](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-universe.mediawiki)
 
 ### Asset merge or split
 
@@ -191,6 +199,8 @@ Asset proofs grow linearly with each new on-chain transaction. Every asset trans
 ### Invalidating assets
 
 An asset is considered invalid as soon as its output has been spent without committing to a new sparse merkle sum tree. This is not obvious for a third party observer, and in some instances it may be preferable to spend outputs to a new empty merkle tree to prove that assets were destroyed, invalidated, or “burned”.
+
+[Read the BIPs: Taro Flat File Proof Format](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-proof-file.mediawiki)
 
 ## Taro-enabled channels <a href="#docs-internal-guid-8073d85d-7fff-f958-e660-b596e6d08d6d" id="docs-internal-guid-8073d85d-7fff-f958-e660-b596e6d08d6d"></a>
 

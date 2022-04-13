@@ -27,6 +27,9 @@ then watch it on chain. Taproot script spends are also supported through the
 
 * [Update description for `state` command](https://github.com/lightningnetwork/lnd/pull/6237).
 
+* Add [update node announcement](https://github.com/lightningnetwork/lnd/pull/5587)
+  for updating and propagating node information.
+
 ## Bug Fixes
 
 * [Pipelining an UpdateFulfillHTLC message now only happens when the related UpdateAddHTLC is locked-in.](https://github.com/lightningnetwork/lnd/pull/6246)
@@ -77,6 +80,13 @@ then watch it on chain. Taproot script spends are also supported through the
 
 * [Fixed a data race in the websocket proxy
   code](https://github.com/lightningnetwork/lnd/pull/6380).
+
+* [Fixed race condition resulting in MPP payments sometimes getting stuck
+  in-flight](https://github.com/lightningnetwork/lnd/pull/6352).
+
+* [Fixed a panic in the Taproot signing part of the `SignOutputRaw` RPC that
+  occurred when not all UTXO information was
+  specified](https://github.com/lightningnetwork/lnd/pull/6407).
 
 ## Misc
 
@@ -166,12 +176,19 @@ then watch it on chain. Taproot script spends are also supported through the
   to the transaction structure returned from the RPC `GetTransactions` and when
   subscribed with `SubscribeTransactions`.
 
+* [Support for making routes with the legacy onion payload format via `SendToRoute` has been removed.](https://github.com/lightningnetwork/lnd/pull/6385)
+
 ## Database
 
 * [Add ForAll implementation for etcd to speed up
   graph cache at startup](https://github.com/lightningnetwork/lnd/pull/6136)
 
 * [Improve validation of a PSBT packet when handling a request to finalize it.](https://github.com/lightningnetwork/lnd/pull/6217)
+
+* [Add new Peers subserver](https://github.com/lightningnetwork/lnd/pull/5587) with a new endpoint for updating the `NodeAnnouncement` data without having to restart the node.
+
+* Add [htlc expiry protection](https://github.com/lightningnetwork/lnd/pull/6212)
+to the htlc interceptor API.
 
 ## Documentation
 

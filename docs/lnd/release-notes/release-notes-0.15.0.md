@@ -1,5 +1,16 @@
 # Release Notes
 
+## Payments
+
+Support according to the
+[spec](https://github.com/lightningnetwork/lightning-rfc/pull/912) has been
+added for [payment metadata in
+invoices](https://github.com/lightningnetwork/lnd/pull/5810). If metadata is
+present in the invoice, it is encoded as a tlv record for the receiver.
+
+This functionality unlocks future features such as [stateless
+invoices](https://lists.linuxfoundation.org/pipermail/lightning-dev/2021-September/003236.html).
+
 ## Security
 
 * [Misconfigured ZMQ
@@ -88,6 +99,15 @@ then watch it on chain. Taproot script spends are also supported through the
   occurred when not all UTXO information was
   specified](https://github.com/lightningnetwork/lnd/pull/6407).
 
+* [Fixed P2TR addresses not correctly being detected as
+  used](https://github.com/lightningnetwork/lnd/pull/6389).
+
+## Routing
+
+* [Add a new `time_pref` parameter to the QueryRoutes and SendPayment APIs](https://github.com/lightningnetwork/lnd/pull/6024) that
+  allows the caller to control the trade-off between payment speed and cost in
+  pathfinding.
+
 ## Misc
 
 * [An example systemd service file](https://github.com/lightningnetwork/lnd/pull/6033)
@@ -150,6 +170,7 @@ then watch it on chain. Taproot script spends are also supported through the
   The `apple` task uses `gomobile` to build an `XCFramework` that can be used to
   embed lnd to both iOS and macOS apps.
 
+* [The CI and build infrastructure for the project has transitioned to using Go 1.18](https://github.com/lightningnetwork/lnd/pull/6340).
 
 ## RPC Server
 
@@ -177,6 +198,9 @@ then watch it on chain. Taproot script spends are also supported through the
   subscribed with `SubscribeTransactions`.
 
 * [Support for making routes with the legacy onion payload format via `SendToRoute` has been removed.](https://github.com/lightningnetwork/lnd/pull/6385)
+
+* Close a gap in the HTLC interceptor API by [intercepting htlcs in the on-chain
+  resolution flow](https://github.com/lightningnetwork/lnd/pull/6219) too.
 
 ## Database
 

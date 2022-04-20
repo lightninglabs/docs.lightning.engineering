@@ -102,6 +102,9 @@ then watch it on chain. Taproot script spends are also supported through the
 * [Fixed P2TR addresses not correctly being detected as
   used](https://github.com/lightningnetwork/lnd/pull/6389).
 
+* [Fixed incorrect PSBT de-serialization for transactions with no
+  inputs](https://github.com/lightningnetwork/lnd/pull/6428).
+
 ## Routing
 
 * [Add a new `time_pref` parameter to the QueryRoutes and SendPayment APIs](https://github.com/lightningnetwork/lnd/pull/6024) that
@@ -173,7 +176,14 @@ then watch it on chain. Taproot script spends are also supported through the
 * [The CI and build infrastructure for the project has transitioned to using Go 1.18](https://github.com/lightningnetwork/lnd/pull/6340).
 
 * [Announce the keysend feature bit in NodeAnnouncement if `--accept-keysend` 
-  is set](https://github.com/lightningnetwork/lnd/pull/6414)
+  is set](https://github.com/lightningnetwork/lnd/pull/6414).
+
+* [Fix a flaky unit test in the `chainview`
+  package](https://github.com/lightningnetwork/lnd/pull/6354).
+
+
+* [Add a new method in `tlv` to encode an uint64/uint32 field using `BigSize`
+  format.](https://github.com/lightningnetwork/lnd/pull/6421)
 
 ## RPC Server
 

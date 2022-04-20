@@ -122,6 +122,7 @@ description: >-
 * [Fastbitcoins](https://fastbitcoins.com)
 * [FixedFloat](https://fixedfloat.com)
 * [Kollider](https://kollider.xyz)
+* [Kraken](https://www.kraken.com)
 * [LNMarkets](https://lnmarkets.com)
 * [LOFT](https://loft.trade)
 * [NiceHash](https://www.nicehash.com)

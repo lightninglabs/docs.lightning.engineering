@@ -41,6 +41,9 @@ then watch it on chain. Taproot script spends are also supported through the
 * Add [update node announcement](https://github.com/lightningnetwork/lnd/pull/5587)
   for updating and propagating node information.
 
+* Add [--socksproxy](https://github.com/lightningnetwork/lnd/pull/6422)
+  to allow for RPC calls via Tor.
+
 ## Bug Fixes
 
 * [Pipelining an UpdateFulfillHTLC message now only happens when the related UpdateAddHTLC is locked-in.](https://github.com/lightningnetwork/lnd/pull/6246)
@@ -181,6 +184,7 @@ then watch it on chain. Taproot script spends are also supported through the
 * [Fix a flaky unit test in the `chainview`
   package](https://github.com/lightningnetwork/lnd/pull/6354).
 
+* [Adds a new config option for adding a specific peer at startup](https://github.com/lightningnetwork/lnd/pull/5157).
 
 * [Add a new method in `tlv` to encode an uint64/uint32 field using `BigSize`
   format.](https://github.com/lightningnetwork/lnd/pull/6421)
@@ -276,6 +280,7 @@ gRPC performance metrics (latency to process `GetInfo`, etc)](https://github.com
 # Contributors (Alphabetical Order)
 
 * 3nprob
+* Alyssa Hertig
 * Andras Banki-Horvath
 * Andreas Schjønhaug
 * asvdf
@@ -291,6 +296,7 @@ gRPC performance metrics (latency to process `GetInfo`, etc)](https://github.com
 * Eugene Siegel
 * Hampus Sjöberg
 * henta
+* hieblmi
 * Joost Jager
 * Jordi Montes
 * LightningHelper

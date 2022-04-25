@@ -14,7 +14,7 @@ Taro is conceptually similar to colored coins, but makes use of Taproot transact
 
 Taro uses a Sparse-Merkle Tree to enable fast, efficient, private retrieval and updates to the witness/transaction data and a Merkle-Sum Tree to prove valid conservation/non-inflation. Assets can be transferred through on-chain transactions, or over the Lightning Network when deposited into a channel.
 
-Participants in Taro transfer bear the costs of verification and storage by storing Taro witness data off-chain in local data stores or with information repositories termed "Universes" (akin to a git repository).  To check a Taro asset's validity, its’ lineage since its’ genesis output is verified.  This is achieved by receiving a verification file of transaction data through the Taro gossip layer. Clients can cross-check with their copy of the blockchain and amend with their own proofs as they pass on the asset.
+Participants in Taro transfer bear the costs of verification and storage by storing Taro witness data off-chain in local data stores or with information repositories termed "Universes" (akin to a git repository).  To check a Taro asset's validity, its lineage since its genesis output is verified.  This is achieved by receiving a verification file of transaction data through the Taro gossip layer. Clients can cross-check with their copy of the blockchain and amend with their own proofs as they pass on the asset.
 
 Summary:
 
@@ -218,9 +218,9 @@ This mechanism can also allow for payment of an L-USD invoice in BTC or vice ver
 
 ## Features & Limitations <a href="#docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46" id="docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46"></a>
 
-Taro allows for a long list of features that make the protocol scalable, robust and friendly for low-powered mobile devices in situations of limited bandwidth.
+Taro allows for a long list of features that make the protocol scalable, robust, and friendly for low-powered mobile devices in situations of limited bandwidth.
 
-* Taro is light client friendly: has low verification costs and needs only access to untrusted bitcoin transactions. Taro does not require knowledge of the entire blockchain.
+* Taro is light client-friendly: has low verification costs and needs only access to untrusted bitcoin transactions. Taro does not require knowledge of the entire blockchain.
 * Taro allows for atomic swaps between Taro assets and BTC
 * Taro can handle both unique and non-unique assets as well as collections.
 * Taro allows for creative multi-signature and co-signatory arrangements.

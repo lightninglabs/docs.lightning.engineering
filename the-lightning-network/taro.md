@@ -225,5 +225,5 @@ Taro allows for a long list of features that make the protocol scalable, robust,
 * Taro can handle both unique and non-unique assets as well as collections.
 * Taro allows for creative multi-signature and co-signatory arrangements.
 * Taro allows for flexible settlement times that can range from immediately (when introduced into a Lightning channel) to hourly or daily.
-* Taro channels can contain both BTC and multiple Taro assets, allowing Taro to exist in the Lightning Network without additional overhead
+* Taro channels can be created alongside BTC channels in the same utxo, allowing Taro to exist in the Lightning Network without consuming additional resources. For instance, Alice can create two channels with Bob in a single Bitcoin transaction, one containing a Taro asset, the other BTC
 * Future features may include confidential transactions and zero-knowledge proofs as part of Taro transfers.

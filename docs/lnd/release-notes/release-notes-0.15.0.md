@@ -14,7 +14,7 @@ invoices](https://lists.linuxfoundation.org/pipermail/lightning-dev/2021-Septemb
 ## Security
 
 * [Misconfigured ZMQ
-  setup now gets reported](https://github.com/lightningnetwork/lnd/pull/5710).
+  setup now logs a warning](https://github.com/lightningnetwork/lnd/pull/5710).
 
 ## Taproot
 
@@ -54,6 +54,12 @@ releases. Backward compatibility is not guaranteed!
 * Add [--socksproxy](https://github.com/lightningnetwork/lnd/pull/6422)
   to allow for RPC calls via Tor.
 
+## Neutrino
+
+[Neutrino now suports BIP
+155](https://github.com/lightningnetwork/lnd/pull/6468), allowing it to connect
+to Bitcoin nodes that advertise a Tor v3 onion service address.
+
 ## Bug Fixes
 
 * [Pipelining an UpdateFulfillHTLC message now only happens when the related UpdateAddHTLC is locked-in.](https://github.com/lightningnetwork/lnd/pull/6246)
@@ -79,6 +85,12 @@ releases. Backward compatibility is not guaranteed!
 * [Fixed an edge case where the lnd might be stuck at starting due to channel
   arbitrator relying on htlcswitch to be started
   first](https://github.com/lightningnetwork/lnd/pull/6214).
+  
+## Neutrino
+
+* [New neutrino sub-server](https://github.com/lightningnetwork/lnd/pull/5652)
+  capable of status checks, adding, disconnecting and listing
+  peers, fetching compact filters and block/block headers.
 
 * [Added signature length
   validation](https://github.com/lightningnetwork/lnd/pull/6314) when calling
@@ -245,6 +257,11 @@ from occurring that would result in an erroneous force close.](https://github.co
 * [Expose](https://github.com/lightningnetwork/lnd/pull/6454) always on mode of
   the HTLC interceptor API through GetInfo.
 
+* [The `lnrpc.ListPayments` RPC now has an optional `count_total_payments`
+  parameter that will cause the `total_num_payments` response field to be set
+  to the total number of payments (complete and incomplete) that are currently
+  in the payment database](https://github.com/lightningnetwork/lnd/pull/6463).
+
 ## Database
 
 * [Add ForAll implementation for etcd to speed up
@@ -297,7 +314,7 @@ gRPC performance metrics (latency to process `GetInfo`, etc)](https://github.com
   `golangci-lint` in your `$GOPATH/bin` directory. `make lint` does not
   automatically replace it with the new version if the binary already exists!
   
-* [`ChannelLink` in the `htlcswitch` now performs a 2-way handoff instead of a 1-way handoff with its `ChannelArbitrator`.](https://github.com/lightningnetwork/lnd/pull/6221)
+* [`ChannelLink` in the `htlcswitch` now performs a 1-way handoff via a temporary map with its `ChannelArbitrator`.](https://github.com/lightningnetwork/lnd/pull/6322)
 
 * [The channel-commit-interval is now clamped to a reasonable timeframe of 1h.](https://github.com/lightningnetwork/lnd/pull/6220)
 

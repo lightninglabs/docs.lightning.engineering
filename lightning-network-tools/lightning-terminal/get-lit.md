@@ -57,10 +57,25 @@ Then, pull from source and install the latest release. [You can find all release
 
 git checkout \<latest release>
 
-1. Now we will install it:
+2\. Now we will install it:
 
 `make install`
 
 The binaries should be found in your Go path, most commonly \~/go/bin/ You can navigate and check your Go path with cd $GOPATH
+
+### Install in BTCPay Server
+
+BTCPay contains an installation script for `litd`, which makes it easy to include litd into your BTCPay Server. You may also refer to [the official guide](https://docs.btcpayserver.org/Docker/lightning-terminal/#lightning-terminal-lit).
+
+1. Set a password for your litd instance:
+
+`export LIT_PASSWD="YOUR PASSWORD HERE"`
+
+2\. Add the fragment to your configuration and run the installation script:
+
+`BTCPAYGEN_ADDITIONAL_FRAGMENTS="$BTCPAYGEN_ADDITIONAL_FRAGMENTS;opt-add-lightning-terminal"`\
+`. btcpay-setup.sh -i`
+
+You can now find `litd` under Server Settings > Services
 
 [Continue here: Connect to Terminal](run-litd.md)

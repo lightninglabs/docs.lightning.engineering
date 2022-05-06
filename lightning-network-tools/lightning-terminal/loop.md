@@ -35,7 +35,7 @@ Once confirmed, Lightning Terminal will instruct your node to make the off-chain
 
 In your Dashboard, you should now be able to see three new transactions. One, over 30,000 satoshis is the prepayment, which will be forfeited if the off-chain transaction is not being made, another over the full amount and a third on-chain transaction sending the funds to your wallet. If you specified an external address, this third transaction will be visible in the corresponding wallet.
 
-[Learn more about Loop fees](../loop/the-loop-cli.md).
+[Learn more about Loop fees](loop-fees.md).
 
 #### Loop failures <a href="#docs-internal-guid-322553ac-7fff-f559-9670-7d14f9cf1697" id="docs-internal-guid-322553ac-7fff-f559-9670-7d14f9cf1697"></a>
 

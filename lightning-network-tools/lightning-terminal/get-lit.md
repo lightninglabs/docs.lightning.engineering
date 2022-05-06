@@ -35,17 +35,7 @@ You can now execute the program from its location, or place it where the system 
 3. You will need yarn. You can [download it here](https://classic.yarnpkg.com/en/docs/install). Most conveniently, you can install it with `npm install --global yarn`
 4. You will need to run the latest release of LND at least (`lnd v0.14.1`). Have a look at this [upgrade guide](../lnd/run-lnd.md#upgrading-from-source).
 
-First, turn off lnd
-
-`lncli stop`
-
-Then, pull from source and install the latest release. [You can find all releases here](https://github.com/lightninglabs/lightning-terminal/releases/).
-
-`cd path/to/lnd`
-
-`git pull`
-
-`git checkout <latest release>`
+To run litd, you must either run the [lnd binaries](https://github.com/lightningnetwork/lnd/releases) or compile it from source with a minimum set of tags:
 
 `make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"`
 
@@ -55,13 +45,19 @@ Then, pull from source and install the latest release. [You can find all release
 
 `git clone https://github.com/lightninglabs/lightning-terminal.git`
 
-git checkout \<latest release>
+`git checkout <latest release>`
 
 2\. Now we will install it:
 
 `make install`
 
-The binaries should be found in your Go path, most commonly \~/go/bin/ You can navigate and check your Go path with cd $GOPATH
+The binaries should be found in your Go path, most commonly `~/go/bin/` You can navigate and check your Go path with `cd $GOPATH`
+
+3\. `litd` bundles `poold`, `loopd` and `faraday`. Installing `litd` as above will install the [litcli command line interface](command-line-interface.md), but not pool, loop and frcli, as these might already exist on your sytem. If they do not exist and you wish to install them, you may run the below in addition:
+
+`make go-install-cli`
+
+[Continue here: Connect to Terminal](run-litd.md)
 
 ### Install in BTCPay Server
 

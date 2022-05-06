@@ -4,6 +4,10 @@ description: All your Lightning Network terms explained in one place.
 
 # Glossary
 
+## 9735 <a href="#docs-internal-guid-6e782ac0-7fff-815e-819f-b586cb362c5b" id="docs-internal-guid-6e782ac0-7fff-815e-819f-b586cb362c5b"></a>
+
+The default port used by Lightning nodes to advertise incoming [peer-to-peer](glossary.md#peer-to-peer) connections.
+
 ## Aezeed
 
 Aezeed is the mechanism through which the private keys of a [LND](glossary.md#the-lightning-network-daemon) node are derived from a [seed phrase](glossary.md#seed-phrase). Unlike other popular seed phrase formats, it allows for versioning and wallet birth dates.
@@ -15,6 +19,14 @@ Anchor channels include up to two special outputs called anchors which are used 
 ## Aperture
 
 Aperture is an implementation of a [LSAT](glossary.md#lsat) proxy server developed by [Lightning Labs](glossary.md#lightning-labs).
+
+## Asset merge <a href="#docs-internal-guid-8c122d13-7fff-d2e4-025f-f17b4d82dff3" id="docs-internal-guid-8c122d13-7fff-d2e4-025f-f17b4d82dff3"></a>
+
+If two assets of the same kind are combined, this is called an asset merge.
+
+## Asset split <a href="#docs-internal-guid-43338575-7fff-10ef-e93b-ebf564e1a8a2" id="docs-internal-guid-43338575-7fff-10ef-e93b-ebf564e1a8a2"></a>
+
+If an asset is divided into two parts, it is split.
 
 ## Atomic
 
@@ -136,6 +148,10 @@ Clustering allows us to use multiple [LND](glossary.md#the-lightning-network-dae
 
 [Read more: LND clustering](../lightning-network-tools/lnd/leader\_election.md)
 
+## Commitment <a href="#docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776" id="docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776"></a>
+
+In the context of cryptography, committing refers to the act of proving that certain data exists at a point in time, without necessarily revealing the data. Typically, this is done with a hash of the data. Only an entity that knows about the full data would have been able to produce a hash of it, thus, proving its existence.
+
 ## Commitment fee
 
 The commitment fee is the fee a [commitment transaction](glossary.md#commitment-transaction) pays to the Bitcoin miner. Since the commitment fee needs to be calculated well in advance, it can sometimes be larger than necessary. [Anchor channels](glossary.md#anchor-channel) help alleviate this problem and better calculate this fee.
@@ -250,6 +266,10 @@ Keysend allows users of the Lightning Network to send funds to a node's public k
 
 [Read more: Send messages with keysend](../lightning-network-tools/lnd/send-messages-with-keysend.md)
 
+## Leaf <a href="#docs-internal-guid-008d8ad9-7fff-b03b-3f77-c851c431877d" id="docs-internal-guid-008d8ad9-7fff-b03b-3f77-c851c431877d"></a>
+
+A leaf is the part of a [Merkle tree](glossary.md#docs-internal-guid-43b3bcf6-7fff-bef3-8e7d-b1830f39b88b) that carries the data that the tree attests to.
+
 ## Lightning Labs
 
 A private company helping to maintain [LND](glossary.md#the-lightning-network-daemon). Lightning Labs also develops tools like [Lightning Loop](glossary.md#loop), [Pool](glossary.md#pool), [Faraday](glossary.md#faraday), [Lightning Terminal](glossary.md#lightning-terminal), and more.
@@ -333,6 +353,22 @@ The Lightning Service Authentication Token (LSAT) combines [Macaroons](glossary.
 Macaroons are bearer credentials that allow for detailed attenuation as well as delegation.
 
 [Read more: Macaroons explained](../the-lightning-network/lsat/macaroons.md)
+
+## Merkle Sum Tree <a href="#docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94" id="docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94"></a>
+
+A Merkle Sum tree is a type of [Merkle tree](glossary.md#docs-internal-guid-43b3bcf6-7fff-bef3-8e7d-b1830f39b88b-1) in which each [node](glossary.md#docs-internal-guid-21c32320-7fff-b611-c280-9057de469d80) not only carries the hash of the nodes or [leaves](glossary.md#docs-internal-guid-008d8ad9-7fff-b03b-3f77-c851c431877d) underneath, but also the sum of their values. In such a tree, the [Merkle tree root](glossary.md#docs-internal-guid-e842530e-7fff-01a9-e250-7c8de9edba95) will carry the total sum of all values in the Merkle tree.
+
+## Merkle tree <a href="#docs-internal-guid-43b3bcf6-7fff-bef3-8e7d-b1830f39b88b" id="docs-internal-guid-43b3bcf6-7fff-bef3-8e7d-b1830f39b88b"></a>
+
+A Merkle tree is a data structure that commits to multiple sets of data using a single identifying hash, the -> Merkle tree root. The data that the tree commits to lies at the [leaves](glossary.md#docs-internal-guid-008d8ad9-7fff-b03b-3f77-c851c431877d). Two leaves are hashed into a node, two nodes are hashed into a higher level node. The top node makes up the root.
+
+## Merkle tree node <a href="#docs-internal-guid-21c32320-7fff-b611-c280-9057de469d80" id="docs-internal-guid-21c32320-7fff-b611-c280-9057de469d80"></a>
+
+A Merkle tree node is a hash of either two [leaves](glossary.md#docs-internal-guid-008d8ad9-7fff-b03b-3f77-c851c431877d), or two nodes of a lower level.
+
+## Merkle tree root <a href="#docs-internal-guid-e842530e-7fff-01a9-e250-7c8de9edba95" id="docs-internal-guid-e842530e-7fff-01a9-e250-7c8de9edba95"></a>
+
+The Merkle tree root is a single hash that identifies all data in a [Merkle tree](glossary.md#docs-internal-guid-43b3bcf6-7fff-bef3-8e7d-b1830f39b88b). If a single bit in the tree changes, the root changes too.
 
 ## Millibitcoin
 
@@ -464,6 +500,10 @@ A private channel is a channel that is not announced to the network. As such it 
 
 Probing is the act of attempting payments through the Lightning Network without settling them in an attempt to discover routes or reveal channel capacity.
 
+## PTLC <a href="#docs-internal-guid-f7f705f0-7fff-5ce7-0536-1425d31c86d4" id="docs-internal-guid-f7f705f0-7fff-5ce7-0536-1425d31c86d4"></a>
+
+Point Time-locked Contracts (PTLCs) are a proposed improvement on [HTLCs](glossary.md#hash-time-lock-contract). It uses homomorphic one-way functions instead of hashes. When using PTLCs, there is no single [preimage](glossary.md#preimage) across a [payment route](glossary.md#route), but instead each hop calculates its own secret.  Using unique secrets per hop reduces the ability of an intermediary to trace the route a payment takes in the Lightning Network.
+
 ## Public key
 
 In cryptography, a public key can be used to verify signed data, as well as encrypt data for a recipient. In the Lightning Network each [node](glossary.md#lightning-network-node) is identified by its public key. This key is used to handle [Onion](glossary.md#onion-routing) routing, [keysend](glossary.md#keysend) messages, peer-to-peer communications and other data.
@@ -522,6 +562,14 @@ A sidecar channel refers to a channel purchased on [Lightning Pool](glossary.md#
 
 A sidecar ticket allows the recipient of a [Sidecar channel](glossary.md#sidecar-channel) purchased on [Pool](glossary.md#pool) to redeem the channel. The seller will then open the channel to the ticket holder.
 
+## Sparse Merkle Sum Tree <a href="#docs-internal-guid-9206b97f-7fff-0188-662e-146ccef6354a" id="docs-internal-guid-9206b97f-7fff-0188-662e-146ccef6354a"></a>
+
+A Sparse Merkle Sum tree (SMST) combines the properties of a -> Sparse Merkle tree and a [Merkle Sum tree](glossary.md#docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94).
+
+## Sparse Merkle Tree <a href="#docs-internal-guid-3885545f-7fff-a51b-405a-54b62b6131d5" id="docs-internal-guid-3885545f-7fff-a51b-405a-54b62b6131d5"></a>
+
+A Sparse Merkle Tree (SMT) is a data structure that, in addition to a normal [Merkle-tree's](glossary.md#docs-internal-guid-43b3bcf6-7fff-bef3-8e7d-b1830f39b88b) ability to produce inclusion proofs, is able to provide non-inclusion proofs. This is achieved by placing an object at a [leaf](glossary.md#docs-internal-guid-008d8ad9-7fff-b03b-3f77-c851c431877d) location defined by the binary expression of the SHA256 digest of that data.  Each bit, of the digest, expresses the left-right traversal in a binary tree to locate the object.  When the contents of many of the leaves are empty, many of the branches are null, leading to efficient computation during SMT generation and modification.
+
 ## Sphinx
 
 Sphinx is the name of the protocol by which the Lightning Network implements [onion routing](glossary.md#onion-routing).
@@ -544,6 +592,12 @@ Taproot is a bitcoin transaction type introduced in November 2021 that allows fo
 
 [Further reading: Taproot BIP 341 full text](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki)
 
+## Taro <a href="#docs-internal-guid-7cc2614e-7fff-6a58-76d9-4f295cc1a60e" id="docs-internal-guid-7cc2614e-7fff-6a58-76d9-4f295cc1a60e"></a>
+
+Taro is a protocol for issuing assets on Bitcoin. It uses [Merkle Sum trees](glossary.md#docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94) and [Sparse Merkle trees](glossary.md#docs-internal-guid-3885545f-7fff-a51b-405a-54b62b6131d5) to commit assets to the Bitcoin Blockchain. Taro assets can be committed to [Lightning channels](glossary.md#channel) to instant transfers.
+
+[Read more: Understanding Taro](../the-lightning-network/taro.md)
+
 ## Time Lock Delta
 
 Time lock deltas such as [CSV](glossary.md#check-sequence-verify) and [CLTV](glossary.md#cltv) are used in the Lightning Network to lock funds for a period of time, for example for arbitration purposes.
@@ -561,6 +615,18 @@ The transaction ID (txid) is the hash of a bitcoin transaction. Channels are ide
 ## Turbo channel
 
 A Turbo channel is a channel accepted as valid with zero confirmations on the Bitcoin blockchain. It requires some trust in the initiator.
+
+## Tweak <a href="#docs-internal-guid-c9ffc355-7fff-c791-8019-07b5dc545907" id="docs-internal-guid-c9ffc355-7fff-c791-8019-07b5dc545907"></a>
+
+In the context of [Taproot](glossary.md#taproot), to tweak refers to the possibility of adding any data to the public key, in a way that anyone with the public key is able to verify the existence of this data. This is useful when [committing](glossary.md#docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776) to data, such as a [Merkle tree root](glossary.md#docs-internal-guid-e842530e-7fff-01a9-e250-7c8de9edba95).
+
+## Unique assets <a href="#docs-internal-guid-7d0c14d2-7fff-73d5-eda7-4a5036028cbc" id="docs-internal-guid-7d0c14d2-7fff-73d5-eda7-4a5036028cbc"></a>
+
+A unique asset is an asset that is not divisible, and cannot be exchanged for another asset of the same kind. This is contrary to fungible assets, such as money.
+
+## Universe <a href="#docs-internal-guid-ed1dfbe4-7fff-b3c7-6199-85713fa053a6" id="docs-internal-guid-ed1dfbe4-7fff-b3c7-6199-85713fa053a6"></a>
+
+A universe is a repository for [Taro](glossary.md#docs-internal-guid-7cc2614e-7fff-6a58-76d9-4f295cc1a60e) assets. It serves information such as metadata and proofs to prospective and existing users and holders of such assets.
 
 ## Unspent Transaction Outputs
 

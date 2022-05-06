@@ -136,6 +136,9 @@ close to continue after a peer disconnect](https://github.com/lightningnetwork/l
 * [A subsystem hand-off between the contractcourt and htlcswitch has been fixed by adding a persistence layer. This avoids a rare edge case
 from occurring that would result in an erroneous force close.](https://github.com/lightningnetwork/lnd/pull/6250)
 
+* [Ignore addresses with unknown types in NodeAnnouncements](
+  https://github.com/lightningnetwork/lnd/pull/6435)
+
 ## Routing
 
 * [Add a new `time_pref` parameter to the QueryRoutes and SendPayment APIs](https://github.com/lightningnetwork/lnd/pull/6024) that
@@ -277,6 +280,11 @@ from occurring that would result in an erroneous force close.](https://github.co
 
 * Add [htlc expiry protection](https://github.com/lightningnetwork/lnd/pull/6212)
 to the htlc interceptor API.
+
+* In order to safely advance commitment state, `lnd` saves the past states and
+  constructs a justice transaction in case of a remote breach. The states can
+  grow very large on disk given a busy operating channel, [which is now changed
+  with a space deduction over (at least) 96 percents.](https://github.com/lightningnetwork/lnd/pull/6347) 
 
 ## Documentation
 

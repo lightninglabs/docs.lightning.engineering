@@ -10,7 +10,7 @@ Taro is a new Taproot-powered protocol for issuing assets on the bitcoin blockch
 
 Taro relies on Taproot, bitcoin’s most recent upgrade, for a new tree structure that allows developers to embed arbitrary asset metadata within an existing output. It uses Schnorr signatures for improved simplicity and scalability, and, importantly, works with multi-hop transactions over Lightning.
 
-Taro is conceptually similar to colored coins, but makes use of Taproot transactions to radically improve privacy and scalability. Assets issued on Taro can be deposited into Lightning Network channels, where nodes can offer atomic conversions from Bitcoin to Taro assets. This allows Taro assets to be interoperable with the broader Lightning Network, benefiting from its reach and strengthening its network effects.
+Throughout Bitcoin's history, there have been a number of proposals with regard to bringing assets to the Bitcoin blockchain. Taro advances those ideas by focusing on what Taproot enables in that realm. With a Taproot-centered design, Taro can deliver assets on Bitcoin and Lightning in a more private and scalable manner. Assets issued on Taro can be deposited into Lightning Network channels, where nodes can offer atomic conversions from Bitcoin to Taro assets. This allows Taro assets to be interoperable with the broader Lightning Network, benefiting from its reach and strengthening its network effects.
 
 Taro uses a Sparse-Merkle Tree to enable fast, efficient, private retrieval and updates to the witness/transaction data and a Merkle-Sum Tree to prove valid conservation/non-inflation. Assets can be transferred through on-chain transactions, or over the Lightning Network when deposited into a channel.
 

@@ -23,6 +23,10 @@ Summary:
 3. Assets can be deposited into Lightning channels
 4. Assets can be transfered over the existing Lightning Network
 
+{% embed url="https://www.youtube.com/watch?v=-yiTtO_p3Cw" %}
+Video: Taro, a New Protocol for Multi-Asset Bitcoin and Lightning
+{% endembed %}
+
 ## Concepts and topography
 
 To understand Taro, we will need to make ourselves familiar with several concepts, some of which are novel, in the context of the bitcoin blockchain.

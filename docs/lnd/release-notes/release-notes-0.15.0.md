@@ -25,6 +25,10 @@ addresses](https://github.com/lightningnetwork/lnd/pull/6263). Using
 then watch it on chain. Taproot script spends are also supported through the
 `signrpc.SignOutputRaw` RPC (`/v2/signer/signraw` in REST).
 
+The `walletrpc.SignPsbt` RPC now also supports [Taproot PSBT
+signing](https://github.com/lightningnetwork/lnd/pull/6450) to fully support
+remote signing with Taproot outputs. 
+
 ## MuSig2
 
 The [`signrpc.Signer` RPC service now supports EXPERIMENTAL MuSig2
@@ -54,6 +58,10 @@ releases. Backward compatibility is not guaranteed!
 * Add [--socksproxy](https://github.com/lightningnetwork/lnd/pull/6422)
   to allow for RPC calls via Tor.
 
+* [Hop hints are now opt in when using `lncli
+  addinvoice`]https://github.com/lightningnetwork/lnd/pull/6523). Users now
+  need to explicitly specify the `--private` flag.
+
 ## Neutrino
 
 [Neutrino now suports BIP
@@ -63,6 +71,12 @@ to Bitcoin nodes that advertise a Tor v3 onion service address.
 [A new neutrino sub-server](https://github.com/lightningnetwork/lnd/pull/5652)
 capable of status checks, adding, disconnecting and listing peers, fetching
 compact filters and block/block headers.
+
+## Btcwallet
+
+* [Add option to configure the block and transaction subscription 
+  notifications from bitcoind to be obtained through polling of the RPC 
+  interface instead of using ZMQ](https://github.com/lightningnetwork/lnd/pull/6345)
 
 ## Bug Fixes
 
@@ -89,6 +103,11 @@ compact filters and block/block headers.
 * [Fixed an edge case where the lnd might be stuck at starting due to channel
   arbitrator relying on htlcswitch to be started
   first](https://github.com/lightningnetwork/lnd/pull/6214).
+
+* [Fixed an issue where invoice notifications could be missed when using the
+   SubscribeSingleInvoice or SubscribeNotifications rpcs.](https://github.com/lightningnetwork/lnd/pull/6477)
+  
+## Neutrino
 
 * [Fixed crash in MuSig2Combine](https://github.com/lightningnetwork/lnd/pull/6502)
 
@@ -234,6 +253,8 @@ from occurring that would result in an erroneous force close.](https://github.co
   the in-memory state to be cleaned up early if a session isn't expected to
   succeed anymore](https://github.com/lightningnetwork/lnd/pull/6495).
 
+* [Some of the invoice update logic has been refactored to be less verbose.](https://github.com/lightningnetwork/lnd/pull/6415)
+
 ## RPC Server
 
 * [Add value to the field
@@ -290,6 +311,10 @@ to the htlc interceptor API.
   constructs a justice transaction in case of a remote breach. The states can
   grow very large on disk given a busy operating channel, [which is now changed
   with a space deduction over (at least) 96 percents.](https://github.com/lightningnetwork/lnd/pull/6347) 
+
+* [Mobile builds now expose main sub-servers by default](https://github.com/lightningnetwork/lnd/pull/6464).
+  All API methods have prefixed the generated methods with the subserver name.
+  This is required to support subservers with name conflicts.
 
 ## Documentation
 
@@ -358,6 +383,7 @@ gRPC performance metrics (latency to process `GetInfo`, etc)](https://github.com
 * Elle Mouton
 * ErikEk
 * Eugene Siegel
+* Evan Kaloudis
 * Hampus Sjöberg
 * henta
 * hieblmi

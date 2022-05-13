@@ -29,6 +29,11 @@ The `walletrpc.SignPsbt` RPC now also supports [Taproot PSBT
 signing](https://github.com/lightningnetwork/lnd/pull/6450) to fully support
 remote signing with Taproot outputs. 
 
+The internal version of the `aezeed` [was bumped to `1` to mark new seeds that
+were created after introducing the Taproot key
+derivation](https://github.com/lightningnetwork/lnd/pull/6524) to simplify
+detecting Taproot compatibility of a seed.
+
 ## MuSig2
 
 The [`signrpc.Signer` RPC service now supports EXPERIMENTAL MuSig2
@@ -106,8 +111,6 @@ compact filters and block/block headers.
 
 * [Fixed an issue where invoice notifications could be missed when using the
    SubscribeSingleInvoice or SubscribeNotifications rpcs.](https://github.com/lightningnetwork/lnd/pull/6477)
-  
-## Neutrino
 
 * [Fixed crash in MuSig2Combine](https://github.com/lightningnetwork/lnd/pull/6502)
 
@@ -294,6 +297,10 @@ from occurring that would result in an erroneous force close.](https://github.co
   in the payment database](https://github.com/lightningnetwork/lnd/pull/6463).
 
 * [Remove `confirmation_height` field from PendingChannel proto](https://github.com/lightningnetwork/lnd/pull/6472)
+
+* [The `walletrpc.ListLeases` RPC (`lncli wallet listleases`) now shows the
+  pkScript and value of a leased
+  output](https://github.com/lightningnetwork/lnd/pull/6528).
 
 ## Database
 

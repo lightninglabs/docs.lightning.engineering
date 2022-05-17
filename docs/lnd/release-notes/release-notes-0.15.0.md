@@ -64,8 +64,13 @@ releases. Backward compatibility is not guaranteed!
   to allow for RPC calls via Tor.
 
 * [Hop hints are now opt in when using `lncli
-  addinvoice`]https://github.com/lightningnetwork/lnd/pull/6523). Users now
+  addinvoice`](https://github.com/lightningnetwork/lnd/pull/6523). Users now
   need to explicitly specify the `--private` flag.
+
+* A new [`constrainmacaroon` command was
+  added](https://github.com/lightningnetwork/lnd/pull/6529) that allows
+  caveats/restrictions to be added to an existing macaroon (instead of needing
+  to bake a new one). 
 
 ## Neutrino
 
@@ -257,6 +262,11 @@ from occurring that would result in an erroneous force close.](https://github.co
   succeed anymore](https://github.com/lightningnetwork/lnd/pull/6495).
 
 * [Some of the invoice update logic has been refactored to be less verbose.](https://github.com/lightningnetwork/lnd/pull/6415)
+
+* [Clarify error msg when bitcoind cookie file is missing](https://github.com/lightningnetwork/lnd/pull/6536).
+
+* [Minor fix](https://github.com/lightningnetwork/lnd/pull/6535) to
+  how bitcoind.rpccookie and bitocind.config are parsed from config file.
 
 ## RPC Server
 

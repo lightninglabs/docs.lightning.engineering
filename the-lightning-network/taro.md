@@ -69,7 +69,11 @@ A Sparse (meaning ‘thinly scattered’) Merkle tree is a data structure in whi
 
 To achieve this property, the contents of the leaf are hashed and a merkle tree is created in which the leaf's position corresponds to the bitmap of the hash digest.  By necessity, this requires a tree of 256 levels and 2^256 leaves.  Generation of the tree is efficient--despite the apparently large size--because the overwhelming majority of the branches contain empty leaves and can be represented with nil hashes.
 
+![Constructing a Sparse Merkle tre](<../.gitbook/assets/Merkle tree introduction B1.png>)
+
 For example, we may create a Sparse Merkle tree using a fictitious hashing function of sha002, which results in a number between 0 and 3. We generate a Sparse Merkle tree with 4 leaves: 0, 1, 2 and 3. Only leaf 2 is populated, all other leaves are empty. To find leaf 2 (written 10 in binary), we go left at the first branch (1), then right at the second branch (0).
+
+![Identifying leaves in a Sparse Merkle tree](<../.gitbook/assets/Merkle tree introduction B3.png>)
 
 To verify leaf 2, we now only need to reveal the value at this leaf, plus the hash of leaf 3 and the hash of branch 0.
 
@@ -78,6 +82,8 @@ In Sparse Merkle trees, every leaf can be described as a guide to itself through
 This property is extremely useful for constructing and reconstructing the Sparse Merkle tree, as it describes precisely which parts of the Sparse Merkle tree we have to reconstruct. More importantly, the data in each leaf can now be described by their location in the tree.
 
 Using the Sparse Merkle tree, we can associate data with public keys, and prove that we have deleted this data in an easily verifiable way without having to reveal the entire tree.
+
+![](<../.gitbook/assets/Merkle tree introduction B5.png>)
 
 Because every item has its predetermined location, the tree’s root hash is not dependent on the order in which items are inserted.
 
@@ -137,6 +143,8 @@ The asset issuer can now selectively reveal what assets were created and to whom
 
 The recipient can verify the partial sparse Merkle sum tree to recreate the script, tweak the issuer’s public key and verify that the genesis transaction exists on the blockchain, while the partial Merkle tree gives them assurance over the assets issued to them, as well as the total number of assets issued.
 
+![Proving non-inclusion in a Sparse Merkle tree](<../.gitbook/assets/Merkle tree introduction B6.png>)
+
 ## Transferring assets <a href="#docs-internal-guid-ae0229ef-7fff-480d-ba27-14c268d89d16" id="docs-internal-guid-ae0229ef-7fff-480d-ba27-14c268d89d16"></a>
 
 Taro assets can be transferred on-chain, or they can be used to open Lightning Network channels. In this chapter, we will discuss on-chain transactions only.
@@ -162,6 +170,8 @@ The issuer or asset holder can use the information in your Taro address to creat
 To transfer Taro assets, the recipient communicates their address to the current holder, who can initiate the transfer. The exact interaction between account holders and issuers is not strictly defined at this time. It could be left up to each application or even asset issuer to specify.
 
 The sender of the funds will need to generate a new sparse Merkle sum tree reflecting the new balances. This is done by reducing the balances of certain leafs and increasing the balances of other leafs. The sparse Merkle sum tree guarantees that no new assets are created in such a transaction and that the previous claims to the assets are fully relinquished.
+
+![Identifying Accounts](<../.gitbook/assets/Merkle tree introduction C5.png>)
 
 Creating assets requires a single on-chain taproot transaction, in which there is no limit on how many assets can be minted or how many accounts can hold these assets. To transfer assets, as explained above, requires reorganizing the Merkle tree and publishing a new on-chain transaction. There is no limit to how many internal Taro transactions are reflected in this single on-chain transaction.
 

@@ -63,7 +63,7 @@ If the key/certificate pair (`tls.cert` and `tls.key` in the main `lnd` data dir
 
 ### Macaroons
 
-Macaroons are used as the main authentication method in `lnd`. A macaroon is a cryptographically verifiable token, comparable to a [JWT](https://jwt.io) or other form of API access token. In `lnd` this token consists of a _list of permissions_ (what operations does the user of the token have access to) and a set of _restrictions_ (e.g. token expiration timestamp, IP address restriction). `lnd` does not keep track of the individual macaroons issued, only the key that was used to create (and later verify) them. That means, individual tokens cannot currently be invalidated, only all of them at once.\
+Macaroons are used as the main authentication method in `lnd`. A macaroon is a cryptographically verifiable token, comparable to a [JWT](https://jwt.io/) or other form of API access token. In `lnd` this token consists of a _list of permissions_ (what operations does the user of the token have access to) and a set of _restrictions_ (e.g. token expiration timestamp, IP address restriction). `lnd` does not keep track of the individual macaroons issued, only the key that was used to create (and later verify) them. That means, individual tokens cannot currently be invalidated, only all of them at once.\
 See the [high-level macaroons documentation](https://github.com/lightninglabs/docs.lightning.engineering/tree/f123436bd902a6be74cb853447456c5c65307dd6/docs/lnd/macaroons.md) or the [technical README](https://github.com/lightninglabs/docs.lightning.engineering/tree/f123436bd902a6be74cb853447456c5c65307dd6/docs/macaroons/README.md) for more information.
 
 Important to know:

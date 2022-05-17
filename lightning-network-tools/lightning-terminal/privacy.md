@@ -6,7 +6,7 @@ Last modified: December 4, 2021
 
 Lightning Labs, Inc. (**"Company"** or **"We"**) respect your privacy and are committed to protecting it through our compliance with this policy.
 
-This policy describes the types of information we may collect from you or that you may provide when you visit the website [https://lightning.engineering](https://lightning.engineering) including our Terminal, Loop, and Pool network access services (collectively, our "**Website**") and our practices for collecting, using, maintaining, protecting, and disclosing that information.
+This policy describes the types of information we may collect from you or that you may provide when you visit the website [https://lightning.engineering](https://lightning.engineering/) including our Terminal, Loop, and Pool network access services (collectively, our "**Website**") and our practices for collecting, using, maintaining, protecting, and disclosing that information.
 
 This policy applies to information we collect:
 

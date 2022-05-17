@@ -80,7 +80,7 @@ Bitcoin is a network established in 2009 by [Satoshi Nakamoto](glossary.md#satos
 
 Popular software used as a backend for [LND](glossary.md#the-lightning-network-daemon) to look up [on-chain](glossary.md#on-chain) balances and verify [channel](glossary.md#payment-channel) states. See also [bitcoind](glossary.md#bitcoind).
 
-[Further reading: Bitcoin Core project website](https://bitcoincore.org)
+[Further reading: Bitcoin Core project website](https://bitcoincore.org/)
 
 ## bitcoind
 
@@ -232,7 +232,7 @@ The Lightning Network graph contains information about all peers and their publi
 
 gRPC is a Remote Procedure Call tool developed by Google, used in [LND](glossary.md#the-lightning-network-daemon) for remote calls.
 
-[Read more: LND API reference](https://api.lightning.community)
+[Read more: LND API reference](https://api.lightning.community/)
 
 ## Hash Time-lock Contract
 
@@ -274,7 +274,7 @@ A leaf is the part of a [Merkle tree](glossary.md#docs-internal-guid-43b3bcf6-7f
 
 A private company helping to maintain [LND](glossary.md#the-lightning-network-daemon). Lightning Labs also develops tools like [Lightning Loop](glossary.md#loop), [Pool](glossary.md#pool), [Faraday](glossary.md#faraday), [Lightning Terminal](glossary.md#lightning-terminal), and more.
 
-[Read more: Lightning Labs home page](https://lightning.engineering)
+[Read more: Lightning Labs home page](https://lightning.engineering/)
 
 ## Lightning Network
 
@@ -400,7 +400,7 @@ Neutrino is a technology that allows a [LND](glossary.md#the-lightning-network-d
 
 Noise is the encryption protocol used to establish and authenticate communications between Lightning nodes.
 
-[Further reading: Noise protocol](http://noiseprotocol.org)
+[Further reading: Noise protocol](http://noiseprotocol.org/)
 
 ## np2wkh
 
@@ -480,7 +480,7 @@ A peer-to-peer network is any system not relying on a leader, in which connectio
 
 Polar makes it easy to locally simulate the Lightning Network for testing purposes. Developed by Jamal James.
 
-[Further reading: Polar website](https://lightningpolar.com)
+[Further reading: Polar website](https://lightningpolar.com/)
 
 ## Pool
 
@@ -606,7 +606,7 @@ Time lock deltas such as [CSV](glossary.md#check-sequence-verify) and [CLTV](glo
 
 The Onion Router (Tor) is a public relay network primarily built to hide the origin and destination of packets on the internet. It is popular among [Lightning Node](glossary.md#lightning-network-node) operators to make their nodes accessible through Tor to avoid [NAT](glossary.md#nat) barriers.
 
-[Further reading: Tor project](https://www.torproject.org)
+[Further reading: Tor project](https://www.torproject.org/)
 
 ## Transaction ID
 

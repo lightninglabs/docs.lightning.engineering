@@ -16,7 +16,7 @@ We are here to help. If you have questions or need to bounce ideas around, feel 
 
 **A native interface to Lightning on the web**
 
-* New Lightning browser extensions like [Joule](https://lightningjoule.com) and the [Lightning Browser Extension](https://github.com/bumi/lightning-browser-extension) built on the [WebLN](https://webln.dev/#/) standard.
+* New Lightning browser extensions like [Joule](https://lightningjoule.com/) and the [Lightning Browser Extension](https://github.com/bumi/lightning-browser-extension) built on the [WebLN](https://webln.dev/#/) standard.
 * Suggestion: extending [WebLN](https://webln.dev/#/) to encompass liquidity APIs [Loop](https://lightning.engineering/loop) and [Pool](https://lightning.engineering/pool) as well as any other Lightning APIs.
 
 **Streaming payments on social platforms**
@@ -26,12 +26,12 @@ We are here to help. If you have questions or need to bounce ideas around, feel 
 
 **Distributed compute with Lightning**
 
-* Use [LSATs](https://lsat.tech) for a decentralized metered container execution service (like [Travis CI](https://travis-ci.org)). Will have with the potential to reach a more global audience without the requirement of credit cards.&#x20;
-* Suggestion: think serverless microVMs like [Firecracker VM](https://firecracker-microvm.github.io) as a starting point, will likely need a small overlay layer to let people find other nodes.
+* Use [LSATs](https://lsat.tech) for a decentralized metered container execution service (like [Travis CI](https://travis-ci.org/)). Will have with the potential to reach a more global audience without the requirement of credit cards.&#x20;
+* Suggestion: think serverless microVMs like [Firecracker VM](https://firecracker-microvm.github.io/) as a starting point, will likely need a small overlay layer to let people find other nodes.
 
 **Lightning Paywall Plugin**
 
-* Combined with the Web LN work mentioned above, implement as a [BTCPayServer](https://btcpayserver.org), [Wordpress](https://wordpress.com) and/or [Ghost](https://ghost.org) plug-in. Long term, the plugin should target [WASM](https://webassembly.org) so only a Chrome extension install is required.
+* Combined with the Web LN work mentioned above, implement as a [BTCPayServer](https://btcpayserver.org/), [Wordpress](https://wordpress.com/) and/or [Ghost](https://ghost.org/) plug-in. Long term, the plugin should target [WASM](https://webassembly.org/) so only a Chrome extension install is required.
 * For thought: could potentially serve as a captcha replacement, where popular sites present de minimis paywalls at first, ramping up only with actual abuse.
 
 **Pay-per-use Lightning API calls**

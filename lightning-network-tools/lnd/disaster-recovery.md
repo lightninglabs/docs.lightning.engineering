@@ -94,4 +94,4 @@ You may also consult the following tools and resources as part of your node reco
 
 [Telegram Cheeserobot](https://t.me/cheeserobot)
 
-[Zombie Channel Recovery Matcher](https://node-recovery.com)
+[Zombie Channel Recovery Matcher](https://node-recovery.com/)

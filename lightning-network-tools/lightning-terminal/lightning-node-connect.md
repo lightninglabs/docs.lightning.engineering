@@ -24,7 +24,7 @@ The process starts with the user creating a new Lightning Node Connect session i
 
 ## Initial handshake <a href="#docs-internal-guid-74d06d57-7fff-4d90-d90f-37ee70c5e250" id="docs-internal-guid-74d06d57-7fff-4d90-d90f-37ee70c5e250"></a>
 
-The [Noise Protocol Framework](http://noiseprotocol.org) is already used in the Lightning Network to handle encrypted connections between nodes ([see BOLT 8 for details](https://github.com/lightningnetwork/lightning-rfc/blob/master/08-transport.md)). It leverages the existing public keys that identify Lightning nodes and avoid introducing new complexity or dependencies and does not rely on certificate authorities.
+The [Noise Protocol Framework](http://noiseprotocol.org/) is already used in the Lightning Network to handle encrypted connections between nodes ([see BOLT 8 for details](https://github.com/lightningnetwork/lightning-rfc/blob/master/08-transport.md)). It leverages the existing public keys that identify Lightning nodes and avoid introducing new complexity or dependencies and does not rely on certificate authorities.
 
 The Noise handshake however is handled differently. The process is initiated by the user generating the pairing phrase in the Lightning Terminal Daemon (litd) as described above. This triggers the generation of a long-term public key for the handshakes in addition to the 64-byte stream ID.
 

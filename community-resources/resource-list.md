@@ -39,7 +39,7 @@ description: >-
 
 ### Lightning node interfaces
 
-* [Alby](https://getalby.com) ([Github](https://github.com/getAlby/lightning-browser-extension)) -  connect various wallet interfaces to this browser extension for web-native payments. Available for Firefox, Chrome, Brave and others
+* [Alby](https://getalby.com/) ([Github](https://github.com/getAlby/lightning-browser-extension)) -  connect various wallet interfaces to this browser extension for web-native payments. Available for Firefox, Chrome, Brave and others
 * [Joule](https://lightningjoule.com) ([Github](https://github.com/joule-labs/joule-extension)) - available for Firefox, Chrome, Opera and Brave
 * [Zap](https://zaphq.io) ([Github](https://github.com/LN-Zap)) - available in Google Play, for OSX, Linux, Windows and iOS
 * [Zeus](https://github.com/ZeusLN/zeus) - available in Google Play, F-Droid and the Apple AppStore
@@ -122,7 +122,7 @@ description: >-
 * [Fastbitcoins](https://fastbitcoins.com)
 * [FixedFloat](https://fixedfloat.com)
 * [Kollider](https://kollider.xyz)
-* [Kraken](https://www.kraken.com)
+* [Kraken](https://www.kraken.com/)
 * [LNMarkets](https://lnmarkets.com)
 * [LOFT](https://loft.trade)
 * [NiceHash](https://www.nicehash.com)

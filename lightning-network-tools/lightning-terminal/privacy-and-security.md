@@ -27,7 +27,7 @@ You are able to revoke an application’s access to your node, such as the web v
 
 The Lightning Terminal Daemon creates a pairing phrase for you to connect to the web version of Terminal (or in the future other applications). This pairing phrase does not need to be stored anywhere, but can be reused for another connection attempt. Only one concurrent connection is possible with each pairing phrase. The pairing phrase is communicated out of band between the machine running `litd` and your browser. Ideally you will be able to copy/paste it on your personal machine, or enter it manually.
 
-Be careful where you enter the pairing phrase, as you might be targeted by phishing schemes. Be careful with verifying that you are navigating to the correct trusted site, e.g. [https://terminal.lightning.engineering/](https://terminal.lightning.engineering) Do not enter your pairing phrase into applications and sites you do not trust.
+Be careful where you enter the pairing phrase, as you might be targeted by phishing schemes. Be careful with verifying that you are navigating to the correct trusted site, e.g. [https://terminal.lightning.engineering/](https://terminal.lightning.engineering/) Do not enter your pairing phrase into applications and sites you do not trust.
 
 ## Your browser
 

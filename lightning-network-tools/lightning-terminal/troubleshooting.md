@@ -53,3 +53,19 @@ Find the docker process (lightning-terminal) with `docker ps`\
 pool `--rpcserver=localhost:8443 --macaroonpath /root/.pool/mainnet/pool.macaroon --tlscertpath /root/.lit/tls.cert accounts recover`
 
 [Read more about Pool Accounts Recovery](../pool/account\_recovery.md)
+
+## Pool is unable to resume account
+
+`[ERR] LITD: Could not start subservers: unable to start account manager: unable to resume account X: unable to subscribe for account updates: checking pending batch failed: error removing pending batch artifacts: error abandoning channels from previous pending batch: error locating channel outpoint: no channel output found in batch tx for matched order Y`
+
+If you are encountering the error above you will have to rename your `pool.db` file and recover your account. In Umbrel you may follow these instructions:
+
+`ssh umbrel@umbrel.local`\
+`cd ~/umbrel ./scripts/app`\
+`stop lightning-terminal`\
+`cd /umbrel/app-data/lightning-terminal/data/.pool/mainnet`\
+`mv pool.db pool.db.bak`\
+`cd /umbrel ./scripts/app`\
+`start lightning-terminal`\
+`docker exec -it lightning-terminal_web_1 bash`\
+`pool --rpcserver=localhost:8443 --tlscertpath=/.lit/tls.cert --macaroonpath=/.pool/mainnet/pool.macaroon accounts recover`

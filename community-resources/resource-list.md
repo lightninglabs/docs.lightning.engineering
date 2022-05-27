@@ -93,6 +93,7 @@ description: >-
 
 ## Wikis, Guides & Resources <a href="#docs-internal-guid-8bae6cd2-7fff-ce99-f185-1c89fff98fef" id="docs-internal-guid-8bae6cd2-7fff-ce99-f185-1c89fff98fef"></a>
 
+* Alby's [WebLN Guide](https://www.webln.guide/introduction/welcome)
 * Lightning Network Wiki [ION](https://wiki.ion.radar.tech)
 * Ben Congdon's[ Awesome Lightning Network](https://github.com/bcongdon/awesome-lightning-network)
 * Electric Capital's[ Lightning Ecosystem Repository](https://github.com/electric-capital/crypto-ecosystems/blob/master/data/ecosystems/l/lightning.toml)

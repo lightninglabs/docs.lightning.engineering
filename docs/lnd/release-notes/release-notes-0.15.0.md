@@ -125,12 +125,6 @@ compact filters and block/block headers.
 * [Fixed deadlock in the invoice registry](
   https://github.com/lightningnetwork/lnd/pull/6600)
 
-## Neutrino
-
-* [New neutrino sub-server](https://github.com/lightningnetwork/lnd/pull/5652)
-  capable of status checks, adding, disconnecting and listing
-  peers, fetching compact filters and block/block headers.
-
 * [Added signature length
   validation](https://github.com/lightningnetwork/lnd/pull/6314) when calling
   `NewSigFromRawSignature`.
@@ -186,6 +180,10 @@ from occurring that would result in an erroneous force close.](https://github.co
 
 * [Fixed a wrong channel status inheritance used in `migration26` and
   `migration27`](https://github.com/lightningnetwork/lnd/pull/6563).
+
+* [Fixes an issue related to HTLCs on lease enforced channels that can lead to itest flakes](https://github.com/lightningnetwork/lnd/pull/6605/files)
+
+* [Fixes a bug that would cause `SignPsbt` to panic w/ an underspecified packet](https://github.com/lightningnetwork/lnd/pull/6611)
 
 ## Routing
 
@@ -287,6 +285,8 @@ from occurring that would result in an erroneous force close.](https://github.co
   how bitcoind.rpccookie and bitocind.config are parsed from config file.
 
 * [Fix a data race found when running unit test for revocation log](https://github.com/lightningnetwork/lnd/pull/6594).
+
+* [A new version of the internal `tor` module was tagged and updated for the main module](https://github.com/lightningnetwork/lnd/pull/6612).
 
 
 ## RPC Server

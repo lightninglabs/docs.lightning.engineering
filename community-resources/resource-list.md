@@ -36,10 +36,10 @@ description: >-
 * [Wallet of Satoshi](https://walletofsatoshi.com) - available in Google Play and the Apple AppStore
 * [Bottlepay](https://bottlepay.com) - available in Google Play and the Apple AppStore
 * [Mash](https://getmash.com/wallet) - lightning wallet that integrates directly into sites, apps and launching shortly in browser extension, mobile app form.
+* [Alby](https://getalby.com/) ([Github](https://github.com/getAlby/lightning-browser-extension)) -  connect various wallet interfaces to this browser extension for web-native payments. And login with lightning. Available for Firefox, Chrome, Brave and others
 
 ### Lightning node interfaces
 
-* [Alby](https://getalby.com/) ([Github](https://github.com/getAlby/lightning-browser-extension)) -  connect various wallet interfaces to this browser extension for web-native payments. Available for Firefox, Chrome, Brave and others
 * [Joule](https://lightningjoule.com) ([Github](https://github.com/joule-labs/joule-extension)) - available for Firefox, Chrome, Opera and Brave
 * [Zap](https://zaphq.io) ([Github](https://github.com/LN-Zap)) - available in Google Play, for OSX, Linux, Windows and iOS
 * [Zeus](https://github.com/ZeusLN/zeus) - available in Google Play, F-Droid and the Apple AppStore

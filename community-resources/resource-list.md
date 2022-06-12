@@ -55,7 +55,6 @@ description: >-
 * [lngraph](https://github.com/xsb/lngraph) - Personal Lightning Network explorer using Neo4j Browser
 * [LNnodeinsight](https://lnnodeinsight.com) - Analytics from the perspective of your own node
 * [VR Explorer](https://bl.ocks.org/tyzbit/d1c83732d2767bb955125d41f5921888) - the Lightning Network... in VR!
-* [Bitcoin Prophecy](https://prophecybitcoin.com) - Uncover and the true price of bitcoin for free, and then with micro-contributions via lightning.
 
 ## Applications
 

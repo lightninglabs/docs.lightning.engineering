@@ -91,7 +91,7 @@
   * [Quickstart](lightning-network-tools/pool/quickstart.md)
   * [🛠 Installation](lightning-network-tools/pool/install.md)
   * [Accounts](lightning-network-tools/pool/accounts.md)
-  * [Orders](lightning-network-tools/pool/orders.md)
+  * [Orders and Asks](lightning-network-tools/pool/orders.md)
   * [Sidecar Channels](lightning-network-tools/pool/sidecar\_channels.md)
   * [Channel Leases](lightning-network-tools/pool/channel\_leases.md)
   * [Batch Execution](lightning-network-tools/pool/batch\_execution.md)

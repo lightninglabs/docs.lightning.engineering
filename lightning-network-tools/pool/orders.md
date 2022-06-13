@@ -97,32 +97,6 @@ Command for submitting an ask order:
 $ pool orders submit ask
 ```
 
-Help output:
-
-```
-$ pool orders submit ask --help
-
-NAME:
-   pool orders submit ask - offer channel liquidity
-
-USAGE:
-   pool orders submit ask [command options] amt acct_key [--rate_fixed=R] [--max_batch_fee_rate=F] [--lease_duration_blocks=M]
-
-DESCRIPTION:
-
-  Create an offer to provide inbound liquidity to an auction participant
-  by opening a channel to them for a certain time.
-
-OPTIONS:
-   --interest_rate_percent value  the total percent one is willing to pay or accept as yield for the specified interval (default: 0)
-   --amt value                    the amount to offer for channel creation in satoshis (default: 0)
-   --acct_key value               the account key to use to offer liquidity from
-   --lease_duration_blocks value  the number of blocks that the liquidity should be offered for (default: 2016)
-   --min_chan_amt value           the minimum amount of satoshis that a resulting channel from this order must have (default: 0)
-   --force                        skip order placement confirmation
-   --max_batch_fee_rate value     the maximum fee rate (sat/vByte) to use to for the batch transaction (default: 100)
-```
-
 NOTE: The default values shown in the command line help are different from the actual default values that are used. A value of `0` on the command line indicates: _No actual value set, use the internal default value_. See the table below for more information.
 
 | Flag                    | Required | Default Value   | Description                                                                                                                                                                                                                                                                       |
@@ -144,31 +118,6 @@ Command for submitting a bid order:
 
 ```
 $ pool orders submit bid
-```
-
-Help output:
-
-```
-NAME:
-   pool orders submit bid - obtain channel liquidity
-
-USAGE:
-   pool orders submit bid [command options] amt acct_key [--rate_fixed=R] [--max_batch_fee_rate=F] [--lease_duration_blocks=M]
-
-DESCRIPTION:
-
-  Place an offer for acquiring inbound liquidity by lending
-  funding capacity from another participant in the order book.
-
-OPTIONS:
-   --interest_rate_percent value  the total percent one is willing to pay or accept as yield for the specified interval (default: 0)
-   --amt value                    the amount of inbound liquidity in satoshis to request (default: 0)
-   --acct_key value               the account key to use to pay the order fees with
-   --lease_duration_blocks value  the number of blocks that the liquidity should be provided for (default: 2016)
-   --min_node_tier value          the min node tier this bid should be matched with, tier 1 nodes are considered 'good', if set to tier 0, then all nodes will be considered regardless of 'quality' (default: 0)
-   --min_chan_amt value           the minimum amount of satoshis that a resulting channel from this order must have (default: 0)
-   --force                        skip order placement confirmation
-   --max_batch_fee_rate value     the maximum fee rate (sat/vByte) to use to for the batch transaction (default: 100)
 ```
 
 NOTE: The default values shown in the command line help are different from the actual default values that are used. A value of `0` on the command line indicates: _No actual value set, use the internal default value_. See the table below for more information.
@@ -299,6 +248,14 @@ To cancel an order. First get the order\_nonce of the to be canceled order by us
 
 ```
 $ pool orders cancel order_nonce
+```
+
+## Match with specific nodes
+
+To match with a specific node, or to limit your match to a set of nodes you may use the `allowed_node_id` flag. Alternatively you can also specifiy nodes you do not want to match with using the `allowed_node_id` option.
+
+```
+$ pool order submit bid --not_allowed_node_id 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d
 ```
 
 ## Extensibility

@@ -230,7 +230,7 @@ Even if no Taro route exists, a BTC route can take its place as long as first an
 
 This mechanism can also allow for payment of an L-USD invoice in BTC or vice versa.
 
-[Check out these slides for an overview of Taro on Lightning](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-ms-smt.mediawiki)
+[Check out these slides for an overview of Taro on Lightning](https://docs.google.com/presentation/d/1YgMG4MOjs5dHhlf77Zh0WOENXqB0JTV8ZarVjS8slyk/edit?usp=sharing)
 
 
 ## Features & Limitations <a href="#docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46" id="docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46"></a>

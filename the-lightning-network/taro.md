@@ -14,7 +14,11 @@ Throughout Bitcoin's history, there have been a number of proposals with regard 
 
 Taro uses a Sparse-Merkle Tree to enable fast, efficient, private retrieval and updates to the witness/transaction data and a Merkle-Sum Tree to prove valid conservation/non-inflation. Assets can be transferred through on-chain transactions, or over the Lightning Network when deposited into a channel.
 
-Participants in Taro transfer bear the costs of verification and storage by storing Taro witness data off-chain in local data stores or with information repositories termed "Universes" (akin to a git repository).  To check a Taro asset's validity, its lineage since its genesis output is verified.  This is achieved by receiving a verification file of transaction data through the Taro gossip layer. Clients can cross-check with their copy of the blockchain and amend with their own proofs as they pass on the asset.
+Participants in Taro transfer bear the costs of verification and storage by storing Taro witness data off-chain in local data stores or with information repositories termed "Universes" (akin to a git repository). To check a Taro asset's validity, its lineage since its genesis output is verified. This is achieved by receiving a verification file of transaction data through the Taro gossip layer. Clients can cross-check with their copy of the blockchain and amend with their own proofs as they pass on the asset.
+
+{% embed url="https://docs.google.com/presentation/d/1YgMG4MOjs5dHhlf77Zh0WOENXqB0JTV8ZarVjS8slyk" %}
+Read more: Taro announcement presentation slides April 2022
+{% endembed %}
 
 Summary:
 
@@ -39,7 +43,7 @@ Learn about the basic concepts here:\
 
 ### Taproot transactions <a href="#docs-internal-guid-4d5379eb-7fff-d82b-c5fe-6c905a4ecb5e" id="docs-internal-guid-4d5379eb-7fff-d82b-c5fe-6c905a4ecb5e"></a>
 
-Taproot is a new transaction type defined in [BIP 341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki) and fully functional on Bitcoin mainnet as of November 2021. The main difference of Taproot transactions to conventional Bitcoin transactions is that scripts controlling coins are contained within a tree structure called the 'tapScript branch' which is privately committed into the transaction.  These scripts don’t need to be revealed if the KeySpend path is used to move the coins.
+Taproot is a new transaction type defined in [BIP 341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki) and fully functional on Bitcoin mainnet as of November 2021. The main difference of Taproot transactions to conventional Bitcoin transactions is that scripts controlling coins are contained within a tree structure called the 'tapScript branch' which is privately committed into the transaction. These scripts don’t need to be revealed if the KeySpend path is used to move the coins.
 
 While a conventional transaction requires the entire script to be revealed, a Taproot transaction can be spent with a key to abstain from revealing the scripts and if the keyspend path is infeasible, only the executed portion of the script is revealed on the blockchain. All other script paths can remain private, or be selectively revealed off-chain.
 
@@ -61,13 +65,13 @@ H(P|c) = A hash of the internal public key and the commitment
 To sign a transaction with our private key, the private key needs to be tweaked with the same hash of the public key and commitment, H(P|c).
 
 [Read: Taproot Is Coming: What It Is, and How It Will Benefit Bitcoin](https://bitcoinmagazine.com/technical/taproot-coming-what-it-and-how-it-will-benefit-bitcoin)\
-[Watch: Bitcoin Optech Schnorr Taproot Seminar](https://bitcoinops.org/en/schorr-taproot-workshop/)&#x20;
+[Watch: Bitcoin Optech Schnorr Taproot Seminar](https://bitcoinops.org/en/schorr-taproot-workshop/)
 
 ### Sparse Merkle trees <a href="#docs-internal-guid-5a068ff4-7fff-ecac-596d-f7631d0a2edd" id="docs-internal-guid-5a068ff4-7fff-ecac-596d-f7631d0a2edd"></a>
 
-A Sparse (meaning ‘thinly scattered’) Merkle tree is a data structure in which it can be proven that specific data doesn't exist within a merkle tree.  An SMT is an authenticated key-value store, meaning that the key, or location, of a leaf and the content of the leaf are bound to each other.
+A Sparse (meaning ‘thinly scattered’) Merkle tree is a data structure in which it can be proven that specific data doesn't exist within a merkle tree. An SMT is an authenticated key-value store, meaning that the key, or location, of a leaf and the content of the leaf are bound to each other.
 
-To achieve this property, the contents of the leaf are hashed and a merkle tree is created in which the leaf's position corresponds to the bitmap of the hash digest.  By necessity, this requires a tree of 256 levels and 2^256 leaves.  Generation of the tree is efficient--despite the apparently large size--because the overwhelming majority of the branches contain empty leaves and can be represented with nil hashes.
+To achieve this property, the contents of the leaf are hashed and a merkle tree is created in which the leaf's position corresponds to the bitmap of the hash digest. By necessity, this requires a tree of 256 levels and 2^256 leaves. Generation of the tree is efficient--despite the apparently large size--because the overwhelming majority of the branches contain empty leaves and can be represented with nil hashes.
 
 ![Constructing a Sparse Merkle tre](<../.gitbook/assets/Merkle tree introduction B1.png>)
 
@@ -127,7 +131,7 @@ It is possible to issue multiple assets in one transaction, but each asset will 
 
 ### Asset leaves
 
-Each leaf contains a TLV  (type, length, value) blob, akin to the TLV used in the Lightning Network. It contains information such as versions, asset id, amount, as well as data pertaining to previous transfers of this asset, such as signatures.
+Each leaf contains a TLV (type, length, value) blob, akin to the TLV used in the Lightning Network. It contains information such as versions, asset id, amount, as well as data pertaining to previous transfers of this asset, such as signatures.
 
 ### Commit to tree root
 
@@ -220,18 +224,17 @@ An asset is considered invalid as soon as its output has been spent without comm
 
 Taro assets can be deposited into regular taproot Lightning Network channels in addition to the bitcoin in the channel. HTLCs and PTLCs can be constructed for transfers in these Taro-aware payment channels similarly to how bitcoin is transferred.
 
-Assets are transacted by creating nested HTLC/PTLCs which, if needed, can be claimed by the recipient by revealing a preimage, or by the sender after a timeout period.  These transactions are Taro’s equivalent of Lightning Network transactions.
+Assets are transacted by creating nested HTLC/PTLCs which, if needed, can be claimed by the recipient by revealing a preimage, or by the sender after a timeout period. These transactions are Taro’s equivalent of Lightning Network transactions.
 
 ### Multi-hop Taro transfers
 
-Historically, payment networks struggle with a bootstrapping problem -- anytime a new asset is created, an entirely new payment network needs to be created to serve that specific asset's payment demand.  Taro enables a payment-routing paradigm in which the LN serves any asset but with day 1 networking breadth. Taro assets in LN channels can be transferred over the general Lightning Network, for example in a situation in which all participants along a route have liquidity with each other. They can opt to charge fees in BTC or the transferred Taro asset.
+Historically, payment networks struggle with a bootstrapping problem -- anytime a new asset is created, an entirely new payment network needs to be created to serve that specific asset's payment demand. Taro enables a payment-routing paradigm in which the LN serves any asset but with day 1 networking breadth. Taro assets in LN channels can be transferred over the general Lightning Network, for example in a situation in which all participants along a route have liquidity with each other. They can opt to charge fees in BTC or the transferred Taro asset.
 
 Even if no Taro route exists, a BTC route can take its place as long as first and last nodes are willing to forward the Taro value in satoshis. This can also allow the LN to facilitate exchange between bitcoin and Taro assets over the Lightning Network. In the example below, Bob and Carol both act as brokers between L-USD and BTC.
 
 This mechanism can also allow for payment of an L-USD invoice in BTC or vice versa.
 
 [Check out these slides for an overview of Taro on Lightning](https://docs.google.com/presentation/d/1YgMG4MOjs5dHhlf77Zh0WOENXqB0JTV8ZarVjS8slyk/edit?usp=sharing)
-
 
 ## Features & Limitations <a href="#docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46" id="docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46"></a>
 

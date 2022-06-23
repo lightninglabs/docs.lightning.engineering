@@ -230,6 +230,9 @@ Even if no Taro route exists, a BTC route can take its place as long as first an
 
 This mechanism can also allow for payment of an L-USD invoice in BTC or vice versa.
 
+[Check out these slides for an overview of Taro on Lightning](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-ms-smt.mediawiki)
+
+
 ## Features & Limitations <a href="#docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46" id="docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46"></a>
 
 Taro allows for a long list of features that make the protocol scalable, robust, and friendly for low-powered mobile devices in situations of limited bandwidth.

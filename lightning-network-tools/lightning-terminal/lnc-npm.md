@@ -39,6 +39,10 @@ Through Lightning Node Connect a user may access their node in addition to liqui
 
 LNC works natively with WebAssembly applications (Wasm). To make use of LNC on the web, set up the open source NPM module [available here](https://github.com/lightninglabs/lnc-web) by configuring it with a pairing phrase (supplied by the user), a mailbox and your application’s Wasm binary.
 
+{% embed url="https://www.youtube.com/watch?t=19376s&v=LlTCipHKTCs" %}
+Watch: Introducing LNC-web
+{% endembed %}
+
 #### lnc-web
 
 This package is right for you if you are developing a web application, such as WebAssembly. Your users will typically navigate to a website, where the lnc package and wasm are loaded into their browser. Have a look at [Lightning Terminal](https://github.com/lightninglabs/lightning-terminal) for references.

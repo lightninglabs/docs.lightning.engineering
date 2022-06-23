@@ -36,3 +36,7 @@ A demonstration of LSATs can be found at [https://lsat-playground-bucko.vercel.a
 Here you can go through the process of minting a Macaroon, turning it into an LSAT, restricting and validating it as well as see code snippets.
 
 [See how the client interceptor is coded in Aperture](https://github.com/lightninglabs/aperture/blob/master/lsat/client\_interceptor.go)
+
+{% embed url="https://www.youtube.com/watch?t=22815s&v=LlTCipHKTCs" %}
+Watch: Using Aperture
+{% endembed %}

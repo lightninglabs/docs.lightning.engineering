@@ -1,268 +1,239 @@
 ---
-description: >-
-  Learn how to install LND on your machine, configure it optimally and your
-  first steps in the Lightning Network.
+description: Learn how to install LND on your machine, configure it and keep it up to date.
 ---
 
 # 🛠 Get Started
 
-The Lightning Network Daemon (LND) is a complete implementation of a Lightning Network node. That means that LND is able to perform all actions necessary to participate and interact with all aspects of the Lightning Network and its nodes. It fully complies with all Lightning Network specifications (BOLTs) [as described here](https://github.com/lightningnetwork/lightning-rfc/blob/master/00-introduction.md). As these specifications are currently rapidly evolving, so is LND.
-
-## Part 1: Installation <a href="#docs-internal-guid-ff85e2ff-7fff-ef9c-0f05-8da12a86ea43" id="docs-internal-guid-ff85e2ff-7fff-ef9c-0f05-8da12a86ea43"></a>
-
-There are multiple methods for getting LND running on your machine. Your choice will depend on your requirements, the purpose of the installation, your technical expertise, your hardware, security needs and comfort with various tools.
-
-Your requirements and dependencies will vary between installation types, as will the effort to maintain them.
+The Lightning Network Daemon is a full implementation of a Lightning Network node. The Lightning Network and its specification are rapidly evolving, and so is LND. Use this guide to install LND from the binaries, source or docker and keep it up to date with new releases.
 
 {% embed url="https://www.youtube.com/watch?v=rf-GvVYuWa8" %}
 Video: RUN LND: Building a Node from Scratch
 {% endembed %}
 
-### System requirements
+## Prerequisites <a href="#docs-internal-guid-b519fc5f-7fff-49d2-4038-dbcc3e23af33" id="docs-internal-guid-b519fc5f-7fff-49d2-4038-dbcc3e23af33"></a>
 
-LND generally has low system requirements and performs well on small single-board devices with 2 GiB and a CPU with over 1 GHz quad core, such as a Raspberry Pi. Generally the system requirements for Bitcoind are higher than those for LND. A 64-bit architecture is strongly recommended, as a large (>2GB) `channel.db`on 32-bit systems can lead to a system halt. Due to the frequent read and write operations LND should **not** be run from an SD card, but ideally a high-performing SSD.
+**Operating system:**\
+LND runs on Windows or Mac OS X, but Unix operating systems are recommended, while Debian/Ubuntu is used for the examples below. A 64-bit architecture is required due to files growing larger than 2GB.
 
-### Installing LND using third-party scripts
+**Machine:**\
+LND requires at minimum 2GB RAM and a 1 GHz quad core with at least 5GB of storage. LND makes frequent reads and writes, meaning you should not use a SD card, but instead a SSD of good quality.
 
-You can install LND inside a variety of third-party software, such as [BTCPay Server](https://btcpayserver.org), [RaspbiBlitz](https://raspiblitz.org), [myNode](https://mynodebtc.com) or [Umbrel](https://getumbrel.com). This might become your installation of choice if you want to use Lightning payments primarily to receive payments in commerce, or if you want to easily run LND along a variety of other software that leverage your Bitcoin user experience as an individual user.
+**Bitcoin:**\
+LND does not require a Bitcoin backend as you may run your node in Neutrino mode. For performance reasons it is recommended to run either Bitcoin Core or btcd on the same machine or on a machine on the same network. You may prune your Bitcoin node, though doing so aggressively may impact performance. To make use of LND’s taproot functionalities you must run at least bitcoind v0.21 or btcd v0.23.1.
 
-### Installing the LND binary (recommended)
+## Part 1: Installation <a href="#docs-internal-guid-c531bf19-7fff-07a1-45c2-0d01f5f4396f" id="docs-internal-guid-c531bf19-7fff-07a1-45c2-0d01f5f4396f"></a>
 
-If you are a regular user and intend to use LND in production, we recommend using the binaries. You can find up-to-date releases of binaries for various operating systems and architectures [here](https://github.com/lightningnetwork/lnd/releases).
+[Install from the binaries (recommended)](run-lnd.md#binaries)
 
-**Verification**\
-You can verify the manifest using PGP with the command `gpg --verify manifest-<developer>-<latest-release>.txt`
+[Install from source](run-lnd.md#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103)
 
-You can also verify the git tag with the command `git verify-tag <latest release>`
+[Install using docker](run-lnd.md#docs-internal-guid-05531972-7fff-3243-8a52-edb04cdbfeef)
 
-**Unpacking**\
-Choose the package (ending in tar.gz) for your architecture and operating system. We recommend choosing 64-bit binaries over 32-bit if your operating system supports it.
+[Install via third-party platforms](run-lnd.md#installing-lnd-using-third-party-scripts)
 
-How to unpack the package depends on your operating system. In Linux or MacOS, you can unpack the file using the command `tar -xvf lnd<latest release>.tar.gz`
+### Binaries
 
-On Windows the command might look like this: `tar -xvzf C:\path\lnd<latest-release>.tar.gz -C C:\path\lnd`
+If you are a regular user and intend to use LND in production, we recommend using the binaries.
 
-Now move the unpacked binaries somewhere where the system can find it, such as `/bin/lnd`
+**Download:**\
+You can find up-to-date releases of binaries for various operating systems and architectures [here](https://github.com/lightningnetwork/lnd/releases).
 
-You can use the file manager or command line, but may have to create this directory first, which may require superuser (sudo) or administrator privileges.
+**Verification:**\
+Each release is signed by multiple developers. You may find their keys in the [LND repository here](https://github.com/lightningnetwork/lnd/tree/master/scripts/keys). Import these keys and verify the signatures.
 
-Congratulations, you have successfully installed LND using the binary release. [Jump to: Configuring LND](run-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
+`gpg –import key.asc`\
+`gpg --verify manifest-beta.sig manifest-beta.txt`
 
-### Installing Lightning via Docker <a href="#docs-internal-guid-fe99d99a-7fff-2f7a-022e-4fab339d71f9" id="docs-internal-guid-fe99d99a-7fff-2f7a-022e-4fab339d71f9"></a>
+Lastly, you will compare the hash of the .tar.gz file with the hash listed in the manifest.
 
-For those familiar with Docker, or those interested in easily running a variety of software alongside each other, the Docker installation is a convenient and quick way to get started with lightning.
+`sha256sum lnd.tar.gz`
 
-To install LND via Docker you will need `docker`, `make` and `bash` on your system. You can install lnd with the following commands:
+**Unpack:**\
+Unpack the compressed tarball to retrieve the binaries.
 
-`git clone https://github.com/lightningnetwork/lnd`  \
-`cd lnd`  \
-`git checkout <latest-release>`  \
-`make docker-release tag=<latest-release>`
+`tar -xvf lnd.tar.gz`
 
-You are now able to find the binaries in the directory lnd\<latest-release> for your use. Congratulations, [jump to: Configuring LND](run-lnd.md#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86)
+**Installation:**\
+To install the binaries, simply place the files in your path where your operating system can find it, or add the directory containing the binary to your path.
 
-### Installing LND from source
+Type `$PATH` to see your current path directories.
 
-Installing LND from source is recommended when using it in development or on testnet. To install LND from source, you will need Go version 1.13 or higher. We recommend using Go 1.15.
+`$PATH`\
+`mv lnd /usr/local/bin`
 
-**Installing Go in Linux**\
+Congratulations, you have successfully installed LND using the binary release. [Jump to Configuring LND](run-lnd.md#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17). Additionally, you may use [this sample file](https://github.com/lightningnetwork/lnd/blob/d3faef56913d5a101d0578b0568ad9fafcb0a3dc/contrib/init/lnd.service) to configure LND to run with systemd.
+
+### From source <a href="#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103" id="docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103"></a>
+
+**Install go:**\
+``Installing LND from source is recommended when using it in development or on testnet. To install LND from source, you will need Go version 1.18 or higher.
+
 You can find the latest version of Golang [on its official website](https://golang.org/dl/). Make sure to verify the checksum before you install Go.
 
-You can now install go with the command:\
-`tar -C /usr/local -xzf go[version].linux-[platform].tar.gz`  \
+`sudo tar -C /usr/local -xzf go[version].linux-[platform].tar.gz`
+
 `export PATH=$PATH:/usr/local/go/bin`
 
-**Installing Go on MacOS**\
-To install, simply run the command:\
-`brew install go@[version]`
+To permanently include this new directory in your path, add the following lines to your `.bashrc` file and open a new terminal window to activate it.
 
-**Set your Go path**\
-To ensure that the command go refers to the correct path, you will need to set your Go path:\
-`export GOPATH=~/gocode`  \
+`export GOPATH=~/go`\
 `export PATH=$PATH:$GOPATH/bin`
 
-**Installing LND**\
-We can now install LND. We can run the following command from our home directory:\
-`git clone https://github.com/lightningnetwork/lnd`  \
-`cd lnd`  \
-`git checkout [version]`  \
-`make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"`
+**Install LND:**\
+``We can install lnd with the following commands. Starting with lnd 0.15 all important subsystems are built by default and no longer have to be manually specified.
+
+`git clone https://github.com/lightningnetwork/lnd`\
+`cd lnd`\
+`make install`
 
 LND is now installed from source.
 
-## Part 2: Configuring LND <a href="#docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86" id="docs-internal-guid-f1be3c4d-7fff-b4f7-e6cd-ce2c32ba2d86"></a>
+Included subsystems: [autopilotrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/autopilotrpc/autopilot.proto), [signrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/signrpc/signer.proto), [walletrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/walletrpc/walletkit.proto), [chainrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/chainrpc/chainnotifier.proto), [invoicesrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/invoicesrpc/invoices.proto), [neutrinorpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/neutrinorpc/neutrino.proto), [routerrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/routerrpc/router.proto), [watchtowerrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/watchtowerrpc/watchtower.proto), [monitoring](https://github.com/lightningnetwork/lnd/blob/master/monitoring), [peersrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/peersrpc/peers.proto), [kvdb\_postrgres](https://github.com/lightningnetwork/lnd/blob/master/docs/postgres.md), [kvdb\_etcd](https://github.com/lightningnetwork/lnd/blob/master/docs/etcd.md)
 
-### Bitcoin
+Congratulations, you have successfully installed LND using the binary release. [Jump to Configuring LND](run-lnd.md#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17). Additionally, you may use [this sample file](https://github.com/lightningnetwork/lnd/blob/d3faef56913d5a101d0578b0568ad9fafcb0a3dc/contrib/init/lnd.service) to configure LND to run with systemd.
 
-LND requires either btcd, bitcoind or neutrino. They can be running on the same machine or a separate instance, but must be reachable over a network interface. In addition to configuring LND, you will also have to configure this Bitcoin node.
+### Using docker <a href="#docs-internal-guid-05531972-7fff-3243-8a52-edb04cdbfeef" id="docs-internal-guid-05531972-7fff-3243-8a52-edb04cdbfeef"></a>
 
-**Neutrino**\
-Neutrino is an experimental Bitcoin light client written in Go. To use Neutrino, you will need to specify a remote Neutrino node at startup, such as faucet.lightning.community.
+For those familiar with Docker, or those interested in easily running a variety of software alongside each other, the Docker installation is a convenient and quick way to get started with lightning.
 
-Neutrino itself does not need to run on your machine and as such will not have to be configured separately. Using Neutrino over Bitcoind or btcd allows you to run your node in ‘light mode’, meaning it can run on low powered devices such as a mobile phone without the extensive storage or bandwidth requirements of syncing your full bitcoin node.
+To install LND via Docker you will need docker, make and bash on your system. You can install lnd with the following commands:
 
-**Bitcoind**\
-The most popular choice for the Bitcoin backend is bitcoind, the Bitcoin Core daemon. We do not recommend using bitcoind with pruning enabled. At maximum, only transactions older than the oldest Lightning channels may be discarded, e.g. 2017 and before. You can typically find your configuration file in `~/.bitcoin/bitcoin.conf`
+`git clone https://github.com/lightningnetwork/lnd`\
+`cd lnd`\
+`git checkout <latest-release>`\
+`make docker-release tag=<latest-release>`
 
-We recommend giving LND access to bitcoind RPC using rpcauth. You can read how to set this in the [bitcoind documentation](https://github.com/bitcoin/bitcoin/blob/master/share/examples/bitcoin.conf).
+You are now able to find the images in the directory `/lnd` for your use. Congratulations, you have successfully installed LND using the docker. [Jump to Configuring LND](run-lnd.md#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17).
+
+### Installing LND using third-party scripts
+
+You can install LND inside a variety of third-party software, such as [BTCPay Server](https://btcpayserver.org), [RaspbiBlitz](https://raspiblitz.org), [myNode](https://mynodebtc.com) or [Umbrel](https://getumbrel.com). This might become your installation of choice if you want to use Lightning payments primarily to receive payments in commerce, or if you want to easily run LND along with a variety of other software that leverage your Bitcoin user experience as an individual user.
+
+## Part 2: Configuration <a href="#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17" id="docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17"></a>
+
+### Configuring Bitcoin
+
+You may prune your Bitcoin backend. As LND will then need to fetch some blocks elsewhere, aggressive pruning can lead to performance loss.
+
+**Neutrino:**\
+If you are running LND with Neutrino as a backend, you may skip this section. You may also be interested in how to configure your Bitcoin node to [serve blocks to light clients in the broader network](enable-neutrino-mode-in-bitcoin-core.md).
+
+**Bitcoind:**\
+Most importantly, your Bitcoin Core node needs to have RPC enabled, either through `rpcauth` or with a username and password. The following entries refer to your `bitcoin.conf` file. [Here](https://github.com/bitcoin/bitcoin/blob/master/contrib/devtools/README.md) you find instructions on how to create an up to date sample configuration file for Bitcoin Core.
 
 `rpcauth=[user]:[password hash]`
 
-Alternatively you may also use the rpcuser and rpcpassword commands.\
-`rpcuser=` Username for RPC connections. You may choose this freely, but it must match the username provided later in the LND configuration.\
-`rpcpassword=` Password for RPC connections. You may choose this freely, we recommend something long and unique.\
-`zmqpubrawblock=` The address listening for ZMQ connections to deliver raw block notifications\
-`zmqpubrawtx=` The address listening for ZMQ connections to deliver raw transaction notifications\
-`txindex=` LND does not require txindex to be set, but will run faster with txindex=1
+OR
 
-**btcd**\
-To configure btcd for use with LND, you will need to set the following parameters in the btc configuration file, which can be typically found in `~/.btcd/btcd.conf` on Linux.
+`rpcuser=[any username]`\
+`rpcpassword=[any unique password of your choosing]`
 
-`rpcuser=` Username for RPC connections. You may choose this freely, but it must match the username provided later in the LND configuration.\
-`rpcpass=` Password for RPC connections. You may choose this freely, we recommend something long and unique.
+To get the latest block data, you should enable ZMQ. The experimental “rpcpolling” option can make ZMQ obsolete, making it possible to set up multiple LND nodes per Bitcoind backend, or multiple Bitcoind backends for one or multiple LND using a load balancer.
 
-### Configuring LND
+If your Bitcoin Core and LND nodes are not running on the same machine, you will need to be aware of the relevant IP addresses.
 
-To configure LND, we will need to edit the configuration file, which can be typically found in `~/.lnd/lnd.conf` If this directory and the file does not exist yet, you may create it with `~/.lnd/ && touch ~/.lnd/lnd.conf`.
+`zmqpubrawblock=tcp://127.0.0.1:28332`\
+`zmqpubrawtx=tcp://127.0.0.1:28333`
 
-First, we will have to tell LND where and how to find our Bitcoin node. This slightly varies across the different options.
+When running a full, unpruned Bitcoin node you may set the following flag for small performance improvements:
 
-**Bitcoind**\
-`rpcuser=` Username for RPC connections. It must match the username provided earlier in the Bitcoind configuration, or the username set in rpcauth\
-`rpcpassword=` Password for RPC connections. It must match the password set in the Bitcoind configuration file or the password obtained through rpcauth.\
-`zmqpubrawblock=` The address listening for ZMQ connections to deliver raw block notifications\
-`zmqpubrawtx=` The address listening for ZMQ connections to deliver raw transaction notifications\
-`rpchost=` (Optional) The daemon's rpc listening address. If a port is omitted, then the default port for the selected chain parameters will be used. (default: localhost)\
-`dir=` (Optional) The base directory that contains the node's data, logs, configuration file, etc. (default: /Users/Library/Application Support/Bitcoin)\
-`estimatemode=` (Optional) The fee estimate mode. Must be either "ECONOMICAL" or "CONSERVATIVE". (default: CONSERVATIVE)
+`txindex=1`
 
-**btcd**\
-`rpcuser=` Username for RPC connections. It must match the username provided earlier in the btcd configuration.\
-`rpcpass=` Password for RPC connections. It must match the password set in the btcd configuration file.\
-`rpccert=` File containing the daemon's certificate file (default: `/Users/Library/Application Support/Btcd/rpc.cert`)\
-`rawrpccert=` The raw bytes of the daemon's PEM-encoded certificate chain which will be used to authenticate the RPC connection.\
-`rpchost=` (Optional) The daemon's rpc listening address. If a port is omitted, then the default port for the selected chain parameters will be used. (default: `localhost`)\
-`dir=` (Optional) The base directory that contains the node's data, logs, configuration file, etc. (default: `/Users/Library/Application Support/Btcd`)
+**Btcd:**\
+****Your btcd backend needs RPC enabled.
 
-**Neutrino**\
-When starting lnd with neutrino, you will need to set the following flags:`--bitcoin.node=neutrino --neutrino.connect=faucet.lightning.community`
+`rpcuser=[any username]`\
+`rpcpass=[any unique password of your choosing]`
 
-### Configuring your node
+### Configuring LND <a href="#docs-internal-guid-1c142120-7fff-1b35-7b66-af56937af371" id="docs-internal-guid-1c142120-7fff-1b35-7b66-af56937af371"></a>
 
-To make your node available as a routing node, you will need to listen to incoming connections. In your [lnd.conf configuration file](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf), include the following lines:
+You can find your lnd.conf file in `~/.lnd` in Linux, `~/Library/Application Support/Lnd` in Mac OS X and `$LOCALAPPDATA/Lnd` in Windows. You can find a [sample `lnd.conf` here](lnd.conf.md).
 
-`listen=0.0.0.0:9735`  \
-`listen=[::1]:9736`
+You will need to specify in this configuration file which backend you prefer to use and how your node should connect to it.
 
-This will allow your node to listen on all IPv4 (port 9735) and IPv6 (port 9736) interfaces.
+**General configuration:**
 
-Note, if you have set`nolisten=true`, this will override the above and make your node unreachable.
+`bitcoin.active=true`\
+`bitcoin.mainnet=true`
 
-### Configuring your system
+**Neutrino:**
 
-Be aware of any firewall that might be enabled on your system, for example by using the iptables utility:
+`bitcoin.node=neutrino`\
+`neutrino.connect=faucet.lightning.community`
 
-`sudo iptables -S`
+**Bitcoind:**
 
-Using a firewall is a great idea, although the ports defined above need to remain accessible:
+`bitcoin.node=bitcoind`\
+`bitcoind.rpcuser=[any username]`\
+`bitcoind.rpcpass=[any unique password of your choosing]`\
+`bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332`\
+`bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333`
 
-`sudo ufw status`  \
-`sudo ufw allow OpenSSH`  \
-`sudo ufw allow 9735`
+If you have chosen to omit ZMQ in your bitcoind configuration file, you will have to set the following in lnd instead:
 
-#### Other available configurations
+`bitcoind.rpcpolling`
 
-There are plenty of options to configure lnd. Have a look at the [sample lnd.conf file here](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf) and read our article on the optimal configuration for your node.
+**Btcd:**
 
-## Part 3: Running LND <a href="#docs-internal-guid-9df27c7d-7fff-522a-838a-a42710fe3e75" id="docs-internal-guid-9df27c7d-7fff-522a-838a-a42710fe3e75"></a>
+`bitcoin.node=btcd`\
+`btcd.rpcuser=[any username]`\
+`btcd.rpcpass=[any unique password of your choosing]`\
+`btcd.rpccert=`
+
+Additionally, you may have a look at `the` guides “[Optimal configuration for a routing node](optimal-configuration-of-a-routing-node.md)” and “[Tor setup](quick-tor-setup.md).”
+
+### Run LND <a href="#docs-internal-guid-a3db49cc-7fff-5f8c-ae41-6f2de68e8fb7" id="docs-internal-guid-a3db49cc-7fff-5f8c-ae41-6f2de68e8fb7"></a>
 
 Now that we have LND installed and configured with its Bitcoin backend we may start it for the first time.
 
-We may start lnd by simply using the command `lnd`. Depending on our installation, we might have to specify the location, such as through the command `/bin/lnd` or `~/go/bin/lnd`.
+We may start lnd by simply using the command `lnd`. Depending on our installation, we might have to specify the location or add it to our path.
 
-While LND, the Lightning Network Daemon will run in the background, we will use lncli (LND Command Line Interface) to interact with it. `lncli` will pass our commands to lnd and return useful information back to us.
+`lnd`
 
-As we started LND for the first time, we will have to create a wallet with the command `lncli create`.
+While LND, the Lightning Network Daemon will run in the background, we will use lncli (LND Command Line Interface) to interact with it. lncli will pass our commands to lnd and return useful information back to us.
 
-Follow the steps carefully and write down your 24 word mnemonic seed phrase. Store it in a secure place, for example on paper or in encrypted storage. You may also choose a password, which will be used to encrypt this wallet on your disk.
+`lncli`
 
-Later, we will need to unlock this wallet everytime we restart lnd using the command `lncli unlock`.
+## Part 3: Upgrade LND <a href="#docs-internal-guid-277e81aa-7fff-ccda-4359-bf5ca2a712bc" id="docs-internal-guid-277e81aa-7fff-ccda-4359-bf5ca2a712bc"></a>
 
-### Deposit some Bitcoin
+It is recommended up upgrade to the latest release whenever it becomes available. If you miss a release, it is generally supported to directly install the latest.
 
-We now have LND running, but to be able to use it to send and receive payments, we will still have to complete a few steps. We will have to deposit bitcoin into our wallet, find a peer and open a channel before we can make our first transaction.
+[Upgrade using the binaries (recommended)](run-lnd.md#docs-internal-guid-5d9031c2-7fff-0da3-d810-6914af3b84ac)
 
-To deposit bitcoin, we obtain a bitcoin address from our LND wallet with the command `lncli newaddress p2wkh`. If for some reason our existing wallet or exchange causes us problems sending bitcoin to this address, we may also use a differently encoded address with `lncli newaddress np2wkh`.
+[Uprade from source](run-lnd.md#docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196)
 
-Any bitcoin sent to these addresses will now show up in the `lncli walletbalance` command.
+[Upgrade using docker](run-lnd.md#docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e)
 
-\[[Transactions not confirming? Use this guide to speed them up.](unconfirmed-bitcoin-transactions.md)]
+### Using the binaries <a href="#docs-internal-guid-5d9031c2-7fff-0da3-d810-6914af3b84ac" id="docs-internal-guid-5d9031c2-7fff-0da3-d810-6914af3b84ac"></a>
 
-### Find a peer
-
-Next, we will need to identify a peer to open a channel with. Ideally, a good peer is one that is well connected, capitalized, offers stability, features and competitive fees, but may also be a node that we expect to frequently interact with.
-
-We will need to obtain this peer’s public key as well as its url, IP address or onion address.
-
-\[[How to identify good peers in the Lightning Network.](../../the-lightning-network/routing/identify-good-peers.md)]
-
-### Open a channel
-
-We will now open a channel with this peer, using the command `lncli openchannel`
-
-Depending on how many satoshis we intend to commit to this channel, we may place our entire balance in this channel or open multiple channels with different peers.
-
-Such a command could look like this:\
-`lncli openchannel --conf_target 6 --node_key 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d --connect 54.184.88.251:9735 --local_amt 1000000`
-
-\[[How to manage liquidity in the Lightning Network.](../../the-lightning-network/liquidity/manage-liquidity.md)]
-
-### Make payments and get incoming liquidity
-
-Once our channel has at least three confirmations on the network it becomes active and we can make payments through it. To make a payment, we will need to obtain a lightning invoice, which we can pay with the command `lncli payinvoice <lightning invoice>`.
-
-As soon as we make some outgoing payments and our channel balance empties, our outgoing capacity becomes incoming capacity and we are able to receive payments as well. There are other ways to get incoming capacity, too, such as [Loop](https://lightning.engineering/loop) and [Pool](https://lightning.engineering/pool).
-
-\[[Learn to get incoming liquidity.](https://docs.lightning.engineering/the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network)]
-
-## Part 4: Upgrade LND
-
-Upgrading your LND instance depends on how you installed your node. If you are running LND as part of a software bundle, upgrades are typically provided by this bundle as well.
-
-LND upgrades are released frequently. Similar to Bitcoin Core, LND follows the convention of major, minor and patch version numbers. Additionally, a minor version will have one or several release candidates (RC). For example, `lnd 0.13.0 rc2` is the second release candidate of the minor version 13, while `lnd 0.13.1` patches eventual issues found in 0.13.0.
-
-It is recommended to upgrade LND regularly to tagged releases instead of the latest master branch. Downgrading LND is not recommended and may lead to unexpected consequences.
-
-### Upgrading the LND binary (recommended)
-
-If you are running the LND binary, you may download, verify and unpack LND in the same way as during the installation. You can download the latest releases for [various operating systems and architectures here](https://github.com/lightningnetwork/lnd/releases).
+If you are running the LND binary, you may download, verify and unpack LND in the same way as during the installation. You can download the latest releases for [various operating systems here](https://github.com/lightningnetwork/lnd/releases).
 
 You can then gracefully shut down LND with the command `lncli stop`. This may take a minute.
 
-Now move the binaries to the directory of your existing LND, such as `/bin/lnd`
-
-Your existing binaries will be overwritten in this action. You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.
-
-### Upgrading via Docker
-
-If you are running LND in a docker container, you can upgrade this container as follows. Don’t forget to gracefully shut down LND with the command `lncli stop` before the upgrade. This may take a minute.
-
-First navigate to the local copy of the lnd github repository, for example with `cd lnd`. Then execute the following commands:
-
-`git pull`  \
-`git checkout <latest-release>`  \
-`make docker-release tag=<latest-release>`
+Now move the binaries to the directory of your existing LND, overwriting the previous binary.
 
 You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.
 
-### Upgrading from source
+### From source <a href="#docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196" id="docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196"></a>
 
-If you installed LND from source, you can compile a new binary as follows. Don’t forget to gracefully shut down LND with the command `lncli stop` before the upgrade. This may take a minute.
+You can gracefully shut down LND with the command `lncli stop`. This may take a minute.
 
-First navigate to the local copy of the lnd github repository, for example with `cd lnd`. Then execute the following commands:
+Then navigate to your local copy of the LND github repository and pull from it before installing the latest version of LND.
 
-`git checkout <latest version>`
+`git pull`\
+`git checkout <latest release>`\
+`make clean && make && make install`
 
-`make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"`
+You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.
+
+### Using docker <a href="#docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e" id="docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e"></a>
+
+If you are running LND in a docker container, you can upgrade this container as follows. Don’t forget to gracefully shut down LND with the command `lncli stop` before the upgrade. This may take a minute.
+
+First navigate to the local copy of the lnd github repository. Then execute the following commands:
+
+`git pull`\
+`git checkout <latest release>`\
+`make docker-release tag=<latest release>`
 
 You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.

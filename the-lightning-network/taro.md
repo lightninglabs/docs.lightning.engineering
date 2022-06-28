@@ -228,13 +228,27 @@ Assets are transacted by creating nested HTLC/PTLCs which, if needed, can be cla
 
 ### Multi-hop Taro transfers
 
-Historically, payment networks struggle with a bootstrapping problem -- anytime a new asset is created, an entirely new payment network needs to be created to serve that specific asset's payment demand. Taro enables a payment-routing paradigm in which the LN serves any asset but with day 1 networking breadth. Taro assets in LN channels can be transferred over the general Lightning Network, for example in a situation in which all participants along a route have liquidity with each other. They can opt to charge fees in BTC or the transferred Taro asset.
+Historically, payment networks struggle with a bootstrapping problem -- anytime a new asset is created, an entirely new payment network needs to be created to serve that specific asset's payment demand. Taro enables a payment-routing paradigm in which the LN is able to handle channels with any asset but with the ability to find routes across different assets. Taro assets in LN channels can be transferred over the general Lightning Network, for example in a situation in which all participants along a route have liquidity with each other. They can opt to charge fees in BTC or the transferred Taro asset.
 
-Even if no Taro route exists, a BTC route can take its place as long as first and last nodes are willing to forward the Taro value in satoshis. This can also allow the LN to facilitate exchange between bitcoin and Taro assets over the Lightning Network. In the example below, Bob and Carol both act as brokers between L-USD and BTC.
+Even if no Taro route exists, a BTC route can take its place as long as the first node is willing to forward the Taro value in satoshis. This can also allow the LN to facilitate exchange between bitcoin and Taro assets over the Lightning Network. This also allows the recipient of a payment to opt into receiving a Taro asset instead of BTC. In the example below, Bob and Carol both act as edge nodes and swap payments L-USD and BTC.
 
-This mechanism can also allow for payment of an L-USD invoice in BTC or vice versa.
+![An example of a Taro payment made to the wider Lightning Network](<../.gitbook/assets/Untitled presentation(1).png>)
 
-[Check out these slides for an overview of Taro on Lightning](https://docs.google.com/presentation/d/1YgMG4MOjs5dHhlf77Zh0WOENXqB0JTV8ZarVjS8slyk/edit?usp=sharing)
+This makes it feasible to receive a Taro asset but present the corresponding invoice to any other Lightning wallet - even those that do not opt into the Taro protocol - which pays it using BTC or any other Taro asset.
+
+This maintains the Lightning invoice as the standard scheme for invoices. An invoice ultimately settled in Taro can be paid by BTC or any other Taro asset, and anyone with a Taro balance can pay any Lightning invoice.
+
+![An example of a Taro payment in which the receiver opts to receive the same asset type.](<../.gitbook/assets/Untitled presentation(4).png>)
+
+Any Lightning Network node aware of Taro channels can potentially act as an edge node. They can set their own reference rates and, similar to other forms of routing nodes, compete with each other over fees they collect from forwards and swaps.
+
+Due to fluctuations in conversion rates between Taro assets and Bitcoin, edge nodes may only guarantee rates for a limited amount of time when issuing invoices. When paying invoices, they may provide live quotes adjusted every second, locked for a limited time when a payment is attempted.
+
+![Sender and recipient do not need to transact in the same asset type.](<../.gitbook/assets/Untitled presentation(2).png>)
+
+Edge nodes may have other tools at their disposal if they fear abuse of their quoted forwards, such as closing a channel, reducing the validity of invoices or increasing spreads.
+
+The Taro protocol does not regulate or set rates between Taro assets and BTC. It only provides for the mechanisms of a functional market with low technical barriers to entry and the tools that allow for automated, atomic and instant forwards.
 
 ## Features & Limitations <a href="#docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46" id="docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46"></a>
 

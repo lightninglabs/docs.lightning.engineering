@@ -246,3 +246,7 @@ Taro allows for a long list of features that make the protocol scalable, robust,
 * Taro allows for creative multi-signature and co-signatory arrangements.
 * Taro channels can be created alongside BTC channels in the same utxo, allowing Taro to exist in the Lightning Network without consuming additional resources. For instance, Alice can create two channels with Bob in a single Bitcoin transaction, one containing a Taro asset, the other BTC
 * Future features may include confidential transactions and zero-knowledge proofs as part of Taro transfers.
+
+Further reading:
+
+* [Taro Q\&A with Ryan Gentry - LNMarkets](https://lnmarkets.substack.com/p/51-ryan-gentry-on-taro-massive-stress)

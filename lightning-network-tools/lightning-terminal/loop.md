@@ -9,7 +9,7 @@ description: >-
 Lightning Terminal offers a graphical interface for Loop, making it easy and intuitive to make submarine swaps. [Lightning Loop](../loop/) is a service that allows users to make a Lightning transaction to an on-chain Bitcoin address (Loop Out), or send on-chain Bitcoin directly into a Lightning channel (Loop In).\
 Loop can help manage channel liquidity, for example, by emptying out a channel and [acquiring inbound capacity](../../the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network.md) (or refilling a depleted channel).
 
-[Learn more about how Submarine Swaps work.](../../the-lightning-network/lightning-overview/understanding-submarine-swaps.md)
+[Learn more about how Submarine Swaps work.](../../the-lightning-network/multihop-payments/understanding-submarine-swaps.md)
 
 ## How to use Loop in Lightning Terminal <a href="#docs-internal-guid-eae8e6fb-7fff-9fc5-7155-0aae66bbe668" id="docs-internal-guid-eae8e6fb-7fff-9fc5-7155-0aae66bbe668"></a>
 

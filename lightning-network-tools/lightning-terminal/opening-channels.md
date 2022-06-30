@@ -22,7 +22,7 @@ Good peers on the Lightning Network are nodes that are well connected to the res
 
 Finding and connecting with good peers is now easier than ever on Lightning Terminal. Once you have connected your node, Terminal will suggest [recommended channels](recommended-channels.md) to connect with depending on the number of open channels your node has.
 
-[Learn more about how to identify good peers.](../../the-lightning-network/routing/identify-good-peers.md)
+[Learn more about how to identify good peers.](../../the-lightning-network/the-gossip-network/identify-good-peers.md)
 
 ### How to open a Lightning Network channel <a href="#docs-internal-guid-b8f7ee2e-7fff-5751-a290-0f6e11aa5b4c" id="docs-internal-guid-b8f7ee2e-7fff-5751-a290-0f6e11aa5b4c"></a>
 
@@ -40,7 +40,7 @@ Most node solutions create a public node by default, which is one that can be vi
 
 By opening channels with many different nodes, a node operator can improve their ability to route payments across the network. This is just one of a few important indicators of a healthy node.
 
-[Learn more about what makes a good routing node.](../../the-lightning-network/routing/what-makes-a-good-routing-node.md)
+[Learn more about what makes a good routing node.](../../the-lightning-network/multihop-payments/what-makes-a-good-routing-node.md)
 
 ### Find a good peer <a href="#docs-internal-guid-4a6da874-7fff-806f-1ba2-08d1cc9499b2" id="docs-internal-guid-4a6da874-7fff-806f-1ba2-08d1cc9499b2"></a>
 

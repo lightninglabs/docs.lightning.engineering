@@ -12,3 +12,14 @@ In the context of this guide, liquidity refers to the ability to move funds, whi
 
 In these articles, we explore the concept of liquidity in the Lightning Network and describe ways to better manage it.
 
+{% content-ref url="understanding-liquidity.md" %}
+[understanding-liquidity.md](understanding-liquidity.md)
+{% endcontent-ref %}
+
+{% content-ref url="manage-liquidity.md" %}
+[manage-liquidity.md](manage-liquidity.md)
+{% endcontent-ref %}
+
+{% content-ref url="how-to-get-inbound-capacity-on-the-lightning-network.md" %}
+[how-to-get-inbound-capacity-on-the-lightning-network.md](how-to-get-inbound-capacity-on-the-lightning-network.md)
+{% endcontent-ref %}

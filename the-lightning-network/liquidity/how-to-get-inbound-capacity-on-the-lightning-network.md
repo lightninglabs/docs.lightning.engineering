@@ -39,7 +39,7 @@ Alice’s outbound capacity = Bob's inbound capacity
 
 We start with a node that has zero channels. To acquire outbound liquidity, we require Bitcoin, more precisely, a UTXO, which we use to open a channel with a good peer on the network. Ideally, this peer has perfect uptime, good connections and a good amount of capital.
 
-\[[Guide: How to identify good peers on the Lightning Network.](../routing/identify-good-peers.md)]
+\[[Guide: How to identify good peers on the Lightning Network.](../the-gossip-network/identify-good-peers.md)]
 
 We can open a channel with the command `lncli openchannel [node key] local-amt`. Optionally, we can set a target for how quick we want the channel to be ready by specifying `--conf_target` or set the fee manually with `--sat_per_byte`.
 
@@ -63,7 +63,7 @@ Any lightning payment out of our channel will translate to the equivalent in inb
 
 If you are using Lightning to send and receive payments, this single channel might be all you need to participate on the Lightning Network. But, your Lightning channel balance will not be able to exceed the capacity of your channel. If you want to receive more satoshis, you will have to increase your inbound capacity further.
 
-2. ****[**Loop Out**](https://lightning.engineering/loop)****
+1. [**Loop Out**](https://lightning.engineering/loop)
 
 Using [Loop Out](https://lightning.engineering/loop), you can easily increase the inbound capacity of your node beyond your initial capital. [Lightning Loop](https://lightning.engineering/loop) is a marketplace that allows users to engage in Submarine Swaps. Generally, Submarine Swaps allow the exchange of two assets in a way that makes two transactions conditional on each other. Transaction A and B will either execute together, or not execute at all. This allows for two transactions to be swapped in a trustless way, reducing due diligence costs and removing the need for external enforcement of contracts.
 
@@ -73,7 +73,7 @@ Once we have made our Lightning transaction to [Lightning Loop](https://lightnin
 
 As a result, we still have our original capital (minus fees), but about 80-90% more total capacity between our two channels. And, about 40-45% of our total channel capacity is now available for receiving Lightning payments.
 
-3. **Buy a channel on** [**Lightning Pool**](https://lightning.engineering/pool)****
+1. **Buy a channel on** [**Lightning Pool**](https://lightning.engineering/pool)\*\*\*\*
 
 We can also acquire inbound capacity by signaling a need for it and incentivizing others to open channels with us using their capital. [Lightning Pool](https://lightning.engineering/pool), a marketplace where bidders can pay well capitalized and connected nodes to open channels with them, allows us to do that. These nodes are compensated for opening these channels and commit to maintaining these channels for a specified period of time.
 

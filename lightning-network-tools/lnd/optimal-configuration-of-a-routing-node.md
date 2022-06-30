@@ -10,7 +10,7 @@ In this article we will discuss various configuration options for LND in the con
 
 ## Objectives <a href="#docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447" id="docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447"></a>
 
-The obligations of a good routing node fall into two broad categories. First and in this article, we will need to install and configure LND. Later we will need to open channels, get inbound liquidity and manage the liquidity of our node in a smart way. Have a look at the [liquidity](../../the-lightning-network/liquidity/) and [routing](../../the-lightning-network/routing/) sections of the Builder’s Guide.
+The obligations of a good routing node fall into two broad categories. First and in this article, we will need to install and configure LND. Later we will need to open channels, get inbound liquidity and manage the liquidity of our node in a smart way. Have a look at the [liquidity](../../the-lightning-network/liquidity/) and [routing](broken-reference) sections of the Builder’s Guide.
 
 ### Node uptime
 
@@ -24,9 +24,9 @@ There are many reasons why a channel might be marked as ‘disabled’ by one pe
 
 For a high-performance routing node you will need btcd or bitcoind running without pruning. Ideally both the Bitcoin backend and LND will run on the same machine, but it is also possible to connect them via ssh on separate servers, as long as latency is low enough.
 
-For performance reasons you may also specifically configure your Bitcoin node. For instance, when building bitcoind from source you can use the command&#x20;
+For performance reasons you may also specifically configure your Bitcoin node. For instance, when building bitcoind from source you can use the command
 
-`./autogen.sh` \
+`./autogen.sh`\
 `./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" --enable-cxx --with-zmq --without-gui --disable-shared --with-pic --disable-tests --disable-bench --enable-upnp-default --disable-wallet`\
 `make -j "$(($(nproc)+1))"`\
 `sudo make install`\
@@ -39,7 +39,7 @@ The parameters in this command are explained below:
 
 `--without-gui` We will not need the graphical interface for our setup.
 
-`--disable-shared` \
+`--disable-shared`\
 `--with-pic`\
 `--disable-tests`\
 `--disable-bench`\
@@ -62,8 +62,7 @@ You may also use the lnd.conf sample file and activate the relevant lines by rem
 
 ### Your node <a href="#docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0" id="docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0"></a>
 
-
-```text
+```
 alias=YOUR_ALIAS
 color=#000000
 ```
@@ -74,7 +73,7 @@ Make your node visible and more easily discoverable with a unique alias. This mi
 
 Make sure to set the external IP of your LND node here. This IP address should be static. You may remove this line if you are using Tor.
 
-```text
+```
 tor.active=true
 tor.v3=true
 listen=localhost
@@ -82,12 +81,10 @@ listen=localhost
 
 If you prefer to make your node available through the Tor network, set these lines in your configuration.
 
-
-```text
+```
 sync-freelist=1
 stagger-initial-reconnect=1
 ```
-
 
 This will help our node start up faster by applying randomized staggering when reconnecting to persistent peers. This minimizes the chance of connecting to all non-responsive peers at once.
 
@@ -97,8 +94,7 @@ CNCT, CRTR and HSWV provide channel-related logs, while NTFN provides chain-rela
 
 ### Bitcoin
 
-
-```text
+```
 bitcoin.active=true
 bitcoin.mainnet=true
 bitcoin.node=bitcoind
@@ -147,8 +143,7 @@ We can set the maximum pending channels with this configuration.
 
 The number of confirmations we expect before a channel is considered active.
 
-
-```text
+```
 protocol.wumbo-channels=true
 minchansize=5000000
 ```
@@ -192,8 +187,7 @@ This setting allows you to define after how long LND should forget about past ro
 
 ### RPC
 
-
-```text
+```
 rpclisten=0.0.0.0:10009
 tlsautorefresh=true
 tlsdisableautofill=true
@@ -210,7 +204,7 @@ As a precaution and for reasons beyond DDoS protection, do not make multiple ser
 
 ### Iptables
 
-With iptables you can configure how packets are filtered before they reach LND. While executing these rules can also be computationally intensive, it generally allows your machine to sustain a far higher load.&#x20;
+With iptables you can configure how packets are filtered before they reach LND. While executing these rules can also be computationally intensive, it generally allows your machine to sustain a far higher load.
 
 We suggest the following iptable rules for network flood protection:
 

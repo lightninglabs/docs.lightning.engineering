@@ -38,7 +38,7 @@ lnd.conf:
 
 `bitcoin.feerate=1`
 
-\[[How to identify good peers](../../the-lightning-network/routing/identify-good-peers.md)]
+\[[How to identify good peers](../../the-lightning-network/the-gossip-network/identify-good-peers.md)]
 
 ## Fee report <a href="#docs-internal-guid-95e1a19b-7fff-a79e-ea52-a3f2c8791a5f" id="docs-internal-guid-95e1a19b-7fff-a79e-ea52-a3f2c8791a5f"></a>
 

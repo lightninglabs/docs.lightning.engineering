@@ -9,7 +9,7 @@ description: >-
 
 Loop is a service that allows its user to perform non-custodial Submarine Swaps between on-chain and off-chain bitcoin.To perform these swaps, the service charges a fee on top of the on-chain and off-chain fees that these transactions occur naturally.
 
-[Read more: Understanding Submarine Swaps](../../the-lightning-network/lightning-overview/understanding-submarine-swaps.md)
+[Read more: Understanding Submarine Swaps](../../the-lightning-network/multihop-payments/understanding-submarine-swaps.md)
 
 ## Loop Out <a href="#docs-internal-guid-ca6b2452-7fff-c915-8de6-7beb77c8c68d" id="docs-internal-guid-ca6b2452-7fff-c915-8de6-7beb77c8c68d"></a>
 
@@ -21,7 +21,7 @@ Loop will give us an estimate over the fees we are expected to pay before we con
 
 **LSAT**: When you perform your first Loop your node will purchase an [LSAT](../../the-lightning-network/lsat/). This LSAT does not expire and costs 1 satoshi.
 
-**Estimated on-chain fee**: This is the fee you are expected to pay in miners fees to claim your bitcoin from the [HTLC address](../../the-lightning-network/lightning-overview/understanding-submarine-swaps.md#3.-claim-bitcoin-from-the-smart-contract) into your personal wallet. This fee is calculated based on current on-chain fee conditions and may be higher if by the time the Loop Out concludes the mempool is significantly more congested. Larger transaction sizes do not increase this fee, but faster desired confirmation times do.
+**Estimated on-chain fee**: This is the fee you are expected to pay in miners fees to claim your bitcoin from the [HTLC address](../../the-lightning-network/multihop-payments/understanding-submarine-swaps.md#3.-claim-bitcoin-from-the-smart-contract) into your personal wallet. This fee is calculated based on current on-chain fee conditions and may be higher if by the time the Loop Out concludes the mempool is significantly more congested. Larger transaction sizes do not increase this fee, but faster desired confirmation times do.
 
 **Loop service fee**: This is the fee the Loop service will charge for the swap. It depends on current on-chain fees charged by the Bitcoin network.
 

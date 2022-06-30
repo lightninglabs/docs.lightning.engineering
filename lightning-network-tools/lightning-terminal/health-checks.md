@@ -26,7 +26,7 @@ Your node has to be online. Many high performing routing nodes are able to be re
 
 Your node needs to have plenty of channels to be considered a good routing node.
 
-[Learn how to identity peers to open channels to.](../../the-lightning-network/routing/identify-good-peers.md)
+[Learn how to identity peers to open channels to.](../../the-lightning-network/the-gossip-network/identify-good-peers.md)
 
 ### Good routing capacity <a href="#docs-internal-guid-c1b63b70-7fff-11df-0443-7955fb15a3e2" id="docs-internal-guid-c1b63b70-7fff-11df-0443-7955fb15a3e2"></a>
 

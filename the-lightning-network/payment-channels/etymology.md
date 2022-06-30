@@ -10,13 +10,13 @@ The Lightning Network is a network of payment channels. While all these channels
 
 In this article, we explain these differences for various types of channels.
 
-## Payment channel <a id="docs-internal-guid-def45c7d-7fff-45bc-4e4e-ad87940fad49"></a>
+## Payment channel <a href="#docs-internal-guid-def45c7d-7fff-45bc-4e4e-ad87940fad49" id="docs-internal-guid-def45c7d-7fff-45bc-4e4e-ad87940fad49"></a>
 
 All channels in the Lightning Network are payment channels. A payment channel is a 2-of-2 multisignature account with a balance on the bitcoin blockchain. This balance is held cumulatively by both parties, making up the capacity of the channel. The channel also has two internal balances, which are known only to the two signatories of the channel. This internal balance can be settled on the blockchain either cooperatively by both signatories signing a closing transaction, or unilaterally, by broadcasting a pre-negotiated force close transaction.
 
 ## Anchor channel
 
-Anchor channels are an optional feature \(feature bits `20`, `21`, `22` & `23`\) for Lightning nodes such as LND. When unilaterally an anchor channel it is possible to increase the fees of this closure transaction according to market requirements by joining an extra UTXO. When enabling anchor channels in LND, it is required to keep at least 10k satoshis per channel with a maximum of 100k satoshis in the on-chain wallet.
+Anchor channels are an optional feature (feature bits `20`, `21`, `22` & `23`) for Lightning nodes such as LND. When unilaterally an anchor channel it is possible to increase the fees of this closure transaction according to market requirements by joining an extra UTXO. When enabling anchor channels in LND, it is required to keep at least 10k satoshis per channel with a maximum of 100k satoshis in the on-chain wallet.
 
 ## Channel capacity
 
@@ -40,7 +40,7 @@ A commitment transaction ensures that either party of a channel is able to redee
 
 A force close is a unilateral close in which one participant can close a channel without the cooperation of the other participant. A force close is performed by broadcasting a "commitment transaction", a transaction that commits to a previous channel state that the channel participants have agreed upon. A force close is an important tool to allow Lightning Network participants to operate their nodes without relying on trusting their channel peers.
 
-## Hosted channel \(Custodial channel, virtual channel\)
+## Hosted channel (Custodial channel, virtual channel)
 
 A hosted channel, also called custodial channel, is a channel that has not been committed on the blockchain. Its funds are not secured by the blockchain, but instead held in custody by a third party. Creating or closing these channels does not carry a cost, but instead requires trust in the host not to misappropriate the funds. Depending on the implementation, a hosted channel can be converted into a regular channel or UTXO in the event the custodian is not responsive.
 
@@ -60,7 +60,7 @@ A public channel, as opposed to a private channel, is a channel announced togeth
 
 Lightning [Pool](../../lightning-network-tools/pool/) is a marketplace for liquidity in the Lightning Network. Participants can place their bids to buy and provision channels to other peers, including third parties not directly engaged on the parties. A sidecar channel is a channel opened by party A on behalf of party B to party C. This is useful for services that want to seamlessly onboard users and merchants onto the Lightning Network without providing capital themselves. It also helps decentralize the network, as the clients of such a service are getting connected to the network through a broader range of peers. Sidecar channels may also be deployed as [Turbo channels](etymology.md#turbo-channels-zero-conf-channels).
 
-## Turbo channels \(Zero-conf channels\)
+## Turbo channels (Zero-conf channels)
 
 A turbo channel is a channel that is accepted without confirmations on the bitcoin blockchain. This requires trust in the party opening the channel to not double-spend the channel opening transaction. This trust may be gained by opening the channel from a 2-of-2 multisignature address held by the opening party and a co-signer trusted with not signing a double-spend transaction. Turbo channels are commonly used in mobile wallets and merchant services to allow users to immediately receive and send funds over the Lightning Network without having to wait for a channel to confirm on the blockchain.
 
@@ -70,9 +70,8 @@ A zombie channel is a channel that is not expected to be active again, for examp
 
 ## Wumbo channel
 
-In the early days of the Lightning Network, nodes accepted only channels of at most 16,777,215 \(2^24 -1\) satoshis \(0.168 BTC\). Later, implementations gave users the option to accept channels of up to 10 BTC. These large channels are called Wumbo channels, in reference to a popular Spongebob Squarepants episode.
+In the early days of the Lightning Network, nodes accepted only channels of at most 16,777,215 (2^24 -1) satoshis (0.168 BTC). Later, implementations gave users the option to accept channels of up to 10 BTC. These large channels are called Wumbo channels, in reference to a popular Spongebob Squarepants episode.
 
-Also read:  
-[Channel lifecycle](../lightning-overview/channel-lifecycle.md)  
+Also read:\
+[Channel lifecycle](lifecycle-of-a-payment-channel.md)\
 [Channel fees](../../lightning-network-tools/lnd/channel-fees.md)
-

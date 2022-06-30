@@ -32,7 +32,7 @@ How to allocate your capital most efficiently is one of the biggest challenges o
 
 Routing nodes are providing a service to those sending and receiving payments. Node operators compete with each other over the payment channels that they create, but also over the fees they demand.
 
-\[[Also read: How to identify good peers](identify-good-peers.md).]
+\[[Also read: How to identify good peers](../the-gossip-network/identify-good-peers.md).]
 
 While it is possible to score nodes, it is incredibly difficult to create a score that accurately reflects a node’s ability to effectively route payments in the Lightning Network. If such criteria was transparent and easily replicable, nodes would strive to converge to it, leaving the network homogeneous and possibly unable to function.
 

@@ -258,7 +258,7 @@ Inbound capacity is the amount of satoshis a node is able to receive through a g
 
 To receive Lightning payments, the recipient typically issues an invoice containing information such as [public key](glossary.md#public-key), [payment hash](glossary.md#payment-hash) or an invoice amount and label. Invoices are defined in BOLT 11.
 
-[Read more: Understanding Lightning invoices](../the-lightning-network/lightning-overview/understanding-lightning-invoices.md)
+[Read more: Understanding Lightning invoices](../the-lightning-network/payment-lifecycle/understanding-lightning-invoices.md)
 
 ## Keysend
 
@@ -470,7 +470,7 @@ A payment hash is the hash of the [preimage](glossary.md#preimage). A Lightning 
 
 In the Lightning Network, a peer is another node you connect to, possibly open a [channel](glossary.md#payment-channel) and routing payments through them. Anyone can start a node and become a peer, making Lightning a [peer-to-peer network](glossary.md#peer-to-peer).
 
-[Read more: Identifying good peers in the Lightning Network](../the-lightning-network/routing/identify-good-peers.md)
+[Read more: Identifying good peers in the Lightning Network](../the-lightning-network/the-gossip-network/identify-good-peers.md)
 
 ## Peer-to-peer
 
@@ -580,7 +580,7 @@ Sphinx is the name of the protocol by which the Lightning Network implements [on
 
 A submarine swap is a type of [atomic](glossary.md#atomic) swap in which -> on-chain bitcoin are swapped for off-chain bitcoin without either party assuming custody of the other's funds.
 
-[Read more: Understanding Submarine swaps](../the-lightning-network/lightning-overview/understanding-submarine-swaps.md)
+[Read more: Understanding Submarine swaps](../the-lightning-network/multihop-payments/understanding-submarine-swaps.md)
 
 ## Sweep
 

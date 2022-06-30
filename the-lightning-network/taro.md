@@ -232,19 +232,19 @@ Historically, payment networks struggle with a bootstrapping problem -- anytime 
 
 Even if no Taro route exists, a BTC route can take its place as long as the first node is willing to forward the Taro value in satoshis. This can also allow the LN to facilitate exchange between bitcoin and Taro assets over the Lightning Network. This also allows the recipient of a payment to opt into receiving a Taro asset instead of BTC. In the example below, Bob and Carol both act as edge nodes and swap payments L-USD and BTC.
 
-![An example of a Taro payment made to the wider Lightning Network](<../.gitbook/assets/Untitled presentation(1).png>)
+![An example of a Taro payment made to the wider Lightning Network](<../.gitbook/assets/Group 3881(1).png>)
 
 This makes it feasible to receive a Taro asset but present the corresponding invoice to any other Lightning wallet - even those that do not opt into the Taro protocol - which pays it using BTC or any other Taro asset.
 
 This maintains the Lightning invoice as the standard scheme for invoices. An invoice ultimately settled in Taro can be paid by BTC or any other Taro asset, and anyone with a Taro balance can pay any Lightning invoice.
 
-![An example of a Taro payment in which the receiver opts to receive the same asset type.](<../.gitbook/assets/Untitled presentation(4).png>)
+![An example of a Taro payment in which the receiver opts to receive the same asset type.](<../.gitbook/assets/Group 3882(2).png>)
 
 Any Lightning Network node aware of Taro channels can potentially act as an edge node. They can set their own reference rates and, similar to other forms of routing nodes, compete with each other over fees they collect from forwards and swaps.
 
 Due to fluctuations in conversion rates between Taro assets and Bitcoin, edge nodes may only guarantee rates for a limited amount of time when issuing invoices. When paying invoices, they may provide live quotes adjusted every second, locked for a limited time when a payment is attempted.
 
-![Sender and recipient do not need to transact in the same asset type.](<../.gitbook/assets/Untitled presentation(2).png>)
+![Sender and recipient do not need to transact in the same asset type.](<../.gitbook/assets/Group 3881(2).png>)
 
 Edge nodes may have other tools at their disposal if they fear abuse of their quoted forwards, such as closing a channel, reducing the validity of invoices or increasing spreads.
 

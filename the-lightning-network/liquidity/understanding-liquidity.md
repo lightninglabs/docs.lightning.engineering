@@ -26,7 +26,7 @@ Based on that decision, our liquidity needs will differ. In some ways, the conce
 
 ### Payments
 
-For someone primarily using the Lightning Network to make payments, liquidity is largely a matter of whether funds are held in well-connected channels. Depending on the nature of those payments, it might make sense to open a channel with the entity you are most frequently transacting with or to [identify a good routing node](../routing/identify-good-peers.md) that can reach those counterparties.
+For someone primarily using the Lightning Network to make payments, liquidity is largely a matter of whether funds are held in well-connected channels. Depending on the nature of those payments, it might make sense to open a channel with the entity you are most frequently transacting with or to [identify a good routing node](../the-gossip-network/identify-good-peers.md) that can reach those counterparties.
 
 It might also make sense to only open fewer, larger channels rather than spreading your funds across multiple smaller peers. But, on the other hand, if you concentrate all funds in a single channel, your satoshis could be at risk of temporarily becoming illiquid if your peer goes offline or a channel is closed.
 

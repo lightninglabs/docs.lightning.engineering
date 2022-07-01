@@ -36,7 +36,7 @@ description: >-
 * [Wallet of Satoshi](https://walletofsatoshi.com) - available in Google Play and the Apple AppStore
 * [Bottlepay](https://bottlepay.com) - available in Google Play and the Apple AppStore
 * [Mash](https://getmash.com/wallet) - lightning wallet that integrates directly into sites, apps and launching shortly in browser extension, mobile app form.
-* [Alby](https://getalby.com/) ([Github](https://github.com/getAlby/lightning-browser-extension)) -  connect various wallet interfaces to this browser extension for web-native payments. And login with lightning. Available for Firefox, Chrome, Brave and others
+* [Alby](https://getalby.com/) ([Github](https://github.com/getAlby/lightning-browser-extension)) - connect various wallet interfaces to this browser extension for web-native payments. And login with lightning. Available for Firefox, Chrome, Brave and others
 
 ### Lightning node interfaces
 
@@ -107,7 +107,7 @@ description: >-
 * [LNPay](https://lnpay.co)
 * [OpenNode](https://www.opennode.com)
 * [BTCPayServer](https://docs.btcpayserver.org)
-* [LNBits](https://lnbits.org)
+* [LNBits](https://lnbits.com/)
 
 ## Exchanges & Brokerages <a href="#docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364" id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
 

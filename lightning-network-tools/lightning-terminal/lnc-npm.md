@@ -101,5 +101,5 @@ To connect your node, your node needs to run LND and litd. You can [get litd](ht
 
 ## Things to do: <a href="#docs-internal-guid-85ae9888-7fff-8f73-b16d-e75e375f089f" id="docs-internal-guid-85ae9888-7fff-8f73-b16d-e75e375f089f"></a>
 
-* Check out the relevant code in the project’s [readme](https://github.com/lightninglabs/lnc-web/blob/update-connect-demo/demos/connect-demo/README.md)
+* Check out the relevant code in the project’s [readme](https://github.com/lightninglabs/lnc-web/blob/main/demos/connect-demo/README.md)
 * Enable LNC as a connection method in your app or wallet

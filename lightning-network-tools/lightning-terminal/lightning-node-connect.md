@@ -40,6 +40,16 @@ The handshake variant used in LNC for the initial connection:
 
 `XXeke_secp256k1+SPAKE2_CHACHAPOLY1305_SHA256`
 
+## Secondary pairing handshake <a href="#docs-internal-guid-01e17e1f-7fff-aa46-2601-15ea2a346470" id="docs-internal-guid-01e17e1f-7fff-aa46-2601-15ea2a346470"></a>
+
+For each subsequent connection LNC performs a secondary pairing handshake., In this second handshake, the key authentication can be omitted, as long as the long-term DH key is still known to the participants.
+
+This handshake takes the place of the usual TLS handshake in other gRPC calls to LND.
+
+The handshake used for each subsequent connection:
+
+`IK_secp256k1+CHACHAPOLY1305_SHA256`
+
 ## Terminal Proxy <a href="#docs-internal-guid-85950d8f-7fff-48ab-28e4-dc2ed92c9829" id="docs-internal-guid-85950d8f-7fff-48ab-28e4-dc2ed92c9829"></a>
 
 Upon initializing Lightning Node Connect using litd, a mailbox is created on the Terminal Proxy, identified with the hash of the pairing phrase. Upon entering the pairing phrase to the Terminal application on the web, the mailbox can be reached by the application, and the initial handshake can be initialized.
@@ -49,8 +59,6 @@ The proxy server creates two pipes, one for the application to push data to the 
 Messages in these pipes are delivered in order, making it easy for the recipient client to make sure they did not miss out on any information.
 
 The mechanisms of Lightning Node Connect make it possible to use Terminal on the web without requiring to trust the proxy.
-
-[Read also: the gRPC service definition of Terminal Web Proxy.](https://github.com/lightninglabs/subasta/blob/master/auctioneerrpc/hashmail.proto)
 
 ## WebAssembly Client <a href="#docs-internal-guid-bba880d4-7fff-58ff-a234-38d8a8130eef" id="docs-internal-guid-bba880d4-7fff-58ff-a234-38d8a8130eef"></a>
 

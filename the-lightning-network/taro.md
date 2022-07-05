@@ -240,15 +240,25 @@ This maintains the Lightning invoice as the standard scheme for invoices. An inv
 
 ![An example of a Taro payment in which the receiver opts to receive the same asset type.](<../.gitbook/assets/Group 3882(2).png>)
 
-Any Lightning Network node aware of Taro channels can potentially act as an edge node. They can set their own reference rates and, similar to other forms of routing nodes, compete with each other over fees they collect from forwards and swaps.
+### Exchange rates <a href="#docs-internal-guid-08fce969-7fff-c159-5dda-e3434119debb" id="docs-internal-guid-08fce969-7fff-c159-5dda-e3434119debb"></a>
+
+The Taro protocol itself does not define how to handle exchange rates. Each node performing swaps is responsible for determining its own exchange rate. They might use reference rates from liquid exchanges, or determine their own.
+
+Any Lightning Network node aware of Taro channels can potentially act as an edge node. They compete with each other over fees they collect from forwards and swaps. These fees include the routing fee, a swap fee or alternatively a spread.
+
+When creating an invoice, the recipient (e.g. Zane in the example below) will ping their peer (e.g. Yana) for their current reference price. They use this reference price to generate a general Lightning Network invoice denominated in satoshis, including the hop hints and the channel policies and pass it on to the payer.
+
+As the payer passes the payment through their constructed route to Zane, it passes Yana, who forwards L-EUR. Before releasing the preimage, Zane’s wallet can check whether it received the exact expected amount of L-EUR.
 
 Due to fluctuations in conversion rates between Taro assets and Bitcoin, edge nodes may only guarantee rates for a limited amount of time when issuing invoices. When paying invoices, they may provide live quotes adjusted every second, locked for a limited time when a payment is attempted.
+
+When paying a satoshi-denominated invoice through L-USD, Alice can ping Bob for his latest rates and fees. She can confirm the payment, passing the required amount of L-USD plus fees, and the recipient will only release the preimage if they receive the amount of satoshis they expected.
 
 ![Sender and recipient do not need to transact in the same asset type.](<../.gitbook/assets/Group 3881(2).png>)
 
 Edge nodes may have other tools at their disposal if they fear abuse of their quoted forwards, such as closing a channel, reducing the validity of invoices or increasing spreads.
 
-The Taro protocol does not regulate or set rates between Taro assets and BTC. It only provides for the mechanisms of a functional market with low technical barriers to entry and the tools that allow for automated, atomic and instant forwards.
+The Taro protocol does not regulate or set rates, but only provides for the mechanisms of a functional market with low technical barriers to entry and the tools that allow for automated, atomic and instant forwards.
 
 ## Features & Limitations <a href="#docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46" id="docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46"></a>
 

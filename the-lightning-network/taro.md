@@ -242,7 +242,7 @@ This maintains the Lightning invoice as the standard scheme for invoices. An inv
 
 ### Exchange rates <a href="#docs-internal-guid-08fce969-7fff-c159-5dda-e3434119debb" id="docs-internal-guid-08fce969-7fff-c159-5dda-e3434119debb"></a>
 
-The Taro protocol itself does not define how to handle exchange rates. Each node performing swaps is responsible for determining its own exchange rate. They might use reference rates from liquid exchanges, or determine their own.
+The Taro protocol itself does not define how to handle exchange rates. Each node performing swaps is responsible for determining its own exchange rate. They might use reference rates from liquid exchanges, or determine their own. It is important to note that when receiving a payment the recipient generates the invoice themselves, thus ensuring that the recipient receives the proper amount denominated in their desired asset.
 
 Any Lightning Network node aware of Taro channels can potentially act as an edge node. They compete with each other over fees they collect from forwards and swaps. These fees include the routing fee, a swap fee or alternatively a spread.
 
@@ -258,7 +258,7 @@ When paying a satoshi-denominated invoice through L-USD, Alice can ping Bob for 
 
 Edge nodes may have other tools at their disposal if they fear abuse of their quoted forwards, such as closing a channel, reducing the validity of invoices or increasing spreads.
 
-The Taro protocol does not regulate or set rates, but only provides for the mechanisms of a functional market with low technical barriers to entry and the tools that allow for automated, atomic and instant forwards.
+The Taro protocol does not regulate or set rates, but only provides for the mechanisms of a functional market with low technical barriers to entry and the tools that allow for automated, atomic, and instant forwards.
 
 ## Features & Limitations <a href="#docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46" id="docs-internal-guid-9b2bf3f9-7fff-60c9-5880-bd52d991db46"></a>
 

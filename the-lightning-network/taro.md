@@ -228,9 +228,9 @@ Assets are transacted by creating nested HTLC/PTLCs which, if needed, can be cla
 
 ### Multi-hop Taro transfers
 
-Historically, payment networks struggle with a bootstrapping problem -- anytime a new asset is created, an entirely new payment network needs to be created to serve that specific asset's payment demand. Taro enables a payment-routing paradigm in which the LN is able to handle channels with any asset but with the ability to find routes across different assets. Taro assets in LN channels can be transferred over the general Lightning Network, for example in a situation in which all participants along a route have liquidity with each other. They can opt to charge fees in BTC or the transferred Taro asset.
+Historically, payment networks struggle with a bootstrapping problem -- any time a new asset is created, an entirely new payment network needs to be created to serve that specific asset's payment demand. Taro enables a payment-routing paradigm in which the LN is able to handle channels with any asset but with the ability to find routes across different assets. Taro assets in LN channels can be transferred over the general Lightning Network, for example in a situation in which all participants along a route have liquidity with each other. They can opt to charge fees in BTC or the transferred Taro asset.
 
-Even if no Taro route exists, a BTC route can take its place as long as the first node is willing to forward the Taro value in satoshis. This can also allow the LN to facilitate exchange between bitcoin and Taro assets over the Lightning Network. This also allows the recipient of a payment to opt into receiving a Taro asset instead of BTC. In the example below, Bob and Carol both act as edge nodes and swap payments L-USD and BTC.
+Without a Taro route being needed, a BTC route can take its place as long as the first node is willing to forward the Taro value in satoshis. This can also allow the LN to facilitate exchange between bitcoin and Taro assets over the Lightning Network. This also allows the recipient of a payment to opt into receiving a Taro asset instead of BTC. In the example below, Bob and Carol both act as edge nodes and swap payments L-USD and BTC.
 
 ![An example of a Taro payment made to the wider Lightning Network](<../.gitbook/assets/Group 3881(1).png>)
 

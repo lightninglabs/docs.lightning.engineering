@@ -31,8 +31,8 @@ Summary:
 Video: Taro, a New Protocol for Multi-Asset Bitcoin and Lightning
 {% endembed %}
 
-{% content-ref url="taro-on-bitcoin.md" %}
-[taro-on-bitcoin.md](taro-on-bitcoin.md)
+{% content-ref url="taro-protocol.md" %}
+[taro-protocol.md](taro-protocol.md)
 {% endcontent-ref %}
 
 {% content-ref url="taro-on-lightning.md" %}

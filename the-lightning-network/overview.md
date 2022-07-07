@@ -50,6 +50,6 @@ The following guides assume basic knowledge of Bitcoin, specifically the UTXO mo
 [lsat](lsat/)
 {% endcontent-ref %}
 
-{% content-ref url="taro.md" %}
-[taro.md](taro.md)
+{% content-ref url="taro/" %}
+[taro](taro/)
 {% endcontent-ref %}

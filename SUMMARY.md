@@ -32,7 +32,9 @@
   * [Aperture](the-lightning-network/lsat/aperture.md)
   * [📋 Protocol Specification](the-lightning-network/lsat/protocol-specification.md)
   * [Implementations and Links](the-lightning-network/lsat/implementations-and-links.md)
-* [Taro](the-lightning-network/taro.md)
+* [Taro](the-lightning-network/taro/README.md)
+  * [Taro on Bitcoin](the-lightning-network/taro/taro-on-bitcoin.md)
+  * [Taro on Lightning](the-lightning-network/taro/taro-on-lightning.md)
 
 ## Lightning Network Tools
 

@@ -39,8 +39,8 @@ Loop is a service that makes it easier to send and receive funds on Lightning, s
 
 Pool is a non-custodial marketplace where users can buy inbound liquidity from node operators. Read our guides on how to join Pool as either a buyer or seller.
 
-{% content-ref url="the-lightning-network/taro.md" %}
-[taro.md](the-lightning-network/taro.md)
+{% content-ref url="the-lightning-network/taro/" %}
+[taro](the-lightning-network/taro/)
 {% endcontent-ref %}
 
 Taro is a Taproot-powered protocol for issuing assets on the bitcoin blockchain that can be transferred over the Lightning Network for instant, high volume, low fee transactions.

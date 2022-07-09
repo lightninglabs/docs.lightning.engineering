@@ -65,11 +65,16 @@
 * [The HtlcSwitch now waits for a ChannelLink to stop before replacing it. This fixes a race
   condition.](https://github.com/lightningnetwork/lnd/pull/6642)
 
+* [Integration tests now always run with nodes never deleting failed payments](https://github.com/lightningnetwork/lnd/pull/6712).
+
 ## Code Health
 
 ### Code cleanup, refactor, typo fixes
 
 * [Migrate instances of assert.NoError to require.NoError](https://github.com/lightningnetwork/lnd/pull/6636).
+ 
+* [Enforce the order of rpc interceptor execution](https://github.com/lightningnetwork/lnd/pull/6709) to be the same as the
+  order in which they were registered.
 
 ### Tooling and documentation
 
@@ -88,6 +93,7 @@
 * Eugene Siegel
 * Slyghtning
 * Oliver Gugger
+* Olaoluwa Osuntokun
 * Priyansh Rastogi
 * Tommy Volk
 * Yong Yu

@@ -25,6 +25,11 @@
   `updatechanstatus`](https://github.com/lightningnetwork/lnd/pull/6705)
   to offer a convenient way to specify the channel to be updated.
 
+* [Add `ignore_pair` flag to 
+  queryroutes](https://github.com/lightningnetwork/lnd/pull/6724) to allow a 
+  user to request that specific directional node pairs be ignored during the 
+  route search.
+
 ## Database
 
 * [Delete failed payment attempts](https://github.com/lightningnetwork/lnd/pull/6438)
@@ -65,7 +70,11 @@
 * [The HtlcSwitch now waits for a ChannelLink to stop before replacing it. This fixes a race
   condition.](https://github.com/lightningnetwork/lnd/pull/6642)
 
-* [Integration tests now always run with nodes never deleting failed payments](https://github.com/lightningnetwork/lnd/pull/6712).
+* [Integration tests now always run with nodes never deleting failed
+  payments](https://github.com/lightningnetwork/lnd/pull/6712).
+
+* [Fixes a key scope issue preventing new remote signing setups to be created
+  with `v0.15.0-beta`](https://github.com/lightningnetwork/lnd/pull/6714).
 
 ## Code Health
 

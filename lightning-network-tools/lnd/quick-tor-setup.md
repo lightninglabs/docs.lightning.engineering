@@ -100,4 +100,4 @@ Optionally we may also specify the IP and port of Tor and LND, as well as the pa
 
 If you are running LND in hybrid mode and want your node to also be reachable through a clearnet address don't forget to add the following line to your lnd.conf file:
 
-`extraip=<your IP here>`
+`externalip=<your IP here>`

@@ -22,7 +22,7 @@
   need to explicitly specify the `--private` flag.
 
 * [Add `chan_point` flag to
-  `updatechanstatus`](https://github.com/lightningnetwork/lnd/pull/6705)
+  `updatechanstatus` and `abandonchannel`](https://github.com/lightningnetwork/lnd/pull/6705)
   to offer a convenient way to specify the channel to be updated.
 
 * [Add `ignore_pair` flag to 
@@ -51,6 +51,14 @@
 
 * [Add wallet reserve RPC & field in wallet
   balance](https://github.com/lightningnetwork/lnd/pull/6592).
+
+* The RPC middleware interceptor now also allows [requests to be
+  replaced](https://github.com/lightningnetwork/lnd/pull/6630) instead of just
+  responses. In addition to that, errors returned from `lnd` can now also be
+  intercepted and changed by the middleware.
+
+* The `signrpc.SignMessage` and `signrpc.VerifyMessage` now supports [Schnorr
+  signatures](https://github.com/lightningnetwork/lnd/pull/6722).
 
 ## Bug Fixes
 

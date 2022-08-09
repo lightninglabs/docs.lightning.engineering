@@ -11,6 +11,12 @@
   binary digest to be different whether that folder exists or
   not](https://github.com/lightningnetwork/lnd/pull/6676).
 
+## Taproot
+
+[`lnd` will now refuse to start if it detects the full node backned does not
+support Tapoot](https://github.com/lightningnetwork/lnd/pull/6798).
+
+
 ## `lncli`
 
 * [Add `payment_addr` flag to
@@ -115,6 +121,12 @@
 * [Re-initialise registered middleware index lookup map after removal of a 
   registered middleware](https://github.com/lightningnetwork/lnd/pull/6739)
 
+* [Bitcoind cookie file path can be specified with zmq
+  options](https://github.com/lightningnetwork/lnd/pull/6736)
+
+* [Remove `ScidAliasOptional` dependency on 
+`ExplicitChannelTypeOptional`](https://github.com/lightningnetwork/lnd/pull/6809)
+
 ## Code Health
 
 ### Code cleanup, refactor, typo fixes
@@ -135,10 +147,12 @@
 
 # Contributors (Alphabetical Order)
 
+* bitromortac
 * Carsten Otto
 * Elle Mouton
 * ErikEk
 * Eugene Siegel
+* Jordi Montes
 * Matt Morehouse
 * Slyghtning
 * Oliver Gugger

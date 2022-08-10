@@ -1,6 +1,10 @@
 # Release Notes
 
-## Protocol Extensions
+## Protocol/Spec Updates
+
+* [We'll now no longer clamp the co-op close fee to the commitment
+ fee](https://github.com/lightningnetwork/lnd/pull/6770). Instead, if users are
+ the initiator, they can now specify a max fee that should be respected.
 
 ### Zero-Conf Channel Opens
 * [Introduces support for zero-conf channel opens and non-zero-conf option_scid_alias channels.](https://github.com/lightningnetwork/lnd/pull/5955)
@@ -93,6 +97,10 @@ support Tapoot](https://github.com/lightningnetwork/lnd/pull/6798).
   can indicate to the client that it has completed the RPC MW registration.
 
 ## Bug Fixes
+
+* [LND no longer creates non-standard transactions when calling SendCoins with the
+  all flag. This would manifest with p2wsh/p2pkh output scripts at
+  1sat/vbyte.](https://github.com/lightningnetwork/lnd/pull/6740)
 
 * Fixed data race found in
   [`TestSerializeHTLCEntries`](https://github.com/lightningnetwork/lnd/pull/6673).

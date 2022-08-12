@@ -9,6 +9,10 @@
 ### Zero-Conf Channel Opens
 * [Introduces support for zero-conf channel opens and non-zero-conf option_scid_alias channels.](https://github.com/lightningnetwork/lnd/pull/5955)
 
+* [The `listchannels` and `closedchannels` APIs have been updated to return alias and zero-conf
+  information. A new `listaliases` API has also been added that returns a data dump of all
+  existing alias info.](https://github.com/lightningnetwork/lnd/pull/6734)
+
 ## Build system
 
 * [Add the release build directory to the `.gitignore` file to avoid the release
@@ -20,6 +24,8 @@
 [`lnd` will now refuse to start if it detects the full node backned does not
 support Tapoot](https://github.com/lightningnetwork/lnd/pull/6798).
 
+[`lnd` will now use taproot addresses for co-op closes if the remote peer
+supports the feature.](https://github.com/lightningnetwork/lnd/pull/6633)
 
 ## `lncli`
 

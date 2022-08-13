@@ -13,19 +13,36 @@
   information. A new `listaliases` API has also been added that returns a data dump of all
   existing alias info.](https://github.com/lightningnetwork/lnd/pull/6734)
 
+* [Adds a `ZeroConfAcceptor` that rejects any zero-conf channel opens unless an RPC `ChannelAcceptor` is
+  active. This is a safety measure to avoid funds loss.](https://github.com/lightningnetwork/lnd/pull/6716)
+
+### Interoperability 
+* [LND now waits until the peer's `funding_locked` is received before sending the initial
+  `channel_update`. The BOLT specification requires this.](https://github.com/lightningnetwork/lnd/pull/6664)
+
 ## Build system
 
 * [Add the release build directory to the `.gitignore` file to avoid the release
   binary digest to be different whether that folder exists or
   not](https://github.com/lightningnetwork/lnd/pull/6676).
 
+## MuSig2
+
+The experimental MuSig2 RPC interface has been updated to track version 0.4.0
+of the draft BIP.
+
 ## Taproot
 
-[`lnd` will now refuse to start if it detects the full node backned does not
-support Tapoot](https://github.com/lightningnetwork/lnd/pull/6798).
+[`lnd` will now refuse to start if it detects the full node backend does not
+support Tapoot](https://github.com/lightningnetwork/lnd/pull/6798). [With this
+change](https://github.com/lightningnetwork/lnd/pull/6826), the officially
+supported versions of bitcoind are: 21, 22, and 23.
 
 [`lnd` will now use taproot addresses for co-op closes if the remote peer
 supports the feature.](https://github.com/lightningnetwork/lnd/pull/6633)
+
+The [wallet also creates P2TR change addresses by
+default](https://github.com/lightningnetwork/lnd/pull/6810) in most cases.
 
 ## `lncli`
 

@@ -41,6 +41,7 @@
 * [LND](lightning-network-tools/lnd/README.md)
   * [🛠 Get Started](lightning-network-tools/lnd/run-lnd.md)
   * [lnd.conf](lightning-network-tools/lnd/lnd.conf.md)
+  * [First Steps With LND](lightning-network-tools/lnd/first-steps-with-lnd.md)
   * [Wallet Management](lightning-network-tools/lnd/wallet.md)
   * [Sending Payments](lightning-network-tools/lnd/payments.md)
   * [Atomic Multi-path Payments (AMP)](lightning-network-tools/lnd/amp.md)

@@ -30,6 +30,8 @@ We can use a command like the following to open our first channel. It specified 
 
 Typically, our channel will take three confirmations to be considered open and usable.
 
+Advanced users can also [open a channel using external funds using the PSBT feature](psbt.md).
+
 ## Make a payment <a href="#docs-internal-guid-e03619d4-7fff-26a0-cb13-e562cd8da765" id="docs-internal-guid-e03619d4-7fff-26a0-cb13-e562cd8da765"></a>
 
 Once our channel is active, we can use it to make outgoing payments. Grab a Lightning invoice from a mobile wallet or online shop. Then, pay the invoice with the command line!

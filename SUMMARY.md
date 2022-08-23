@@ -35,6 +35,7 @@
 * [Taro](the-lightning-network/taro/README.md)
   * [Taro Protocol](the-lightning-network/taro/taro-protocol.md)
   * [Taro on Lightning](the-lightning-network/taro/taro-on-lightning.md)
+  * [FAQ](the-lightning-network/taro/faq.md)
 
 ## Lightning Network Tools
 

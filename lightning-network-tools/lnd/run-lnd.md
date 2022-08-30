@@ -84,6 +84,7 @@ To permanently include this new directory in your path, add the following lines 
 
 `git clone https://github.com/lightningnetwork/lnd`\
 `cd lnd`\
+`git checkout <most recent version>`\
 `make install`
 
 LND is now installed from source.

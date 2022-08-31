@@ -115,7 +115,7 @@ A very simple example using `curl` may look something like this:
 ⛰  curl --insecure --header "Grpc-Metadata-macaroon: $(xxd -ps -u -c 1000  $HOME/.lnd/data/chain/bitcoin/simnet/admin.macaroon)" https://localhost:8080/v1/getinfo
 ```
 
-Have a look at the [Java GRPC example](https://github.com/lightninglabs/docs.lightning.engineering/tree/33bc7e27861f932d5d0676912bf45cf608534ceb/docs/grpc/java.md) for programmatic usage details.
+Have a look at the [Java GRPC example](../../docs/lnd/grpc/java.md) for programmatic usage details.
 
 
 

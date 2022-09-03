@@ -197,11 +197,11 @@ While LND, the Lightning Network Daemon will run in the background, we will use 
 
 ## Part 3: Upgrade LND <a href="#docs-internal-guid-277e81aa-7fff-ccda-4359-bf5ca2a712bc" id="docs-internal-guid-277e81aa-7fff-ccda-4359-bf5ca2a712bc"></a>
 
-It is recommended up upgrade to the latest release whenever it becomes available. If you miss a release, it is generally supported to directly install the latest.
+It is recommended to upgrade to the latest release whenever it becomes available. If you miss a release, it is generally recommended to upgrade directly to the latest version.
 
 [Upgrade using the binaries (recommended)](run-lnd.md#docs-internal-guid-5d9031c2-7fff-0da3-d810-6914af3b84ac)
 
-[Uprade from source](run-lnd.md#docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196)
+[Upgrade from source](run-lnd.md#docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196)
 
 [Upgrade using docker](run-lnd.md#docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e)
 
@@ -213,7 +213,7 @@ You can then gracefully shut down LND with the command `lncli stop`. This may ta
 
 Now move the binaries to the directory of your existing LND, overwriting the previous binary.
 
-You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.
+You can now start LND again, unlock the wallet and verify you are using the correct version with `lncli version`.
 
 ### From source <a href="#docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196" id="docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196"></a>
 
@@ -225,7 +225,7 @@ Then navigate to your local copy of the LND github repository and pull from it b
 `git checkout <latest release>`\
 `make clean && make && make install`
 
-You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.
+You can now start LND again, unlock the wallet and verify you are using the correct version with `lncli version`.
 
 ### Using docker <a href="#docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e" id="docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e"></a>
 

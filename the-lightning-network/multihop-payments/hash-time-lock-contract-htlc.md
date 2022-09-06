@@ -4,9 +4,9 @@ description: >-
   are formed to create secure multi-hop transactions.
 ---
 
-# ⭐ Hash Time-lock Contract (HTLC)
+# ⭐ Hashed Timelock Contract (HTLC)
 
-Hash Time-lock Contracts (HTLCs) are the centerpiece of any Lightning transaction. While your Lightning Network channel is a 2-of-2 multisignature address with funds on the bitcoin blockchain, a HTLC is an output of an unconfirmed transaction to a separate “smart contract” address with the following properties:
+Hashed Timelock Contracts (HTLCs) are the centerpiece of any Lightning transaction. While your Lightning Network channel is a 2-of-2 multisignature address with funds on the bitcoin blockchain, a HTLC is an output of an unconfirmed transaction to a separate “smart contract” address with the following properties:
 
 1. The smart contract can be spent by revealing a “secret’ together with a valid signature of the recipient
 2. The smart contract can be redeemed after a set amount of time together with a valid signature of the sender.
@@ -73,7 +73,7 @@ The waiting period can be defined individually for each channel at its creation 
 
 ### **C) CLTV delta**
 
-The time lock delta (or CLTV expiry delta) is the minimum difference between the expiration of an incoming and outgoing HTLC. This delta ensures that there is always enough time to settle an HTLC, even if previous HTLCs are settled on-chain at the last minute. It can be set using the `--time_lock_delta` flag of `lncli updatechanpolicy` or in the configuration file.
+The timelock delta (or CLTV expiry delta) is the minimum difference between the expiration of an incoming and outgoing HTLC. This delta ensures that there is always enough time to settle an HTLC, even if previous HTLCs are settled on-chain at the last minute. It can be set using the `--time_lock_delta` flag of `lncli updatechanpolicy` or in the configuration file.
 
 `bitcoin.timelockdelta=40`
 

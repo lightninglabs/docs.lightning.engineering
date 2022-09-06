@@ -1,7 +1,7 @@
 ---
 description: >-
-  Timelocks allow to limit when bitcoin can be spent. There are absolute and
-  relative timelocks, existing on the transactional and UTXO level.
+  Timelocks allow for limits on when bitcoin can be spent. There are absolute
+  and relative timelocks, existing on the transactional and UTXO level.
 ---
 
 # Timelocks

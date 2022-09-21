@@ -94,7 +94,7 @@ Edge nodes’ liquidity has some optionality properties, but this optionality wi
 
 The owner of a Taro asset does not need to own an equivalent amount of bitcoin to be able to send or receive amounts denominated in their asset. However, a route must exist between the sender and receiver with sufficient liquidity -- either in bitcoin or the Taro asset.
 
-
+### Custody and redeemability in the Taro protocol
 
 | <p><br></p>                | <p><br></p> | User holds the keys to the taproot UTXO | <p><br></p>                         |
 | -------------------------- | ----------- | --------------------------------------- | ----------------------------------- |

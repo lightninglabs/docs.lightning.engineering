@@ -141,7 +141,7 @@ To generate a Taro address, use the following command:
 
 `tarocli addrs new --genesis_bootstrap_info bab084072016a97059bf44a6782e44445556da48e35bce8d4d872afa3129bf6d00000001076c656f636f696e0a6c696f6e206d6f6e65790000000000 --amt 1000000`
 
-```
+```json
 {
     "addrs": [
         {

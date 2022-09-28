@@ -8,7 +8,7 @@ description: >-
 
 ## Get started
 
-## #Craeful <a href="#docs-internal-guid-f9af6317-7fff-eeb2-2957-b358d3da86da" id="docs-internal-guid-f9af6317-7fff-eeb2-2957-b358d3da86da"></a>
+## #Careful <a href="#docs-internal-guid-f9af6317-7fff-eeb2-2957-b358d3da86da" id="docs-internal-guid-f9af6317-7fff-eeb2-2957-b358d3da86da"></a>
 
 Taro is alpha software. It is configured to run on regtest, testnet3 and simnet only, where it’s okay if bitcoin or taro assets are irrevocably lost.
 

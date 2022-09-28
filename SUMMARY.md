@@ -105,6 +105,7 @@
   * [Account Recovery](lightning-network-tools/pool/account\_recovery.md)
   * [gRPC API](lightning-network-tools/pool/grpc-api.md)
   * [FAQs](lightning-network-tools/pool/faq.md)
+* [Taro](lightning-network-tools/taro.md)
 * [Faraday](lightning-network-tools/faraday/README.md)
   * [🛠 Get Started](lightning-network-tools/faraday/get-started.md)
   * [The Faraday CLI](lightning-network-tools/faraday/the-faraday-cli.md)

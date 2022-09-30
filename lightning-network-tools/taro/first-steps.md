@@ -98,7 +98,7 @@ When generating a Taro address, the receiver will create their expected Merkle t
 
 To generate a Taro address, use the following command:
 
-tarocli addrs new --genesis\_bootstrap\_info 54b5a3f38e0d1f44343422750454833408634081a465fc3339117228802cc37500000002076c656f636f696e0f66616e746173746963206d6f6e65790000000000 --amt 100
+`tarocli addrs new --genesis_bootstrap_info 54b5a3f38e0d1f44343422750454833408634081a465fc3339117228802cc37500000002076c656f636f696e0f66616e746173746963206d6f6e65790000000000 --amt 100`
 
 ```json
 {

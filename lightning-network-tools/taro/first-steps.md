@@ -132,7 +132,7 @@ You’ll also be able to inspect this address again anytime with the command `ta
 
 To send the asset, run the command below. The sender will then generate the appropriate Merkle trees for the recipient and their change outputs, sign the Taro transaction with their internal Taro key and publish the Bitcoin transaction.
 
-tarocli assets send –addrs `` tarotb1qqqsqqjp2j668uuwp505gdp5yf6sg4yrxsyxxsyp53jlcveez9ez3qpvcd6sqqqqqgrkcet0vdhkjms0veskuarpwd6xjceqd4hkueteqqqqqqqqqssgq4g9dfcd47p7v49z3djqm0ml4zfe20u88x99rd7zqg2jqsp22jcxypz54jcam0tengv084s9r4a6ggde3a02ya07hs67wmh89r4uurs9wzqpvswczyf7
+tarocli assets send -–addr `` tarotb1qqqsqqjp2j668uuwp505gdp5yf6sg4yrxsyxxsyp53jlcveez9ez3qpvcd6sqqqqqgrkcet0vdhkjms0veskuarpwd6xjceqd4hkueteqqqqqqqqqssgq4g9dfcd47p7v49z3djqm0ml4zfe20u88x99rd7zqg2jqsp22jcxypz54jcam0tengv084s9r4a6ggde3a02ya07hs67wmh89r4uurs9wzqpvswczyf7
 
 ```json
 {

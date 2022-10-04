@@ -27,6 +27,7 @@
   * [⭐ Understanding Liquidity](the-lightning-network/liquidity/understanding-liquidity.md)
   * [Managing Liquidity on the Lightning Network](the-lightning-network/liquidity/manage-liquidity.md)
   * [How to get inbound capacity on the Lightning Network](the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network.md)
+  * [Lightning Service Provider](the-lightning-network/liquidity/lightning-service-provider.md)
 * [LSAT](the-lightning-network/lsat/README.md)
   * [Macaroons](the-lightning-network/lsat/macaroons.md)
   * [LSAT](the-lightning-network/lsat/lsat.md)

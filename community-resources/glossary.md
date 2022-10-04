@@ -302,6 +302,8 @@ The Lightning Network Daemon (LND) is a popular implementation of the Lightning 
 
 A Lightning Service Provider (LSP) provides commercial [liquidity ](glossary.md#liquidity-management)and routing services on the Lightning Network. For example, a LSP might provide funds for automatic channel opening, inbound liquidity or routing information.
 
+[Further reading: Lightning Service Providers](../the-lightning-network/liquidity/lightning-service-provider.md)
+
 ## Lightning Terminal
 
 A web-based graphical interface and utility tool for [Lightning nodes](glossary.md#lightning-network-node). Runs [litd](glossary.md#litd) and uses [Lightning Node Connect](glossary.md#lightning-node-connect).

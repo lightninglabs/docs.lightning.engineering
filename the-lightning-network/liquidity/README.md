@@ -23,3 +23,7 @@ In these articles, we explore the concept of liquidity in the Lightning Network 
 {% content-ref url="how-to-get-inbound-capacity-on-the-lightning-network.md" %}
 [how-to-get-inbound-capacity-on-the-lightning-network.md](how-to-get-inbound-capacity-on-the-lightning-network.md)
 {% endcontent-ref %}
+
+{% content-ref url="lightning-service-provider.md" %}
+[lightning-service-provider.md](lightning-service-provider.md)
+{% endcontent-ref %}

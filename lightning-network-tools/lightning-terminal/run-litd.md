@@ -25,7 +25,7 @@ Finally, we will navigate to [https://terminal.lightning.engineering](https://te
 1.  You might want to run `litd` continuously on the same machine as `lnd`, and manage it through Terminal remotely. In this case, you can use `litcli` to generate the connection phrase in the terminal directly. We start `litd` regularly
 
     `litd --uipassword=dontusethisyouwillgethacked`
-2. You can now run `litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="default"` to generate a new session and obtain the pairing phrase.
+2. You can now run `litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="default" --type=admin` to generate a new session and obtain the pairing phrase.
 
 ## Connect to Lightning Terminal
 

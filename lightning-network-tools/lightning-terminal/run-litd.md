@@ -4,32 +4,25 @@ description: Run litd either in integrated mode or on a separate machine.
 
 # Connect to Terminal
 
-If you are running a software bundle such as Umbrel, `litd` might already be running on your machine. Navigate to Lightning Terminal to access it.
+If `litd` is already running on your machine, follow this guide. For installation instructions, [follow our guide](get-lit.md). If you are running a bundle such as Umbrel or Start9, Terminal may already be installed on your machine.
 
-## Integrated mode
+Once you have navigated to your local installation of Terminal, click on "Connect to Terminal" to be taken directly to Terminal on the web. Alternatively you may scan the QR code with a smart phone or tablet to open a new session on another device.
 
-1.  To run `litd`, you will need to specify a password of your own, ideally using a password manager
+You can inspect and revoke all existing sessions under "Lightning Node Connect."
 
-    `litd --uipassword=dontusethisyouwillgethacked`
+<figure><img src="../../.gitbook/assets/Screenshot 2022-10-12 at 11-27-59 Lightning Terminal.png" alt=""><figcaption><p>Lightning Terminal, as seen when navigating to https://127.0.0.1:8443</p></figcaption></figure>
 
-    If your `litd` binary could not be found, you may need to specify its location, such as:
+## Run litd locally
 
-    `~/go/bin/litd --uipassword=dontusethisyouwillgethacked`
-2. You can navigate to `http://127.0.0.1:8443` in your browser on the same machine to open Lightning Terminal. If you are running `litd` on another machine, you may access it from there or continue with the CLI option below
-3. Next, click on the Lightning Node Connect link in the side navigation
+Once you are running `litd` on your machine, navigate to `http://127.0.0.1:8443` in your browser on the same machine to open Lightning Terminal. If you are running `litd` on another machine, you may access it from there or continue with the CLI option below.
 
-Finally, we will navigate to [https://terminal.lightning.engineering](https://terminal.lightning.engineering) and enter our pairing phrase after clicking on ‘Connect my Node’
+## Create a session using the command line
 
-### Running litd together with lnd on a remote machine? <a href="#docs-internal-guid-fa69f7a0-7fff-8b6a-aadb-a1932e40738b" id="docs-internal-guid-fa69f7a0-7fff-8b6a-aadb-a1932e40738b"></a>
+If you cannot access the machine on which you are running `litd` via the browser or prefer to keep port `8443` closed, you may generate a new pairing phrase with `litcli`.
 
-1.  You might want to run `litd` continuously on the same machine as `lnd`, and manage it through Terminal remotely. In this case, you can use `litcli` to generate the connection phrase in the terminal directly. We start `litd` regularly
+`litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="default" --type=admin`
 
-    `litd --uipassword=dontusethisyouwillgethacked`
-2. You can now run `litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="default" --type=admin` to generate a new session and obtain the pairing phrase.
-
-## Connect to Lightning Terminal
-
-Navigate to [https://terminal.lightning.engineering](https://terminal.lightning.engineering/) and click on 'Connect your Node.'
+Now navigate to [https://terminal.lightning.engineering](https://terminal.lightning.engineering/) and click on 'Connect your Node.'
 
 You will be asked for your 10-word pairing phrase. Enter it and confirm.
 

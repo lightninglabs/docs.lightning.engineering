@@ -75,3 +75,12 @@ BTCPay contains an installation script for `litd`, which makes it easy to includ
 You can now find `litd` under Server Settings > Services
 
 [Continue here: Connect to Terminal](run-litd.md)
+
+## Run the litd binary
+
+To run `litd`, you will need to specify a password of your own, ideally using a password manager:
+
+`litd --uipassword=dontusethisyouwillgethacked`
+
+[Continue here: Connect to Terminal](run-litd.md)
+

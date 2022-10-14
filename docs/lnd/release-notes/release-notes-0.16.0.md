@@ -7,9 +7,9 @@
 
 ## RPC
 
-The `RegisterConfirmationsNtfn` call of the `chainnotifier` RPC sub-server [now
-optionally supports returning the entire block that confirmed the
-transaction](https://github.com/lightningnetwork/lnd/pull/6730).
+* The `RegisterConfirmationsNtfn` call of the `chainnotifier` RPC sub-server 
+ [now optionally supports returning the entire block that confirmed the 
+ transaction](https://github.com/lightningnetwork/lnd/pull/6730).
 
 * [Add `macaroon_root_key` field to
   `InitWalletRequest`](https://github.com/lightningnetwork/lnd/pull/6457) to
@@ -29,6 +29,9 @@ transaction](https://github.com/lightningnetwork/lnd/pull/6730).
 
 * [Catch and throw an error](https://github.com/lightningnetwork/lnd/pull/6945)
   during `openchannel` if the local funding amount given is zero. 
+
+* [Make remote channel reserve amount configurable for 
+  `openchannel`](https://github.com/lightningnetwork/lnd/pull/6956)
 
 ## Wallet
 
@@ -73,6 +76,9 @@ crash](https://github.com/lightningnetwork/lnd/pull/7019).
 * [Fixed potential data race on funding manager
   restart](https://github.com/lightningnetwork/lnd/pull/6929).
 
+* [Fixed a flake in the TestBlockCacheMutexes unit
+  test](https://github.com/lightningnetwork/lnd/pull/7029).
+
 ## `lncli`
 * [Add an `insecure` flag to skip tls auth as well as a `metadata` string slice
   flag](https://github.com/lightningnetwork/lnd/pull/6818) that allows the
@@ -102,6 +108,27 @@ crash](https://github.com/lightningnetwork/lnd/pull/7019).
 * [The `tlv` package now allows decoding records larger than 65535 bytes. The
   caller is expected to know that doing so with untrusted input is
   unsafe.](https://github.com/lightningnetwork/lnd/pull/6779)
+ 
+## Watchtowers
+
+* [Create a towerID-to-sessionID index in the wtclient DB to improve the 
+  speed of listing sessions for a particular tower ID](
+  https://github.com/lightningnetwork/lnd/pull/6972). This PR also ensures a 
+  closer coupling of Towers and Sessions and ensures that a session cannot be
+  added if the tower it is referring to does not exist.
+
+* [Remove `AckedUpdates` & `CommittedUpdates` from the `ClientSession`
+  struct](https://github.com/lightningnetwork/lnd/pull/6928) in order to
+  improve the performance of fetching a `ClientSession` from the DB.
+
+* [Create a helper function to wait for peer to come
+  online](https://github.com/lightningnetwork/lnd/pull/6931).
+
+* [test: replace defer cleanup with
+  `t.Cleanup`](https://github.com/lightningnetwork/lnd/pull/6864).
+
+* [test: fix loop variables being accessed in
+  closures](https://github.com/lightningnetwork/lnd/pull/7032).
 
 ### Tooling and documentation
 
@@ -112,6 +139,10 @@ crash](https://github.com/lightningnetwork/lnd/pull/7019).
 
 * Updated the github actions to use `make fmt-check` in its [build
   process](https://github.com/lightningnetwork/lnd/pull/6853).
+
+* Database related code was refactored to [allow external tools to use it more
+  easily](https://github.com/lightningnetwork/lnd/pull/5561), in preparation for
+  adding a data migration functionality to `lndinit`.
 
 # Contributors (Alphabetical Order)
 
@@ -125,6 +156,8 @@ crash](https://github.com/lightningnetwork/lnd/pull/7019).
 * hieblmi
 * Jesse de Wit
 * Matt Morehouse
+* Michael Street
 * Olaoluwa Osuntokun
 * Oliver Gugger
 * Priyansh Rastogi
+* Roei Erez

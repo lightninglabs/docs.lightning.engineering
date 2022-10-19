@@ -49,7 +49,6 @@ Inspect the newly created asset(s) by calling the command
         }
     ]
 }
-
 ```
 
 The output of this command can be explained as follows:
@@ -80,19 +79,19 @@ The output of this command can be explained as follows:
 
 `chain_anchor`:
 
-&#x20;   `tx`: The raw minting transaction.
+`tx`: The raw minting transaction.
 
-&#x20;   `txid`: The hash of the minting transaction, in reverse.
+`txid`: The hash of the minting transaction, in reverse.
 
-&#x20;   `block_hash`: The hash of the block that the minting transaction was included in.
+`block_hash`: The hash of the block that the minting transaction was included in.
 
-&#x20;   `anchor_output`: The outpoint on the bitcoin blockchain that holds the Taro asset.
+`anchor_output`: The outpoint on the bitcoin blockchain that holds the Taro asset.
 
-&#x20;   `internal_key`: The Taproot key that holds the outpoint containing the asset.
+`internal_key`: The Taproot key that holds the outpoint containing the asset.
 
 ## Generating Taro addresses: <a href="#docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63" id="docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63"></a>
 
-To send assets, you will need the recipient’s Taro address. This Taro address is specific to an asset and amount, so to generate an address, the recipient needs to know an asset’s `genesis_bootstrap_info`, which contains the genesis\_outpoint, name, meta and outpoint index.  Taro address reuse should be avoided.
+To send assets, you will need the recipient’s Taro address. This Taro address is specific to an asset and amount, so to generate an address, the recipient needs to know an asset’s `genesis_bootstrap_info`, which contains the genesis\_outpoint, name, meta and outpoint index. Taro address reuse should be avoided.
 
 When generating a Taro address, the receiver will create their expected Merkle trees, and tweak a Taproot key with it. The resulting key is converted to a Taproot address, where the receiver waits for an incoming transaction.
 
@@ -132,7 +131,7 @@ You’ll also be able to inspect this address again anytime with the command `ta
 
 To send the asset, run the command below. The sender will then generate the appropriate Merkle trees for the recipient and their change outputs, sign the Taro transaction with their internal Taro key and publish the Bitcoin transaction.
 
-tarocli assets send -–addr `` tarotb1qqqsqqjp2j668uuwp505gdp5yf6sg4yrxsyxxsyp53jlcveez9ez3qpvcd6sqqqqqgrkcet0vdhkjms0veskuarpwd6xjceqd4hkueteqqqqqqqqqssgq4g9dfcd47p7v49z3djqm0ml4zfe20u88x99rd7zqg2jqsp22jcxypz54jcam0tengv084s9r4a6ggde3a02ya07hs67wmh89r4uurs9wzqpvswczyf7
+tarocli assets send -–addr \`\` tarotb1qqqsqqjp2j668uuwp505gdp5yf6sg4yrxsyxxsyp53jlcveez9ez3qpvcd6sqqqqqgrkcet0vdhkjms0veskuarpwd6xjceqd4hkueteqqqqqqqqqssgq4g9dfcd47p7v49z3djqm0ml4zfe20u88x99rd7zqg2jqsp22jcxypz54jcam0tengv084s9r4a6ggde3a02ya07hs67wmh89r4uurs9wzqpvswczyf7
 
 ```json
 {
@@ -212,3 +211,7 @@ You can export the proof of a particular asset with the command below.
 The recipient may import them using the commmand:
 
 `tarocli proofs import –proof_file 028055056a70daf83e654a28b640dbf7fa893953f87398a51b7c2021520402a54b.taro`
+
+## Start building on Taro
+
+You can find the [API references for `tarod` here](https://lightning.engineering/taroapi/).

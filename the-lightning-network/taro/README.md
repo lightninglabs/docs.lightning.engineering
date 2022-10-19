@@ -50,6 +50,20 @@ Taro allows for a long list of features that make the protocol scalable, robust,
 * Taro channels can be created alongside BTC channels in the same utxo, allowing Taro to exist in the Lightning Network without consuming additional resources. For instance, Alice can create two channels with Bob in a single Bitcoin transaction, one containing a Taro asset, the other BTC
 * Future features may include confidential transactions and zero-knowledge proofs as part of Taro transfers.
 
+{% content-ref url="taro-protocol.md" %}
+[taro-protocol.md](taro-protocol.md)
+{% endcontent-ref %}
+
+{% content-ref url="taro-on-lightning.md" %}
+[taro-on-lightning.md](taro-on-lightning.md)
+{% endcontent-ref %}
+
+{% content-ref url="faq.md" %}
+[faq.md](faq.md)
+{% endcontent-ref %}
+
+To learn more about the implementation of the Taro protocol, follow [this link to the `tarod` client](../../lightning-network-tools/taro/).
+
 Further reading:
 
 * [Taro Q\&A with Ryan Gentry - LNMarkets](https://lnmarkets.substack.com/p/51-ryan-gentry-on-taro-massive-stress)

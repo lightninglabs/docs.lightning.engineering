@@ -28,7 +28,14 @@
   Similar to TrackPaymentV2, but for any inflight payment.
 
 * [Catch and throw an error](https://github.com/lightningnetwork/lnd/pull/6945)
-  during `openchannel` if the local funding amount given is zero. 
+  during `openchannel` if the local funding amount given is zero.
+
+* [Extend](https://github.com/lightningnetwork/lnd/pull/6831) the HTLC
+  interceptor server implementation with watchdog functionality to cancel back
+  HTLCs for which an interceptor client does not provide a resolution in time.
+  If an HTLC expires, the counterparty will claim it back on-chain and the
+  receiver will lose it. Therefore the receiver can just as well fail off-chain
+  a few blocks before so that the channel is saved.
 
 * [Make remote channel reserve amount configurable for 
   `openchannel`](https://github.com/lightningnetwork/lnd/pull/6956)
@@ -147,6 +154,15 @@ https://github.com/lightningnetwork/lnd/pull/6963/)
   easily](https://github.com/lightningnetwork/lnd/pull/5561), in preparation for
   adding a data migration functionality to `lndinit`.
 
+### Integration test
+
+The `lntest` has been
+[refactored](https://github.com/lightningnetwork/lnd/pull/6759) to provide a
+better testing suite for writing integration tests. A new defined structure is
+implemented, please refer to
+[README](https://github.com/lightningnetwork/lnd/tree/master/lntemp) for more
+details.
+
 # Contributors (Alphabetical Order)
 
 * Carla Kirk-Cohen
@@ -158,6 +174,7 @@ https://github.com/lightningnetwork/lnd/pull/6963/)
 * Graham Krizek
 * hieblmi
 * Jesse de Wit
+* Joost Jager
 * Jordi Montes
 * Matt Morehouse
 * Michael Street
@@ -165,3 +182,4 @@ https://github.com/lightningnetwork/lnd/pull/6963/)
 * Oliver Gugger
 * Priyansh Rastogi
 * Roei Erez
+* Yong Yu

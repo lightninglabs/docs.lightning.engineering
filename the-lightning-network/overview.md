@@ -26,8 +26,8 @@ The following guides assume basic knowledge of Bitcoin, specifically the UTXO mo
 [payment-channels](payment-channels/)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="the-gossip-network/" %}
+[the-gossip-network](the-gossip-network/)
 {% endcontent-ref %}
 
 {% content-ref url="pathfinding/" %}

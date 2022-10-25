@@ -53,6 +53,10 @@
   wallet](https://github.com/lightningnetwork/lnd/pull/6775). NOTE that funding
   PSBTs from imported tap scripts is not currently possible.
 
+* [The wallet birthday is now used properly when creating a watch-only wallet
+  to avoid scanning the whole
+  chain](https://github.com/lightningnetwork/lnd/pull/7056).
+
 ## Build
 
 [The project has updated to Go
@@ -164,6 +168,9 @@ https://github.com/lightningnetwork/lnd/pull/6963/)
 * Database related code was refactored to [allow external tools to use it more
   easily](https://github.com/lightningnetwork/lnd/pull/5561), in preparation for
   adding a data migration functionality to `lndinit`.
+
+* [`golangci-lint` will now check new code using additional
+  linters.](https://github.com/lightningnetwork/lnd/pull/7064)
 
 ### Integration test
 

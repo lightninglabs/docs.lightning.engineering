@@ -94,6 +94,7 @@
   * [The Loop CLI](lightning-network-tools/loop/the-loop-cli.md)
   * [gRPC API](lightning-network-tools/loop/grpc-api.md)
   * [Autoloop](lightning-network-tools/loop/autoloop.md)
+  * [Peer with Loop](lightning-network-tools/loop/peer-with-loop.md)
 * [Pool](lightning-network-tools/pool/README.md)
   * [Overview](lightning-network-tools/pool/overview.md)
   * [Quickstart](lightning-network-tools/pool/quickstart.md)

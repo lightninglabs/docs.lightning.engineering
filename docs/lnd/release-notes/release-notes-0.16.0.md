@@ -46,6 +46,10 @@
   skipped by specifying `skip_peer_alias_lookup`. `lncli fwdinghistory` also 
   adds a flag `skip_peer_alias_lookup` to skip the lookup.
 
+* The graph lookups method `DescribeGraph`, `GetNodeInfo` and `GetChanInfo` now
+  [expose tlv data](https://github.com/lightningnetwork/lnd/pull/7085) that is
+  broadcast over the gossip network.
+
 ## Wallet
 
 * [Allows Taproot public keys and tap scripts to be imported as watch-only
@@ -101,6 +105,8 @@ https://github.com/lightningnetwork/lnd/pull/6963/)
 
 * [Create a helper function to wait for peer to come
   online](https://github.com/lightningnetwork/lnd/pull/6931).
+
+* [Stop handling peer warning messages as errors](https://github.com/lightningnetwork/lnd/pull/6840)
 
 ## `lncli`
 * [Add an `insecure` flag to skip tls auth as well as a `metadata` string slice
@@ -179,7 +185,9 @@ The `lntest` has been
 better testing suite for writing integration tests. A new defined structure is
 implemented, please refer to
 [README](https://github.com/lightningnetwork/lnd/tree/master/lntemp) for more
-details.
+details. Along the way, several
+PRs([6776](https://github.com/lightningnetwork/lnd/pull/6776)) have been made
+to refactor the itest for code health and maintenance.
 
 # Contributors (Alphabetical Order)
 
@@ -196,6 +204,7 @@ details.
 * Jordi Montes
 * Matt Morehouse
 * Michael Street
+* Jordi Montes
 * Olaoluwa Osuntokun
 * Oliver Gugger
 * Priyansh Rastogi

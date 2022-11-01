@@ -75,7 +75,7 @@ With the APIs proposed to be implemented in the Pool server and client, it shoul
 
     The sidecar ticket now contains the offer from Charlie to buy a 1m satoshi channel with a 200k initial self channel balance (=push amount) for Alice. With the `--auto` flag we signal that we want to leverage the existing auctioneer infrastructure to permit both peers to communicate with each other in order to finalize the ticket negotiation.
 
-    The addition of this "auto" mode means that both sides need to only execute a single command and the rest of the negotiation happens in the background. If the `auto` flag is ommitted, then only the capacity and balance need to be specified, otherwise, all the other information one presents when submitting a full order needs to be specified.
+    The addition of this "auto" mode means that both sides need to only execute a single command and the rest of the negotiation happens in the background. If the `auto` flag is present, only the capacity and balance need to be specified, otherwise, all other information needs to be specified when submitting a full order.
 3.  Alice now needs to add her node's information:
 
     ```

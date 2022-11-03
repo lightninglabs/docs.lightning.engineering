@@ -125,6 +125,9 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 * [Stop sending a synchronizing error on the wire when out of
   sync](https://github.com/lightningnetwork/lnd/pull/7039).
 
+* [Update cert module](https://github.com/lightningnetwork/lnd/pull/6573) to
+  allow a way to update the tls certificate without restarting lnd.
+
 ## `lncli`
 * [Add an `insecure` flag to skip tls auth as well as a `metadata` string slice
   flag](https://github.com/lightningnetwork/lnd/pull/6818) that allows the
@@ -145,6 +148,10 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
   `openchannel`](https://github.com/lightningnetwork/lnd/pull/6753) requests 
   so that the user can specify fees during channel creation time in addition
   to the default configuration.
+
+* [Sleep for one second when funding locked message is not
+  received](https://github.com/lightningnetwork/lnd/pull/7095) to avoid CPU
+  spike.
 
 ## Code Health
 
@@ -194,6 +201,10 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 
 * [`golangci-lint` will now check new code using additional
   linters.](https://github.com/lightningnetwork/lnd/pull/7064)
+
+* Update github actions to [check commits against the target base 
+  branch](https://github.com/lightningnetwork/lnd/pull/7103) rather than just 
+  using the master branch. 
 
 ### Integration test
 

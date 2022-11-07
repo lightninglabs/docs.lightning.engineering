@@ -12,7 +12,7 @@ Once your LND node is running and fully synced, we can begin using it to open ch
 
 ## Deposit bitcoin <a href="#docs-internal-guid-8b3e92ed-7fff-7a3c-bb3f-c59cbd3f45db" id="docs-internal-guid-8b3e92ed-7fff-7a3c-bb3f-c59cbd3f45db"></a>
 
-The first step to getting started is to deposit bitcoin into our Lightning Node with an on-chain transaction. We can generate a taproot address with the command `lncli newaddress p2tr`. If our existing wallet or exchange does not support sending to taproot addresses, we can also replace `p2tr` with legacy segwit (`np2whk`) or native segwit (`p2whk`) to generate the respective address formats.
+The first step to getting started is to deposit bitcoin into our Lightning Node with an on-chain transaction. We can generate a taproot address with the command `lncli newaddress p2tr`. If our existing wallet or exchange does not support sending to taproot addresses, we can also replace `p2tr` with legacy segwit (`np2wkh`) or native segwit (`p2wkh`) to generate the respective address formats.
 
 Once our bitcoin transaction is waiting to be confirmed, we can use the command `lncli walletbalance` to see the new unconfirmed balance of our wallet.
 

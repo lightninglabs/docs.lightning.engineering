@@ -128,6 +128,12 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 * [Update cert module](https://github.com/lightningnetwork/lnd/pull/6573) to
   allow a way to update the tls certificate without restarting lnd.
 
+* [Fixed a bug where paying an invoice with a malformed route hint triggers a
+  never-ending retry loop](https://github.com/lightningnetwork/lnd/pull/6766)
+
+* [Migrated from go-fuzz to Go 1.18's new standard fuzz testing
+  library](https://github.com/lightningnetwork/lnd/pull/7127).
+
 ## `lncli`
 * [Add an `insecure` flag to skip tls auth as well as a `metadata` string slice
   flag](https://github.com/lightningnetwork/lnd/pull/6818) that allows the
@@ -149,8 +155,8 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
   so that the user can specify fees during channel creation time in addition
   to the default configuration.
 
-* [Sleep for one second when funding locked message is not
-  received](https://github.com/lightningnetwork/lnd/pull/7095) to avoid CPU
+* [Sleep for 10ms when funding locked message is not
+  received](https://github.com/lightningnetwork/lnd/pull/7126) to avoid CPU
   spike.
 
 ## Code Health
@@ -221,7 +227,9 @@ to refactor the itest for code health and maintenance.
 
 # Contributors (Alphabetical Order)
 
+* andreihod
 * Carla Kirk-Cohen
+* Conner Babinchak
 * cutiful
 * Daniel McNally
 * Elle Mouton
@@ -232,6 +240,7 @@ to refactor the itest for code health and maintenance.
 * Jesse de Wit
 * Joost Jager
 * Jordi Montes
+* lsunsi
 * Matt Morehouse
 * Michael Street
 * Jordi Montes

@@ -61,6 +61,10 @@
   Final resolution data will only be available for htlcs that are resolved
   after upgrading lnd.
 
+* Zero-amount private invoices [now provide hop
+  hints](https://github.com/lightningnetwork/lnd/pull/7082), up to `maxHopHints`
+  (20 currently).
+
 ## Wallet
 
 * [Allows Taproot public keys and tap scripts to be imported as watch-only
@@ -132,7 +136,12 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
   never-ending retry loop](https://github.com/lightningnetwork/lnd/pull/6766)
 
 * [Migrated from go-fuzz to Go 1.18's new standard fuzz testing
-  library](https://github.com/lightningnetwork/lnd/pull/7127).
+  library](https://github.com/lightningnetwork/lnd/pull/7127). [Updated build
+  and documentation to reflect
+  this](https://github.com/lightningnetwork/lnd/pull/7142).
+
+* [Added missing wire tests for Warning
+  message](https://github.com/lightningnetwork/lnd/pull/7143).
 
 ## `lncli`
 * [Add an `insecure` flag to skip tls auth as well as a `metadata` string slice
@@ -227,6 +236,7 @@ to refactor the itest for code health and maintenance.
 
 # Contributors (Alphabetical Order)
 
+* Alejandro Pedraza
 * andreihod
 * Carla Kirk-Cohen
 * Conner Babinchak

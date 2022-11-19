@@ -219,7 +219,7 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 ### Tooling and documentation
 
 * [The `golangci-lint` tool was updated to
-  `v1.46.2`](https://github.com/lightningnetwork/lnd/pull/6731)
+  `v1.50.1`](https://github.com/lightningnetwork/lnd/pull/7173)
 
 * [Tests in `htlcswitch` will now clean up the temporary resources they create](https://github.com/lightningnetwork/lnd/pull/6832).
 
@@ -247,8 +247,10 @@ better testing suite for writing integration tests. A new defined structure is
 implemented, please refer to
 [README](https://github.com/lightningnetwork/lnd/tree/master/lntemp) for more
 details. Along the way, several
-PRs([6776](https://github.com/lightningnetwork/lnd/pull/6776)) have been made
-to refactor the itest for code health and maintenance.
+PRs([6776](https://github.com/lightningnetwork/lnd/pull/6776),
+[6822](https://github.com/lightningnetwork/lnd/pull/6822),
+[7172](https://github.com/lightningnetwork/lnd/pull/7172)) have been made to
+refactor the itest for code health and maintenance.
 
 # Contributors (Alphabetical Order)
 

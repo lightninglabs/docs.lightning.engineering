@@ -73,7 +73,7 @@ The output of this command can be explained as follows:
 
 `relative_lock_time`: Relative locktime, analogous to bitcoin script
 
-`script_key`: The script key associated with the asset
+`script_key`: The key holding the Taro asset
 
 `asset_family`: If the asset belongs to an asset family, its key will be listed here
 

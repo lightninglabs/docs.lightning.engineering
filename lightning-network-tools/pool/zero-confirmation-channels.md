@@ -10,7 +10,7 @@ A zero-confirmation channel (or “zero-conf” channel) is a Lightning Network 
 
 When opening channels in the Lightning Network, funds are deposited into the channel by the initiator and locked in a 2-of-2 multisignature contract controlled by both channel peers that can be settled on-chain at any time. Before this funding transaction is included in a block, it is vulnerable to being replaced by another transaction spending the funds back to the initiator. Hence, typically, we are required to wait for a funding transaction to be included in a block before the channel can be used.
 
-When a node accepts an incoming channel without confirmation, it trusts that the channel will eventually confirm and not double-spent. This trust can be minimized by opening the channel from a 2-of-2 multisignature contract between the initiator of the channel open and a known third party that can credibly assure not to collude with the initiator: Lightning Pool.
+When a node accepts an incoming channel without confirmation, it trusts that the channel will eventually confirm and not be double-spent. This trust can be minimized by opening the channel from a 2-of-2 multisignature contract between the initiator of the channel open and a known third party that can credibly assure not to collude with the initiator: Lightning Pool.
 
 * The initiator is unable to double-spend the channel as they lack the second key to spend their UTXO
 * Lightning Pool is unable to take funds for themselves, as they lack the first key to spend the UTXO

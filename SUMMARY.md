@@ -102,6 +102,7 @@
   * [Accounts](lightning-network-tools/pool/accounts.md)
   * [Orders and Asks](lightning-network-tools/pool/orders.md)
   * [Sidecar Channels](lightning-network-tools/pool/sidecar\_channels.md)
+  * [Zero-confirmation channels](lightning-network-tools/pool/zero-confirmation-channels.md)
   * [Channel Leases](lightning-network-tools/pool/channel\_leases.md)
   * [Batch Execution](lightning-network-tools/pool/batch\_execution.md)
   * [Account Recovery](lightning-network-tools/pool/account\_recovery.md)

@@ -4,7 +4,7 @@ description: >-
   blockchain using taproot transactions.
 ---
 
-# Taro on Bitcoin
+# Taro Protocol
 
 ## Concepts and topography
 
@@ -140,7 +140,7 @@ The Asset Root Commitment commits to all assets held inside of the tree as well 
 
 ### Taro Addresses <a href="#docs-internal-guid-9dd22c77-7fff-d40d-b240-51c0f6f07a08" id="docs-internal-guid-9dd22c77-7fff-d40d-b240-51c0f6f07a08"></a>
 
-Taro addresses are bech32 encoded identifiers of the asset ID, the asset script hash, the internal key of the sparse Merkle sum tree and an amount, prefixed with Taro or Tarot (testnet).
+Taro addresses are bech32m encoded identifiers of the asset ID, the asset script hash, the internal key of the sparse Merkle sum tree and an amount, prefixed with Taro or Tarot (testnet).
 
 `bech32(hrp=TaroHrp, asset_id || asset_script_hash || internal_key || amt)`
 

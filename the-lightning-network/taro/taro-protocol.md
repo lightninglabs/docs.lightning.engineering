@@ -160,6 +160,8 @@ Creating assets requires a single on-chain taproot transaction, in which there i
 
 Using this methodology, funds are allocated to account holders, represented as leafs in the sparse Merkle sum tree, but the ability to make such internal transfers is limited to the owner of the internal taproot private key(s).
 
+<figure><img src="../../.gitbook/assets/taro.drawio(1).png" alt=""><figcaption><p>Diagram showing the relationship between the Taproot tree, the asset tree, the individual Taro tree and its leaf.</p></figcaption></figure>
+
 ### The Universe <a href="#docs-internal-guid-81622115-7fff-548d-5594-a7c4b43b97b3" id="docs-internal-guid-81622115-7fff-548d-5594-a7c4b43b97b3"></a>
 
 A Universe is a service that provides information about assets as well as proofs for asset holders. It acts similarly to a bitcoin block explorer, but showcases Taro transaction data which is stored off-chain with Taro clients. The main difference is that, as most information related to Taro assets is off-chain, it is easier to conceal.

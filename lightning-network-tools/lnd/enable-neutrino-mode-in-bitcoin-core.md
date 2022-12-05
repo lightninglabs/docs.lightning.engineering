@@ -33,5 +33,5 @@ When starting lnd with neutrino, you will need to set the following settings in 
 You may also use multiple options of `neutrino.addpeer=` instead of neutrino.connect= if you do not want to limit yourself to only connecting to a single neutrino node.
 
 `bitcoin.node=neutrino`\
-`neutrino.addpeer=<your Bitcoin node>`\
+`neutrino.addpeer=<your Bitcoin node's IP address>:<p2p port>`\
 `neutrino.addpeer=faucet.lightning.community`

@@ -69,6 +69,10 @@
   hints](https://github.com/lightningnetwork/lnd/pull/7082), up to `maxHopHints`
   (20 currently).
 
+* [Add `creation_date_start` and `creation_date_end` filter fields to
+  `ListInvoiceRequest` and
+  `ListPaymentsRequest`](https://github.com/lightningnetwork/lnd/pull/7159).
+
 ## Wallet
 
 * [Allows Taproot public keys and tap scripts to be imported as watch-only
@@ -151,6 +155,9 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
   that multiple peers can be specified by using the flag multiple times instead
   of using a comma separated list of
   values](https://github.com/lightningnetwork/lnd/pull/7207).
+
+* [Updated several tlv stream-decoding callsites to use tlv/v1.1.0 P2P variants
+  for untrusted input.](https://github.com/lightningnetwork/lnd/pull/7227)
 
 ## `lncli`
 
@@ -290,4 +297,5 @@ refactor the itest for code health and maintenance.
 * Oliver Gugger
 * Priyansh Rastogi
 * Roei Erez
+* Tommy Volk
 * Yong Yu

@@ -66,6 +66,7 @@
   * [Fuzzing LND](lightning-network-tools/lnd/fuzz.md)
   * [LND and etcd](lightning-network-tools/lnd/etcd.md)
   * [gRPC API](lightning-network-tools/lnd/grpc-api.md)
+  * [Channel acceptor](lightning-network-tools/lnd/channel-acceptor.md)
   * [Clustering](lightning-network-tools/lnd/leader\_election.md)
   * [NAT Traversal](lightning-network-tools/lnd/nat\_traversal.md)
   * [Recovery: Planning for failure](lightning-network-tools/lnd/recovery-planning-for-failure.md)

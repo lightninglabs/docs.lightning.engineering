@@ -84,6 +84,10 @@
   to avoid scanning the whole
   chain](https://github.com/lightningnetwork/lnd/pull/7056).
 
+* [The PSBT output information for change outputs is now properly added when
+  funding a PSBT through
+  `FundPsbt`](https://github.com/lightningnetwork/lnd/pull/7209).
+
 ## Build
 
 [The project has updated to Go
@@ -218,6 +222,9 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 
 * [Fix loop and other temporary variables being accessed in
   goroutines](https://github.com/lightningnetwork/lnd/pull/7188).
+
+* [CI: update test coverage library
+  go-acc](https://github.com/lightningnetwork/lnd/pull/7221) v0.2.6 -> v0.2.8
  
 ## Watchtowers
 
@@ -296,6 +303,7 @@ refactor the itest for code health and maintenance.
 * Olaoluwa Osuntokun
 * Oliver Gugger
 * Priyansh Rastogi
+* Robyn Ffrancon
 * Roei Erez
 * Tommy Volk
 * Yong Yu

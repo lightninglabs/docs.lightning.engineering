@@ -215,6 +215,9 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
   `getblockhash`, and `getbestblock`. These commands provide access to chain
   block data.
 
+* [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/7186) that might
+  lead to channel updates being missed, causing channel graph being incomplete.
+
 ## Code Health
 
 * [test: use `T.TempDir` to create temporary test
@@ -291,6 +294,7 @@ details. Along the way, several
 PRs([6776](https://github.com/lightningnetwork/lnd/pull/6776),
 [6822](https://github.com/lightningnetwork/lnd/pull/6822),
 [7172](https://github.com/lightningnetwork/lnd/pull/7172),
+[7242](https://github.com/lightningnetwork/lnd/pull/7242),
 [7245](https://github.com/lightningnetwork/lnd/pull/7245)) have been made to
 refactor the itest for code health and maintenance.
 

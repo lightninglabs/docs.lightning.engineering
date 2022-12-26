@@ -15,7 +15,7 @@ An LSAT is a Macaroon together with the preimage of a Lightning Network payment.
 
 To be a valid LSAT, the user needs to present two pieces of information:
 
-* The partial LSAT, being the Macarloon including the payment hash
+* The partial LSAT, being the Macaroon including the payment hash
 * The preimage, which can be obtained by paying the Lightning invoice
 
 As the payment hash is a hash of the preimage, and as the preimage can only be obtained through paying the Lightning invoice in full, it is easy for anyone with the root key to verify:

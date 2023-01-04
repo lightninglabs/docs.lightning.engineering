@@ -12,7 +12,7 @@ This may be useful when restricting channel opens from nodes that meet certain c
 
 The channel acceptor is used in Pool to ensure that channels opened through the marketplace have the desired attributes.
 
-[API documentation: Channel acceptor](https://api.lightning.community/#v1-channels-acceptor)
+[API documentation: Channel acceptor](https://lightning.engineering/api-docs/api/lnd/lightning/channel-acceptor)
 
 In principle, the channel acceptor is relatively simple and does not need to be specifically enabled. When the API endpoints are called (either RPC or REST), a bi-directional channel between LND and the client is established, through which all incoming channel requests are sent.
 

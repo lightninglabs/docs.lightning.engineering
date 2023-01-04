@@ -14,4 +14,6 @@ The Taro Daemon `tarod` implements the [Taro protocol](https://github.com/Roasbe
 [first-steps.md](first-steps.md)
 {% endcontent-ref %}
 
-For the `tarod` API documentation, [follow this link](https://lightning.engineering/taroapi/).
+{% embed url="https://lightning.engineering/api-docs/api/taro/" %}
+Taro API documentation
+{% endembed %}

@@ -8,4 +8,6 @@ description: >-
 
 You can find the complete API documentation here:
 
-[https://lightning.engineering/poolapi/](https://lightning.engineering/poolapi/)
+{% embed url="https://lightning.engineering/api-docs/api/pool/" %}
+Pool API documentation
+{% endembed %}

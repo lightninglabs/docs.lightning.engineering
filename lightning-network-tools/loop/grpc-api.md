@@ -8,4 +8,6 @@ description: >-
 
 You can find the complete API documentation here:
 
-[https://lightning.engineering/loopapi/](https://lightning.engineering/loopapi/)
+{% embed url="https://lightning.engineering/api-docs/api/loop/" %}
+Loop API cocumentation
+{% endembed %}

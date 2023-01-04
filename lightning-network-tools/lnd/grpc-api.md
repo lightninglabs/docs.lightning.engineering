@@ -8,4 +8,4 @@ description: >-
 
 Find the completele API documentation here:
 
-[https://api.lightning.community/](https://api.lightning.community/)
+{% embed url="https://lightning.engineering/api-docs/api/lnd/" %}

@@ -89,6 +89,9 @@ current gossip sync query status.
   obtained via `QueryMissionControl`.](
   https://github.com/lightningnetwork/lnd/pull/6857)
 
+* [Ensure that closing addresses match the node network for `OpenChannel` 
+  requests](https://github.com/lightningnetwork/lnd/pull/7272)
+
 ## Wallet
 
 * [Allows Taproot public keys and tap scripts to be imported as watch-only
@@ -184,6 +187,10 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 
 * [Prevent nil pointer dereference during funding manager 
   test](https://github.com/lightningnetwork/lnd/pull/7268)
+  
+* Fixed a [failure message parsing bug](https://github.com/lightningnetwork/lnd/pull/7262)
+  that caused additional failure message data to be interpreted as being part of
+  a channel update.
 
 ## `lncli`
 
@@ -297,7 +304,9 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
   adding a data migration functionality to `lndinit`.
 
 * [`golangci-lint` will now check new code using additional
-  linters.](https://github.com/lightningnetwork/lnd/pull/7064)
+  linters](https://github.com/lightningnetwork/lnd/pull/7064) and was
+  [fine-tuned](https://github.com/lightningnetwork/lnd/pull/7289) to fit our
+  code style.
 
 * Update github actions to [check commits against the target base 
   branch](https://github.com/lightningnetwork/lnd/pull/7103) rather than just 

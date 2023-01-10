@@ -68,6 +68,7 @@
   * [gRPC API](lightning-network-tools/lnd/grpc-api.md)
   * [Channel acceptor](lightning-network-tools/lnd/channel-acceptor.md)
   * [RPC Middleware Interceptor](lightning-network-tools/lnd/rpc-middleware-interceptor.md)
+  * [HTLC Interceptor](lightning-network-tools/lnd/htlc-interceptor.md)
   * [Clustering](lightning-network-tools/lnd/leader\_election.md)
   * [NAT Traversal](lightning-network-tools/lnd/nat\_traversal.md)
   * [Recovery: Planning for failure](lightning-network-tools/lnd/recovery-planning-for-failure.md)

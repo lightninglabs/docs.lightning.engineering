@@ -10,7 +10,7 @@ description: >-
 
 Use `tarocli` to begin minting your first asset.
 
-`tarocli assets mint --type normal --name beefbux --supply 1000 –enable_emission false --meta "fantastic money"`
+`tarocli assets mint --type normal --name beefbux --supply 1000 --meta "fantastic money"`
 
 This will add your asset to a minting queue called a batch, which allows multiple assets to be created in a single minting transaction. This saves fees and conserves blockspace. Minting a transaction to the blockchain immediately is possible by appending the flag `--skip_batch` to the mint command.
 

@@ -50,7 +50,7 @@ To achieve this property, the contents of the leaf are hashed and a merkle tree 
 
 ![Constructing a Sparse Merkle tree](<../../.gitbook/assets/Merkle tree introduction B1.png>)
 
-For example, we may create a Sparse Merkle tree using a fictitious hashing function of sha002, which results in a number between 0 and 3. We generate a Sparse Merkle tree with 4 leaves: 0, 1, 2 and 3. Only leaf 2 is populated, all other leaves are empty. To find leaf 2 (written 10 in binary), we go left at the first branch (1), then right at the second branch (0).
+For example, we may create a Sparse Merkle tree using a fictitious hashing function of sha002, which results in a number between 0 and 3. We generate a Sparse Merkle tree with 4 leaves: 0, 1, 2 and 3. Only leaf 2 is populated, all other leaves are empty. To find leaf 2 (written 10 in binary), we go right at the first branch (1), then left at the second branch (0).
 
 ![Identifying leaves in a Sparse Merkle tree](<../../.gitbook/assets/Merkle tree introduction B3.png>)
 
@@ -116,7 +116,7 @@ Once we have generated the sparse Merkle sum tree and asset script, we can tweak
 
 ### Publish transaction
 
-Once we publish this transaction and have it confirmed on the bitcoin blockchain, we have irreversibly created the asset. To an observer, this transaction will look like any other standard taproot transactions.
+Once we publish this transaction and have it confirmed on the bitcoin blockchain, we have irreversibly created the asset. To an observer, this transaction will look like any other standard taproot transaction.
 
 ### Asset proof
 

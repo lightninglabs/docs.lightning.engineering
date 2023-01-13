@@ -144,6 +144,9 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 * [The macaroon key store implementation was refactored to be more generally
   usable](https://github.com/lightningnetwork/lnd/pull/6509).
 
+* Add [an itest for the neutrino
+  sub-server](https://github.com/lightningnetwork/lnd/pull/6783).
+
 * [Fixed a bug where cookie authentication with Tor would fail if the cookie
   path contained spaces](https://github.com/lightningnetwork/lnd/pull/6829).
   [With the module updated](https://github.com/lightningnetwork/lnd/pull/6836),
@@ -196,6 +199,11 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 * Fixed a [failure message parsing bug](https://github.com/lightningnetwork/lnd/pull/7262)
   that caused additional failure message data to be interpreted as being part of
   a channel update.
+
+* [Fix addinvoice expiry flag comment](https://github.com/lightningnetwork/lnd/pull/7306).
+
+* [Code style cleanup](https://github.com/lightningnetwork/lnd/pull/7308) in the
+  funding package.
 
 ## `lncli`
 
@@ -366,3 +374,4 @@ refactor the itest for code health and maintenance.
 * Roei Erez
 * Tommy Volk
 * Yong Yu
+* Yusuke Shimizu

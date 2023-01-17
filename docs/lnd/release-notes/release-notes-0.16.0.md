@@ -115,6 +115,9 @@ current gossip sync query status.
 * [Fix the issue of ghost UTXOs not being detected as spent if they were created
   with an external tool](https://github.com/lightningnetwork/lnd/pull/7243).
 
+* [Add log message for edge
+  case](https://github.com/lightningnetwork/lnd/pull/7115).
+
 ## Build
 
 [The project has updated to Go
@@ -207,6 +210,8 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 
 * [Fixed a flake in the TestMailBoxAddExpiry unit
   test](https://github.com/lightningnetwork/lnd/pull/7314).
+
+* [Fix gomnd linter error](https://github.com/lightningnetwork/lnd/pull/7325)
 
 ## `lncli`
 
@@ -355,6 +360,7 @@ refactor the itest for code health and maintenance.
 * andreihod
 * Antoni Spaanderman
 * Carla Kirk-Cohen
+* Carsten Otto
 * Conner Babinchak
 * cutiful
 * Daniel McNally

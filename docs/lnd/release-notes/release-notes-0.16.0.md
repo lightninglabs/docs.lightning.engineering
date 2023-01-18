@@ -120,19 +120,25 @@ current gossip sync query status.
 
 ## Build
 
-[The project has updated to Go
+* [The project has updated to Go
 1.19](https://github.com/lightningnetwork/lnd/pull/6795)! Go 1.18 is now the
 minimum version needed to build the project.
 
-[The minimum recommended version of the Go 1.19.x series is 1.19.2 because
+* [The minimum recommended version of the Go 1.19.x series is 1.19.2 because
 1.19.1 contained a bug that affected lnd and resulted in a
 crash](https://github.com/lightningnetwork/lnd/pull/7019).
 
-[Use Go's `runtime/debug` package to get information about the build](
+* [Use Go's `runtime/debug` package to get information about the build](
 https://github.com/lightningnetwork/lnd/pull/6963/)
 
-[A wire parsing bug has been fixed that would cause lnd to be unable _decode_
+* [A wire parsing bug has been fixed that would cause lnd to be unable _decode_
 certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
+
+## Invoices
+
+* Define a new [InvoiceDB](https://github.com/lightningnetwork/lnd/pull/7215) 
+interface to be used in all the packages that need to interact with invoice 
+data.
 
 ## Misc
 
@@ -263,6 +269,10 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 * [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/7186) that might
   lead to channel updates being missed, causing channel graph being incomplete.
 
+* During reconnection, enabling channels might be failed due to the startup of
+  link is falling behind, which is now fixed by [retrying the enable
+  request](https://github.com/lightningnetwork/lnd/pull/7157). 
+
 ## Code Health
 
 * [test: use `T.TempDir` to create temporary test
@@ -305,6 +315,9 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
   using the address in question](
   https://github.com/lightningnetwork/lnd/pull/7025)
 
+* [Store AckedUpdates in a more compact
+  way](https://github.com/lightningnetwork/lnd/pull/7055)
+
 ## Pathfinding
 
 * [Pathfinding takes capacity of edges into account to improve success
@@ -341,7 +354,7 @@ certain large transactions](https://github.com/lightningnetwork/lnd/pull/7100).
 
 ### Integration test
 
-The `lntest` has been
+* The `lntest` has been
 [refactored](https://github.com/lightningnetwork/lnd/pull/6759) to provide a
 better testing suite for writing integration tests. A new defined structure is
 implemented, please refer to
@@ -351,7 +364,8 @@ PRs([6776](https://github.com/lightningnetwork/lnd/pull/6776),
 [6822](https://github.com/lightningnetwork/lnd/pull/6822),
 [7172](https://github.com/lightningnetwork/lnd/pull/7172),
 [7242](https://github.com/lightningnetwork/lnd/pull/7242),
-[7245](https://github.com/lightningnetwork/lnd/pull/7245)) have been made to
+[7245](https://github.com/lightningnetwork/lnd/pull/7245)),
+[6823](https://github.com/lightningnetwork/lnd/pull/6823)) have been made to
 refactor the itest for code health and maintenance.
 
 # Contributors (Alphabetical Order)
@@ -375,7 +389,6 @@ refactor the itest for code health and maintenance.
 * lsunsi
 * Matt Morehouse
 * Michael Street
-* Jordi Montes
 * Olaoluwa Osuntokun
 * Oliver Gugger
 * Priyansh Rastogi

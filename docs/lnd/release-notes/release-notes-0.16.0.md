@@ -219,6 +219,9 @@ data.
 
 * [Fix gomnd linter error](https://github.com/lightningnetwork/lnd/pull/7325)
 
+* [Fix race condition in 
+`TestUpdatePaymentState`](https://github.com/lightningnetwork/lnd/pull/7336)
+
 ## `lncli`
 
 * [Add an `insecure` flag to skip tls auth as well as a `metadata` string slice
@@ -340,7 +343,8 @@ data.
 * [`golangci-lint` will now check new code using additional
   linters](https://github.com/lightningnetwork/lnd/pull/7064) and was
   [fine-tuned](https://github.com/lightningnetwork/lnd/pull/7289) to fit our
-  code style.
+  code style or to [disable annoying new
+  linters](https://github.com/lightningnetwork/lnd/pull/7335).
 
 * Update github actions to [check commits against the target base 
   branch](https://github.com/lightningnetwork/lnd/pull/7103) rather than just 
@@ -365,7 +369,8 @@ PRs([6776](https://github.com/lightningnetwork/lnd/pull/6776),
 [7172](https://github.com/lightningnetwork/lnd/pull/7172),
 [7242](https://github.com/lightningnetwork/lnd/pull/7242),
 [7245](https://github.com/lightningnetwork/lnd/pull/7245)),
-[6823](https://github.com/lightningnetwork/lnd/pull/6823)) have been made to
+[6823](https://github.com/lightningnetwork/lnd/pull/6823),
+[6824](https://github.com/lightningnetwork/lnd/pull/6824),) have been made to
 refactor the itest for code health and maintenance.
 
 # Contributors (Alphabetical Order)

@@ -97,6 +97,9 @@ current gossip sync query status.
   the `dev` tag, and configured to [opt into overriding a specific message 
   type](https://github.com/lightningnetwork/lnd/pull/7153)
 
+* [Sign/Verify messages and signatures for single
+  addresses](https://github.com/lightningnetwork/lnd/pull/7231).
+
 ## Wallet
 
 * [Allows Taproot public keys and tap scripts to be imported as watch-only
@@ -228,6 +231,9 @@ data.
 * [Add Custom Message to the fuzz testsuite
 in the lnwire package](https://github.com/lightningnetwork/lnd/pull/7303)
 
+* [Remove non-existent Cleanup calls from etcd test code in the `kvdb` 
+  package](https://github.com/lightningnetwork/lnd/pull/7352)
+
 ## `lncli`
 
 * [Add an `insecure` flag to skip tls auth as well as a `metadata` string slice
@@ -282,6 +288,9 @@ in the lnwire package](https://github.com/lightningnetwork/lnd/pull/7303)
   link is falling behind, which is now fixed by [retrying the enable
   request](https://github.com/lightningnetwork/lnd/pull/7157). 
 
+* [Sign/Verify messages and signatures for single
+  addresses](https://github.com/lightningnetwork/lnd/pull/7231).
+
 ## Code Health
 
 * [test: use `T.TempDir` to create temporary test
@@ -332,6 +341,16 @@ Keysend](https://github.com/lightningnetwork/lnd/pull/7334).
 
 * [Store AckedUpdates in a more compact
   way](https://github.com/lightningnetwork/lnd/pull/7055)
+
+## DB
+
+* [Add a sqlite backend 
+  option](https://github.com/lightningnetwork/lnd/pull/7251) to the kvdb 
+  package.
+
+* [Bumped etcd dependencies to
+  3.5.7](https://github.com/lightningnetwork/lnd/pull/7353) to resolve linking
+  issues with outdated dependencies.
 
 ## Pathfinding
 
@@ -392,6 +411,7 @@ refactor the itest for code health and maintenance.
 * Antoni Spaanderman
 * Carla Kirk-Cohen
 * Carsten Otto
+* Chris Geihsler
 * Conner Babinchak
 * cutiful
 * Daniel McNally

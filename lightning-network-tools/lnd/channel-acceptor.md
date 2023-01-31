@@ -18,10 +18,14 @@ In principle, the channel acceptor is relatively simple and does not need to be 
 
 The client can then respond with either TRUE or FALSE regarding whether the channel should be accepted or not. They can also send a 500 character custom error message to the initiator to inform them about why the channel was denied.
 
+When no channel acceptor is set, all incoming zero-confirmation channels are denied by default.
+
 When using the channel acceptor to accept zero-confirmation channels, please note that both the initiator and the respondent must have the following set in their lnd.conf:
 
 `protocol.option-scid-alias=true`\
 `protocol.zero-conf=true`
+
+It is possible to have multiple channel acceptors. If any channel acceptor denies a channel request, LND will deny the channel request as well.
 
 ## Code examples:
 

@@ -7,6 +7,7 @@
 * [Overview](the-lightning-network/overview.md)
 * [Payment Channels](the-lightning-network/payment-channels/README.md)
   * [Lifecycle of a Payment Channel](the-lightning-network/payment-channels/lifecycle-of-a-payment-channel.md)
+  * [Watchtowers](the-lightning-network/payment-channels/watchtowers.md)
   * [Etymology](the-lightning-network/payment-channels/etymology.md)
 * [The Gossip Network](the-lightning-network/the-gossip-network/README.md)
   * [Identifying Good Peers on the Lightning Network](the-lightning-network/the-gossip-network/identify-good-peers.md)

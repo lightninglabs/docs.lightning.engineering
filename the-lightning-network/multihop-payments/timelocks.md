@@ -22,17 +22,17 @@ Absolute timelocks restrict a transaction to only be valid after a certain point
 
 The most commonly used timelock, nLocktime, has been a feature of bitcoin since its inception. Each bitcoin transaction specifies a nLocktime close to the most recently mined bitcoin block, meaning a miner can not include this transaction as part of a block reorg concerning previous blocks. It only began to be widely used around 2016, when it was included in Bitcoin Core 0.11.
 
-### Check-timelock verify (CTLV) <a href="#docs-internal-guid-0730def9-7fff-d01f-706d-cd4c3af5f3e0" id="docs-internal-guid-0730def9-7fff-d01f-706d-cd4c3af5f3e0"></a>
+### Check-locktime verify (CLTV) <a href="#docs-internal-guid-0730def9-7fff-d01f-706d-cd4c3af5f3e0" id="docs-internal-guid-0730def9-7fff-d01f-706d-cd4c3af5f3e0"></a>
 
-Check-timelock verify (CTLV) is the timelock used in Hash Timelock Contracts (HTLC), which make up an important part of the mechanism behind Lightning Network transactions. CTLV is an absolute timelock that uses block height to determine when transactions become valid.
+Check-locktime verify (CLTV) is the timelock used in Hash Timelock Contracts (HTLC), which make up an important part of the mechanism behind Lightning Network transactions. CLTV is an absolute timelock that uses block height to determine when transactions become valid.
 
-Differences between timelocks of incoming and outgoing HTLCs, called CTLV deltas, ensure that an incoming HTLC that is resolved on-chain can also be resolved in time in the outgoing channel.
+Differences between timelocks of incoming and outgoing HTLCs, called CLTV deltas, ensure that an incoming HTLC that is resolved on-chain can also be resolved in time in the outgoing channel.
 
-CTLV differs from nLocktime in that it enforces the timelock on the script level, while the nLocktime timelock is enforced at the time of the signature. So while it is possible to add nLocktime when spending any coin, a CTLV condition has to be defined at the time the address is created, and the owner cannot alter it anymore.
+CLTV differs from nLocktime in that it enforces the timelock on the script level, while the nLocktime timelock is enforced at the time of the signature. So while it is possible to add nLocktime when spending any coin, a CLTV condition has to be defined at the time the address is created, and the owner cannot alter it anymore.
 
-CTLV was introduced with [BIP65](https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki) and activated through a soft fork in 2015. In addition to block height, the protocol also allows CTLVs to use timestamps to define the validity of transactions.
+CLTV was introduced with [BIP65](https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki) and activated through a soft fork in 2015. In addition to block height, the protocol also allows CLTVs to use timestamps to define the validity of transactions.
 
-There’s no limit to how far in the future a CTLV transaction can be locked.
+There’s no limit to how far in the future a CLTV transaction can be locked.
 
 [Read more about HTLCs](hash-time-lock-contract-htlc.md)
 

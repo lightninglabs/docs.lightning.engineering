@@ -1,6 +1,8 @@
-# Multihop Payments
+# Making Payments
 
-Single channels work well if you have a financial relationship with some entity where you make payments frequently or in metered amounts. But most payments, like purchasing an umbrella from a corner store because you lost it again, are one-off. For Lightning to help Bitcoin scale for general use cases, there needs to be a way for the whole network to forward payments through channels that already exist. Furthermore, this process should retain the trustless nature of individual channels, otherwise it becomes too hard to identify dishonest actors amongst a large number of hops.
+Individual payments are atomic, meaning they either arrive at their destination in full or they never leave the accounts of their sender. This is achieved through Hash Time-lock Contracts (HTLC), which in short make a payment to the recipient under the condition that the recipient produces the preimage, as identified by its hash.
+
+All payments along the route are made to this hash, and can only be claimed if the preimage is revealed. In case the preimage is not revealed, the payment goes back to its sender. HTLCs can be settled on the blockchain, but generally are resolved between the peers no matter if they succeed or fail.
 
 Once you don’t have to trust the intermediaries, you no longer even care who they are. This allows Lightning nodes to be fully anonymous, which is a huge win for privacy.
 
@@ -12,7 +14,7 @@ In order for Dave to accept this payment, he must generate a random number `R`. 
 
 ![Dave gives hash H to Alice](https://imgur.com/sXuL8Tn.png)
 
-Alice tells Bob: “I will pay you if you can produce the preimage of `H` within 3 days.” In particular, she signs a transaction where for the first three days after it is broadcast, only Bob can redeem it with knowledge of R, and afterwards it is redeemable only by Alice. This transaction is called a Hash Time-Locked Contract \(HTLC\) and allows Alice to make a conditional promise to Bob while ensuring that her funds will not be accidentally burned if Bob never learns what R is. She gives this signed transaction to Bob, but neither of them broadcast it, because they are expecting to clear it out later.
+Alice tells Bob: “I will pay you if you can produce the preimage of `H` within 3 days.” In particular, she signs a transaction where for the first three days after it is broadcast, only Bob can redeem it with knowledge of R, and afterwards it is redeemable only by Alice. This transaction is called a Hash Time-Locked Contract (HTLC) and allows Alice to make a conditional promise to Bob while ensuring that her funds will not be accidentally burned if Bob never learns what R is. She gives this signed transaction to Bob, but neither of them broadcast it, because they are expecting to clear it out later.
 
 ![Alice creates HTLC with Bob](https://imgur.com/aNQoA9Z.png)
 
@@ -22,7 +24,7 @@ Carol does the same, making an HTLC that will pay Dave if Dave can produce R wit
 
 ![Dave distributes R](https://imgur.com/nTLWBbm.png)
 
-Now, everyone can clear out, because they have a guaranteed way to pull their deserved funds by broadcasting these HTLCs onto Bitcoin’s network \(i.e. on-chain\). They would prefer not to do that though, since broadcasting on-chain is more expensive, and instead settle each of these hops off chain. Alice knows that Bob can pull funds from her since he has `R`, so she tells Bob: “I’ll pay you, regardless of `R`, and in doing so we’ll terminate the HTLC so we can forget about R.” Bob does the same with Carol, and Carol with Dave.
+Now, everyone can clear out, because they have a guaranteed way to pull their deserved funds by broadcasting these HTLCs onto Bitcoin’s network (i.e. on-chain). They would prefer not to do that though, since broadcasting on-chain is more expensive, and instead settle each of these hops off chain. Alice knows that Bob can pull funds from her since he has `R`, so she tells Bob: “I’ll pay you, regardless of `R`, and in doing so we’ll terminate the HTLC so we can forget about R.” Bob does the same with Carol, and Carol with Dave.
 
 ![Everyone terminates their HTLCs](https://imgur.com/iRx4bf5.png)
 
@@ -30,3 +32,22 @@ Now, what if Dave is uncooperative and refuses to give `R` to Bob and Carol? Not
 
 We have shown how to make a payment across the Lightning Network using only off-chain transactions, without requiring direct channel links or trusting any intermediaries. As long as there is a path from the payer to the payee, payments can be routed, just like the Internet.
 
+{% content-ref url="the-payment-cycle.md" %}
+[the-payment-cycle.md](the-payment-cycle.md)
+{% endcontent-ref %}
+
+{% content-ref url="hash-time-lock-contract-htlc.md" %}
+[hash-time-lock-contract-htlc.md](hash-time-lock-contract-htlc.md)
+{% endcontent-ref %}
+
+{% content-ref url="etymology.md" %}
+[etymology.md](etymology.md)
+{% endcontent-ref %}
+
+{% content-ref url="what-makes-a-good-routing-node.md" %}
+[what-makes-a-good-routing-node.md](what-makes-a-good-routing-node.md)
+{% endcontent-ref %}
+
+{% content-ref url="understanding-submarine-swaps.md" %}
+[understanding-submarine-swaps.md](understanding-submarine-swaps.md)
+{% endcontent-ref %}

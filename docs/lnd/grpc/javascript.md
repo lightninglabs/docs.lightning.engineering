@@ -10,7 +10,7 @@ npm init (or npm init -f if you want to use the default values without prompt)
 Then you need to install the Javascript grpc and proto loader library
 dependencies:
 ```
-npm install grpc @grpc/proto-loader --save
+npm install @grpc/grpc-js @grpc/proto-loader --save
 ```
 
 You also need to copy the `lnd` `lightning.proto` file in your project directory
@@ -21,16 +21,18 @@ sources](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/lightning.pro
 
 ### Imports and Client
 
-Every time you work with Javascript gRPC, you will have to import `grpc`, load
-`lightning.proto`, and create a connection to your client like so:
+Every time you work with Javascript gRPC, you will have to import `@grpc/grpc-js`, load
+`lightning.proto`, and create a connection to your client like so.
+
+Note that when an IP address is used to connect to the node (e.g. 192.168.1.21 instead of localhost) you need to add `--tlsextraip=192.168.1.21` to your `lnd` configuration and re-generate the certificate (delete tls.cert and tls.key and restart lnd).
 
 ```js
-const grpc = require('grpc');
+const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const fs = require("fs");
 
-// Due to updated ECDSA generated tls.cert we need to let gprc know that
-// we need to use that cipher suite otherwise there will be a handhsake
+// Due to updated ECDSA generated tls.cert we need to let gRPC know that
+// we need to use that cipher suite otherwise there will be a handshake
 // error when we communicate with the lnd rpc server.
 process.env.GRPC_SSL_CIPHER_SUITES = 'HIGH+ECDSA'
 
@@ -121,7 +123,7 @@ invoice.
 
 This example has a few dependencies:
 ```shell
-⛰  npm install --save async lodash bytebuffer
+$  npm install --save async lodash bytebuffer
 ```
 
 You can run the following in your shell or put it in a program and run it like
@@ -183,7 +185,7 @@ The following snippet will add the macaroon to every request automatically:
 
 ```js
 const fs = require('fs');
-const grpc = require('grpc');
+const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const loaderOptions = {
   keepCase: true,

@@ -15,11 +15,11 @@ Open your browser to [http://localhost:3000](http://localhost:3000) if it doesn�
 
 If all went well with your development environment setup, you should see the initial screen below:
 
-![](../../../.gitbook/assets/preLND01%20%281%29%20%281%29%20%281%29.png)
+![](<../../../.gitbook/assets/preLND01 (1) (1) (1).png>)
 
 Click on the **Create a Post** button to go to the Create screen.
 
-![](../../../.gitbook/assets/preLND02%20%281%29.png)
+![](<../../../.gitbook/assets/preLND02 (1).png>)
 
 Fill in some info for the _Username_, _Title_, and _Content_ fields, then click on the **Submit** button. You will be redirected back to the screen displaying the list of posts.
 
@@ -27,11 +27,11 @@ Fill in some info for the _Username_, _Title_, and _Content_ fields, then click 
 
 Add a couple more posts, just to have some data to play with.
 
-![](../../../.gitbook/assets/preLND04%20%281%29.png)
+![](../../../.gitbook/assets/preLND04.png)
 
 Click on the **Upvote** button on a post to see the votes counter increment and the posts reorder based on which has the highest votes.
 
-![](../../../.gitbook/assets/preLND05%20%281%29.png)
+![](../../../.gitbook/assets/preLND05.png)
 
 The app makes use of WebSockets to update the UI in real-time when posts are created and upvoted on the backend. To see this in action, open a second browser window side-by-side with the first window. Create a new post on the left to see it automatically appear on the right. Upvote a post on the right to see it increment and reorder on the left automatically.
 
@@ -51,7 +51,7 @@ The backend does not use a traditional database to try to keep the sample applic
 
 The structure of the files in the **backend** folder are:
 
-```text
+```
 backend/
 ├── index.ts        # main app entrypoint which starts the express API server
 ├── posts-db.ts     # class to hold the in-memory database
@@ -67,7 +67,7 @@ The data flow in the frontend uses a layered approach to maintain a separation o
 
 The structure of the files in the **src** folder are:
 
-```text
+```
 src/
 ├── App.tsx             # top level component which renders the active page
 ├── components          # lower-level reusable components
@@ -88,4 +88,3 @@ src/
 ```
 
 Now that you have a basic understanding of the initial application that we are working with, let’s start adding some Lightning Network functionality to our app.
-

@@ -1,4 +1,4 @@
-# Increasing LND reliablity by clustering
+# Increasing LND reliability by clustering
 
 Normally LND nodes use the embedded bbolt database to store all important states.
 This method of running has been proven to work well in a variety of environments,
@@ -9,7 +9,7 @@ do updates and be more resilient to datacenter failures.
 It is now possible to store all essential state in a replicated etcd DB and to
 run multiple LND nodes on different machines where only one of them (the leader) 
 is able to read and mutate the database. In such setup if the leader node fails
-or decomissioned, a follower node will be elected as the new leader and will
+or decommissioned, a follower node will be elected as the new leader and will
 quickly come online to minimize downtime.
 
 The leader election feature currently relies on etcd to work both for the election
@@ -20,7 +20,7 @@ itself and for the replicated data store.
 To create a dev build of LND with leader election support use the following command:
 
 ```shell
-⛰  make tags="kvdb_etcd"
+$  make tags="kvdb_etcd"
 ```
 
 ## Running a local etcd instance for testing
@@ -28,7 +28,7 @@ To create a dev build of LND with leader election support use the following comm
 To start your local etcd instance for testing run:
 
 ```shell
-⛰  ./etcd \
+$  ./etcd \
     --auto-tls \
     --advertise-client-urls=https://127.0.0.1:2379 \
     --listen-client-urls=https://0.0.0.0:2379 \
@@ -47,7 +47,7 @@ through command line flags or in `lnd.conf`.
 Sample command line:
 
 ```shell
-⛰  ./lnd-debug \
+$  ./lnd-debug \
     --db.backend=etcd \
     --db.etcd.host=127.0.0.1:2379 \
     --db.etcd.certfile=/home/user/etcd/bin/default.etcd/fixtures/client/cert.pem \
@@ -94,19 +94,18 @@ readinessProbe:
     periodSeconds: 1
 ```
 
-## Replication of non-critical data
+## What data is written to the replicated remote database? 
 
-All critical data is written to the replicated database, including LND's wallet
-data which contains the key material and node identity. Some less critical data
-however is currently not written to that same database for performance reasons
-and is instead still kept in local `bbolt` files.
+Beginning with LND 0.14.0 when using a remote database (etcd or PostgreSQL) all
+LND data will be written to the replicated database, including the wallet data
+which contains the key material and node identity, the graph, the channel state,
+the macaroon and the watchtower client databases. This means that when using
+leader election there's no need to copy anything between instances of the LND
+cluster.
 
-For example the graph data is kept locally to improve path finding. Other examples
-are the macaroon database or watchtower client database. To make sure a node can
-become active and take over quickly if the leader fails, it is therefore still
-recommended to have the LND data directory on a shared volume that all active and
-passive nodes can access. Otherwise the node that is taking over might first need
-to sync its graph.
+## Is leader election supported for Postgres?
 
-As we evolve our cluster support we'll provide more solutions to make replication
-and clustering even more seamless.
+No, leader election is not supported by Postgres itself since it doesn't have a
+mechanism to reliably **determine a leading node**. It is, however, possible to
+use Postgres **as the LND database backend** while using an etcd cluster purely
+for the leader election functionality. 

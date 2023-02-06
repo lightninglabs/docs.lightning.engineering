@@ -10,7 +10,7 @@ The ability to send and receive transactions on the Lightning Network depends on
 
 ## Capacity on the Lightning Network
 
-Bitcoin exists in the form of UTXOs, meaning unspent transaction outputs. Each of these UTXOs has an amount, typically expressed in BTC, bitcoin, SAT or satoshi. 100 million satoshis \(SAT\) equals 1 bitcoin \(BTC\).
+Bitcoin exists in the form of UTXOs, meaning unspent transaction outputs. Each of these UTXOs has an amount, typically expressed in BTC, bitcoin, SAT or satoshi. 100 million satoshis (SAT) equals 1 bitcoin (BTC).
 
 When making a Bitcoin transaction, you can only spend up to the total sum of all UTXOs for which you have the key, but there are no limitations on how many UTXOs you can receive. Each UTXO you receive can be as large as needed and as small as the minimum relay size, called the Dust Limit.
 
@@ -30,22 +30,22 @@ Alice’s inbound or receiving capacity is zero, as receiving just a single sato
 
 Alice makes a payment of 300,000 satoshis to Bob. Her balance is now 700,000 satoshis, but the total capacity of the channel remains unchanged. That means Alice can now receive up to 300,000 satoshis in payments until the 1M channel capacity is exhausted. We refer to these 300,000 satoshis as Alice’s inbound capacity.
 
-On the contrary, Bob’s inbound capacity has shrunk to 700,000 while his outbound capacity has increased to 300,000 satoshis. The total capacity of the channel will not change unless another on-chain transaction is made \(only the inbound and outbound capacity are shifting\).
+On the contrary, Bob’s inbound capacity has shrunk to 700,000 while his outbound capacity has increased to 300,000 satoshis. The total capacity of the channel will not change unless another on-chain transaction is made (only the inbound and outbound capacity are shifting).
 
-Alice’s inbound capacity = Bob’s outbound capacity  
+Alice’s inbound capacity = Bob’s outbound capacity\
 Alice’s outbound capacity = Bob's inbound capacity
 
 ## Acquiring outbound capacity
 
 We start with a node that has zero channels. To acquire outbound liquidity, we require Bitcoin, more precisely, a UTXO, which we use to open a channel with a good peer on the network. Ideally, this peer has perfect uptime, good connections and a good amount of capital.
 
-\[[Guide: How to identify good peers on the Lightning Network.](../routing/identify-good-peers.md)\]
+\[[Guide: How to identify good peers on the Lightning Network.](../the-gossip-network/identify-good-peers.md)]
 
 We can open a channel with the command `lncli openchannel [node key] local-amt`. Optionally, we can set a target for how quick we want the channel to be ready by specifying `--conf_target` or set the fee manually with `--sat_per_byte`.
 
 If our node is purely for making and receiving payments, we could prefer not to route the payments of others. Thus, we may want to keep our node and its channels secret. We can do so by opening our channel with the `--private option`.
 
-\[[Guide: How to use PBST to open a channel directly from an external wallet](../../lightning-network-tools/lnd/psbt.md)\]
+\[[Guide: How to use PBST to open a channel directly from an external wallet](../../lightning-network-tools/lnd/psbt.md)]
 
 Now, we have outbound capacity that can be spent and transferred through the Lightning Network. A channel typically requires the funding transaction to have three confirmations on the Blockchain to become active.
 
@@ -63,7 +63,7 @@ Any lightning payment out of our channel will translate to the equivalent in inb
 
 If you are using Lightning to send and receive payments, this single channel might be all you need to participate on the Lightning Network. But, your Lightning channel balance will not be able to exceed the capacity of your channel. If you want to receive more satoshis, you will have to increase your inbound capacity further.
 
-1. \*\*\*\*[**Loop Out**](https://lightning.engineering/loop)\*\*\*\*
+1. [**Loop Out**](https://lightning.engineering/loop)
 
 Using [Loop Out](https://lightning.engineering/loop), you can easily increase the inbound capacity of your node beyond your initial capital. [Lightning Loop](https://lightning.engineering/loop) is a marketplace that allows users to engage in Submarine Swaps. Generally, Submarine Swaps allow the exchange of two assets in a way that makes two transactions conditional on each other. Transaction A and B will either execute together, or not execute at all. This allows for two transactions to be swapped in a trustless way, reducing due diligence costs and removing the need for external enforcement of contracts.
 
@@ -71,7 +71,7 @@ In the context of acquiring inbound capacity, we will be performing a swap betwe
 
 Once we have made our Lightning transaction to [Lightning Loop](https://lightning.engineering/loop), we should receive our balance back in the form of an on-chain transaction minus fees. We can use this new UTXO to open a second channel with a different node in the network.
 
-As a result, we still have our original capital \(minus fees\), but about 80-90% more total capacity between our two channels. And, about 40-45% of our total channel capacity is now available for receiving Lightning payments.
+As a result, we still have our original capital (minus fees), but about 80-90% more total capacity between our two channels. And, about 40-45% of our total channel capacity is now available for receiving Lightning payments.
 
 1. **Buy a channel on** [**Lightning Pool**](https://lightning.engineering/pool)\*\*\*\*
 
@@ -84,4 +84,3 @@ We can also acquire inbound capacity by signaling a need for it and incentivizin
 There are various kinds of transaction fees on the Bitcoin Blockchain and the Lightning Network. To open a channel requires the initiator to pay a transaction fee to Bitcoin miners, while a Lightning transaction pays fees to routing nodes that forward the payment to their final destination.
 
 To account for the fees incurred in closing a channel, a small amount of the channel capacity will be reserved. As such it may not be possible to completely empty a Lightning channel using a Lightning transaction, and the channel balance may appear slightly smaller than the overall channel capacity.
-

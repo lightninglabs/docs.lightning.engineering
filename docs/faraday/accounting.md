@@ -1,6 +1,6 @@
 # Accounting Reports
 Faraday produces accounting reports on a node's on chain and off chain activity. 
-These reports are formatted using the [Harmony Reporting Standard](https://github.com/picksco/harmony). 
+These reports are formatted using the [Harmony Reporting Standard](https://github.com/harmony-csv/harmony). 
 This document provides a description of the entries in these reports. 
 
 ## Bitcoin Backend
@@ -9,7 +9,7 @@ It is strongly recommended that Faraday is run with a connection to a Bitcon nod
 ## Common Fields
 For brevity, the following fields which have the same meaning for each entry will be omitted: 
 - Timestamp: The timestamp of the block that the channel open transaction appeared in. 
-- Fiat: The value of the amount field in USD. Note that values less than one satoshi will be rounded down to zero. 
+- Fiat: The value of the amount field in specified currency. Note that values less than one satoshi will be rounded down to zero. 
 - OnChain: Whether the transaction occurred off chain, or on chain.
 - Credit: True when an entry increased our balances, false when an entry decreased our balances. 
 

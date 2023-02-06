@@ -4,9 +4,9 @@ Makefile
 To build, verify, and install `lnd` from source, use the following
 commands:
 ```shell
-⛰  make
-⛰  make check
-⛰  make install
+$  make
+$  make check
+$  make install
 ```
 
 The command `make check` requires `bitcoind` (almost any version should do) to
@@ -144,7 +144,7 @@ until an error occurs. Useful for hunting flakes.
 
 Example:
 ```shell
-⛰  make flakehunter-parallel icase='(data_loss_protection|channel_backup)' backend=neutrino
+$  make flakehunter-parallel icase='(data_loss_protection|channel_backup)' backend=neutrino
 ```
 
 `lint`
@@ -179,7 +179,7 @@ Arguments:
 
 `unit-cover`
 ------------
-Runs the unit test suite with test coverage, compiling the statisitics in
+Runs the unit test suite with test coverage, compiling the statistics in
 `profile.cov`.
 
 Arguments:
@@ -206,4 +206,3 @@ Related: [`unit`](#unit)
 
 [btcd]: https://github.com/btcsuite/btcd (github.com/btcsuite/btcd")
 [gometalinter]: https://gopkg.in/alecthomas/gometalinter.v1 (gopkg.in/alecthomas/gometalinter.v1)
-[goveralls]: https://github.com/mattn/goveralls (github.com/mattn/goveralls)

@@ -1,16 +1,16 @@
-# Installation
+# 🛠 Installation
 
 ## Installation
 
-Lightning Pool is built very similarly to [Lightning Loop](https://github.com/lightninglabs/loop): There is a process that is constantly running in the background, called the trader daemon \(`poold`\) and a command line tool to interact with the daemon, called just `pool`.
+Lightning Pool is built very similarly to [Lightning Loop](https://github.com/lightninglabs/loop): There is a process that is constantly running in the background, called the trader daemon (`poold`) and a command line tool to interact with the daemon, called just `pool`.
 
-The `poold` trader daemon can be run either as a standalone binary connected to a compatible `lnd` node or integrated into [Lightning Terminal \(LiT\)](https://github.com/lightninglabs/lightning-terminal).
+The `poold` trader daemon can be run either as a standalone binary connected to a compatible `lnd` node or integrated into [Lightning Terminal (LiT)](https://github.com/lightninglabs/lightning-terminal).
 
 ### Downloading the standalone binaries
 
 The latest official release binaries can be [downloaded from the GitHub releases page](https://github.com/lightninglabs/pool/releases).
 
-### Downloading as part of Lightning Terminal \(LiT\)
+### Downloading as part of Lightning Terminal (LiT)
 
 To run `poold` integrated into the Lightning Terminal, download [the latest release of LiT](https://github.com/lightninglabs/lightning-terminal/releases) and follow [the installation instructions of LiT](https://github.com/lightninglabs/lightning-terminal#execution)
 
@@ -20,7 +20,7 @@ To build both the `poold` and `pool` binaries from the source code, at least the
 
 To download the code, compile and install it, the following commands can then be run:
 
-```text
+```
 $ git clone https://github.com/lightninglabs/pool
 $ cd pool
 $ make install
@@ -34,7 +34,7 @@ Lightning Pool needs to be connected to an `lnd` node version `v0.11.1-beta` or 
 
 [Installing `lnd` from source](https://github.com/lightningnetwork/lnd/blob/master/docs/INSTALL.md#installing-lnd) is also possible but needs to be done **with all sub-server build flags enabled**:
 
-```text
+```
 $ make install tags="signrpc walletrpc chainrpc invoicesrpc"
 ```
 
@@ -42,7 +42,7 @@ $ make install tags="signrpc walletrpc chainrpc invoicesrpc"
 
 If `lnd` is configured with the default values and is running on the same machine, `poold` will be able to connect to it automatically and can be started by simply running:
 
-```text
+```
 $ poold
 
 # Or if you want to do everything in the same terminal and run poold in the
@@ -58,7 +58,7 @@ In the case that `lnd` is running on a remote node, the `tls.cert` and the `admi
 
 The daemon can then be configured to connect to the remote `lnd` node by using the following command line flags:
 
-```text
+```
 $ poold --lnd.host=<the_remote_host_IP_address>:10009 \
         --lnd.macaroonpath=/some/directory/with/lnd/data/macaroons/admin.macaroon \
         --lnd.tlspath=/some/directory/with/lnd/data/tls.cert
@@ -66,9 +66,9 @@ $ poold --lnd.host=<the_remote_host_IP_address>:10009 \
 
 To persist this configuration, these values can also be written to a configuration file, located in `~/.pool/<network>/poold.conf`, for example:
 
-> ~/.pool/mainnet/poold.conf
+> \~/.pool/mainnet/poold.conf
 >
-> ```text
+> ```
 > lnd.host=<the_remote_host_IP_address>:10009
 > lnd.macaroonpath=/some/directory/with/lnd/data/macaroons/admin.macaroon
 > lnd.tlspath=/some/directory/with/lnd/data/tls.cert
@@ -80,9 +80,9 @@ There is a range of operational settings that can be set to change the default l
 
 The following list only includes flags that have an impact on the match making or business related behavior of the Pool trader daemon:
 
-| Flag | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| `newnodesonly` | No | `false` | If set to `true` the daemon will only buy channels from nodes it does not yet have channels with |
+| Flag           | Required | Default Value | Description                                                                                      |
+| -------------- | -------- | ------------- | ------------------------------------------------------------------------------------------------ |
+| `newnodesonly` | No       | `false`       | If set to `true` the daemon will only buy channels from nodes it does not yet have channels with |
 
 ## Authentication and transport security
 
@@ -95,4 +95,3 @@ The `pool` command will pick up these file automatically on mainnet if no custom
 For more information on macaroons, [see the macaroon documentation of lnd.](https://github.com/lightningnetwork/lnd/blob/master/docs/macaroons.md)
 
 **NOTE**: pool's macaroons are independent from `lnd`'s. The same macaroon cannot be used for both `poold` and `lnd`.
-

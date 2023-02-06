@@ -1,685 +1,240 @@
-# Run LND
+---
+description: Learn how to install LND on your machine, configure it and keep it up to date.
+---
 
-Notes on setting up and running [LND](https://github.com/lightningnetwork/lnd) instances.
+# 🛠 Get Started
 
-Example commands are given from the perspective of running Ubuntu
+The Lightning Network Daemon is a full implementation of a Lightning Network node. The Lightning Network and its specification are rapidly evolving, and so is LND. Use this guide to install LND from the binaries, source or docker and keep it up to date with new releases.
 
-### System Requirements
+{% embed url="https://www.youtube.com/watch?v=rf-GvVYuWa8" %}
+Video: RUN LND: Building a Node from Scratch
+{% endembed %}
 
-* EC2: T3 Micro Instance or better
-* IP: A clear-net routing node should get a fairly static IP
-* OS: Ubuntu is pretty common, any OS
-* PORT: 9735 will be the standard P2P port, 10009 the standard gRPC port
-* DISK: 25 GB+ \(on AWS select the io2 storage and at least 200 IOPs\)
-* _Note: EC2 will only give you 5 IPs per region_
-* _Note: When creating an EC2 instance you'll have to add rules to it's security group that allow access to ports 9735 and 10009_
+## Prerequisites <a href="#docs-internal-guid-b519fc5f-7fff-49d2-4038-dbcc3e23af33" id="docs-internal-guid-b519fc5f-7fff-49d2-4038-dbcc3e23af33"></a>
 
-#### Disk:
+**Operating system:**\
+LND runs on Windows or Mac OS X, but Unix operating systems are recommended, while Debian/Ubuntu is used for the examples below. A 64-bit architecture is required due to files growing larger than 2GB.
 
-If using Bitcoin Core on mainnet, setup a disk that can host the entire Blockchain and transaction index: 500 GB.
+**Machine:**\
+LND requires at minimum 2GB RAM and a 1 GHz quad core with at least 5GB of storage. LND makes frequent reads and writes, meaning you should not use a SD card, but instead a SSD of good quality.
 
-If using Neutrino lite-mode a separate disk is not necessary.
+**Bitcoin:**\
+LND does not require a Bitcoin backend as you may run your node in Neutrino mode. For performance reasons it is recommended to run either Bitcoin Core or btcd on the same machine or on a machine on the same network. You may prune your Bitcoin node, though doing so aggressively may impact performance. To make use of LND’s taproot functionalities you must run at least bitcoind v0.21 or btcd v0.23.1.
 
-### Initial Setup
+## Part 1: Installation <a href="#docs-internal-guid-c531bf19-7fff-07a1-45c2-0d01f5f4396f" id="docs-internal-guid-c531bf19-7fff-07a1-45c2-0d01f5f4396f"></a>
 
-If on EC2:
+[Install from the binaries (recommended)](run-lnd.md#binaries)
 
-```text
-# adjust privs on PEM file
-sudo chmod 600 ~/PATH_TO_PEM_FILE
-```
+[Install from source](run-lnd.md#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103)
 
-Add an Elastic IP and associate it with the node
+[Install using docker](run-lnd.md#docs-internal-guid-05531972-7fff-3243-8a52-edb04cdbfeef)
 
-Connect:
+[Install via third-party platforms](run-lnd.md#installing-lnd-using-third-party-scripts)
 
-```text
-ssh -i ~/path_to_downloaded_pem_file ubuntu@IP_OF_INSTANCE
-```
+### Binaries
 
-Install your favorite editor, like emacs:
+If you are a regular user and intend to use LND in production, we recommend using the binaries.
 
-```text
-sudo apt update && sudo apt upgrade -y && sudo apt install -y emacs
+**Download:**\
+You can find up-to-date releases of binaries for various operating systems and architectures [here](https://github.com/lightningnetwork/lnd/releases).
 
-# open and then quit
-emacs
+**Verification:**\
+Each release is signed by multiple developers. You may find their keys in the [LND repository here](https://github.com/lightningnetwork/lnd/tree/master/scripts/keys). Import these keys and verify the signatures.
 
-# change owner of emacs config
-sudo chown -R ubuntu ~/.emacs.d
-```
+`gpg –import key.asc`\
+`gpg --verify manifest-beta.sig manifest-beta.txt`
 
-If running on a public instance, increase the file descriptors limit:
+Lastly, you will compare the hash of the .tar.gz file with the hash listed in the manifest.
 
-```text
-sudo emacs /etc/sysctl.conf
-```
+`sha256sum lnd.tar.gz`
 
-Add line:
+**Unpack:**\
+Unpack the compressed tarball to retrieve the binaries.
 
-```text
-fs.file-max=512000
-```
+`tar -xvf lnd.tar.gz`
 
-```text
-# Save and reboot
-sudo reboot
-```
+**Installation:**\
+To install the binaries, simply place the files in your path where your operating system can find it, or add the directory containing the binary to your path.
 
-If using an attached disk for the full Blockchain and it has not yet been initialized set it up as something like `/blockchain`
+Type `$PATH` to see your current path directories.
 
-```text
-# List storage
-lsblk
-# You will get the volume name appearing as something like nvme1n1
+`$PATH`\
+`mv lnd /usr/local/bin`
 
-# Check on the storage to make sure it is empty
-sudo file -s /dev/nvme1n1
-# should show "/dev/nvme1n1: data" meaning empty
+Congratulations, you have successfully installed LND using the binary release. [Jump to Configuring LND](run-lnd.md#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17). Additionally, you may use [this sample file](https://github.com/lightningnetwork/lnd/blob/d3faef56913d5a101d0578b0568ad9fafcb0a3dc/contrib/init/lnd.service) to configure LND to run with systemd.
 
-# Format the storage as ext4. It may take a second
-sudo mkfs -t ext4 /dev/nvme1n1
+### From source <a href="#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103" id="docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103"></a>
 
-# Make a directory for the volume and mount it
-sudo mkdir /blockchain
-sudo mount /dev/nvme1n1 /blockchain/
-cd /blockchain
+**Install go:**\
+``Installing LND from source is recommended when using it in development or on testnet. To install LND from source, you will need Go version 1.18 or higher.
 
-# Double check you have enough space
-df -h .
-# should show available space in the volume
+You can find the latest version of Golang [on its official website](https://golang.org/dl/). Make sure to verify the checksum before you install Go.
 
-# Automatically mount the partition, but first backup the existing config
-sudo cp /etc/fstab /etc/fstab.bak
-sudo emacs /etc/fstab
+`sudo tar -C /usr/local -xzf go[version].linux-[platform].tar.gz`
 
-# Create entry in the file:
-/dev/nvme1n1 /blockchain ext4 defaults,nofail 0 0
+`export PATH=$PATH:/usr/local/go/bin`
 
-# Save and exit, then test:
-sudo mount -a
-# Should show no errors
+To permanently include this new directory in your path, add the following lines to your `.bashrc` file and open a new terminal window to activate it.
 
-# Take ownership of the directory:
-sudo chown `whoami` /blockchain
-```
+`export GOPATH=~/go`\
+`export PATH=$PATH:$GOPATH/bin`
 
-Setup a local firewall:
+**Install LND:**\
+``We can install lnd with the following commands. Starting with lnd 0.15 all important subsystems are built by default and no longer have to be manually specified.
 
-```text
-# Check if UFW is installed
-which ufw
-sudo ufw logging on
-sudo ufw enable
-# PRESS Y
-# Allow access to 9735 the P2P port and 10009 the gRPC port
-sudo ufw status
-sudo ufw allow OpenSSH
-sudo ufw allow 9735
-sudo ufw allow 10009
-```
+`git clone https://github.com/lightningnetwork/lnd`\
+`cd lnd`\
+`git checkout <most recent version>`\
+`make install`
 
-Setup network flood protection:
+LND is now installed from source.
 
-```text
-sudo iptables -N syn_flood
-sudo iptables -A INPUT -p tcp --syn -j syn_flood
-sudo iptables -A syn_flood -m limit --limit 1/s --limit-burst 3 -j RETURN
-sudo iptables -A syn_flood -j DROP
-sudo iptables -A INPUT -p icmp -m limit --limit 1/s --limit-burst 1 -j ACCEPT
-sudo iptables -A INPUT -p icmp -m limit --limit 1/s --limit-burst 1 -j LOG --log-prefix PING-DROP:
-sudo iptables -A INPUT -p icmp -j DROP
-sudo iptables -A OUTPUT -p icmp -j ACCEPT
-```
+Included subsystems: [autopilotrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/autopilotrpc/autopilot.proto), [signrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/signrpc/signer.proto), [walletrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/walletrpc/walletkit.proto), [chainrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/chainrpc/chainnotifier.proto), [invoicesrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/invoicesrpc/invoices.proto), [neutrinorpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/neutrinorpc/neutrino.proto), [routerrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/routerrpc/router.proto), [watchtowerrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/watchtowerrpc/watchtower.proto), [monitoring](https://github.com/lightningnetwork/lnd/blob/master/monitoring), [peersrpc](https://github.com/lightningnetwork/lnd/blob/master/lnrpc/peersrpc/peers.proto), [kvdb\_postrgres](https://github.com/lightningnetwork/lnd/blob/master/docs/postgres.md), [kvdb\_etcd](https://github.com/lightningnetwork/lnd/blob/master/docs/etcd.md)
 
-### Access Control
+Congratulations, you have successfully installed LND using the binary release. [Jump to Configuring LND](run-lnd.md#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17). Additionally, you may use [this sample file](https://github.com/lightningnetwork/lnd/blob/d3faef56913d5a101d0578b0568ad9fafcb0a3dc/contrib/init/lnd.service) to configure LND to run with systemd.
 
-**On a remote instance, set it up to use hardware keys only to authenticate**
+### Using docker <a href="#docs-internal-guid-05531972-7fff-3243-8a52-edb04cdbfeef" id="docs-internal-guid-05531972-7fff-3243-8a52-edb04cdbfeef"></a>
 
-You can setup your SSH keys by editing `~/.ssh/authorized_keys`.
+For those familiar with Docker, or those interested in easily running a variety of software alongside each other, the Docker installation is a convenient and quick way to get started with lightning.
 
-Use a `#` comment above the keys to comment on what they are
+To install LND via Docker you will need docker, make and bash on your system. You can install lnd with the following commands:
 
-### Using Tor
+`git clone https://github.com/lightningnetwork/lnd`\
+`cd lnd`\
+`git checkout <latest-release>`\
+`make docker-release tag=<latest-release>`
 
-If you want to run your node behind Tor? [Install Tor](https://2019.www.torproject.org/docs/installguide.html.en).
+You are now able to find the images in the directory `/lnd` for your use. Congratulations, you have successfully installed LND using the docker. [Jump to Configuring LND](run-lnd.md#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17).
 
-Instructions:
+### Installing LND using third-party scripts
 
-```text
-sudo apt-get update && sudo apt install -y apt-transport-https
+You can install LND inside a variety of third-party software, such as [BTCPay Server](https://btcpayserver.org), [RaspbiBlitz](https://raspiblitz.org), [myNode](https://mynodebtc.com) or [Umbrel](https://getumbrel.com). This might become your installation of choice if you want to use Lightning payments primarily to receive payments in commerce, or if you want to easily run LND along with a variety of other software that leverage your Bitcoin user experience as an individual user.
 
-# Edit package sources for installation
-sudo emacs /etc/apt/sources.list.d/tor.list
+## Part 2: Configuration <a href="#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17" id="docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17"></a>
 
-deb https://deb.torproject.org/torproject.org focal main
-deb-src https://deb.torproject.org/torproject.org focal main
+### Configuring Bitcoin
 
-# Get the GPG key for Tor and add it to GPG
-sudo curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo gpg --import
-sudo gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
+You may prune your Bitcoin backend. As LND will then need to fetch some blocks elsewhere, aggressive pruning can lead to performance loss.
 
-# Install the Tor package
-sudo apt update && sudo apt install -y tor deb.torproject.org-keyring
+**Neutrino:**\
+If you are running LND with Neutrino as a backend, you may skip this section. You may also be interested in how to configure your Bitcoin node to [serve blocks to light clients in the broader network](enable-neutrino-mode-in-bitcoin-core.md).
 
-# Add a user for Tor
-sudo usermod -a -G debian-tor `whoami`
-```
+**Bitcoind:**\
+Most importantly, your Bitcoin Core node needs to have RPC enabled, either through `rpcauth` or with a username and password. The following entries refer to your `bitcoin.conf` file. [Here](https://github.com/bitcoin/bitcoin/blob/master/contrib/devtools/README.md) you find instructions on how to create an up to date sample configuration file for Bitcoin Core.
 
-Then configure Tor:
+`rpcauth=[user]:[password hash]`
 
-```text
-# Edit the Tor configuration
-sudo emacs /etc/tor/torrc
-```
+OR
 
-```text
-# Add these lines at the top of the file:
+`rpcuser=[any username]`\
+`rpcpassword=[any unique password of your choosing]`
 
-ControlPort 9051
-CookieAuthentication 1
-CookieAuthFileGroupReadable 1
-Log notice stdout
-SOCKSPort 9050
-```
+To get the latest block data, you should enable ZMQ. The experimental “rpcpolling” option can make ZMQ obsolete, making it possible to set up multiple LND nodes per Bitcoind backend, or multiple Bitcoind backends for one or multiple LND using a load balancer.
 
-```text
-# Restart the Tor service
-sudo service tor restart
-```
+If your Bitcoin Core and LND nodes are not running on the same machine, you will need to be aware of the relevant IP addresses.
 
-Check if Tor is working
+`zmqpubrawblock=tcp://127.0.0.1:28332`\
+`zmqpubrawtx=tcp://127.0.0.1:28333`
 
-```text
-curl --socks5 localhost:9050 --socks5-hostname localhost:9050 -s https://check.torproject.org/ | cat | grep -m 1 Congratulations | xargs
-```
+When running a full, unpruned Bitcoin node you may set the following flag for small performance improvements:
 
-This should echo `Congratulations`
+`txindex=1`
 
-### Install Bitcoin Core
+**Btcd:**\
+****Your btcd backend needs RPC enabled.
 
-Using Bitcoin Core as a chain backend? [Download Bitcoin Core](https://bitcoincore.org/en/download/).
+`rpcuser=[any username]`\
+`rpcpass=[any unique password of your choosing]`
 
-Installation:
+### Configuring LND <a href="#docs-internal-guid-1c142120-7fff-1b35-7b66-af56937af371" id="docs-internal-guid-1c142120-7fff-1b35-7b66-af56937af371"></a>
 
-```text
-sudo apt install git build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev libminiupnpc-dev libzmq3-dev
-git clone -b v0.21.0 https://github.com/bitcoin/bitcoin.git
-cd bitcoin/
-./autogen.sh 
-./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" --enable-cxx --with-zmq --without-gui --disable-shared --with-pic --disable-tests --disable-bench --enable-upnp-default --disable-wallet
-# This may take a while
-make -j "$(($(nproc)+1))"
-sudo make install
-```
+You can find your lnd.conf file in `~/.lnd` in Linux, `~/Library/Application Support/Lnd` in Mac OS X and `$LOCALAPPDATA/Lnd` in Windows. You can find a [sample `lnd.conf` here](lnd.conf.md).
 
-Setup directories on the Blockchain storage volume, and also create the [Bitcoin Core data directory](https://en.bitcoin.it/wiki/Data_directory) in order to setup the configuration file:
+You will need to specify in this configuration file which backend you prefer to use and how your node should connect to it.
 
-```text
-mkdir /blockchain/.bitcoin && mkdir /blockchain/.bitcoin/data && mkdir ~/.bitcoin
-```
+**General configuration:**
 
-Download and use the [Bitcoin Core auth script](https://github.com/bitcoin/bitcoin/blob/master/share/rpcauth/rpcauth.py) to generate credentials:
+`bitcoin.active=true`\
+`bitcoin.mainnet=true`
 
-```text
-wget https://raw.githubusercontent.com/bitcoin/bitcoin/master/share/rpcauth/rpcauth.py
-python ./rpcauth.py bitcoinrpc
-# This will output the authentication string to add to bitcoin.conf
-# Save the password, this will be used for LND configuration
-```
+**Neutrino:**
 
-Edit the configuration file. If you have an existing Bitcoin Core, use `getbestblockhash` to get the current chain tip hash.
+`bitcoin.node=neutrino`\
+`neutrino.connect=faucet.lightning.community`
 
-```text
-emacs ~/.bitcoin/bitcoin.conf
-```
+**Bitcoind:**
 
-Add this configuration:
+`bitcoin.node=bitcoind`\
+`bitcoind.rpcuser=[any username]`\
+`bitcoind.rpcpass=[any unique password of your choosing]`\
+`bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332`\
+`bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333`
 
-```text
-# Set the best block hash here:
-assumevalid=
+If you have chosen to omit ZMQ in your bitcoind configuration file, you will have to set the following in lnd instead:
 
-# Run as a daemon mode without an interactive shell
-daemon=1
+`bitcoind.rpcpolling`
 
-# Set the data directory to the storage directory
-datadir=/blockchain/.bitcoin/data
+**Btcd:**
 
-# Set the number of megabytes of RAM to use, set to like 50% of available memory
-dbcache=3000
+`bitcoin.node=btcd`\
+`btcd.rpcuser=[any username]`\
+`btcd.rpcpass=[any unique password of your choosing]`\
+`btcd.rpccert=`
 
-# Add visibility into mempool and RPC calls for potential LND debugging
-debug=mempool
-debug=rpc
+Additionally, you may have a look at `the` guides “[Optimal configuration for a routing node](optimal-configuration-of-a-routing-node.md)” and “[Tor setup](quick-tor-setup.md).”
 
-# Turn off the wallet, it won't be used
-disablewallet=1
+### Run LND <a href="#docs-internal-guid-a3db49cc-7fff-5f8c-ae41-6f2de68e8fb7" id="docs-internal-guid-a3db49cc-7fff-5f8c-ae41-6f2de68e8fb7"></a>
 
-# Don't bother listening for peers
-listen=0
+Now that we have LND installed and configured with its Bitcoin backend we may start it for the first time.
 
-# Constrain the mempool to the number of megabytes needed:
-maxmempool=100
+We may start lnd by simply using the command `lnd`. Depending on our installation, we might have to specify the location or add it to our path.
 
-# Limit uploading to peers
-maxuploadtarget=1000
+`lnd`
 
-# Turn off serving SPV nodes
-nopeerbloomfilters=1
-peerbloomfilters=0
+While LND, the Lightning Network Daemon will run in the background, we will use lncli (LND Command Line Interface) to interact with it. lncli will pass our commands to lnd and return useful information back to us.
 
-# Don't accept deprecated multi-sig style
-permitbaremultisig=0
+`lncli`
 
-# Set the RPC auth to what was set above
-rpcauth=
+## Part 3: Upgrade LND <a href="#docs-internal-guid-277e81aa-7fff-ccda-4359-bf5ca2a712bc" id="docs-internal-guid-277e81aa-7fff-ccda-4359-bf5ca2a712bc"></a>
 
-# Turn on the RPC server
-server=1
+It is recommended to upgrade to the latest release whenever it becomes available. If you miss a release, it is generally recommended to upgrade directly to the latest version.
 
-# Reduce the log file size on restarts
-shrinkdebuglog=1
+[Upgrade using the binaries (recommended)](run-lnd.md#docs-internal-guid-5d9031c2-7fff-0da3-d810-6914af3b84ac)
 
-# Set testnet if needed
-testnet=1
+[Upgrade from source](run-lnd.md#docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196)
 
-# Turn on transaction lookup index
-txindex=1
+[Upgrade using docker](run-lnd.md#docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e)
 
-# Turn on ZMQ publishing
-zmqpubrawblock=tcp://127.0.0.1:28332
-zmqpubrawtx=tcp://127.0.0.1:28333
-```
+### Using the binaries <a href="#docs-internal-guid-5d9031c2-7fff-0da3-d810-6914af3b84ac" id="docs-internal-guid-5d9031c2-7fff-0da3-d810-6914af3b84ac"></a>
 
-Using Tor? Add additional lines:
+If you are running the LND binary, you may download, verify and unpack LND in the same way as during the installation. You can download the latest releases for [various operating systems here](https://github.com/lightningnetwork/lnd/releases).
 
-```text
-# put under [main] section
-# Some mainnet peers
-addnode=gyn2vguc35viks2b.onion
-addnode=kvd44sw7skb5folw.onion
-addnode=nkf5e6b7pl4jfd4a.onion
-addnode=yu7sezmixhmyljn4.onion
-addnode=3ffk7iumtx3cegbi.onion
-addnode=3nmbbakinewlgdln.onion
-addnode=4j77gihpokxu2kj4.onion
-addnode=546esc6botbjfbxb.onion
-addnode=5at7sq5nm76xijkd.onion
-addnode=77mx2jsxaoyesz2p.onion
-addnode=7g7j54btiaxhtsiy.onion
-addnode=a6obdgzn67l7exu3.onion
-addnode=ab64h7olpl7qpxci.onion
-addnode=am2a4rahltfuxz6l.onion
-addnode=azuxls4ihrr2mep7.onion
-addnode=bitcoin7bi4op7wb.onion
-addnode=bitcoinostk4e4re.onion
-addnode=bk7yp6epnmcllq72.onion
-addnode=bmutjfrj5btseddb.onion
-addnode=ceeji4qpfs3ms3zc.onion
-addnode=clexmzqio7yhdao4.onion
-addnode=gb5ypqt63du3wfhn.onion
-addnode=h2vlpudzphzqxutd.onion
+You can then gracefully shut down LND with the command `lncli stop`. This may take a minute.
 
-# Only use Tor
-onlynet=onion
+Now move the binaries to the directory of your existing LND, overwriting the previous binary.
 
-# Connect to Tor proxy
-proxy=127.0.0.1:9050
-```
+You can now start LND again, unlock the wallet and verify you are using the correct version with `lncli version`.
 
-Start Bitcoin Core:
+### From source <a href="#docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196" id="docs-internal-guid-81f5d0bd-7fff-a946-26ac-c5049b110196"></a>
 
-```text
-bitcoind
-```
+You can gracefully shut down LND with the command `lncli stop`. This may take a minute.
 
-Add Bitcoin Core to crontab:
+Then navigate to your local copy of the LND github repository and pull from it before installing the latest version of LND.
 
-```text
-crontab -e
-```
+`git pull`\
+`git checkout <latest release>`\
+`make clean && make && make install`
 
-Add entry:
+You can now start LND again, unlock the wallet and verify you are using the correct version with `lncli version`.
 
-```text
-# Start Bitcoin Core on boot
-@reboot bitcoind
-```
+### Using docker <a href="#docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e" id="docs-internal-guid-bf36d4fb-7fff-b38f-6dcb-1a64cb68845e"></a>
 
-Create an easy link to the debug log of Bitcoin Core:
+If you are running LND in a docker container, you can upgrade this container as follows. Don’t forget to gracefully shut down LND with the command `lncli stop` before the upgrade. This may take a minute.
 
-```text
-# Mainnet:
-ln -s /blockchain/.bitcoin/data/debug.log ~/bitcoind-mainnet.log
+First navigate to the local copy of the lnd github repository. Then execute the following commands:
 
-# Or Testnet:
-ln -s /blockchain/.bitcoin/data/testnet3/debug.log ~/bitcoind-testnet.log
-```
+`git pull`\
+`git checkout <latest release>`\
+`make docker-release tag=<latest release>`
 
-Create a file to rotate the logs
-
-```text
-sudo emacs /etc/logrotate.d/bitcoin-debug
-
-# Add these instructions
-# Uncomment depending on mainnet or testnet:
-# /blockchain/.bitcoin/data/debug.log
-# /blockchain/.bitcoin/data/testnet3/debug.log
-{
-        rotate 5
-        copytruncate
-        daily
-        missingok
-        notifempty
-        compress
-        delaycompress
-        sharedscripts
-}
-```
-
-### Install Go
-
-Building from source? [Install Go](https://golang.org/doc/install)
-
-You can check if Go is installed and what version it is, and then install or update:
-
-```text
-go version
-# Should show Go version 1.15.7 or higher
-
-# If an out of date Go is already installed
-sudo rm -rf /usr/local/go
-
-# If installing Go for the first time
-sudo apt-get update && sudo apt-get -y upgrade
-
-# Download Go
-wget https://golang.org/dl/go1.15.7.linux-amd64.tar.gz
-
-# Extract it
-sudo tar -xvf go1.15.7.linux-amd64.tar.gz
-
-# Install it and remove the download
-sudo mv go /usr/local && rm go1.15.7.linux-amd64.tar.gz
-
-# On a new install, make a directory for it
-mkdir ~/go
-
-# On a new install, setup the path to use the Go directory
-emacs ~/.profile
-
-# Place lines at the end of the file:
-GOPATH=$HOME/go
-PATH="$HOME/bin:$GOPATH/bin:$HOME/.local/bin:/usr/local/go/bin:$PATH"
-
-# Add an alias if running on Testnet
-alias lncli="lncli --network=testnet"
-
-# Save and exit, then run profile
-. ~/.profile
-```
-
-### Install LND
-
-[Install LND](https://github.com/lightningnetwork/lnd/blob/master/docs/INSTALL.md) on the machine, then setup its configuration
-
-```text
-# Get build tools
-sudo apt-get install -y build-essential
-
-# Clone the LND repo and install LND
-cd ~/
-git clone https://github.com/lightningnetwork/lnd.git
-cd lnd
-git checkout v0.12.1-beta
-make && make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"
-mkdir ~/.lnd
-emacs ~/.lnd/lnd.conf
-```
-
-Set configuration for LND: \(Make sure to replace IP etc with correct IP\)
-
-```text
-[Application Options]
-# Allow push payments
-accept-keysend=1
-
-# Public network name
-alias=YOUR_ALIAS
-
-# Allow gift routes
-allow-circular-route=1
-
-# Public hex color
-color=#000000
-
-# Log levels
-debuglevel=CNCT=debug,CRTR=debug,HSWC=debug,NTFN=debug,RPCS=debug
-
-# Public P2P IP (remove this if using Tor)
-externalip=INSTANCE_IP
-
-# Mark unpayable, unpaid invoices as deleted
-gc-canceled-invoices-on-startup=1
-gc-canceled-invoices-on-the-fly=1
-
-# Avoid historical graph data sync
-ignore-historical-gossip-filters=1
-
-# Listen (not using Tor? Remove this)
-listen=localhost
-
-# Set the maximum amount of commit fees in a channel
-max-channel-fee-allocation=1.0
-
-# Set the max timeout blocks of a payment
-max-cltv-expiry=5000
-
-# Pending channel limit
-maxpendingchannels=10
-
-# Min inbound channel limit
-minchansize=5000000
-
-# gRPC socket binding
-rpclisten=0.0.0.0:10009
-
-# Avoid slow startup time
-sync-freelist=1
-
-# Avoid high startup overhead
-stagger-initial-reconnect=1
-
-# Delete and recreate RPC TLS certificate when details change or cert expires
-tlsautorefresh=1
-
-# Do not include IPs in the RPC TLS certificate
-tlsdisableautofill=1
-
-# Add DNS to the RPC TLS certificate
-tlsextradomain=YOUR_DOMAIN_NAME
-
-[Bitcoin]
-# Turn on Bitcoin mode
-bitcoin.active=1
-
-# Set the channel confs to wait for channels
-bitcoin.defaultchanconfs=2
-
-# Forward fee rate in parts per million
-bitcoin.feerate=1000
-
-# Set bitcoin.testnet=1 or bitcoin.mainnet=1 as appropriate
-bitcoin.mainnet=1
-
-# Set the lower bound for HTLCs
-bitcoin.minhtlc=1
-
-# Set backing node, bitcoin.node=neutrino or bitcoin.node=bitcoind
-bitcoin.node=bitcoind
-
-[bitcoind]
-# Configuration for using Bitcoin Core backend
-
-# Set the password to what the auth script said
-bitcoind.rpcpass=
-
-# Set the username
-bitcoind.rpcuser=bitcoinrpc
-
-# Set the ZMQ listeners
-bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
-bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
-
-[protocol]
-# Enable large channels support
-protocol.wumbo-channels=1
-
-[routerrpc]
-# Make sure that LND is the binary release or built with the routerrpc tag
-
-# Set default chance of a hop success
-routerrpc.apriorihopprob=0.5
-
-# Start to ignore nodes if they return many failures (set to 1 to turn off)
-routerrpc.aprioriweight=0.75
-
-# Set minimum desired savings of trying a cheaper path
-routerrpc.attemptcost=10
-routerrpc.attemptcostppm=10
-
-# Set the number of historical routing records
-routerrpc.maxmchistory=10000
-
-# Set the min confidence in a path worth trying
-routerrpc.minrtprob=0.005
-
-# Set the time to forget past routing failures
-routerrpc.penaltyhalflife=6h0m0s
-
-[routing]
-# Set validation of channels off: only if using Neutrino
-routing.assumechanvalid=1
-
-[tor]
-# Enable Tor if using
-tor.active=1
-tor.v3=1
-```
-
-If `bitcoin.node=neutrino` is set, add Neutrino options to lnd.conf:
-
-```text
-[neutrino]
-# Mainnet addpeers
-neutrino.addpeer=btcd-mainnet.lightning.computer
-neutrino.addpeer=mainnet1-btcd.zaphq.io
-neutrino.addpeer=mainnet2-btcd.zaphq.io
-neutrino.addpeer=mainnet3-btcd.zaphq.io
-neutrino.addpeer=mainnet4-btcd.zaphq.io
-
-# Testnet addpeers
-neutrino.addpeer=btcd-testnet.ion.radar.tech
-neutrino.addpeer=btcd-testnet.lightning.computer
-neutrino.addpeer=lnd.bitrefill.com:18333
-neutrino.addpeer=faucet.lightning.community
-neutrino.addpeer=testnet1-btcd.zaphq.io
-neutrino.addpeer=testnet2-btcd.zaphq.io
-neutrino.addpeer=testnet3-btcd.zaphq.io
-neutrino.addpeer=testnet4-btcd.zaphq.io
-
-# Set fee data URL, change to btc-fee-estimates.json if mainnet
-neutrino.feeurl=https://nodes.lightning.computer/fees/v1/btctestnet-fee-estimates.json
-```
-
-```text
-# Start LND with nohup for non-interactive operation
-# Alternatively: use systemd https://gist.github.com/alexbosworth/171958cc9888b7ebf3a91e5c23a57464
-nohup /home/ubuntu/go/bin/lnd > /dev/null 2> /home/ubuntu/.lnd/err.log &
-```
-
-Setup LND
-
-```text
-openssl rand -hex 21 > ~/.lnd/wallet_password
-
-cat ~/.lnd/wallet_password
-# Copy this password
-
-lncli create
-# Follow prompts, use the wallet password as the initial password and set no cipher seed password
-```
-
-Edit crontab to run on startup and setup easy link of logs:
-
-```text
-# Link if Mainnet
-ln -s ~/.lnd/logs/bitcoin/mainnet/lnd.log ~/lnd-mainnet.log
-
-# Link if Testnet
-ln -s ~/.lnd/logs/bitcoin/testnet/lnd.log ~/lnd-testnet.log
-
-# Setup crontab to start and unlock LND on boot
-crontab -e
-```
-
-```text
-# Start LND on boot - or use systemd if you prefer: https://gist.github.com/alexbosworth/171958cc9888b7ebf3a91e5c23a57464
-@reboot nohup /home/ubuntu/go/bin/lnd > /dev/null 2> /home/ubuntu/.lnd/err.log &
-
-# Unlock wallet if locked
-*/5 * * * * /home/ubuntu/.npm-global/bin/bos unlock /home/ubuntu/.lnd/wallet_password
-```
-
-```text
-## Connect the new node to some existing nodes to bootstrap the graph
-# Testnet, connect to htlc.me, testnet.yalls.org
-lncli connect 03c856d2dbec7454c48f311031f06bb99e3ca1ab15a9b9b35de14e139aa663b463@34.201.74.232:9735
-lncli connect 027455aef8453d92f4706b560b61527cc217ddf14da41770e8ed6607190a1851b8@3.13.29.161:9735
-# Mainnet, connect to some nodes, like:
-lncli connect 03e50492eab4107a773141bb419e107bda3de3d55652e6e1a41225f06a0bbf2d56@3.13.48.80:9735
-
-# Open channels to an initial node to bootstrap network connectivity
-# testnet
-lncli openchannel 03c856d2dbec7454c48f311031f06bb99e3ca1ab15a9b9b35de14e139aa663b463 500000
-# mainnet
-lncli openchannel 03e50492eab4107a773141bb419e107bda3de3d55652e6e1a41225f06a0bbf2d56 5000000
-```
-
-### Install Balance of Satoshis
-
-This will need a [Node.js installation](https://nodejs.org/en/download/package-manager/) to run:
-
-```text
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Avoid using sudo with NPM
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-
-# Update path
-emacs ~/.profile
-
-# Add line to the end
-PATH="$HOME/.npm-global/bin:$PATH"
-
-# Save and exit, update shell:
-. ~/.profile
-
-# Install balanceofsatoshis
-npm i -g balanceofsatoshis
-```
-
-### Load Coins
-
-```text
-bos chain-deposit
-```
-
-If you're using testnet, here are some faucets:
-
-* [Coinfaucet](https://coinfaucet.eu/en/btc-testnet/)
-* [YABTF](https://testnet-faucet.mempool.co)
-
+You can now start lnd again, unlock the wallet and verify you are using the correct version with `lncli version`.

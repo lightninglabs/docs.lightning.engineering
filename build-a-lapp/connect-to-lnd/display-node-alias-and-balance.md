@@ -35,7 +35,7 @@ export const getInfo = async (req: Request, res: Response) => {
 };
 ```
 
-In the `routes.ts` file, we added a new route handler function `getInfo()` which receives the user’s token, and first validates that it is valid. Then it uses the `NodeManager` class to get the RPC connection to the `lnd` node. With the rpc, we can not make two calls to lnd to fetch the alias and pubkey from getInfo\(\) and the balance from channelBalance\(\). Finally, we return this data to the client.
+In the `routes.ts` file, we added a new route handler function `getInfo()` which receives the user’s token, and first validates that it is valid. Then it uses the `NodeManager` class to get the RPC connection to the `lnd` node. With the rpc, we can now make two calls to lnd to fetch the alias and pubkey from getInfo\(\) and the balance from channelBalance\(\). Finally, we return this data to the client.
 
 `source: /backend/index.ts`
 

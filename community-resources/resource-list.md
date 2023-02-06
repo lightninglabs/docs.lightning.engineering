@@ -109,6 +109,7 @@ description: >-
 * [OpenNode](https://www.opennode.com)
 * [BTCPayServer](https://docs.btcpayserver.org)
 * [LNBits](https://lnbits.com/)
+* [Voltage](https://voltage.cloud) - Lightning Network node hosting platform
 
 ## Exchanges & Brokerages <a href="#docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364" id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
 

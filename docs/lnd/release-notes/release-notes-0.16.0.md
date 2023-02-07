@@ -73,6 +73,9 @@ current gossip sync query status.
   Final resolution data will only be available for htlcs that are resolved
   after upgrading lnd.
 
+  This feature is [opt-in](https://github.com/lightningnetwork/lnd/pull/7341)
+  via a config flag.
+
 * Zero-amount private invoices [now provide hop
   hints](https://github.com/lightningnetwork/lnd/pull/7082), up to `maxHopHints`
   (20 currently).
@@ -104,6 +107,16 @@ current gossip sync query status.
   signatures](https://github.com/lightningnetwork/lnd/pull/7332).  The
   `SignOutputRaw` call will now properly work for taproot signatures with a
   non-default sighash.
+
+* [The experimental MuSig2 RPC in the `signrpc` package was upgraded to the BIP
+  draft version `v1.0.0rc2`](https://github.com/lightningnetwork/lnd/pull/7171).
+  To remain backward compatible with applications that have on-chain funds on
+  keys that were created with the previous version of the MuSig2 BIP draft
+  `v0.4.0` (such as Pool accounts) a version flag was added to the
+  `MuSig2CombineKeys` and `MuSig2CreateSession` RPC calls. That version flag is
+  mandatory, which means software using MuSig2 (such as Pool or Loop) must
+  update in order to use the new versioned RPC and upgrade any on-chain outputs
+  to the new version.
 
 ## Wallet
 
@@ -245,6 +258,9 @@ in the lnwire package](https://github.com/lightningnetwork/lnd/pull/7303)
 * [Add a flag](https://github.com/lightningnetwork/lnd/pull/6527) to allow for
   the option to encrypt the tls key.
 
+* [Remove unused args](https://github.com/lightningnetwork/lnd/pull/7387)
+  from `cert.GenCertPair`.
+
 ## `lncli`
 
 * [Add an `insecure` flag to skip tls auth as well as a `metadata` string slice
@@ -331,8 +347,11 @@ in the lnwire package](https://github.com/lightningnetwork/lnd/pull/7303)
   issue found in `bitcoindnotify/bitcoind_test.go`.
 
 * Add methods to easily check if an invoice [is AMP or 
-Keysend](https://github.com/lightningnetwork/lnd/pull/7334).
- 
+  Keysend](https://github.com/lightningnetwork/lnd/pull/7334).
+
+* [Fixed a unit test flake in the wallet
+  unlocker](https://github.com/lightningnetwork/lnd/pull/7384).
+
 ## Watchtowers
 
 * [Create a towerID-to-sessionID index in the wtclient DB to improve the 

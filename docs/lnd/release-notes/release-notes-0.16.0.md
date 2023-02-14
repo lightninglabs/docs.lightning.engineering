@@ -81,7 +81,9 @@ current gossip sync query status.
   after upgrading lnd.
 
   This feature is [opt-in](https://github.com/lightningnetwork/lnd/pull/7341)
-  via a config flag.
+  via a config flag. The status of the flag is
+  [exposed](https://github.com/lightningnetwork/lnd/pull/7402) at run-time
+  through GetInfo.
 
 * Zero-amount private invoices [now provide hop
   hints](https://github.com/lightningnetwork/lnd/pull/7082), up to `maxHopHints`
@@ -124,6 +126,9 @@ current gossip sync query status.
   mandatory, which means software using MuSig2 (such as Pool or Loop) must
   update in order to use the new versioned RPC and upgrade any on-chain outputs
   to the new version.
+
+* [A bug has been fixed which could cause `lnd` to crash when parsing a
+  malformed HTLC intercept message](https://github.com/lightningnetwork/lnd/pull/7392).
 
 ## Wallet
 

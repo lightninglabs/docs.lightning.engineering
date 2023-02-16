@@ -32,8 +32,8 @@ Due to the built-in rule mechanics enforced by litd, the Autofee feature has lim
 
 To improve privacy around data sharing, channel ids, channel points and node pubkeys are obfuscated by litd. Amounts and timestamps in forwarding data are randomly obfuscated to break amount and time correlation. Channel details only include randomized balance information such as to be still accurate enough for the algorithm to act. Per-peer aggregated forwarding data is stored to improve on the algorithm in the future to learn historic price-demand data pairs.
 
-| Enabling Autofees will set your channels’ [CLTV delta](../../the-lightning-network/multihop-payments/timelocks.md) to 100. |
-| -------------------------------------------------------------------------------------------------------------------------- |
+| Note: Enabling Autofees will set your channels’ [CLTV delta](../../the-lightning-network/multihop-payments/timelocks.md) to 100. |
+| -------------------------------------------------------------------------------------------------------------------------------- |
 
 ## Configuration <a href="#docs-internal-guid-df361fd3-7fff-7d3f-4ce1-669733ea2856" id="docs-internal-guid-df361fd3-7fff-7d3f-4ce1-669733ea2856"></a>
 

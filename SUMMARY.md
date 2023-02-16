@@ -83,6 +83,7 @@
   * [Health Checks](lightning-network-tools/lightning-terminal/health-checks.md)
   * [Opening Lightning Network Channels](lightning-network-tools/lightning-terminal/opening-channels.md)
   * [Managing Channel Liquidity](lightning-network-tools/lightning-terminal/channel-liquidity.md)
+  * [Autofees](lightning-network-tools/lightning-terminal/autofees.md)
   * [Loop and Lightning Terminal](lightning-network-tools/lightning-terminal/loop.md)
   * [Loop Fees](lightning-network-tools/lightning-terminal/loop-fees.md)
   * [Pool and Lightning Terminal](lightning-network-tools/lightning-terminal/pool.md)

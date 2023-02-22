@@ -16,7 +16,7 @@ You can point litd at your existing LND, Loop or Pool installation, or you can r
 
 You can install litd from source or via the provided binary. If you are running LND as part of a software bundle like Umbrel, litd might already be installed on your node.
 
-[Continue here: Connect to Terminal](run-litd.md)
+[Continue here: Connect to Terminal](run-litd-1.md)
 
 ### Install the binary <a href="#docs-internal-guid-1711090d-7fff-5ad6-afb1-1123e0d0a834" id="docs-internal-guid-1711090d-7fff-5ad6-afb1-1123e0d0a834"></a>
 
@@ -64,5 +64,5 @@ BTCPay contains an installation script for litd, which makes it easy to include 
    `. btcpay-setup.sh -i`
 3. You can now find litd under Server Settings > Services
 
-[Continue here: Connect to Terminal](run-litd.md)
+[Continue here: Connect to Terminal](run-litd-1.md)
 

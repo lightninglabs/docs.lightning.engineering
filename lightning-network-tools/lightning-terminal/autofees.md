@@ -46,4 +46,4 @@ To make optimal use of Autofees, consider:
 
 ### How to enable Autofees
 
-You can enable Autofees in your Lightning Terminal under Liquidity -> Loop. [Learn how to connect to Terminal here](run-litd.md).
+You can enable Autofees in your Lightning Terminal under Liquidity -> Loop. [Learn how to connect to Terminal here](run-litd-1.md).

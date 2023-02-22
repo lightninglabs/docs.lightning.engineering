@@ -448,7 +448,7 @@ Pay to witness key hash is a Bitcoin address format. They are encoded with [Bech
 
 A pairing phrase looks similar to a [seed phrase](glossary.md#seed-phrase) and is used in [Lightning Node Connect](glossary.md#lightning-node-connect) to authenticate and secure a remote connection.
 
-[Read more: Connect to Lightning Terminal](../lightning-network-tools/lightning-terminal/run-litd.md)
+[Read more: Connect to Lightning Terminal](../lightning-network-tools/lightning-terminal/run-litd-1.md)
 
 ## Partially Signed Bitcoin Transactions
 

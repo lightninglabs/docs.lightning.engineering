@@ -14,8 +14,8 @@ Through Terminal, you can easily, securely and privately manage your Lightning n
 [get-lit.md](get-lit.md)
 {% endcontent-ref %}
 
-{% content-ref url="run-litd-1.md" %}
-[run-litd-1.md](run-litd-1.md)
+{% content-ref url="run-litd.md" %}
+[run-litd.md](run-litd.md)
 {% endcontent-ref %}
 
 {% content-ref url="recommended-channels.md" %}

@@ -1,80 +1,31 @@
 ---
-description: Run litd in integrated or remote mode.
+description: Run litd either in integrated mode or on a separate machine.
 ---
 
-# Run litd
+# Connect to Terminal
 
-We recommend running litd in integrated mode. This lets you run LND, Loop, Pool, Faraday and in the future, Taro, in a single binary. You can also run litd alongside your existing LND, Loop, Pool or  installation. Generally, litd makes it easy for you to selectively switch between integrated and remote mode for each component, allowing you to selectively upgrade each component, apply patches, or run your own forks.
+If `litd` is already running on your machine, follow this guide. For installation instructions, [follow our guide](get-lit.md). If you are running a bundle such as Umbrel or Start9, Terminal may already be installed on your machine.
 
-## Integrated mode
+Once you have navigated to your local installation of Terminal, click on "Connect to Terminal" to be taken directly to Terminal on the web. Alternatively you may scan the QR code with a smart phone or tablet to open a new session on another device.
 
-Running litd in integrated mode allows the user to run everything in a single binary. To run litd in integrated mode, we will first need to configure our Bitcoin backend and LND.
+You can inspect and revoke all existing sessions under "Lightning Node Connect."
 
-### Configure Bitcoin
+<figure><img src="../../.gitbook/assets/Screenshot 2022-10-12 at 11-27-59 Lightning Terminal.png" alt=""><figcaption><p>Lightning Terminal, as seen when navigating to https://127.0.0.1:8443</p></figcaption></figure>
 
-If you have not run LND on this machine before, you will need to configure a Bitcoin backend. You may refer to the [Configuration section in our Run LND guide.](../lnd/run-lnd.md) If you intend to run with a Neutrino backend, no action needs to be taken in this step.
+## Run litd locally
 
-### Configure litd <a href="#docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52" id="docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52"></a>
+Once you are running `litd` on your machine, navigate to `http://127.0.0.1:8443` in your browser on the same machine to open Lightning Terminal. If you are running `litd` on another machine, you may access it from there or continue with the CLI option below.
 
-To configure litd, we will first create the .lit directory and place a configuration file in it.
+## Create a session using the command line
 
-`mkdir ~/.lit`\
-`nano ~/.lit/lit.conf`
+If you cannot access the machine on which you are running `litd` via the browser or prefer to keep port `8443` closed, you may generate a new pairing phrase with `litcli`.
 
-We need to place the following information into this configuration file:
+`litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="default" --type=admin`
 
-`lnd-mode=integrated`\
-`uipassword=<a random password of your choosing>`
+Now navigate to [https://terminal.lightning.engineering](https://terminal.lightning.engineering/) and click on 'Connect your Node.'
 
-We will also need to configure LND here. If you have run LND before on this machine or have an existing configuration that you would like to use, you can copy it into the lit.conf file. Don’t forget to prefix every option with `lnd.`, for instance:
+You will be asked for your 10-word pairing phrase. Enter it and confirm.
 
-`lnd.bitcoin.active=1`\
-`lnd.bitcoin.node=bitcoind`\
-`lnd.bitcoind.rpchost=127.0.0.1`\
-`lnd.bitcoind.rpcuser=youruser`\
-`lnd.bitcoind.rpcpass=yourpass`\
-`lnd.bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332`\
-`lnd.bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333`
+You need to choose a secure and unique password. We recommend to use a password manager.
 
-### Run litd <a href="#docs-internal-guid-d4c709ea-7fff-ae21-a456-a53125a9d147" id="docs-internal-guid-d4c709ea-7fff-ae21-a456-a53125a9d147"></a>
-
-You can now run litd, LND, Loop, Pool and Faraday together by executing litd. You will have to unlock LND with lncli unlock, or create a new wallet if this is your first time starting LND.
-
-`litd`
-
-[Next: Connect to Terminal](run-litd-1.md)
-
-[Learn: Command Line Interface](command-line-interface.md)
-
-## Remote mode <a href="#docs-internal-guid-aaab01ad-7fff-a741-d263-1ff312b564b0" id="docs-internal-guid-aaab01ad-7fff-a741-d263-1ff312b564b0"></a>
-
-Remote mode refers to a litd installation that runs separately from LND. By default, such an installation does not need configuration beyond passing a UI password. We can start litd with the command:
-
-`litd –uipassword=<your secure and unique password>`
-
-If litd is unable to connect to LND, you might have to manually pass the location of the macaroon and RPC port or generate a litd configuration file, `~/.lit/lit.conf`
-
-`lnd-mode=remote`\
-`--remote.lnd.rpcserver=127.0.0.1:10009`\
-`--remote.lnd.macaroonpath=/home/user/.lnd/data/bitcoin/chain/mainnet/admin.macaroon`\
-`--remote.lnd.tlscertpath=/home/user/.lnd/tls.cert`
-
-It is also possible to run litd in either integrated or remote mode and swap Loop, Pool or Faraday between remote and integrated mode.
-
-For example:
-
-`--lnd-mode=remote`\
-`--faraday-mode=integrated`\
-`--loop-mode=integrated`\
-`--pool-mode=remote`\
-
-
-[Next: Connect to Terminal](run-litd-1.md)
-
-[Learn: Command Line Interface](command-line-interface.md)
-
-## Access the litd user interface <a href="#docs-internal-guid-cc49c7b2-7fff-c1e9-7d7a-d93120d77804" id="docs-internal-guid-cc49c7b2-7fff-c1e9-7d7a-d93120d77804"></a>
-
-Once litd is running, you should be able to navigate to `localhost:8443` and access the user interface of litd.
-
-To access the interface from a remote machine, don’t forget to launch litd with the flag `--httpslisten=0.0.0.0:8443` or add `httpslisten=0.0.0.0:8443` to your `lit.conf` file.
+You're now connected to Lightning Terminal! Read more about [Recommended Channels](recommended-channels.md), [Health Checks](health-checks.md), and [how to open channels to the Lightning Network](opening-channels.md).

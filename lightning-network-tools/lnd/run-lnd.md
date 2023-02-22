@@ -146,6 +146,8 @@ When running a full, unpruned Bitcoin node you may set the following flag for sm
 `rpcuser=[any username]`\
 `rpcpass=[any unique password of your choosing]`
 
+
+
 ### Configuring LND <a href="#docs-internal-guid-1c142120-7fff-1b35-7b66-af56937af371" id="docs-internal-guid-1c142120-7fff-1b35-7b66-af56937af371"></a>
 
 You can find your lnd.conf file in `~/.lnd` in Linux, `~/Library/Application Support/Lnd` in Mac OS X and `$LOCALAPPDATA/Lnd` in Windows. You can find a [sample `lnd.conf` here](lnd.conf.md).
@@ -180,6 +182,19 @@ If you have chosen to omit ZMQ in your bitcoind configuration file, you will hav
 `btcd.rpcuser=[any username]`\
 `btcd.rpcpass=[any unique password of your choosing]`\
 `btcd.rpccert=`
+
+### Recommended configuration
+
+To make use of [autofees](../lightning-terminal/autofees.md), the [RPC Middleware interceptor](rpc-middleware-interceptor.md) needs to be enabled. This can be done by adding the following to the configuration file:
+
+`rpcmiddleware.enable=true`
+
+### Popular configuration
+
+The following settings are popular settings for LND:
+
+`db.bolt.auto-compact=true`\
+`alias=<choose a name for your node>`
 
 Additionally, you may have a look at `the` guides “[Optimal configuration for a routing node](optimal-configuration-of-a-routing-node.md)” and “[Tor setup](quick-tor-setup.md).”
 

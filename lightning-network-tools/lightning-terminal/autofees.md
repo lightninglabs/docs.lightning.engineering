@@ -37,6 +37,12 @@ To improve privacy around data sharing, channel ids, channel points and node pub
 
 ## Configuration <a href="#docs-internal-guid-df361fd3-7fff-7d3f-4ce1-669733ea2856" id="docs-internal-guid-df361fd3-7fff-7d3f-4ce1-669733ea2856"></a>
 
+To make use of autofees, make sure the following has been added to your `lnd.conf` file. [You can read more about the RPC Middleware interceptor here](../lnd/rpc-middleware-interceptor.md).
+
+`rpcmiddleware.enable=true`
+
+For guides on how to install litd, [follow this link](get-lit.md). If you already have litd installed, [connect to Lightning Terminal](run-litd.md).
+
 To make optimal use of Autofees, consider:
 
 * [Set default high fee rates](../lnd/channel-fees.md), so they can be lowered later without risk of seeing a channel depleted without adequate compensation (suggested value bitcoin.feerate=2500 in your lnd.conf)

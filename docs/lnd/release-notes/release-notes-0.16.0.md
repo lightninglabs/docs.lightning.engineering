@@ -7,6 +7,10 @@ locally to all connected
 peers](https://github.com/lightningnetwork/lnd/pull/7239), regardless of their
 current gossip sync query status.
 
+There's also a [bug fix](https://github.com/lightningnetwork/lnd/pull/7186)
+that might lead to channel updates being missed, causing channel graph being
+incomplete. Aside from that, a potential announcement messages being sent out
+of order is also [fixed](https://github.com/lightningnetwork/lnd/pull/7264).
 
 ## BOLT Specs
 
@@ -16,6 +20,9 @@ current gossip sync query status.
 * Decrypt onion failure messages with a [length greater than 256
   bytes](https://github.com/lightningnetwork/lnd/pull/6913). This moves LND
   closer to being spec compliant.
+
+* Channel updates without the maxHTLC message flag set are recognized as invalid
+  and are [not relayed](https://github.com/lightningnetwork/lnd/pull/7415).
 
 ## RPC
 
@@ -374,6 +381,9 @@ in the lnwire package](https://github.com/lightningnetwork/lnd/pull/7303)
 
 * [Fixed a unit test flake in the wallet
   unlocker](https://github.com/lightningnetwork/lnd/pull/7384).
+
+* [A new generic LRU cache is used where
+  applicable](https://github.com/lightningnetwork/lnd/pull/7406).
 
 ## Watchtowers
 

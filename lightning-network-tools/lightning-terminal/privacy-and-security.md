@@ -18,9 +18,6 @@ Terminal does not require you to make modifications to your node’s local netwo
 
 The Lightning Terminal Daemon, or litd, is an application that either runs locally on the same machine as your Lightning Network node, or remotely on a separate machine. Access to litd needs to be carefully restricted, for example by making Lightning Terminal inaccessible from the internet, choosing a secure password and running it on a device you control and trust. Anybody with access to your Lightning Terminal Daemon instance could gain access to your Lightning Node.
 
-\
-
-
 You are able to revoke an application’s access to your node, such as the web version of Terminal, at any time by navigating to your Lightning Terminal Daemon user interface.
 
 ## The pairing phrase
@@ -49,4 +46,6 @@ All connections between your Lightning node and Terminal are encrypted end-to-en
 
 Unless your node and browser are behind a VPN or other relay, the Terminal Proxy is able to see your IP addresses. Even if your Lightning node is running behind the Tor Socks proxy, `litd` will make an outwards connection in the clear.
 
-Theoretically, the proxy server could be able to infer usage patterns from packets forwarded between your node and your browser, although no such information is stored or analyzed. Lightning Labs maintains usage statistics about how many nodes are connected through Lightning Terminal, and when they last connected.&#x20;
+Theoretically, the proxy server could be able to infer usage patterns from packets forwarded between your node and your browser, although no such information is stored or analyzed. Lightning Labs maintains usage statistics about how many nodes are connected through Lightning Terminal, and when they last connected.
+
+Lightning Terminal makes use of the [mempool.space API services](https://mempool.space/terms-of-service) for timestamp and fee information for your node’s on-chain transactions. All calls are made from your browser and are not directly associated with your node. Similarly to navigating to mempool.space directly in your browser, this reveals your IP address.

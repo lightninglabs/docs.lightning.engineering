@@ -107,6 +107,7 @@
   * [Overview](lightning-network-tools/pool/overview.md)
   * [Quickstart](lightning-network-tools/pool/quickstart.md)
   * [🛠 Installation](lightning-network-tools/pool/install.md)
+  * [First Steps](lightning-network-tools/pool/first-steps.md)
   * [Accounts](lightning-network-tools/pool/accounts.md)
   * [Orders and Asks](lightning-network-tools/pool/orders.md)
   * [Sidecar Channels](lightning-network-tools/pool/sidecar\_channels.md)

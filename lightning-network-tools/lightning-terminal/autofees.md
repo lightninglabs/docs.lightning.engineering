@@ -41,7 +41,7 @@ To make use of autofees, make sure the following has been added to your `lnd.con
 
 `rpcmiddleware.enable=true`
 
-For guides on how to install litd, [follow this link](get-lit.md). If you already have litd installed, [connect to Lightning Terminal](run-litd.md).
+For guides on how to install litd, [follow this link](get-lit.md). If you already have litd installed, [connect to Lightning Terminal](connect.md).
 
 To make optimal use of Autofees, consider:
 
@@ -52,4 +52,4 @@ To make optimal use of Autofees, consider:
 
 ### How to enable Autofees
 
-You can enable Autofees in your Lightning Terminal under Liquidity -> Loop. [Learn how to connect to Terminal here](run-litd.md).
+You can enable Autofees in your Lightning Terminal under Liquidity -> Loop. [Learn how to connect to Terminal here](connect.md).

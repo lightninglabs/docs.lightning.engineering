@@ -14,7 +14,7 @@ In case you are unable to connect to your node, especially after your browser ha
 
 * Attempt to reload the page asking for your password
 * Click on “use a pairing phrase,” then reload the page and attempt again
-* [Generate a new pairing phrase](run-litd.md#connect-to-lightning-terminal), delete the browser cache, reload the page and connect again
+* [Generate a new pairing phrase](connect.md#connect-to-lightning-terminal), delete the browser cache, reload the page and connect again
 * Delete the `session.db` in `~/.lit/mainnet`, restart `litd` and generate a new pairing phrase
 * Delete the `admin.macaroon` in `~/.lnd/data/chain/bitcoin/mainnet/` and restart LND and litd
 

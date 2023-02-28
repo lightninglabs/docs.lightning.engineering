@@ -16,7 +16,7 @@ You can point litd at your existing LND, Loop or Pool installation, or you can r
 
 You can install litd from source or via the provided binary. If you are running LND as part of a software bundle like Umbrel, litd might already be installed on your node.
 
-[Continue here: Connect to Terminal](run-litd.md)
+[Continue here: Connect to Terminal](connect.md)
 
 ### Install the binary <a href="#docs-internal-guid-1711090d-7fff-5ad6-afb1-1123e0d0a834" id="docs-internal-guid-1711090d-7fff-5ad6-afb1-1123e0d0a834"></a>
 
@@ -32,7 +32,7 @@ Or on Windows:
 
 You can now execute the program from its location, or place it where the system can conveniently find it, such as `/bin/litd` on Linux.
 
-[Continue here: Run litd](<run-litd (1).md>)
+[Continue here: Run litd](run-litd.md)
 
 ### Install from source <a href="#docs-internal-guid-9de54c81-7fff-3d72-df71-82722d926d98" id="docs-internal-guid-9de54c81-7fff-3d72-df71-82722d926d98"></a>
 
@@ -53,7 +53,7 @@ You can now execute the program from its location, or place it where the system 
 3. As there may be existing binaries of the command line interfaces on your system, they are not installed by default. To install lncli, loop and pool, please run:\
    make `go-install-cli`
 
-[Continue here: Run litd](<run-litd (1).md>)
+[Continue here: Run litd](run-litd.md)
 
 ### Install in BTCPay Server <a href="#docs-internal-guid-b1e1624f-7fff-93d5-2d35-b317dc6c4643" id="docs-internal-guid-b1e1624f-7fff-93d5-2d35-b317dc6c4643"></a>
 
@@ -66,5 +66,5 @@ BTCPay contains an installation script for litd, which makes it easy to include 
    `. btcpay-setup.sh -i`
 3. You can now find litd under Server Settings > Services
 
-[Continue here: Connect to Terminal](run-litd.md)
+[Continue here: Connect to Terminal](connect.md)
 

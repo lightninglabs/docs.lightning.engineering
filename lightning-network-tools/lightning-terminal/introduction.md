@@ -14,7 +14,7 @@ By bringing Terminal to the web, we can deliver some of the familiar features of
 
 ### Easy to run
 
-To make use of Terminal, you will need to run `litd` together with `lnd`, either on the same or separate machines. After browsing to [terminal.lightning.engineering](http://terminal.lightning.engineering) and [initializing your session](run-litd.md) with Lightning Node Connect, you can enjoy all features of Terminal and interact with your node from your browser.&#x20;
+To make use of Terminal, you will need to run `litd` together with `lnd`, either on the same or separate machines. After browsing to [terminal.lightning.engineering](http://terminal.lightning.engineering) and [initializing your session](connect.md) with Lightning Node Connect, you can enjoy all features of Terminal and interact with your node from your browser.&#x20;
 
 ### Top performing nodes
 

@@ -56,7 +56,7 @@ If litd is unable to connect to LND, you might have to manually pass the locatio
 
 `lnd-mode=remote`\
 `--remote.lnd.rpcserver=127.0.0.1:10009`\
-`--remote.lnd.macaroonpath=/home/user/.lnd/data/bitcoin/chain/mainnet/admin.macaroon`\
+`--remote.lnd.macaroonpath=/home/user/.lnd/data/chain/bitcoin/mainnet/admin.macaroon`\
 `--remote.lnd.tlscertpath=/home/user/.lnd/tls.cert`
 
 It is also possible to run litd in either integrated or remote mode and swap Loop, Pool or Faraday between remote and integrated mode.

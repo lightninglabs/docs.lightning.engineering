@@ -149,6 +149,10 @@ of order is also [fixed](https://github.com/lightningnetwork/lnd/pull/7264).
   parameter is enabled by default but can be disabled with a new flag
   `--skip_peer_alias_lookup`.
 
+* Assign potential peer alias lookup errors in the [`ListChannels` and
+  `ForwardingHistory`rpcs](https://github.com/lightningnetwork/lnd/pull/7471) to
+  the rpc response.
+
 ## Wallet
 
 * [Allows Taproot public keys and tap scripts to be imported as watch-only
@@ -444,6 +448,8 @@ in the lnwire package](https://github.com/lightningnetwork/lnd/pull/7303)
 * [A new probability model ("bimodal") is added which models channel based
   liquidities within a probability theory framework.](
   https://github.com/lightningnetwork/lnd/pull/6815)
+* [The a priori capacity factor is made configurable and its effect is 
+  limited.](https://github.com/lightningnetwork/lnd/pull/7444)
 
 ## Configuration
 * Note that [this pathfinding change](https://github.com/lightningnetwork/lnd/pull/6815)

@@ -43,3 +43,5 @@ At the moment, such watchtowers are only implemented as altruistic watchtowers. 
 As such, a node operator who wishes to make use of a watchtower typically runs this watchtower themselves, ideally on a separate machine, network and geolocation than the node they are guarding. One node may make use of multiple watchtowers, and one watchtower may guard multiple nodes.
 
 [Insightful: All unsuccessful channel breaches](https://forkmonitor.info/lightning)
+
+[Learn: How to configure a watchtower](../../lightning-network-tools/lnd/watchtower.md)

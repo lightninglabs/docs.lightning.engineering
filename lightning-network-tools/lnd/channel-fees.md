@@ -93,6 +93,12 @@ The output above tells you that while both sides of this channel charge 1000 mil
 
 Alternatively you can probe the entire graph with the command `lncli describegraph`. This will return all channels and their policies across the entire network.
 
+## Set channel policies <a href="#docs-internal-guid-d3266f42-7fff-ae19-59a6-27c12edb78ea" id="docs-internal-guid-d3266f42-7fff-ae19-59a6-27c12edb78ea"></a>
+
+Starting from LND 0.16, you can set a channel’s fees at the time of the channel opening. This helps you avoid seeing your channel capacity drain before the fee can be adjusted otherwise.
+
+`lncli openchannel --base_fee_msat 1000 --fee_rate_ppm 100 --min_htlc_msat 1000 --node_key 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d --local_amt 21000000`
+
 ## Update channel policies
 
 You can update your channel policies anytime using the command line. Generally, it is not recommended to update your fees frequently, as this might make you appear less of a reliable routing node. Your peers might have opened a channel with you in the expectation of a certain fee level, and at a new fee level they might not be willing to maintain their connections.

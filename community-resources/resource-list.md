@@ -32,6 +32,7 @@ description: >-
 
 * [Bitcoin Beach Wallet](https://www.bitcoinbeach.com) - available in Google Play
 * [BlueWallet](https://github.com/BlueWallet/BlueWallet) ([Github](https://github.com/BlueWallet/BlueWallet)) - available in Google Play the Apple AppStore
+* [Bridge Wallet](https://www.mtpelerin.com/bitcoin-lightning-wallet) - Available on Google Play and on the App Store
 * [Strike](https://strike.me) - available in Google Play, the Apple AppStore and Chrome
 * [Wallet of Satoshi](https://walletofsatoshi.com) - available in Google Play and the Apple AppStore
 * [Bottlepay](https://bottlepay.com) - available in Google Play and the Apple AppStore
@@ -128,6 +129,7 @@ description: >-
 * [Kraken](https://www.kraken.com/)
 * [LNMarkets](https://lnmarkets.com)
 * [LOFT](https://loft.trade)
+* [Mt Pelerin](https://www.mtpelerin.com/buy-bitcoin-lightning)
 * [NiceHash](https://www.nicehash.com)
 * [OKCoin](https://www.okcoin.com)
 * [OKEX](https://www.okex.com)

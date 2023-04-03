@@ -137,6 +137,7 @@
     * [Feature 2: Display Node Alias and Balance](lapps/guides/add-features/display-node-alias-and-balance.md)
     * [Feature 3: Sign and Verify Posts](lapps/guides/add-features/sign-and-verify-posts.md)
     * [Feature 4: Modify Upvote Action](lapps/guides/add-features/modify-upvote-action.md)
+  * [Make your own LNC-powered application](lapps/guides/make-your-own-lnc-powered-application.md)
 * [Next Steps](lapps/next-steps.md)
 
 ## Community Resources

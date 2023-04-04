@@ -4,6 +4,8 @@ description: Get tips on how to configure LND to get the most out of your routin
 
 # Optimal Configuration of a Routing Node
 
+**Note: Some of the configuration settings have changed with LND 0.16. You can find the latest settings below.**
+
 LND offers a wide range of configuration options that allow deployment in a large variety of platforms, environments and purposes, making use of either btcd, bitcoind or neutrino as a source of blockchain data.
 
 In this article we will discuss various configuration options for LND in the context of a routing node.
@@ -160,11 +162,11 @@ A high CLTV expiration value makes it less likely that we have to settle a forwa
 
 To make use of the following configurations, make sure you are using the binary release or built lnd from source with the routerrpc tag. The following parameters are important if you are using LND to make payments in the Lightning Network, rather than just routing the payments of others.
 
-`routerrpc.apriorihopprob=0.5`
+`routerrpc.apriori.hopprob=0.5`
 
 This sets the default chance of a hop being successful at 50%.
 
-`routerrpc.aprioriweight=0.75`
+`routerrpc.apriori.weight=0.75`
 
 If a node returns many failures LND will begin to ignore them more and more. To turn off this feature set the value to 1.
 
@@ -181,7 +183,7 @@ LND will keep historical routing records to evaluate future routing success. You
 
 When setting this parameter to a very small number, LND will try paths even when they have a very low chance of success.
 
-`routerrpc.penaltyhalflife=6h0m0s`
+`routerrpc.aprioripenalty.halflife=6h0m0s`
 
 This setting allows you to define after how long LND should forget about past routing failures.
 

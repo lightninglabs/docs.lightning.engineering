@@ -55,6 +55,7 @@
   * [Channel Fees](lightning-network-tools/lnd/channel-fees.md)
   * [Macaroons](lightning-network-tools/lnd/macaroons.md)
   * [Configuring Watchtowers](lightning-network-tools/lnd/watchtower.md)
+  * [Pathfinding](lightning-network-tools/lnd/pathfinding.md)
   * [Key Import](lightning-network-tools/lnd/key\_import.md)
   * [Secure Your Lightning Network Node](lightning-network-tools/lnd/secure-your-lightning-network-node.md)
   * [Operational Safety](lightning-network-tools/lnd/safety.md)

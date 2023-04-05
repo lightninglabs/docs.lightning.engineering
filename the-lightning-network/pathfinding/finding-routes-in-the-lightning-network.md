@@ -11,3 +11,5 @@ In addition to two separate fee structures for each channel (base fee and fee ra
 In practice, this means your Lightning node will create multiple possible paths to its destination, and try them successively.
 
 LND’s routing algorithm is largely based on Dijkstra's algorithm. LND also ranks nodes it has successfully sent payments through to improve its pathfinding.
+
+[Read more: Configure pathfinding in LND](../../lightning-network-tools/lnd/pathfinding.md)

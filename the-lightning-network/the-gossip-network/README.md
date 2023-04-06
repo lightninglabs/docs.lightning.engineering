@@ -29,7 +29,7 @@ To protect against spam attacks, Lightning nodes will only relay gossip messages
 There are three notable types of announcements made by nodes. These announcements are signed and forwarded to the announcer’s peers, validated, and passed on until they reach the entire network.
 
 **`channel_announcement`**\
-**``**The initial channel announcement is made cooperatively by both peers. This announcement proves that the channel exists on the blockchain and establishes which nodes it belongs to.
+The initial channel announcement is made cooperatively by both peers. This announcement proves that the channel exists on the blockchain and establishes which nodes it belongs to.
 
 **`channel_update`**\
 Once a channel has been announced cooperatively, it can be updated unilaterally by each party. This allows the parties to adjust terms with minimal effort, or to disable a channel when its peer is offline. Information relayed in this channel update includes fees and HTLC rules.

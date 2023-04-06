@@ -66,7 +66,7 @@ Congratulations, you have successfully installed LND using the binary release. [
 ### From source <a href="#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103" id="docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103"></a>
 
 **Install go:**\
-``Installing LND from source is recommended when using it in development or on testnet. To install LND from source, you will need Go version 1.18 or higher.
+Installing LND from source is recommended when using it in development or on testnet. To install LND from source, you will need Go version 1.18 or higher.
 
 You can find the latest version of Golang [on its official website](https://golang.org/dl/). Make sure to verify the checksum before you install Go.
 
@@ -80,7 +80,7 @@ To permanently include this new directory in your path, add the following lines 
 `export PATH=$PATH:$GOPATH/bin`
 
 **Install LND:**\
-``We can install lnd with the following commands. Starting with lnd 0.15 all important subsystems are built by default and no longer have to be manually specified.
+We can install lnd with the following commands. Starting with lnd 0.15 all important subsystems are built by default and no longer have to be manually specified.
 
 `git clone https://github.com/lightningnetwork/lnd`\
 `cd lnd`\
@@ -141,7 +141,7 @@ When running a full, unpruned Bitcoin node you may set the following flag for sm
 `txindex=1`
 
 **Btcd:**\
-****Your btcd backend needs RPC enabled.
+Your btcd backend needs RPC enabled.
 
 `rpcuser=[any username]`\
 `rpcpass=[any unique password of your choosing]`

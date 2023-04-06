@@ -65,7 +65,7 @@ You can adjust the cost parameters yourself:
 
 A priori, meaning “from the previous,” is the original metric used to determine the probability of a successful payment through a given route.
 
-It carries the assumption that each hop has a base success likelihood of 60% (this is adjustable via routerrpc.apriori.hopprob and represents a default value). If a previous payment through a hop was successful, then any new and smaller payment is expected to succeed with 95%.
+It carries the assumption that each hop has a base success likelihood of 60% (this is adjustable via `routerrpc.apriori.hopprob` and represents a default value). If a previous payment through a hop was successful, then any new and smaller payment is expected to succeed with 95%.
 
 If a previous payment was unsuccessful, then any payment larger is considered to be impossible to route through this hop as well. As a payment size approaches the capacity of a channel, the probability with which it is expected to succeed also diminishes.
 
@@ -75,7 +75,7 @@ Previous attempts for a node are also used to calculate a reputational score tha
 
 ## Bimodal estimator <a href="#docs-internal-guid-d4234be7-7fff-4a09-fdbb-2c7e451ed1db" id="docs-internal-guid-d4234be7-7fff-4a09-fdbb-2c7e451ed1db"></a>
 
-The bimodal estimator is experimental and available to LND users starting from version 0.16. Note that the bimodal estimator is considered experimental.
+The bimodal estimator is experimental and available to LND users starting from version 0.16.
 
 It makes an assumption about how balances are distributed among Lightning channels. The bimodal estimator assumes that most channels are skewed, meaning the liquidity in them has flowed to either of two sides. The mathematical framework is based on [research led by Rene Pickhardt](https://arxiv.org/abs/2103.08576).
 
@@ -87,7 +87,7 @@ If a previous payment was successful, any future payment routed through this hop
 
 ## Switch between A priori and Bimodal estimators <a href="#docs-internal-guid-fac9a1ff-7fff-9f3c-3938-3bf936c2ab0c" id="docs-internal-guid-fac9a1ff-7fff-9f3c-3938-3bf936c2ab0c"></a>
 
-To enable or specify an estimator, you can either edit your lnd.conf file, or interact with LND over RPC or LNCLI.
+To enable or specify an estimator, you can either edit your `lnd.conf` file, or interact with LND over RPC or LNCLI.
 
 **lnd.conf**
 

@@ -21,10 +21,10 @@ Configuring Tor is useful if you prefer to not publicly disclose the physical lo
 Starting with `lnd 0.14.0` it is possible to configure LND in a way that lets you be reachable via IPv4/6 while also reaching Tor nodes. See [hybrid mode](quick-tor-setup.md#hybrid-mode) for details.
 
 **Your node on Tor:**\
-****Can reach all nodes, but only reachable by Tor nodes. Recommended if you are behind a NAT and do not want to disclose the IP address of your node.
+Can reach all nodes, but only reachable by Tor nodes. Recommended if you are behind a NAT and do not want to disclose the IP address of your node.
 
 **Your node on IPv4/6:**\
-****Can only reach IPv4/6 nodes, but reachable by all nodes.
+Can only reach IPv4/6 nodes, but reachable by all nodes.
 
 **Your node in hybrid mode:**\
 Can reach all nodes, be reachable by all nodes. Recommended if you are behind a NAT but do not want to connect to clearnet nodes through the Tor network, or if you want to be able to connect outwards to other Tor nodes. In hybrid mode you can be reachable through an IP, an onion address or both.

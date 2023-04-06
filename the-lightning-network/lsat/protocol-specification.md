@@ -41,7 +41,7 @@ In this section, we specify the protocol for the HTTP portion of the LSAT proxy.
 
 Upon receipt of a request for a URI of an LSAT-proxied backend service that lacks credentials or contains an LSAT that is invalid or insufficient in some way, the server should reply with a challenge using the 402 (Payment Required) status code. **Officially, in the HTTP RFC documentation, status code 402 is** [**"reserved for future use"**](https://tools.ietf.org/html/rfc7231#section-6.5.2) **-- but this document assumes the future has arrived.**
 
-Alongside the 402 status code, the server should specify the `WWW-Authenticate` header **** [(\[RFC 7235\], Section 4.1)](https://tools.ietf.org/html/rfc7235#section-4.1) field to indicate the LSAT authentication scheme and the macaroon needed for the client to form a complete LSAT.
+Alongside the 402 status code, the server should specify the `WWW-Authenticate` header [(\[RFC 7235\], Section 4.1)](https://tools.ietf.org/html/rfc7235#section-4.1) field to indicate the LSAT authentication scheme and the macaroon needed for the client to form a complete LSAT.
 
 For instance:
 

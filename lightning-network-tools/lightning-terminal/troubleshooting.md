@@ -44,7 +44,7 @@ Depending on your installation, you may need to call this command with additiona
 
 **Umbrel**: \
 Find the docker process (lightning-terminal) with `docker ps`\
-``Open the pool container with `docker exec -it 340a5b0839f1 /bin/bash`\
+Open the pool container with `docker exec -it 340a5b0839f1 /bin/bash`\
 `Recover the account: pool --tlscertpath "/data/.lit/tls.cert" --rpcserver localhost:8443 --macaroonpath "/data/.pool/mainnet/pool.macaroon" accounts recover`
 
 **BTCPay**:\

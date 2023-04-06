@@ -14,7 +14,7 @@ Aperture is currently used in production in Lightning [Loop](../../lightning-net
 
 Requirements: go 1.13 or later
 
-`git clone` [`https://github.com/lightninglabs/aperture.git`](https://github.com/lightninglabs/aperture.git)``\
+`git clone` [`https://github.com/lightninglabs/aperture.git`](https://github.com/lightninglabs/aperture.git)\
 `cd aperture`\
 `make install`\
 `cp sample-conf.yaml aperture.yaml`

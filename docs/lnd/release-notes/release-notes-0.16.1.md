@@ -1,5 +1,11 @@
 # Release Notes
 
+## Wallet
+
+- The logging around transaction broadcast failures [has been improved by always
+  logging the causing error and the raw transaction as
+  hex](https://github.com/lightningnetwork/lnd/pull/7513).
+
 ## `lncli`
 
 * The `lncli wallet psbt fund` command now allows users to specify the
@@ -40,7 +46,10 @@ https://github.com/lightningnetwork/lnd/pull/7359)
 
 * [Return `FEE_INSUFFICIENT` before checking balance for incoming low-fee
   HTLCs.](https://github.com/lightningnetwork/lnd/pull/7490).
- 
+
+* Optimize script allocation size in order to save
+  [memory](https://github.com/lightningnetwork/lnd/pull/7464).
+
 ## Spec
 
 * [Add test vectors for

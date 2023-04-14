@@ -86,3 +86,39 @@ The permissions of the macaroon can be inspected with lncli:
 &#x20;            `"lnd-custom account d64dbc31b28edf66"`\
 &#x20;    `]`\
 `}`
+
+## Create an LNC session <a href="#docs-internal-guid-ab4cf5c6-7fff-a5cd-6b10-9e8cca0c543e" id="docs-internal-guid-ab4cf5c6-7fff-a5cd-6b10-9e8cca0c543e"></a>
+
+LNC sessions can be created for specific LND accounts. This is useful when connecting external wallets to this specific account, or when creating a new LND session in cases where this is needed. Using this technique we can also create multiple LNC sessions for the same LND account.
+
+First, we will need to obtain the account ID. We can get this account ID directly from a macaroon, as seen above, or by looking through the accounts with `litcli accounts list`.
+
+`litcli sessions add --label pointofsale --type account --account_id d64dbc31b28edf66`
+
+This will return all relevant information, most importantly the mnemonic required to connect.
+
+## Recreating LND Account macaroons <a href="#docs-internal-guid-d0641bc1-7fff-0871-8cd4-de3e495890fc" id="docs-internal-guid-d0641bc1-7fff-0871-8cd4-de3e495890fc"></a>
+
+If you for some reason have lost access to an LND Account macaroon, or need to issue a new one, you can do so with the following steps:
+
+First, we will need the LND account ID for which we want to make a new macaroon. Account IDs can be obtained through the command litcli accounts list and look like this: `07a4a3d12462b52e`
+
+Next, we will bake a generic macaroon with the minimal permissions required and save it.
+
+`lncli bakemacaroon info:read invoices:read invoices:write offchain:read offchain:write onchain:read peers:read --save_to tmp.macaroon`
+
+Now we are going to add a custom caveat to the macaroon, making it useful only for the above account.
+
+`lncli constrainmacaroon --custom_caveat_name account --custom_caveat_condition 07a4a3d12462b52e tmp.macaroon accounts.macaroon`
+
+Don’t forget to delete the temporary macaroon!
+
+`rm tmp.macaroon`
+
+We can now inspect the permissions of this macaroon.
+
+`lncli printmacaroon --macaroon_file zeus.macaroon`
+
+To test the macaroon, we can make a call to LND using the restricted macaroon. For example the `getinfo` command should return zero channels, while the `channelbalance` command should only return the balance associated with that account.
+
+`lncli --macaroonpath accounts.macaroon getinfo`

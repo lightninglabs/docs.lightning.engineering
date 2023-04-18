@@ -22,7 +22,7 @@ This is done in order to make use of these tools as seen in the examples below:
 
 ### litcli <a href="#docs-internal-guid-bc066a10-7fff-c4e0-0c04-4a0c94ff2092" id="docs-internal-guid-bc066a10-7fff-c4e0-0c04-4a0c94ff2092"></a>
 
-`litcli --lndtlscertpath ~/.lnd/tls.cert sessions add --label="My LNC" --type admin`
+`litcli --tlscertpath ~/.lit/tls.cert sessions add --label="My LNC" --type admin`
 
 By default, a pairing phrase created with litcli is valid for 3 months and is set to "readonly", meaning invoices cannot be paid or created and channels cannot be opened. You may extend this with the `--expiry <seconds>` and `--type` flags.
 
@@ -58,7 +58,7 @@ It is possible to run any of the other processes, loopd, poold or faraday as sta
 
 ### litcli <a href="#docs-internal-guid-e71ea847-7fff-613f-9b3d-57ba32e413fa" id="docs-internal-guid-e71ea847-7fff-613f-9b3d-57ba32e413fa"></a>
 
-`litcli --lndtlscertpath ~/.lit/tls.cert sessions add --label="My LNC" --type admin`
+`litcli --tlscertpath ~/.lit/tls.cert sessions add --label="My LNC" --type admin`
 
 ### loop
 

@@ -50,6 +50,10 @@ https://github.com/lightningnetwork/lnd/pull/7359)
 * Optimize script allocation size in order to save
   [memory](https://github.com/lightningnetwork/lnd/pull/7464).
 
+* When resolving outgoing HTLCs onchain, the HTLC timeout resolver will now
+  [monitor mempool](https://github.com/lightningnetwork/lnd/pull/7564) for
+  faster preimage extraction.
+ 
 ## Spec
 
 * [Add test vectors for
@@ -69,6 +73,7 @@ https://github.com/lightningnetwork/lnd/pull/7359)
   anything for the users since the message type(36) stays unchanged, except in
   the logging all the appearance of `funding_locked` replated experssion is
   replaced with `channel_ready`.
+
 ## Bug Fixes
 
 * [Fix a bug where lnd crashes when psbt data is not fully 
@@ -76,6 +81,13 @@ available](https://github.com/lightningnetwork/lnd/pull/7529).
 
 * [Put back P2TR as default change type
   in batch_open_channel](https://github.com/lightningnetwork/lnd/pull/7603).
+  
+* [Fix log output](https://github.com/lightningnetwork/lnd/pull/7604).
+
+
+* [Channels opened with custom fee policies are now able to forward payments
+  correctly without needing to restart
+  first](https://github.com/lightningnetwork/lnd/pull/7597).
 
 # Contributors (Alphabetical Order)
 

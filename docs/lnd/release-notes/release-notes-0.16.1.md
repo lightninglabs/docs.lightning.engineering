@@ -1,5 +1,10 @@
 # Release Notes
 
+## Routing
+
+* The default CLTV delta delay [has been increased from 40 blocks to 80
+  blocks](https://github.com/lightningnetwork/lnd/pull/7609).
+
 ## Wallet
 
 - The logging around transaction broadcast failures [has been improved by always
@@ -84,10 +89,13 @@ available](https://github.com/lightningnetwork/lnd/pull/7529).
   
 * [Fix log output](https://github.com/lightningnetwork/lnd/pull/7604).
 
-
 * [Channels opened with custom fee policies are now able to forward payments
   correctly without needing to restart
   first](https://github.com/lightningnetwork/lnd/pull/7597).
+
+* [Fix a bug](https://github.com/lightningnetwork/lnd/pull/7613) where the 
+  funding manager would error out if no persisted initial forwarding policy is 
+  found for a channel. 
 
 # Contributors (Alphabetical Order)
 

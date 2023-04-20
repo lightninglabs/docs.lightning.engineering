@@ -51,7 +51,7 @@ Lightning Node Connect (LNC) is a new mechanism to smoothly establish a connecti
 LNC makes use of LND’s existing gRPC interface. The node makes an outgoing connection to a web proxy, to which the user is able to navigate using their browser or application. Using a password-authenticated key exchange (PAKE), the established session can be end-to-end encrypted and authenticated between the user and their node.\
 
 
-Terminal Connect is implemented as part of Terminal and `litd 6.0`. It can be used by browser extensions, mobile wallets, lightning network explorers and other applications to connect directly to a Lightning node in order to manage it, make or receive payments and more.\
+Terminal Connect is implemented as part of Terminal and `litd 0.6`. It can be used by browser extensions, mobile wallets, lightning network explorers and other applications to connect directly to a Lightning node in order to manage it, make or receive payments and more.\
 
 
 [Read more about how Lightning Node Connect works.](lightning-node-connect.md)

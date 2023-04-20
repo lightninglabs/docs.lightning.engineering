@@ -46,8 +46,8 @@ The following guides assume basic knowledge of Bitcoin, specifically the UTXO mo
 [liquidity](liquidity/)
 {% endcontent-ref %}
 
-{% content-ref url="lsat/" %}
-[lsat](lsat/)
+{% content-ref url="l402/" %}
+[l402](l402/)
 {% endcontent-ref %}
 
 {% content-ref url="taro/" %}

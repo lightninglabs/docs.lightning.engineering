@@ -18,7 +18,7 @@ To open the account, click on ‘Open an Account’ on the left bar of Lightning
 
 If you want to primarily sell channels, the funds in your Pool account need to be able to cover the capacity of the channels you intend to sell. If you are only buying channels, you only need to commit enough to cover the fees.
 
-To authenticate your account to the Pool server, your node will purchase an [LSAT](../../the-lightning-network/lsat/) for 1000 satoshis. This transaction is made over the Lightning Network and you will be able to see it in your Dashboard.
+To authenticate your account to the Pool server, your node will purchase an [LSAT](../../the-lightning-network/l402/) for 1000 satoshis. This transaction is made over the Lightning Network and you will be able to see it in your Dashboard.
 
 ### Custody
 

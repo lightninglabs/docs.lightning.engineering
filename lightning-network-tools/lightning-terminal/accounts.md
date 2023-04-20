@@ -6,7 +6,7 @@ description: >-
 
 # LND Accounts
 
-Using litd, users are able to create virtual off-chain accounts on top of their LND node, each with their own [macaroon](../../the-lightning-network/lsat/macaroons.md) and spending rules, such as spending limits or an expiration date.
+Using litd, users are able to create virtual off-chain accounts on top of their LND node, each with their own [macaroon](../../the-lightning-network/l402/macaroons.md) and spending rules, such as spending limits or an expiration date.
 
 The accounts feature does not validate whether the sum of all account balances is smaller or equal to the channel balance held in the underlying LND node. A user issued such an account enters a trust relationship with the node operator regarding availability of the funds and the node. The account balances are tracked and enforced by LND.
 

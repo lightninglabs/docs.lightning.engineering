@@ -1,18 +1,18 @@
 ---
-description: Aperture is an implementation of LSATs as a reverse HTTP proxy.
+description: Aperture is an implementation of L402s as a reverse HTTP proxy.
 ---
 
 # Aperture
 
 Aperture is a reverse proxy that acts as a payment and authentication gateway for Lightning Network powered APIs. It can handle gRPC requests over HTTP/2 as well as REST over HTTP/1 and 2.
 
-Aperture receives incoming connections, verifies the validity of the LSAT and either forwards the request to the appropriate end point, or obtains a Macaroon and sends it together with a Lightning invoice and the HTTP status code 402 Payment Required.
+Aperture receives incoming connections, verifies the validity of the L402 and either forwards the request to the appropriate end point, or obtains a Macaroon and sends it together with a Lightning invoice and the HTTP status code 402 Payment Required.
 
 Aperture is currently used in production in Lightning [Loop](../../lightning-network-tools/loop/) and [Pool](../../lightning-network-tools/pool/).
 
 ## Install Aperture
 
-Requirements: go 1.13 or later
+Requirements: go 1.19 or later
 
 `git clone` [`https://github.com/lightninglabs/aperture.git`](https://github.com/lightninglabs/aperture.git)\
 `cd aperture`\
@@ -29,11 +29,11 @@ To run Aperture, simply run the following command from within aperture's directo
 
 `./aperture`
 
-## LSAT demo
+## L402 demo
 
-A demonstration of LSATs can be found at [https://lsat-playground-bucko.vercel.app/](https://lsat-playground-bucko.vercel.app/) ([Testnet version here](https://testnet-lsat-playground.vercel.app/))
+A demonstration of L402 can be found at [https://lsat-playground-bucko.vercel.app/](https://lsat-playground-bucko.vercel.app/) ([Testnet version here](https://testnet-lsat-playground.vercel.app/))
 
-Here you can go through the process of minting a Macaroon, turning it into an LSAT, restricting and validating it as well as see code snippets.
+Here you can go through the process of minting a Macaroon, turning it into an L402, restricting and validating it as well as see code snippets.
 
 [See how the client interceptor is coded in Aperture](https://github.com/lightninglabs/aperture/blob/master/lsat/client\_interceptor.go)
 

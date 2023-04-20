@@ -20,7 +20,7 @@ Furthermore, Macaroons can be attenuated by the user with their own restrictions
 [Watch: Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud](https://www.youtube.com/watch?v=CGBZO5n\_SUg)
 {% endembed %}
 
-Today, Macaroons are used extensively in Lightning Labs products. Together with preimages obtained through Lightning Network payments, Macaroons form the basis of LSATs, which are used by Lightning Pool and Lightning Loop to authenticate users.
+Today, Macaroons are used extensively in Lightning Labs products. Together with preimages obtained through Lightning Network payments, Macaroons form the basis of L402, which are used by Lightning Pool and Lightning Loop to authenticate users.
 
 The main disadvantage of Macaroons over cookie or user-based authentication is that they are harder to revoke, especially in distributed systems. To revoke a Macaroon, the corresponding root key must be deleted, which would also invalidate all other Macaroons signed with that key.
 
@@ -34,7 +34,7 @@ At its most basic level, we can turn a cookie (`id12345678id`) into a Macaroon p
 | ------------------------- |
 | HMAC(secret;4c4ab7a4f7a9) |
 
-More commonly, we will set a location, for instance “api.domain.com” and a publicly visible identifier, such as “your macaroon” in addition to our cookie.
+More commonly, we will set a location, for instance `api.domain.com` and a publicly visible identifier, such as `your macaroon` in addition to our cookie.
 
 [Also read: Hacking Distributed: My first Macaroon](https://hackingdistributed.com/2014/05/21/my-first-macaroon/)
 
@@ -46,8 +46,8 @@ To further amend or restrict Macaroons, we will add a “caveat”, which is a f
 
 | id12345678id,api.domain.com,your macaroon                                                 |
 | ----------------------------------------------------------------------------------------- |
-| expires:2022-12-31                                                                        |
-| <p>HMAC(HMAC(secret,4c4ab7a4f7a9,api.domain.com,your macaroon)expires:2022-12-31)<br></p> |
+| expires:2023-12-31                                                                        |
+| <p>HMAC(HMAC(secret,4c4ab7a4f7a9,api.domain.com,your macaroon)expires:2023-12-31)<br></p> |
 
 We now only need to include each line with caveats in the Macaroon, as well as the final HMAC. The service verifying the Macaroon can now calculate line by line the appropriate HMACs and make sure that the final value matches that provided by the user, meaning the Macaroon is valid, and which caveats to apply. Whether the request conforms with the Macaroon will have to be checked separately.
 
@@ -70,10 +70,10 @@ Macaroons can be used to delegate permissions. For example, Loop could issue a M
 
 ### Third-party caveats
 
-Macaroons can also include third-party caveats, which require some interaction with a third-party, to obtain an additional secret to complete the Macaroon. Lightning Service Authentication Tokens (LSATs) are a form of such caveats, which allow the creation of Macaroons that are only complete upon paying an attached Lightning Network invoice.
+Macaroons can also include third-party caveats, which require some interaction with a third-party, to obtain an additional secret to complete the Macaroon. Lightning API Credentials (L402s) are a form of such caveats, which allow the creation of Macaroons that are only complete upon paying an attached Lightning Network invoice.
 
-{% content-ref url="lsat.md" %}
-[lsat.md](lsat.md)
+{% content-ref url="l402.md" %}
+[l402.md](l402.md)
 {% endcontent-ref %}
 
 [Try: Guggero's Cryptography Toolkit](https://guggero.github.io/cryptography-toolkit/#!/macaroon)

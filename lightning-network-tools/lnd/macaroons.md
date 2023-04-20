@@ -8,7 +8,7 @@ description: >-
 
 LND, Loop, Pool and litd all use macaroons to authenticate RPC calls. Macaroons are similar to cookies in that they are bearer instruments, but they can be more easily verified by the server using HMACs and a root key alone. They can also be attenuated, both by the server and by the user. This greatly simplifies how LND authenticates RPC calls while expanding the detail in which authority over specific RPC calls is permissioned.
 
-[Learn more about Macaroons here.](../../the-lightning-network/lsat/macaroons.md)
+[Learn more about Macaroons here.](../../the-lightning-network/l402/macaroons.md)
 
 ## The default macaroons <a href="#docs-internal-guid-ad1fdcaf-7fff-adcf-644d-0f14be97523e" id="docs-internal-guid-ad1fdcaf-7fff-adcf-644d-0f14be97523e"></a>
 

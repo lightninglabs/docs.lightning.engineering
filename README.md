@@ -45,8 +45,8 @@ Pool is a non-custodial marketplace where users can buy inbound liquidity from n
 
 Taro is a Taproot-powered protocol for issuing assets on the bitcoin blockchain that can be transferred over the Lightning Network for instant, high volume, low fee transactions.
 
-{% content-ref url="the-lightning-network/lsat/lsat.md" %}
-[lsat.md](the-lightning-network/lsat/lsat.md)
+{% content-ref url="the-lightning-network/l402/l402.md" %}
+[l402.md](the-lightning-network/l402/l402.md)
 {% endcontent-ref %}
 
 Lightning Service Authentication Tokens cleverly combine the capabilities of macaroons with that of a Lightning payment, making it easy to charge satoshis for API requests.

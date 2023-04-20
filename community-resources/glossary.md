@@ -348,13 +348,13 @@ Loop Out is the process of making a Lightning payment and receiving an equivalen
 
 The Lightning Service Authentication Token (LSAT) combines [Macaroons](glossary.md#macaroon) with [preimages](glossary.md#preimage) as proof of payment to create tickets for paid APIs or other services that require authentication and payment.
 
-[Read more: LSAT](../the-lightning-network/lsat/)
+[Read more: LSAT](../the-lightning-network/l402/)
 
 ## Macaroon
 
 Macaroons are bearer credentials that allow for detailed attenuation as well as delegation.
 
-[Read more: Macaroons explained](../the-lightning-network/lsat/macaroons.md)
+[Read more: Macaroons explained](../the-lightning-network/l402/macaroons.md)
 
 ## Merkle Sum Tree <a href="#docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94" id="docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94"></a>
 

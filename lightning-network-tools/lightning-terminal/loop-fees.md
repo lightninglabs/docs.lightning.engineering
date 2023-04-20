@@ -19,7 +19,7 @@ A Loop Out allows you to trade your off-chain balance for on-chain bitcoin. Ther
 
 Loop will give us an estimate over the fees we are expected to pay before we confirm our swap. These fees depend on transaction size and current demand for on-chain payments and fall into three categories:
 
-**LSAT**: When you perform your first Loop your node will purchase an [LSAT](../../the-lightning-network/lsat/). This LSAT does not expire and costs 1 satoshi.
+**LSAT**: When you perform your first Loop your node will purchase an [LSAT](../../the-lightning-network/l402/). This LSAT does not expire and costs 1 satoshi.
 
 **Estimated on-chain fee**: This is the fee you are expected to pay in miners fees to claim your bitcoin from the [HTLC address](../../the-lightning-network/multihop-payments/understanding-submarine-swaps.md#3.-claim-bitcoin-from-the-smart-contract) into your personal wallet. This fee is calculated based on current on-chain fee conditions and may be higher if by the time the Loop Out concludes the mempool is significantly more congested. Larger transaction sizes do not increase this fee, but faster desired confirmation times do.
 

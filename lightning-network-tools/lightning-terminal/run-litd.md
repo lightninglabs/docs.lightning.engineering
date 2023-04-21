@@ -14,6 +14,8 @@ Running litd in integrated mode allows the user to run everything in a single bi
 
 If you have not run LND on this machine before, you will need to configure a Bitcoin backend. You may refer to the [Configuration section in our Run LND guide.](../lnd/run-lnd.md) If you intend to run with a Neutrino backend, no action needs to be taken in this step.
 
+
+
 ### Configure litd <a href="#docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52" id="docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52"></a>
 
 To configure litd, we will first create the .lit directory and place a configuration file in it.
@@ -48,7 +50,17 @@ You can now run litd, LND, Loop, Pool and Faraday together by executing litd. Yo
 
 ## Remote mode <a href="#docs-internal-guid-aaab01ad-7fff-a741-d263-1ff312b564b0" id="docs-internal-guid-aaab01ad-7fff-a741-d263-1ff312b564b0"></a>
 
-Remote mode refers to a litd installation that runs separately from LND. By default, such an installation does not need configuration beyond passing a UI password. We can start litd with the command:
+Remote mode refers to a litd installation that runs separately from LND. By default, such an installation does not need configuration beyond passing a UI password.
+
+### Configure LND
+
+To make use of litd's [Accounts](accounts.md) and [Autofees](autofees.md) features, you will need to enable the [RPC Middleware interceptor](../lnd/rpc-middleware-interceptor.md). This can be done by adding the following line to your `lnd.conf`:
+
+`rpcmiddleware.enable=true`
+
+### Run litd
+
+We can start litd with the command:
 
 `litd –uipassword=<your secure and unique password>`
 

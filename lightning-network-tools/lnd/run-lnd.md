@@ -162,7 +162,7 @@ You will need to specify in this configuration file which backend you prefer to 
 **Neutrino:**
 
 `bitcoin.node=neutrino`\
-`neutrino.connect=faucet.lightning.community`
+`lnd.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json`
 
 **Bitcoind:**
 
@@ -185,7 +185,7 @@ If you have chosen to omit ZMQ in your bitcoind configuration file, you will hav
 
 ### Recommended configuration
 
-To make use of [autofees](../lightning-terminal/autofees.md), the [RPC Middleware interceptor](rpc-middleware-interceptor.md) needs to be enabled. This can be done by adding the following to the configuration file:
+To make use of [Autofees](../lightning-terminal/autofees.md) and [LND Accounts](../lightning-terminal/accounts.md), the [RPC Middleware interceptor](rpc-middleware-interceptor.md) needs to be enabled. This can be done by adding the following to the configuration file:
 
 `rpcmiddleware.enable=true`
 

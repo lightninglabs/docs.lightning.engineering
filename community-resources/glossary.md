@@ -146,7 +146,7 @@ Check Lock-time Verify is a functionality in Bitcoin that allows us to lock Bitc
 
 Clustering allows us to use multiple [LND](glossary.md#the-lightning-network-daemon) nodes to form a cluster, in which we can delegate specific tasks such as managing invoices or maintaining channels for performance or security purposes.
 
-[Read more: LND clustering](../lightning-network-tools/lnd/leader\_election.md)
+[Read more: LND clustering](../docs/lnd/leader\_election.md)
 
 ## Commitment <a href="#docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776" id="docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776"></a>
 
@@ -638,7 +638,7 @@ Unspent transaction outputs (unspent utxos) are funds available [on-chain](gloss
 
 A wallet that is aware of balances and transactions, but does not possess the keys necessary to spend them. A watch-only wallet can create unsigned [PSBTs](glossary.md#partially-signed-bitcoin-transactions) which are then signed by the wallet holding the keys.
 
-[Read more: Key import](../lightning-network-tools/lnd/key\_import.md)
+[Read more: Key import](../docs/lnd/key\_import.md)
 
 ## Watchtower
 

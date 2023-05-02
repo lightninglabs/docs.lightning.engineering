@@ -22,8 +22,8 @@ LND's API documentation
 [first-steps-with-lnd.md](first-steps-with-lnd.md)
 {% endcontent-ref %}
 
-{% content-ref url="wallet.md" %}
-[wallet.md](wallet.md)
+{% content-ref url="../../docs/lnd/wallet.md" %}
+[wallet.md](../../docs/lnd/wallet.md)
 {% endcontent-ref %}
 
 {% content-ref url="payments.md" %}
@@ -58,8 +58,8 @@ LND's API documentation
 [watchtower.md](watchtower.md)
 {% endcontent-ref %}
 
-{% content-ref url="key_import.md" %}
-[key\_import.md](key\_import.md)
+{% content-ref url="../../docs/lnd/key_import.md" %}
+[key\_import.md](../../docs/lnd/key\_import.md)
 {% endcontent-ref %}
 
 {% content-ref url="secure-your-lightning-network-node.md" %}
@@ -106,8 +106,8 @@ LND's API documentation
 [rpc-middleware-interceptor.md](rpc-middleware-interceptor.md)
 {% endcontent-ref %}
 
-{% content-ref url="leader_election.md" %}
-[leader\_election.md](leader\_election.md)
+{% content-ref url="../../docs/lnd/leader_election.md" %}
+[leader\_election.md](../../docs/lnd/leader\_election.md)
 {% endcontent-ref %}
 
 {% content-ref url="nat_traversal.md" %}

@@ -10,6 +10,10 @@ LNC is bundled in litd and is available as a standalone npm package for [React N
 
 In this demonstration we are going to use the [LNC demo web app](https://github.com/lightninglabs/lnc-web/tree/main/demos/connect-demo) to build our own application that connects to our Lightning node.
 
+{% embed url="https://www.youtube.com/watch?v=vZWbydel-bU" %}
+Building Lightning Apps with Lightning Node Connect
+{% endembed %}
+
 ## Intro <a href="#docs-internal-guid-6fd0d7b1-7fff-5441-93e1-ec53abd6340f" id="docs-internal-guid-6fd0d7b1-7fff-5441-93e1-ec53abd6340f"></a>
 
 In the initial state, this demo app allows a user to enter their node alias into a form. This alias is then used to generate a Lightning meme.\

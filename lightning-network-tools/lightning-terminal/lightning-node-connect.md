@@ -66,6 +66,10 @@ Instead of implementing the client in Javascript, Lightning Terminal uses WebAss
 
 The application is fed the pairing phrase by the user, triggering the generation of a public key for the DH handshake, a stream ID as well as allowing it to verify the connection and discard the pairing phrase. The user additionally selects a password, ideally using their password manager, to encrypt the generated secrets locally and prevent unauthorized use.
 
+{% embed url="https://www.youtube.com/watch?v=vZWbydel-bU" %}
+Building Lightning Apps with Lightning Node Connect
+{% endembed %}
+
 ## Future work
 
 To extend the functionalities of Terminal on the web beyond sending and receiving payments, opening and closing channels or inspecting payments in flight, extensions to the LND API are necessary. The API endpoints of Pool and Loop will have to be further abstracted as well to deliver Terminal users the full capabilities of these markets and services.

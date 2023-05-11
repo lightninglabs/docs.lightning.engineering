@@ -72,6 +72,7 @@ description: >-
 * [Mash](https://getmash.com) - monetize your apps by integrating an open consumer lightning wallet, paywalls, and payment faciliation mechanisms with a few snippets of code
 * [sms4sats](https://sms4sats.com) - send text messages and receive sms for online services on the web and via API
 * [lightsats](https://lightsats.com) - Onboard newbies with lightning tips
+* [LNURL Auth For WordPress](https://wordpress.org/plugins/lnurl-auth/) - Login to WordPress with Bitcoin Lightning
 
 ## Software bundles that include Lightning <a href="#docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176" id="docs-internal-guid-083d9f26-7fff-e1ef-2503-fa578ae0e176"></a>
 

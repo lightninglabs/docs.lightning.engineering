@@ -120,7 +120,7 @@
   * [gRPC API](lightning-network-tools/pool/grpc-api.md)
   * [FAQs](lightning-network-tools/pool/faq.md)
 * [Taproot Assets](lightning-network-tools/taproot-assets/README.md)
-  * [Get Started](lightning-network-tools/taproot-assets/get-taro.md)
+  * [Get Started](lightning-network-tools/taproot-assets/get-tapd.md)
   * [First Steps](lightning-network-tools/taproot-assets/first-steps.md)
 * [Faraday](lightning-network-tools/faraday/README.md)
   * [🛠 Get Started](lightning-network-tools/faraday/get-started.md)

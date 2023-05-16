@@ -14,7 +14,7 @@ Use `tapcli` to begin minting your first asset.
 
 This will add your asset to a minting queue called a batch, which allows multiple assets to be created in a single minting transaction. This saves fees and conserves blockspace. To execute the batch and publish your mint transaction to the blockchain run:
 
-`tapcli` assets mint finalize
+`tapcli assets mint finalize`
 
 Inspect the newly created asset(s) by calling the command
 

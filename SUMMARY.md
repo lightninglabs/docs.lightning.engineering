@@ -35,10 +35,10 @@
   * [Aperture](the-lightning-network/l402/aperture.md)
   * [📋 Protocol Specification](the-lightning-network/l402/protocol-specification.md)
   * [Implementations and Links](the-lightning-network/l402/implementations-and-links.md)
-* [Taro](the-lightning-network/taro/README.md)
-  * [Taro Protocol](the-lightning-network/taro/taro-protocol.md)
-  * [Taro on Lightning](the-lightning-network/taro/taro-on-lightning.md)
-  * [FAQ](the-lightning-network/taro/faq.md)
+* [Taproot Assets](the-lightning-network/taproot-assets/README.md)
+  * [Taproot Assets Protocol](the-lightning-network/taproot-assets/taproot-assets-protocol.md)
+  * [Taproot Assets on Lightning](the-lightning-network/taproot-assets/taproot-assets-on-lightning.md)
+  * [FAQ](the-lightning-network/taproot-assets/faq.md)
 
 ## Lightning Network Tools
 
@@ -119,9 +119,9 @@
   * [Account Recovery](lightning-network-tools/pool/account\_recovery.md)
   * [gRPC API](lightning-network-tools/pool/grpc-api.md)
   * [FAQs](lightning-network-tools/pool/faq.md)
-* [Taro](lightning-network-tools/taro/README.md)
-  * [Get Started](lightning-network-tools/taro/get-taro.md)
-  * [First Steps](lightning-network-tools/taro/first-steps.md)
+* [Taproot Assets](lightning-network-tools/taproot-assets/README.md)
+  * [Get Started](lightning-network-tools/taproot-assets/get-taro.md)
+  * [First Steps](lightning-network-tools/taproot-assets/first-steps.md)
 * [Faraday](lightning-network-tools/faraday/README.md)
   * [🛠 Get Started](lightning-network-tools/faraday/get-started.md)
   * [The Faraday CLI](lightning-network-tools/faraday/the-faraday-cli.md)

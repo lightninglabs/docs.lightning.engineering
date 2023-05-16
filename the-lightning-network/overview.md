@@ -50,6 +50,6 @@ The following guides assume basic knowledge of Bitcoin, specifically the UTXO mo
 [l402](l402/)
 {% endcontent-ref %}
 
-{% content-ref url="taro/" %}
-[taro](taro/)
+{% content-ref url="taproot-assets/" %}
+[taproot-assets](taproot-assets/)
 {% endcontent-ref %}

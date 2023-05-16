@@ -1,14 +1,14 @@
 ---
 description: >-
-  Taro is primarily an on-chain protocol. Assets are issued on the bitcoin
-  blockchain using taproot transactions.
+  Taproot Assets is primarily an on-chain protocol. Assets are issued on the
+  bitcoin blockchain using taproot transactions.
 ---
 
-# Taro Protocol
+# Taproot Assets Protocol
 
 ## Concepts and topography
 
-To understand Taro, we will need to make ourselves familiar with several concepts, some of which are novel, in the context of the bitcoin blockchain.
+To understand Taproot Assets, we will need to make ourselves familiar with several concepts, some of which are novel, in the context of the bitcoin blockchain.
 
 Learn about the basic concepts here:\
 [Public-key cryptography](https://www.cloudflare.com/en-ca/learning/ssl/how-does-public-key-encryption-work/)\
@@ -22,7 +22,7 @@ Taproot is a new transaction type defined in [BIP 341](https://github.com/bitcoi
 
 While a conventional transaction requires the entire script to be revealed, a Taproot transaction can be spent with a key to abstain from revealing the scripts and if the keyspend path is infeasible, only the executed portion of the script is revealed on the blockchain. All other script paths can remain private, or be selectively revealed off-chain.
 
-This makes it possible to create more complicated scripts without the added cost of submitting extra data to the blockchain in the keySpend path, and efficient verification of a pruned script data. In the context of Taro, it allows us to provably attach arbitrary data to a transaction without revealing this data on-chain.
+This makes it possible to create more complicated scripts without the added cost of submitting extra data to the blockchain in the keySpend path, and efficient verification of a pruned script data. In the context of Taproot Assets, it allows us to provably attach arbitrary data to a transaction without revealing this data on-chain.
 
 ### Commiting to a hash: Taptweak
 
@@ -78,11 +78,11 @@ Merkle Sum trees allow efficient verification of conservation (non-inflation) by
 
 ### Combining taproot, taptweak, sparse Merkle trees and Merkle sum trees <a href="#docs-internal-guid-562ab959-7fff-e882-7df8-7c4d7189830f" id="docs-internal-guid-562ab959-7fff-e882-7df8-7c4d7189830f"></a>
 
-Taro makes use of a combination of the concepts above to allow for the issuance of Bitcoin-native assets. Sparse Merkle trees and Merkle sum trees are combined into sparse Merkle sum trees.
+Taproot Assets makes use of a combination of the concepts above to allow for the issuance of Bitcoin-native assets. Sparse Merkle trees and Merkle sum trees are combined into sparse Merkle sum trees.
 
 The root of this tree is added to a taproot tapscript, and together a taproot address is created.
 
-Instead of its own blockchain, Taro issuers store sparse Merkle sum trees off-chain and issue proofs to asset holders out of band. The owners of such assets can independently verify that their account is included in the tree, is filled with the appropriate amount and the corresponding taproot transaction exists and is confirmed on the Bitcoin blockchain.
+Instead of its own blockchain, Taproot Assets issuers store sparse Merkle sum trees off-chain and issue proofs to asset holders out of band. The owners of such assets can independently verify that their account is included in the tree, is filled with the appropriate amount and the corresponding taproot transaction exists and is confirmed on the Bitcoin blockchain.
 
 [Read the BIPs: Merkle Sum Sparse Merkle Trees](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-ms-smt.mediawiki)
 
@@ -90,21 +90,19 @@ Instead of its own blockchain, Taro issuers store sparse Merkle sum trees off-ch
 
 ### Asset ID
 
-To issue a Taro asset , we must first create its identifier. We create a 32-byte asset ID which is produced by hashing three elements: the outpoint being spent to mint the asset, an asset tag of the minter’s choice (e.g. a hash of a brand name) and meta information associated with the asset--such as links, images or documents.
+To issue Taproot Assets , we must first create its identifier. We create a 32-byte asset ID which is produced by hashing three elements: the outpoint being spent to mint the asset, an asset tag of the minter’s choice (e.g. a hash of a brand name) and meta information associated with the asset--such as links, images or documents.
 
 `asset_id = sha256(genesis_outpoint || asset_tag || asset_meta)`
 
 ### Asset Script <a href="#docs-internal-guid-926da57d-7fff-edec-b9e3-ed00906dcf69" id="docs-internal-guid-926da57d-7fff-edec-b9e3-ed00906dcf69"></a>
 
-The asset script can have inputs and outputs, similar to a Bitcoin transaction. A newly created asset does not contain any Taro inputs, while an asset transfer does.
+The asset script can have inputs and outputs, similar to a Bitcoin transaction. A newly created asset does not contain any Taproot Assets inputs, while an asset transfer does.
 
 The output of the asset script defines who the newly created assets are issued to. More precisely, this is done through a sparse Merkle sum tree, in which each account is identified by its 256-bit key, and each leaf corresponding to this key contains information about the amount the account holds.
 
 It is possible to issue multiple assets in one transaction, but each asset will have its own asset script and within it, sparse Merkle tree. Assets can be unique or non-unique.
 
-[Read the BIPs: Taro Asset Script](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-vm.mediawiki)
-
-##
+[Read the BIPs: Taproot Asset Script](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-vm.mediawiki)
 
 ### Asset leaves
 
@@ -130,49 +128,49 @@ The recipient can verify the partial sparse Merkle sum tree to recreate the scri
 
 ## Transferring assets <a href="#docs-internal-guid-ae0229ef-7fff-480d-ba27-14c268d89d16" id="docs-internal-guid-ae0229ef-7fff-480d-ba27-14c268d89d16"></a>
 
-Taro assets can be transferred on-chain, or they can be used to open Lightning Network channels. In this chapter, we will discuss on-chain transactions only.
+Taproot Assets can be transferred on-chain, or they can be used to open Lightning Network channels. In this chapter, we will discuss on-chain transactions only.
 
-Exactly how individual account holders interact with each other is not prescribed by Taro, but can be application specific. Issuers are given flexibility in how they define their assets, or how they intend to restrict these assets.
+Exactly how individual account holders interact with each other is not prescribed by Taproot Assets, but can be application specific. Issuers are given flexibility in how they define their assets, or how they intend to restrict these assets.
 
 The Asset Root Commitment commits to all assets held inside of the tree as well as their sum. The asset\_id is globally unique as it depends on the identifier of its genesis output. The overall root can comprise multiple asset\_ids whose conservation of funds is provided by verifying the asset\_tree\_root.
 
 `asset_tree_root = sha256(asset_id || left_hash || right_hash || sum_value)`
 
-### Taro Addresses <a href="#docs-internal-guid-9dd22c77-7fff-d40d-b240-51c0f6f07a08" id="docs-internal-guid-9dd22c77-7fff-d40d-b240-51c0f6f07a08"></a>
+### Taproot Assets Addresses <a href="#docs-internal-guid-9dd22c77-7fff-d40d-b240-51c0f6f07a08" id="docs-internal-guid-9dd22c77-7fff-d40d-b240-51c0f6f07a08"></a>
 
-Taro addresses are bech32m encoded identifiers of the asset ID, the asset script hash, the internal key of the sparse Merkle sum tree and an amount, prefixed with Taro or Tarot (testnet).
+Taproot Assets addresses are bech32m encoded identifiers of the asset ID, the asset script hash, the internal key of the sparse Merkle sum tree and an amount, prefixed with Taproot Assets or `taptb1` (testnet).
 
-`bech32(hrp=TaroHrp, asset_id || asset_script_hash || internal_key || amt)`
+`bech32(hrp=TapHrp, asset_id || asset_script_hash || internal_key || amt)`
 
-The issuer or asset holder can use the information in your Taro address to create or modify the sparse Merkle sum tree as explained below. This address format can also be used to request a specific proof over the amounts held by the address.
+The issuer or asset holder can use the information in your Taproot Assets address to create or modify the sparse Merkle sum tree as explained below. This address format can also be used to request a specific proof over the amounts held by the address.
 
-[Read the BIPs: Taro On Chain Addresses](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-addr.mediawiki)
+[Read the BIPs: Taproot Assets On Chain Addresses](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-addr.mediawiki)
 
 ### Move assets inside the tree
 
-To transfer Taro assets, the recipient communicates their address to the current holder, who can initiate the transfer. The exact interaction between account holders and issuers is not strictly defined at this time. It could be left up to each application or even asset issuer to specify.
+To transfer Taproot Assets, the recipient communicates their address to the current holder, who can initiate the transfer. The exact interaction between account holders and issuers is not strictly defined at this time. It could be left up to each application or even asset issuer to specify.
 
 The sender of the funds will need to generate a new sparse Merkle sum tree reflecting the new balances. This is done by reducing the balances of certain leafs and increasing the balances of other leafs. The sparse Merkle sum tree guarantees that no new assets are created in such a transaction and that the previous claims to the assets are fully relinquished.
 
 ![Identifying Accounts](<../../.gitbook/assets/Merkle tree introduction C5.png>)
 
-Creating assets requires a single on-chain taproot transaction, in which there is no limit on how many assets can be minted or how many accounts can hold these assets. To transfer assets, as explained above, requires reorganizing the Merkle tree and publishing a new on-chain transaction. There is no limit to how many internal Taro transactions are reflected in this single on-chain transaction.
+Creating assets requires a single on-chain taproot transaction, in which there is no limit on how many assets can be minted or how many accounts can hold these assets. To transfer assets, as explained above, requires reorganizing the Merkle tree and publishing a new on-chain transaction. There is no limit to how many internal Taproot Assets transactions are reflected in this single on-chain transaction.
 
 Using this methodology, funds are allocated to account holders, represented as leafs in the sparse Merkle sum tree, but the ability to make such internal transfers is limited to the owner of the internal taproot private key(s).
 
-<figure><img src="../../.gitbook/assets/taro.drawio(1).png" alt=""><figcaption><p>Diagram showing the relationship between the Taproot tree, the asset tree, the individual Taro tree and its leaf.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/taproot-asset tree.png" alt=""><figcaption></figcaption></figure>
 
 ### The Universe <a href="#docs-internal-guid-81622115-7fff-548d-5594-a7c4b43b97b3" id="docs-internal-guid-81622115-7fff-548d-5594-a7c4b43b97b3"></a>
 
-A Universe is a service that provides information about assets as well as proofs for asset holders. It acts similarly to a bitcoin block explorer, but showcases Taro transaction data which is stored off-chain with Taro clients. The main difference is that, as most information related to Taro assets is off-chain, it is easier to conceal.
+A Universe is a service that provides information about assets as well as proofs for asset holders. It acts similarly to a bitcoin block explorer, but showcases Taproot Assets transaction data which is stored off-chain with Taproot Assets clients. The main difference is that, as most information related to Taproot Assets is off-chain, it is easier to conceal.
 
 A Universe may be run by the asset issuer themselves or may be appointed by an issuer. It is also conceivable that community-run Universes aggregate information submitted by asset holders.
 
 Given a known asset ID, the Universe for example may provide information about its Genesis output, as well as current meta information such as documentation, asset scripts or total coins in circulation. A service may also know about multiple assets (Multiverse) or only about a single output (Pocket Universe).
 
-A Universe has no privileges within the Taro protocol. It produces transaction data validated against the bitcoin blockchain. An adversarial Universe could only refrain from returning data requested by clients. Taro transaction data isn’t bound to a Universe. The data availability offerings provided by a Universe is motivated by entities who wish to have fast, cheap verification of their Taro assets.
+A Universe has no privileges within the Taproot Assets Protocol. It produces transaction data validated against the bitcoin blockchain. An adversarial Universe could only refrain from returning data requested by clients. Taproot Assets transaction data isn’t bound to a Universe. The data availability offerings provided by a Universe is motivated by entities who wish to have fast, cheap verification of their Taproot Assets.
 
-[Read the BIPs: Taro Asset Universes](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-universe.mediawiki)
+[Read the BIPs: Taproot Asset Universes](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-universe.mediawiki)
 
 ### Asset merge or split
 
@@ -199,4 +197,4 @@ Asset proofs grow linearly with each new on-chain transaction. Every asset trans
 
 An asset is considered invalid as soon as its output has been spent without committing to a new sparse merkle sum tree. This is not obvious for a third party observer, and in some instances it may be preferable to spend outputs to a new empty merkle tree to prove that assets were destroyed, invalidated, or “burned”.
 
-[Read the BIPs: Taro Flat File Proof Format](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-proof-file.mediawiki)
+[Read the BIPs: Taproot Assets Flat File Proof Format](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-proof-file.mediawiki)

@@ -598,7 +598,7 @@ Taproot is a bitcoin transaction type introduced in November 2021 that allows fo
 
 Taro is a protocol for issuing assets on Bitcoin. It uses [Merkle Sum trees](glossary.md#docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94) and [Sparse Merkle trees](glossary.md#docs-internal-guid-3885545f-7fff-a51b-405a-54b62b6131d5) to commit assets to the Bitcoin Blockchain. Taro assets can be committed to [Lightning channels](glossary.md#channel) to instant transfers.
 
-[Read more: Understanding Taro](../the-lightning-network/taro/)
+[Read more: Understanding Taro](../the-lightning-network/taproot-assets/)
 
 ## Time Lock Delta
 

@@ -35,6 +35,10 @@ package](https://github.com/lightningnetwork/lnd/pull/7356)
   API can no longer be used to set/unset protocol features that are defined by 
   LND.  
 
+* [Neutrinorpc getblockhash has 
+  been deprecated](https://github.com/lightningnetwork/lnd/pull/7712). Endpoint 
+  has been moved to the chainrpc sub-server.
+
   Custom node announcement feature bits can also be specified in config using 
   the `dev` build tag and `--protocol.custom-nodeann`, `--protocol.custom-init` 
   and `--protocol.custom-invoice` flags to set feature bits for various feature
@@ -67,8 +71,15 @@ unlock or create.
 
 ## Testing
 
+* [Started](https://github.com/lightningnetwork/lnd/pull/7494) running fuzz
+  tests in CI.
+
 * [Added fuzz tests](https://github.com/lightningnetwork/lnd/pull/7649) for
   signature parsing and conversion.
+
+## `lncli`
+
+* Added ability to use [ENV variables to override `lncli` global flags](https://github.com/lightningnetwork/lnd/pull/7693). Flags will have preference over ENVs.
 
 # Contributors (Alphabetical Order)
 
@@ -76,6 +87,8 @@ unlock or create.
 * Daniel McNally
 * Elle Mouton
 * Erik Arvstedt
+* ErikEk
+* Guillermo Caracuel
 * hieblmi
 * Jordi Montes
 * Matt Morehouse

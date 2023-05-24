@@ -122,6 +122,7 @@
 * [Taproot Assets](lightning-network-tools/taproot-assets/README.md)
   * [Get Started](lightning-network-tools/taproot-assets/get-tapd.md)
   * [First Steps](lightning-network-tools/taproot-assets/first-steps.md)
+  * [Lightning Polar](lightning-network-tools/taproot-assets/polar.md)
 * [Faraday](lightning-network-tools/faraday/README.md)
   * [🛠 Get Started](lightning-network-tools/faraday/get-started.md)
   * [The Faraday CLI](lightning-network-tools/faraday/the-faraday-cli.md)

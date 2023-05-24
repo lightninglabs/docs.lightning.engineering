@@ -594,11 +594,11 @@ Taproot is a bitcoin transaction type introduced in November 2021 that allows fo
 
 [Further reading: Taproot BIP 341 full text](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki)
 
-## Taro <a href="#docs-internal-guid-7cc2614e-7fff-6a58-76d9-4f295cc1a60e" id="docs-internal-guid-7cc2614e-7fff-6a58-76d9-4f295cc1a60e"></a>
+## Taproot Assets <a href="#docs-internal-guid-7cc2614e-7fff-6a58-76d9-4f295cc1a60e" id="docs-internal-guid-7cc2614e-7fff-6a58-76d9-4f295cc1a60e"></a>
 
-Taro is a protocol for issuing assets on Bitcoin. It uses [Merkle Sum trees](glossary.md#docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94) and [Sparse Merkle trees](glossary.md#docs-internal-guid-3885545f-7fff-a51b-405a-54b62b6131d5) to commit assets to the Bitcoin Blockchain. Taro assets can be committed to [Lightning channels](glossary.md#channel) to instant transfers.
+Taproot Assets is a protocol for issuing assets on Bitcoin. It uses [Merkle Sum trees](glossary.md#docs-internal-guid-da9e136d-7fff-c284-15eb-82132eee8d94) and [Sparse Merkle trees](glossary.md#docs-internal-guid-3885545f-7fff-a51b-405a-54b62b6131d5) to commit assets to the Bitcoin Blockchain. Assets can be committed to [Lightning channels](glossary.md#channel) to instant transfers.
 
-[Read more: Understanding Taro](../the-lightning-network/taproot-assets/)
+[Read more: Understanding Taproot Assets](../the-lightning-network/taproot-assets/)
 
 ## Time Lock Delta
 

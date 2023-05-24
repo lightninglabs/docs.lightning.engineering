@@ -4,7 +4,7 @@ description: Run litd in integrated or remote mode.
 
 # Run litd
 
-We recommend running litd in integrated mode. This lets you run LND, Loop, Pool, Faraday and in the future, Taro, in a single binary. You can also run litd alongside your existing LND, Loop, Pool or  installation. Generally, litd makes it easy for you to selectively switch between integrated and remote mode for each component, allowing you to selectively upgrade each component, apply patches, or run your own forks.
+We recommend running litd in integrated mode. This lets you run LND, Loop, Pool, Faraday and in the future, Taproot Assets, in a single binary. You can also run litd alongside your existing LND, Loop, Pool or installation. Generally, litd makes it easy for you to selectively switch between integrated and remote mode for each component, allowing you to selectively upgrade each component, apply patches, or run your own forks.
 
 ## Integrated mode
 
@@ -13,8 +13,6 @@ Running litd in integrated mode allows the user to run everything in a single bi
 ### Configure Bitcoin
 
 If you have not run LND on this machine before, you will need to configure a Bitcoin backend. You may refer to the [Configuration section in our Run LND guide.](../lnd/run-lnd.md) If you intend to run with a Neutrino backend, no action needs to be taken in this step.
-
-
 
 ### Configure litd <a href="#docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52" id="docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52"></a>
 
@@ -78,8 +76,7 @@ For example:
 `--lnd-mode=remote`\
 `--faraday-mode=integrated`\
 `--loop-mode=integrated`\
-`--pool-mode=remote`\
-
+`--pool-mode=remote`\\
 
 [Next: Connect to Terminal](connect.md)
 

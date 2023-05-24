@@ -43,7 +43,7 @@ Pool is a non-custodial marketplace where users can buy inbound liquidity from n
 [taproot-assets](the-lightning-network/taproot-assets/)
 {% endcontent-ref %}
 
-Taro is a Taproot-powered protocol for issuing assets on the bitcoin blockchain that can be transferred over the Lightning Network for instant, high volume, low fee transactions.
+Taproot Assets is a protocol for issuing assets on the bitcoin blockchain that can be transferred over the Lightning Network for instant, high volume, low fee transactions.
 
 {% content-ref url="the-lightning-network/l402/l402.md" %}
 [l402.md](the-lightning-network/l402/l402.md)
@@ -63,4 +63,4 @@ We have you covered if you're starting with your first LAPP or running a profess
 
 If you're looking for inspiration, we've included a sampling of community projects for you to look to. We hope you add whatever you build to this page!
 
-Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), and [API documentation, including LND, Loop, Pool, Faraday & Taro](https://lightning.engineering/api-docs).
+Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), and [API documentation, including LND, Loop, Pool, Faraday & Taproot Assets](https://lightning.engineering/api-docs/).

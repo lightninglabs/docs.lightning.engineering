@@ -6,7 +6,7 @@ description: >-
 
 # 🛠 Get litd
 
-Litd gives your node access to features such as LND Accounts or LNC while bundling LND with Loop, Pool, Faraday, and, in the future, Taro.
+Litd gives your node access to features such as LND Accounts or LNC while bundling LND with Loop, Pool, Faraday, and, in the future, Taproot Assets.
 
 You can point litd at your existing LND, Loop or Pool installation, or you can run LND as part of litd. Running the entire bundle as a single binary is most reliable and convenient. Plus,individual components can be easily swapped out at will, for example to apply patches or run pre-release software.
 

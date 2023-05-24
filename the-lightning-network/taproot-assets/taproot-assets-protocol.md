@@ -144,7 +144,7 @@ Taproot Assets addresses are bech32m encoded identifiers of the asset ID, the as
 
 The issuer or asset holder can use the information in your Taproot Assets address to create or modify the sparse Merkle sum tree as explained below. This address format can also be used to request a specific proof over the amounts held by the address.
 
-[Read the BIPs: Taproot Assets On Chain Addresses](https://github.com/Roasbeef/bips/blob/bip-taro/bip-taro-addr.mediawiki)
+[Read the BIPs: Taproot Assets On Chain Addresses](https://github.com/lightninglabs/taproot-assets/blob/main/docs/bip-tap-addr.mediawiki)
 
 ### Move assets inside the tree
 

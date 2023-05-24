@@ -58,10 +58,6 @@ unlock or create.
 * [Restore support](https://github.com/lightningnetwork/lnd/pull/7678) for
   `PKCS8`-encoded cert private keys.
 
-* [Re-encrypt/regenerate](https://github.com/lightningnetwork/lnd/pull/7705) 
-  all macaroon DB root keys on `ChangePassword`/`GenerateNewRootKey` 
-  respectively.
-
 ## Code Health
 
 * Updated [our fork for serializing protobuf as JSON to be based on the
@@ -74,8 +70,14 @@ unlock or create.
 * [Started](https://github.com/lightningnetwork/lnd/pull/7494) running fuzz
   tests in CI.
 
+* [Derandomized](https://github.com/lightningnetwork/lnd/pull/7618) the BOLT
+  8 fuzz tests.
+
 * [Added fuzz tests](https://github.com/lightningnetwork/lnd/pull/7649) for
   signature parsing and conversion.
+
+* [Simplify fuzz tests](https://github.com/lightningnetwork/lnd/pull/7709)
+  using the `require` package.
 
 ## `lncli`
 

@@ -72,10 +72,9 @@ You can find the latest version of Golang [on its official website](https://gola
 
 `sudo tar -C /usr/local -xzf go[version].linux-[platform].tar.gz`
 
-`export PATH=$PATH:/usr/local/go/bin`
-
 To permanently include this new directory in your path, add the following lines to your `.bashrc` file and open a new terminal window to activate it.
 
+`export PATH=$PATH:/usr/local/go/bin`\
 `export GOPATH=~/go`\
 `export PATH=$PATH:$GOPATH/bin`
 

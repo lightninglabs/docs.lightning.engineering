@@ -14,7 +14,7 @@ Taproot Assets on Polar
 
 ## Prerequisites
 
-Before you can get started with Lightning Polar, you will need Docker. On Windows and Mac OS you can use [Docker Desktop](https://www.docker.com/products/docker-desktop/), while on Linux it is recommended to run [Docker Engine](https://docs.docker.com/engine/install/#server) and [Docker Compose](https://docs.docker.com/compose/install/#scenario-two-install-the-compose-plugin).
+Before you can get started with Lightning Polar, you will need Docker. On Windows and Mac OS you can use [Docker Desktop](https://www.docker.com/products/docker-desktop/), while on Linux it is recommended to run [Docker Engine](https://docs.docker.com/engine/install/#server).
 
 ## Download Lightning Polar
 

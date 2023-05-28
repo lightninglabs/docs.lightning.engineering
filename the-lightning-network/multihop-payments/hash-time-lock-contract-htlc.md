@@ -37,7 +37,9 @@ ELSE CHECKLOCKTIME
     <sender pubkey>
 ```
 
-Depending on the route chosen, Bob might now forward this HTLC by creating a new commitment transaction for one of his channels, removing 1 BTC from his channel balance. Then, he commits it into a HTLC with the same preimage hash with a swapped recover pubkey of his channel peer and his sender pubkey.
+The `revocation pubkey` is to prevent either Bob or Alice from stealing funds by publishing older channel state. The `recover pubkey` is Bob's key to claim the 1 BTC if he provides the `preimage` from the final receiver (meaning the transaction went through). The `sender pubkey` is Alice's key to claim the 1BTC back after certain time, if Bob doesn't show the `preimage`.
+
+Depending on the route chosen, Bob might now forward this HTLC by creating a new commitment transaction for one of his channels, removing 1 BTC from his channel balance. Then, he commits it into a similar HTLC with the same preimage hash with a swapped recover pubkey of his channel peer (so that the peer can claim the 1 BTC if they get the preimage) and his sender pubkey (so that Bob can claim the 1 BTC after certain time).
 
 ## 3) A HTLC is consolidated
 

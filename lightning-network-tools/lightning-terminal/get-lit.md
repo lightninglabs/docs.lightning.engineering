@@ -49,9 +49,11 @@ You can now execute the program from its location, or place it where the system 
    `cd lightning-terminal`\
    `git checkout <latest version>`
 2. We install litd with:\
-   `make install`
-3. As there may be existing binaries of the command line interfaces on your system, they are not installed by default. To install lncli, loop and pool, please run:\
-   make `go-install-cli`
+   `make go-install`
+3. If you do not already have LND, Loop or Pool installed, you may run LND in [integrated mode](integrating-litd.md), meaning one binary bundle. In this case, you will have to also install the CLI interfaces\
+   `make go-install-cli`\
+   You can alternavitely install both the bundle and the CLI interfaces with one command.\
+   `make go-install go-install-cli`
 
 [Continue here: Run litd](run-litd.md)
 

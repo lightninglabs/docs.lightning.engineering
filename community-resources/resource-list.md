@@ -116,7 +116,6 @@ description: >-
 
 ## Exchanges & Brokerages <a href="#docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364" id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
 
-* [AAX](https://www.aax.com)
 * [Azteco](https://azte.co)
 * [Bipa](https://bipa.app)
 * [Bitaroo](https://www.bitaroo.com.au)

@@ -28,10 +28,9 @@ As soon as Bitcoin Core is running, it will now advertise itself to the network 
 When starting lnd with neutrino, you will need to set the following settings in your `lnd.conf`, or use the corresponding flags at startup:
 
 `bitcoin.node=neutrino`\
-`neutrino.connect=<your Bitcoin node>`\
+`neutrino.addpeer=<your Bitcoin node's IP address>:<p2p port>`\
 \
-You may also use multiple options of `neutrino.addpeer=` instead of neutrino.connect= if you do not want to limit yourself to only connecting to a single neutrino node.
+You may also use multiple options of `neutrino.addpeer=` to ensure maximum uptime. If you instead prefer to connect exclusively to a single node, you may make use of the `neutrino.connect` instead.
 
 `bitcoin.node=neutrino`\
-`neutrino.addpeer=<your Bitcoin node's IP address>:<p2p port>`\
-`neutrino.addpeer=faucet.lightning.community`
+`neutrino.connect=<your Bitcoin node's IP address>:<p2p port>`

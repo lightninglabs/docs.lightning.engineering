@@ -22,7 +22,7 @@ Nodes with an abundance of inbound liquidity may find it profitable to earn rout
 
 ## How to peer with Loop <a href="#docs-internal-guid-d9dbc50f-7fff-dabe-a66b-53363dd08bd8" id="docs-internal-guid-d9dbc50f-7fff-dabe-a66b-53363dd08bd8"></a>
 
-To take advantage of aggregation benefits and minimize on-chain fees, Loop requires a minimum channel size of 16,777,215 satoshis.
+To take advantage of aggregation benefits and minimize on-chain fees, Loop requires a minimum channel size of 30,000,000 satoshis.
 
 Amend your configuration file `lnd.conf`
 
@@ -32,7 +32,7 @@ Restart LND to put this change into effect
 
 Open your channel to Loop
 
-`lncli openchannel –node_key 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d –connect 50.112.125.89:9735 –local_amt 21000000 –conf_target 6`&#x20;
+`lncli openchannel –node_key 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d –connect 50.112.125.89:9735 –local_amt 210000000 –conf_target 6`&#x20;
 
 Your channel will become active after 6 confirmations.
 

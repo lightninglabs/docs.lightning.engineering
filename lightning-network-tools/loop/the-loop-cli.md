@@ -4,7 +4,7 @@ description: Understand fees in Lightning Loop and get the most out of it
 
 # The Loop CLI
 
-## Using Loop <a href="docs-internal-guid-0588c9ab-7fff-a9c6-0c68-1ad299980217" id="docs-internal-guid-0588c9ab-7fff-a9c6-0c68-1ad299980217"></a>
+## Using Loop <a href="#docs-internal-guid-0588c9ab-7fff-a9c6-0c68-1ad299980217" id="docs-internal-guid-0588c9ab-7fff-a9c6-0c68-1ad299980217"></a>
 
 As soon as Loop is running, you will be able to make use of the CLI. Depending on your installation, you will be able to run it simply by typing loop into your console, or navigate to where the binaries are stored and execute with `./loop`
 
@@ -13,6 +13,8 @@ As soon as Loop is running, you will be able to make use of the CLI. Depending o
 We can start by requesting the latest Loop terms. The command `loop terms` should give us information about the minimum and maximum amounts of satoshis we can Loop In or Loop Out. Additionally, it will give us the CLTV Delta, which is the number of blocks our bitcoin would be locked up in the event our Loop In is unsuccessful (i.e. due to lack of inbound liquidity).
 
 You can also use the command `loop getparams` to see current fees, prepaid amounts and [autoloop](autoloop.md) settings.
+
+
 
 ### Loop In fees
 
@@ -30,18 +32,22 @@ The cost of sweeping the smart contract is quoted in satoshi as `htlc_sweep_fee_
 
 You can customize the command `loop in <amount in satoshis>`. For example, you could specify the channel that the Lightning payment should arrive in using the `--last_hop` parameter. The last hop is identified by the public key of a node. Make sure that you have an active channel with this node and plenty of incoming capacity. You can also specify a label with `--label`.
 
-If you are making the on-chain transaction from an external wallet, make sure to use the `--external` flag. You may set the transaction fees separately there too, or use the `--conf_target` value to a higher number for lower fees and longer processing times.
+You may set the transaction fees separately using this command, or use the `--conf_target` value to a higher number for lower fees and longer processing times.
 
 `loop in --last_hop 02e7a7d3c1e6055b7b7457d95e04d9bbd24f200fd4a58daca7beee7bc776e17440 --amt 295916`\
-Once you run the command, you are quoted the upper bound of the fees for this transaction. Loop will now obtain a LSAT for 1 satoshi and initiate the swap. You are then presented with an ID for the swap and two HTLC smart contract addresses. You may make your on-chain transaction to either of these two addresses, though P2WSH (starting with bc1) is recommended for maximum efficiency. The payment needs to be the exact amount and carry an appropriate transaction fee. There is no time limit with regard to when the on-chain payment has to confirm, but keep in mind that if you specify a channel into which the off-chain funds are to be deposited, the state of that channel might change over the next day or two.
+Once you run the command, you are quoted the upper bound of the fees for this transaction. Loop will now obtain a LSAT for 1 satoshi and initiate the swap.
 
 You can monitor the status of your Loop In with the command loop monitor. It will give you updates about your transaction. As soon as your on-chain transaction has one confirmation on the Blockchain, you should receive your off-chain transaction into the channel you specified.
+
+### External Loop In
+
+You can fund your Loop In with funds from any external wallet using the command line interface using the `--external` flag.
+
+Once you execute the `loop in` command, you are presented with two HTLC smart contract addresses in addition to the swap ID. You may make your on-chain transaction to either of these two addresses, though P2WSH (starting with bc1) is recommended for maximum efficiency. **The payment needs to be the exact amount and carry an appropriate transaction fee**. There is no time limit with regard to when the on-chain payment has to confirm, but keep in mind that if you specify a channel into which the off-chain funds are to be deposited, the state of that channel might change over the next day or two.
 
 ### Loop Out
 
 The Loop Out command requires a minimum amount of satoshis, typically around 250,000 satoshis. This value may increase in times of high on-chain fees and can be obtained using the `loop terms` command. You can optionally also specify which channel you want to loop out of using the `--channel` flag together with the short channel ID.
-
-By default, the on-chain transaction will arrive in your LND’s wallet. Alternatively, you can specify a Bitcoin address with the `--addr` flag.
 
 The speed of your swap is highly influenced by your willingness to pay with regard to fees. You can influence these fees in various ways. If you specify the `--fast` flag, the Loop server will publish its on-chain transaction quickly, but at a higher fee.
 
@@ -81,6 +87,10 @@ We can also query our specific outgoing Lightning payments with `lncli listpayme
 We will see two payments, first our 30,000 satoshi prepayment as specified in the quote above. This payment will cover the sweep fee for Loop in case we aren’t able to make the full off-chain payment for the swap. Next, we paid 973,260 satoshi, which includes the remaining 970,000 satoshi of our 1 million satoshi swap plus the 3,260 satoshi swap fee.
 
 We received 993,198 satoshi in our on-chain address.
+
+### External Loop Out
+
+By default, the on-chain transaction will arrive in your LND’s wallet. Alternatively, you can specify the Bitcoin address of any external wallet with the `--addr` flag.
 
 ## Use parameters as a frequent user
 

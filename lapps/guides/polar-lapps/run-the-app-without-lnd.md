@@ -15,33 +15,33 @@ Open your browser to [http://localhost:3000](http://localhost:3000) if it doesnâ
 
 If all went well with your development environment setup, you should see the initial screen below:
 
-![](<../../../.gitbook/assets/preLND01 (1) (1) (1) (1).png>)
+![](<../../../.gitbook/assets/preLND01 (1) (1) (1).png>)
 
 Click on the **Create a Post** button to go to the Create screen.
 
-![](<../../../.gitbook/assets/preLND02 (1) (1).png>)
+![](<../../../.gitbook/assets/preLND02 (1).png>)
 
 Fill in some info for the _Username_, _Title_, and _Content_ fields, then click on the **Submit** button. You will be redirected back to the screen displaying the list of posts.
 
-![](<../../../.gitbook/assets/preLND03 (1).png>)
+![](../../../.gitbook/assets/preLND03.png)
 
 Add a couple more posts, just to have some data to play with.
 
-![](<../../../.gitbook/assets/preLND04 (1).png>)
+![](../../../.gitbook/assets/preLND04.png)
 
 Click on the **Upvote** button on a post to see the votes counter increment and the posts reorder based on which has the highest votes.
 
-![](<../../../.gitbook/assets/preLND05 (1).png>)
+![](../../../.gitbook/assets/preLND05.png)
 
 The app makes use of WebSockets to update the UI in real-time when posts are created and upvoted on the backend. To see this in action, open a second browser window side-by-side with the first window. Create a new post on the left to see it automatically appear on the right. Upvote a post on the right to see it increment and reorder on the left automatically.
 
-![](<../../../.gitbook/assets/preLND06 (1).png>)
+![](../../../.gitbook/assets/preLND06.png)
 
 ## Architecture
 
 This application is split into two parts, the backend API server and the frontend browser-based UI.
 
-![](<../../../.gitbook/assets/appArchitecture (1).png>)
+![](../../../.gitbook/assets/appArchitecture.png)
 
 ### Backend API
 

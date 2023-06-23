@@ -38,6 +38,6 @@ The Aperture proxy is a reverse proxy that will forward a request with a valid L
 
 Aperture allows for pricing for API endpoints on the fly, including automatic tier upgrades, per-request pricing or surge pricing. In another light, this can be viewed as a global HTTP 402 reverse proxy at the load balancing level for web services and APIs.
 
-{% content-ref url="aperture.md" %}
-[aperture.md](aperture.md)
+{% content-ref url="../../lightning-network-tools/aperture/get-aperture.md" %}
+[get-aperture.md](../../lightning-network-tools/aperture/get-aperture.md)
 {% endcontent-ref %}

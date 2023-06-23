@@ -12,18 +12,9 @@ To traverse firewalls and Network Address Translation (NAT), LNC makes use of a 
 
 LNC is most useful when both the client and the Lightning node are behind a firewall or NAT, but it can also be useful when only the Lightning node is unreachable. In this case, aperture may be installed on the same machine as the client application.&#x20;
 
-## Install go <a href="#docs-internal-guid-3a0b9987-7fff-a39a-eec7-f046b22bd334" id="docs-internal-guid-3a0b9987-7fff-a39a-eec7-f046b22bd334"></a>
+## Requirements <a href="#docs-internal-guid-3a0b9987-7fff-a39a-eec7-f046b22bd334" id="docs-internal-guid-3a0b9987-7fff-a39a-eec7-f046b22bd334"></a>
 
-To compile aperture we will need golang. You may follow [the official documentation](https://go.dev/doc/install) or look at the relevant chapter in the [LND installation guides](../lnd/run-lnd.md#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103).
-
-## Install aperture <a href="#docs-internal-guid-91628707-7fff-a4c8-335e-16b20cb60ce4" id="docs-internal-guid-91628707-7fff-a4c8-335e-16b20cb60ce4"></a>
-
-Next we are going to install aperture.
-
-`git clone https://github.com/lightninglabs/aperture.git`\
-`git checkout v[latest version]`\
-`make install`\
-
+To run our LNC mailbox, we are going to need Aperture. [You can learn how to install Aperture here](get-aperture.md).
 
 ## Configure aperture <a href="#docs-internal-guid-b757d186-7fff-3163-6ef9-f86657a3772a" id="docs-internal-guid-b757d186-7fff-3163-6ef9-f86657a3772a"></a>
 
@@ -41,18 +32,20 @@ Next, we are going to switch to the superuser and create our configuration file.
 
 Use this template and don’t forget to swap the domain name with your own. This domain name should also point to the server on which you are setting up aperture!
 
-`listenaddr: "lnc.yourlightning.app:443"`\
-`debuglevel: "trace"`\
-`autocert: true`\
-`servername: lnc.yourlightning.app`\
-`authenticator:`\
-&#x20; `disable: true`\
-`hashmail:`\
-&#x20; `enabled: true`\
-&#x20; `messagerate: 1ms`\
-&#x20; `messageburstallowance: 99999999`\
-`prometheus:`\
-&#x20; `enabled: false`
+```
+listenaddr: "lnc.yourlightning.app:443"
+debuglevel: "trace"
+autocert: true
+servername: lnc.yourlightning.app
+authenticator:
+  disable: true
+hashmail:
+  enabled: true
+  messagerate: 1ms
+  messageburstallowance: 99999999
+prometheus:
+  enabled: false
+```
 
 ## Run aperture <a href="#docs-internal-guid-680bd854-7fff-6acd-1c94-e2b1fb86f9ed" id="docs-internal-guid-680bd854-7fff-6acd-1c94-e2b1fb86f9ed"></a>
 
@@ -67,7 +60,7 @@ The logs may show that aperture is now listening for connections.
 
 ## Connect to Terminal <a href="#docs-internal-guid-6d497483-7fff-ccdd-3290-061a74b72572" id="docs-internal-guid-6d497483-7fff-ccdd-3290-061a74b72572"></a>
 
-We can now connect our LND node to Lightning Terminal using our own mailbox. You will need litd running alongside LND. Learn how to [install litd here](get-lit.md).
+We can now connect our LND node to Lightning Terminal using our own mailbox. You will need litd running alongside LND. Learn how to [install litd here](../lightning-terminal/get-lit.md).
 
 `litcli sessions add --label="My own mailbox" --type admin --mailboxserveraddr lnc.yourlightningapp:443`
 

@@ -262,7 +262,7 @@ There are three outputs. Two outputs of 1000 satoshis each and the change output
 
 Once the transaction is confirmed on the Bitcoin Blockchain the sender will attempt to make the proofs available to the recipient via an [end-to-end encrypted mailbox](../lightning-terminal/lightning-node-connect.md), similar to Lightning Node Connect (LNC).
 
-By default, this mailbox is set to mailbox.terminal.lightning.today:443, but you can [run your own mailbox through aperture](../../the-lightning-network/l402/aperture.md) and configure tapd to use it by specifying the `--hashmailcourier.addr=` flag at startup.
+By default, this mailbox is set to mailbox.terminal.lightning.today:443, but you can [run your own mailbox through aperture](../aperture/get-aperture.md) and configure tapd to use it by specifying the `--hashmailcourier.addr=` flag at startup.
 
 Once the transaction is confirmed on the Bitcoin Blockchain the sender will attempt to make the proofs available to the recipient via a [LNC-style end-to-end encrypted mailbox](../lightning-terminal/lightning-node-connect.md).
 

@@ -39,6 +39,10 @@ package](https://github.com/lightningnetwork/lnd/pull/7356)
 * [HTLC serialization updated](https://github.com/lightningnetwork/lnd/pull/7710) 
   to allow storing extra data transmitted in TLVs.
 
+* [MaxLocalCSVDelay now has a default value of 2016. It is still possible to 
+override this value with the config option --maxlocaldelay for those who rely
+on the old value of 10000](https://github.com/lightningnetwork/lnd/pull/7780).
+
 ## RPC
 
 * [SendOutputs](https://github.com/lightningnetwork/lnd/pull/7631) now adheres
@@ -155,6 +159,9 @@ unlock or create.
 * Fixed a memory leak found in mempool management handled by
   [`btcwallet`](https://github.com/lightningnetwork/lnd/pull/7767).
 
+* [Updated bbolt to v1.3.7](https://github.com/lightningnetwork/lnd/pull/7796)
+  in order to address mmap issues affecting certain older iPhone devices.
+
 ### Tooling and documentation
 
 * Add support for [custom `RPCHOST` and
@@ -172,6 +179,7 @@ unlock or create.
 * ErikEk
 * gabbyprecious
 * Guillermo Caracuel
+* Hampus Sjöberg
 * hieblmi
 * Jordi Montes
 * Lele Calo

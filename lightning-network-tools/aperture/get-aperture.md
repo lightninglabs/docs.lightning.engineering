@@ -16,8 +16,12 @@ Requirements: go 1.19 or later
 
 `git clone https://github.com/lightninglabs/aperture.git`\
 `cd aperture`\
-`make install`\
-`cp sample-conf.yaml aperture.yaml`
+`make install`
+
+## Configure Aperture
+
+`mkdir ~/.aperture`\
+`cp sample-conf.yaml ~/.aperture/aperture.yaml`
 
 By default Aperture uses port 8081. This port needs to be reachable from the outside.
 
@@ -25,9 +29,9 @@ Aperture will create a TLS key and self-signed certificate. To run Aperture in p
 
 ## Run Aperture
 
-To run Aperture, simply run the following command from within aperture's directory.
+To run Aperture, simply run the following command.
 
-`./aperture`
+`aperture`
 
 ## L402 demo
 

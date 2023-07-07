@@ -123,6 +123,7 @@
   * [Lightning Polar](lightning-network-tools/taproot-assets/polar.md)
 * [Aperture](lightning-network-tools/aperture/README.md)
   * [⚒ Get Aperture](lightning-network-tools/aperture/get-aperture.md)
+  * [LNC Backend](lightning-network-tools/aperture/lnc-backend.md)
   * [LNC Mailbox](lightning-network-tools/aperture/mailbox.md)
   * [Pricing](lightning-network-tools/aperture/pricing.md)
 * [Faraday](lightning-network-tools/faraday/README.md)

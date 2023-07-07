@@ -12,27 +12,15 @@ To traverse firewalls and Network Address Translation (NAT), LNC makes use of a 
 
 LNC is most useful when both the client and the Lightning node are behind a firewall or NAT, but it can also be useful when only the Lightning node is unreachable. In this case, aperture may be installed on the same machine as the client application.&#x20;
 
-## Requirements <a href="#docs-internal-guid-3a0b9987-7fff-a39a-eec7-f046b22bd334" id="docs-internal-guid-3a0b9987-7fff-a39a-eec7-f046b22bd334"></a>
-
-To run our LNC mailbox, we are going to need Aperture. [You can learn how to install Aperture here](get-aperture.md).
-
 ## Configure aperture <a href="#docs-internal-guid-b757d186-7fff-3163-6ef9-f86657a3772a" id="docs-internal-guid-b757d186-7fff-3163-6ef9-f86657a3772a"></a>
 
-Aperture needs to run as root to be able to permanently bind to the port where it will be listening.
+To configure aperture, we edit the configuration file.
 
-Depending on your go path, you may have to move aperture to where the root user can find it too.
-
-`sudo cp $GOPATH/bin/aperture /usr/local/bin/aperture`
-
-Next, we are going to switch to the superuser and create our configuration file.
-
-`sudo -i`\
-`mkdir ~/.aperture`\
 `nano ~/.aperture/aperture.yaml`
 
-Use this template and don’t forget to swap the domain name with your own. This domain name should also point to the server on which you are setting up aperture!
+You may use this template and don’t forget to swap the domain name with your own. This domain name should also point to the server on which you are setting up aperture!
 
-```
+```yaml
 listenaddr: "lnc.yourlightning.app:443"
 debuglevel: "trace"
 autocert: true
@@ -75,7 +63,7 @@ We can now connect, select and confirm a password and control our Lightning node
 On some VPS providers, aperture fails to correctly bind to the address and port it listens on.
 
 `root@mailbox:~# aperture`\
-`[INF] APER: Configuring autocert for server lnc.yourlightningapp.com with cache dir /root/.aperture/autocert`\
+`[INF] APER: Configuring autocert for server lnc.yourlightningapp.com with cache dir /home/ubuntu/.aperture/autocert`\
 `[INF] APER: Starting the server, listening on lnc.yourlightningapp.com:443.`\
 `[ERR] APER: Error while running aperture: listen tcp 172.81.180.188:443: bind: cannot assign requested address`\
 `[INF] APER: Shutdown complete`
@@ -89,18 +77,20 @@ We navigate to the systemd directory and create a new service.
 
 Here we may paste the following template
 
-`[Unit]`\
-`Description=LNC mailbox service`
+```
+[Unit]
+Description=LNC mailbox service
 
-`[Service]`\
-`User=root`\
-`WorkingDirectory=/root`\
-`ExecStart=/usr/local/bin/aperture`\
-`Restart=on-failure`\
-`RestartSec=10`
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+ExecStart=/usr/local/bin/aperture
+Restart=on-failure
+RestartSec=10
 
-`[Install]`\
-`WantedBy=multi-user.target`
+[Install]
+WantedBy=multi-user.target
+```
 
 To reload the list of services
 

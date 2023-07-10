@@ -27,6 +27,7 @@
 * [Liquidity](the-lightning-network/liquidity/README.md)
   * [⭐ Understanding Liquidity](the-lightning-network/liquidity/understanding-liquidity.md)
   * [Managing Liquidity on the Lightning Network](the-lightning-network/liquidity/manage-liquidity.md)
+  * [Liquidity Management for Lightning merchants](the-lightning-network/liquidity/liquidity-management-for-lightning-merchants.md)
   * [How to get inbound capacity on the Lightning Network](the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network.md)
   * [Lightning Service Provider](the-lightning-network/liquidity/lightning-service-provider.md)
 * [L402: Lightning HTTP 402 Protocol](the-lightning-network/l402/README.md)

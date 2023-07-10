@@ -27,8 +27,8 @@
 * [Liquidity](the-lightning-network/liquidity/README.md)
   * [⭐ Understanding Liquidity](the-lightning-network/liquidity/understanding-liquidity.md)
   * [Managing Liquidity on the Lightning Network](the-lightning-network/liquidity/manage-liquidity.md)
-  * [Liquidity Management for Lightning merchants](the-lightning-network/liquidity/liquidity-management-for-lightning-merchants.md)
-  * [How to get inbound capacity on the Lightning Network](the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network.md)
+  * [Liquidity Management for Lightning Merchants](the-lightning-network/liquidity/liquidity-management-for-lightning-merchants.md)
+  * [How to Get Inbound Capacity on the Lightning Network](the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network.md)
   * [Lightning Service Provider](the-lightning-network/liquidity/lightning-service-provider.md)
 * [L402: Lightning HTTP 402 Protocol](the-lightning-network/l402/README.md)
   * [Macaroons](the-lightning-network/l402/macaroons.md)
@@ -112,7 +112,7 @@
   * [Accounts](lightning-network-tools/pool/accounts.md)
   * [Orders and Asks](lightning-network-tools/pool/orders.md)
   * [Sidecar Channels](lightning-network-tools/pool/sidecar\_channels.md)
-  * [Zero-confirmation channels](lightning-network-tools/pool/zero-confirmation-channels.md)
+  * [Zero-confirmation Channels](lightning-network-tools/pool/zero-confirmation-channels.md)
   * [Channel Leases](lightning-network-tools/pool/channel\_leases.md)
   * [Batch Execution](lightning-network-tools/pool/batch\_execution.md)
   * [Account Recovery](lightning-network-tools/pool/account\_recovery.md)
@@ -143,7 +143,7 @@
     * [Feature 2: Display Node Alias and Balance](lapps/guides/add-features/display-node-alias-and-balance.md)
     * [Feature 3: Sign and Verify Posts](lapps/guides/add-features/sign-and-verify-posts.md)
     * [Feature 4: Modify Upvote Action](lapps/guides/add-features/modify-upvote-action.md)
-  * [Make your own LNC-powered application](lapps/guides/make-your-own-lnc-powered-application.md)
+  * [Make Your own LNC-powered Application](lapps/guides/make-your-own-lnc-powered-application.md)
 * [Next Steps](lapps/next-steps.md)
 
 ## Community Resources

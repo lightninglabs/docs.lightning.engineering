@@ -6,22 +6,29 @@ description: >-
 
 # Loop and Lightning Terminal
 
-Lightning Terminal offers a graphical interface for Loop, making it easy and intuitive to make submarine swaps. [Lightning Loop](../loop/) is a service that allows users to make a Lightning transaction to an on-chain Bitcoin address (Loop Out), or send on-chain Bitcoin directly into a Lightning channel (Loop In).\
+Lightning Terminal offers a graphical interface for Loop, making it easy and intuitive to make submarine swaps. [Lightning Loop](../loop/) is a service that allows users to make a Lightning transaction to an on-chain Bitcoin address (Loop Out), or send on-chain Bitcoin directly into a Lightning channel (Loop In).
+
 Loop can help manage channel liquidity, for example, by emptying out a channel and [acquiring inbound capacity](../../the-lightning-network/liquidity/how-to-get-inbound-capacity-on-the-lightning-network.md) (or refilling a depleted channel).
+
+These actions can be automated with Autoloop.
 
 [Learn more about how Submarine Swaps work.](../../the-lightning-network/multihop-payments/understanding-submarine-swaps.md)
 
 ## How to use Loop in Lightning Terminal <a href="#docs-internal-guid-eae8e6fb-7fff-9fc5-7155-0aae66bbe668" id="docs-internal-guid-eae8e6fb-7fff-9fc5-7155-0aae66bbe668"></a>
 
-On the left side of Lightning Terminal you see ‘Loop.’ Clicking on it shows an overview over your history, current capacity, your channels and their balances.&#x20;
+On the top side of Lightning Terminal you see ‘Loop.’ Clicking on it shows an overview over your channels and their balances.&#x20;
 
-You can select the ‘Loop’ button below the field ‘history’, at which point you can select which channel you would like to Loop In or Out of, meaning the channel that you would like to fill or empty. You can also skip this selection and let Loop decide. This option is preferable if you primarily want to move some of your funds into cold storage, for example, as opposed to balancing a specific channel. You can select multiple channels, too!
+To perform a Loop, you can slide the bar to the left, meaning you decrease your Lightning balance and receive onchain funds in return, called a Loop Out. You can also perform a Loop In, which refills your Lightning channels using your onchain balance. You can also select individual channels that you want to empty or refill.
 
-Once you select a channel, you will also be informed of the minimum swap amount. Upon selecting Loop In or Out, you can use the slider to choose how many satoshis you want to swap.
+Use the slider to choose how many satoshis you want to swap. A warning will appear if you do not meet the minimum swap size.
+
+### Loop
+
+If you would like to perform this swap once, choose _Loop._ You'll see a summary of your order, including a breakdown of the fees, including the expected onchain fee and the Loop fee. For Loop Outs, a prepayment of 30,000 satoshis is required.
 
 In the additional options, you can choose your confirmation speed (as measured in blocks, more blocks meaning lower fees). If your goal is to send funds into cold storage or an external wallet, enter your address here.
 
-In the next step, you are provided with a summary of your order. Have a look at whether the correct channel(s) are selected, the amount looped in or out, and whether the fees are acceptable. Upon clicking “Confirm”, your Loop is submitted.
+Upon clicking “Submit”, your Loop is submitted.
 
 #### Loop In
 
@@ -56,3 +63,17 @@ Once a path has been found for the off-chain funds, the on-chain transaction is 
 #### Success
 
 Once both parties have received their funds, the Loop is complete.
+
+### Autoloop
+
+Autoloops can only be configured for specific peers. After moving the slider on a channel, select Autoloop to configure your recurring swap.
+
+You can set a minimum Loop size. As a big portion of fees are onchain swaps, a higher minimum size can help making swaps more economical.
+
+You can also control costs by setting a maximum fee per swap, measured in BPS (1 BPS = 100 PPM = 0.01%). During times of high onchain fees, Terminal might not initiate Loops, or perform larger Loops. You can also choose a maximum budget per day, week or month.
+
+It is also possible to send Loop Outs to an external address, such as cold storage.
+
+Finally, you'll get a chance to review your Autoloop.
+
+Once Autoloop has been configured, you should be able to see previous Loops and the current status under the channel for which it has been activated. Here you can also remove the Autoloop rule.

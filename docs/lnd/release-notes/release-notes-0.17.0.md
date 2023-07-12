@@ -162,11 +162,18 @@ unlock or create.
 * [Updated bbolt to v1.3.7](https://github.com/lightningnetwork/lnd/pull/7796)
   in order to address mmap issues affecting certain older iPhone devices.
 
+* [Stop rejecting payments that overpay or over-timelock the final hop](https://github.com/lightningnetwork/lnd/pull/7768)
+
 ### Tooling and documentation
 
 * Add support for [custom `RPCHOST` and
   `RPCCRTPATH`](https://github.com/lightningnetwork/lnd/pull/7429) to the
   `lnd` Docker image main script (`/start-lnd.sh`).
+
+* Fix bug in `scripts/verify-install.sh` that caused the [release binary
+  signature verification script to not properly import signing
+  keys](https://github.com/lightningnetwork/lnd/pull/7758) when being run with
+  new version of `gpg` (which is the case in the latest Docker image).
 
 # Contributors (Alphabetical Order)
 
@@ -182,6 +189,7 @@ unlock or create.
 * Hampus Sjöberg
 * hieblmi
 * Jordi Montes
+* Keagan McClelland
 * Lele Calo
 * Matt Morehouse
 * Maxwell Sayles

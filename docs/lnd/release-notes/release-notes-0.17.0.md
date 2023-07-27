@@ -113,6 +113,10 @@ on the old value of 10000](https://github.com/lightningnetwork/lnd/pull/7780).
   UTXOs [as a basis for funding a channel 
   opening.](https://github.com/lightningnetwork/lnd/pull/7516)
 
+* The [BatchOpenChannel](https://github.com/lightningnetwork/lnd/pull/7820)
+  message now supports all fields that are present in the `OpenChannel` message,
+  except for the `funding_shim` and `fundmax` fields.
+
 ## Misc
 
 * [Generate default macaroons
@@ -173,6 +177,11 @@ unlock or create.
 
 * Fixed a memory leak found in mempool management handled by
   [`btcwallet`](https://github.com/lightningnetwork/lnd/pull/7767).
+  
+* Make sure lnd starts up as normal in case a transaction does not meet min
+  mempool fee requirements. [Handle min mempool fee backend error when a
+  transaction fails to be broadcasted by the 
+  bitcoind backend](https://github.com/lightningnetwork/lnd/pull/7746)
 
 * [Updated bbolt to v1.3.7](https://github.com/lightningnetwork/lnd/pull/7796)
   in order to address mmap issues affecting certain older iPhone devices.

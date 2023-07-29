@@ -161,7 +161,7 @@ You will need to specify in this configuration file which backend you prefer to 
 **Neutrino:**
 
 `bitcoin.node=neutrino`\
-`lnd.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json`
+`feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json`
 
 **Bitcoind:**
 

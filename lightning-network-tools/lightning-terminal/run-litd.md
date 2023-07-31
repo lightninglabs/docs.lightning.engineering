@@ -60,23 +60,23 @@ To make use of litd's [Accounts](accounts.md) and [Autofees](autofees.md) featur
 
 We can start litd with the command:
 
-`litd –uipassword=<your secure and unique password>`
+`litd --uipassword=<your secure and unique password>`
 
 If litd is unable to connect to LND, you might have to manually pass the location of the macaroon and RPC port or generate a litd configuration file, `~/.lit/lit.conf`
 
 `lnd-mode=remote`\
-`--remote.lnd.rpcserver=127.0.0.1:10009`\
-`--remote.lnd.macaroonpath=/home/user/.lnd/data/chain/bitcoin/mainnet/admin.macaroon`\
-`--remote.lnd.tlscertpath=/home/user/.lnd/tls.cert`
+`remote.lnd.rpcserver=127.0.0.1:10009`\
+`remote.lnd.macaroonpath=/home/user/.lnd/data/chain/bitcoin/mainnet/admin.macaroon`\
+`remote.lnd.tlscertpath=/home/user/.lnd/tls.cert`
 
-It is also possible to run litd in either integrated or remote mode and swap Loop, Pool or Faraday between remote and integrated mode.
+It is also possible to run `litd` in either integrated or remote mode and swap Loop, Pool or Faraday between remote and integrated mode.
 
 For example:
 
-`--lnd-mode=remote`\
-`--faraday-mode=integrated`\
-`--loop-mode=integrated`\
-`--pool-mode=remote`\\
+`lnd-mode=remote`\
+`faraday-mode=integrated`\
+`loop-mode=integrated`\
+`pool-mode=remote`
 
 [Next: Connect to Terminal](connect.md)
 

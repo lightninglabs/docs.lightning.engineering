@@ -20,7 +20,7 @@ Once you are running `litd` on your machine, navigate to `http://127.0.0.1:8443`
 
 If you cannot access the machine on which you are running `litd` via the browser or prefer to keep port `8443` closed, you may generate a new pairing phrase with `litcli`.
 
-`litcli --lndtlscertpath sessions add --label="default" --type=admin`
+`litcli sessions add --label="default" --type=admin`
 
 Now navigate to [https://terminal.lightning.engineering](https://terminal.lightning.engineering/) and click on 'Connect your Node.'
 

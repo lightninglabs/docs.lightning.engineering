@@ -36,7 +36,7 @@ This sweep requires your node’s signature and the revocation key.
 
 ### Anchors
 
-When an anchor channel is force-closed, two anchors of 330 satoshis each are created. These anchors can be swept within 16 blocks by you, or by anyone else after to prevent the UTXO set from bloating. The main purpose of these anchors is to give either party an opportunity to increase the fee of the commitment transaction using CPFP (Child Pays for Parent).
+When an anchor channel is force-closed, for each channel party that has a non-dust balance an anchor of 330 satoshis is created. These anchors can be swept within 16 blocks by you, or by anyone else after to prevent the UTXO set from bloating. The main purpose of these anchors is to give either party an opportunity to increase the fee of the commitment transaction using CPFP (Child Pays for Parent).
 
 Before 16 blocks, this sweep requires your node’s signature. After 16 blocks, the sweep does not require any signature, meaning others can sweep your anchors, too.
 

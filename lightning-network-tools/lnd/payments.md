@@ -29,6 +29,8 @@ For best results when dispatching a payment, we recommend the use of a prepay pr
 
 To send a prepay probe, create a payment to your destination with the same amount as your real payment, and set a strongly-random payment hash. We would expect this payment to fail with _FAILURE\_REASON\_INCORRECT\_PAYMENT\_DETAILS_ if it reaches the destination node, because the recipient node does not know the preimage. If your prepay fails with another error, your main payment is unlikely to succeed, so you can inform the end user that the payment is not possible. Testing out payments like this also prevents your likelihood of stuck payments, covered in detail in the Monitoring Payments section.
 
+The downside of using prepay probes is that it may limit the ability to leverage multi-part payments (MPP), and forwarding nodes are not compensated for the cost of forwarding the probe payment.&#x20;
+
 ### Prepay Probes to Private Wallets
 
 Probing to a private Lightning wallet can sometimes provide challenges, especially if the user is a self-custodied mobile user. The best practice to observe in this case is to instead probe to the final hop node before the destination wallet, compute the total fee that will be paid for the user, and then once the user has agreed to the fee, dispatch the payment as described below.

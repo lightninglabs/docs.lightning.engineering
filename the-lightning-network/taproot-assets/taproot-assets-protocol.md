@@ -10,6 +10,8 @@ description: >-
 
 To understand Taproot Assets, we will need to make ourselves familiar with several concepts, some of which are novel, in the context of the bitcoin blockchain.
 
+[Read the BIPs: Taproot Assets Protocol](https://github.com/Roasbeef/bips/blob/bip-tap/bip-tap.mediawiki)
+
 Learn about the basic concepts here:\
 [Public-key cryptography](https://www.cloudflare.com/en-ca/learning/ssl/how-does-public-key-encryption-work/)\
 [Cryptographic Hashes](https://resources.infosecinstitute.com/topic/introduction-to-hash-functions/)\
@@ -84,7 +86,7 @@ The root of this tree is added to a taproot tapscript, and together a taproot ad
 
 Instead of its own blockchain, Taproot Assets issuers store sparse Merkle sum trees off-chain and issue proofs to asset holders out of band. The owners of such assets can independently verify that their account is included in the tree, is filled with the appropriate amount and the corresponding taproot transaction exists and is confirmed on the Bitcoin blockchain.
 
-[Read the BIPs: Merkle Sum Sparse Merkle Trees](https://github.com/lightninglabs/taproot-assets/blob/main/docs/bip-tap-ms-smt.mediawiki)
+[Read the BIPs: Merkle Sum Sparse Merkle Trees](https://github.com/Roasbeef/bips/blob/bip-tap/bip-tap-ms-smt.mediawiki)
 
 ## Issuing assets
 
@@ -102,7 +104,7 @@ The output of the asset script defines who the newly created assets are issued t
 
 It is possible to issue multiple assets in one transaction, but each asset will have its own asset script and within it, sparse Merkle tree. Assets can be unique or non-unique.
 
-[Read the BIPs: Taproot Asset Script](https://github.com/lightninglabs/taproot-assets/blob/main/docs/bip-tap-vm.mediawiki)
+[Read the BIPs: Taproot Asset Script](https://github.com/Roasbeef/bips/blob/bip-tap/bip-tap-vm.mediawiki)
 
 ### Asset leaves
 
@@ -144,7 +146,7 @@ Taproot Assets addresses are bech32m encoded identifiers of the asset ID, the as
 
 The issuer or asset holder can use the information in your Taproot Assets address to create or modify the sparse Merkle sum tree as explained below. This address format can also be used to request a specific proof over the amounts held by the address.
 
-[Read the BIPs: Taproot Assets On Chain Addresses](https://github.com/lightninglabs/taproot-assets/blob/main/docs/bip-tap-addr.mediawiki)
+[Read the BIPs: Taproot Assets On Chain Addresses](https://github.com/Roasbeef/bips/blob/bip-tap/bip-tap-addr.mediawiki)
 
 ### Move assets inside the tree
 
@@ -170,7 +172,7 @@ Given a known asset ID, the Universe for example may provide information about i
 
 A Universe has no privileges within the Taproot Assets Protocol. It produces transaction data validated against the bitcoin blockchain. An adversarial Universe could only refrain from returning data requested by clients. Taproot Assets transaction data isn’t bound to a Universe. The data availability offerings provided by a Universe is motivated by entities who wish to have fast, cheap verification of their Taproot Assets.
 
-[Read the BIPs: Taproot Asset Universes](https://github.com/lightninglabs/taproot-assets/blob/main/docs/bip-tap-universe.mediawiki)
+[Read the BIPs: Taproot Asset Universes](https://github.com/Roasbeef/bips/blob/bip-tap/bip-tap-universe.mediawiki)
 
 ### Asset merge or split
 
@@ -197,4 +199,4 @@ Asset proofs grow linearly with each new on-chain transaction. Every asset trans
 
 An asset is considered invalid as soon as its output has been spent without committing to a new sparse merkle sum tree. This is not obvious for a third party observer, and in some instances it may be preferable to spend outputs to a new empty merkle tree to prove that assets were destroyed, invalidated, or “burned”.
 
-[Read the BIPs: Taproot Assets Flat File Proof Format](https://github.com/lightninglabs/taproot-assets/blob/main/docs/bip-tap-proof-file.mediawiki)
+[Read the BIPs: Taproot Assets Flat File Proof Format](https://github.com/Roasbeef/bips/blob/bip-tap/bip-tap-proof-file.mediawiki)

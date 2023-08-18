@@ -28,7 +28,7 @@ description: >-
 * [Muun](https://muun.com) ([Github](https://github.com/muun)) - available on Google Play and the Apple AppStore
 * [Phoenix](https://phoenix.acinq.co) ([Github](https://github.com/ACINQ/phoenix)) - available on Google Play and the Apple AppStore
 * [Zebedee](https://zebedee.io) ([Github](https://github.com/zebedeeio)) - available on Google Play and the Apple AppStore
-* [Eclair](https://github.com/ACINQ/eclair-mobile) - available for Android
+* [Zeus](https://zeusln.app/) ([Github](https://github.com/ZeusLN/zeus)) - available for Android and the Apple AppStore
 
 ### Custodial & Other Wallets
 

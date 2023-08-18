@@ -20,12 +20,12 @@ description: >-
 ### Non-custodial wallets
 
 * [Blixt Wallet](https://blixtwallet.github.io) ([Github](https://github.com/hsjoberg/blixt-wallet)) - available in Google Play and for iOS
-* [Bitcoin Lightning Wallet](https://lightning-wallet.com) ([Github](https://github.com/btcontract/lnwallet)) - available in Google Play and F-Droid
 * [Breez](https://breez.technology) ([Github](https://github.com/breez/breezmobile)) - available in Google Play and for iOS
 * [Electrum](https://electrum.org) ([Github](https://github.com/spesmilo/electrum)) - available for Linux, OSX, Windows and Android
 * [Mash](https://app.mash.com/wallet) - available for all browsers
 * [Mutiny](https://app.mutinywallet.com/) ([Github](https://github.com/MutinyWallet/)) -  available for all browsers
 * [Muun](https://muun.com) ([Github](https://github.com/muun)) - available on Google Play and the Apple AppStore
+* [Open Bitcoin Wallet](https://f-droid.org/en/packages/wtf.nbd.obw/) ([Github](https://github.com/nbd-wtf/obw)) - available in F-Droid
 * [Phoenix](https://phoenix.acinq.co) ([Github](https://github.com/ACINQ/phoenix)) - available on Google Play and the Apple AppStore
 * [Zebedee](https://zebedee.io) ([Github](https://github.com/zebedeeio)) - available on Google Play and the Apple AppStore
 * [Zeus](https://zeusln.app/) ([Github](https://github.com/ZeusLN/zeus)) - available for Android and the Apple AppStore
@@ -33,7 +33,6 @@ description: >-
 ### Custodial & Other Wallets
 
 * [Bitcoin Beach Wallet](https://www.bitcoinbeach.com) - available in Google Play
-* [BlueWallet](https://github.com/BlueWallet/BlueWallet) ([Github](https://github.com/BlueWallet/BlueWallet)) - available in Google Play the Apple AppStore
 * [Bridge Wallet](https://www.mtpelerin.com/bitcoin-lightning-wallet) - Available on Google Play and on the App Store
 * [Strike](https://strike.me) - available in Google Play, the Apple AppStore and Chrome
 * [Wallet of Satoshi](https://walletofsatoshi.com) - available in Google Play and the Apple AppStore
@@ -43,6 +42,7 @@ description: >-
 
 ### Lightning node interfaces
 
+* [Bluewallet](https://bluewallet.io/) ([Github](https://github.com/bluewallet/bluewallet)) - available in Google Play and the Apple AppStore
 * [Joule](https://lightningjoule.com) ([Github](https://github.com/joule-labs/joule-extension)) - available for Firefox, Chrome, Opera and Brave
 * [Zap](https://zaphq.io) ([Github](https://github.com/LN-Zap)) - available in Google Play, for OSX, Linux, Windows and iOS
 * [Zeus](https://github.com/ZeusLN/zeus) - available in Google Play, F-Droid and the Apple AppStore
@@ -81,6 +81,7 @@ description: >-
 * [myNode](https://mynodebtc.com)
 * [RaspiBlitz](https://raspiblitz.org)
 * [Umbrel](https://getumbrel.com)
+* [Start9](https://start9.com/)
 
 ## Developer Libraries & Tools
 

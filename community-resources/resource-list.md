@@ -23,6 +23,8 @@ description: >-
 * [Bitcoin Lightning Wallet](https://lightning-wallet.com) ([Github](https://github.com/btcontract/lnwallet)) - available in Google Play and F-Droid
 * [Breez](https://breez.technology) ([Github](https://github.com/breez/breezmobile)) - available in Google Play and for iOS
 * [Electrum](https://electrum.org) ([Github](https://github.com/spesmilo/electrum)) - available for Linux, OSX, Windows and Android
+* [Mash](https://app.mash.com/wallet) - available for all browsers
+* [Mutiny](https://app.mutinywallet.com/) ([Github](https://github.com/MutinyWallet/)) -  available for all browsers
 * [Muun](https://muun.com) ([Github](https://github.com/muun)) - available on Google Play and the Apple AppStore
 * [Phoenix](https://phoenix.acinq.co) ([Github](https://github.com/ACINQ/phoenix)) - available on Google Play and the Apple AppStore
 * [Zebedee](https://zebedee.io) ([Github](https://github.com/zebedeeio)) - available on Google Play and the Apple AppStore

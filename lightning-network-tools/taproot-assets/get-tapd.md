@@ -34,9 +34,16 @@ Within the `tap.conf` file you can permanently set your variables, such as direc
 
 Run Taproot Assets with the command `tapd`. Specify how Taproot Assets can reach LND and what bitcoin network to run Taproot Assets with by passing it additional flags.
 
-`tapd --network=testnet –debuglevel=debug --lnd.host=localhost:10009 --lnd.macaroonpath=/.lnd/data/chain/bitcoin/testnet/admin.macaroon --lnd.tlspath=/.lnd/tls.cert --tapdir=~/.taprooot-assets --rpclisten=127.0.0.1:10029 --restlisten=127.0.0.1:8089`
+`tapd --network=testnet --debuglevel=debug --lnd.host=localhost:10009 --lnd.macaroonpath=/.lnd/data/chain/bitcoin/testnet/admin.macaroon --lnd.tlspath=/.lnd/tls.cert --tapdir=~/.taprooot-assets --rpclisten=127.0.0.1:10029 --restlisten=127.0.0.1:8089`
 
 You may run multiple tapd instances on the same machine, but you will also have to set up multiple LND instances. [Refer to this guide](../lnd/run-lnd.md) for how to set up multiple LND instances with a single Bitcoin backend using `rpcpolling`. When running multiple `tapd` instances on one machine, don’t forget to set an alternate Taproot Assets directory and API endpoints and specify these when calling `tapcli` as well.
 
-You can make use of `tapcli profiles` to make calls to separate `tapd` instances on the same machine.
+For example, to run a second instance of `tapd`:
 
+`tapd --tapdir=~/.taprooot-assets-2 --rpclisten=127.0.0.1:10030 --restlisten=127.0.0.1:8090`
+
+To interact with this second instance using `tapcli`:
+
+`tapcli --rpcserver=127.0.0.1:10030 --tapdir=~/.taproot-assets-2`
+
+You can make use of `tapcli profiles` to make calls to separate `tapd` instances on the same machine.

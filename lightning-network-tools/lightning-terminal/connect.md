@@ -14,7 +14,7 @@ You can inspect and revoke all existing sessions under "Lightning Node Connect."
 
 ## Run litd locally
 
-Once you are running `litd` on your machine, navigate to `http://127.0.0.1:8443` in your browser on the same machine to open Lightning Terminal. If you are running `litd` on another machine, you may access it from there or continue with the CLI option below.
+Once you are running `litd` on your machine, navigate to `http://127.0.0.1:8443` in your browser on the same machine to open Lightning Terminal. Not that your wallet needs to be unlocked with `lncli unlock` before you can access the user interface. If you are running `litd` on another machine, you may access it from there or continue with the CLI option below.
 
 ## Create a session using the command line
 

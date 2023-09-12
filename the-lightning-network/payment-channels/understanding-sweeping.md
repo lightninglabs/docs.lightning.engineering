@@ -54,7 +54,7 @@ If your node closes a channel by publishing a commitment transaction that contai
 
 If the peer does not possess the preimage, or does not respond within the CLTV time limit, your node uses a pre-signed transaction to move HTLC into another address, from where your peer gets the opportunity to claim the funds using the revocation key in case your node is publishing a breaching force closure transaction.
 
-After this “second stage” (CSV) expires, your node can finally sweep the funds back into its main wallet.
+After this “second stage” (CLTV) expires, your node can finally sweep the funds back into its main wallet.
 
 This sweep requires your node’s signature.
 

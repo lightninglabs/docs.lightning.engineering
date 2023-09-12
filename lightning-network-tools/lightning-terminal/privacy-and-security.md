@@ -48,4 +48,6 @@ Unless your node and browser are behind a VPN or other relay, the Terminal Proxy
 
 Theoretically, the proxy server could be able to infer usage patterns from packets forwarded between your node and your browser, although no such information is stored or analyzed. Lightning Labs maintains usage statistics about how many nodes are connected through Lightning Terminal, and when they last connected.
 
+When enabling Autofees, channel ids, channel points and node pubkeys are obfuscated by `litd` through a system called the "Privacy Mapper." You can [read more about the Privacy Mapper here](autofees.md#docs-internal-guid-8d174f91-7fff-6e6f-dd09-9926abf105f2).
+
 Lightning Terminal makes use of the [mempool.space API services](https://mempool.space/terms-of-service) for timestamp and fee information for your node’s on-chain transactions. All calls are made from your browser and are not directly associated with your node. Similarly to navigating to mempool.space directly in your browser, this reveals your IP address.

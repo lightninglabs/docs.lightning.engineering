@@ -30,7 +30,9 @@ At its core, Autofees does not change [the security model](privacy-and-security.
 
 Due to the built-in rule mechanics enforced by litd, the Autofee feature has limited access to forwarding data (60 days into the past) and is only able to run in a predetermined frequency. The litd firewall rules limit algorithmically set fee rates by defining maximum values.
 
-To improve privacy around data sharing, channel ids, channel points and node pubkeys are obfuscated by litd. Amounts and timestamps in forwarding data are randomly obfuscated to break amount and time correlation. Channel details only include randomized balance information such as to be still accurate enough for the algorithm to act. Per-peer aggregated forwarding data is stored to improve on the algorithm in the future to learn historic price-demand data pairs.
+To improve privacy around data sharing, channel ids, channel points and node pubkeys are obfuscated by `litd` through a system called the "Privacy Mapper." Amounts and timestamps in forwarding data are randomly obfuscated to break amount and time correlation. Channel details only include randomized balance information such as to be still accurate enough for the algorithm to act. Per-peer aggregated forwarding data is stored to improve on the algorithm in the future to learn historic price-demand data pairs.
+
+The privacy mapper can be interacted with manually through `litcli` for debugging purposes. `litcli privacy` can convert both strings and uint64 to the pseudo counter part and back.
 
 | Note: Enabling Autofees will set your channels’ [CLTV delta](../../the-lightning-network/multihop-payments/timelocks.md) to 100. |
 | -------------------------------------------------------------------------------------------------------------------------------- |

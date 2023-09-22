@@ -22,25 +22,25 @@ There are multiple mechanisms through which we can increase the fee of our trans
 
 **Channel openings need to be confirmed within two weeks of their initiation**, otherwise your peer may disregard the new channel, and you will have to perform a unilateral close to recover your funds.
 
-## On-chain transactions <a id="docs-internal-guid-831ef4d5-7fff-f468-7a2f-a4204595b0ed"></a>
+## On-chain transactions <a href="#docs-internal-guid-831ef4d5-7fff-f468-7a2f-a4204595b0ed" id="docs-internal-guid-831ef4d5-7fff-f468-7a2f-a4204595b0ed"></a>
 
 **Outgoing transactions**
 
 For regular on-chain transactions made from our LND, increasing the fee of our transaction is relatively straight forward. Such on-chain transactions opt into a scheme called ‘replace-by-fee,’ which allows us to create a new transaction with a higher fee and publish this to the mempool. Miners now have an incentive to pick that new transaction over the old one, and they cannot pick both.
 
-We can use the command `lncli wallet bumpfee` to increase the fees of pending transactions. To see which transactions this may apply to, we can use `lncli listchaintxns`. To narrow down the list of transactions to unconfirmed only you can use the flags `--start_height` \(and the current block height\) and `--end_height -1`. Take note that the transaction id and output specified in this command relate to an input used in the transaction that you want to be confirmed, not the transaction itself.
+We can use the command `lncli wallet bumpfee` to increase the fees of pending transactions. To see which transactions this may apply to, we can use `lncli listchaintxns`. To narrow down the list of transactions to unconfirmed only you can use the flags `--start_height` (and the current block height) and `--end_height -1`. Take note that the transaction id and output specified in this command relate to an input used in the transaction that you want to be confirmed, not the transaction itself.
 
-When using the `--force` flag, an input is included even if sweeping this input costs more than it is worth. 
+When using the `--force` flag, an input is included even if sweeping this input costs more than it is worth.&#x20;
 
-Example usage:  
-`lncli listchaintxns --start_height 680802 --end_height -1`  
+Example usage:\
+`lncli listchaintxns --start_height 680802 --end_height -1`\
 `lncli wallet bumpfee --conf_target 6 --force 38a64ad629960b0100e6954801a035c484df64f6efa783c33508054d8f2cfe95:0`
 
 **Incoming transactions**
 
 A Bitcoin transaction is only considered irreversible once it is confirmed in a block. In case we receive a transaction with a low fee, we might want to speed up the confirmation time to consider them settled.
 
-For incoming transactions we aren’t able to increase the fee of the transactions ourselves, but we can create a new transaction that takes the unconfirmed incoming transaction as an input, and spend it back to ourselves with a higher fee. Miners who want to earn the transaction fee of this second, profitable transaction will also need to confirm the first transaction. This is known as child-pays-for-parent \(CPFP\)
+For incoming transactions we aren’t able to increase the fee of the transactions ourselves, but we can create a new transaction that takes the unconfirmed incoming transaction as an input, and spend it back to ourselves with a higher fee. Miners who want to earn the transaction fee of this second, profitable transaction will also need to confirm the first transaction. This is known as child-pays-for-parent (CPFP)
 
 We can use `lncli wallet bumpfee` in the same way as above to create such a CPFP transaction, specifying the unconfirmed, incoming transaction and the output belonging to our wallet. This new CPFP transaction is a regular on-chain transaction, which we can again bump by repeating the same command with a new fee.
 
@@ -52,7 +52,7 @@ In case we have to, we may also use the `lncli wallet bumpfee` command to increa
 
 If we want to eventually open a channel, we may also use the `lncli openchannel` command right away together with the `--psbt` flag to specify an output.
 
-## Channel opening <a id="docs-internal-guid-d7a5497d-7fff-d4c9-e294-cb0cec6c9e86"></a>
+## Channel opening <a href="#docs-internal-guid-d7a5497d-7fff-d4c9-e294-cb0cec6c9e86" id="docs-internal-guid-d7a5497d-7fff-d4c9-e294-cb0cec6c9e86"></a>
 
 As a channel is negotiated between two parties and dependent on its opening transaction, we may not increase the fee of its funding transaction with another, and thus cannot ‘bump’ the fee.
 
@@ -69,14 +69,13 @@ Channels need to be confirmed within two weeks after they were initiated, or els
 
 As of now, there is no way for you to increase the confirmation time of a channel that was opened to your node.
 
-## Channel closing <a id="docs-internal-guid-5647dd03-7fff-dc71-47cf-5f7e2155a44d"></a>
+## Channel closing <a href="#docs-internal-guid-5647dd03-7fff-dc71-47cf-5f7e2155a44d" id="docs-internal-guid-5647dd03-7fff-dc71-47cf-5f7e2155a44d"></a>
 
 When closing channels, we differentiate between cooperative closes of active channels, and unilateral closes, or force closes, of inactive channels.
 
-For cooperative closures, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of this transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.  
-In the case of a force close, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. For other channels, only the counterparty of the party initiating the force close will be able to get the channel confirmed more quickly if they spend their output with a higher fee \(CPFP\).
+For cooperative closures, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of this transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.\
+In the case of a force close, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. For other channels, only the party that did not initiate the force close will be able to get the channel confirmed more quickly if they spend their output with a higher fee (CPFP).
 
-## Out of band channel fees <a id="docs-internal-guid-46b36a38-7fff-bb45-b47f-0a85542b4ba9"></a>
+## Out of band channel fees <a href="#docs-internal-guid-46b36a38-7fff-bb45-b47f-0a85542b4ba9" id="docs-internal-guid-46b36a38-7fff-bb45-b47f-0a85542b4ba9"></a>
 
 Some providers will promise to accelerate the confirmation time of your transaction by letting you pay miners out of band directly. While this is generally possible, there often is no way to prove that the provider really has the ability to do so, e.g. is mining bitcoin themselves or connected to miners who do.
-

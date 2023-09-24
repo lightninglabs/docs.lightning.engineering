@@ -81,15 +81,6 @@ tor.v3=true
 listen=localhost
 ```
 
-If you prefer to make your node available through the Tor network, set these lines in your configuration.
-
-```
-sync-freelist=1
-stagger-initial-reconnect=1
-```
-
-This will help our node start up faster by applying randomized staggering when reconnecting to persistent peers. This minimizes the chance of connecting to all non-responsive peers at once.
-
 `debuglevel=CNCT=debug,CRTR=debug,HSWC=debug,NTFN=debug,RPCS=debug`
 
 CNCT, CRTR and HSWV provide channel-related logs, while NTFN provides chain-related logs. RPCS will provide you with RPC-related logs.

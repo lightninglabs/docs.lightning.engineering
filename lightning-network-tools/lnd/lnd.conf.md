@@ -11,7 +11,7 @@ The LND configuration file is found in your LND directory, typically in \~/.lnd
 A sample configuration file [can be found here](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf) or in your local copy of the LND source code. This file exists purely for illustrative purposes, and do not serve as a template for an ["ideal"](optimal-configuration-of-a-routing-node.md) node.
 
 {% code title="lnd.conf" %}
-```javascript
+```
 ; Example configuration for lnd.
 ;
 ; The default location for this file is in ~/.lnd/lnd.conf on POSIX OSes,
@@ -21,7 +21,14 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; The default location of this file can be overwritten by specifying the
 ; --configfile= flag when starting lnd.
 ;
-; Boolean values can be specified as true/false or 1/0.
+; boolean values can be specified as true/false or 1/0. Per default 
+; booleans are always set to false.
+
+; If only one value is specified for an option, then this is also the
+; default value used by lnd. In case of multiple (example) values, the default 
+; is explicitly mentioned. 
+; If the part after the equal sign is empty then lnd has no default 
+; for this option.
 
 [Application Options]
 
@@ -59,12 +66,15 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 
 ; Adds an extra domain to the generate certificate. Setting multiple tlsextradomain= entries is allowed.
 ; (old tls files must be deleted if changed)
-; tlsextradomain=
+; Default:
+;   tlsextradomain=
+; Example: (option can be specified multiple times):
+;   tlsextradomain=my-node-domain.com
 
-; If set, then all certs will automatically be refreshed if they're close to 
-; expiring, or if any parameters related to extra IPs or domains in the cert 
+; If set, then all certs will automatically be refreshed if they're close to
+; expiring, or if any parameters related to extra IPs or domains in the cert
 ; change.
-; tlsautorefresh=true
+; tlsautorefresh=false
 
 ; The duration from generating the self signed certificate to the certificate
 ; expiry date. Valid time units are {s, m, h}.
@@ -73,12 +83,19 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 
 ; Do not include the interface IPs or the system hostname in TLS certificate,
 ; use first --tlsextradomain as Common Name instead, if set.
-; tlsdisableautofill=true
+; tlsdisableautofill=false
+
+; If set, the TLS private key will be encrypted to the node's seed.
+; tlsencryptkey=false
 
 ; A list of domains for lnd to periodically resolve, and advertise the resolved
 ; IPs for the backing node. This is useful for users that only have a dynamic IP,
 ; or want to expose the node at a domain.
-; externalhosts=my-node-domain.com
+; Default:
+;   externalhosts=
+; Example (option can be specified multiple times):
+;   externalhosts=my-node-domain.com
+;   externalhosts=my-second-domain.com
 
 ; Sets the directory to store Let's Encrypt certificates within
 ; letsencryptdir=~/.lnd/letsencrypt
@@ -89,88 +106,117 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; a different port to be used, but must be used in combination with port
 ; forwarding from port 80. This configuration can also be used to specify
 ; another IP address to listen on, for example an IPv6 address.
-; letsencryptlisten=localhost:8080
+; Default:
+;   letsencryptlisten=:80
+; Example:
+;   letsencryptlisten=localhost:8080
 
 ; Request a Let's Encrypt certificate for this domain. Note that the certificate
 ; is only requested and stored when the first rpc connection comes in.
-; letsencryptdomain=example.com
+; Default:
+;   letsencryptdomain=
+; Example:
+;   letsencryptdomain=example.com
 
-; Disable macaroon authentication. Macaroons are used are bearer credentials to
+; Disable macaroon authentication. Macaroons are used as bearer credentials to
 ; authenticate all RPC access. If one wishes to opt out of macaroons, uncomment
-; the line below.
-; no-macaroons=true
+; and set to true the line below.
+; no-macaroons=false
 
 ; Enable free list syncing for the default bbolt database. This will decrease
 ; start up time, but can result in performance degradation for very large
 ; databases, and also result in higher memory usage. If "free list corruption"
 ; is detected, then this flag may resolve things.
-; sync-freelist=true
+; sync-freelist=false
 
 ; Path to write the admin macaroon for lnd's RPC and REST services if it
 ; doesn't exist. This can be set if one wishes to store the admin macaroon in a
 ; distinct location. By default, it is stored within lnd's network directory.
 ; Applications that are able to read this file, gain admin macaroon access.
-; adminmacaroonpath=~/.lnd/data/chain/bitcoin/simnet/admin.macaroon
+; Default:
+;   adminmacaroonpath=~/.lnd/data/chain/bitcoin/${network}/admin.macaroon
+; Example:
+;   adminmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
 
 ; Path to write the read-only macaroon for lnd's RPC and REST services if it
 ; doesn't exist. This can be set if one wishes to store the read-only macaroon
 ; in a distinct location. The read only macaroon allows users which can read
 ; the file to access RPCs which don't modify the state of the daemon. By
 ; default, it is stored within lnd's network directory.
-; readonlymacaroonpath=~/.lnd/data/chain/bitcoin/simnet/readonly.macaroon
+; Default:
+;   readonlymacaroonpath=~/.lnd/data/chain/bitcoin/${network}/readonly.macaroon
+; Example:
+;   readonlymacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/readonly.macaroon
 
 ; Path to write the invoice macaroon for lnd's RPC and REST services if it
 ; doesn't exist. This can be set if one wishes to store the invoice macaroon in
 ; a distinct location. By default, it is stored within lnd's network directory.
 ; The invoice macaroon allows users which can read the file to gain read and
 ; write access to all invoice related RPCs.
-; invoicemacaroonpath=~/.lnd/data/chain/bitcoin/simnet/invoice.macaroon
+; Default:
+;   invoicemacaroonpath=~/.lnd/data/chain/bitcoin/${network}/invoice.macaroon
+; Example:
+;   invoicemacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/invoice.macaroon
 
 ; The strategy to use for selecting coins for wallet transactions. Options are
 ; 'largest' and 'random'.
 ; coin-selection-strategy=largest
 
-; A period to wait before for closing channels with outgoing htlcs that have 
-; timed out and are a result of this nodes instead payment. In addition to our 
-; current block based deadline, if specified this grace period will also be taken
-; into account. Valid time units are {s, m, h}.
-; payments-expiration-grace-period=30s
+; A period to wait before for closing channels with outgoing htlcs that have
+; timed out and are a result of this nodes initiated payments. In addition to
+; our current block based deadline, if specified this grace period will also be
+; taken into account. Valid time units are {s, m, h}.
+; Default:
+;   payments-expiration-grace-period=0s
+; Example:
+;   payments-expiration-grace-period=30s
 
 ; Specify the interfaces to listen on for p2p connections. One listen
 ; address per line.
-; All ipv4 on port 9735:
+; Default:
+;   listen=:9735
+; Example (option can be specified multiple times):
+;  All ipv4 on port 9735:
 ;   listen=0.0.0.0:9735
-; On all ipv4 interfaces on port 9735 and ipv6 localhost port 9736:
+
+;  On all ipv4 interfaces on port 9735 and ipv6 localhost port 9736:
 ;   listen=0.0.0.0:9735
 ;   listen=[::1]:9736
 
 ; Disable listening for incoming p2p connections. This will override all
 ; listeners.
-; nolisten=true
+; nolisten=false
 
 ; Specify the interfaces to listen on for gRPC connections. One listen
 ; address per line.
-; Only ipv4 localhost on port 10009:
+; Default:
 ;   rpclisten=localhost:10009
-; On ipv4 localhost port 10009 and ipv6 port 10010:
+; Example (option can be specified multiple times):
+;  On ipv4 localhost port 10009 and ipv6 port 10010:
 ;   rpclisten=localhost:10009
 ;   rpclisten=[::1]:10010
-; On an Unix socket:
+;  On an Unix socket:
 ;   rpclisten=unix:///var/run/lnd/lnd-rpclistener.sock
 
 ; Specify the interfaces to listen on for REST connections. One listen
 ; address per line.
-; All ipv4 interfaces on port 8080:
+; Default:
+;   restlisten=localhost:8080
+; Example (option can be specified multiple times):
+;  All ipv4 interfaces on port 8080:
 ;   restlisten=0.0.0.0:8080
-; On ipv4 localhost port 80 and 443:
+;  On ipv4 localhost port 80 and 443:
 ;   restlisten=localhost:80
 ;   restlisten=localhost:443
-; On an Unix socket:
+;  On an Unix socket:
 ;   restlisten=unix:///var/run/lnd-restlistener.sock
 
 ; A series of domains to allow cross origin access from. This controls the CORs
 ; policy of the REST RPC proxy.
-; restcors=https://my-special-site.com
+; Default:
+;   restcors=
+; Example (option can be specified multiple times):
+;   restcors=https://my-special-site.com
 
 ; Adding an external IP will advertise your node to the network. This signals
 ; that your node is available to accept incoming channels. If you don't wish to
@@ -189,13 +235,16 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; address, even after it has changed in the case of dynamic IPs, and advertise
 ; it to the network using the ports the daemon is listening on. This does not
 ; support devices behind multiple NATs.
-; nat=true
+; nat=false
 
 ; Disable REST API.
-; norest=true
+; norest=false
 
 ; Disable TLS for the REST API.
-; no-rest-tls=true
+; no-rest-tls=false
+
+; Specify peer(s) to connect to first.
+; addpeer=
 
 ; The ping interval for REST based WebSocket connections, set to 0 to disable
 ; sending ping messages from the server side. Valid time units are {s, m, h}.
@@ -214,16 +263,19 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; {s, m, h}.
 ; maxbackoff=1h
 
-; The timeout value for network connections in seconds, default to 120 seconds.
-; Valid uints are {ms, s, m, h}.
-; connectiontimeout=120s
+; The timeout value for network connections.
+; Valid units are {ms, s, m, h}.
+; connectiontimeout=2m
 
 ; Debug logging level.
 ; Valid levels are {trace, debug, info, warn, error, critical}
-; You may also specify <global-level>,<subsystem>=<level>,<subsystem2>=<level>,... 
-; to set log level for individual subsystems. Use lncli debuglevel --show to 
+; You may also specify <global-level>,<subsystem>=<level>,<subsystem2>=<level>,...
+; to set log level for individual subsystems. Use lncli debuglevel --show to
 ; list available subsystems.
-; debuglevel=debug,PEER=info
+; Default:
+;   debuglevel=info
+; Example:
+;   debuglevel=debug,PEER=info
 
 ; Write CPU profile to the specified file.
 ; cpuprofile=
@@ -232,87 +284,125 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; 65536. The profile can be access at: http://localhost:<PORT>/debug/pprof/.
 ; profile=
 
+; Enable a blocking profile to be obtained from the profiling port. A blocking
+; profile can show where goroutines are blocking (stuck on mutexes, I/O, etc).
+; This takes a value from 0 to 1, with 0 turning off the setting, and 1 sampling
+; every blocking event (it's a rate value).
+; blockingprofile=0
+
+; Enable a mutex profile to be obtained from the profiling port. A mutex 
+; profile can show where goroutines are blocked on mutexes, and which mutexes
+; have high contention.  This takes a value from 0 to 1, with 0 turning off the
+; setting, and 1 sampling every mutex event (it's a rate value).
+; mutexprofile=0
+
 ; DEPRECATED: Allows the rpcserver to intentionally disconnect from peers with
 ; open channels. THIS FLAG WILL BE REMOVED IN 0.10.0.
 ; unsafe-disconnect=false
 
 ; Causes a link to replay the adds on its commitment txn after starting up, this
 ; enables testing of the sphinx replay logic.
-; unsafe-replay=true
+; unsafe-replay=false
 
 ; The maximum number of incoming pending channels permitted per peer.
 ; maxpendingchannels=1
 
 ; The target location of the channel backup file.
-; backupfilepath=~/.lnd/data/chain/bitcoin/simnet/channel.backup
+; Default:
+;   backupfilepath=~/.lnd/data/chain/bitcoin/${network}/channel.backup
+; Example:
+;   backupfilepath=~/.lnd/data/chain/bitcoin/mainnet/channel.backup
 
 ; The maximum capacity of the block cache in bytes. Increasing this will result
 ; in more blocks being kept in memory but will increase performance when the
 ; same block is required multiple times.
-; The example value below is 40 MB (1024 * 1024 * 40)
-; blockcachesize=41943040
+; The default value below is 20 MB (1024 * 1024 * 20)
+; blockcachesize=20971520
 
 ; Optional URL for external fee estimation. If no URL is specified, the method
 ; for fee estimation will depend on the chosen backend and network. Must be set
 ; for neutrino on mainnet.
-; feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json
+; Default:
+;   feeurl=
+; Example:
+;   feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json
 
 ; If true, then automatic network bootstrapping will not be attempted. This
 ; means that your node won't attempt to automatically seek out peers on the
 ; network.
-; nobootstrap=true
+; nobootstrap=false
 
 ; If true, NO SEED WILL BE EXPOSED -- EVER, AND THE WALLET WILL BE ENCRYPTED
 ; USING THE DEFAULT PASSPHRASE. THIS FLAG IS ONLY FOR TESTING AND SHOULD NEVER
 ; BE USED ON MAINNET.
-; noseedbackup=true
+; noseedbackup=false
 
 ; The full path to a file (or pipe/device) that contains the password for
 ; unlocking the wallet; if set, no unlocking through RPC is possible and lnd
 ; will exit if no wallet exists or the password is incorrect; if
 ; wallet-unlock-allow-create is also set then lnd will ignore this flag if no
 ; wallet exists and allow a wallet to be created through RPC.
-; wallet-unlock-password-file=/tmp/example.password
+; Default:
+;   wallet-unlock-password-file=
+; Example:
+;   wallet-unlock-password-file=/tmp/example.password
 
 ; Don't fail with an error if wallet-unlock-password-file is set but no wallet
 ; exists yet. Not recommended for auto-provisioned or high-security systems
 ; because the wallet creation RPC is unauthenticated and an attacker could
 ; inject a seed while lnd is in that state.
-; wallet-unlock-allow-create=true
+; wallet-unlock-allow-create=false
 
 ; Removes all transaction history from the on-chain wallet on startup, forcing a
 ; full chain rescan starting at the wallet's birthday. Implements the same
 ; functionality as btcwallet's dropwtxmgr command. Should be set to false after
 ; successful execution to avoid rescanning on every restart of lnd.
-; reset-wallet-transactions=true
+; reset-wallet-transactions=false
 
 ; The smallest channel size (in satoshis) that we should accept. Incoming
-; channels smaller than this will be rejected, default value 20000.
-; minchansize=
+; channels smaller than this will be rejected.
+; minchansize=20000
 
 ; The largest channel size (in satoshis) that we should accept. Incoming
-; channels larger than this will be rejected. For non-Wumbo channels this 
+; channels larger than this will be rejected. For non-Wumbo channels this
 ; limit remains 16777215 satoshis by default as specified in BOLT-0002.
 ; For wumbo channels this limit is 1,000,000,000 satoshis (10 BTC).
 ; Set this config option explicitly to restrict your maximum channel size
 ; to better align with your risk tolerance
-; maxchansize=
+; Default:
+;   maxchansize=<see explanations above>
+; Example:
+;   maxchansize=10000000
 
 ; The target number of blocks in which a cooperative close initiated by a remote
 ; peer should be confirmed. This target is used to estimate the starting fee
 ; rate that will be used during fee negotiation with the peer. This target is
-; is also used for cooperative closes initiated locally if the --conf_target
-; for the channel closure is not set.
-; coop-close-target-confs=10
+; also used for cooperative closes initiated locally if the --conf_target for
+; the channel closure is not set.
+; coop-close-target-confs=6
 
 ; The maximum time that is allowed to pass between receiving a channel state
 ; update and signing the next commitment. Setting this to a longer duration
-; allows for more efficient channel operations at the cost of latency.
+; allows for more efficient channel operations at the cost of latency. This is
+; capped at 1 hour.
 ; channel-commit-interval=50ms
+
+; The maximum time that is allowed to pass while waiting for the remote party
+; to revoke a locally initiated commitment state. Setting this to a longer
+; duration if a slow response is expected from the remote party or large
+; number of payments are attempted at the same time.
+; pending-commit-interval=1m
 
 ; The maximum number of channel state updates that is accumulated before signing
 ; a new commitment.
 ; channel-commit-batch-size=10
+
+; Keeps persistent record of all failed payment attempts for successfully
+; settled payments.
+; keep-failed-payment-attempts=false
+
+; Persistently store the final resolution of incoming htlcs.
+; store-final-htlc-resolutions=false
 
 ; The default max_htlc applied when opening or accepting channels. This value
 ; limits the number of concurrent HTLCs that the remote party can add to the
@@ -321,146 +411,166 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 
 ; The duration that a peer connection must be stable before attempting to send a
 ; channel update to re-enable or cancel a pending disables of the peer's channels
-; on the network. (default: 19m0s)
-; chan-enable-timeout=22m
+; on the network. 
+; chan-enable-timeout=19m
 
-; The duration that must elapse after first detecting that an already active 
-; channel is actually inactive and sending channel update disabling it to the 
+; The duration that must elapse after first detecting that an already active
+; channel is actually inactive and sending channel update disabling it to the
 ; network. The pending disable can be canceled if the peer reconnects and becomes
 ; stable for chan-enable-timeout before the disable update is sent.
-; (default: 20m0s)
-; chan-disable-timeout=22m
+; chan-disable-timeout=20m
 
 ; The polling interval between attempts to detect if an active channel has become
-; inactive due to its peer going offline. (default: 1m0s)
-; chan-status-sample-interval=2m
+; inactive due to its peer going offline.
+; chan-status-sample-interval=1m
 
 ; Disable queries from the height-hint cache to try to recover channels stuck in
 ; the pending close state. Disabling height hint queries may cause longer chain
 ; rescans, resulting in a performance hit. Unset this after channels are unstuck
 ; so you can get better performance again.
-; height-hint-cache-query-disable=true
+; height-hint-cache-query-disable=false
 
 ; The polling interval between historical graph sync attempts. Each historical
 ; graph sync attempt ensures we reconcile with the remote peer's graph from the
-; genesis block. (default: 1h0m0s)
-; historicalsyncinterval=2h
+; genesis block. 
+; historicalsyncinterval=1h
 
 ; If true, will not reply with historical data that matches the range specified
 ; by a remote peer's gossip_timestamp_filter. Doing so will result in lower
 ; memory and bandwidth requirements.
-; ignore-historical-gossip-filters=true
+; ignore-historical-gossip-filters=false
 
 ; If true, lnd will not accept channel opening requests with non-zero push
 ; amounts. This should prevent accidental pushes to merchant nodes.
-; rejectpush=true
+; rejectpush=false
 
 ; If true, lnd will not forward any HTLCs that are meant as onward payments. This
 ; option will still allow lnd to send HTLCs and receive HTLCs but lnd won't be
 ; used as a hop.
-; rejecthtlc=true
+; rejecthtlc=false
+
+; If true, all HTLCs will be held until they are handled by an interceptor
+; requireinterceptor=false
 
 ; If true, will apply a randomized staggering between 0s and 30s when
 ; reconnecting to persistent peers on startup. The first 10 reconnections will be
 ; attempted instantly, regardless of the flag's value
-; stagger-initial-reconnect=true
+; stagger-initial-reconnect=false
 
 ; The maximum number of blocks funds could be locked up for when forwarding
-; payments. (default: 2016)
+; payments. 
 ; max-cltv-expiry=2016
 
 ; The maximum percentage of total funds that can be allocated to a channel's
 ; commitment fee. This only applies for the initiator of the channel. Valid
-; values are within [0.1, 1]. (default: 0.5)
-; max-channel-fee-allocation=0.9
+; values are within [0.1, 1]. 
+; max-channel-fee-allocation=0.5
 
 ; The maximum fee rate in sat/vbyte that will be used for commitments of
 ; channels of the anchors type. Must be large enough to ensure transaction
-; propagation (default: 10)
-; max-commit-fee-rate-anchors=5
+; propagation 
+; max-commit-fee-rate-anchors=10
 
 ; A threshold defining the maximum amount of dust a given channel can have
 ; after which forwarding and sending dust HTLC's to and from the channel will
-; fail. This amount is expressed in satoshis. (default: 500000)
-; dust-threshold=1000000
+; fail. This amount is expressed in satoshis.
+; dust-threshold=500000
 
 ; If true, lnd will abort committing a migration if it would otherwise have been
 ; successful. This leaves the database unmodified, and still compatible with the
 ; previously active version of lnd.
-; dry-run-migration=true
+; dry-run-migration=false
 
 ; If true, option upfront shutdown script will be enabled. If peers that we open
 ; channels with support this feature, we will automatically set the script to
 ; which cooperative closes should be paid out to on channel open. This offers the
 ; partial protection of a channel peer disconnecting from us if cooperative
 ; close is attempted with a different script.
-; enable-upfront-shutdown=true
+; enable-upfront-shutdown=false
 
 ; If true, spontaneous payments through keysend will be accepted.
 ; This is a temporary solution until AMP is implemented which is expected to be soon.
 ; This option will then become deprecated in favor of AMP.
-; accept-keysend=true
+; accept-keysend=false
 
 ; If non-zero, keysend payments are accepted but not immediately settled. If the
 ; payment isn't settled manually after the specified time, it is canceled
 ; automatically. [experimental]
-; keysend-hold-time=true
+; Default:
+;   keysend-hold-time=0s
+; Example:
+;   keysend-hold-time=2s
 
 ; If true, spontaneous payments through AMP will be accepted. Payments to AMP
 ; invoices will be accepted regardless of this setting.
-; accept-amp=true
+; accept-amp=false
 
 ; If true, we'll attempt to garbage collect canceled invoices upon start.
-; gc-canceled-invoices-on-startup=true
+; gc-canceled-invoices-on-startup=false
 
 ; If true, we'll delete newly canceled invoices on the fly.
-; gc-canceled-invoices-on-the-fly=true
+; gc-canceled-invoices-on-the-fly=false
 
 ; If true, our node will allow htlc forwards that arrive and depart on the same
 ; channel.
-; allow-circular-route=true
+; allow-circular-route=false
 
 ; Time in milliseconds between each release of announcements to the network
-; trickledelay=180000
+; trickledelay=90000
 
 ; The number of peers that we should receive new graph updates from. This option
-; can be tuned to save bandwidth for light clients or routing nodes. (default: 3)
-; numgraphsyncpeers=9
-
-; If true, lnd will start the Prometheus exporter. Prometheus flags are 
-; behind a build/compile flag and are not available by default. lnd must be built 
-; with the monitoring tag; `make && make install tags=monitoring` to activate them.
-; prometheus.enable=true
-
-; Specify the interface to listen on for Prometheus connections.
-; prometheus.listen=0.0.0.0:8989
+; can be tuned to save bandwidth for light clients or routing nodes. 
+; numgraphsyncpeers=3
 
 ; The alias your node will use, which can be up to 32 UTF-8 characters in
 ; length.
-; alias=My Lightning ☇
+; Default:
+;   alias=
+; Example:
+;   alias=My Lightning ☇
 
 ; The color of the node in hex format, used to customize node appearance in
 ; intelligence services.
 ; color=#3399FF
 
 
+[prometheus]
+
+; If true, lnd will start the Prometheus exporter. Prometheus flags are
+; behind a build/compile flag and are not available by default. lnd must be built
+; with the monitoring tag; `make && make install tags=monitoring` to activate them.
+; prometheus.enable=false
+
+; Specify the interface to listen on for Prometheus connections.
+; Default:
+;   prometheus.listen=127.0.0.1:8989
+; Example:
+;   prometheus.listen=0.0.0.0:8989
+
+; If true, then we'll export additional information that allows users to plot
+; the processing latency, and total time spent across each RPC calls+service.
+; This generates additional memory load for the Prometheus server, and will end
+; up using more disk space over time.
+; prometheus.perfhistograms=false
+
+
 [Bitcoin]
 
-; If the Bitcoin chain should be active. Atm, only a single chain can be
-; active.
-bitcoin.active=true
+; DEPRECATED: If the Bitcoin chain should be active. This field is now ignored
+; since only the Bitcoin chain is supported.
+; bitcoin.active=false
 
 ; The directory to store the chain's data within.
 ; bitcoin.chaindir=~/.lnd/data/chain/bitcoin
 
 ; Use Bitcoin's main network.
-; bitcoin.mainnet=true
+; bitcoin.mainnet=false
 
 ; Use Bitcoin's test network.
-; bitcoin.testnet=true
+; bitcoin.testnet=false
 ;
 ; Use Bitcoin's simulation test network
-bitcoin.simnet=true
+; bitcoin.simnet=false
 
 ; Use Bitcoin's regression test network
 ; bitcoin.regtest=false
@@ -474,26 +584,43 @@ bitcoin.simnet=true
 
 ; Specify a seed node for the signet network instead of using the global default
 ; signet network seed nodes
-; bitcoin.signetseednode=123.45.67.89
+; Default:
+;   bitcoin.signetseednode=
+; Example:
+;   bitcoin.signetseednode=123.45.67.89
 
-; Use the btcd back-end
-bitcoin.node=btcd
-
-; Use the bitcoind back-end
-; bitcoin.node=bitcoind
-
-; Use the neutrino (light client) back-end
-; bitcoin.node=neutrino
+; Specify the chain back-end. Options are btcd, bitcoind and neutrino.
+;
+; NOTE: Please note that switching between a full back-end (btcd/bitcoind) and
+; a light back-end (neutrino) is not supported.
+; Default:
+;   bitcoin.node=btcd
+; Example:
+;   bitcoin.node=bitcoind
+;   bitcoin.node=neutrino
 
 ; The default number of confirmations a channel must have before it's considered
 ; open. We'll require any incoming channel requests to wait this many
-; confirmations before we consider the channel active.
-; bitcoin.defaultchanconfs=3
+; confirmations before we consider the channel active. If this is not set, we
+; will scale the value linear to the channel size between 3 and 6. 
+; The maximmum value of 6 confs is applied to all channels larger than 
+; wumbo size (16777215 sats). The minimum value of 3 is applied to all channels
+; smaller than 8388607 sats (16777215 * 3 / 6).
+; Default:
+;   bitcoin.defaultchanconfs=[3; 6]
+; Example:
+;   bitcoin.defaultchanconfs=3
 
 ; The default number of blocks we will require our channel counterparty to wait
 ; before accessing its funds in case of unilateral close. If this is not set, we
-; will scale the value according to the channel size.
-; bitcoin.defaultremotedelay=144
+; will scale the value linear to the channel size between 144 and 2016. 
+; The maximum value of 2016 blocks is applied to all channels larger than 
+; wumbo size (16777215). The minimum value of 144 is applied to all channels
+; smaller than 1198372 sats (16777215 * 144 / 2016).
+; Default:
+;   bitcoin.defaultremotedelay=[144; 2016]
+; Example:
+;   bitcoin.defaultremotedelay=144
 
 ; The maximum number of blocks we will limit the wait that our own funds are
 ; encumbered by in the case when our node unilaterally closes. If a remote peer
@@ -517,22 +644,23 @@ bitcoin.node=btcd
 ; bitcoin.feerate=1
 
 ; The CLTV delta we will subtract from a forwarded HTLC's timelock value.
-; bitcoin.timelockdelta=40
+; bitcoin.timelockdelta=80
 
 ; The seed DNS server(s) to use for initial peer discovery. Must be specified as
 ; a '<primary_dns>[,<soa_primary_dns>]' tuple where the SOA address is needed
 ; for DNS resolution through Tor but is optional for clearnet users. Multiple
 ; tuples can be specified, will overwrite the default seed servers.
 ; The default seed servers are:
+; Default:
 ;  mainnet:
-;    bitcoin.dnsseed=nodes.lightning.directory,soa.nodes.lightning.directory
-;    bitcoin.dnsseed=lseed.bitcoinstats.com
+;   bitcoin.dnsseed=nodes.lightning.directory,soa.nodes.lightning.directory
+;   bitcoin.dnsseed=lseed.bitcoinstats.com
 ;  testnet:
-;    bitcoin.dnsseed=test.nodes.lightning.directory,soa.nodes.lightning.directory
+;   bitcoin.dnsseed=test.nodes.lightning.directory,soa.nodes.lightning.directory
 ;
 ; Example for custom DNS servers:
-; bitcoin.dnsseed=seed1.test.lightning
-; bitcoin.dnsseed=seed2.test.lightning,soa.seed2.test.lightning
+;   bitcoin.dnsseed=seed1.test.lightning
+;   bitcoin.dnsseed=seed2.test.lightning,soa.seed2.test.lightning
 
 
 [Btcd]
@@ -549,12 +677,18 @@ bitcoin.node=btcd
 ; Username for RPC connections to btcd. By default, lnd will attempt to
 ; automatically obtain the credentials, so this likely won't need to be set
 ; (other than for simnet mode).
-; btcd.rpcuser=kek
+; Default:
+;   btcd.rpcuser=
+; Example:
+;   btcd.rpcuser=kek
 
 ; Password for RPC connections to btcd. By default, lnd will attempt to
 ; automatically obtain the credentials, so this likely won't need to be set
 ; (other than for simnet mode).
-; btcd.rpcpass=kek
+; Default:
+;   btcd.rpcpass=
+; Example:
+;   btcd.rpcpass=kek
 
 ; File containing the daemon's certificate file. This only needs to be set if
 ; the node isn't on the same host as lnd.
@@ -572,6 +706,18 @@ bitcoin.node=btcd
 ; etc.
 ; bitcoind.dir=~/.bitcoin
 
+; Configuration filepath.
+; Default:
+;   bitcoind.config=
+; Example:
+;   bitcoind.config=~/.bitcoin/bitcoin.conf
+
+; Authentication cookie file for RPC connections.
+; Default:
+;   bitcoind.rpccookie=
+; Example:
+;   bitcoind.rpccookie=~/.bitcoin/.cookie
+
 ; The host that your local bitcoind daemon is listening on. By default, this
 ; setting is assumed to be localhost with the default port for the current
 ; network.
@@ -580,18 +726,50 @@ bitcoin.node=btcd
 ; Username for RPC connections to bitcoind. By default, lnd will attempt to
 ; automatically obtain the credentials, so this likely won't need to be set
 ; (other than for a remote bitcoind instance).
-; bitcoind.rpcuser=kek
+; Default:
+;   bitcoind.rpcuser=
+; Example:
+;   bitcoind.rpcuser=kek
 
 ; Password for RPC connections to bitcoind. By default, lnd will attempt to
 ; automatically obtain the credentials, so this likely won't need to be set
 ; (other than for a remote bitcoind instance).
-; bitcoind.rpcpass=kek
+; Default:
+;   bitcoind.rpcpass=
+; Example:
+;   bitcoind.rpcpass=kek
 
 ; ZMQ socket which sends rawblock and rawtx notifications from bitcoind. By
 ; default, lnd will attempt to automatically obtain this information, so this
 ; likely won't need to be set (other than for a remote bitcoind instance).
-; bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
-; bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
+; Default:
+;   bitcoind.zmqpubrawblock=
+; Example:
+;   bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
+
+; Default:
+;   bitcoind.zmqpubrawtx=
+; Example:
+;   bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
+
+; Default:
+;   bitcoind.zmqreaddeadline=5s
+
+; Use bitcoind's rpc interface to get block and transaction notifications
+; instead of using the zmq interface. Only the rpcpolling option needs to
+; be set in order to enable this, the rest of the options can be used to
+; change the default values used for this configuration.
+; bitcoind.rpcpolling=false
+
+; Default:
+;   bitcoind.blockpollinginterval=0s
+; Example:
+;   bitcoind.blockpollinginterval=1m
+
+; Default:
+;   bitcoind.txpollinginterval=0s
+; Example:
+;   bitcoind.txpollinginterval=30s
 
 ; Fee estimate mode for bitcoind. It must be either "ECONOMICAL" or "CONSERVATIVE".
 ; If unset, the default value is "CONSERVATIVE".
@@ -610,7 +788,7 @@ bitcoin.node=btcd
 ; neutrino.connect=
 
 ; Max number of inbound and outbound peers.
-; 
+;
 ; NOTE: This value is currently unused.
 ; neutrino.maxpeers=
 
@@ -619,12 +797,12 @@ bitcoin.node=btcd
 
 ; How long to ban misbehaving peers. Valid time units are {s, m, h}. Minimum 1
 ; second.
-; 
+;
 ; NOTE: This value is currently unused.
 ; neutrino.banduration=
 
 ; Maximum allowed ban score before disconnecting and banning misbehaving peers.
-; 
+;
 ; NOTE: This value is currently unused.
 ; neutrino.banthreshold=
 
@@ -637,178 +815,35 @@ bitcoin.node=btcd
 ; filter header chain will be re-synced from the genesis block.
 ; neutrino.assertfilterheader=
 
-; Used to help identify ourselves to other bitcoin peers (default: neutrino).
+; Used to help identify ourselves to other bitcoin peers.
 ; neutrino.useragentname=neutrino
 
-; Used to help identify ourselves to other bitcoin peers (default: 0.11.0-beta).
-; neutrino.useragentversion=0.11.0-beta
+; Used to help identify ourselves to other bitcoin peers.
+; neutrino.useragentversion=0.12.0-beta
 
 ; The amount of time to wait before giving up on a transaction broadcast attempt.
-; neutrino.broadcasttimeout=5s
+; Default:
+;   neutrino.broadcasttimeout=0s
+; Example:
+;   neutrino.broadcasttimeout=5s
 
 ; Whether compact filters fetched from the P2P network should be persisted to disk.
-; neutrino.persistfilters=true
+; neutrino.persistfilters=false
 
 ; Validate every channel in the graph during sync by downloading the containing
 ; block. This is the inverse of routing.assumechanvalid, meaning that for
 ; Neutrino the validation is turned off by default for massively increased graph
 ; sync performance. This speedup comes at the risk of using an unvalidated view
 ; of the network for routing. Overwrites the value of routing.assumechanvalid if
-; Neutrino is used. (default: false)
+; Neutrino is used. 
 ; neutrino.validatechannels=false
-
-
-[Litecoin]
-
-; If the Litecoin chain should be active. Atm, only a single chain can be
-; active.
-; litecoin.active=true
-
-; The directory to store the chain's data within.
-; litecoin.chaindir=~/.lnd/data/chain/litecoin
-
-; Use Litecoin's main network.
-; litecoin.mainnet=true
-
-; Use Litecoin's test network.
-; litecoin.testnet=true
-;
-; Use Litecoin's simulation test network
-; litecoin.simnet=true
-
-; Use Litecoin's regression test network
-; litecoin.regtest=false
-
-; Litecoin does not support the signet test network. The options
-; litecoin.signet, litecoin.signetchallenge and litecoin.signetseednode are
-; only defined because the data structure is shared with bitcoind.
-
-; Use the ltcd back-end.
-litecoin.node=ltcd
-
-; Use the litecoind back-end.
-; litecoin.node=litecoind
-
-; The default number of confirmations a channel must have before it's considered
-; open. We'll require any incoming channel requests to wait this many
-; confirmations before we consider the channel active.
-; litecoin.defaultchanconfs=3
-
-; The default number of blocks we will require our channel counterparty to wait
-; before accessing its funds in case of unilateral close. If this is not set, we
-; will scale the value according to the channel size.
-; litecoin.defaultremotedelay=144
-
-; The maximum number of blocks we will limit the wait that our own funds are
-; encumbered by in the case when our node unilaterally closes. If a remote peer
-; proposes a channel with a delay above this amount, lnd will reject the
-; channel.
-; litecoin.maxlocaldelay=2016
-
-; The smallest HTLC we are willing to accept on our channels, in millisatoshi.
-; litecoin.minhtlc=1
-
-; The smallest HTLC we are willing to send out on our channels, in millisatoshi.
-; litecoin.minhtlcout=1000
-
-; The base fee in millisatoshi we will charge for forwarding payments on our
-; channels.
-; litecoin.basefee=1000
-
-; The fee rate used when forwarding payments on our channels. The total fee
-; charged is basefee + (amount * feerate / 1000000), where amount is the
-; forwarded amount.
-; litecoin.feerate=1
-
-; The CLTV delta we will subtract from a forwarded HTLC's timelock value.
-; litecoin.timelockdelta=576
-
-; The seed DNS server(s) to use for initial peer discovery. Must be specified as
-; a '<primary_dns>[,<soa_primary_dns>]' tuple where the SOA address is needed
-; for DNS resolution through Tor but is optional for clearnet users. Multiple
-; tuples can be specified, will overwrite the default seed servers.
-; The default seed servers are:
-;  mainnet:
-;    litecoin.dnsseed=ltc.nodes.lightning.directory,soa.nodes.lightning.directory
-;
-; Example for custom DNS servers:
-; litecoin.dnsseed=seed1.test-ltc.lightning
-; litecoin.dnsseed=seed2.test-ltc.lightning,soa.seed2.test-ltc.lightning
-
-
-[Ltcd]
-
-; The base directory that contains the node's data, logs, configuration file,
-; etc.
-; ltcd.dir=~/.ltcd
-
-; The host that your local ltcd daemon is listening on. By default, this
-; setting is assumed to be localhost with the default port for the current
-; network.
-; ltcd.rpchost=localhost
-
-; Username for RPC connections to ltcd. By default, lnd will attempt to
-; automatically obtain the credentials, so this likely won't need to be set
-; (other than for simnet mode).
-; ltcd.rpcuser=kek
-
-; Password for RPC connections to ltcd. By default, lnd will attempt to
-; automatically obtain the credentials, so this likely won't need to be set
-; (other than for simnet mode).
-; ltcd.rpcpass=kek
-
-; File containing the daemon's certificate file. This only needs to be set if
-; the node isn't on the same host as lnd.
-; ltcd.rpccert=~/.ltcd/rpc.cert
-
-; The raw bytes of the daemon's PEM-encoded certificate chain which will be used
-; to authenticate the RPC connection. This only needs to be set if the ltcd
-; node is on a remote host.
-; ltcd.rawrpccert=
-
-
-[Litecoind]
-
-; The base directory that contains the node's data, logs, configuration file,
-; etc.
-; litecoind.dir=~/.litecoin
-
-; The host that your local litecoind daemon is listening on. By default, this
-; setting is assumed to be localhost with the default port for the current
-; network.
-; litecoind.rpchost=localhost
-
-; Username for RPC connections to litecoind. By default, lnd will attempt to
-; automatically obtain the credentials, so this likely won't need to be set
-; (other than for a remote litecoind instance).
-; litecoind.rpcuser=kek
-
-; Password for RPC connections to litecoind. By default, lnd will attempt to
-; automatically obtain the credentials, so this likely won't need to be set
-; (other than for a remote litecoind instance).
-; litecoind.rpcpass=kek
-
-; ZMQ socket which sends rawblock and rawtx notifications from litecoind. By
-; default, lnd will attempt to automatically obtain this information, so this
-; likely won't need to be set (other than for a remote litecoind instance).
-; litecoind.zmqpubrawblock=tcp://127.0.0.1:28332
-; litecoind.zmqpubrawtx=tcp://127.0.0.1:28333
-
-; Fee estimate mode for litecoind. It must be either "ECONOMICAL" or "CONSERVATIVE".
-; If unset, the default value is "CONSERVATIVE".
-; litecoind.estimatemode=CONSERVATIVE
-
-; The maximum number of peers lnd will choose from the backend node to retrieve
-; pruned blocks from. This only applies to pruned nodes.
-; litecoind.pruned-node-max-peers=4
-
 
 [autopilot]
 
 ; If the autopilot agent should be active or not. The autopilot agent will
 ; attempt to automatically open up channels to put your node in an advantageous
 ; position within the network graph.
-; autopilot.active=true
+; autopilot.active=false
 
 ; The maximum number of channels that should be created.
 ; autopilot.maxchannels=5
@@ -819,49 +854,57 @@ litecoin.node=ltcd
 ; amount of attempted channels will still respect the maxchannels param.
 ; autopilot.allocation=0.6
 
-; Heuristic to activate, and the weight to give it during scoring. (default:
-; top_centrality:1)
-; autopilot.heuristic=preferential:1
+; Heuristic to activate, and the weight to give it during scoring. 
+; Default:
+;   autopilot.heuristic={top_centrality:1}
+; Example:
+;   autopilot.heuristic={preferential:1}
 
-; The smallest channel that the autopilot agent should create (default: 20000)
+; The smallest channel that the autopilot agent should create 
 ; autopilot.minchansize=20000
 
-; The largest channel that the autopilot agent should create (default: 16777215)
-; autopilot.maxchansize=20000
+; The largest channel that the autopilot agent should create 
+; autopilot.maxchansize=16777215
 
 ; Whether the channels created by the autopilot agent should be private or not.
 ; Private channels won't be announced to the network.
-; autopilot.private=true
+; autopilot.private=false
 
 ; The minimum number of confirmations each of your inputs in funding transactions
-; created by the autopilot agent must have. (default: 1)
-; autopilot.minconfs=2
+; created by the autopilot agent must have. 
+; autopilot.minconfs=1
 
-; The confirmation target (in blocks) for channels opened by autopilot. (default:
-; 3)
-; autopilot.conftarget=2
+; The confirmation target (in blocks) for channels opened by autopilot.
+; autopilot.conftarget=3
 
 
 [tor]
-; Allow outbound and inbound connections to be routed through Tor
-; tor.active=true
+
+; Allow outbound and inbound connections to be routed through Tor.
+; tor.active=false
 
 ; Allow the node to connect to non-onion services directly via clearnet. This
 ; allows the node operator to use direct connections to peers not running behind
 ; Tor, thus allowing lower latency and better connection stability.
 ; WARNING: This option will reveal the source IP address of the node, and should
 ; be used only if privacy is not a concern.
-; tor.skip-proxy-for-clearnet-targets=true
+; tor.skip-proxy-for-clearnet-targets=false
 
 ; The port that Tor's exposed SOCKS5 proxy is listening on. Using Tor allows
 ; outbound-only connections (listening will be disabled) -- NOTE port must be
-; between 1024 and 65535
-; tor.socks=9050
+; between 1024 and 65535.
+; Default:
+;   tor.socks=localhost:9050
+; Example:
+;   tor.socks=9050
 
 ; The DNS server as IP:PORT that Tor will use for SRV queries - NOTE must have
 ; TCP resolution enabled. The current active DNS server for Testnet listening is
-; nodes.lightning.directory
-; tor.dns=nodes.lightning.directory
+; nodes.lightning.directory.
+; Default:
+;   tor.dns=soa.nodes.lightning.directory:53
+; Example:
+;   tor.dns=nodes.lightning.directory
 
 ; Enable Tor stream isolation by randomizing user credentials for each
 ; connection. With this mode active, each connection will use a new circuit.
@@ -870,41 +913,55 @@ litecoin.node=ltcd
 ;
 ; This option may not be used while direct connections are enabled, since direct
 ; connections compromise source IP privacy by default.
-; tor.streamisolation=true
+; tor.streamisolation=false
 
-; The host:port that Tor is listening on for Tor control connections (default:
-; localhost:9051)
-; tor.control=localhost:9091
+; The host:port that Tor is listening on for Tor control connections.
+; tor.control=localhost:9051
 
-; IP address that Tor should use as the target of the hidden service
+; IP address that Tor should use as the target of the hidden service.
 ; tor.targetipaddress=
 
 ; The password used to arrive at the HashedControlPassword for the control port.
 ; If provided, the HASHEDPASSWORD authentication method will be used instead of
 ; the SAFECOOKIE one.
-; tor.password=plsdonthackme
+; Default:
+;   tor.password=
+; Example:
+;   tor.password=plsdonthackme
 
-; Automatically set up a v2 onion service to listen for inbound connections
-; tor.v2=true
+; Automatically set up a v2 onion service to listen for inbound connections.
+; tor.v2=false
 
-; Automatically set up a v3 onion service to listen for inbound connections
-; tor.v3=true
+; Automatically set up a v3 onion service to listen for inbound connections.
+; tor.v3=false
 
-; The path to the private key of the onion service being created
-; tor.privatekeypath=/path/to/torkey
+; The path to the private key of the onion service being created.
+; Default:
+;   tor.privatekeypath=
+; Example:
+;   tor.privatekeypath=/path/to/torkey
 
-;The path to the private key of the watchtower onion service being created
-; tor.watchtowerkeypath=/other/path/
+; The path to the private key of the watchtower onion service being created.
+; Default:
+;   tor.watchtowerkeypath=
+; Example:
+;   tor.watchtowerkeypath=/other/path/
+
+; Instructs lnd to encrypt the private key using the wallet's seed.
+; tor.encryptkey=false
 
 
 [watchtower]
 
 ; Enable integrated watchtower listening on :9911 by default.
-; watchtower.active=true
+; watchtower.active=false
 
 ; Specify the interfaces to listen on for watchtower client connections. One
 ; listen address per line. If no port is specified the default port of 9911 will
 ; be added implicitly.
+; Default:
+;   watchtower.listen=
+; Example (option can be specified multiple times):
 ; All ipv4 on port 9911:
 ;   watchtower.listen=0.0.0.0:9911
 ; On all ipv4 interfaces on port 9911 and ipv6 localhost port 9912:
@@ -915,15 +972,22 @@ litecoin.node=ltcd
 ; not have any behavioral changes to the tower or enable any sort of discovery,
 ; however it will make the full URI (pubkey@host:port) available via
 ; WatchtowerRPC.GetInfo and `lncli tower info`.
-; watchtower.externalip=1.2.3.4
+; Default:
+;   watchtower.externalip=
+; Example:
+;   watchtower.externalip=1.2.3.4
 
 ; Configure the default watchtower data directory. The default directory is
 ; data/watchtower relative to the chosen lnddir. This can be useful if one needs
-; to move the database to a separate volume with more storage. In the example
-; below, the database will be stored at:
-;   /path/to/towerdir/bitcoin/<network>/watchtower.db.
-; watchtower.towerdir=/path/to/towerdir
+; to move the database to a separate volume with more storage. 
+; Default:
+;   watchtower.towerdir=~/.lnd/data/watchtower
+; Example:
+;   watchtower.towerdir=/path/to/towerdir
 
+;   In this example, the database will be stored at: 
+;   /path/to/towerdir/bitcoin/<network>/watchtower.db
+    
 ; Duration the watchtower server will wait for messages to be received before
 ; hanging up on client connections.
 ; watchtower.readtimeout=15s
@@ -937,18 +1001,27 @@ litecoin.node=ltcd
 
 ; Activate Watchtower Client. To get more information or configure watchtowers
 ; run `lncli wtclient -h`.
-; wtclient.active=true
+; wtclient.active=false
 
 ; Specify the fee rate with which justice transactions will be signed. This fee
 ; rate should be chosen as a maximum fee rate one is willing to pay in order to
 ; sweep funds if a breach occurs while being offline. The fee rate should be
-; specified in sat/byte, the default is 10 sat/byte.
+; specified in sat/vbyte.
 ; wtclient.sweep-fee-rate=10
 
-; (Deprecated) Specifies the URIs of private watchtowers to use in backing up
-; revoked states. URIs must be of the form <pubkey>@<addr>. Only 1 URI is
-; supported at this time, if none are provided the tower will not be enabled.
-; wtclient.private-tower-uris=
+; The range over which to choose a random number of blocks to wait after the
+; last channel of a session is closed before sending the DeleteSession message
+; to the tower server. Note that setting this to a lower value will result in
+; faster session cleanup _but_ that this comes along with reduced privacy from
+; the tower server.
+; wtclient.session-close-range=288
+
+; The maximum number of updates to include in a tower session.
+; wtclient.max-updates=1024
+
+; The maximum number of back-up tasks that should be queued in memory before
+; overflowing to disk.
+; wtclient.max-tasks-in-mem-queue=2000
 
 
 [healthcheck]
@@ -959,11 +1032,11 @@ litecoin.node=ltcd
 
 ; The amount of time we allow a call to our chain backend to take before we fail
 ; the attempt. This value must be >= 1s.
-; healthcheck.chainbackend.timeout=10s
+; healthcheck.chainbackend.timeout=30s
 
 ; The amount of time we should backoff between failed attempts to query chain
 ; backend. This value must be >= 1s.
-; healthcheck.chainbackend.backoff=30s
+; healthcheck.chainbackend.backoff=2m
 
 ; The amount of time we should wait between chain backend health checks. This
 ; value must be >= 1m.
@@ -974,7 +1047,10 @@ litecoin.node=ltcd
 
 ; The number of times we should attempt to query our available disk space before
 ; gracefully shutting down. Set this value to 0 to disable this health check.
-; healthcheck.diskspace.attempts=2
+; Default:
+;   healthcheck.diskspace.attempts=0
+; Example:
+;   healthcheck.diskspace.attempts=2
 
 ; The amount of time we allow a query for our available disk space to take
 ; before we fail the attempt. This value must be >= 1s.
@@ -986,11 +1062,14 @@ litecoin.node=ltcd
 
 ; The amount of time we should wait between disk space health checks. This
 ; value must be >= 1m.
-; healthcheck.diskspace.interval=6h
+; healthcheck.diskspace.interval=12h
 
 ; The number of times we should attempt to check for certificate expiration before
 ; gracefully shutting down. Set this value to 0 to disable this health check.
-; healthcheck.tls.attempts=2
+; Default:
+;   healthcheck.tls.attempts=
+; Example:
+;   healthcheck.tls.attempts=2
 
 ; The amount of time we allow a query for certificate expiration to take
 ; before we fail the attempt. This value must be >= 1s.
@@ -1006,15 +1085,19 @@ litecoin.node=ltcd
 
 ; The number of times we should attempt to check our tor connection before
 ; gracefully shutting down. Set this value to 0 to disable this health check.
-; healthcheck.torconnection.attempts=3
+; Default:
+;   healthcheck.torconnection.attempts=
+; Example:
+;   healthcheck.torconnection.attempts=3
 
-; The amount of time we allow a call to our tor connection to take before we 
+; The amount of time we allow a call to our tor connection to take before we
 ; fail the attempt. This value must be >= 1s.
-; healthcheck.torconnection.timeout=10s
+; Default:
+;   healthcheck.torconnection.timeout=5s
 
-; The amount of time we should backoff between failed attempts to check tor 
+; The amount of time we should backoff between failed attempts to check tor
 ; connection. This value must be >= 1s.
-; healthcheck.torconnection.backoff=30s
+; healthcheck.torconnection.backoff=1m
 
 ; The amount of time we should wait between tor connection health checks. This
 ; value must be >= 1m.
@@ -1041,171 +1124,274 @@ litecoin.node=ltcd
 [signrpc]
 
 ; Path to the signer macaroon.
-; signrpc.signermacaroonpath=~/.lnd/data/chain/bitcoin/simnet/signer.macaroon
+; Default:
+;   signrpc.signermacaroonpath=~/.lnd/data/chain/bitcoin/${network}/signer.macaroon
+; Example:
+;   signrpc.signermacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/signer.macaroon
 
 
 [walletrpc]
 
 ; Path to the wallet kit macaroon.
-; walletrpc.walletkitmacaroonpath=~/.lnd/data/chain/bitcoin/simnet/walletkit.macaroon
+; Default:
+;   walletrpc.walletkitmacaroonpath=~/.lnd/data/chain/bitcoin/${network}/walletkit.macaroon
+; Example:
+;   walletrpc.walletkitmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/walletkit.macaroon
 
 
 [chainrpc]
 
 ; Path to the chain notifier macaroon.
-; chainrpc.notifiermacaroonpath=~/.lnd/data/chain/bitcoin/simnet/chainnotifier.macaroon
+; Default:
+;   chainrpc.notifiermacaroonpath=~/.lnd/data/chain/bitcoin/${network}/chainnotifier.macaroon
+; Example:
+;   chainrpc.notifiermacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/chainnotifier.macaroon
 
 
 [routerrpc]
 
-; Minimum required route success probability to attempt the payment (default:
-; 0.01)
-; routerrpc.minrtprob=1
+; Probability estimator used for pathfinding. Two estimators are availabe:
+; apriori and bimodal.
+; Note that the bimodal estimator is experimental.
+; Default:
+;   routerrpc.estimator=apriori
+; Example:
+;   routerrpc.estimator=bimodal
 
-; Assumed success probability of a hop in a route when no other information is
-; available. (default: 0.6)
-; routerrpc.apriorihopprob=0.2
+; Minimum required route success probability to attempt the payment.
+; routerrpc.minrtprob=0.01
 
-; Weight of the a priori probability in success probability estimation. Valid
-; values are in [0, 1]. (default: 0.5)
-; routerrpc.aprioriweight=0.3
+; The maximum number of payment results that are held on disk by mission control.
+; routerrpc.maxmchistory=1000
 
-; Defines the duration after which a penalized node or channel is back at 50%
-; probability (default: 1h0m0s)
-; routerrpc.penaltyhalflife=2h
+; The time interval with which the MC store state is flushed to the database.
+; routerrpc.mcflushinterval=1s
 
-; The (virtual) fixed cost in sats of a failed payment attempt (default: 100)
-; routerrpc.attemptcost=90
+; Path to the router macaroon.
+; Default:
+;   routerrpc.routermacaroonpath=~/.lnd/data/chain/bitcoin/${network}/router.macaroon
+; Example:
+;   routerrpc.routermacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/router.macaroon
+
+; The (virtual) fixed cost in sats of a failed payment attempt .
+; routerrpc.attemptcost=100
 
 ; The (virtual) proportional cost in ppm of the total amount of a failed payment
-; attempt (default: 1000)
-; routerrpc.attemptcostppm=900
+; attempt.
+; routerrpc.attemptcostppm=1000
 
-; The maximum number of payment results that are held on disk by mission control
-; (default: 1000)
-; routerrpc.maxmchistory=900
+; Assumed success probability of a hop in a route when no other information is
+; available. 
+; routerrpc.apriori.hopprob=0.6
 
-; The time interval with which the MC store state is flushed to the DB.
-; routerrpc.mcflushinterval=1m
+; Weight of the a priori probability in success probability estimation. Valid
+; values are in [0, 1]. 
+; routerrpc.apriori.weight=0.5
 
-; Path to the router macaroon
-; routerrpc.routermacaroonpath=~/.lnd/data/chain/bitcoin/simnet/router.macaroon
+; Defines the duration after which a penalized node or channel is back at 50%
+; probability.
+; routerrpc.apriori.penaltyhalflife=1h
+
+; Defines the fraction of channels' capacities that is considered liquid in
+; pathfinding, a value between [0.75-1.0]. A value of 1.0 disables this
+; feature. 
+; routerrpc.apriori.capacityfraction=0.9999
+
+; Describes the scale over which channels still have some liquidity left on
+; both channel ends. A very low value (compared to typical channel capacities)
+; means that we assume unbalanced channels, a very high value means randomly
+; balanced channels. Value in msat. 
+; routerrpc.bimodal.scale=300000000
+
+; Defines how strongly non-routed channels of forwarders should be taken into
+; account for probability estimation. A weight of zero disables this feature.
+; Valid values are in [0, 1]. 
+; routerrpc.bimodal.nodeweight=0.2
+
+; Defines the information decay of knowledge about previous successes and
+; failures in channels. 
+; routerrpc.bimodal.decaytime=168h
 
 
 [workers]
 
 ; Maximum number of concurrent read pool workers. This number should be
-; proportional to the number of peers. (default: 100)
-; workers.read=200
+; proportional to the number of peers. 
+; workers.read=100
 
 ; Maximum number of concurrent write pool workers. This number should be
-; proportional to the number of CPUs on the host. (default: 8)
+; proportional to the number of CPUs on the host. 
 ; workers.write=8
 
 ; Maximum number of concurrent sig pool workers. This number should be
-; proportional to the number of CPUs on the host. (default: 8)
-; workers.sig=4
+; proportional to the number of CPUs on the host. 
+; workers.sig=8
 
 
 [caches]
 
 ; Maximum number of entries contained in the reject cache, which is used to speed
 ; up filtering of new channel announcements and channel updates from peers. Each
-; entry requires 25 bytes. (default: 50000)
-; caches.reject-cache-size=900000
+; entry requires 25 bytes. 
+; caches.reject-cache-size=50000
 
 ; Maximum number of entries contained in the channel cache, which is used to
 ; reduce memory allocations from gossip queries from peers. Each entry requires
-; roughly 2Kb. (default: 20000)
-; caches.channel-cache-size=9000000
+; roughly 2Kb. 
+; caches.channel-cache-size=20000
 
 ; The duration that the response to DescribeGraph should be cached for. Setting
-; the value to zero disables the cache. (default: 1m)
-; caches.rpc-graph-cache-duration=10m
+; the value to zero disables the cache. 
+; Default:
+;   caches.rpc-graph-cache-duration=
+; Example:
+;   caches.rpc-graph-cache-duration=10m
 
 
 [protocol]
 
 ; If set, then lnd will create and accept requests for channels larger than 0.16
 ; BTC
-; protocol.wumbo-channels=true
+; protocol.wumbo-channels=false
 
 ; Set to disable support for anchor commitments. If not set, lnd will use anchor
 ; channels by default if the remote channel party supports them. Note that lnd
 ; will require 1 UTXO to be reserved for this channel type if it is enabled.
 ; (Deprecates the previous "protocol.anchors" setting.)
-; protocol.no-anchors=true
+; protocol.no-anchors=false
 
 ; Set to disable support for script enforced lease channel commitments. If not
 ; set, lnd will accept these channels by default if the remote channel party
 ; proposes them. Note that lnd will require 1 UTXO to be reserved for this
 ; channel type if it is enabled.
-; protocol.no-script-enforced-lease=true
+; protocol.no-script-enforced-lease=false
 
+; Set to enable support for option_scid_alias channels, which can be referred
+; to by an alias instead of the confirmed ShortChannelID. Additionally, is
+; needed to open zero-conf channels.
+; protocol.option-scid-alias=false
+
+; Set to enable support for zero-conf channels. This requires the
+; option-scid-alias flag to also be set.
+; protocol.zero-conf=false
+
+; Set to disable support for using P2TR addresses (and beyond) for co-op
+; closing.
+; protocol.no-any-segwit=false
+
+
+; Set to enable support for the experimental taproot channel type.
+; protocol.simple-taproot-chans=false
 
 [db]
 
 ; The selected database backend. The current default backend is "bolt". lnd
-; also has experimental support for etcd, a replicated backend.
+; also has experimental support for etcd, a replicated backend, postgres and
+; sqlite.
 ; db.backend=bolt
 
 ; The maximum interval the graph database will wait between attempting to flush
-; a batch of modifications to disk. Defaults to 500 milliseconds.
+; a batch of modifications to disk.
 ; db.batch-commit-interval=500ms
 
 ; Don't use the in-memory graph cache for path finding. Much slower but uses
 ; less RAM. Can only be used with a bolt database backend.
-; db.no-graph-cache=true
+; db.no-graph-cache=false
+
+; Specify whether the optional migration for pruning old revocation logs
+; should be applied. This migration will only save disk space if there are open
+; channels prior to lnd@v0.15.0.
+; db.prune-revocation=false
+
+; If set to true, then the to-local and to-remote output amount data of revoked
+; commitment transactions will not be stored in the revocation log. Note that
+; this flag can only be set if --wtclient.active is not set. It is not
+; recommended to set this flag if you plan on ever setting wtclient.active in
+; the future.
+; db.no-rev-log-amt-data=false
+
 
 [etcd]
 
 ; Etcd database host.
-; db.etcd.host=localhost:2379
+; Default:
+;   db.etcd.host=
+; Example:
+;   db.etcd.host=localhost:2379
 
 ; Etcd database user.
-; db.etcd.user=userscopedforlnd
+; Default:
+;   db.etcd.user=
+; Example:
+;   db.etcd.user=userscopedforlnd
 
 ; Password for the database user.
-; db.etcd.pass=longandsekrit
+; Default:
+;   db.etcd.pass=
+; Example:
+;   db.etcd.pass=longandsekrit
 
 ; Etcd namespace to use.
-; db.etcd.namespace=lnd
+; Default:
+;   db.etcd.namespace=
+; Example:
+;   db.etcd.namespace=lnd
 
 ; Whether to disable the use of TLS for etcd.
 ; db.etcd.disabletls=false
 
 ; Path to the TLS certificate for etcd RPC.
-; db.etcd.cert_file=/key/path
+; Default:
+;   db.etcd.cert_file=
+; Example:
+;   db.etcd.cert_file=/key/path
 
 ; Path to the TLS private key for etcd RPC.
-; db.etcd.key_file=/a/path
+; Default:
+;   db.etcd.key_file=
+; Example:
+;   db.etcd.key_file=/a/path
 
 ; Whether we intend to skip TLS verification
-; db.etcd.insecure_skip_verify=true
+; db.etcd.insecure_skip_verify=false
 
 ; Whether to collect etcd commit stats.
-; db.etcd.collect_stats=true
+; db.etcd.collect_stats=false
 
 ; If set LND will use an embedded etcd instance instead of the external one.
 ; Useful for testing.
 ; db.etcd.embedded=false
 
 ; If non zero, LND will use this as client port for the embedded etcd instance.
-; db.etcd.embedded_client_port=1234
+; Default:
+;   db.etcd.embedded_client_port=
+; Example:
+;   db.etcd.embedded_client_port=1234
 
 ; If non zero, LND will use this as peer port for the embedded etcd instance.
-; db.etcd.embedded_peer_port=1235
+; Default:
+;   db.etcd.embedded_peer_port=
+; Example:
+;   db.etcd.embedded_peer_port=1235
 
 ; If set the embedded etcd instance will log to the specified file. Useful when
 ; testing with embedded etcd.
-; db.etcd.embedded_log_file=/path/etcd.log
+; Default:
+;   db.etcd.embedded_log_file=
+; Example:
+;   db.etcd.embedded_log_file=/path/etcd.log
 
 ; The maximum message size in bytes that we may send to etcd. Defaults to 32 MiB.
 ; db.etcd.max_msg_size=33554432
 
+
 [postgres]
+
 ; Postgres connection string.
-; db.postgres.dsn=postgres://lnd:lnd@localhost:45432/lnd?sslmode=disable
+; Default:
+;   db.postgres.dsn=
+; Example:
+;   db.postgres.dsn=postgres://lnd:lnd@localhost:45432/lnd?sslmode=disable
 
 ; Postgres connection timeout. Valid time units are {s, m, h}. Set to zero to
 ; disable.
@@ -1214,48 +1400,84 @@ litecoin.node=ltcd
 ; Postgres maximum number of connections. Set to zero for unlimited. It is
 ; recommended to set a limit that is below the server connection limit.
 ; Otherwise errors may occur in lnd under high-load conditions.
-; db.postgres.maxconnections=
+; Default:
+;   db.postgres.maxconnections=50
+; Example:
+;   db.postgres.maxconnections=
+
+
+[sqlite]
+
+; Sqlite connection timeout. Valid time units are {s, m, h}. Set to zero to
+; disable.
+; Default:
+;   db.sqlite.timeout=
+; Example:
+;   db.sqlite.timeout=0s
+
+; Maximum number of connections to the sqlite db. Set to zero for unlimited.
+; db.sqlite.maxconnections=2
+
+; The maximum amount of time to wait to execute a query if the db is locked.
+; db.sqlite.busytimeout=5s
+
+; Raw pragma option pairs to be used when opening the sqlite db. The flag
+; can be specified multiple times to set multiple options.
+; Default:
+;   db.sqlite.pragmaoptions=
+; Example (option can be specified multiple times):
+;   db.sqlite.pragmaoptions=auto_vacuum=incremental
+;   db.sqlite.pragmaoptions=temp_store=MEMORY
+
 
 [bolt]
 
-; If true, prevents the database from syncing its freelist to disk. 
-; db.bolt.nofreelistsync=1
-
+; If true, prevents the database from syncing its freelist to disk.
+; db.bolt.nofreelistsync=false
+;
 ; Whether the databases used within lnd should automatically be compacted on
 ; every startup (and if the database has the configured minimum age). This is
 ; disabled by default because it requires additional disk space to be available
 ; during the compaction that is freed afterwards. In general compaction leads to
 ; smaller database files.
-; db.bolt.auto-compact=true
+; db.bolt.auto-compact=false
 
 ; How long ago the last compaction of a database file must be for it to be
 ; considered for auto compaction again. Can be set to 0 to compact on every
-; startup. (default: 168h)
-; db.bolt.auto-compact-min-age=0
+; startup. 
+; Default:
+;   db.bolt.auto-compact-min-age=168h
+; Example:
+;   db.bolt.auto-compact-min-age=0
 
 ; Specify the timeout to be used when opening the database.
-; db.bolt.dbtimeout=60s
+; db.bolt.dbtimeout=1m
 
 
 [cluster]
 
 ; Enables leader election if set.
-; cluster.enable-leader-election=true
+; cluster.enable-leader-election=false
 
-; Leader elector to use. Valid values: "etcd" (default).
+; Leader elector to use. Valid values: "etcd".
 ; cluster.leader-elector=etcd
 
-; Election key prefix when using etcd leader elector. Defaults to "/leader/".
+; Election key prefix when using etcd leader elector.
 ; cluster.etcd-election-prefix=/leader/
 
 ; Identifier for this node inside the cluster (used in leader election).
 ; Defaults to the hostname.
 ; cluster.id=example.com
 
+; The session TTL in seconds after which a new leader is elected if the old
+; leader is shut down, crashed or becomes unreachable.
+; cluster.leader-session-ttl=60
+
+
 [rpcmiddleware]
 
 ; Enable the RPC middleware interceptor functionality.
-; rpcmiddleware.enable=true
+; rpcmiddleware.enable=false
 
 ; Time after which a RPC middleware intercept request will time out and return
 ; an error if it hasn't yet received a response.
@@ -1264,8 +1486,12 @@ litecoin.node=ltcd
 ; Add the named middleware to the list of mandatory middlewares. All RPC
 ; requests are blocked/denied if any of the mandatory middlewares is not
 ; registered. Can be specified multiple times.
-; rpcmiddleware.addmandatory=my-example-middleware
-; rpcmiddleware.addmandatory=other-mandatory-middleware
+; Default:
+;   rpcmiddleware.addmandatory=
+; Example:
+;   rpcmiddleware.addmandatory=my-example-middleware
+;   rpcmiddleware.addmandatory=other-mandatory-middleware
+
 
 [remotesigner]
 
@@ -1273,16 +1499,25 @@ litecoin.node=ltcd
 ; Only recommended if local wallet is initialized as watch-only. Remote signer
 ; must use the same seed/root key as the local watch-only wallet but must have
 ; private keys.
-; remotesigner.enable=true
+; remotesigner.enable=false
 
 ; The remote signer's RPC host:port.
-; remotesigner.rpchost=remote.signer.lnd.host:10009
+; Default:
+;   remotesigner.rpchost=
+; Example:
+;   remotesigner.rpchost=remote.signer.lnd.host:10009
 
 ; The macaroon to use for authenticating with the remote signer.
-; remotesigner.macaroonpath=/path/to/remote/signer/admin.macaroon
+; Default:
+;   remotesigner.macaroonpath=
+; Example:
+;   remotesigner.macaroonpath=/path/to/remote/signer/admin.macaroon
 
 ; The TLS certificate to use for establishing the remote signer's identity.
-; remotesigner.tlscertpath=/path/to/remote/signer/tls.cert
+; Default:
+;   remotesigner.tlscertpath=
+; Example:
+;   remotesigner.tlscertpath=/path/to/remote/signer/tls.cert
 
 ; The timeout for connecting to and signing requests with the remote signer.
 ; Valid time units are {s, m, h}.
@@ -1293,7 +1528,8 @@ litecoin.node=ltcd
 ; WARNING: This cannot be undone! Make sure you have backed up your seed before
 ; you use this flag! All private keys will be purged from the wallet after first
 ; unlock with this flag!
-; remotesigner.migrate-wallet-to-watch-only=true
+; remotesigner.migrate-wallet-to-watch-only=false
+
 
 [gossip]
 
@@ -1310,50 +1546,96 @@ litecoin.node=ltcd
 ;
 ; Each value should be a hex-encoded pubkey of the pinned peer. Multiple pinned
 ; peers can be specified by setting multiple flags/fields in the config.
-; gossip.pinned-syncers=pubkey1
-; gossip.pinned-syncers=pubkey2
+; Default:
+;   gossip.pinned-syncers=
+; Example:
+;   gossip.pinned-syncers=pubkey1
+;   gossip.pinned-syncers=pubkey2
 
 ; The maximum number of updates for a specific channel and direction that lnd
 ; will accept over the channel update interval.
 ; gossip.max-channel-update-burst=10
 ; gossip.channel-update-interval=1m
 
+; The duration to wait before sending the next announcement batch if there are
+; multiple. Use a small value if there are a lot announcements and they need to
+; be broadcast quickly.
+; gossip.sub-batch-delay=5s
+
 
 [invoices]
 
-; If a hold invoice has accepted htlcs that reach their expiry height and are 
+; If a hold invoice has accepted htlcs that reach their expiry height and are
 ; not timed out, the channel holding the htlc is force closed to resolve the
-; invoice's htlcs. To prevent force closes, lnd automatically cancels these 
+; invoice's htlcs. To prevent force closes, lnd automatically cancels these
 ; invoices before they reach their expiry height.
 ;
-; Hold expiry delta describes the number of blocks before expiry that these 
+; Hold expiry delta describes the number of blocks before expiry that these
 ; invoices should be canceled. Setting this value to 0 will ensure that hold
 ; invoices can be settled right up until their expiry height, but will result
 ; in the channel they are on being force closed if they are not resolved before
 ; expiry.
-; 
-; Lnd goes to chain before the expiry for a htlc is reached so that there is 
-; time to resolve it on chain. This value needs to be greater than the 
+;
+; Lnd goes to chain before the expiry for a htlc is reached so that there is
+; time to resolve it on chain. This value needs to be greater than the
 ; DefaultIncomingBroadcastDelta set by lnd, otherwise the channel will be force
 ; closed anyway. A warning will be logged on startup if this value is not large
 ; enough to prevent force closes.
-;
-; invoices.holdexpirydelta=15
+; invoices.holdexpirydelta=12
 
 
 [routing]
 
-; DEPRECATED: This is now turned on by default for Neutrino (use 
+; DEPRECATED: This is now turned on by default for Neutrino (use
 ; neutrino.validatechannels=true to turn off) and shouldn't be used for any
 ; other backend!
-; routing.assumechanvalid=true
+; routing.assumechanvalid=false
 
 ; If set to true, then we'll prune a channel if only a single edge is seen as
 ; being stale. This results in a more compact channel graph, and also is helpful
 ; for neutrino nodes as it means they'll only maintain edges where both nodes are
 ; seen as being live from it's PoV.
-; routing.strictgraphpruning=true
+; routing.strictgraphpruning=false
+
+
+[sweeper]
+
+; Duration of the sweep batch window. The sweep is held back during the batch
+; window to allow more inputs to be added and thereby lower the fee per input.
+; sweeper.batchwindowduration=30s
+
+; The max fee rate in sat/vb which can be used when sweeping funds. Setting
+; this value too low can result in transactions not being confirmed in time,
+; causing HTLCs to expire hence potentially losing funds.
+; sweeper.maxfeerate=1000
+
+
+[htlcswitch]
+
+; The timeout value when delivering HTLCs to a channel link. Setting this value
+; too small will result in local payment failures if large number of payments
+; are sent over a short period.
+; htlcswitch.mailboxdeliverytimeout=1m
+
+
+[grpc]
+
+; How long the server waits on a gRPC stream with no activity before pinging the
+; client. Valid time units are {s, m, h}.
+; grpc.server-ping-time=1m
+
+; How long the server waits for the response from the client for the keepalive
+; ping response. Valid time units are {s, m, h}.
+; grpc.server-ping-timeout=20s
+
+; The minimum amount of time the client should wait before sending a keepalive
+; ping. Valid time units are {s, m, h}.
+; grpc.client-ping-min-wait=5s
+
+; If true, the server allows keepalive pings from the client even when there are
+; no active gRPC streams. This might be useful to keep the underlying HTTP/2
+; connection open for future requests.
+; grpc.client-allow-ping-without-stream=false
+
 ```
 {% endcode %}
-
-{% embed url="https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf" %}

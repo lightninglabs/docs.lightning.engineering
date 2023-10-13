@@ -10,7 +10,7 @@ description: >-
 
 Use `tapcli` to begin minting your first asset.
 
-`tapcli assets mint --type normal --name beefbux --supply 100 --meta_bytes "fantastic money" --enable_emission true`
+`tapcli assets mint --type normal --name beefbux --supply 100 --meta_bytes` 66616e746173746963206d6f6e6579 `--enable_emission`
 
 This will add your asset to a minting queue called a batch, which allows multiple assets to be created in a single minting transaction. This saves fees and conserves blockspace. To execute the batch and publish your mint transaction to the blockchain run:
 
@@ -22,40 +22,48 @@ Inspect the newly created asset(s) by calling the command
 
 ```json
     	{
-        	"version": 0,
-        	"asset_genesis": {
-            	"genesis_point": "a0a006debdb9d8bb9762342dab3f0a5025b1f4d18bfded996a51fc76f1c25adb:1",
-            	"name": "beefbux",
-            	"meta_hash": "04e552053fd4c8e2c01bc14cb9a0ce00f07d4ffdffff68fe455c70b934b22a43",
-            	"asset_id": "a40a503a04f6bd5a63a97201adfbf67fb3c9bc4edf5e6ef1017cda009d0d5a29",
-            	"output_index": 0,
-            	"version": 0
-        	},
-        	"asset_type": "NORMAL",
-        	"amount": "100",
-        	"lock_time": 0,
-        	"relative_lock_time": 0,
-        	"script_version": 0,
-        	"script_key": "027191bd1ae6004de4865f1ad4209d2bd5f9bbbb8f641e05ebe1527063444846d9",
-        	"script_key_is_local": true,
-        	"asset_group": {
-            	"raw_group_key": "02c2548cf34e093a1436410ad5f08ce89fbb5f66a709389108f9532c9ed190c5d7",
-            	"tweaked_group_key": "02c6ca1985ae9ef257af33bb5e3389f28e798711abcb5326d8f760fdeb90c387b5",
-            	"asset_id_sig": "92023dfda65e0f0dbff4c68fc9efad586273ac370ac95e86e46705d14cbc881207035b7f16f958c3e2778ff74ea6cd2fca72340e905fb815a230c2916710a867"
-        	},
-        	"chain_anchor": {
-            	"anchor_tx": "02000000000101db5ac2f176fc516a99edfd8bd1f4b125500a3fab2d346297bbd8b9bdde06a0a00100000000ffffffff02e803000000000000225120d46c97ab87c7bead688180be67928d879e7f0e6b9fa46442d8706ac1c079f64a71a72d0100000000225120f37da1318803e4a162dd070689f7141968fe49ec58915362554e0b5e816a92590140119970f27d6ce48b3dcdd6235b5283addacb93e764fc30294da574b0b24fd7b0199f6cbebf5492a1495791784db0af00b5f0a1a3a3dfd69be186770d37f06c5d00000000",
-            	"anchor_txid": "923991e16658f4720d0a347369005a1494166e12ddf692a1e67dbc14f9632544",
-            	"anchor_block_hash": "5dd19802ac50fee0b45fd288799601e05f47086335b56ebd0400000000000000",
-            	"anchor_outpoint": "923991e16658f4720d0a347369005a1494166e12ddf692a1e67dbc14f9632544:0",
-            	"internal_key": "033cd4127cd8bafce215cc43e9c0dc6dde7c8aed8d77f4b47a673c90b4b57c934a",
-            	"merkle_root": "eefd0b6a63a7cf25a4db7c4bea4383b4ec33ba461e15cbdaddca08c3f389e6e9",
-            	"tapscript_sibling": null
-        	},
-        	"prev_witnesses": [
-        	],
-        	"is_spent": false
-    	}
+    "assets":  [
+        {
+            "version":  "ASSET_VERSION_V0",
+            "asset_genesis":  {
+                "genesis_point":  "ac6af5ab4c9485146035efa17ff16a756129472f33faa650aa56548d03f217ca:1",
+                "name":  "beefbux",
+                "meta_hash":  "4f5dc2c98fa1ab3cd70f18a0a63e66bb823275a47d1da48f39cf468d2be3c791",
+                "asset_id":  "6ab81f9b6b72138bc77189ea4afeabcfdb8722d1d5485ddbefc7a344bd9884e6",
+                "output_index":  0,
+                "version":  0
+            },
+            "asset_type":  "NORMAL",
+            "amount":  "100",
+            "lock_time":  0,
+            "relative_lock_time":  0,
+            "script_version":  0,
+            "script_key":  "0282f621af104d54bf98482f7ca8a1fce4c79aeb7100d4d28c348fe3b39f1e8982",
+            "script_key_is_local":  true,
+            "asset_group":  {
+                "raw_group_key":  "02b397e289e828ea33ad15acb2253a7a0680e9b15e75c0315802ab7fdd465b3802",
+                "tweaked_group_key":  "02671c771a383a34ac8c1872f71323a745db2ad87171590f4edd682568e453e3b3",
+                "asset_witness":  "01401619352dfbc36d366cbbaefc016acac7c8934f0dc060dd9ea94bdc36247ed3ad8e95cb47a05602bc1ea2664af20d8aae8ad1affd0c661070e0157a5eb4dee92d"
+            },
+            "chain_anchor":  {
+                "anchor_tx":  "02000000000101ca17f2038d5456aa50a6fa332f472961756af17fa1ef35601485944cabf56aac0100000000ffffffff02e8030000000000002251209745b8b13de2f58ad27acc0eb34e3528519ed1ee080dc080e52d55855010339a50162d01000000002251205744757055959c6fc95f07e2a9d102f987082dc66bcbe487ac91185c4ea0b5950140155b2951a8fd27f5699927356c200aad40db593939179b5375721e069e93ca89f52b1c19e339b23b4445675b80bcacbfa742ff2a5c548702d1bc70eb0db392da00000000",
+                "anchor_txid":  "8bc4b17043b8d9165743accad55b8c8df6627b5d86341109f7f39a86eec07918",
+                "anchor_block_hash":  "0000000000000000000000000000000000000000000000000000000000000000",
+                "anchor_outpoint":  "8bc4b17043b8d9165743accad55b8c8df6627b5d86341109f7f39a86eec07918:0",
+                "internal_key":  "03e975be0d9ba76c29c31f141029c375ef3c2fe232de5cde5a2e7c99a0e1ba08b5",
+                "merkle_root":  "87acb4f74709381c82e90e0e8e95049fc705849ec2b28c9590537f32899e905f",
+                "tapscript_sibling":  "",
+                "block_height":  0
+            },
+            "prev_witnesses":  [],
+            "is_spent":  false,
+            "lease_owner":  "",
+            "lease_expiry":  "0",
+            "is_burn":  false
+        }
+    ]
+}
+
 ```
 
 The output of this command can be explained as follows:
@@ -77,17 +85,20 @@ The output of this command can be explained as follows:
 `asset_group`:\
 `raw_group_key`: If the asset belongs to an asset group, its key will be listed here\
 `tweaked_group_key`: The tweaked key is needed to later issue more assets of this group\
-`asset_id_sig`: The signature used to prove that this asset was issued by the owner of the group key\
+`asset_witness`: The witness (e.g. signature) used to prove that this asset was issued by the owner of the group key\
 `chain_anchor`:\
-`tx`: The raw minting transaction\
-`txid`: The hash of the minting transaction\
-`block_hash`: The hash of the block that the minting transaction was included in. This is set to zeros as the transaction is unconfirmed\
+`anchor_tx`: The raw minting transaction\
+`anchor_txid`: The hash of the minting transaction\
+`anchor_block_hash`: The hash of the block that the minting transaction was included in. This is set to zeros as the transaction is unconfirmed\
 `anchor_outpoint`: The outpoint on the bitcoin blockchain that holds the asset\
 `internal_key`: The Taproot key that holds the outpoint containing the asset\
 `merkle_root`: The merkle root of the tree that includes the asset\
 `tapscript_sibling`: The taproot leaf to the left or right of the leaf committing to the asset. It is used to calculate the merkle root\
 `prev_witnesses`: Signatures and data related to previous transfers of this asset\
-`is_spent`: Whether this asset has been spent
+`is_spent`: Whether this asset has been spent\
+`lease_owner`: Similar to leased UTXOs in LND, tapd allows specific UTXOs to be "held" for a certain amount of time, for example while waiting for signatures or channel opens. This prevents the UTXO from being accidentally spent by another process.\
+`lease_expiry`: When the UTXO becomes available again for spending.\
+`is_burn`: Whether the asset has been burned.
 
 ## Minting asset groups <a href="#docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63" id="docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63"></a>
 
@@ -109,30 +120,34 @@ Now we can check our groups with:
 
 ```json
 {
-	"groups": {
-    	"02c6ca1985ae9ef257af33bb5e3389f28e798711abcb5326d8f760fdeb90c387b5": {
-        	"assets": [
-            	{
-                	"id": "a40a503a04f6bd5a63a97201adfbf67fb3c9bc4edf5e6ef1017cda009d0d5a29",
-                	"amount": "100",
-                	"lock_time": 0,
-                	"relative_lock_time": 0,
-                	"tag": "beefbux",
-                	"meta_hash": "04e552053fd4c8e2c01bc14cb9a0ce00f07d4ffdffff68fe455c70b934b22a43",
-                	"type": "NORMAL"
-            	},
-            	{
-                	"id": "c4eec833fe1753d839557304d15d799596d3ae34de01bc80691251dfc386e30d",
-                	"amount": "100",
-                	"lock_time": 0,
-                	"relative_lock_time": 0,
-                	"tag": "beefbux",
-                	"meta_hash": "0000000000000000000000000000000000000000000000000000000000000000",
-                	"type": "NORMAL"
-            	}
-        	]
-    	}
+    "groups":  {
+        "02671c771a383a34ac8c1872f71323a745db2ad87171590f4edd682568e453e3b3":  {
+            "assets":  [
+                {
+                    "id":  "6ab81f9b6b72138bc77189ea4afeabcfdb8722d1d5485ddbefc7a344bd9884e6",
+                    "amount":  "100",
+                    "lock_time":  0,
+                    "relative_lock_time":  0,
+                    "tag":  "beefbux",
+                    "meta_hash":  "4f5dc2c98fa1ab3cd70f18a0a63e66bb823275a47d1da48f39cf468d2be3c791",
+                    "type":  "NORMAL",
+                    "version":  "ASSET_VERSION_V0"
+                },
+                {
+                    "id":  "9cfada48cd7df34e61c4a29230aaf9f37e44b5381639d7bed667cd2e60565392",
+                    "amount":  "100",
+                    "lock_time":  0,
+                    "relative_lock_time":  0,
+                    "tag":  "beefbux",
+                    "meta_hash":  "0000000000000000000000000000000000000000000000000000000000000000",
+                    "type":  "NORMAL",
+                    "version":  "ASSET_VERSION_V0"
+                }
+            ]
+        }
+    }
 }
+
 
 ```
 
@@ -140,23 +155,19 @@ Now we can check our groups with:
 
 Taproot Assets uses universes to communicate information about which assets exist and where in the blockchain they are anchored. A universe can be thought of as a virtual mempool, an explorer or a repository.
 
-Tapd bundles the software necessary to run a universe, allowing anyone to run a universe, or even connecting to others peer-to-peer. Typically, before requesting an asset transfer or creating a Taproot Asset address, the recipient would synchronize with a universe, either to obtain information about all assets in existence, a specific asset ID or group key.
+By default, your tapd instance will connect to a default universe. You can manually add additional universes to sync to and from, called a federation. You can see this connection with `tapcli universe federation list`.
 
-In the example below we are fetching the list of assets from a universe running on port 10029 on the same machine.
+If you would like to add a universe to this federation, you can do this with `tapcli universe federation add --universe_host universe.lightning.finance`
+
+You can also manually sync with any universe with:
 
 `tapcli universe sync --universe_host 127.0.0.1:10029`
 
-Upon successful sync, information about existing assets should be retrieved, alongside their issuance proofs. To push information about assets you created, you will need to add this universe to your local federation.
+Upon successful sync, information about existing assets should be retrieved, alongside their issuance proofs.
 
-## Running a universe and universe federations <a href="#docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f" id="docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f"></a>
+Newly minted assets are automatically synced to all universes in your local federation.
 
-Running a universe is as simple as running `tapd`. To run a universe, set your instance to listen on the RPC port (10029) and ensure this port is open on your machine. Being publicly reachable is not a requirement for a universe, however. Your universe may only serve resources on a private network, or be otherwise restricted.
 
-`tapd --rpclisten 0.0.0.0:10029`
-
-As a universe you may choose to synchronize yourself with other universes, called a federation. Each client defines their own federation, meaning a set of universes with which they periodically sync with and exchange information about newly created and transferred assets.
-
-`tapcli universe federation add --universe_host testnet.universe.lightning.finance`
 
 ## Generating Taproot Assets addresses <a href="#docs-internal-guid-2d861222-7fff-ef76-60b9-65367a4fd1b7" id="docs-internal-guid-2d861222-7fff-ef76-60b9-65367a4fd1b7"></a>
 
@@ -166,34 +177,38 @@ When generating a Taproot Assets address, the receiver will create their expecte
 
 To generate a Taproot Assets address requesting 21 beefbux, use the following command:
 
-tapcli addrs new --asset\_id 86b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2 --amt 21
+`tapcli2 addrs new --asset_id 6ab81f9b6b72138bc77189ea4afeabcfdb8722d1d5485ddbefc7a344bd9884e6 --amt 21`
 
 
 
 ```json
 {
-	"encoded": "taptb1qqqsqq3qs666sxcl6493w0ph32m843cgvzqryazfn0fa5urswjezyv2kjr3qgggzre78k5uky43x6pftrrwfsrd66kzx8k5dm0g3phh7d7y73yv36xlsvggzc05kyp6q4amtwv9u2r570uhn2qxrd5qdkgekcsfjku4kzgqpc9pqsqg466zcju",
-	"asset_id": "86b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2",
-	"asset_type": "NORMAL",
-	"amount": "21",
-	"group_key": null,
-	"script_key": "021e7c7b539625626d052b18dc980dbad58463da8ddbd110defe6f89e89191d1bf",
-	"internal_key": "02c3e9620740af76b730bc50e9e7f2f3500c36d00db2336c4132b72b612001c142",
-	"tapscript_sibling": null,
-	"taproot_output_key": "00b6f8a9312180dae841f4eef10a9e0ce3d95b5c23f7d7f516264d4ccfae8426"
+    "encoded":  "taptb1qqqsqqspqqzzq64cr7dkkusn30rhrz02ftl2hn7msu3dr42gthd7l3argj7e3p8xq5ssyecuwudrsw354jxpsuhhzv36w3wm9tv8zu2epa8d66p9drj98canqcssyksqefuaf788ch95089vqnsn8zx5q5sevsv6u9spk0wmzh30elkspqss8ngqlx2t9x96yffvy3wqekzhaewx3ml4k37yvg3s9vgdg069pgwxpgq32rpww4hxjan9wfek2unsvvaz7tm4de5hvetjwdjjumrfva58gmnfdenjuenfdeskucm98gcnqvpj8y3rh965",
+    "asset_id":  "6ab81f9b6b72138bc77189ea4afeabcfdb8722d1d5485ddbefc7a344bd9884e6",
+    "asset_type":  "NORMAL",
+    "amount":  "21",
+    "group_key":  "02671c771a383a34ac8c1872f71323a745db2ad87171590f4edd682568e453e3b3",
+    "script_key":  "025a00ca79d4f8e7c5cb479cac04e13388d4052196419ae1601b3ddb15e2fcfed0",
+    "internal_key":  "03cd00f994b298ba2252c245c0cd857ee5c68eff5b47c4622302b10d43f450a1c6",
+    "tapscript_sibling":  "",
+    "taproot_output_key":  "e2e79389a414c4bdf1d33dba5d472134ef85dd0674d4a644cb8f09c8e0dad606",
+    "proof_courier_addr":  "universerpc://universe.lightning.finance:10029",
+    "asset_version":  "ASSET_VERSION_V0"
 }
 
 ```
 
 `encoded`: The bech32 encoded Taproot Assets address.\
 `asset_id`: The asset ID of the asset that the address corresponds to.\
-`family_key`: If emission is enabled for an asset, its family key will appear here.\
 `asset_type`: Whether an asset is fungible, or a collectible.\
 `amount`: The requested amount of this asset.\
 `group_key`: If a key is set here, this asset is part of an asset group, meaning the issuer can expand its supply.\
 `script_key`: This key identifies the script that defines how an asset may be transferred.\
 `internal_key`: The key that holds the asset.\
-`taproot_output_key`: The key that is going to hold the Taproot output once it is received.
+`tapscript_sibing`: Used when sending assets to custom scripts.\
+`taproot_output_key`: The key that is going to hold the Taproot output once it is received.\
+`proof_courier_addr`: The mailbox over which the asset proofs are being delivered.\
+`asset_version`: The version of the asset.
 
 You’ll also be able to inspect this address again anytime with the command `tapcli addrs query`
 
@@ -201,131 +216,75 @@ You’ll also be able to inspect this address again anytime with the command `ta
 
 To send the asset, run the command below. The sender will then generate the appropriate Merkle trees for the recipient and their change outputs, sign the Taproot Assets transaction with their internal Taproot Assets key and publish the Bitcoin transaction.
 
-`tapcli assets send --addr taptb1qqqsqq3qs666sxcl6493w0ph32m843cgvzqryazfn0fa5urswjezyv2kjr3qgggzre78k5uky43x6pftrrwfsrd66kzx8k5dm0g3phh7d7y73yv36xlsvggzc05kyp6q4amtwv9u2r570uhn2qxrd5qdkgekcsfjku4kzgqpc9pqsqg466zcju`
+`tapcli assets send --addr taptb1qqqsqqspqqzzq64cr7dkkusn30rhrz02ftl2hn7msu3dr42gthd7l3argj7e3p8xq5ssyecuwudrsw354jxpsuhhzv36w3wm9tv8zu2epa8d66p9drj98canqcssyksqefuaf788ch95089vqnsn8zx5q5sevsv6u9spk0wmzh30elkspqss8ngqlx2t9x96yffvy3wqekzhaewx3ml4k37yvg3s9vgdg069pgwxpgq32rpww4hxjan9wfek2unsvvaz7tm4de5hvetjwdjjumrfva58gmnfdenjuenfdeskucm98gcnqvpj8y3rh965`
 
 ```json
 {
-	"transfer": {
-    	"transfer_timestamp": "1683332161",
-    	"anchor_tx_hash": "73d321500505fc795b0c479c3a6030ead15f2f73f43bef50a2479c6cc7d7bfbd",
-    	"anchor_tx_height_hint": 2431910,
-    	"anchor_tx_chain_fees": "256",
-    	"inputs": [
-        	{
-            	"anchor_point": "0698086338868634107ecfee79da1f0d09da16b355220363e92c729789d4099d:0",
-            	"asset_id": "86b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2",
-            	"script_key": "020f5ed7a45d9970a998c6f8283b10f3287f23b37c2ed489dd2fee9742e5364334",
-            	"amount": "58"
-        	}
-    	],
-    	"outputs": [
-        	{
-            	"anchor": {
-                	"outpoint": "bdbfd7c76c9c47a250ef3bf4732f5fd1ea30603a9c470c5b79fc05055021d373:0",
-                	"value": "1000",
-                	"internal_key": "027bcd8e0aa88b4394f4cb515c4625cf2cbef56355e780c8fab492e9f8ab68cd84",
-                	"tap_root": "4e13f7ac6e012b46dba9c482ca34d133f0cb7065d625a5fd68f4cd8e582c575c",
-                	"merkle_root": "4e13f7ac6e012b46dba9c482ca34d133f0cb7065d625a5fd68f4cd8e582c575c",
-                	"tapscript_sibling": null,
-                	"num_passive_assets": 0
-            	},
-            	"script_key": "02b1383908554974589b80923a400809d3537ed27555c9a7b17e21e937a1156f21",
-            	"script_key_is_local": true,
-            	"amount": "37",
-            	"new_proof_blob": "00249d09d48997722ce963032255b316da090d1fda79eecf7e103486863863089806000000000150000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000096e88000000000000000002fd018102000000000102fed28e57510897d40d8965fd057c66b2e291c87b2c3fdb7c59d1ecad9d3a5f430100000000ffffffff9d09d48997722ce963032255b316da090d1fda79eecf7e10348686386308980600000000000000000003e80300000000000022512020838d1e810846e74d45661ba16ca5edece1fb517a140a27b4b86744fbdfc19de80300000000000022512000b6f8a9312180dae841f4eef10a9e0ce3d95b5c23f7d7f516264d4ccfae8426f3c22d01000000001600146e4b35798e1d01f37e43132a2f253d4fd71ed96902483045022100c9c9d1c87f0b2933b1d78294b051b22e5142912981050e7bf4d3177c2f735ee30220107a0d7d8f24e16ef1ee985439412fbf1041d0545938811df4bfa1d0a332d99d01210341b2382ff83a137cc3de470dbbe8a3d5234327dcdec3b212c78a39038368737a0140e1d914f20dd919b0d1f7e5b4ada23673d93404e77f6c529232daf91be4c68ec5aa551a972d2dc28c3279e29afd1bffa54e272a3bc180bedfd14eee25eb54246d0000000003010004fd016000010001556331bcce0723065436b2a7fbca530b5b7a2ddf97a4a908f497edf409af70a396000000020b66616e74617379636f696e04e552053fd4c8e2c01bc14cb9a0ce00f07d4ffdffff68fe455c70b934b22a43000000000002010003012506ad01ab00659d09d48997722ce963032255b316da090d1fda79eecf7e1034868638630898060000000086b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2020f5ed7a45d9970a998c6f8283b10f3287f23b37c2ed489dd2fee9742e536433401420140702c84050a03e6b16b5238a03a45c485cf1a9bf4a28bb0f06555f2c21ea50ca3d3c97a3fa44bb962ce8408671afaf294d75812688cce74e0052886c3c15fd56f07281a823d464dc06be6529f0aee8da78da224ca6c0eb849a39f55e69cc50b2c0c72000000000000003a08020000092102b1383908554974589b80923a400809d3537ed27555c9a7b17e21e937a1156f21059f0004000000000121027bcd8e0aa88b4394f4cb515c4625cf2cbef56355e780c8fab492e9f8ab68cd8402740049000100012086b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e202220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff012700010001220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff06c901c7000400000001012102c3e9620740af76b730bc50e9e7f2f3500c36d00db2336c4132b72b612001c142029c0071000100012086b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2024a00018093d84f911c1084ebf4a70d7b7c8a98c984a495b827f151ed06c0477977937f0000000000000015ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbf012700010001220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-            	"split_commit_root_hash": "1a823d464dc06be6529f0aee8da78da224ca6c0eb849a39f55e69cc50b2c0c72"
-        	},
-        	{
-            	"anchor": {
-                	"outpoint": "bdbfd7c76c9c47a250ef3bf4732f5fd1ea30603a9c470c5b79fc05055021d373:1",
-                	"value": "1000",
-                	"internal_key": "02c3e9620740af76b730bc50e9e7f2f3500c36d00db2336c4132b72b612001c142",
-                	"tap_root": "7dffe5de5f22dee531f6bf2b56690779765fafa66ff4f57822a6e9aa89b10fec",
-                	"merkle_root": "7dffe5de5f22dee531f6bf2b56690779765fafa66ff4f57822a6e9aa89b10fec",
-                	"tapscript_sibling": null,
-                	"num_passive_assets": 0
-            	},
-            	"script_key": "021e7c7b539625626d052b18dc980dbad58463da8ddbd110defe6f89e89191d1bf",
-            	"script_key_is_local": false,
-            	"amount": "21",
-            	"new_proof_blob": "00249d09d48997722ce963032255b316da090d1fda79eecf7e103486863863089806000000000150000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000096e88000000000000000002fd018102000000000102fed28e57510897d40d8965fd057c66b2e291c87b2c3fdb7c59d1ecad9d3a5f430100000000ffffffff9d09d48997722ce963032255b316da090d1fda79eecf7e10348686386308980600000000000000000003e80300000000000022512020838d1e810846e74d45661ba16ca5edece1fb517a140a27b4b86744fbdfc19de80300000000000022512000b6f8a9312180dae841f4eef10a9e0ce3d95b5c23f7d7f516264d4ccfae8426f3c22d01000000001600146e4b35798e1d01f37e43132a2f253d4fd71ed96902483045022100c9c9d1c87f0b2933b1d78294b051b22e5142912981050e7bf4d3177c2f735ee30220107a0d7d8f24e16ef1ee985439412fbf1041d0545938811df4bfa1d0a332d99d01210341b2382ff83a137cc3de470dbbe8a3d5234327dcdec3b212c78a39038368737a0140e1d914f20dd919b0d1f7e5b4ada23673d93404e77f6c529232daf91be4c68ec5aa551a972d2dc28c3279e29afd1bffa54e272a3bc180bedfd14eee25eb54246d0000000003010004fd02a800010001556331bcce0723065436b2a7fbca530b5b7a2ddf97a4a908f497edf409af70a396000000020b66616e74617379636f696e04e552053fd4c8e2c01bc14cb9a0ce00f07d4ffdffff68fe455c70b934b22a43000000000002010003011506fd021d01fd02190065000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002fd01ae4a000140e2e20719575ce8c20708feefa95170a9133821dfb9a690826a8dc63bde880f0000000000000025ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffd016000010001556331bcce0723065436b2a7fbca530b5b7a2ddf97a4a908f497edf409af70a396000000020b66616e74617379636f696e04e552053fd4c8e2c01bc14cb9a0ce00f07d4ffdffff68fe455c70b934b22a43000000000002010003012506ad01ab00659d09d48997722ce963032255b316da090d1fda79eecf7e1034868638630898060000000086b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2020f5ed7a45d9970a998c6f8283b10f3287f23b37c2ed489dd2fee9742e536433401420140702c84050a03e6b16b5238a03a45c485cf1a9bf4a28bb0f06555f2c21ea50ca3d3c97a3fa44bb962ce8408671afaf294d75812688cce74e0052886c3c15fd56f07281a823d464dc06be6529f0aee8da78da224ca6c0eb849a39f55e69cc50b2c0c72000000000000003a08020000092102b1383908554974589b80923a400809d3537ed27555c9a7b17e21e937a1156f21080200000921021e7c7b539625626d052b18dc980dbad58463da8ddbd110defe6f89e89191d1bf059f000400000001012102c3e9620740af76b730bc50e9e7f2f3500c36d00db2336c4132b72b612001c14202740049000100012086b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e202220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff012700010001220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff06c901c70004000000000121027bcd8e0aa88b4394f4cb515c4625cf2cbef56355e780c8fab492e9f8ab68cd84029c0071000100012086b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2024a0001188f9ea691c11d64f41a6f5110e37a6eca42921166e67cb6399523fe7b9d1b520000000000000025ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbf012700010001220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff079f0004000000000121027bcd8e0aa88b4394f4cb515c4625cf2cbef56355e780c8fab492e9f8ab68cd8402740049000100012086b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e202220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff012700010001220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-            	"split_commit_root_hash": null
-        	}
-    	]
-	}
+    "transfer":  {
+        "transfer_timestamp":  "1697139691",
+        "anchor_tx_hash":  "6609cb8eca5ec250d627db843d8dc396f2d7a4e0ef17276f00151dcd7f41f900",
+        "anchor_tx_height_hint":  2532414,
+        "anchor_tx_chain_fees":  "257",
+        "inputs":  [
+            {
+                "anchor_point":  "8bc4b17043b8d9165743accad55b8c8df6627b5d86341109f7f39a86eec07918:0",
+                "asset_id":  "6ab81f9b6b72138bc77189ea4afeabcfdb8722d1d5485ddbefc7a344bd9884e6",
+                "script_key":  "0282f621af104d54bf98482f7ca8a1fce4c79aeb7100d4d28c348fe3b39f1e8982",
+                "amount":  "100"
+            }
+        ],
+        "outputs":  [
+            {
+                "anchor":  {
+                    "outpoint":  "00f9417fcd1d15006f2717efe0a4d7f296c38d3d84db27d650c25eca8ecb0966:0",
+                    "value":  "1000",
+                    "internal_key":  "02228586e7c2847b03043afc70367ed64b77df85df8925486ed52dbc6f96ec4204",
+                    "taproot_asset_root":  "e8ffb79b416efb32167f12d4bf4472df8bfcc21e191f576fc1d9777a5499cd54",
+                    "merkle_root":  "e8ffb79b416efb32167f12d4bf4472df8bfcc21e191f576fc1d9777a5499cd54",
+                    "tapscript_sibling":  "",
+                    "num_passive_assets":  0
+                },
+                "script_key":  "026662e4898323b036de86e7d0a546b2a9fe9f5a8c058167be5a2b1ea4885c9ed7",
+                "script_key_is_local":  true,
+                "amount":  "79",
+                "new_proof_blob":  "5441505000040000000002241879c0ee869af3f7091134865d7b62f68d8c5bd5caac435716d9b84370b1c48b000000000450000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000096e88000000000000000006fd016302000000000102dd53fb37d9c791e2f32311e76aa186f7e842503d134d605a3c2648f420deecbf0100000000ffffffff1879c0ee869af3f7091134865d7b62f68d8c5bd5caac435716d9b84370b1c48b00000000000000000003e8030000000000002251209910eafb44a642ae94e8e022abb391958d66506d9e51953ff407d1462a6f61bce803000000000000225120e2e79389a414c4bdf1d33dba5d472134ef85dd0674d4a644cb8f09c8e0dad606e40c2d0100000000225120a5a745ffbe961f24127fb6f76a28fc2e1d4a8648b305d2b79b3ac6f71ce1725f014040aaae55f1c85405e73414c58600419d468c1b8ec1a7a458800340b39f5e4c974f065b18e5f817e92d67444960de58512c8067a1bc4a0d46a7a38c7a7af727900140e6b32e5d3eaa9830b1eb776ede8bdbff60fe365528a0a49dd679baf2dbb8f0d0d3cb56453bb110c8172a5a554772effac51cf3e41f6451df261fcda3d1dd0c4a000000000801000afd017f0001000251ca17f2038d5456aa50a6fa332f472961756af17fa1ef35601485944cabf56aac0000000107626565666275784f5dc2c98fa1ab3cd70f18a0a63e66bb823275a47d1da48f39cf468d2be3c791000000000004010006014f0bad01ab01651879c0ee869af3f7091134865d7b62f68d8c5bd5caac435716d9b84370b1c48b000000006ab81f9b6b72138bc77189ea4afeabcfdb8722d1d5485ddbefc7a344bd9884e60282f621af104d54bf98482f7ca8a1fce4c79aeb7100d4d28c348fe3b39f1e898203420140c83f269e61e2a3c0ae986d6d1270389554d6133270a4b4e5edd1803ff3037da29569ea376d829d11477626ad2bf6ea99420619d3c17044c103e6b7344ac4d4690d28d09aa8f54e3bc7016e056fe79ab3e625d86f3d9362b69742c24fb1c5c9df4ef700000000000000640e0200001021026662e4898323b036de86e7d0a546b2a9fe9f5a8c058167be5a2b1ea4885c9ed7112102671c771a383a34ac8c1872f71323a745db2ad87171590f4edd682568e453e3b30c9f000400000000022102228586e7c2847b03043afc70367ed64b77df85df8925486ed52dbc6f96ec42040374014900010002201ba8c569da5506fc0dac06e25055a8acaf755da516a1cfef301e4404705597ad04220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff022700010002220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0df802c7000400000001022103cd00f994b298ba2252c245c0cd857ee5c68eff5b47c4622302b10d43f450a1c6039c017100010002201ba8c569da5506fc0dac06e25055a8acaf755da516a1cfef301e4404705597ad044a0001df29748ed601e517a70fda1ba5ca3844a1f2bb30da9df744aac5a8d40a4b11870000000000000015ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f022700010002220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2e000400000002022102a5ed9bab876767a62ed0bd0bb1e25f4ca1b0887a07fa88834c8ab50735b456e90503040101160400000000",
+                "split_commit_root_hash":  "d09aa8f54e3bc7016e056fe79ab3e625d86f3d9362b69742c24fb1c5c9df4ef7",
+                "output_type":  "OUTPUT_TYPE_SPLIT_ROOT",
+                "asset_version":  "ASSET_VERSION_V0"
+            },
+            {
+                "anchor":  {
+                    "outpoint":  "00f9417fcd1d15006f2717efe0a4d7f296c38d3d84db27d650c25eca8ecb0966:1",
+                    "value":  "1000",
+                    "internal_key":  "03cd00f994b298ba2252c245c0cd857ee5c68eff5b47c4622302b10d43f450a1c6",
+                    "taproot_asset_root":  "4a2e05c584f7b7eedf62267d971a56f04c0fb4e3caa6685c1f7f749e4c8a740a",
+                    "merkle_root":  "4a2e05c584f7b7eedf62267d971a56f04c0fb4e3caa6685c1f7f749e4c8a740a",
+                    "tapscript_sibling":  "",
+                    "num_passive_assets":  0
+                },
+                "script_key":  "025a00ca79d4f8e7c5cb479cac04e13388d4052196419ae1601b3ddb15e2fcfed0",
+                "script_key_is_local":  false,
+                "amount":  "21",
+                "new_proof_blob":  "5441505000040000000002241879c0ee869af3f7091134865d7b62f68d8c5bd5caac435716d9b84370b1c48b000000000450000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000096e88000000000000000006fd016302000000000102dd53fb37d9c791e2f32311e76aa186f7e842503d134d605a3c2648f420deecbf0100000000ffffffff1879c0ee869af3f7091134865d7b62f68d8c5bd5caac435716d9b84370b1c48b00000000000000000003e8030000000000002251209910eafb44a642ae94e8e022abb391958d66506d9e51953ff407d1462a6f61bce803000000000000225120e2e79389a414c4bdf1d33dba5d472134ef85dd0674d4a644cb8f09c8e0dad606e40c2d0100000000225120a5a745ffbe961f24127fb6f76a28fc2e1d4a8648b305d2b79b3ac6f71ce1725f014040aaae55f1c85405e73414c58600419d468c1b8ec1a7a458800340b39f5e4c974f065b18e5f817e92d67444960de58512c8067a1bc4a0d46a7a38c7a7af727900140e6b32e5d3eaa9830b1eb776ede8bdbff60fe365528a0a49dd679baf2dbb8f0d0d3cb56453bb110c8172a5a554772effac51cf3e41f6451df261fcda3d1dd0c4a000000000801000afd02e60001000251ca17f2038d5456aa50a6fa332f472961756af17fa1ef35601485944cabf56aac0000000107626565666275784f5dc2c98fa1ab3cd70f18a0a63e66bb823275a47d1da48f39cf468d2be3c79100000000000401000601150bfd023c01fd02380165000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005fd01cd4a00013e69977bacb3b08e4fa85c6174a4d217a827bd2d108dfc6bc716c67fccc00423000000000000004fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdffd017f0001000251ca17f2038d5456aa50a6fa332f472961756af17fa1ef35601485944cabf56aac0000000107626565666275784f5dc2c98fa1ab3cd70f18a0a63e66bb823275a47d1da48f39cf468d2be3c791000000000004010006014f0bad01ab01651879c0ee869af3f7091134865d7b62f68d8c5bd5caac435716d9b84370b1c48b000000006ab81f9b6b72138bc77189ea4afeabcfdb8722d1d5485ddbefc7a344bd9884e60282f621af104d54bf98482f7ca8a1fce4c79aeb7100d4d28c348fe3b39f1e898203420140c83f269e61e2a3c0ae986d6d1270389554d6133270a4b4e5edd1803ff3037da29569ea376d829d11477626ad2bf6ea99420619d3c17044c103e6b7344ac4d4690d28d09aa8f54e3bc7016e056fe79ab3e625d86f3d9362b69742c24fb1c5c9df4ef700000000000000640e0200001021026662e4898323b036de86e7d0a546b2a9fe9f5a8c058167be5a2b1ea4885c9ed7112102671c771a383a34ac8c1872f71323a745db2ad87171590f4edd682568e453e3b30e0200001021025a00ca79d4f8e7c5cb479cac04e13388d4052196419ae1601b3ddb15e2fcfed0112102671c771a383a34ac8c1872f71323a745db2ad87171590f4edd682568e453e3b30c9f000400000001022103cd00f994b298ba2252c245c0cd857ee5c68eff5b47c4622302b10d43f450a1c60374014900010002201ba8c569da5506fc0dac06e25055a8acaf755da516a1cfef301e4404705597ad04220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff022700010002220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0df802c7000400000000022102228586e7c2847b03043afc70367ed64b77df85df8925486ed52dbc6f96ec4204039c017100010002201ba8c569da5506fc0dac06e25055a8acaf755da516a1cfef301e4404705597ad044a0001b6871b6f913014b1e08ed5c2c8df0a876f3aef77b38170620c89752e636b067d000000000000004fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f022700010002220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2e000400000002022102a5ed9bab876767a62ed0bd0bb1e25f4ca1b0887a07fa88834c8ab50735b456e905030401010f9f000400000000022102228586e7c2847b03043afc70367ed64b77df85df8925486ed52dbc6f96ec42040374014900010002201ba8c569da5506fc0dac06e25055a8acaf755da516a1cfef301e4404705597ad04220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff022700010002220000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff160400000000",
+                "split_commit_root_hash":  "",
+                "output_type":  "OUTPUT_TYPE_SIMPLE",
+                "asset_version":  "ASSET_VERSION_V0"
+            }
+        ]
+    }
 }
+
 ```
 
-You will notice the transaction id (`bdbfd7c76c9c47a250ef3bf4732f5fd1ea30603a9c470c5b79fc05055021d373`) has two inputs. One input is the newly minted asset (easily identifiable by its 1000 sat amount), while the other is from LND’s internal wallet. This second input is used to pay the onchain fees.
+You will notice the transaction id (`00f9417fcd1d15006f2717efe0a4d7f296c38d3d84db27d650c25eca8ecb0966`) has two inputs. One input is the newly minted asset (easily identifiable by its 1000 sat amount), while the other is from LND’s internal wallet. This second input is used to pay the onchain fees.
 
 There are three outputs. Two outputs of 1000 satoshis each and the change output of LND’s internal wallet. The two 1000 satoshi inputs anchor the proofs of the sender and receiver. Even when the sender spends all of their assets, such an output is still created to carry proof of the transfer.
 
 Once the transaction is confirmed on the Bitcoin Blockchain the sender will attempt to make the proofs available to the recipient via an [end-to-end encrypted mailbox](../lightning-terminal/lightning-node-connect.md), similar to Lightning Node Connect (LNC).
 
-By default, this mailbox is set to mailbox.terminal.lightning.today:443, but you can [run your own mailbox through aperture](../aperture/get-aperture.md) and configure tapd to use it by specifying the `--hashmailcourier.addr=` flag at startup.
+By default, this mailbox is set to your default universe, but you can [run your own mailbox through aperture](../aperture/get-aperture.md) and configure tapd to use it by specifying the `--hashmailcourier.addr=` flag at startup.
 
 Once the transaction is confirmed on the Bitcoin Blockchain the sender will attempt to make the proofs available to the recipient via a [LNC-style end-to-end encrypted mailbox](../lightning-terminal/lightning-node-connect.md).
-
-Sender sample log output:
-
-```
-2022-09-29 20:41:03.415 [INF] FRTR: Outbound parcel now pending for 33644efe039d3569e6bafb07bc8f5959578a909e9c5e1c15949c986c54edbf35:028055056a70daf83e654a28b640dbf7fa893953f87398a51b7c2021520402a54b, delivering notification
-2022-09-29 20:41:03.416 [INF] FRTR: Waiting for confirmation of transfer_txid=96a370af09f4ed97f408a9a497df2d7a5b0b53cafba7b23654062307cebc3163
-2022-09-29 20:56:33.483 [INF] FRTR: Importing receiver proof into local Proof Archive
-2022-09-29 20:56:33.486 [INF] FRTR: Marking parcel (txid=96a370af09f4ed97f408a9a497df2d7a5b0b53cafba7b23654062307cebc3163) as confirmed!
-2022-09-29 20:56:33.487 [INF] PROF: Attempting to deliver receiver proof for send of asset_id=33644efe039d3569e6bafb07bc8f5959578a909e9c5e1c15949c986c54edbf35, amt=100
-2022-09-29 20:56:33.490 [INF] PROF: Creating sender mailbox w/ sid=8874afa1e82a389b492647399b68f27289897001854037faec21fc857ad77aa41a55f719debb47c97b5c199f2391ae339eb86e23cd11ccdceab040fa8aeaf6e6
-2022-09-29 20:56:33.570 [INF] PROF: Sending receiver proof via sid=8874afa1e82a389b492647399b68f27289897001854037faec21fc857ad77aa41a55f719debb47c97b5c199f2391ae339eb86e23cd11ccdceab040fa8aeaf6e6
-2022-09-29 20:56:33.570 [INF] PROF: Creating receiver mailbox w/ sid=8874afa1e82a389b492647399b68f27289897001854037faec21fc857ad77aa41a55f719debb47c97b5c199f2391ae339eb86e23cd11ccdceab040fa8aeaf6e7
-2022-09-29 20:56:33.652 [INF] PROF: Waiting for receiver proof via sid=8874afa1e82a389b492647399b68f27289897001854037faec21fc857ad77aa41a55f719debb47c97b5c199f2391ae339eb86e23cd11ccdceab040fa8aeaf6e7
-2022-09-29 20:56:33.822 [INF] PROF: Received ACK from receiver! Cleaning up mailboxes…js
-```
-
-Similarly, the recipient will call the same mailbox and await their proofs there. These proofs include previous Merkle trees and signatures.
-
-Recipient sample log output:
-
-```
-2023-05-06 00:16:01.269 [INF] FRTR: Broadcasting new transfer tx, txid=bdbfd7c76c9c47a250ef3bf4732f5fd1ea30603a9c470c5b79fc05055021d373
-2023-05-06 00:16:01.448 [INF] FRTR: Outbound parcel with txid bdbfd7c76c9c47a250ef3bf4732f5fd1ea30603a9c470c5b79fc05055021d373 now pending (num_inputs=1, num_outputs=2), delivering notification
-2023-05-06 00:16:01.449 [INF] FRTR: ChainPorter executing state: SendStateWaitTxConf
-2023-05-06 00:16:01.451 [INF] FRTR: Waiting for confirmation of transfer_txid=bdbfd7c76c9c47a250ef3bf4732f5fd1ea30603a9c470c5b79fc05055021d373
-2023-05-06 00:16:28.870 [INF] FRTR: ChainPorter executing state: SendStateStoreProofs
-2023-05-06 00:16:28.871 [INF] FRTR: Importing 0 passive asset proofs into local Proof Archive
-2023-05-06 00:16:28.874 [INF] FRTR: Importing proof for output 0 into local Proof Archive
-2023-05-06 00:16:28.881 [INF] FRTR: Importing proof for output 1 into local Proof Archive
-2023-05-06 00:16:28.882 [INF] FRTR: ChainPorter executing state: SendStateReceiverProofTransfer
-2023-05-06 00:16:28.883 [INF] PROF: Attempting to deliver receiver proof for send of asset_id=38366235613831623166643534623137336333373861623637616337303836303830333237343439396264336461373037303734623232323331353639306532, amt=21
-2023-05-06 00:16:28.885 [INF] PROF: Creating sender mailbox w/ sid=9d9f3adadb69bba026ab781551db0c9a68271f4be233f48ec48fea73751fce709055172ff5c1e5d3f2c9d4fbecb618844a7d9367141664b5aee2b0d2a502692b
-2023-05-06 00:16:28.965 [INF] PROF: Creating receiver mailbox w/ sid=9d9f3adadb69bba026ab781551db0c9a68271f4be233f48ec48fea73751fce709055172ff5c1e5d3f2c9d4fbecb618844a7d9367141664b5aee2b0d2a502692a
-2023-05-06 00:16:29.050 [INF] PROF: Sending receiver proof via sid=9d9f3adadb69bba026ab781551db0c9a68271f4be233f48ec48fea73751fce709055172ff5c1e5d3f2c9d4fbecb618844a7d9367141664b5aee2b0d2a502692b
-2023-05-06 00:16:29.051 [INF] PROF: Waiting (5s) for receiver ACK via sid=9d9f3adadb69bba026ab781551db0c9a68271f4be233f48ec48fea73751fce709055172ff5c1e5d3f2c9d4fbecb618844a7d9367141664b5aee2b0d2a502692a
-2023-05-06 00:16:29.296 [INF] PROF: Received ACK from receiver! Cleaning up mailboxes...
-2023-05-06 00:16:29.455 [INF] FRTR: Marking parcel (txid=bdbfd7c76c9c47a250ef3bf4732f5fd1ea30603a9c470c5b79fc05055021d373) as confirmed!
-2023-05-06 00:16:29.462 [INF] GRDN: Received new proof file, version=0, num_proofs=4
-
-```
-
-Similarly, the recipient will call the same mailbox and await their proofs there. These proofs include previous Merkle trees and signatures.
-
-Recipient sample log output:
-
-```
-2023-05-06 00:16:18.145 [INF] GRDN: Found inbound asset transfer (asset_id=86b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2) for TAP address taptb1qqqsqq3qs666sxcl6493w0ph32m843cgvzqryazfn0fa5urswjezyv2kjr3qgggzre78k5uky43x6pftrrwfsrd66kzx8k5dm0g3phh7d7y73yv36xlsvggzc05kyp6q4amtwv9u2r570uhn2qxrd5qdkgekcsfjku4kzgqpc9pqsqg466zcju in bdbfd7c76c9c47a250ef3bf4732f5fd1ea30603a9c470c5b79fc05055021d373:1
-2023-05-06 00:16:18.234 [INF] PROF: Attempting to receive proof via sid=9d9f3adadb69bba026ab781551db0c9a68271f4be233f48ec48fea73751fce709055172ff5c1e5d3f2c9d4fbecb618844a7d9367141664b5aee2b0d2a502692b
-2023-05-06 00:16:29.132 [INF] PROF: Sending ACK to sender via sid=9d9f3adadb69bba026ab781551db0c9a68271f4be233f48ec48fea73751fce709055172ff5c1e5d3f2c9d4fbecb618844a7d9367141664b5aee2b0d2a502692a
-2023-05-06 00:16:29.317 [INF] GRDN: Received new proof file, version=0, num_proofs=4
-```
-
-You can export the proof of a particular asset with the command below.
-
-`tapcli proofs export --asset_id 86b5a81b1fd54b173c378ab67ac70860803274499bd3da707074b222315690e2 --script_key 021e7c7b539625626d052b18dc980dbad58463da8ddbd110defe6f89e89191d1bf`
-
-Alternatively, you may also find the proof files in `~/.taproot-assets/data/testnet/proofs/`
-
-The recipient may import them using the commmand:
-
-`tapcli proofs import –proof_file 028055056a70daf83e654a28b640dbf7fa893953f87398a51b7c2021520402a54b.tap`
 
 ## Start building on Taproot Assets
 

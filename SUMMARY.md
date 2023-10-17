@@ -82,6 +82,7 @@
   * [🛠 Get litd](lightning-network-tools/lightning-terminal/get-lit.md)
   * [Run litd](lightning-network-tools/lightning-terminal/run-litd.md)
   * [Integrating litd](lightning-network-tools/lightning-terminal/integrating-litd.md)
+  * [Demo: Litd Speed Run](lightning-network-tools/lightning-terminal/speedrun.md)
   * [Connect to Terminal](lightning-network-tools/lightning-terminal/connect.md)
   * [Recommended Channels](lightning-network-tools/lightning-terminal/recommended-channels.md)
   * [Health Checks](lightning-network-tools/lightning-terminal/health-checks.md)

@@ -1,5 +1,5 @@
 ---
-description: Learn how to run a universe
+description: Learn how to run a universe and connect to other universes.
 ---
 
 # Universes
@@ -13,4 +13,14 @@ Sample`tapd.conf` file:
 `rpclisten=0.0.0.0:10029`\
 `allow-public-uni-proof-courier=true`\
 `allow-public-stats=true universe.public-access=true`
+
+## The default universe
+
+By default, your `tapd` will connect to the default universe, for instance `testnet.universe.lightning.finance:10029` for testnet, or `universe.lightning.finance:10029` on mainnet.
+
+You can add and remove universes from your local federation with `tapcli universe federation add` or `del`.
+
+The contents of the default universe are also available via a public API:
+
+[https://universe.lightning.finance/v1/taproot-assets/universe/roots](https://universe.lightning.finance/v1/taproot-assets/universe/roots)
 

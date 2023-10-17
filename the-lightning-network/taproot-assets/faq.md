@@ -12,7 +12,7 @@ Taproot Assets is a novel Taproot-based protocol that defines how assets can be 
 
 ### What can I do with Taproot Assets?
 
-Taproot Assets lets you issue all kinds of assets on bitcoin, both unique and fungible. There are no technical limits to what these assets can represent, including stablecoins, shares, tickets, ownership rights or art. Assets can be programmed using Taproot Asset scripts, allowing for a broad range of functionality similar to bitcoin transactions. From an initial protocol design and prioritization perspective, Lightning Labs is focused on stablecoins’ use cases first.&#x20;
+Taproot Assets lets you issue all kinds of assets on bitcoin, both collectible and fungible (often called _normal_). There are no technical limits to what these assets can represent, including stablecoins, shares, tickets, ownership rights or art. Assets can be programmed using Taproot Asset scripts, allowing for a broad range of functionality similar to bitcoin transactions. From an initial protocol design and prioritization perspective, Lightning Labs is focused on stablecoins’ use cases first.&#x20;
 
 ### How does Taproot Assets work?
 
@@ -54,7 +54,7 @@ To issue and transact Taproot Assets, bitcoin transactions need to be made, whic
 
 ### How do I issue assets with Taproot Assets?
 
-Usingce the initial implementation, anyone is be able to issue assets with Taproot Assets using a Taproot Assets client on Bitcoin testnet. Once the asset has been issued and its genesis transaction is confirmed on the blockchain, your asset is live and can be transferred. In the future it will be possible to also deploy this asset into a Lightning Network channel.
+Using the initial implementation, anyone is be able to issue assets with Taproot Assets using `tapd` on Bitcoin. Once the asset has been issued and its genesis transaction is confirmed on the blockchain, your asset is live and can be transferred. In the future it will be possible to also deploy this asset into a Lightning Network channel.
 
 ### Do all assets have a limited supply?
 
@@ -66,7 +66,7 @@ Your Taproot Assets wallet will need to store Taproot keys as well as Taproot As
 
 ### How do I send assets on-chain? <a href="#docs-internal-guid-157496c4-7fff-e705-7be6-06f7c05e7cd4" id="docs-internal-guid-157496c4-7fff-e705-7be6-06f7c05e7cd4"></a>
 
-To send Taproot Assets to somebody else, they will need to first provide you their Taproot Assets address. This address contains information about the asset and public keys necessary for holding the asset. The address format is designed to help prevent Taproot Assets from being lost or unrecoverable.
+To send Taproot Assets to somebody else, they will need to first provide you their Taproot Assets address. This address contains information about the asset and public keys necessary for holding the asset, as well as the requested amount. The address format is designed to help prevent Taproot Assets from being lost or unrecoverable.
 
 ### What fees do I have to pay?
 

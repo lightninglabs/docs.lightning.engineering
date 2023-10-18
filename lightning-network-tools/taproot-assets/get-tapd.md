@@ -12,7 +12,7 @@ Taproot Assets is alpha software. Use it on mainnet at your own risk!
 
 ## Prerequisites <a href="#docs-internal-guid-29b5ec39-7fff-4a26-d7e9-dfa1d01ff2c6" id="docs-internal-guid-29b5ec39-7fff-4a26-d7e9-dfa1d01ff2c6"></a>
 
-Taproot Assets requires [LND](https://github.com/lightningnetwork/lnd/) v0.17.0. If [compiled from source](../lnd/run-lnd.md#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103), it needs to be built with `tags=signrpc walletrpc chainrpc invoicesrpc`. LND needs to be synced and running on the same bitcoin network as you are doing your testing. RPC connections need to be accepted and Macaroons need to be set. [Learn how to set up LND using the default configuration here](../lnd/run-lnd.md).
+Taproot Assets requires [LND](https://github.com/lightningnetwork/lnd/) v0.17.0. If [compiled from source](../lnd/run-lnd.md#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103), it needs to be built with `tags=signrpc walletrpc chainrpc invoicesrpc`. LND needs to be synced and running on the same bitcoin network as you are doing your testing. RPC connections need to be accepted and Macaroons need to be set. [Learn how to set up LND using the default configuration here](../lnd/run-lnd.md). For onchain operations, this LND node should have some funds in its onchain wallet, but does not need open channels to mint, send and receive Taproot Assets on chain.
 
 ## Installation: <a href="#docs-internal-guid-0652b60a-7fff-d0e5-15fc-159e8557bc88" id="docs-internal-guid-0652b60a-7fff-d0e5-15fc-159e8557bc88"></a>
 

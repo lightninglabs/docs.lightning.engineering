@@ -116,6 +116,8 @@ We again have to publish the new mint transaction with:
 
 `tapcli assets mint finalize`
 
+You can also specify a custom fee rate (in sat/kw) using the flag `--fee_rate`
+
 Now we can check our groups with:
 
 `tapcli assets groups`
@@ -159,17 +161,19 @@ Taproot Assets uses universes to communicate information about which assets exis
 
 By default, your tapd instance will connect to a default universe. You can manually add additional universes to sync to and from, called a federation. You can see this connection with `tapcli universe federation list`.
 
-If you would like to add a universe to this federation, you can do this with `tapcli universe federation add --universe_host universe.lightning.finance`
+If you would like to add a universe to this federation, you can do this on testnet with `tapcli universe federation add --universe_host testnet.universe.lightning.finance`
 
-You can also manually sync with any universe with:
+Or on mainnet:
 
-`tapcli universe sync --universe_host 127.0.0.1:10029`
+`tapcli universe federation add --universe_host universe.lightning.finance`
+
+Your node will periodically sync with the universes you have added to your federation, but you can also always manually sync with any universe using:
+
+`tapcli universe sync --universe_host <universe_ip:port>`
 
 Upon successful sync, information about existing assets should be retrieved, alongside their issuance proofs.
 
 Newly minted assets are automatically synced to all universes in your local federation.
-
-
 
 ## Generating Taproot Assets addresses <a href="#docs-internal-guid-2d861222-7fff-ef76-60b9-65367a4fd1b7" id="docs-internal-guid-2d861222-7fff-ef76-60b9-65367a4fd1b7"></a>
 

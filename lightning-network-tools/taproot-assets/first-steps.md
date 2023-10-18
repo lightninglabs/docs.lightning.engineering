@@ -102,8 +102,6 @@ The output of this command can be explained as follows:
 
 ## Minting asset groups <a href="#docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63" id="docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63"></a>
 
-
-
 Assets that were minted with the flag `--enable_emission` do not have a fixed supply. A new batch of this asset can be minted later in a way that the two assets are considered of the same asset group, and therefore fungible.
 
 **Note: At the moment it is not possible to spend two assets with different asset IDs, even if they belong to the same asset group.**
@@ -177,7 +175,7 @@ Newly minted assets are automatically synced to all universes in your local fede
 
 ## Generating Taproot Assets addresses <a href="#docs-internal-guid-2d861222-7fff-ef76-60b9-65367a4fd1b7" id="docs-internal-guid-2d861222-7fff-ef76-60b9-65367a4fd1b7"></a>
 
-To send assets, you will need the recipient’s Taproot Assets address. This Taproot Assets address is specific to an asset and amount, so to generate an address, the recipient needs to know an asset’s `asset_id`, as well as be synced to the issuer’s universe. Taproot Assets address reuse should be avoided.
+As soon as your minted assets have one confirmation on the blockchain, you are able to send them. To send assets, you will need the recipient’s Taproot Assets address. This Taproot Assets address is specific to an asset and amount, so to generate an address, the recipient needs to know an asset’s `asset_id`, as well as be synced to the issuer’s universe. Taproot Assets address reuse should be avoided.
 
 When generating a Taproot Assets address, the receiver will create their expected Merkle trees, and tweak a Taproot key with it. The resulting key is converted to a Taproot address, where the receiver waits for an incoming transaction.
 
@@ -220,7 +218,7 @@ You’ll also be able to inspect this address again anytime with the command `ta
 
 ## Sending an asset <a href="#docs-internal-guid-5d8fd7ee-7fff-475c-a392-4855bf9afc85" id="docs-internal-guid-5d8fd7ee-7fff-475c-a392-4855bf9afc85"></a>
 
-To send the asset, run the command below from a the tapd instance of the sender. This will generate the appropriate Merkle trees for the recipient and their change outputs, sign the Taproot Assets transaction with their internal Taproot Assets key and publish the Bitcoin transaction.
+To send the asset, run the command below from a the tapd instance of the sender. This will generate the appropriate Merkle trees for the recipient and their change outputs, sign the Taproot Assets transaction with their internal Taproot Assets key and publish the Bitcoin transaction. Not that you cannot send unconfirmed assets.
 
 `tapcli assets send --addr taptb1qqqsqqspqqzzq64cr7dkkusn30rhrz02ftl2hn7msu3dr42gthd7l3argj7e3p8xq5ssyecuwudrsw354jxpsuhhzv36w3wm9tv8zu2epa8d66p9drj98canqcssyksqefuaf788ch95089vqnsn8zx5q5sevsv6u9spk0wmzh30elkspqss8ngqlx2t9x96yffvy3wqekzhaewx3ml4k37yvg3s9vgdg069pgwxpgq32rpww4hxjan9wfek2unsvvaz7tm4de5hvetjwdjjumrfva58gmnfdenjuenfdeskucm98gcnqvpj8y3rh965`
 

@@ -60,6 +60,10 @@ A public channel, as opposed to a private channel, is a channel announced togeth
 
 Lightning [Pool](../../lightning-network-tools/pool/) is a marketplace for liquidity in the Lightning Network. Participants can place their bids to buy and provision channels to other peers, including third parties not directly engaged on the parties. A sidecar channel is a channel opened by party A on behalf of party B to party C. This is useful for services that want to seamlessly onboard users and merchants onto the Lightning Network without providing capital themselves. It also helps decentralize the network, as the clients of such a service are getting connected to the network through a broader range of peers. Sidecar channels may also be deployed as [Turbo channels](etymology.md#turbo-channels-zero-conf-channels).
 
+## Taproot channels
+
+Taproot channels are channels anchored in a Taproot output, rather than a Segwit output. This allows for [Taproot Assets](../taproot-assets/) to be deposited into Lightning Network channels, and eventually becomes a prerequisite for Point Time Locked Contracts (PTLCs). Taproot channels are more private and more efficient when closed cooperatively than existing channels, but require a new gossip protocol to be announced to the graph.&#x20;
+
 ## Turbo channels (Zero-conf channels)
 
 A turbo channel is a channel that is accepted without confirmations on the bitcoin blockchain. This requires trust in the party opening the channel to not double-spend the channel opening transaction. This trust may be gained by opening the channel from a 2-of-2 multisignature address held by the opening party and a co-signer trusted with not signing a double-spend transaction. Turbo channels are commonly used in mobile wallets and merchant services to allow users to immediately receive and send funds over the Lightning Network without having to wait for a channel to confirm on the blockchain.

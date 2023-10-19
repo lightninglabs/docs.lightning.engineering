@@ -62,7 +62,7 @@ Lightning [Pool](../../lightning-network-tools/pool/) is a marketplace for liqui
 
 ## Taproot channels
 
-Taproot channels are channels anchored in a Taproot output, rather than a Segwit output. This allows for [Taproot Assets](../taproot-assets/) to be deposited into Lightning Network channels, and eventually becomes a prerequisite for Point Time Locked Contracts (PTLCs). Taproot channels are more private and more efficient when closed cooperatively than existing channels, but require a new gossip protocol to be announced to the graph.&#x20;
+Taproot channels are channels anchored in a Taproot output, rather than a Segwit output. This allows for [Taproot Assets](../taproot-assets/) to be deposited into Lightning Network channels, and eventually becomes a prerequisite for Point Time Locked Contracts (PTLCs). Taproot channels are more private and more efficient when closed cooperatively than existing channels, but require a new gossip protocol to be announced to the graph. Unannounced ("private") Taproot channels are available in LND from version 0.17..
 
 ## Turbo channels (Zero-conf channels)
 

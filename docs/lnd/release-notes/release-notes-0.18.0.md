@@ -25,6 +25,9 @@
   that when sweeping inputs with locktime, an unexpected lower fee rate is
   applied.
 
+* LND will now [enforce pong responses
+  ](https://github.com/lightningnetwork/lnd/pull/7828) from its peers
+
 # New Features
 ## Functional Enhancements
 
@@ -82,6 +85,9 @@
   a context parameter to all `InvoiceDB` methods which is a pre-requisite for
   the SQL implementation.
 
+* [Refactor InvoiceDB](https://github.com/lightningnetwork/lnd/pull/8081) to
+  eliminate the use of `ScanInvoices`.
+
 ## Code Health
 ## Tooling and Documentation
 
@@ -91,5 +97,6 @@
 * Andras Banki-Horvath
 * Carla Kirk-Cohen
 * Elle Mouton
-* Yong Yu
+* Keagan McClelland
 * Ononiwu Maureen Chiamaka
+* Yong Yu

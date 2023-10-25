@@ -19,7 +19,7 @@ Similarly, all your personal devices that contain Bitcoin wallets, ssh keys or a
 
 Your device’s operating system needs to be actively maintained and regularly updated. This includes all services and third-party code that may be used to operate your system, such as OpenSSH.
 
-Use a firewall to limit exposure to your platform and the services running on it. To open port 9375 is not required, but recommended to accept incoming connections and inbound channels. REST and RPC (default ports 8080 and 10009) only need to be exposed when required by an external application you configured.
+Use a firewall to limit exposure to your platform and the services running on it. To open port 9735 is not required, but recommended to accept incoming connections and inbound channels. REST and RPC (default ports 8080 and 10009) only need to be exposed when required by an external application you configured.
 
 You may consider making some endpoints only available inside trusted networks, or connect to your node only via SSH or a VPN. Configure your platform to only use keys for authentication, not passwords.
 
@@ -34,13 +34,13 @@ How you update your LND will depend on how you installed it. You may for example
 `git pull`\
 `make clean && make && make install tags="autopilotrpc chainrpc invoicesrpc routerrpc signrpc walletrpc watchtowerrpc wtclientrpc"`
 
-## Your wallet <a href="docs-internal-guid-4d50a2e2-7fff-6a56-4160-813804306ee7" id="docs-internal-guid-4d50a2e2-7fff-6a56-4160-813804306ee7"></a>
+## Your wallet <a href="#docs-internal-guid-4d50a2e2-7fff-6a56-4160-813804306ee7" id="docs-internal-guid-4d50a2e2-7fff-6a56-4160-813804306ee7"></a>
 
 When creating your wallet with `lncli create`, you are given a 24 word long seed phrase. This seed phrase can be used to recover your on-chain Bitcoin, meaning that if it falls into the wrong hands your bitcoin are at risk of being taken. Similarly, if you are not in possession of this seed phrase yourself, you may not be able to regain control over your funds in the event of an error.
 
 You may write your seed phrase, in its correct order, on a piece of paper and store it somewhere securely. Alternatively, you may store it in encrypted storage elsewhere, such as your password manager.
 
-## Your channels <a href="docs-internal-guid-8725c728-7fff-9b34-f746-fcdc7a49c5e5" id="docs-internal-guid-8725c728-7fff-9b34-f746-fcdc7a49c5e5"></a>
+## Your channels <a href="#docs-internal-guid-8725c728-7fff-9b34-f746-fcdc7a49c5e5" id="docs-internal-guid-8725c728-7fff-9b34-f746-fcdc7a49c5e5"></a>
 
 In the event that your hard drive becomes corrupted or the entire device destroyed or deleted, you may recover your on-chain funds using the seed phrase above. Your channels however can’t be backed up directly, though a mechanism exists to recover them separately from your on-chain funds.
 
@@ -49,7 +49,7 @@ You can find your channel backups in the file `<lnddir>/data/chain/bitcoin/mainn
 This file is changed every time a channel is opened or closed. You may set up a script that [backs up this file whenever it is changed](https://gist.github.com/alexbosworth/2c5e185aedbdac45a03655b709e255a3), or copy it manually. It is necessary to back up this file whenever a new channel has been opened.\
 For backup purposes the channel.db file is not suitable for such backups. Keeping an up-to-date backup of this file is close to impossible, and you may lose your funds when recovering from an outdated `channel.db` file. This file can only be used when migrating your node, not when restoring.
 
-## Operational safety <a href="docs-internal-guid-f7878f4c-7fff-d8de-f925-4704b4d0790e" id="docs-internal-guid-f7878f4c-7fff-d8de-f925-4704b4d0790e"></a>
+## Operational safety <a href="#docs-internal-guid-f7878f4c-7fff-d8de-f925-4704b4d0790e" id="docs-internal-guid-f7878f4c-7fff-d8de-f925-4704b4d0790e"></a>
 
 When operating your node, it is important to note that you not interrupt lncli commands that alter the channel.db file, such as:
 
@@ -64,7 +64,7 @@ To safely shut down your Lightning Node, use the command `lncli stop`
 
 It is not recommended to prune your Bitcoin node, especially not for transactions occurring after the activation of Segwit, August 2017.&#x20;
 
-## Your external applications <a href="docs-internal-guid-fb6b5911-7fff-e340-f874-86a51944a08c" id="docs-internal-guid-fb6b5911-7fff-e340-f874-86a51944a08c"></a>
+## Your external applications <a href="#docs-internal-guid-fb6b5911-7fff-e340-f874-86a51944a08c" id="docs-internal-guid-fb6b5911-7fff-e340-f874-86a51944a08c"></a>
 
 LND uses macaroons to authenticate external applications. These may be applications running on the same machine as LND or externally.
 

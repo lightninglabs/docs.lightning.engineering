@@ -24,7 +24,7 @@ This principle keeps both nodes in check and makes channel breaches extremely ra
 
 To reduce the risk of an attacker successfully breaching one of your channels, we can use watchtowers. Watchtowers are other Lightning Network nodes that ideally run on a separate machine and network from the node they are watching over. They are required to almost always be online and watch every bitcoin block for potential breaches, ideally using their own bitcoin node.
 
-For each commitment transaction of each remote peer, the routing or payment node will preventatively create a signed transaction revoking the channel breach. This transaction is encrypted it with the transaction ID of the breach transaction before passing it onto the watchtower together with the first half of the transaction ID.&#x20;
+For each commitment transaction of each remote peer, the routing or payment node will preventatively create a signed transaction revoking the channel breach. This transaction is encrypted with the transaction ID of the breach transaction before passing it onto the watchtower together with the first half of the transaction ID.&#x20;
 
 Using this mechanism, the watchtower knows what transaction IDs to look for, but cannot see the content of each commitment transaction, shielding balances from the watchtower. Only the frequency with which the channel is updated is revealed, and only channel breaches are revealed, not regular force closures, as the revocation key for regular, “honest” unilateral channel closures are not known yet.
 

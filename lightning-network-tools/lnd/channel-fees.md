@@ -12,15 +12,21 @@ On the HTLC level, channel fees are the difference between the HTLC sent to the 
 
 As fees are included in the payment, and all HTLCs contingent on the same preimage, you can only charge fees for successful payments.
 
-Fees are applied only once per peer and per channel. Each peer can independently set their fee policies for all their channels, which are applied to the capital in the outoing channel in the event of a forward. Meaning, as you push a payment to your neighbor node, you are able to charge a fee, and as payments are pushed to you, your neighbor charges the fee, even if the channel was created by you. Another rule of thumb is that when your capital in a channel is depleted, you get to charge the fee.
+Fees are applied only once per peer and per channel. Each peer can independently set their fee policies for all their channels, which are applied to the capital in the outoing channel in the event of a forward. Meaning, as you push a payment to your neighbor node, you are able to charge a fee, and as payments are pushed to you, your neighbor charges the fee, even if the channel was created by you.
 
-There are two kinds of fees, the base fee and the fee rate.
+When setting your fees too high, payments might not be willing to flow through your channel. When setting fees too low, the liquidity in a channel might be depleted immediately.
+
+There are two kinds of fees, the base fee and the fee rate. Setting the fee rate correctly can mean the difference between a node that routes and one that doesn't, and make and break your node's profitability.
+
+Fees can be defined either as defaults in your `lnd.conf` file, at the time of channel opening with `lncli openchannel` or anytime later with `lncli updatechanpolicy`.
 
 ## Base fee
 
-The base fee is the fee that will be charged for each forwarded HTLC, regardless of the payment size. It is typically denominated in milli-satoshi. It is referred to as `base_fee`, `base_fee_msat` and `bitcoin.basefee` in LND.
+The base fee is the fee that will be charged for each forwarded HTLC, regardless of the payment size. It is denominated in milli-satoshi. It is referred to as `base_fee_msat` and `bitcoin.basefee` in LND.
 
 Example usage:
+
+`lncli openchannel --base_fee_msat 1000 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d --local_amt 31000000`
 
 `lncli updatechanpolicy --base_fee_msat 1000 55d9c8e11e6a926e3929a9584298278e6297b75b75f4f8c751f6b00da05ffe72:1`
 
@@ -30,15 +36,17 @@ lnd.conf:
 
 ## Fee rate
 
-The fee rate is a proportional fee charged based on the value of each forwarded HTLC. It is typically denominated in parts per million, although the command `lncli updatechanpolicy` uses decimal places. The command `lncli feereport` will return both the decimal value (`fee_rate`) and the amount per million (`fee_per_mil`) for your convenience.
+The fee rate is a proportional fee charged based on the value of each forwarded HTLC. It is typically denominated in parts per million, although the flag `--fee_rate` uses decimal places. The command `lncli feereport` will return both the decimal value (`fee_rate`) and the amount per million (`fee_per_mil`) for your convenience.
 
-`lncli updatechanpolicy --fee_rate 0.000001 55d9c8e11e6a926e3929a9584298278e6297b75b75f4f8c751f6b00da05ffe72:1`
+`lncli openchannel --fee_rate_ppm 300 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d --local_amt 31000000`
+
+`lncli updatechanpolicy --fee_rate_ppm 0.000300 55d9c8e11e6a926e3929a9584298278e6297b75b75f4f8c751f6b00da05ffe72:1`
 
 lnd.conf:
 
-`bitcoin.feerate=1`
+`bitcoin.feerate=300`
 
-\[[How to identify good peers](../../the-lightning-network/the-gossip-network/identify-good-peers.md)]
+Read more: [How to identify good peers](../../the-lightning-network/the-gossip-network/identify-good-peers.md)
 
 ## Fee report <a href="#docs-internal-guid-95e1a19b-7fff-a79e-ea52-a3f2c8791a5f" id="docs-internal-guid-95e1a19b-7fff-a79e-ea52-a3f2c8791a5f"></a>
 
@@ -51,10 +59,10 @@ The command `lncli feereport` will output a list of all your channels and your f
 &#x20;           `"channel_point": "2b91c69a05082d05d7135b41806cc34303837ea10383d1ac3eef77969f98d16e:0",`\
 &#x20;           `"base_fee_msat": "1000",`\
 &#x20;           `"fee_per_mil": "500",`\
-&#x20;           `"fee_rate": 0.000001`\
+&#x20;           `"fee_rate": 0.0005`\
 &#x20;       `}`
 
-The output above means that for each payment you are pushing through this channel, you are charging 1000 milli-satoshis (1 satoshi) plus 500 milli-satoshis per million. A 1 milllion satoshis large HTLC for example would yield you 1500 milli-satoshis, or 1.5 satoshi.
+The output above means that for each payment you are pushing through this channel, you are charging 1000 milli-satoshis (1 satoshi) plus 500 satoshis per million. A 1 milllion satoshis large HTLC for example would yield you 501 satoshi.
 
 To see the fees of individual channels, and to see how much fees the other side charges for fees in your channel, you can use the query `lncli getchaninfo`,&#x20;
 
@@ -116,3 +124,9 @@ lnd.conf:
 If you amend the above lines to your configuration file for the first time, it will update the channel policies for all existing channels, except for those for which the channel policies have been updated manually before. If you only want to change the fee policies of new channels, you may first apply the command `lncli updatechanpolicy` with the existing parameters to all channels before amending the configuration file and restarting lnd.
 
 `lncli updatechanpolicy --base_fee_msat 1000 --fee_rate 0.000001`
+
+## Autofees
+
+Lightning Terminal allows you to programmatically change your channel fees every three days based on past earnings.
+
+[Learn more about Autofees](../lightning-terminal/autofees.md)

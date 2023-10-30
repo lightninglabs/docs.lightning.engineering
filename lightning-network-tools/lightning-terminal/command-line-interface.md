@@ -44,6 +44,10 @@ In some cases this certificate path has to be specified for the connection to su
 
 [Learn more: The Faraday CLI](../faraday/the-faraday-cli.md)
 
+### tapcli
+
+`tapcli --tlscertpath ~/.lit/tls.cert --rpcserver=localhost:8443 --network=mainnet accounts list`&#x20;
+
 ### lncli
 
 `lncli getinfo`

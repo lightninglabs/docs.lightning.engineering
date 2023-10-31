@@ -13,3 +13,19 @@ The Taproot Assets Daemon `tapd` implements the [Taproot Assets protocol](../../
 {% content-ref url="first-steps.md" %}
 [first-steps.md](first-steps.md)
 {% endcontent-ref %}
+
+{% content-ref url="collectibles.md" %}
+[collectibles.md](collectibles.md)
+{% endcontent-ref %}
+
+{% content-ref url="universes.md" %}
+[universes.md](universes.md)
+{% endcontent-ref %}
+
+{% content-ref url="polar.md" %}
+[polar.md](polar.md)
+{% endcontent-ref %}
+
+{% content-ref url="operational-safety-guidelines.md" %}
+[operational-safety-guidelines.md](operational-safety-guidelines.md)
+{% endcontent-ref %}

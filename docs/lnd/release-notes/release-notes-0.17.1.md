@@ -23,6 +23,11 @@
   bit when sending `update_fail_malformed_htlc`. This avoids a force close
   with other implementations.
 
+* A bug that would cause taproot channels to sometimes not display as active
+  [has been fixed](https://github.com/lightningnetwork/lnd/pull/8104).
+
+* [`lnd` will now properly reject macaroons with unknown versions.](https://github.com/lightningnetwork/lnd/pull/8132)
+
 # New Features
 ## Functional Enhancements
 
@@ -67,4 +72,5 @@
 
 # Contributors (Alphabetical Order)
 * Eugene Siegel
+* Olaoluwa Osuntokun
 * Yong Yu

@@ -18,15 +18,21 @@ Sample`tapd.conf` file:
 
 By default, your `tapd` will connect to the default universe, for instance `testnet.universe.lightning.finance:10029` for testnet, or `universe.lightning.finance:10029` on mainnet.
 
-You can add and remove universes from your local federation with `tapcli universe federation add` or `del`.
-
 The contents of the default universe are also available via a public API:
 
 {% embed url="https://universe.lightning.finance/v1/taproot-assets/universe/roots" %}
 
+## Federations
+
+By default, your tapd instance will connect to a default universe. You can manually add additional universes to sync to and from, called a federation. You can see this federation with `tapcli universe federation list`.
+
+If you would like to add a universe to this federation, you can do this on with `tapcli universe federation add --universe_host <universe_ip:port>`
+
+Similarly, you can remove universes from this federation with `tapcli universe federation del --universe_host <universe_ip>:port`
+
 ## Syncing to a universe
 
-By default, your `tapd` will sync to universes for which have configured in your local federation, and only for assets which you either hold or have created a taproot address for. You may also manually sync specific asset IDs or group keys.
+By default, your `tapd` will sync to universes which have configured in your local federation, and only for assets which you either hold or have created a taproot address for. You may also manually sync specific asset IDs or group keys.
 
 `tapcli universe sync --universe_host <universe_ip:port> --group_key <group key>`
 

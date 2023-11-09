@@ -157,15 +157,7 @@ Now we can check our groups with:
 
 Taproot Assets uses universes to communicate information about which assets exist and where in the blockchain they are anchored. A universe can be thought of as a virtual mempool, an explorer or a repository.
 
-By default, your tapd instance will connect to a default universe. You can manually add additional universes to sync to and from, called a federation. You can see this connection with `tapcli universe federation list`.
-
-If you would like to add a universe to this federation, you can do this on testnet with `tapcli universe federation add --universe_host testnet.universe.lightning.finance`
-
-Or on mainnet:
-
-`tapcli universe federation add --universe_host universe.lightning.finance`
-
-Your node will sync with the universes you have added to your federation whenever you create a new taproot asset address with an unknown asset ID, or when specifically instructed to. This requires an asset ID or a group key.
+Your node will sync with the universe whenever you create a new taproot asset address with an unknown asset ID, or when specifically instructed to. This requires an asset ID or a group key.
 
 `tapcli universe sync --universe_host <universe_ip:port> --asset_id <asset id>`
 

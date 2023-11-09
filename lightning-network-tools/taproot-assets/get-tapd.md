@@ -31,6 +31,8 @@ Optionally, create a Taproot Assets configuration file under `~/.tapd/tapd.conf`
 
 Within the `tapd.conf` file you can permanently set your variables, such as directory, macaroon or other paths and how to connect to your LND.
 
+As there is currently no migration path between the SQLite and Postgres backends, the backend needs to be configured when `tapd` is first initialized.
+
 ## Running tapd: <a href="#docs-internal-guid-ebf73e49-7fff-b5ed-44ff-b9b0953c6082" id="docs-internal-guid-ebf73e49-7fff-b5ed-44ff-b9b0953c6082"></a>
 
 Run Taproot Assets with the command `tapd`. Specify how Taproot Assets can reach LND and what bitcoin network to run Taproot Assets with by passing it additional flags.

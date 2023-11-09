@@ -165,13 +165,11 @@ Or on mainnet:
 
 `tapcli universe federation add --universe_host universe.lightning.finance`
 
-Your node will periodically sync with the universes you have added to your federation, but you can also always manually sync with any universe using:
+Your node will sync with the universes you have added to your federation whenever you create a new taproot asset address with an unknown asset ID, or when specifically instructed to. This requires an asset ID or a group key.
 
-`tapcli universe sync --universe_host <universe_ip:port>`
+`tapcli universe sync --universe_host <universe_ip:port> --asset_id <asset id>`
 
 Upon successful sync, information about existing assets should be retrieved, alongside their issuance proofs.
-
-Newly minted assets are automatically synced to all universes in your local federation.
 
 ## Generating Taproot Assets addresses <a href="#docs-internal-guid-2d861222-7fff-ef76-60b9-65367a4fd1b7" id="docs-internal-guid-2d861222-7fff-ef76-60b9-65367a4fd1b7"></a>
 

@@ -22,7 +22,7 @@ The “Routable Inbound” graph places your channels into various fee buckets, 
 
 
 
-<figure><img src="../../.gitbook/assets/Screenshot from 2023-11-17 21-28-57.png" alt=""><figcaption><p>Sample liquidity report</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot from 2023-11-20 13-18-24.png" alt=""><figcaption><p>Sample liquidity report</p></figcaption></figure>
 
 Don’t rely on other participants of the Lightning Network to remotely detect your liquidity needs. Monitor your node’s inbound capacity and fees and actively manage your node’s liquidity. Attempt to free up additional capacity first, for instance through [Lightning Loop](../loop/), and only close channels that can’t be empty otherwise. Maximize your percentage of channels that have inbound capacity, rather than maximize the number of your channels. Keep channels open and allow their cost to be amortized over multiple cycles, rather than closing them after their liquidity has been depleted.
 

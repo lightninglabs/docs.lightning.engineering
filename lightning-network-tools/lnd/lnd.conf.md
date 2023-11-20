@@ -1150,7 +1150,7 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 
 [routerrpc]
 
-; Probability estimator used for pathfinding. Two estimators are availabe:
+; Probability estimator used for pathfinding. Two estimators are available:
 ; apriori and bimodal.
 ; Note that the bimodal estimator is experimental.
 ; Default:

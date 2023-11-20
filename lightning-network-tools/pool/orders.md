@@ -252,7 +252,7 @@ $ pool orders cancel order_nonce
 
 ## Match with specific nodes
 
-To match with a specific node, or to limit your match to a set of nodes you may use the `allowed_node_id` flag. Alternatively you can also specifiy nodes you do not want to match with using the `not_allowed_node_id` option.
+To match with a specific node, or to limit your match to a set of nodes you may use the `allowed_node_id` flag. Alternatively you can also specify nodes you do not want to match with using the `not_allowed_node_id` option.
 
 ```
 $ pool order submit bid --not_allowed_node_id 021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d

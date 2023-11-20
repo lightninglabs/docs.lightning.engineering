@@ -57,7 +57,7 @@ db.etcd.keyfile=/home/user/etcd/bin/default.etcd/fixtures/client/key.pem
 db.etcd.insecure_skip_verify=true
 ```
 
-Optionally users can specifiy `db.etcd.user` and `db.etcd.pass` for db user authentication. If the database is shared, it is possible to separate our data from other users by setting `db.etcd.namespace` to an \(already existing\) etcd namespace. In order to test without TLS, users are able to set `db.etcd.disabletls` flag to `true`.
+Optionally users can specify `db.etcd.user` and `db.etcd.pass` for db user authentication. If the database is shared, it is possible to separate our data from other users by setting `db.etcd.namespace` to an \(already existing\) etcd namespace. In order to test without TLS, users are able to set `db.etcd.disabletls` flag to `true`.
 
 ## Migrating existing channel.db to etcd
 

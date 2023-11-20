@@ -26,7 +26,7 @@ While a conventional transaction requires the entire script to be revealed, a Ta
 
 This makes it possible to create more complicated scripts without the added cost of submitting extra data to the blockchain in the keySpend path, and efficient verification of a pruned script data. In the context of Taproot Assets, it allows us to provably attach arbitrary data to a transaction without revealing this data on-chain.
 
-### Commiting to a hash: Taptweak
+### Committing to a hash: Taptweak
 
 We refer to a transaction that includes such arbitrary data as a commitment. Once the transaction has been included in a block, we have committed to this data and can no longer change or amend it.
 
@@ -120,7 +120,7 @@ Once we publish this transaction and have it confirmed on the bitcoin blockchain
 
 ### Asset proof
 
-The asset issuer can now selectively reveal what assets were created and to whom they were allotted. Most importantly, the issuer can prove to the recipient that an asset has been transfered to them, by revealing a specific asset proof, which contains the asset script as well as the path of the sparse Merkle sum tree with the recipient’s account as the key.
+The asset issuer can now selectively reveal what assets were created and to whom they were allotted. Most importantly, the issuer can prove to the recipient that an asset has been transferred to them, by revealing a specific asset proof, which contains the asset script as well as the path of the sparse Merkle sum tree with the recipient’s account as the key.
 
 The recipient can verify the partial sparse Merkle sum tree to recreate the script, tweak the issuer’s public key and verify that the genesis transaction exists on the blockchain, while the partial Merkle tree gives them assurance over the assets issued to them, as well as the total number of assets issued.
 

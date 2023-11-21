@@ -1,7 +1,7 @@
 ---
 description: >-
   Lightning Terminal Liquidity reports provide node operators with a quick view
-  over their inbound capacity
+  of their inbound capacity
 ---
 
 # Liquidity Report

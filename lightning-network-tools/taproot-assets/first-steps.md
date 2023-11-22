@@ -8,15 +8,15 @@ description: >-
 
 ## Minting assets <a href="#docs-internal-guid-3eb3e547-7fff-da1b-7a6b-6865cc97ba7e" id="docs-internal-guid-3eb3e547-7fff-da1b-7a6b-6865cc97ba7e"></a>
 
-Use `tapcli` to begin minting your first asset. We are minting a normal, fungible asset and we'll allow ourselves to increase the supply of this asset in the future by setting the `--enable_emission` flag.
+Use `tapcli` to begin minting your first asset. We are minting a normal, fungible asset and we'll allow ourselves to increase the supply of this asset in the future by setting the `--new_grouped_asset` flag.
 
-`tapcli assets mint --type normal --name beefbux --supply 100 --meta_bytes` 66616e746173746963206d6f6e6579 `--enable_emission`
+`tapcli assets mint --type normal --name beefbux --supply 100 --meta_bytes` 66616e746173746963206d6f6e6579 `--new_grouped_asset`
 
 This will add your asset to a minting queue called a batch, which allows multiple assets to be created in a single minting transaction. This saves fees and conserves blockspace. To execute the batch and publish your mint transaction to the blockchain run:
 
 `tapcli assets mint finalize`
 
-Inspect the newly created asset(s) by calling the command
+You will be given a batch txid, which will have to be included in a block before you can spend your newly created assets. You can also inspect the newly created asset(s) by calling the command
 
 `tapcli assets list`
 
@@ -102,13 +102,13 @@ The output of this command can be explained as follows:
 
 ## Minting asset groups <a href="#docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63" id="docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63"></a>
 
-Assets that were minted with the flag `--enable_emission` do not have a fixed supply. A new batch of this asset can be minted later in a way that the two assets are considered of the same asset group, and therefore fungible.
+Assets that were minted with the flag `--new_grouped_asset` do not have a fixed supply. A new batch of this asset can be minted later in a way that the two assets are considered of the same asset group, and therefore fungible.
 
 **Note: At the moment it is not possible to spend two assets with different asset IDs, even if they belong to the same asset group.**
 
 To increase the supply of such an asset, we will need its `tweaked_group_key`.
 
-`tapcli assets mint --type normal --name beefbux --supply 100 --group_key 02c6ca1985ae9ef257af33bb5e3389f28e798711abcb5326d8f760fdeb90c387b5`
+`tapcli assets mint --type normal --name beefbux --supply 100 --grouped_asset --group_key 02c6ca1985ae9ef257af33bb5e3389f28e798711abcb5326d8f760fdeb90c387b5`
 
 We again have to publish the new mint transaction with:
 
@@ -152,6 +152,8 @@ Now we can check our groups with:
 
 
 ```
+
+To inspect your balances, run `tapcli assets balance`. To show the cumulative balance across asset groups, run `tapcli assets balance --by_group`
 
 ## Synchronizing with a universe <a href="#docs-internal-guid-c0745e5e-7fff-7933-c248-d3445ea631b1" id="docs-internal-guid-c0745e5e-7fff-7933-c248-d3445ea631b1"></a>
 

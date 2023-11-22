@@ -22,7 +22,7 @@ Compile Taproot Assets from source by cloning the taproot-assets repository. [Go
 
 `git clone https://github.com/lightninglabs/taproot-assets.git`\
 `cd taproot-assets`\
-`checkout v0.3.0`\
+`checkout <latest version>`\
 `make install`
 
 ## Configuration: <a href="#docs-internal-guid-8aa3849c-7fff-4b8e-530a-a563b8d9d0b8" id="docs-internal-guid-8aa3849c-7fff-4b8e-530a-a563b8d9d0b8"></a>

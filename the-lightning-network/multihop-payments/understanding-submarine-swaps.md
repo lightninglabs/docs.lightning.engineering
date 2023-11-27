@@ -12,7 +12,7 @@ A submarine swap is a trade between on-chain and off-chain digital assets (i.e.b
 
 Without counterparty risk, submarine swaps can be performed without additional barriers such as background checks or contractual arrangements. Either, the two parties successfully swap their assets or the swap fails. But, at no point, is either side able to walk away with the other party’s funds.
 
-To achieve these trustless properties, the on-chain transaction makes use of the same hash time-locked contracts (HTLC) as the Lightning Network. Before on-chain BTC are transfered, the recipient of the Lightning transaction generates a preimage, a random 32-byte secret. This preimage is hashed and used to construct the HTLCs for both on- and off-chain payments.
+To achieve these trustless properties, the on-chain transaction makes use of the same hash time-locked contracts (HTLC) as the Lightning Network. Before on-chain BTC are transferred, the recipient of the Lightning transaction generates a preimage, a random 32-byte secret. This preimage is hashed and used to construct the HTLCs for both on- and off-chain payments.
 
 ### **1. Generate a bitcoin smart contract**
 

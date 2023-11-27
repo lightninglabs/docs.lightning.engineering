@@ -22,7 +22,7 @@ Note that the trader can reject signing the batch for any reason, even when the 
 
 ### Batch Publication
 
-When all participating traders have signed their inputs in the Batch Execution Transaction, the auctioneer can sign the final input and broadcast the transaction. This transaction can be large, and serve as the funding transaction for potentially hundres of channels! The participating traders only pay chain fees for their inputs and outputs in the transaction, so everybody is saving substantially on fees compared to individually funding channels.
+When all participating traders have signed their inputs in the Batch Execution Transaction, the auctioneer can sign the final input and broadcast the transaction. This transaction can be large, and serve as the funding transaction for potentially hundreds of channels! The participating traders only pay chain fees for their inputs and outputs in the transaction, so everybody is saving substantially on fees compared to individually funding channels.
 
 ## Batched Uniform-Price Clearing
 

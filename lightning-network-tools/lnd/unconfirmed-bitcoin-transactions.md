@@ -73,8 +73,10 @@ As of now, there is no way for you to increase the confirmation time of a channe
 
 When closing channels, we differentiate between cooperative closes of active channels, and unilateral closes, or force closes, of inactive channels.
 
-For cooperative closures, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of this transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.\
-In the case of a force close, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. For other channels, only the party that did not initiate the force close will be able to get the channel confirmed more quickly if they spend their output with a higher fee (CPFP).
+For cooperative closures, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of this transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.
+
+\
+In the case of a force close, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. For other channels, only the party that did not initiate the force close will be able to get the channel confirmed more quickly if they spend their output with a higher fee (CPFP). To run the command successfully, you will need to specify the channel point of the channel that is being force closed.
 
 ## Out of band channel fees <a href="#docs-internal-guid-46b36a38-7fff-bb45-b47f-0a85542b4ba9" id="docs-internal-guid-46b36a38-7fff-bb45-b47f-0a85542b4ba9"></a>
 

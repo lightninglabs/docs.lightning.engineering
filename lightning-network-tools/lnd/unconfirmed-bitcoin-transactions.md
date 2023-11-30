@@ -33,7 +33,7 @@ We can use the command `lncli wallet bumpfee` to increase the fees of pending tr
 When using the `--force` flag, an input is included even if sweeping this input costs more than it is worth.&#x20;
 
 Example usage:\
-`lncli listchaintxns --start_height 680802 --end_height -1`\
+`lncli listchaintxns --start_height 818181 --end_height -1`\
 `lncli wallet bumpfee --conf_target 6 --force 38a64ad629960b0100e6954801a035c484df64f6efa783c33508054d8f2cfe95:0`
 
 **Incoming transactions**
@@ -73,10 +73,23 @@ As of now, there is no way for you to increase the confirmation time of a channe
 
 When closing channels, we differentiate between cooperative closes of active channels, and unilateral closes, or force closes, of inactive channels.
 
-For cooperative closures, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of this transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.
+For **cooperative closures**, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of this transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.
 
-\
-In the case of a force close, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. For other channels, only the party that did not initiate the force close will be able to get the channel confirmed more quickly if they spend their output with a higher fee (CPFP). To run the command successfully, you will need to specify the channel point of the channel that is being force closed.
+In the case of a **force close**, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. To run the command successfully, you will need to specify the channel point of the channel that is being force closed.
+
+## Rebroadcast transactions
+
+In some instances, especially during onchain fee spikes, your transactions might not be broadcast properly to mempools of miners and explorers or be dropped entirely.
+
+Restarting LND will automatically broadcast all unconfirmed transactions.
+
+All transactions to and from your node's onchain wallet can be retrieved with the command `lncli listchaintxns --end_height -1`. This includes regular Bitcoin transactions, channel opens and cooperative closures as well as most [sweeps](../../the-lightning-network/payment-channels/understanding-sweeping.md). You can use the `raw_tx_hex`  and pass it to your local Bitcoin node with `bitcoin-cli sendrawtransaction "hexstring"` to publish it again. Many block explorers also allow you to publish transactions using their node [through an online interface](https://mempool.space/tx/push).
+
+For force close transactions and some sweeps, you may attempt to retrieve the transaction from your local mempool if the transaction id is known: `bitcoin-cli getrawtransaction "txid"`
+
+If you are unable to broadcast a transaction or finding it in the local mempool despite a recent restart, you may have to temporarily increase the size of your local mempool. This can be done through the `bitcoin.conf` file using the parameter `maxmempool`. For instance, setting `maxmempool=600` will double the size of your local mempool from the default.
+
+Upon restarting Bitcoin Core and LND, you should find the transaction in your local mempool, from where it ideally propagates to the entire network.
 
 ## Out of band channel fees <a href="#docs-internal-guid-46b36a38-7fff-bb45-b47f-0a85542b4ba9" id="docs-internal-guid-46b36a38-7fff-bb45-b47f-0a85542b4ba9"></a>
 

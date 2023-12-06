@@ -30,6 +30,10 @@ If you would like to add a universe to this federation, you can do this on with 
 
 Similarly, you can remove universes from this federation with `tapcli universe federation del --universe_host <universe_ip>:port`
 
+{% embed url="https://www.youtube.com/watch?v=o6U812eSE_Q" %}
+Tapping into Taproot Assets #4: Join a Universe Federation
+{% endembed %}
+
 ## Syncing to a universe
 
 By default, your `tapd` will sync to universes which have configured in your local federation, and only for assets which you either hold or have created a taproot address for. You may also manually sync specific asset IDs or group keys.

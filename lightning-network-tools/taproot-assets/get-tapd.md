@@ -25,6 +25,10 @@ Compile Taproot Assets from source by cloning the taproot-assets repository. [Go
 `checkout <latest version>`\
 `make install`
 
+{% embed url="https://www.youtube.com/watch?v=Z7KLo-pGBJA" %}
+Tapping into Taproot Assets #1: Install from Source
+{% endembed %}
+
 ## Configuration: <a href="#docs-internal-guid-8aa3849c-7fff-4b8e-530a-a563b8d9d0b8" id="docs-internal-guid-8aa3849c-7fff-4b8e-530a-a563b8d9d0b8"></a>
 
 Optionally, create a Taproot Assets configuration file under `~/.tapd/tapd.conf` on Linux or BSD, `~/Library/Application Support/tapd/tapd.conf` in Mac OS or `$LOCALAPPDATA/Tapd/tap.conf` in Windows.
@@ -50,3 +54,13 @@ To interact with this second instance using `tapcli`:
 `tapcli --rpcserver=127.0.0.1:10030 --tapddir=~/.tapd-2`
 
 You can make use of `tapcli profiles` to make calls to separate `tapd` instances on the same machine.
+
+## Litd
+
+Tapd is included in the Litd bundle. This allows you to run LND and Tapd in the same process and removes the need to configure the two separately.
+
+[Read more: Get Litd](../lightning-terminal/get-lit.md)
+
+{% embed url="https://www.youtube.com/watch?v=EaPZ3EbTWhE" %}
+Tapping into Taproot Assets #3: Launch with Litd
+{% endembed %}

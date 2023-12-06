@@ -8,8 +8,8 @@ description: >-
 
 Lightning Polar is an application that lets you quickly spin up a local testing environment for your Lightning Network node and applications. It supports LND, CLN and Eclair, with a Bitcoin Core backend on regtest.
 
-{% embed url="https://www.youtube.com/watch?v=vuF6TOrlU_g" %}
-Taproot Assets on Polar
+{% embed url="https://www.youtube.com/watch?v=pYh-4EfdZaM" %}
+Tapping into Taproot Assets #2: Prototype with Polar
 {% endembed %}
 
 ## Prerequisites

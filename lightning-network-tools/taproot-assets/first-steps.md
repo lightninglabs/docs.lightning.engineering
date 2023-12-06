@@ -100,6 +100,12 @@ The output of this command can be explained as follows:
 `lease_expiry`: When the UTXO becomes available again for spending.\
 `is_burn`: Whether the asset has been burned.
 
+{% embed url="https://www.youtube.com/watch?v=FccI6j0mxuE" %}
+Tapping into Taproot Assets #5: Mint from the CLI
+{% endembed %}
+
+[Also watch: Mint from the API](https://www.youtube.com/watch?v=IL4ojWyFPSk)
+
 ## Minting asset groups <a href="#docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63" id="docs-internal-guid-326a3acb-7fff-c694-2400-496ff7278e63"></a>
 
 Assets that were minted with the flag `--new_grouped_asset` do not have a fixed supply. A new batch of this asset can be minted later in a way that the two assets are considered of the same asset group, and therefore fungible.
@@ -282,6 +288,12 @@ By default, this mailbox is set to your default universe, but you can [run your 
 
 Once the transaction is confirmed on the Bitcoin Blockchain the sender will attempt to make the proofs available to the recipient via a [LNC-style end-to-end encrypted mailbox](../lightning-terminal/lightning-node-connect.md).
 
+{% embed url="https://www.youtube.com/watch?v=o30AiqbsYhw" %}
+Tapping into Taproot Assets #7: Send from the CLI
+{% endembed %}
+
+[Also watch: Send from the API](https://www.youtube.com/watch?v=UEaNXu8me24)
+
 ## Burning Assets
 
 Burning assets works by sending assets to a provably unspendable address.&#x20;
@@ -300,7 +312,11 @@ Are you sure you want to irreversibly burn (destroy, remove from circulation)
 Please answer 'yes' or 'no' and press enter: yes
 ```
 
+{% embed url="https://www.youtube.com/watch?v=qBTGxSHpyDo" %}
+Tapping into Taproot Assets #9: Burn from the CLI
+{% endembed %}
 
+[Also watch: Burn from the API](https://www.youtube.com/watch?v=hYUBA-AxrtE)
 
 ## Start building on Taproot Assets
 

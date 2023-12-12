@@ -77,6 +77,9 @@
   status, `StatusInitiated`, to explicitly report its current state. Before
   running this new version, please make sure to upgrade your client application
   to include this new status so it can understand the RPC response properly.
+  
+* Adds a new rpc endpoint gettx to the walletrpc sub-server to [fetch 
+  transaction details](https://github.com/lightningnetwork/lnd/pull/7654).
 
 ## lncli Additions
 
@@ -146,6 +149,13 @@
 * [Add Dynamic Commitment Wire Types](https://github.com/lightningnetwork/lnd/pull/8026).
   This change begins the development of Dynamic Commitments allowing for the
   negotiation of new channel parameters and the upgrading of channel types.
+ 
+* Start using the [timestamps query 
+  option](https://github.com/lightningnetwork/lnd/pull/8030) in the 
+  `query_channel_range` message. This will allow us to know if our peer has a 
+  newer update for a channel that we have marked as a zombie. This addition can 
+  be switched off using the new `protocol.no-timestamp-query-option` config 
+  option. 
 
 ## Testing
 
@@ -175,6 +185,7 @@
 * Andras Banki-Horvath
 * Carla Kirk-Cohen
 * Elle Mouton
+* ErikEk
 * Keagan McClelland
 * Marcos Fernandez Perez
 * Matt Morehouse

@@ -40,6 +40,7 @@
   * [Taproot Assets Protocol](the-lightning-network/taproot-assets/taproot-assets-protocol.md)
   * [Taproot Assets on Lightning](the-lightning-network/taproot-assets/taproot-assets-on-lightning.md)
   * [FAQ](the-lightning-network/taproot-assets/faq.md)
+  * [Glossary](the-lightning-network/taproot-assets/glossary.md)
 
 ## Lightning Network Tools
 

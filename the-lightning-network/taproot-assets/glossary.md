@@ -70,7 +70,7 @@ The issuer of an asset is whoever creates and publishes the mint transaction. Th
 
 ## Leaf
 
-A leaf is the lowest level in a -> merkle tree. They typically contain the data that the merkle tree commits to.
+A leaf is the lowest level in a [Merkle tree](glossary.md#merkle-tree). They typically contain the data that the Merkle tree commits to.
 
 ## Lightning Polar
 
@@ -80,15 +80,15 @@ Lightning Polar is software that helps you simulate a regtest Lightning environm
 
 ## Merkle root
 
-The merkle root is the hash at the very top of the merkle tree. If a single value in the merkle tree changes, the root also changes.
+The Merkle root is the hash at the very top of the Merkle tree. If a single value in the Merkle tree changes, the root also changes.
 
 ## Merkle sum tree
 
-A merkle sum tree is a merkle tree that for each leaf contains a numerical value, which is sumed up in each node. The sum at the -> merkle root is equal to the sum of values at the leafs.
+A merkle sum tree is a Merkle tree that for each leaf contains a numerical value, which is sumed up in each node. The sum at the [Merkle root](glossary.md#merkle-root) is equal to the sum of values at the leafs.
 
 ## Merkle tree
 
-In a merkle tree a pair of items is hashed, the pair then hashed with other pairs until only a single hash is left, the -> merkle root. This helps to cheaply commit to large amounts of arbitrary data and check whether anything has changed.
+In a merkle tree a pair of items is hashed, the pair then hashed with other pairs until only a single hash is left, the [Merkle root](glossary.md#merkle-root). This helps to cheaply commit to large amounts of arbitrary data and check whether anything has changed.
 
 ## Meta data
 
@@ -100,7 +100,7 @@ The action of issuing an asset. Also see -> issuer.
 
 ## Non-fungible token
 
-Also see -> collectibles
+Also see -> collectibles[^1].
 
 ## Normal asset
 
@@ -162,7 +162,7 @@ The Tapscript sibling is the hash in the leaf next to the data in question. The 
 
 ## Unique asset
 
-See also -> Collectibles
+See also -> Collectibles.
 
 ## Universe
 
@@ -175,3 +175,5 @@ Virtual partially signed Bitcoin transactions achieve what -> PSBTs achieve, but
 ## vUTXO
 
 A vUTXO is a Taproot Assets utxo. As the Taproot Assets themselves are not perfectly synonymous with the Bitcoin UTXO that they are anchored in, vUTXOs are used to reference them.
+
+[^1]: 

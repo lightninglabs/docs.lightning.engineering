@@ -177,3 +177,98 @@ Examples:
     ```
       ⛰  lncli --macaroonpath=/safe/location/admin.macaroon getinfo
     ```
+
+## Actions and RPC permissions
+
+Macaroons in LND may refer to one of seven actions: `onchain`, `address`, `message`, `peers`, `offchain`, `info`, `invoices` and `macaroon`. These actions encompass the following RPC services:
+
+### Onchain
+
+&#x20;`/lnrpc.Lightning/SendCoins`\
+`/lnrpc.Lightning/ListUnspent`\
+`/lnrpc.Lightning/SendMany`\
+`/lnrpc.Lightning/OpenChannel`\
+`/lnrpc.Lightning/BatchOpenChannel`\
+`/lnrpc.Lightning/OpenChannelSync`\
+`/lnrpc.Lightning/CloseChannel`\
+`/lnrpc.Lightning/WalletBalance`\
+`/lnrpc.Lightning/EstimateFee`\
+`/lnrpc.Lightning/ChannelBalance`\
+`/lnrpc.Lightning/SubscribeTransactions`\
+`/lnrpc.Lightning/GetTransactions`\
+`/lnrpc.Lightning/ChannelAcceptor`\
+`/lnrpc.Lightning/FundingStateStep`
+
+### Address
+
+`/lnrpc.Lightning/NewAddress`
+
+### Message
+
+`/lnrpc.Lightning/SignMessage`\
+`/lnrpc.Lightning/VerifyMessage`
+
+### Peers
+
+`/lnrpc.Lightning/ConnectPeer`\
+`/lnrpc.Lightning/DisconnectPeer`\
+`/lnrpc.Lightning/ListPeers`\
+`/lnrpc.Lightning/SubscribePeerEvents`
+
+### Offchain
+
+`/lnrpc.Lightning/AbandonChannel`\
+`/lnrpc.Lightning/PendingChannels`\
+`/lnrpc.Lightning/ListChannels`\
+`/lnrpc.Lightning/SubscribeChannelEvents`\
+`/lnrpc.Lightning/ClosedChannels`\
+`/lnrpc.Lightning/SendPayment`\
+`/lnrpc.Lightning/SendPaymentSync`\
+`/lnrpc.Lightning/SendToRoute`\
+`/lnrpc.Lightning/SendToRouteSync`\
+`/lnrpc.Lightning/ListPayments`\
+`/lnrpc.Lightning/DeletePayment`\
+`/lnrpc.Lightning/DeleteAllPayments`\
+`/lnrpc.Lightning/DecodePayReq`\
+`/lnrpc.Lightning/UpdateChannelPolicy`\
+`/lnrpc.Lightning/ForwardingHistory`\
+`/lnrpc.Lightning/RestoreChannelBackups`\
+`/lnrpc.Lightning/ExportChannelBackup`\
+`/lnrpc.Lightning/VerifyChanBackup`\
+`/lnrpc.Lightning/ExportAllChannelBackups`\
+`/lnrpc.Lightning/SubscribeChannelBackups`\
+`/lnrpc.Lightning/SendCustomMessage`\
+`/lnrpc.Lightning/SubscribeCustomMessages`\
+`/lnrpc.Lightning/LookupHtlcResolution`\
+`/lnrpc.Lightning/ListAliases`
+
+### Info
+
+`/lnrpc.Lightning/GetInfo`\
+`/lnrpc.Lightning/GetRecoveryInfo`\
+`/lnrpc.Lightning/DescribeGraph`\
+`/lnrpc.Lightning/GetNodeMetrics`\
+`/lnrpc.Lightning/GetChanInfo`\
+`/lnrpc.Lightning/GetNodeInfo`\
+`/lnrpc.Lightning/QueryRoutes`\
+`/lnrpc.Lightning/GetNetworkInfo`\
+`/lnrpc.Lightning/StopDaemon`\
+`/lnrpc.Lightning/SubscribeChannelGraph`\
+`/lnrpc.Lightning/DebugLevel`\
+`/lnrpc.Lightning/FeeReport`\
+`/lnrpc.Lightning/ListPermissions`
+
+### Invoices
+
+`/lnrpc.Lightning/AddInvoice`\
+`/lnrpc.Lightning/LookupInvoice`\
+`/lnrpc.Lightning/ListInvoices`\
+`/lnrpc.Lightning/SubscribeInvoices`
+
+### Macaroon
+
+`/lnrpc.Lightning/BakeMacaroon`\
+`/lnrpc.Lightning/ListMacaroonIDs`\
+`/lnrpc.Lightning/DeleteMacaroonID`\
+`/lnrpc.Lightning/CheckMacaroonPermissions`\
+`/lnrpc.RegisterRPCMiddlewareURI`

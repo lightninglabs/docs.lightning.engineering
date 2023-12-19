@@ -158,7 +158,7 @@ Tapscript is a feature of -> Taproot transactions that allows to create various 
 
 ## Tapscript sibling
 
-The Tapscript sibling is the hash in the leaf next to the data in question. The sibling is needed to compute the -> merkle root.
+The Tapscript sibling is the hash in the leaf next to the data in question. The sibling is needed to compute the -> Merkle root.
 
 ## Unique asset
 

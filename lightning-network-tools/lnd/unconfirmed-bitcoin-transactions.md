@@ -69,6 +69,8 @@ Channels need to be confirmed within two weeks after they were initiated, or els
 
 As of now, there is no way for you to increase the confirmation time of a channel that was opened to your node.
 
+In case the above fails, (e.g. `the passed output does not belong to the wallet`), you may have to restart LND or retrieve the channel opening transaction from your wallet using `lncli listchaintxns`. In case the transaction fails to broadcast, observe your logs at startup and refer to the section "[rebroadcast transactions](unconfirmed-bitcoin-transactions.md#rebroadcast-transactions)" below.
+
 ## Channel closing <a href="#docs-internal-guid-5647dd03-7fff-dc71-47cf-5f7e2155a44d" id="docs-internal-guid-5647dd03-7fff-dc71-47cf-5f7e2155a44d"></a>
 
 When closing channels, we differentiate between cooperative closes of active channels, and unilateral closes, or force closes, of inactive channels.

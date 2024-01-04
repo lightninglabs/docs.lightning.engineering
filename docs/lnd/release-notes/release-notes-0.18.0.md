@@ -69,7 +69,9 @@
 * Support for [pathfinding]((https://github.com/lightningnetwork/lnd/pull/7267)
   and payment to blinded paths has been added via the `QueryRoutes` (and 
   SendToRouteV2) APIs. This functionality is surfaced in `lncli queryroutes` 
-  where the required flags are tagged with `(blinded paths)`.
+  where the required flags are tagged with `(blinded paths)`. Updates to mission
+  control to [handle pathfinding errors](https://github.com/lightningnetwork/lnd/pull/8095)
+  for blinded paths are also included.
 * A new config value,
   [http-header-timeout](https://github.com/lightningnetwork/lnd/pull/7715), is added so users can specify the amount of time the http server will wait for a request to complete before closing the connection. The default value is 5 seconds.
 
@@ -98,6 +100,10 @@
   primitive type of the tlv package.
 
 ## Misc
+* [Added](https://github.com/lightningnetwork/lnd/pull/8142) full validation 
+  for blinded path payloads to allow fuzzing before LND fully supports 
+  blinded payment relay.
+
 ### Logging
 * [Add the htlc amount](https://github.com/lightningnetwork/lnd/pull/8156) to
   contract court logs in case of timed-out htlcs in order to easily spot dust

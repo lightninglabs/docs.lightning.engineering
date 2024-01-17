@@ -1,228 +1,182 @@
 ---
-description: Get tips on how to configure LND to get the most out of your routing node
+description: >-
+  Understand the parameters of your LND configuration to optimize your node for
+  routing payments
 ---
 
-# Optimal Configuration of a Routing Node
+# Configuration of a Routing Node
 
-**Note: Some of the configuration settings have changed with LND 0.16. You can find the latest settings below.**
+Every Lightning routing node is different, but many share a common goal: To reliably serve their peers and maximize profits from deployed capital.
 
-LND offers a wide range of configuration options that allow deployment in a large variety of platforms, environments and purposes, making use of either btcd, bitcoind or neutrino as a source of blockchain data.
+LND ships with sensible defaults, optimized for security and reliability. However, you might operate under different assumptions or want to make different trade-offs. This guide aims to help you understand various configurations in order to make the best decisions for your node and your peers.
 
-In this article we will discuss various configuration options for LND in the context of a routing node.
+Unless otherwise stated, the below configuration options are highlighted with their default values.
 
-## Objectives <a href="#docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447" id="docs-internal-guid-817507b8-7fff-ab94-6e05-0af537c06447"></a>
+## Hardware and network <a href="#docs-internal-guid-aaf6ad01-7fff-66f0-2a47-ffe8f9f7f8a5" id="docs-internal-guid-aaf6ad01-7fff-66f0-2a47-ffe8f9f7f8a5"></a>
 
-The obligations of a good routing node fall into two broad categories. First and in this article, we will need to install and configure LND. Later we will need to open channels, get inbound liquidity and manage the liquidity of our node in a smart way. Have a look at the [liquidity](../../the-lightning-network/liquidity/) and [routing](broken-reference) sections of the Builder’s Guide.
+A performant routing node will run on hardware significantly above the [recommended minimum requirements](run-lnd.md#docs-internal-guid-b519fc5f-7fff-49d2-4038-dbcc3e23af33). It is always available, meaning it has continuous power and a reliable internet connection. Monitor the uptime of your own node to identify resource bottlenecks or unreliable connectivity.
 
-### Node uptime
+It can be of advantage to separate the operating system, Bitcoin data and LND data into separate partitions, or entirely separate SSDs. You may also consider RAID for sensitive data, for example the \~/.lnd directory. Redundancy will help keep your node available during hardware outages or necessary Blockchain rescans.
 
-Your node should be available as much as possible with little latency. This allows others to open channels with you and lets your node respond quickly to payments flowing to you. Your network, server and whether you deploy LND behind [Tor](quick-tor-setup.md) or a proxy all play a role in this metric.
+## Bitcoin
 
-### Channel stability
+A routing node will not aggressively prune their Bitcoin backend. They might consider indexing the Blockchain to be able to look up transactions faster. In some situations it might be useful to have a larger mempool, but this can also be adjusted when the need arises. Even if your Lightning Network node runs on clearnet, you may put your Bitcoin backend behind Tor and not listen to incoming connections.
 
-There are many reasons why a channel might be marked as ‘disabled’ by one peer or another. Keeping your channel available is an important metric to assess the quality of a node. Keep your node up to date and regularly observe the quality of your channels. Configurations such as tor stream isolation can also affect the quality of channels.
+`txindex=1 # (default: 0)`\
+`listen=0 # (default: 1)`\
+`onlynet=onion # (default: any)`\
+`proxy=127.0.0.1:9050`\
+`maxmempool=300`
 
-## Configuring a routing node <a href="#docs-internal-guid-265f4120-7fff-139c-a0f4-e8dd72f3defd" id="docs-internal-guid-265f4120-7fff-139c-a0f4-e8dd72f3defd"></a>
+## Tor
 
-For a high-performance routing node you will need btcd or bitcoind running without pruning. Ideally both the Bitcoin backend and LND will run on the same machine, but it is also possible to connect them via ssh on separate servers, as long as latency is low enough.
+The Tor network is widely popular among node operators. It helps disguise your node’s physical location and can significantly reduce the attack surface of your node. It also makes it easy to make a node reachable behind NAT.
 
-For performance reasons you may also specifically configure your Bitcoin node. For instance, when building bitcoind from source you can use the command
+Privacy concerns aside, it helps being reachable both via Tor and clearnet as well as being able to connect outwards through either network. This is commonly referred to as “[hybrid mode](quick-tor-setup.md)” and maximizes availability across networks while limiting latency.
 
-`./autogen.sh`\
-`./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" --enable-cxx --with-zmq --without-gui --disable-shared --with-pic --disable-tests --disable-bench --enable-upnp-default --disable-wallet`\
-`make -j "$(($(nproc)+1))"`\
-`sudo make install`\
-The parameters in this command are explained below:
+`lnd.tor.skip-proxy-for-clearnet-targets=true # (default: false)`
 
-`CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"` This allows us to conserve memory.
+## LND
 
-`--enable-cxx`\
-`--with-zmq` ZMQ is used to stream data from bitcoind to LND.
+### Incoming and outgoing connections <a href="#docs-internal-guid-ba20da56-7fff-f3b6-ea61-1ad3dc7f01ad" id="docs-internal-guid-ba20da56-7fff-f3b6-ea61-1ad3dc7f01ad"></a>
 
-`--without-gui` We will not need the graphical interface for our setup.
+Your node will listen to incoming connections over Tor and clearnet. If you have the option to enable IPv6 this may further extend your reach and make it easier for nodes to connect to you.
 
-`--disable-shared`\
-`--with-pic`\
-`--disable-tests`\
-`--disable-bench`\
-`--enable-upnp-default` UPnP allows for automatic port mapping.
+`listen=:9735`\
+`externalip=<your IPv6>`\
+`externalip=<your IPv4>`
 
-\
-`--disable-wallet` As we will not be using the bitcoind wallet we can disable it.
+The stagger flag will limit the amount of connections your node attempts at the same time upon restart. The node will connect to 10 peers at first, and then wait between 0s and 30s before connecting to others. This helps preserve bandwidth and resources when restarting a node with a large number of peers.
 
-The command `make -j "$(($(nproc)+1))"` might help to speed up the build on some machines compared to make.
+`stagger-initial-reconnect=true # (default: false)`
 
-Your routing node will need a static IP with open ports or a version 3 onion address if you want others to be able to connect and open channels with you.
+### Channel defaults
 
-We assume LND is already installed on your server. We recommend using the [signed binaries](https://github.com/lightningnetwork/lnd/releases). You can find more details on how to [install LND in this guide](run-lnd.md).
+In the context of fees we are concerned about both onchain fees, which we will have to pay for sweeps, channel open and closes as well as Lightning Network fees, which you will charge to others for your provision of liquidity. Your default fees should be high enough so liquidity is not underpriced when a new channel is opened.
 
-If you do not already have a configuration file, you will need to create one and place it in your LND directory. On Linux, that is typically `~/.lnd/lnd.conf` on MacOS `/Users/[username]/Library/Application Support/Lnd/lnd.conf` and in Windows `C:\Users\<username>\AppData\Local\Lnd`
+`bitcoin.basefee=1000`\
+`bitcoin.feerate=2000 # (default: 1)`
 
-You may also use the lnd.conf sample file and activate the relevant lines by removing the semi-colons at the beginning of the relevant lines.
+The cornerstone of routing payments are [Hash Timelock Contracts (HTLCs)](../../the-lightning-network/multihop-payments/hash-time-lock-contract-htlc.md). Each HTLC carries with it the risk of a channel closure, so it might make sense to adjust the minimum HTLC size that you are willing to forward in addition to the base fee.
 
-[See the full lnd.conf sample file.](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf)
+`bitcoin.minhtlc=1`\
+`bitcoin.minhtlcout=1000`
 
-### Your node <a href="#docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0" id="docs-internal-guid-4f9fc838-7fff-b39a-9b5d-26e767ad9da0"></a>
+You may also adjust the time lock delta upwards. A timelock delta of 144 for example allows you up to 24h to resolve issues related to your node before HTLCs are resolved on chain. Allowing for fewer HTLCs per channel can mitigate the potential fallout of a force closure, but can also cause the channel to be unusable when all HTLC slots are used up.
 
-```
-alias=YOUR_ALIAS
-color=#000000
-```
+`bitcoin.timelockdelta=144 # (default: 80)`\
+`default-remote-max-htlcs=483`
 
-Make your node visible and more easily discoverable with a unique alias. This might be a url to where peers can find out more information about you and your node, the name or your business or something memorable. Anybody can set any name and color without verification, but don’t abuse this!
+You can also set other defaults relevant to channels, such as a minimum channel size or how many confirmations to require before accepting an incoming channel. The maximum CLTV expiry defines how long you maximally have to wait before you get your funds back in the event of your node force closing a channel.
 
-`externalip=INSTANCE_IP`
+`maxpendingchannels=1`\
+`bitcoin.defaultchanconfs=[3; 6]`\
+`minchansize=1000000 # (default: 20000)`\
+`protocol.wumbo-channels=true # (default: false)`\
+`max-cltv-expiry=2016`
 
-Make sure to set the external IP of your LND node here. This IP address should be static. You may remove this line if you are using Tor.
+Increasing the payments expiration grace period will allow for longer time to wait for pending HTLCs to be settled before a channel is closed.
 
-```
-tor.active=true
-tor.v3=true
-listen=localhost
-```
+`payments-expiration-grace-period=1h # (default: 0s)`
 
-`debuglevel=CNCT=debug,CRTR=debug,HSWC=debug,NTFN=debug,RPCS=debug`
+### Rebalancing
 
-CNCT, CRTR and HSWV provide channel-related logs, while NTFN provides chain-related logs. RPCS will provide you with RPC-related logs.
+While rebalancing is not strictly necessary for a competitive routing node, it can be useful to push liquidity in or out of certain channels that way, especially when the potential earnings on that channel are higher than the cost to rebalance.
 
-### Bitcoin
+To rebalance channels, you will need to allow circular routes, meaning your node has to be allowed to pay itself.
 
-```
-bitcoin.active=true
-bitcoin.mainnet=true
-bitcoin.node=bitcoind
-```
+`allow-circular-route=true # (default: false)`
 
-Activate your Lightning node for Bitcoin payments on mainnet. We specify the Bitcoin node of your choice. Other choices are Beutrino and btcd
+If your node is primarily conducting payments for the purpose of rebalancing, it can also make sense to adjust the Router RPC settings. This will lower your chance of finding a path quickly, but increase your chance of finding a cheap route eventually.
 
-`bitcoind.rpcpass=`\
-`bitcoind.rpcuser=`
+`routerrpc.attemptcost=100`\
+`routerrpc.attemptcostppm=1000`
 
-You may freely decide on a RPC password and username, as long as it is long and unique. This also needs to be set in your bitcoin.conf file.
-
-`bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332`\
-`bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333`
-
-We will need to enable ZMQ for our LND node to receive information about the latest blocks from bitcoind.
-
-`bitcoin.minhtlc=1`
-
-Set the smallest HTLC you would like to forward in milli-satoshi.
+`routerrpc.apriori.hopprob=0.6`\
+`routerrpc.apriori.weight=0.5`\
+`routerrpc.apriori.penaltyhalflife=1h`\
+`routerrpc.apriori.capacityfraction=0.9999`
 
 ### Routing
 
-`ignore-historical-gossip-filters=1`
+This option will prune a channel from the graph if only a single edge marked the channel as inactive, allowing for a more compact channel graph.
 
-Our routing node will not need historical gossip data, so we can ignore it with this flag.
+`routing.strictgraphpruning=true # (default: false)`\
+`ignore-historical-gossip-filters=true # (default: false)`
 
-`bitcoin.feerate=1`\
-`bitcoin.basefee=1000`
+### High fee environment
 
-This is our base fee in milli-satoshi. Meaning for each payment we forward we expect to be paid at least 1 satoshi. The feerate is the fee we charge per 1 million forwarded satoshi.
+When performing in a high fee environment, these settings may help reduce the overall burden. Instead of selecting UTXOs at random, you may instruct LND to choose the largest UTXOs instead, reducing the potential number of signatures required. This may require a manual consolidation of UTXOs when fees have subsided.
 
-`db.bolt.auto-compact=1`
+`coin-selection-strategy=largest # (default: random)`
 
-This setting will compact our `channel.db` database at every startup, which will improve performance of your node.
+Setting the fee estimate mode to economical and increasing the target confirmations for onchain transactions can also help save on fees, but with the risk that some transactions may not confirm in time, requiring more manual monitoring and eventual intervention.&#x20;
 
-`max-channel-fee-allocation=1.0`
+`bitcoind.estimatemode=ECONOMICAL # (default: CONSERVATIVE)`\
+`coop-close-target-confs=1000`
 
-We can set the maximum amount of fees in a channel here as a percentage of individual channel capacity. The setting allows for one decimal place and defaults to 0.5.
+On the other hand, increasing your commit fee for anchor channels can help get these transactions propagated. While it is always possible to bump the transaction fees of such commitment transactions later using CPFP, a low maximum commit fee may prevent these transactions from being propagated in the first place.
 
-`maxpendingchannels=10`
+`max-commit-fee-rate-anchors=100 # (default: 10)`
 
-We can set the maximum pending channels with this configuration.
+The maximum percentage of total funds in a channel that is allocated to fees can also be adjusted.
 
-`bitcoin.defaultchanconfs=2`
+`max-channel-fee-allocation=0.5`
 
-The number of confirmations we expect before a channel is considered active.
+Increasing the batch window and lowering the fee rate for sweeps can also help lower fees.
 
-```
-protocol.wumbo-channels=true
-minchansize=5000000
-```
+`sweeper.batchwindowduration=30s`\
+`sweeper.maxfeerate=1000`
 
-This allows our node to accept and create channels larger than 0.16777215 BTC.
+### Node management
 
-Similarly the minimum channel size, denominated in satoshis, allows your routing node to reject small channels. This might mean fewer, but more qualitative channels.
+Your choice of a database matters. While Bolt, the default, may not be slower than other options, it is significantly slower to start up, meaning your node can be restarted much quicker with a postgres or etcd backend.
 
-`max-cltv-expiry=5000`
+`db.backend=postgres # (default: bolt)`
 
-A high CLTV expiration value makes it less likely that we have to settle a forwarded payment on chain, but also requires us to maintain a high uptime. In this example, the maximum number of blocks our funds are timelocked is about one month.
+When running Bolt, it may make sense to compress the database regularly. You can also define how frequently this process should take place, for example not more than once every 168h.
 
-### RouterRPC
+`db.bolt.auto-compact=true # (default: false)`\
+`db.bolt.auto-compact-min-age=168h`
 
-To make use of the following configurations, make sure you are using the binary release or built lnd from source with the routerrpc tag. The following parameters are important if you are using LND to make payments in the Lightning Network, rather than just routing the payments of others.
+Canceled invoices can also be deleted on startup or on the fly to increase performance.
 
-`routerrpc.apriori.hopprob=0.5`
+`gc-canceled-invoices-on-startup=true # (default: false)`\
+`gc-canceled-invoices-on-the-fly=true # (default: false)`
 
-This sets the default chance of a hop being successful at 50%.
+Increasing the block cache will consume resources, but also result in better performance as more blocks are cached and not requested again.
 
-`routerrpc.apriori.weight=0.75`
+`blockcachesize=20971520`
 
-If a node returns many failures LND will begin to ignore them more and more. To turn off this feature set the value to 1.
+### Communication
 
-`routerrpc.attemptcost=10`\
-`routerrpc.attemptcostppm=10`
+Node runners may notify each other of issues they see when opening channels or forwarding payments. To be able to receive keysend messages, the following must be set.
 
-LND may try paths less likely to succeed only if they allow for significant savings. You can set the minimum of these desired savings here.
+`accept-keysend=true # (default: false)`\
+`accept-amp=true # (default: false)`
 
-`routerrpc.maxmchistory=10000`
+### Lightning Terminal
 
-LND will keep historical routing records to evaluate future routing success. You can set how many records should be kept.
+Lightning Terminal gives visual insights into your earnings and activity. It also offers tools that can help with managing a routing node, such as Autofees, Loop and Pool. For Terminal to be able to run, you will need to allow it to intercept RPC calls to your LND node.
 
-`routerrpc.minrtprob=0.005`
+`rpcmiddleware.enable=true # (default: false)`
 
-When setting this parameter to a very small number, LND will try paths even when they have a very low chance of success.
+### Pool
 
-`routerrpc.aprioripenalty.halflife=6h0m0s`
+To make use of [zero confirmation channels](../pool/zero-confirmation-channels.md), you will need to set the following in your LND configuration. This will enable zero-confirmation channels only when these channels were purchased or sold through Lightning Pool or manually accepted through the channel acceptor middleware.
 
-This setting allows you to define after how long LND should forget about past routing failures.
+`protocol.option-scid-alias=true # (default: false)`\
+`protocol.zero-conf=true # (default: false)`
 
-### RPC
-
-```
-rpclisten=0.0.0.0:10009
-tlsautorefresh=true
-tlsdisableautofill=true
-tlsextradomain=YOUR_DOMAIN_NAME
-```
-
-You may want to manage and monitor your node with remote tools requiring RPC. These configurations help you do that.
-
-## DDoS Protection: <a href="#docs-internal-guid-8e501dd3-7fff-8a74-528d-5b8b097797a0" id="docs-internal-guid-8e501dd3-7fff-8a74-528d-5b8b097797a0"></a>
-
-Defending your node against (distributed) denial of service attacks is not an easy feat. Depending on your node setup, you may opt for one of multiple tools to keep satoshis flowing under all circumstances.
-
-As a precaution and for reasons beyond DDoS protection, do not make multiple services, such as bitcoind and lnd available on the same IP addresses or onion service.
-
-### Iptables
-
-With iptables you can configure how packets are filtered before they reach LND. While executing these rules can also be computationally intensive, it generally allows your machine to sustain a far higher load.
-
-We suggest the following iptable rules for network flood protection:
-
-`sudo iptables -N syn_flood`\
-`sudo iptables -A INPUT -p tcp --syn -j syn_flood`\
-`sudo iptables -A syn_flood -m limit --limit 1/s --limit-burst 3 -j RETURN`\
-`sudo iptables -A syn_flood -j DROP`\
-`sudo iptables -A INPUT -p icmp -m limit --limit 1/s --limit-burst 1 -j ACCEPT`\
-`sudo iptables -A INPUT -p icmp -m limit --limit 1/s --limit-burst 1 -j LOG --log-prefix PING-DROP:`\
-`sudo iptables -A INPUT -p icmp -j DROP`\
-`sudo iptables -A OUTPUT -p icmp -j ACCEPT`
-
-### Tor <a href="#docs-internal-guid-8c746b37-7fff-d870-17cd-addca00be636" id="docs-internal-guid-8c746b37-7fff-d870-17cd-addca00be636"></a>
-
-While the Tor network is not immune to DDoS attacks, it may be able to help you stay available to your peers in ways a clearnet IP address may not.Botnets and other tools deployed in DDoS attacks may not work over Tor, and although the network has its own bandwidth constraints, it also has its own ways to mitigate attacks.
-
-[Learn how to configure Tor on your node.](quick-tor-setup.md)
-
-### Content Delivery Networks
+## Content Delivery Networks
 
 Content Delivery Networks (CDNs) have paid infrastructure in place that can detect and mitigate even the most powerful DDoS attacks. To configure your node with a CDN, you will need to configure it with a domain name instead of an IP address.
 
 You will also need to add your domain name to the TLS certificate and instruct LND to advertise a domain name instead of an IP address. If you have previously advertised your IP address, it might be necessary to change that or otherwise restrict traffic.
 
-`tlsextradomain=`\
+Please note that not all CDNs will offer this feature for non HTTPS data or non-standard ports by default.
+
+`tlsextradomain=my-node-domain.com`\
 `externalhosts=my-node-domain.com`
 
 ### Cloud server infrastructure
@@ -232,3 +186,21 @@ Many cloud service providers include some basic DDoS protection in their product
 ### During an attack
 
 While experiencing a sudden large amount of traffic to your node, you may close your ports or even change IP address. You may only remain reachable via the Tor network, or not at all. Unless the entire network or your peers are under attack, you will still be able to make outgoing connections and keep your channels active.
+
+## Node management tools
+
+Node operators may make use of additional tools to monitor their node, manage liquidity, open and close channels as well as adjust channel fees.
+
+### Lightning Terminal
+
+Lightning Terminal is a tool suite developed by Lightning Labs. The web interface communicates with your node through an end-to-end encrypted connection with your node. Terminal gives you an easy overview over your recent forwards, fees and balances. It allows you to [adjust fees programmatically](../lightning-terminal/autofees.md), make use of Lightning Loop for liquidity management, buy and sell channels through Lightning Pool and find peers.
+
+[Read more: How to connect to Lightning Terminal](../lightning-terminal/get-lit.md)
+
+### Bos
+
+[Balance of Satoshis](https://github.com/alexbosworth/balanceofsatoshis) makes many LND features more accessible and can be used to open balanced channels, make probes, create alerts and rebalance channels.
+
+### LNDg
+
+[LNDg](https://github.com/cryptosharks131/lndg) is a GUI to analyze LND data and automate tasks such as rebalancing channels.

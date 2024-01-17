@@ -61,7 +61,7 @@
   * [Key Import](docs/lnd/key\_import.md)
   * [Secure Your Lightning Network Node](lightning-network-tools/lnd/secure-your-lightning-network-node.md)
   * [Operational Safety](lightning-network-tools/lnd/safety.md)
-  * [Optimal Configuration of a Routing Node](lightning-network-tools/lnd/optimal-configuration-of-a-routing-node.md)
+  * [Configuration of a Routing Node](lightning-network-tools/lnd/optimal-configuration-of-a-routing-node.md)
   * [Quick Tor Setup](lightning-network-tools/lnd/quick-tor-setup.md)
   * [Configuring Tor](lightning-network-tools/lnd/configuring\_tor.md)
   * [Enable ‘Neutrino mode’ in Bitcoin Core](lightning-network-tools/lnd/enable-neutrino-mode-in-bitcoin-core.md)

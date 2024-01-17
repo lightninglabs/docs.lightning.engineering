@@ -155,7 +155,6 @@ You will need to specify in this configuration file which backend you prefer to 
 
 **General configuration:**
 
-`bitcoin.active=true`\
 `bitcoin.mainnet=true`
 
 **Neutrino:**

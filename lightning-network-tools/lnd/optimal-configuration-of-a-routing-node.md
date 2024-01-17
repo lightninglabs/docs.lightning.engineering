@@ -20,6 +20,8 @@ It can be of advantage to separate the operating system, Bitcoin data and LND da
 
 ## Bitcoin
 
+You can typically find your `bitcoin.conf` file in `~/.bitcoin`
+
 A routing node will not aggressively prune their Bitcoin backend. They might consider indexing the Blockchain to be able to look up transactions faster. In some situations it might be useful to have a larger mempool, but this can also be adjusted when the need arises. Even if your Lightning Network node runs on clearnet, you may put your Bitcoin backend behind Tor and not listen to incoming connections.
 
 `txindex=1 # (default: 0)`\
@@ -37,6 +39,8 @@ Privacy concerns aside, it helps being reachable both via Tor and clearnet as we
 `lnd.tor.skip-proxy-for-clearnet-targets=true # (default: false)`
 
 ## LND
+
+Your `lnd.conf` file should be located in `~/.lnd`. If you are using `litd` in integrated mode, all of the configurations below have to be added to your `lit.conf` file in `~/.lit`, prefixed with `lnd.`. For example instead of `listen=:9735`, you have to add `lnd.listen=:9735`
 
 ### Incoming and outgoing connections <a href="#docs-internal-guid-ba20da56-7fff-f3b6-ea61-1ad3dc7f01ad" id="docs-internal-guid-ba20da56-7fff-f3b6-ea61-1ad3dc7f01ad"></a>
 

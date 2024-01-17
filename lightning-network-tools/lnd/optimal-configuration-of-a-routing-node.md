@@ -30,7 +30,7 @@ A routing node will not aggressively prune their Bitcoin backend. They might con
 
 ## Tor
 
-The Tor network is widely popular among node operators. It helps disguise your node’s physical location and can significantly reduce the attack surface of your node. It also makes it easy to make a node reachable behind NAT.
+The Tor network is widely popular among node operators. It removes the requirement to broadcast your personal IP address and can significantly reduce the attack surface of your node. It also makes it easy to make a node reachable behind NAT.
 
 Privacy concerns aside, it helps being reachable both via Tor and clearnet as well as being able to connect outwards through either network. This is commonly referred to as “[hybrid mode](quick-tor-setup.md)” and maximizes availability across networks while limiting latency.
 

@@ -180,7 +180,7 @@ Examples:
 
 ## Actions and RPC permissions
 
-Macaroons in LND may refer to one of seven actions: `onchain`, `address`, `message`, `peers`, `offchain`, `info`, `invoices` and `macaroon`. These actions encompass the following RPC services:
+Macaroons in LND may refer to one of seven actions: `onchain`, `address`, `message`, `peers`, `offchain`, `info`, `invoices` and `macaroon`. These [actions encompass](https://github.com/lightningnetwork/lnd/blob/master/rpcserver.go#L263) the following RPC services:
 
 ### Onchain
 

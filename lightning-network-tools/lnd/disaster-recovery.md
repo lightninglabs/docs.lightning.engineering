@@ -24,7 +24,7 @@ Once invoked, your node will ask your peers to send you their latest commitment 
 
 * The most recent channel database
 
-The `channel.db` file can be found in `.lnd/data/graph/mainnet` and contains all information about your channels, including your latest commitment transaction. Invoking this file as part of your recovery process can be risky if the channel.db is not up to date. Only use this file if you were able to recover it directly from your [crashed node](safety.md).
+The `channel.db` file can be found in `.lnd/data/graph/mainnet` and contains all information about your channels, including your latest commitment transaction. Invoking this file as part of your recovery process can be risky if the channel.db is not up to date. Only use this file if you were able to recover it directly from your crashed node.
 
 * Information about your channels from third parties
 

@@ -2,7 +2,7 @@
 description: '"That''s planning for failure, Morty. Even dumber than regular planning."'
 ---
 
-# Recovery: Planning for failure
+# Recovery: Planning for Failure
 
 In order to achieve near-instant and cheap Bitcoin payments, the Lightning Network makes some tradeoffs in comparison to the Bitcoin base layer. One of those tradeoffs is that its security model is more complex.&#x20;
 
@@ -24,7 +24,7 @@ If you decide to deploy your Lightning node in the cloud, choose a reputable pro
 
 **If your Lightning node is going to run on a device you physically control, invest in a high-quality SSD and consider setting up RAID.**
 
-\[[Also read: Operational safety](safety.md)]
+[Also read: Secure Your Lightning Network Node](secure-your-lightning-network-node.md)
 
 ## aezeed
 

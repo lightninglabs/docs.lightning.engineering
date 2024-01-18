@@ -66,8 +66,8 @@ LND's API documentation
 [secure-your-lightning-network-node.md](secure-your-lightning-network-node.md)
 {% endcontent-ref %}
 
-{% content-ref url="safety.md" %}
-[safety.md](safety.md)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 {% content-ref url="quick-tor-setup.md" %}

@@ -119,7 +119,7 @@
 
 ## lncli Additions
 
-* Deprecate `bumpclosefee` for `bumpforceclosefee` to accomodate for the fact 
+* Deprecate `bumpclosefee` for `bumpforceclosefee` to accommodate for the fact 
   that only force closing transactions can be bumped to avoid confusion. 
   Moreover allow to specify a max fee rate range when coop closing a channel.
   [Deprecate bumpclosefee for bumpforceclosefee and add `max_fee_rate` option
@@ -171,6 +171,9 @@
   the ability to specify multiple outgoing channel ids for the `sendpayment`
   command.
 
+* [Use the default LND value in the buildroute rpc command for the
+  final cltv delta](https://github.com/lightningnetwork/lnd/pull/8387).
+
 ## Code Health
 
 * [Remove Litecoin code](https://github.com/lightningnetwork/lnd/pull/7867).
@@ -218,6 +221,10 @@
   with a lower min_final_cltv_expiry_delta value than 18 blocks since
   LND 0.11.0.
 
+* [Make Legacy Features Compulsory](https://github.com/lightningnetwork/lnd/pull/8275).
+  This change implements changes codified in [bolts#1092](https://github.com/lightning/bolts/pull/1092)
+  and makes TLV Onions, Static Remote Keys, Gossip Queries, compulsory features for
+  LND's peers. Data Loss Protection has been compulsory for years.
 
 ## Testing
 

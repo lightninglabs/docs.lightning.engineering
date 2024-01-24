@@ -29,6 +29,15 @@
   FilterKnownChanIDs](https://github.com/lightningnetwork/lnd/pull/8400) by
   ensuring the `cacheMu` mutex is acquired before the main database lock.
 
+* [Prevent](https://github.com/lightningnetwork/lnd/pull/8385) ping failures
+  from [deadlocking](https://github.com/lightningnetwork/lnd/issues/8379)
+  the peer connection.
+
+* [Fix](https://github.com/lightningnetwork/lnd/pull/8401) an issue that
+  caused memory leak for users running `lnd` with `bitcoind.rpcpolling=1`
+  mode.
+
+
 # New Features
 ## Functional Enhancements
 ## RPC Additions
@@ -50,5 +59,9 @@
 ## Tooling and Documentation
 
 # Contributors (Alphabetical Order)
+
 * Elle Mouton
+* Keagan McClelland
+* Olaoluwa Osuntokun
+* Yong Yu
 * ziggie1984

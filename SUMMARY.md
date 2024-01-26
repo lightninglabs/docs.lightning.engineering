@@ -77,6 +77,7 @@
   * [Recovery: Planning for Failure](lightning-network-tools/lnd/recovery-planning-for-failure.md)
   * [Migrating LND](lightning-network-tools/lnd/migrating-lnd.md)
   * [Disaster recovery](lightning-network-tools/lnd/disaster-recovery.md)
+  * [Contribute to LND](lightning-network-tools/lnd/contribute-to-lnd.md)
 * [Lightning Terminal](lightning-network-tools/lightning-terminal/README.md)
   * [What is Lightning Terminal?](lightning-network-tools/lightning-terminal/introduction.md)
   * [🛠 Get litd](lightning-network-tools/lightning-terminal/get-lit.md)

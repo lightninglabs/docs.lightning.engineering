@@ -8,6 +8,6 @@ description: The guide to Lightning Loop
 
 Lightning Loop uses submarine swaps to transact non-custodially, meaning that Loop is trustless. Loop Out transactions are batched to save on transaction fees.
 
-Loop uses [LSATs](https://lsat.tech/) for authentication.
+Loop uses [L402s](../../the-lightning-network/l402/l402.md) for authentication.
 
 {% embed url="https://lightning.engineering/api-docs/api/loop/" %}

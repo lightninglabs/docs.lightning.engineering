@@ -77,6 +77,13 @@
 
 * [Add Taproot witness types
   to rpc](https://github.com/lightningnetwork/lnd/pull/8431)
+  
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/7852) the payload size
+  calculation in our pathfinder because blinded hops introduced new tlv records.
+
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/8432) a timestamp
+  precision issue when querying payments and invoices using the start and end
+  date filters.
 
 # New Features
 ## Functional Enhancements

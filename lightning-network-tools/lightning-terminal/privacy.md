@@ -29,7 +29,7 @@ Our Website is not intended for use by anyone under 18 years of age. No one unde
 
 We collect several types of information from and about users of our Website, including information:
 
-* By which you may be personally identified, such your IP address, a Lightning Service Authentication Token (“**LSAT**”), public key address, and any other identifier by which you may be individually identified ("**personal information**");
+* By which you may be personally identified, such your IP address, an L402, public key address, and any other identifier by which you may be individually identified ("**personal information**");
 * That is about you but individually does not identify you, such as usage statistics regarding encrypted web traffic between users and their Lightning Network nodes; and/or
 * About your internet connection, the equipment you use to access our Website, and other usage details.
 
@@ -63,7 +63,7 @@ The technologies we use for this automatic data collection may include:
 
 * **Cookies (or browser cookies).** A cookie is a small file placed on the hard drive of your computer. You may refuse to accept browser cookies by activating the appropriate setting on your browser. However, if you select this setting you may be unable to access certain parts of our Website. Unless you have adjusted your browser setting so that it will refuse cookies, our system will issue cookies when you direct your browser to our Website.
 * **Web Beacons.** Pages of our the Website may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages and for other related website statistics (for example, recording the popularity of certain website content and verifying system and server integrity).
-* **Other methods of authentication.** We may also use other types of authentication tokens such as LSATs or Macaroons. Macaroons are a flexible standard for API credentials which are already used by the Lightning Network Daemon as its default authentication mechanism. The LSAT protocol allows a user to atomically purchase macaroons over the Lightning Network. We may use LSATs for a range of business purposes including but not limited to A/B testing new features or UX changes.
+* **Other methods of authentication.** We may also use other types of authentication tokens such as L402s or Macaroons. Macaroons are a flexible standard for API credentials which are already used by the Lightning Network Daemon as its default authentication mechanism. The L402 protocol allows a user to atomically purchase macaroons over the Lightning Network. We may use L402 for a range of business purposes including but not limited to A/B testing new features or UX changes.
 
 **Third-Party Use of Cookies and Other Tracking Technologies**
 

@@ -43,3 +43,9 @@ You can find the Loop node at `021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52b
 ### Testnet <a href="#docs-internal-guid-d9fa217c-7fff-5faa-c826-c2106b10dd06" id="docs-internal-guid-d9fa217c-7fff-5faa-c826-c2106b10dd06"></a>
 
 You can find the Loop testnet node at `0200a7f20e51049363cb7f2a0865fe072464d469dca0ac34c954bb3d4b552b6e95@80.253.94.252:9736`
+
+## Loop In
+
+Performing [Loop Ins](../lightning-terminal/loop.md#loop-in), meaning to refill your channels through an onchain swap, is a cost effective way to extend the lifetime of your channel with Loop, keep it from closing.
+
+These swaps use Taproot by default, which significantly lowers the amount of data that needs to be recorded on chain. This allows Loop In to be priced as low as 1 ppm. At a fee rate of 50 sat/vB for example, a one-input-one-output transaction costs about 7200 satoshis, compared to about 8000 satoshis to close a channel, plus a minimum of 7200 to reopen it.

@@ -73,6 +73,11 @@
   a `shutdown` message if there were currently HTLCs on the channel. After this
   change, the shutdown procedure should be compliant with BOLT2 requirements.
 
+* If HTLCs are in-flight at the same time that a `shutdown` is sent and then 
+  a re-connect happens before the coop-close is completed we now [ensure that 
+  we re-init the `shutdown` 
+  exchange](https://github.com/lightningnetwork/lnd/pull/8464)
+
 * The AMP struct in payment hops will [now be populated](https://github.com/lightningnetwork/lnd/pull/7976) when the AMP TLV is set.
 
 * [Add Taproot witness types
@@ -154,6 +159,13 @@
   closing transaction to be negotiated. This should be used if you don't care
   about the txid and don't want the calling code to block while the channel
   drains the active HTLCs.
+
+* [New watchtower client DeactivateTower and 
+  TerminateSession](https://github.com/lightningnetwork/lnd/pull/8239) commands 
+  have been added. The DeactivateTower command can be used to mark a tower as 
+  inactive so that its sessions are not loaded on startup and so that the tower 
+  is not considered for session negotiation. TerminateSession can be used to 
+  mark a specific session as terminal so that that specific is never used again.
 
 ## lncli Additions
 

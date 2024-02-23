@@ -46,7 +46,7 @@ We can use `lncli wallet bumpfee` in the same way as above to create such a CPFP
 
 Alternatively, we can send these bitcoin to a new address, for example one obtained with the command `lncli newaddress p2wkh` and use the `lncli sendcoins` command with the `--min_confs 0` flag. As we cannot specify from which output we want to make our transaction, we will have to spend nearly close to our entire balance.
 
-`lncli sendcoins --addr bc1q8wymjatcv5xpfm4uav2pwtw534t4u0tfup2xgg --min_confs 0 --amt 2000000 --sat_per_byte 110`
+`lncli sendcoins --addr bc1q8wymjatcv5xpfm4uav2pwtw534t4u0tfup2xgg --min_confs 0 --amt 2000000 --sat_per_vbyte 40`
 
 In case we have to, we may also use the `lncli wallet bumpfee` command to increase the fee of this transaction.
 
@@ -63,9 +63,11 @@ Instead, we have to create a CPFP transaction that takes our channel opening tra
 3. The output you will want to make a CPFP transaction for will then have the same transaction ID, but a different output index. So if your `channel_point` has the output index `0`, your change value will have the output index `1`. And vice versa.
 4. You can double-check the transaction ID using a blockchain explorer. In the event that your channel opening transaction does not have a change output, e.g. it only has one output, you will not be able to make a CPFP transaction and cannot bump the fee.
 
+When you specify the feerate and not a certain confirmation target (`--sat_per_byte` or `--sat_per_vbyte` instead of `--conf_target`), LND will automatically calculate a feerate for the CPFP transaction which is high enough so the effective feerate for both, parent and child transaction, matches the feerate specified in the command.
+
 Channels need to be confirmed within two weeks after they were initiated, or else they will not become active and will have to be force closed.
 
-`lncli wallet bumpfee --sat_per_byte 160 5f97234af4df23881ca5e994bf42956c9af53bf83cb63687d1d0adfcd3ece18a:0`
+`lncli wallet bumpfee --sat_per_vbyte 40 5f97234af4df23881ca5e994bf42956c9af53bf83cb63687d1d0adfcd3ece18a:0`
 
 As of now, there is no way for you to increase the confirmation time of a channel that was opened to your node.
 
@@ -75,9 +77,9 @@ In case the above fails, (e.g. `the passed output does not belong to the wallet`
 
 When closing channels, we differentiate between cooperative closes of active channels, and unilateral closes, or force closes, of inactive channels.
 
-For **cooperative closures**, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of this transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.
+For **cooperative closures**, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of the closing transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.
 
-In the case of a **force close**, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. To run the command successfully, you will need to specify the channel point of the channel that is being force closed.
+In the case of a **force close**, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. To run the command successfully, you will need to specify the [channel point](../../community-resources/glossary.md#channel-point) of the channel that is being force closed.
 
 ## Rebroadcast transactions
 

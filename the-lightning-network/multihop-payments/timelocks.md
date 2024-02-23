@@ -12,7 +12,6 @@ A time-locked Bitcoin transaction is one that is only valid after a certain peri
 | ----------------- | ------------------- | ------------------- |
 | Transaction Level | nLockTime           | nSequence           |
 | UTXO Level        | CheckLockTimeVerify | CheckSequenceVerify |
-| (or Script Level) | CLTV                | CSV                 |
 
 ## Absolute timelocks <a href="#docs-internal-guid-0d5e29e5-7fff-99b6-bc86-be913c8afa87" id="docs-internal-guid-0d5e29e5-7fff-99b6-bc86-be913c8afa87"></a>
 

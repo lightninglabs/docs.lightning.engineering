@@ -458,7 +458,7 @@ Partially signed Bitcoin transactions (PSBT) are a standard on how to pass incom
 
 ## Passive assets
 
-Passive assets is a term used to describe certain Taproot Assets held by a user when they are making a Taproot Assets send. The "passive" assets are those not being sent, or those being retained by the sender, while the "active" assets are those actively being sent to a new user, or those being recustodied.
+Passive assets describes the Taproot Assets which are retained by the user when other assets are being sent from their asset tree. The "passive" assets are those which the sender retains custody. While "active" assets are those actively being sent to a new user, or those being recustodied.
 
 ## Pathfinding
 

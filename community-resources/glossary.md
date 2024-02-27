@@ -456,6 +456,10 @@ Partially signed Bitcoin transactions (PSBT) are a standard on how to pass incom
 
 [Read more: Partially signed bitcoin transactions](../lightning-network-tools/lnd/psbt.md)
 
+## Passive assets
+
+Passive assets is a term used to describe certain Taproot Assets held by a user when they are making a Taproot Assets send. The "passive" assets are those not being sent, or those being retained by the sender, while the "active" assets are those actively being sent to a new user, or those being recustodied.
+
 ## Pathfinding
 
 The process of finding a [route](glossary.md#route) for a payment. This is typically done by the payer, who might have to compute and try multiple routes before the payment succeeds.

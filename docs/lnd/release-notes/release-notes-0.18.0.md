@@ -191,6 +191,9 @@
   [Deprecate bumpclosefee for bumpforceclosefee and add `max_fee_rate` option
    to `closechannel` cmd](https://github.com/lightningnetwork/lnd/pull/8350).
 
+* The [`closeallchannels` command now asks for confirmation before closing 
+  all channels](https://github.com/lightningnetwork/lnd/pull/8526).
+
 # Improvements
 ## Functional Updates
 ### Tlv
@@ -338,6 +341,10 @@
 
 * [Refactor UpdateInvoice](https://github.com/lightningnetwork/lnd/pull/8100) to
   make it simpler to adjust code to also support SQL InvoiceDB implementation.
+
+* [InvoiceDB implementation](https://github.com/lightningnetwork/lnd/pull/8052)
+  for SQL backends enabling new users to optionally use  an experimental native
+  SQL invoices database.
 
 ## Code Health
 

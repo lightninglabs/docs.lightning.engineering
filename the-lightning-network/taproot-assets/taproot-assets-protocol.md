@@ -160,7 +160,9 @@ Creating assets requires a single on-chain taproot transaction, in which there i
 
 Using this methodology, funds are allocated to account holders, represented as leafs in the sparse Merkle sum tree, but the ability to make such internal transfers is limited to the owner of the internal taproot private key(s).
 
-<figure><img src="../../.gitbook/assets/taproot-asset tree.png" alt=""><figcaption></figcaption></figure>
+
+
+<figure><img src="../../.gitbook/assets/TAP Trees.png" alt=""><figcaption><p>Overview over the various tree structures used in Taproot Assets</p></figcaption></figure>
 
 ### The Universe <a href="#docs-internal-guid-81622115-7fff-548d-5594-a7c4b43b97b3" id="docs-internal-guid-81622115-7fff-548d-5594-a7c4b43b97b3"></a>
 

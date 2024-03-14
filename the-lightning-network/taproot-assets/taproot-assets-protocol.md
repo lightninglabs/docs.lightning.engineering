@@ -58,7 +58,7 @@ For example, we may create a Sparse Merkle tree using a fictitious hashing funct
 
 To verify leaf 2, we now only need to reveal the value at this leaf, plus the hash of leaf 3 and the hash of branch 0.
 
-In Sparse Merkle trees, every leaf can be described as a guide to itself through a map when expressed in binary form. The map is the Sparse Merkle tree itself, and the guide is represented by instructions on whether to turn left or right at each fork. The 9th leaf in a 2^4 large Sparke Merkle tree for example is expressed in binary as 1001, meaning we find the appropriate leaf by turning left, then right, right and finally left.
+In Sparse Merkle trees, every leaf can be described as a guide to itself through a map when expressed in binary form. The map is the Sparse Merkle tree itself, and the guide is represented by instructions on whether to turn left or right at each fork. The 10th leaf in a 2^4 large Sparke Merkle tree for example is expressed in binary as 1001, meaning we find the appropriate leaf by turning right, then left, left and finally right.
 
 This property is extremely useful for constructing and reconstructing the Sparse Merkle tree, as it describes precisely which parts of the Sparse Merkle tree we have to reconstruct. More importantly, the data in each leaf can now be described by their location in the tree.
 

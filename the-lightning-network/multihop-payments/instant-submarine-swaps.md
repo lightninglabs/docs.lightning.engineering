@@ -22,4 +22,4 @@ The user is able to retrieve their funds using the preimage, which they can obta
 
 To make the process more efficient, the output of the reservation can be made spendable with a two-of-two MuSig2 schnorr signature. Both the provider and the user originally hold their own unique keys. Upon successful completion of the swap, the provider can co-sign transactions initiated by  the user, allowing the user to spend their funds without publicly revealing the preimage or paying more than the minimal onchain fees.
 
-Learn: How to make Instant Loop Outs
+[Learn: How to make Instant Loop Outs](../../lightning-network-tools/loop/instant-loop-outs.md)

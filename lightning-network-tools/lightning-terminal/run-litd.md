@@ -82,6 +82,12 @@ For example:
 
 [Learn: Command Line Interface](command-line-interface.md)
 
+## Regtest and Simnet
+
+To run `litd` on regtest or simnet, the autopilot has to be disabled.
+
+`autopilot.disable=true`
+
 ## Access the litd user interface <a href="#docs-internal-guid-cc49c7b2-7fff-c1e9-7d7a-d93120d77804" id="docs-internal-guid-cc49c7b2-7fff-c1e9-7d7a-d93120d77804"></a>
 
 Once litd is running, you should be able to navigate to `localhost:8443` and access the user interface of litd.

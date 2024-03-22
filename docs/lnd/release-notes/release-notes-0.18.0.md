@@ -167,6 +167,9 @@
   `lnd.conf`](https://github.com/lightningnetwork/lnd/pull/8310)
   for the `rpcuser` and `rpcpass` fields to better protect the secrets.
 
+* When computing a minimum fee for transaction construction, `lnd` [now takes our
+bitcoin peers' feefilter values into account](https://github.com/lightningnetwork/lnd/pull/8418).
+
 ## RPC Additions
 
 * [Deprecated](https://github.com/lightningnetwork/lnd/pull/7175)
@@ -236,6 +239,10 @@
 * Allow `healthcheck` package users to provide [custom
   callbacks](https://github.com/lightningnetwork/lnd/pull/8504) which will
   execute whenever a healthcheck succeeds/fails.
+
+* `PublishTransaction` now [returns the error
+  types](https://github.com/lightningnetwork/lnd/pull/8554) defined in
+  `btcd/rpcclient`.
 
 ### Logging
 * [Add the htlc amount](https://github.com/lightningnetwork/lnd/pull/8156) to

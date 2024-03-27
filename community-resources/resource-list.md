@@ -42,9 +42,6 @@ description: >-
 
 ### Lightning node interfaces
 
-* [Bluewallet](https://bluewallet.io/) ([Github](https://github.com/bluewallet/bluewallet)) - available in Google Play and the Apple AppStore
-* [Joule](https://lightningjoule.com) ([Github](https://github.com/joule-labs/joule-extension)) - available for Firefox, Chrome, Opera and Brave
-* [Zap](https://zaphq.io) ([Github](https://github.com/LN-Zap)) - available in Google Play, for OSX, Linux, Windows and iOS
 * [Zeus](https://github.com/ZeusLN/zeus) - available in Google Play, F-Droid and the Apple AppStore
 * [Ride the Lightning](https://github.com/Ride-The-Lightning/RTL) - runs on your personal computer, accessible through your browser
 
@@ -55,7 +52,6 @@ description: >-
 * [Amboss](https://amboss.space) - Detailed information on channels and fee rates
 * [Cheese Robot](https://t.me/cheeserobot) - Telegram bot with Lightning Network explorer capabilities
 * [Lightning Terminal](https://terminal.lightning.engineering) - Evaluating channels and peers
-* [lngraph](https://github.com/xsb/lngraph) - Personal Lightning Network explorer using Neo4j Browser
 * [LNnodeinsight](https://lnnodeinsight.com) - Analytics from the perspective of your own node
 * [VR Explorer](https://bl.ocks.org/tyzbit/d1c83732d2767bb955125d41f5921888) - the Lightning Network... in VR!
 

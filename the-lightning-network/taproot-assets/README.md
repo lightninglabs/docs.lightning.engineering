@@ -1,7 +1,8 @@
 ---
 description: >-
-  Taproot Assets is a new Taproot-powered protocol for issuing assets on the
-  bitcoin blockchain.
+  A Taproot-powered protocol for issuing assets on bitcoin that can be
+  transferred over the Lightning Network for instant, high-volume, low-fee
+  transactions.
 ---
 
 # Taproot Assets

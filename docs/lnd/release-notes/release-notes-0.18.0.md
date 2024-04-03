@@ -109,6 +109,9 @@
 
 * [Removed](https://github.com/lightningnetwork/lnd/pull/8577) some unreachable code
 
+[Fixed](https://github.com/lightningnetwork/lnd/pull/8609) fixed a function
+call where arguments were swapped.
+
 # New Features
 ## Functional Enhancements
 
@@ -300,6 +303,10 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
 * [Allow callers of `ListSweeps` to specify the start
   height](https://github.com/lightningnetwork/lnd/pull/7372).
 
+* [Coin Selection Strategy](https://github.com/lightningnetwork/lnd/pull/8515)
+  add coin selection strategy option to the following on-chain RPC calls
+  `EstimateFee`, `SendMany`, `SendCoins`, `BatchOpenChannel`, `SendOutputs`, and `FundPsbt`.
+
 ## lncli Updates
 
 * [Documented all available `lncli`
@@ -414,6 +421,9 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
 * [Ensure that LND won't
   start](https://github.com/lightningnetwork/lnd/pull/8568) if native SQL is
   enabled but the channeldb already has any KV invoices stored.
+
+* [Fix a bug](https://github.com/lightningnetwork/lnd/pull/8595) when retrying
+  SQL InvoiceDB transactions due to database errors.
 
 ## Code Health
 

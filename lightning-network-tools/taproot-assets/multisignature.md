@@ -25,7 +25,7 @@ Multisig at the tapleaf layer level enables the owner of the Taproot Asset is no
 
 [Also see: Multisignature itest in tapd](https://github.com/lightninglabs/taproot-assets/blob/main/itest/multisig.go)
 
-### AT the internal Taproot key
+### At the internal Taproot key
 
 All Taproot Assets are held by a Taproot UTXO, allowing use of Taproot’s native MuSig2 feature to require multiple parties to sign off on every transaction. These arrangements are limited to n-of-n MuSig2.
 

@@ -265,6 +265,11 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   types](https://github.com/lightningnetwork/lnd/pull/8554) defined in
   `btcd/rpcclient`.
 
+* [checkOutboundPeers](https://github.com/lightningnetwork/lnd/pull/8576) is
+  added to `chainHealthCheck` to make sure chain backend `bitcoind` and `btcd`
+  maintain a healthy connection to the network by checking the number of
+  outbound peers if they are below 6.
+
 ### Logging
 * [Add the htlc amount](https://github.com/lightningnetwork/lnd/pull/8156) to
   contract court logs in case of timed-out HTLCs in order to easily spot dust
@@ -431,6 +436,9 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
 
 * [Fix a bug](https://github.com/lightningnetwork/lnd/pull/8595) when retrying
   SQL InvoiceDB transactions due to database errors.
+
+* [Turn `sqldb` into a separate Go
+  module](https://github.com/lightningnetwork/lnd/pull/8603).
 
 ## Code Health
 

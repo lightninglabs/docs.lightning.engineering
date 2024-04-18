@@ -1,7 +1,8 @@
 ---
 description: >-
-  Instant Loop Out is a form of submarine swap that makes onchain funds
-  immediately available without needing to wait for block confirmations
+  Instant Loop Out is a form of submarine swap that uses pre-committed onchain
+  funds to make Loop Outs immediately available once the offchain payment has
+  been settled.
 ---
 
 # Instant Loop Outs

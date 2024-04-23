@@ -87,6 +87,7 @@
   * [Demo: Litd Speed Run](lightning-network-tools/lightning-terminal/speedrun.md)
   * [Connect to Terminal](lightning-network-tools/lightning-terminal/connect.md)
   * [Recommended Channels](lightning-network-tools/lightning-terminal/recommended-channels.md)
+  * [Rankings](lightning-network-tools/lightning-terminal/rankings.md)
   * [Health Checks](lightning-network-tools/lightning-terminal/health-checks.md)
   * [Liquidity Report](lightning-network-tools/lightning-terminal/liquidity-report.md)
   * [Opening Lightning Network Channels](lightning-network-tools/lightning-terminal/opening-channels.md)

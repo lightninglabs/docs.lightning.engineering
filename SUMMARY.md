@@ -129,6 +129,7 @@
   * [First Steps](lightning-network-tools/taproot-assets/first-steps.md)
   * [Collectibles](lightning-network-tools/taproot-assets/collectibles.md)
   * [Universes](lightning-network-tools/taproot-assets/universes.md)
+  * [Edge Nodes](lightning-network-tools/taproot-assets/edge-nodes.md)
   * [Multisignature](lightning-network-tools/taproot-assets/multisignature.md)
   * [Lightning Polar](lightning-network-tools/taproot-assets/polar.md)
   * [Operational Safety Guidelines](lightning-network-tools/taproot-assets/operational-safety-guidelines.md)

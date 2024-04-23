@@ -127,8 +127,13 @@
   node operators to require senders to pay an inbound fee for forwards and
   payments. It is recommended to only use negative fees (an inbound "discount")
   initially to keep the channels open for senders that do not recognize inbound
-  fees. [Send support](https://github.com/lightningnetwork/lnd/pull/6934) is
+  fees.
+
+  [Send support](https://github.com/lightningnetwork/lnd/pull/6934) is
   implemented as well.
+
+  [Positive inbound fees](https://github.com/lightningnetwork/lnd/pull/8627) 
+  can be enabled with the option `accept-positive-inbound-fees`.
 
 * A new config value,
   [sweeper.maxfeerate](https://github.com/lightningnetwork/lnd/pull/7823), is
@@ -197,6 +202,9 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   forwarding of blinded routes was added, along with [support](https://github.com/lightningnetwork/lnd/pull/8160)
   for forwarding blinded payments. Forwarding of blinded payments is disabled 
   by default, and the feature is not yet advertised to the network.
+
+* Introduced [fee bumper](https://github.com/lightningnetwork/lnd/pull/8424) to
+  handle bumping the fees of sweeping transactions properly.
 
 ## RPC Additions
 
@@ -321,6 +329,22 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   add coin selection strategy option to the following on-chain RPC calls
   `EstimateFee`, `SendMany`, `SendCoins`, `BatchOpenChannel`, `SendOutputs`, and `FundPsbt`.
 
+* Previously when callng `SendCoins`, `SendMany`, `OpenChannel` and
+  `CloseChannel` for coop close, it is allowed to specify both an empty
+  `SatPerVbyte` and `TargetConf`, and a default conf target of 6 will be used.
+  This is [no longer allowed](
+  https://github.com/lightningnetwork/lnd/pull/8422) and the caller must
+  specify either `SatPerVbyte` or `TargetConf` so the fee estimator can do a
+  proper fee estimation.
+
+* `BumpFee` has been updated to take advantage of the [new budget-based
+  sweeper](https://github.com/lightningnetwork/lnd/pull/8667). The param
+  `force` has been deprecated and replaced with a new param `immediate`, and a
+  new param `budget` is added to allow specifying max fees when sweeping
+  outputs. In addition, `PendingSweep` has added new fields `immediate`,
+  `budget`, and `deadline_height`, the fields `force`, `requested_conf_target`,
+  and `next_broadcast_height` are deprecated.
+
 ## lncli Updates
 
 * [Documented all available `lncli`
@@ -369,6 +393,10 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
 
 * Bump sqlite version to [fix a data 
   race](https://github.com/lightningnetwork/lnd/pull/8567).
+
+* The pending inputs in the sweeper is now
+  [stateful](https://github.com/lightningnetwork/lnd/pull/8423) to better
+  manage the lifecycle of the inputs.
 
 ## Breaking Changes
 ## Performance Improvements
@@ -451,6 +479,10 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   retry](https://github.com/lightningnetwork/lnd/pull/8611) logic and isolation
   settings between `sqldb` and `kvdb` packages.
 
+* [Expanded SweeperStore](https://github.com/lightningnetwork/lnd/pull/8147) to
+  also store the feerate, fees paid, and whether it's published or not for a
+  given sweeping transaction.
+
 ## Code Health
 
 * [Remove database pointers](https://github.com/lightningnetwork/lnd/pull/8117) 
@@ -467,6 +499,7 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
 * Carla Kirk-Cohen
 * Elle Mouton
 * ErikEk
+* Feelancer21
 * Jesse de Wit
 * Joost Jager
 * Keagan McClelland

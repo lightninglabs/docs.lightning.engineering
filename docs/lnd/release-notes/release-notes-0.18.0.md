@@ -127,6 +127,13 @@
   utxos which are unconfirmed and originated from the sweeper subsystem are not
   selected because they bear the risk of being replaced (BIP 125 RBF).
 
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/8685) lncli "bumpfee"
+  parsing of the immediate/force flag.
+  
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/8621) the behaviour of
+  neutrino LND nodes which would loose sync in case they had very unstable
+  peer connection.
+
 # New Features
 ## Functional Enhancements
 
@@ -355,6 +362,12 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   `budget`, and `deadline_height`, the fields `force`, `requested_conf_target`,
   and `next_broadcast_height` are deprecated.
 
+* [Delete All Payments RPC](https://github.com/lightningnetwork/lnd/pull/8672)
+  adds `all_payments` option to the `DeleteAllPayments` RPC. This update
+  ensures that the arguments are provided when calling `DeleteAllPayments` RPC,
+  whether through gRPC or the REST API, due to the destructive nature of the
+  operation.
+
 ## lncli Updates
 
 * [Documented all available `lncli`
@@ -389,7 +402,10 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   In particular, the complexity involved in the lifecycle loop has been
   decoupled into logical steps, with each step having its own responsibility,
   making it easier to reason about the payment flow.
- 
+
+* [Remove io/ioutil package 
+  dependence](https://github.com/lightningnetwork/lnd/pull/7765).
+
 * [Add a watchtower tower client
   multiplexer](https://github.com/lightningnetwork/lnd/pull/7702) to manage
   tower clients of different types.

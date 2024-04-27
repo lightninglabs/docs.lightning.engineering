@@ -215,8 +215,11 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
 
 * [Preparatory work](https://github.com/lightningnetwork/lnd/pull/8159) for 
   forwarding of blinded routes was added, along with [support](https://github.com/lightningnetwork/lnd/pull/8160)
-  for forwarding blinded payments. Forwarding of blinded payments is disabled 
-  by default, and the feature is not yet advertised to the network.
+  for forwarding blinded payments and [error handling](https://github.com/lightningnetwork/lnd/pull/8485).
+  With this change, LND is now eligible to be selected as part of a blinded 
+  route and can forward payments on behalf of nodes that have support for 
+  receiving to blinded paths. This upgrade provides a meaningful improvement 
+  to the anonymity set and usability of blinded paths in the Lightning Network.
 
 * Introduced [fee bumper](https://github.com/lightningnetwork/lnd/pull/8424) to
   handle bumping the fees of sweeping transactions properly. A
@@ -346,14 +349,6 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   add coin selection strategy option to the following on-chain RPC calls
   `EstimateFee`, `SendMany`, `SendCoins`, `BatchOpenChannel`, `SendOutputs`, and `FundPsbt`.
 
-* Previously when callng `SendCoins`, `SendMany`, `OpenChannel` and
-  `CloseChannel` for coop close, it is allowed to specify both an empty
-  `SatPerVbyte` and `TargetConf`, and a default conf target of 6 will be used.
-  This is [no longer allowed](
-  https://github.com/lightningnetwork/lnd/pull/8422) and the caller must
-  specify either `SatPerVbyte` or `TargetConf` so the fee estimator can do a
-  proper fee estimation.
-
 * `BumpFee` has been updated to take advantage of the [new budget-based
   sweeper](https://github.com/lightningnetwork/lnd/pull/8667). The param
   `force` has been deprecated and replaced with a new param `immediate`, and a
@@ -367,6 +362,10 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   ensures that the arguments are provided when calling `DeleteAllPayments` RPC,
   whether through gRPC or the REST API, due to the destructive nature of the
   operation.
+
+* When paying an AMP payment request, [the `--amp` flag is now
+  required](https://github.com/lightningnetwork/lnd/pull/8681) to be consistent
+  w/ the flow when a payment request isn't used. 
 
 ## lncli Updates
 
@@ -425,6 +424,18 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
   manage the lifecycle of the inputs.
 
 ## Breaking Changes
+
+* Previously when callng `SendCoins`, `SendMany`, `OpenChannel` and
+  `CloseChannel` for coop close, it is allowed to specify both an empty
+  `SatPerVbyte` and `TargetConf`, and a default conf target of 6 will be used.
+  This will [no longer be
+  allowed](https://github.com/lightningnetwork/lnd/pull/8422) in the next
+  release (v0.19.0) and the caller must specify either `SatPerVbyte` or
+  `TargetConf` so the fee estimator can do a proper fee estimation. For current
+  release, [an error will be
+  logged](https://github.com/lightningnetwork/lnd/pull/8693) when no values are
+  specified.
+
 ## Performance Improvements
 
 * Watchtower client DB migration to massively [improve the start-up 
@@ -532,6 +543,7 @@ bitcoin peers' feefilter values into account](https://github.com/lightningnetwor
 * Marcos Fernandez Perez
 * Matt Morehouse
 * Mohamed Awnallah
+* Olaoluwa Osuntokun
 * Ononiwu Maureen Chiamaka
 * Slyghtning
 * Tee8z

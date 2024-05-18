@@ -16,7 +16,7 @@ LND typically measures transaction fees in satoshis per virtual byte.
 
 The fee market, which aims to efficiently allocate the space in a block to transactions, functions like a bidding process. We may attach a fee to our transactions and submit them to the mempool, from where miners will typically pick those most profitable to them.
 
-Depending on our preferences and requirements, we may choose a lower fee or higher fee, but there never is a guarantee as to when when our transaction might get confirmed. For example, we might submit a transaction with a high fee, but due to bad luck no blocks are mined for some time, while others submit transactions with even higher fees, resulting in our transaction remaining unconfirmed.
+Depending on our preferences and requirements, we may choose a lower fee or higher fee, but there never is a guarantee as to when our transaction might get confirmed. For example, we might submit a transaction with a high fee, but due to bad luck no blocks are mined for some time, while others submit transactions with even higher fees, resulting in our transaction remaining unconfirmed.
 
 There are multiple mechanisms through which we can increase the fee of our transaction and jump ahead of the queue. This might be necessary when making payments that require a confirmation to be considered settled, or to safely regard an incoming transaction as final.
 

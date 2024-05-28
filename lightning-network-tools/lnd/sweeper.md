@@ -6,11 +6,11 @@ description: >-
 
 # Sweeper
 
-Sweep is an LND subservice that handles funds sent from dispute resolution contracts to the internal wallet.
-
 The Sweeper has undergone major adjustments in LND 0.18. Use this document to understand how the sweeper functions and how to best configure your node.
 
 When Lightning Network channels are unilaterally closed, funds are not directly settled into LND’s internal wallet, but rather into specific contracts that specify who can settle their funds when, and under what conditions. This also applies to both incoming and outgoing HTLCs, which also have to be swept.
+
+[Read more: Understanding Sweeping](../../the-lightning-network/payment-channels/understanding-sweeping.md)
 
 Not all sweeps are of equal importance. Some sweeps are time-sensitive and have to be confirmed within a predefined number of blocks, while others are primarily done for the convenience of being able to restore as much of the onchain funds as possible using LND’s internal wallet alone. Other sweeps, such as those picking up [anchors](../../the-lightning-network/taproot-assets/glossary.md), are needed to bump the transaction fee of the parent transaction.
 

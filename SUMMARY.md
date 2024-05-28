@@ -55,6 +55,7 @@
   * [Receiving Payments](lightning-network-tools/lnd/receiving.md)
   * [Unconfirmed Bitcoin Transactions](lightning-network-tools/lnd/unconfirmed-bitcoin-transactions.md)
   * [Channel Fees](lightning-network-tools/lnd/channel-fees.md)
+  * [Inbound Channel Fees](lightning-network-tools/lnd/inbound-channel-fees.md)
   * [Macaroons](lightning-network-tools/lnd/macaroons.md)
   * [Configuring Watchtowers](lightning-network-tools/lnd/watchtower.md)
   * [Pathfinding](lightning-network-tools/lnd/pathfinding.md)

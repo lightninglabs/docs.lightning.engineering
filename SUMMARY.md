@@ -67,6 +67,7 @@
   * [Send Messages With Keysend](lightning-network-tools/lnd/send-messages-with-keysend.md)
   * [Partially Signed Bitcoin Transactions](lightning-network-tools/lnd/psbt.md)
   * [Bulk onchain actions with PSBTs](lightning-network-tools/lnd/bulk-psbt.md)
+  * [Sweeper](lightning-network-tools/lnd/sweeper.md)
   * [Debugging LND](lightning-network-tools/lnd/debugging\_lnd.md)
   * [Fuzzing LND](lightning-network-tools/lnd/fuzz.md)
   * [LND and etcd](lightning-network-tools/lnd/etcd.md)

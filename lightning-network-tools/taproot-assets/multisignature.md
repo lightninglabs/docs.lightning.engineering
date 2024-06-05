@@ -21,7 +21,7 @@ The nature of the Taproot Assets protocol allows for multiple methods to securin
 
 Each individual Taproot Asset can be secured with multisig, either on the vUTXO level through Schnorr signatures (MuSig2, e.g. N-of-N) or on the script level. Given that MuSig2 signature can only be N-of-N, If a K-of-N multisignature contract is required, a tree of MuSig2 can be used to produce the various key combinations to fulfill the K-of-N requirement. To prevent the internal Taproot key from being used, the key is set to the NUMS key: A deterministic public key for which it can be proven that no private key exists.
 
-Multisig at the tapleaf layer level enables the owner of the Taproot Asset is not in control of the internal Taproot key, e.g. a pocket universe.
+Multisig at the tapleaf layer level enables the owner of the Taproot Asset to not have to control the internal Taproot key, e.g. use a pocket universe.
 
 [Also see: Multisignature itest in tapd](https://github.com/lightninglabs/taproot-assets/blob/main/itest/multisig.go)
 

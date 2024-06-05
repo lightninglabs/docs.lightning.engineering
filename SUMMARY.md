@@ -40,6 +40,7 @@
 * [Taproot Assets](the-lightning-network/taproot-assets/README.md)
   * [Taproot Assets Protocol](the-lightning-network/taproot-assets/taproot-assets-protocol.md)
   * [Taproot Assets on Lightning](the-lightning-network/taproot-assets/taproot-assets-on-lightning.md)
+  * [Taproot Assets Trustless Swap](the-lightning-network/taproot-assets/trustless-swap.md)
   * [FAQ](the-lightning-network/taproot-assets/faq.md)
   * [Glossary](the-lightning-network/taproot-assets/glossary.md)
 

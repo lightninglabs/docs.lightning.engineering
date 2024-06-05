@@ -1,14 +1,14 @@
 ---
 description: >-
-  Move your LND, Loop, Pool and litd all into a single binary: litd in
-  integrated mode.
+  Move LND, Loop, Pool, Taproot Assets and litd all into a single binary: litd
+  in integrated mode.
 ---
 
 # Integrating litd
 
-Litd is most conveniently run in integrated mode, meaning litd, LND, Loop, Pool and Faraday are bundled into a single binary, simplifying the process of starting, stopping and upgrading all your Lightning Labs tools.
+Litd is most conveniently run in integrated mode, meaning litd, LND, Loop, Pool, Taproot Assets and Faraday are bundled into a single binary, simplifying the process of starting, stopping and upgrading all your Lightning Labs tools.
 
-Whether you have only recently begun running litd or are still considering adding litd to your node, integrating litd is easy and convenient.
+Whether you have only recently begun running litd or are still considering adding litd to your node, integrating litd is easy and convenient. The process is easily reversible anytime.
 
 ## Evaluate
 
@@ -20,19 +20,21 @@ If you are running pre-release software, please make sure you are not downgradin
 
 ## Integrate <a href="#docs-internal-guid-2cf588aa-7fff-7efe-87ec-169e58d93b55" id="docs-internal-guid-2cf588aa-7fff-7efe-87ec-169e58d93b55"></a>
 
-To integrate a service, simply stop litd and the process in question. If you are integrating LND, please stop all processes.
-
-Next, [configure litd](run-litd.md) to integrate the service, for example by setting `lnd-mode=integrated` in your `lit.conf` file, or by passing it as `--lnd-mode=integrated` at startup. If your .lnd directory, macaroon and TLS certificate are in a non-standard location, don’t forget to specify this as well.
-
-Finally, start litd with the command `litd`. This command should start litd and all processes set to integrated mode. All remote processes will have to be started separately.
+* To integrate a service, simply stop litd and the process you are integrating. If you are integrating LND, please stop all processes.
+* Next, [configure litd](run-litd.md) to integrate the service, for example by setting `lnd-mode=integrated` in your `lit.conf` file, or by passing it as `--lnd-mode=integrated` at startup. If your .lnd directory, macaroon and TLS certificate are in a non-standard location, don’t forget to specify these as well.
+* We will need to migrate the `lnd.conf` configurations to the `lit.conf`. To do that, simply copy over all configurations from `lnd.conf` add them to your `lit.conf` file, prefixed with `lnd.` \
+  For example, `bitcoin.active=1` becomes `lnd.bitcoin.active=1`
+* Finally, start litd with the command `litd`. This command should start litd and all processes set to integrated mode. All remote processes will have to be started separately.
 
 ## Interact with your integrated litd <a href="#docs-internal-guid-8e5f5ed1-7fff-6736-8f08-77e9dadc2d2c" id="docs-internal-guid-8e5f5ed1-7fff-6736-8f08-77e9dadc2d2c"></a>
 
 When integrating LND, the service will remain reachable with the same macaroon at the usual port, meaning no adjustments are necessary.
 
-The Loop, Pool and Faraday processes are reachable inside litd at a new port and the LND TLS certificate.
+The Loop, Pool and Faraday processes are reachable inside litd at port `8443` using the litd TLS certificate.
 
 [Read more: litd Command Line Interface](command-line-interface.md)
+
+When running litd in integrated mode, all logs are written to `~/.lnd/logs/bitcoin/mainnet/lnd.log`
 
 ## Remote <a href="#docs-internal-guid-2f4a97ee-7fff-b357-6e75-2740fa5c850e" id="docs-internal-guid-2f4a97ee-7fff-b357-6e75-2740fa5c850e"></a>
 

@@ -30,7 +30,7 @@ For regular on-chain transactions made from our LND, increasing the fee of our t
 
 We can use the command `lncli wallet bumpfee` to increase the fees of pending transactions. To see which transactions this may apply to, we can use `lncli listchaintxns`. To narrow down the list of transactions to unconfirmed only you can use the flags `--start_height` (and the current block height) and `--end_height -1`. Take note that the transaction id and output specified in this command relate to an input used in the transaction that you want to be confirmed, not the transaction itself.
 
-When using the `--force` flag, an input is included even if sweeping this input costs more than it is worth.&#x20;
+When using the `--force` flag, an input is included even if sweeping this input costs more than it is worth.
 
 Example usage:\
 `lncli listchaintxns --start_height 818181 --end_height -1`\
@@ -81,13 +81,15 @@ For **cooperative closures**, we can use the `lncli wallet bumpfee` command in a
 
 In the case of a **force close**, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. To run the command successfully, you will need to specify the [channel point](../../community-resources/glossary.md#channel-point) of the channel that is being force closed.
 
+To bump any commitment transaction, LND will apply new logic starting from version 0.18. LND will consider the value of the transaction, eventual deadlines and queue the sweep for the next batch. To bump the transaction right away, the `--immediate` flag can be used. Budget and deadline can be overriden with the `--budget` and `--conf_target` flags.
+
 ## Rebroadcast transactions
 
 In some instances, especially during onchain fee spikes, your transactions might not be broadcast properly to mempools of miners and explorers or be dropped entirely.
 
 Restarting LND will automatically broadcast all unconfirmed transactions.
 
-All transactions to and from your node's onchain wallet can be retrieved with the command `lncli listchaintxns --end_height -1`. This includes regular Bitcoin transactions, channel opens and cooperative closures as well as most [sweeps](../../the-lightning-network/payment-channels/understanding-sweeping.md). You can use the `raw_tx_hex`  and pass it to your local Bitcoin node with `bitcoin-cli sendrawtransaction "hexstring"` to publish it again. Many block explorers also allow you to publish transactions using their node [through an online interface](https://mempool.space/tx/push).
+All transactions to and from your node's onchain wallet can be retrieved with the command `lncli listchaintxns --end_height -1`. This includes regular Bitcoin transactions, channel opens and cooperative closures as well as most [sweeps](../../the-lightning-network/payment-channels/understanding-sweeping.md). You can use the `raw_tx_hex` and pass it to your local Bitcoin node with `bitcoin-cli sendrawtransaction "hexstring"` to publish it again. Many block explorers also allow you to publish transactions using their node [through an online interface](https://mempool.space/tx/push).
 
 For force close transactions and some sweeps, you may attempt to retrieve the transaction from your local mempool if the transaction id is known: `bitcoin-cli getrawtransaction "txid"`
 

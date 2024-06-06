@@ -13,7 +13,7 @@ Using Partially Signed Bitcoin Transactions (PSBTs), this swap can be performed 
 
 
 
-<figure><img src="../../.gitbook/assets/psbt_auction_complete.drawio.png" alt=""><figcaption><p>Diagram of trustless Taproot Assets swap</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/psbt_auction_complete.drawio (1).png" alt=""><figcaption><p>Diagram of trustless Taproot Assets swap</p></figcaption></figure>
 
 The seller of the Taproot Asset creates a PSBT that proves their ownership over the asset while also allowing anybody who fulfills the PSBT to claim ownership over it (OP\_TRUE).
 

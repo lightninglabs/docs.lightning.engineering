@@ -83,6 +83,14 @@ In the case of a **force close**, we can use the command `lncli wallet bumpclose
 
 To bump any commitment transaction, LND will apply new logic starting from version 0.18. LND will consider the value of the transaction, eventual deadlines and queue the sweep for the next batch. To bump the transaction right away, the `--immediate` flag can be used. Budget and deadline can be overriden with the `--budget` and `--conf_target` flags.
 
+## Sweeper
+
+Outputs resulting from channel force closures will have to be swept. Please refer to the Sweeper guide for how to manage fees for these transactions.
+
+{% content-ref url="sweeper.md" %}
+[sweeper.md](sweeper.md)
+{% endcontent-ref %}
+
 ## Rebroadcast transactions
 
 In some instances, especially during onchain fee spikes, your transactions might not be broadcast properly to mempools of miners and explorers or be dropped entirely.

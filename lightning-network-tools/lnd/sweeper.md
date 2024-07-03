@@ -60,3 +60,32 @@ If the force close transaction doesn't contain any HTLCs, the anchor output is g
 For CPFP-purpose anchor sweeping, the deadline is the closest deadline value of all the HTLCs on the force close transaction. The budget, however, cannot be a ratio of the anchor output because the value is too small to contribute meaningful fees (330 sats). Since its purpose is to accelerate the force close transaction so the time-sensitive outputs can be swept, the budget is actually drawn from what we call “value under protection”, which is the sum of all HTLC outputs minus the sum of their budgets. By default, 50% of this value is used as the budget, to customize it, use `--sweeper.budget.anchorcpfp` to specify satoshis, or use `--sweeper.budget.anchorcpfpratio` to specify a ratio.
 
 To sweep an anchor as quickly as possible, the `--immediate` flag of `lncli wallet bumpfee` and `lncli wallet bumpclosefee` may be used.
+
+## Hands on: Managing Sweeps
+
+All sweeps are identified by their outpoint in the format of `txid:output`. When manually managing sweeps it is important to remember that even though LND will periodically create new transactions and publish them to the Bitcoin network, the transactions do not always get propagated, as new transactions might have fees below existing transactions already in the mempool, do not pay a significantly higher fee than such previous transactions or do not meet other requirements set by Bitcoin Core's relay policies.
+
+**Inspecting pending sweeps**
+
+You may use the command `lncli wallet pendingsweeps` to see which sweeps your node has not yet completed. You may also refer to `lncli pendingchannels` regarding HTLCs and `to_local` outputs of commitment transactions.
+
+**Manually slow down  a sweep**
+
+Sweeps that are not time sensitive may be manually slowed down by specifying a high confirmation target and/or a low budget. The budget here refers to the total fees you expect this transaction to pay, not the fee rate. A typical one-input-one-output sweep is about 135 vB in size. The transaction below for example would at maximum use a fee rate of 22 sat/vB, but it may take over two months before the budget is exhausted.
+
+`lncli wallet bumpfee --conf_target=10000 --budget=3000 <outpoint>`
+
+**Manually speed up a sweep**
+
+The same logic applies to increasing the confirmation target and/or the budget. The `--immediate` flag can be used to publish the replacement transaction immediately, rather than waiting for the next block.\
+`lncli wallet bumpfee --conf_target=10 --budget=21000 <outpoint> --immediate`
+
+**Manually replace multiple sweep transactions with a single sweep consolidation**
+
+Multiple sweeps can be consolidated into one transaction with a single output, even if the individual sweeps have already been published. To do that, you will have to execute `lncli wallet bumpfee` for each of the outpoints that are to be swept, with the same confirmation target. This has to be done within the same block. Once a new block is added to the Bitcoin Blockchain, LND will create a new transaction that sweeps all outpoints into a single UTXO.
+
+it is important to remember that the `--budget` flag in this case still refers to the budget _per UTXO_. Calculating the correct fee can be difficult. As a rule of thumb, you may calculate 120vB for the output, and about 70vB for each outpoint to be swept.
+
+`lncli wallet bumpfee --conf_target=10 --budget=700 <outpoint 1>`\
+`lncli wallet bumpfee --conf_target=10 --budget=700 <outpoint 2>`\
+`lncli wallet bumpfee --conf_target=10 --budget=700 <outpoint 3>`

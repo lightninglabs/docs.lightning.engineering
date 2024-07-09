@@ -63,7 +63,7 @@ To sweep an anchor as quickly as possible, the `--immediate` flag of `lncli wall
 
 ## Hands on: Managing Sweeps
 
-All sweeps are identified by their outpoint in the format of `txid:output`. When manually managing sweeps it is important to remember that even though LND will periodically create new transactions and publish them to the Bitcoin network, the transactions do not always get propagated, as new transactions might have fees below existing transactions already in the mempool, do not pay a significantly higher fee than such previous transactions or do not meet other requirements set by Bitcoin Core's relay policies.
+All sweeps are identified by their outpoint in the format of `txid:output`. When manually managing sweeps it is important to remember that even though LND will periodically create new transactions and publish them to the Bitcoin network conditionally, not all the created transactions will be published, as new transactions might have fees below existing transactions already in the mempool, do not pay a significantly higher fee than such previous transactions or do not meet other requirements set by [Bitcoin's RBF polices](https://github.com/bitcoin/bips/blob/master/bip-0125.mediawiki).
 
 **Inspecting pending sweeps**
 

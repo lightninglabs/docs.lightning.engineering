@@ -1,7 +1,7 @@
 ---
 description: >-
   The Taproot Assets Daemon tapd implements the Taproot Assets Protocol for
-  issuing assets on the Bitcoin blockchain.
+  issuing and transferring assets on the Bitcoin blockchain.
 ---
 
 # Get Started
@@ -10,11 +10,21 @@ description: >-
 
 Taproot Assets is alpha software. Use it on mainnet at your own risk!
 
-## Prerequisites <a href="#docs-internal-guid-29b5ec39-7fff-4a26-d7e9-dfa1d01ff2c6" id="docs-internal-guid-29b5ec39-7fff-4a26-d7e9-dfa1d01ff2c6"></a>
+## Full featureset <a href="#docs-internal-guid-dfe5d706-7fff-fe20-2c99-ce4fa398fe31" id="docs-internal-guid-dfe5d706-7fff-fe20-2c99-ce4fa398fe31"></a>
 
-Taproot Assets requires [LND](https://github.com/lightningnetwork/lnd/) v0.17.0. If [compiled from source](../lnd/run-lnd.md#docs-internal-guid-8ffda72d-7fff-a07e-3bb8-93cdf01b5103), it needs to be built with `tags=signrpc walletrpc chainrpc invoicesrpc`. LND needs to be synced and running on the same bitcoin network as you are doing your testing. RPC connections need to be accepted and Macaroons need to be set. [Learn how to set up LND using the default configuration here](../lnd/run-lnd.md). For onchain operations, this LND node should have some funds in its onchain wallet, but does not need open channels to mint, send and receive Taproot Assets on chain.
+To make use of all Taproot Assets features, you must run `litd` in integrated mode, meaning all binaries, including LND and tapd are running as part of one binary.
 
-## Installation: <a href="#docs-internal-guid-0652b60a-7fff-d0e5-15fc-159e8557bc88" id="docs-internal-guid-0652b60a-7fff-d0e5-15fc-159e8557bc88"></a>
+[Follow this guide to install litd.](../lightning-terminal/get-lit.md)
+
+[Follow this guide to configure litd in integrated mode.](../lightning-terminal/run-litd.md)
+
+[Already running LND? Follow this guide to integrate litd](../lightning-terminal/integrating-litd.md)
+
+## Standalone <a href="#docs-internal-guid-24188b0f-7fff-cc1b-10da-87278749e8ce" id="docs-internal-guid-24188b0f-7fff-cc1b-10da-87278749e8ce"></a>
+
+If you do not need to make use of Lightning channels, you may install `tapd` as a standalone binary with a connection to LND. If LND is compiled from source, it needs to be built using `tags=signrpc walletrpc chainrpc invoicesrpc`
+
+LND needs to be synced and running on the same bitcoin network as tapd. RPC connections need to be accepted and Macaroons need to be set.[ Learn how to set up LND using the default configuration here](https://docs.lightning.engineering/lightning-network-tools/lnd/run-lnd). For onchain operations, this LND node should have some funds in its onchain wallet, but does not need open channels to mint, send and receive Taproot Assets on chain.
 
 ### From source: <a href="#docs-internal-guid-5879af55-7fff-021d-8347-7ef95cd98105" id="docs-internal-guid-5879af55-7fff-021d-8347-7ef95cd98105"></a>
 

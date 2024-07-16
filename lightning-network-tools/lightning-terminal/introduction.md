@@ -33,7 +33,11 @@ Users can use Terminal to initiate Loops, select which channel they would want t
 
 ### Pool
 
-[Lightning Pool](pool.md) is a marketplace for buying and selling channel liquidity. Terminal allows users to place their own asks and bids through the web browser, see their matched orders, calculate fees earned and spent and monitor the channels opened through the platform.\
+[Lightning Pool](pool.md) is a marketplace for buying and selling channel liquidity. Terminal allows users to place their own asks and bids through the web browser, see their matched orders, calculate fees earned and spent and monitor the channels opened through the platform.
+
+### Taproot Assets
+
+The [Taproot Assets Protocol](../../the-lightning-network/taproot-assets/taproot-assets-protocol.md) defines how collectibles and assets are issued on the Bitcoin Blockchain using the [Taproot Assets Daemon](../taproot-assets/), `tapd`. Taproot Assets can be deposited into Lightning Network channels and routed over the Bitcoin Lightning Network.\
 
 
 [Connect your node to Terminal now.](https://terminal.lightning.engineering)

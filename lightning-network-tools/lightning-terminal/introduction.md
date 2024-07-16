@@ -37,7 +37,7 @@ Users can use Terminal to initiate Loops, select which channel they would want t
 
 ### Taproot Assets
 
-The [Taproot Assets Protocol](../../the-lightning-network/taproot-assets/taproot-assets-protocol.md) defines how collectibles and assets are issued on the Bitcoin Blockchain using the [Taproot Assets Daemon](../taproot-assets/), `tapd`. Taproot Assets can be deposited into Lightning Network channels and routed over the Bitcoin Lightning Network.\
+The [Taproot Assets Protocol](../../the-lightning-network/taproot-assets/) defines how collectibles and assets are issued on the Bitcoin Blockchain using the [Taproot Assets Daemon](../taproot-assets/), `tapd`. Taproot Assets can be deposited into Lightning Network channels and routed over the Bitcoin Lightning Network.\
 
 
 [Connect your node to Terminal now.](https://terminal.lightning.engineering)

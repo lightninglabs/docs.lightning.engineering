@@ -33,7 +33,7 @@ The number of decimal places your asset will have. Two decimal places would allo
 If you want to mint 1 million units of an asset, each divisible into one thousand pieces, you will have to choose a total supply of 1,000,000,000.
 
 **Meta Data**\
-You can associate your asset with additional metadata. This data can be added in the form of a string (----meta\_bytes), a file on disk (--meta\_file\_path), and be either in opaque or json form (--meta\_type)
+You can associate your asset with additional metadata. This data can be added in the form of a string (`--meta_bytes`), a file on disk (`--meta_file_path`), and be either in opaque or json form (`--meta_type`)
 
 **Grouped Asset**\
 For grouped assets the total supply can later be inflated, while ungrouped assets have a permanently fixed supply.

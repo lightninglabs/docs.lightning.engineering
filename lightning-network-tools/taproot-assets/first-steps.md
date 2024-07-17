@@ -18,30 +18,24 @@ Future sample commands will omit these details for simplicity.
 
 Taproot Assets allows you to mint both collectible and normal assets. In this guide we will mint normal assets, meaning an asset that is divisible into equal parts. Before we can get started, we will have to decide on the parameters for our asset.
 
-**Type**
-
+**Type**\
 An asset can be either set to normal or collectible. A normal asset is divisible into parts of equal value.
 
-**Name**
-
+**Name**\
 An asset requires a name. Uniqueness cannot be enforced over this name, so it can’t be used to uniquely identify the asset.
 
-**Supply**
-
+**Supply**\
 The total supply of your asset. Don’t forget to consider decimal places!
 
-**Decimal display**
-
+**Decimal display**\
 The number of decimal places your asset will have. Two decimal places would allow only for cents, while six decimal places would allow for micro-units. Too few decimal places can result in rounding errors when transferring assets over the Lightning Network. You can choose up to 12 decimal places.
 
 If you want to mint 1 million units of an asset, each divisible into one thousand pieces, you will have to choose a total supply of 1,000,000,000.
 
-**Meta Data**
-
+**Meta Data**\
 You can associate your asset with additional metadata. This data can be added in the form of a string (----meta\_bytes), a file on disk (--meta\_file\_path), and be either in opaque or json form (--meta\_type)
 
-**Grouped Asset**
-
+**Grouped Asset**\
 For grouped assets the total supply can later be inflated, while ungrouped assets have a permanently fixed supply.
 
 ## Minting Assets <a href="#docs-internal-guid-01b27eb6-7fff-e107-fcd4-9c9848363a92" id="docs-internal-guid-01b27eb6-7fff-e107-fcd4-9c9848363a92"></a>

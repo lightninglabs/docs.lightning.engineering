@@ -18,7 +18,7 @@ This enables a Taproot Assets-aware Lightning wallet to hold a Taproot Asset, bu
 
 Through Edge Nodes, Taproot Assets-enabled wallets are able to plug into the existing network effects of the Lightning Network, and are able to interact with services and users that are not aware of Taproot Assets.
 
-As Edge nodes swap Taproot Assets to BTC through traditional [HTLCs](../../the-lightning-network/multihop-payments/hash-time-lock-contract-htlc.md), they do not hold client assets or require custodial arrangements of any other kind.
+As Edge nodes swap Taproot Assets to BTC through traditional [HTLCs](../multihop-payments/hash-time-lock-contract-htlc.md), they do not hold client assets or require custodial arrangements of any other kind.
 
 ## What does an Edge node do <a href="#docs-internal-guid-9848fd86-7fff-5305-d8ad-ff2ea6ce4686" id="docs-internal-guid-9848fd86-7fff-5305-d8ad-ff2ea6ce4686"></a>
 
@@ -47,10 +47,10 @@ As an Edge node performs swaps between Taproot Assets and Bitcoin, they might ch
 
 The mechanisms of how Edge nodes become discoverable are not fully determined and ultimately up to the market. Edge nodes may be popularly known, affiliated with wallets, exchanges or brokers.
 
-Eventually, Edge nodes may offer their liquidity services through a marketplace like [Pool](../pool/).
+Eventually, Edge nodes may offer their liquidity services through a marketplace like [Pool](../../lightning-network-tools/pool/).
 
 ## How to run an Edge node
 
-To run an Edge node, we recommend getting started with [a regular LND routing node](../lnd/run-lnd.md). By running [litd](https://docs.lightning.engineering/lightning-network-tools/lightning-terminal/get-lit) in integrated mode, the node benefits from having access to Loop, Pool and Taproot Assets from the very beginning.
+To run an Edge node, we recommend getting started with [a regular LND routing node](../../lightning-network-tools/lnd/run-lnd.md). By running [litd](https://docs.lightning.engineering/lightning-network-tools/lightning-terminal/get-lit) in integrated mode, the node benefits from having access to Loop, Pool and Taproot Assets from the very beginning.
 
 In addition to Bitcoin, the Edge node will need to get access to the Taproot Assets they want to offer to their clients, as well as implement their custom logic for providing quotes and hedging their trades.

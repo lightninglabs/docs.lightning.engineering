@@ -50,7 +50,7 @@ This will add your asset to a minting queue called a batch, which allows multipl
 
 You will be given a `batch_txid`, which will have to be included in a block before you can spend your newly created assets. You can also inspect the newly created asset(s) by calling the command
 
-`tapcli assets list`
+`tapcli assets list --show_unconfirmed_mints`
 
 ```json
     	{

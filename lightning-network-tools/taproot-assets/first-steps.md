@@ -1,7 +1,7 @@
 ---
 description: >-
-  You can use Taproot Assets to mint, send and receive assets, verify and export
-  proofs as well as generate profiles to handle your portfolio.
+  Use Taproot Assets to mint, send, receive and burn assets on the Bitcoin
+  blockchain.
 ---
 
 # First Steps

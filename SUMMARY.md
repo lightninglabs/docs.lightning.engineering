@@ -134,6 +134,7 @@
   * [Get Started](lightning-network-tools/taproot-assets/get-tapd.md)
   * [First Steps](lightning-network-tools/taproot-assets/first-steps.md)
   * [Taproot Assets Channels](lightning-network-tools/taproot-assets/taproot-assets-channels.md)
+  * [RFQ](lightning-network-tools/taproot-assets/rfq.md)
   * [Collectibles](lightning-network-tools/taproot-assets/collectibles.md)
   * [Universes](lightning-network-tools/taproot-assets/universes.md)
   * [Multisignature](lightning-network-tools/taproot-assets/multisignature.md)

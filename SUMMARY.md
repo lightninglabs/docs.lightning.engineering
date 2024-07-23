@@ -137,6 +137,7 @@
   * [RFQ](lightning-network-tools/taproot-assets/rfq.md)
   * [Collectibles](lightning-network-tools/taproot-assets/collectibles.md)
   * [Universes](lightning-network-tools/taproot-assets/universes.md)
+  * [Debugging Tapd](lightning-network-tools/taproot-assets/debugging-tapd.md)
   * [Multisignature](lightning-network-tools/taproot-assets/multisignature.md)
   * [Lightning Polar](lightning-network-tools/taproot-assets/polar.md)
   * [Operational Safety Guidelines](lightning-network-tools/taproot-assets/operational-safety-guidelines.md)

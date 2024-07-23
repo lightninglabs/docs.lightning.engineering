@@ -20,6 +20,8 @@ Through Edge Nodes, Taproot Assets-enabled wallets are able to plug into the exi
 
 As Edge nodes swap Taproot Assets to BTC through traditional [HTLCs](../multihop-payments/hash-time-lock-contract-htlc.md), they do not hold client assets or require custodial arrangements of any other kind.
 
+[Read more: Set up an Edge node](../../lightning-network-tools/taproot-assets/rfq.md)
+
 ## What does an Edge node do <a href="#docs-internal-guid-9848fd86-7fff-5305-d8ad-ff2ea6ce4686" id="docs-internal-guid-9848fd86-7fff-5305-d8ad-ff2ea6ce4686"></a>
 
 * **Open channels**

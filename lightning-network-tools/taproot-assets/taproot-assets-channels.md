@@ -45,6 +45,8 @@ For example:
 
 In all following example commands, this detail is omitted for simplicity.
 
+[Read more: Debugging Tapd](debugging-tapd.md)
+
 ## Open channels <a href="#docs-internal-guid-726c810f-7fff-a475-78a5-501c81d0113e" id="docs-internal-guid-726c810f-7fff-a475-78a5-501c81d0113e"></a>
 
 To open a channel, we will identify the asset that we would like to deposit into our channel. We can get the asset ids of the Taproot Assets we hold using `tapcli assets list`. To open the channel, we will need the `asset_id` and how many of these tokens we want to deposit into our channel.
@@ -138,7 +140,7 @@ As the channel is opening, you will see the channel `txid`. You should be able t
 
 To be able to generate invoices, you must have a channel with a remote balance for the asset you are requesting. Your peer also needs to be configured for RFQ (request for quote).
 
-Learn: How to set up RFQ and become an Edge Node
+[Learn: How to set up RFQ and become an Edge Node](rfq.md)
 
 The invoice generation format follows that of LND.
 

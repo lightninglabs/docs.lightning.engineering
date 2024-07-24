@@ -88,7 +88,7 @@ The Taproot Assets Protocol does not prescribe how edge nodes and Taproot Asset 
 
 ### How does Taproot Assets deal with the “optionality” challenges?
 
-Edge nodes’ liquidity has some optionality properties, but this optionality will be priced by the market. Nodes, which offer this optionality, can decline to facilitate the quoted swap and users can avoid nodes which don’t perform frequently.  Ergo, Taproot Assets doesn’t have a “free option problem” which can exist in cross-chain atomic swaps.
+Edge nodes’ liquidity has some optionality properties, but this optionality will be priced by the market. Nodes, which offer this optionality, can decline to facilitate the quoted swap and users can avoid nodes which don’t perform adequately.  Ergo, Taproot Assets doesn’t have a “free option problem” which can exist in cross-chain atomic swaps.
 
 ### Do you need an equivalent amount of bitcoin to move Taproot Assets between channels?
 

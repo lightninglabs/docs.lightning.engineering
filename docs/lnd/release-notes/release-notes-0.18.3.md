@@ -36,6 +36,14 @@
 * [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/8896) that caused
   LND to use a default fee rate for the batch channel opening flow.
 
+* The fee limit for payments [was made
+  compatible](https://github.com/lightningnetwork/lnd/pull/8941) with inbound
+  fees.
+  
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/8946) a case where 
+bumping an anchor channel closing was not possible when no HTLCs were on the
+commitment when the channel was force closed.
+
 # New Features
 ## Functional Enhancements
 ## RPC Additions
@@ -117,6 +125,11 @@
 * [Groundwork](https://github.com/lightningnetwork/lnd/pull/8752) in preparation
   for implementing route blinding receives.
 
+* [Generate and send to](https://github.com/lightningnetwork/lnd/pull/8735) an
+  invoice with blinded paths. With this, the `--blind` flag can be used with 
+  the `lncli addinvoice` command to instruct LND to include blinded paths in the
+  invoice. 
+
 ## Testing
 ## Database
 
@@ -145,6 +158,7 @@
 # Contributors (Alphabetical Order)
 
 * Andras Banki-Horvath
+* bitromortac
 * Bufo
 * Elle Mouton
 * Matheus Degiovani

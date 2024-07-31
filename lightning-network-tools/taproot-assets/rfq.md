@@ -31,3 +31,10 @@ Alternatively, you can also set a price of asset per Bitcoin. Remember that if y
 Both peers of a Taproot Assets channel may set up an RFQ oracle. Alternatively, one of the nodes may chose to operate without an oracle, simply accepting all quotes from the Edge Node:
 
 `taproot-assets.experimental.rfq.skipacceptquotepricecheck=true`
+
+## Oracle Demo
+
+A basic price oracle has been implemented as part of the Taproot Assets code base. It makes use of the QueryRateTick RPC method to return a rate tick for a given transaction type, subject asset and payment asset.
+
+[Fork it: Taproot Assets Oracle Demo](https://github.com/lightninglabs/taproot-assets/tree/d70bccd2714a3f808e070a080c510cf396a11284/docs/examples/basic-price-oracle)
+

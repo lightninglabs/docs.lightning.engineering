@@ -35,6 +35,10 @@
   
 * [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/8896) that caused
   LND to use a default fee rate for the batch channel opening flow.
+  
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/8497) a case where LND
+  would not shut down properly when interrupted via e.g. SIGTERM. Moreover, LND
+  now shutsdown correctly in case one subsystem fails to startup.
 
 * The fee limit for payments [was made
   compatible](https://github.com/lightningnetwork/lnd/pull/8941) with inbound
@@ -110,6 +114,11 @@ commitment when the channel was force closed.
   `--amp` flag when sending a payment specifying the payment request.
 
 ## Code Health
+
+* [Added](https://github.com/lightningnetwork/lnd/pull/8836) a new failure
+  reason `FailureReasonCanceled` to the list of payment failure reasons. It
+  indicates that a payment was manually cancelled by the user.
+ 
 ## Breaking Changes
 ## Performance Improvements
 
@@ -136,6 +145,9 @@ commitment when the channel was force closed.
   the `lncli addinvoice` command to instruct LND to include blinded paths in the
   invoice. 
 
+* Add the ability to [send to use multiple blinded payment
+  paths](https://github.com/lightningnetwork/lnd/pull/8764) in an MP payment.
+
 ## Testing
 ## Database
 
@@ -146,6 +158,10 @@ commitment when the channel was force closed.
 
 * [Fixed](https://github.com/lightningnetwork/lnd/pull/8854) pagination issues
   in SQL invoicedb queries.
+
+* [Check](https://github.com/lightningnetwork/lnd/pull/8938) leader status with
+  our health checker to correctly shut down LND if network partitioning occurs
+  towards the etcd cluster.
 
 ## Code Health
 

@@ -12,7 +12,8 @@ Sample`tapd.conf` file:
 
 `rpclisten=0.0.0.0:10029`\
 `allow-public-uni-proof-courier=true`\
-`allow-public-stats=true universe.public-access=true`
+`allow-public-stats=true`\
+`universe.public-access=rw`
 
 ## The default universe
 

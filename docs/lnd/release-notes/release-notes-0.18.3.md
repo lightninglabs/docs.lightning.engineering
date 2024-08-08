@@ -48,6 +48,15 @@
 bumping an anchor channel closing was not possible when no HTLCs were on the
 commitment when the channel was force closed.
 
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/8174) old payments that
+  are stuck inflight. Though the root cause is unknown, it's possible the
+  network result for a given HTLC attempt was not saved, which is now fixed.
+  Check
+  [here](https://github.com/lightningnetwork/lnd/pull/8174#issue-1992055103)
+  for the details about the analysis, and
+  [here](https://github.com/lightningnetwork/lnd/issues/8146) for a summary of
+  the issue.
+
 # New Features
 ## Functional Enhancements
 ## RPC Additions
@@ -58,6 +67,36 @@ commitment when the channel was force closed.
   send payment stream context, or automatically at the end of the timeout period 
   if the user provided `timeout_seconds`.
 
+* The [SendCoinsRequest](https://github.com/lightningnetwork/lnd/pull/8955) now
+  takes an optional param `Outpoints`, which is a list of `*lnrpc.OutPoint`
+  that specifies the coins from the wallet to be spent in this RPC call. To
+  send selected coins to a given address with a given amount,
+  ```go
+      req := &lnrpc.SendCoinsRequest{
+          Addr: ...,
+          Amount: ...,
+          Outpoints: []*lnrpc.OutPoint{
+              selected_wallet_utxo_1,
+              selected_wallet_utxo_2,
+          },
+      }
+
+      SendCoins(req)
+  ```
+  To send selected coins to a given address without change output,
+  ```go
+      req := &lnrpc.SendCoinsRequest{
+        Addr: ...,
+        SendAll: true,
+        Outpoints: []*lnrpc.OutPoint{
+            selected_wallet_utxo_1,
+            selected_wallet_utxo_2,
+        },
+      }
+
+      SendCoins(req)
+  ```
+
 ## lncli Additions
 
 * [Added](https://github.com/lightningnetwork/lnd/pull/8491) the `cltv_expiry`
@@ -67,6 +106,18 @@ commitment when the channel was force closed.
 * The [`lncli wallet estimatefeerate`](https://github.com/lightningnetwork/lnd/pull/8730)
   command returns the fee rate estimate for on-chain transactions in sat/kw and
   sat/vb to achieve a given confirmation target.
+
+* [`sendcoins` now takes an optional utxo
+  flag](https://github.com/lightningnetwork/lnd/pull/8955). This allows users
+  to specify the coins that they want to use as inputs for the transaction. To
+  send selected coins to a given address with a given amount,
+  ```sh
+  sendcoins --addr YOUR_ADDR --amt YOUR_AMT --utxo selected_wallet_utxo1 --utxo selected_wallet_utxo2
+  ```
+  To send selected coins to a given address without change output,
+  ```sh
+  sendcoins --addr YOUR_ADDR --utxo selected_wallet_utxo1 --utxo selected_wallet_utxo2 --sweepall
+  ```
 
 # Improvements
 ## Functional Updates
@@ -101,6 +152,9 @@ commitment when the channel was force closed.
 
 * [`ChanInfoRequest`](https://github.com/lightningnetwork/lnd/pull/8813)
   adds support for channel points.
+
+* [BuildRoute](https://github.com/lightningnetwork/lnd/pull/8886) now supports
+  inbound fees.
 
 ## lncli Updates
 

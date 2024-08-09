@@ -57,6 +57,9 @@ commitment when the channel was force closed.
   [here](https://github.com/lightningnetwork/lnd/issues/8146) for a summary of
   the issue.
 
+* We'll now always send [channel updates to our remote peer for open
+  channels](https://github.com/lightningnetwork/lnd/pull/8963).
+
 # New Features
 ## Functional Enhancements
 ## RPC Additions
@@ -96,6 +99,9 @@ commitment when the channel was force closed.
 
       SendCoins(req)
   ```
+
+* The `EstimateFee` call on the `walletrpc` sub-server now [also returns the
+  current `min_relay_fee`](https://github.com/lightningnetwork/lnd/pull/8986). 
 
 ## lncli Additions
 
@@ -206,6 +212,10 @@ commitment when the channel was force closed.
 * Add the ability to [send to use multiple blinded payment
   paths](https://github.com/lightningnetwork/lnd/pull/8764) in an MP payment.
 
+* [Improve route blinding invoice generation 
+  UX](https://github.com/lightningnetwork/lnd/pull/8976) by making various 
+  params configurable on a per-RPC basis.
+
 ## Testing
 ## Database
 
@@ -243,6 +253,7 @@ commitment when the channel was force closed.
 * Elle Mouton
 * Eugene Siegel
 * Matheus Degiovani
+* Olaoluwa Osuntokun
 * Oliver Gugger
 * Slyghtning
 * Yong Yu

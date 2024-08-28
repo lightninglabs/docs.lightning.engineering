@@ -76,8 +76,18 @@ blinded path expiry.
 * [Fixed](https://github.com/lightningnetwork/lnd/pull/9021) an issue with some
   command-line arguments not being passed when running `make itest-parallel`.
 
+ 
+* [Fix a bug](https://github.com/lightningnetwork/lnd/pull/9039) that would
+  cause UpdateAddHTLC message with blinding point fields to not be re-forwarded
+  correctly on restart.
+ 
 # New Features
 ## Functional Enhancements
+
+* LND will now [temporarily ban peers](https://github.com/lightningnetwork/lnd/pull/9009)
+that send too many invalid `ChannelAnnouncement`. This is only done for LND nodes
+that validate `ChannelAnnouncement` messages.
+
 ## RPC Additions
 
 * The [SendPaymentRequest](https://github.com/lightningnetwork/lnd/pull/8734) 

@@ -6,7 +6,7 @@ description: >-
 
 # Lightning Polar
 
-Lightning Polar is an application that lets you quickly spin up a local testing environment for your Lightning Network node and applications. It supports LND, CLN and Eclair, with a Bitcoin Core backend on regtest.
+Lightning Polar is an application that lets you quickly spin up a local testing environment for your Lightning Network node and applications. It supports Litd, LND, CLN and Eclair, with a Bitcoin Core backend on regtest.
 
 {% embed url="https://www.youtube.com/watch?v=pYh-4EfdZaM" %}
 Tapping into Taproot Assets #2: Prototype with Polar
@@ -24,35 +24,37 @@ You can [download Lightning Polar](https://lightningpolar.com/) from the officia
 
 Run polar by executing it on your machine. This will launch the Polar user interface from where you can launch a new network.
 
-For the purpose of this guide, we are going to set up two LND nodes running on top of the same Bitcoin Core backend.
+For the purpose of this guide, we are going to set up two Litd nodes, each with their own Bitcoin Core backend. One Litd node (Alice) acts as the user, the other (Edgar) acts as the edge node. The edge node is connected to a CLN, Eclair and LND node, representing the broader Lightning Network.
 
-<figure><img src="../../.gitbook/assets/Screenshot from 2023-05-24 15-18-03.png" alt=""><figcaption><p>Start by creating your own Lightning Network</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot from 2024-08-22 17-17-37.png" alt=""><figcaption><p>Sample Lightning Network to test edge node configuration.</p></figcaption></figure>
 
 ## Start the network and deposit funds
 
-We can start the network by clicking on “Start” on the top right corner, which will load the Bitcoin and LND nodes. Once our network and nodes are running, we can click on one of our Lightning nodes and deposit funds into it. This will trigger our regtest Bitcoin node to mine regtest-Bitcoin in the background and transfer them to the internal wallet of our node.
+We can start the network by clicking on “Start” on the top right corner, which will load the Bitcoin and Lightning nodes. Once our network and nodes are running, we can click on one of our Lightning nodes and deposit funds into it. This will trigger our regtest Bitcoin node to mine regtest-Bitcoin in the background and transfer them to the internal wallet of our node.
 
-## Install and run the Taproot Assets daemon
+## Interact with the Taproot Assets daemon
 
-We will install Tapd by dragging its icon from the “Network Designer'' to one of the LND nodes. If you cannot access the Network Designer, try clicking on an empty part of your network plane.
+Our Litd nodes include all the functionality necessary to mint Taproot Assets and open Taproot Assets channels. We can open a terminal for the Edge node and mint an asset, for example using the command `tapcli assets mint --type normal --name lollar --supply 1000000000 --decimal_display 3 --meta_bytes '{"hello":true}' --meta_type json --new_grouped_asset`
 
-We are going to need two Taproot Assets clients, connected to each of the LND nodes.
+We can then go ahead and mint this batch with `tapcli assets mint batches finalize`
 
-<figure><img src="../../.gitbook/assets/Screenshot from 2023-05-24 15-24-17.png" alt=""><figcaption><p>A simple network without channels, two LND nodes sharing the same Bitcoin backend, and two Tapd instances.</p></figcaption></figure>
+Don't forget to mine a few blocks to get the transaction confirmed!
 
-## Mint assets
+Before we can use this asset to open a channel we will have to sync the asset to Alice' node. The easiest way to do that is to use the Polar UI by "creating an Asset address," then "sync assets from Edgar's node." Don't forget to click on "generate" to make sure the synchronization process is completed.
 
-We can mint our Taproot Assets by clicking on one of the Tapd clients, then selecting “Actions” and, finally, “Mint.” We have the option between “Normal” and “Collectible” assets, setting a name and an amount. We can mint these assets immediately.
+To open Taproot Asset channels we can use the command below. Don't forget to substitute the node key for Alice's key, and the asset ID for the asset you minted above.
 
-## Synchronize to a universe and generate Taproot Assets address
+`litcli --macaroonpath ~/.lnd/data/chain/bitcoin/regtest/admin.macaroon ln fundchannel --node_key 03d30bdaa3f44dd0a5ae7ed7cb1ad1c0ddd13b8db979b719cd963b65508815c4f1 --asset_amount 1000000 --asset_id b7e048c449feebb898138f1a7f340cc210ab2a04304b5595f20715a8a6e0ba34 --sat_per_vbyte 10`
 
-On the node to which we want to send the assets, we navigate to “Actions” then “New Address.” We will first have to sync to the minting node (e.g. Alice) before we can see the asset in the drop-down menu. Once we filled in an amount, we can generate the address which looks like this:
+Ordinary Lightning Network channels can be created using the Polar UI.
 
-`taprt1qqqsqq3q5vap3thd2ms5zs0n8te9zlgcwdzfgnd0408lzp8cgdg65qyurgrqgggzyglt8lhnkdxqxc3qqggze05gu6f2z963r26yctv4j3xpzg6gf4xqvggz4avwwzxt3wwpqype8dlxqu95z96w8d8lyx89kn927chyla6nelyssqtytwdc5s`
+## End-to-end transfers
 
-## Send Taproot Assets
+We can also simulate environments in which assets are sent through two separate edge nodes.
 
-Using the address we generated in the previous step, we can navigate back to the minting node and paste the address under “Actions” and “Send Asset.” Following this action, we should be able to see balance in the recipient’s node under “Info.”
+In the example below, Alice and Alfred are able to send their assets to Zara and Zane, using Edgar and Eda as the edge nodes. Elen and Cora represent the wider Lightning Network.
+
+<figure><img src="../../.gitbook/assets/Screenshot from 2024-08-29 16-34-54.png" alt=""><figcaption></figcaption></figure>
 
 ## Useful information
 

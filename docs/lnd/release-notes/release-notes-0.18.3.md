@@ -80,6 +80,10 @@ blinded path expiry.
 * [Fix a bug](https://github.com/lightningnetwork/lnd/pull/9039) that would
   cause UpdateAddHTLC message with blinding point fields to not be re-forwarded
   correctly on restart.
+
+* [A bug related to sending dangling channel
+  updates](https://github.com/lightningnetwork/lnd/pull/9046) after a
+  reconnection for taproot channels has been fixed.
  
 # New Features
 ## Functional Enhancements
@@ -262,6 +266,11 @@ that validate `ChannelAnnouncement` messages.
   our health checker to correctly shut down LND if network partitioning occurs
   towards the etcd cluster.
 
+* [Fix](https://github.com/lightningnetwork/lnd/pull/9050) some inconsistencies
+  to make the native SQL invoice DB compatible with the KV implementation.
+  Furthermore fix a native SQL invoice issue where AMP subinvoice HTLCs are 
+  sometimes updated incorrectly on settlement.
+
 ## Code Health
 
 * [Move graph building and
@@ -278,6 +287,7 @@ that validate `ChannelAnnouncement` messages.
 
 # Contributors (Alphabetical Order)
 
+* Alex Akselrod
 * Andras Banki-Horvath
 * bitromortac
 * Bufo

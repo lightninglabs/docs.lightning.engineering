@@ -16,7 +16,7 @@ All channels in the Lightning Network are payment channels. A payment channel is
 
 ## Anchor channel
 
-Anchor channels are an optional feature (feature bits `20`, `21`, `22` & `23`) for Lightning nodes such as LND. When unilaterally an anchor channel it is possible to increase the fees of this closure transaction according to market requirements by joining an extra UTXO. When enabling anchor channels in LND, it is required to keep at least 10k satoshis per channel with a maximum of 100k satoshis in the on-chain wallet.
+Anchor channels are an optional feature (feature bits `20`, `21`, `22` & `23`) for Lightning nodes such as LND. When unilaterally closing an anchor channel it is possible to increase the fees of this closure transaction according to market requirements by joining an extra UTXO. When enabling anchor channels in LND, it is required to keep at least 10k satoshis per channel with a maximum of 100k satoshis in the on-chain wallet.
 
 ## Channel capacity
 

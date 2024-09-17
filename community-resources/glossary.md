@@ -18,7 +18,7 @@ Anchor channels include up to two special outputs called anchors which are used 
 
 ## Aperture
 
-Aperture is an implementation of a [LSAT](glossary.md#lsat) proxy server developed by [Lightning Labs](glossary.md#lightning-labs).
+Aperture is an implementation of a L402 proxy server developed by [Lightning Labs](glossary.md#lightning-labs).
 
 ## Asset merge <a href="#docs-internal-guid-8c122d13-7fff-d2e4-025f-f17b4d82dff3" id="docs-internal-guid-8c122d13-7fff-d2e4-025f-f17b4d82dff3"></a>
 
@@ -344,11 +344,11 @@ Loop In is the process of sending on-chain bitcoin and receiving the equivalent 
 
 Loop Out is the process of making a Lightning payment and receiving an equivalent amount (minus fees) in your [on-chain](glossary.md#on-chain) Bitcoin wallet using [Lightning Loop](glossary.md#loop).
 
-## LSAT
+## L402
 
-The Lightning Service Authentication Token (LSAT) combines [Macaroons](glossary.md#macaroon) with [preimages](glossary.md#preimage) as proof of payment to create tickets for paid APIs or other services that require authentication and payment.
+The L402 protocol combines [Macaroons](glossary.md#macaroon) with [preimages](glossary.md#preimage) as proof of payment to create tickets for paid APIs or other services that require authentication and payment. It is named after the HTTP 402 error code.
 
-[Read more: LSAT](../the-lightning-network/l402/)
+[Read more: L402](../the-lightning-network/l402/l402.md)
 
 ## Macaroon
 
@@ -402,7 +402,7 @@ Neutrino is a technology that allows a [LND](glossary.md#the-lightning-network-d
 
 Noise is the encryption protocol used to establish and authenticate communications between Lightning nodes.
 
-[Further reading: Noise protocol](http://noiseprotocol.org/)
+[Further reading: Noise protocol](https://noiseprotocol.org/)
 
 ## np2wkh
 
@@ -422,7 +422,7 @@ An onion address is an identifier, similar to a url, pointing to a -> onion serv
 
 ## Onion routing
 
-Onion routing describes the methodology of encrypting messages inside of encrypted messages, which are passed from hop to hop. Each hop is only able to decipher messages intended for itself, not any predecessor or successor. Onion routing is used to transfer data in the [Tor Network](glossary.md#tor) as well as to pass on payments and messages in the Lightning Network using [Sphinx](glossary.md#sphinx).
+Onion routing describes the methodology of encrypting messages inside of encrypted messages, which are passed from hop to hop. Each hop is only able to decipher messages intended for itself, not any predecessor or successor. Onion routing is used to transfer data in the [Tor Network](glossary.md#tor) as well as to pass on payments and messages in the Lightning Network using Sphinx.
 
 ## Onion Service
 

@@ -17,7 +17,7 @@ We are here to help. If you have questions or need to bounce ideas around, feel 
 **A native interface to Lightning on the web**
 
 * New Lightning browser extensions like [Joule](https://lightningjoule.com/) and the [Lightning Browser Extension](https://github.com/bumi/lightning-browser-extension) built on the [WebLN](https://webln.dev/#/) standard.
-* Suggestion: extending [WebLN](https://webln.dev/#/) to encompass liquidity APIs [Loop](https://lightning.engineering/loop) and [Pool](https://lightning.engineering/pool) as well as any other Lightning APIs.
+* Suggestion: extending [WebLN](https://webln.dev/#/) to encompass liquidity APIs [Loop](../lightning-network-tools/loop/) and [Pool](../lightning-network-tools/pool/) as well as any other Lightning APIs.
 
 **Streaming payments on social platforms**
 
@@ -26,7 +26,7 @@ We are here to help. If you have questions or need to bounce ideas around, feel 
 
 **Distributed compute with Lightning**
 
-* Use [LSATs](https://lsat.tech) for a decentralized metered container execution service (like [Travis CI](https://travis-ci.org/)). Will have with the potential to reach a more global audience without the requirement of credit cards.&#x20;
+* Use [L402s](https://l402.org/) for a decentralized metered container execution service (like [Travis CI](https://travis-ci.org/)). Will have with the potential to reach a more global audience without the requirement of credit cards.&#x20;
 * Suggestion: think serverless microVMs like [Firecracker VM](https://firecracker-microvm.github.io/) as a starting point, will likely need a small overlay layer to let people find other nodes.
 
 **Lightning Paywall Plugin**
@@ -36,33 +36,33 @@ We are here to help. If you have questions or need to bounce ideas around, feel 
 
 **Pay-per-use Lightning API calls**
 
-* Create APIs where all requests and responses are made with Lightning push payments with [Keysend](https://wiki.ion.radar.tech/tech/research/sphinx-send), instead of requiring an invoice
+* Create APIs where all requests and responses are made with Lightning push payments with [Keysend](../lightning-network-tools/lnd/send-messages-with-keysend.md), instead of requiring an invoice
 * Suggestions: a Keysend Services Directory, ability to sell Mission Control data to a peer in need of updated routing data, etc.
 
-## LSAT implementation ideas
+## L402 implementation ideas
 
-Lightning Service Authentication Tokens (LSATs) allow for paid APIs in distributed systems. LSATs are built on top of Macaroons -- they can carry caveats, attenuations, can be delegated and further restricted by the bearer.
+L402s allow for paid APIs in distributed systems. L402s are built on top of Macaroons -- they can carry caveats, be attenuated, can be delegated and further restricted by the bearer.
 
-Implementing LSATs is most attractive in services that require metered or paid access together with granular access control. A key advantage of LSATs is that the logic of collecting payments can be separate from verifying access, often without the need to maintain customer records or expose them to the open internet.
+Implementing L402s is most attractive in services that require metered or paid access together with granular access control. A key advantage of L402s is that the logic of collecting payments can be separate from verifying access, often without the need to maintain customer records or expose them to the open internet.
 
-Here are just some initial ideas for potential LSAT powered products:
+Here are just some initial ideas for potential L402 powered products:
 
 * Bitcoin price API
 
-There are many APIs for obtaining Bitcoin prices, some paid, others free. A Bitcoin price API built with LSATs may issue a macaroon to each new user, allowing for some free usage. Upon hitting a daily or total limit, the API can issue an LSAT together with a Lightning invoice. There could be separate pricing for surge traffic or historic data. One idea is to issue LSATs that include a “delay” as a caveat. Free access requests are served after a few seconds, while paid access is served immediately.
+There are many APIs for obtaining Bitcoin prices, some paid, others free. A Bitcoin price API built with L402s may issue a macaroon to each new user, allowing for some free usage. Upon hitting a daily or total limit, the API can issue an L402 together with a Lightning invoice. There could be separate pricing for surge traffic or historic data. One idea is to issue L402s that include a “delay” as a caveat. Free access requests are served after a few seconds, while paid access is served immediately.
 
 * Virtual Private Network
 
-A VPN provider can use LSATs to sell bandwidth, adjusting their rates by location and speed. This makes it easy to integrate the VPN service into other products, resell bandwidth or share bandwidth between users or applications.
+A VPN provider can use L402s to sell bandwidth, adjusting their rates by location and speed. This makes it easy to integrate the VPN service into other products, resell bandwidth or share bandwidth between users or applications.
 
 * Voice over IP gateway
 
-There are plenty of low-fee VoIP gateways, troubled by high payment costs. A VoIP gateway using LSATs could quickly become attractive for other applications to integrate once pay-as-you-go plans over Lightning become available. LSATs could be obtained for a set amount of minutes, a monthly plan or for each call separately, turning every Lightning wallet also into a phone, fax or SMS application.
+There are plenty of low-fee VoIP gateways, troubled by high payment costs. A VoIP gateway using L402s could quickly become attractive for other applications to integrate once pay-as-you-go plans over Lightning become available. L402s could be obtained for a set amount of minutes, a monthly plan or for each call separately, turning every Lightning wallet also into a phone, fax or SMS application.
 
 * Podcasts and movies
 
-Podcasts could become available with advertisements to the general public, and without ads to paying subscribers. LSATs issued to the subscriber define which episodes and versions are available. The paying subscriber can also share an attenuated LSAT with their friends that lets them listen to a single episode without having to pay for it. This can be implemented into existing infrastructure without breaking backwards compatibility.
+Podcasts could become available with advertisements to the general public, and without ads to paying subscribers. L402s issued to the subscriber define which episodes and versions are available. The paying subscriber can also share an attenuated L402 with their friends that lets them listen to a single episode without having to pay for it. This can be implemented into existing infrastructure without breaking backwards compatibility.
 
 * Cloud storage (differentiated by speed, per bandwidth or by storage, delegate access)
 
-A cloud storage provider can sell their space and bandwidth and use LSATs to track payments and organize access control. A user can attenuate their LSATs and share them among their separate devices or even specific files with friends.
+A cloud storage provider can sell their space and bandwidth and use L402s to track payments and organize access control. A user can attenuate their L402s and share them among their separate devices or even specific files with friends.

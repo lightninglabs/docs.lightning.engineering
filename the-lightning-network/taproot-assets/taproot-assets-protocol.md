@@ -13,10 +13,10 @@ To understand Taproot Assets, we will need to make ourselves familiar with sever
 [Read the BIPs: Taproot Assets Protocol](https://github.com/Roasbeef/bips/blob/bip-tap/bip-tap.mediawiki)
 
 Learn about the basic concepts here:\
-[Public-key cryptography](https://www.cloudflare.com/en-ca/learning/ssl/how-does-public-key-encryption-work/)\
+[Public-key cryptography](https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/)\
 [Cryptographic Hashes](https://resources.infosecinstitute.com/topic/introduction-to-hash-functions/)\
 [Merkle trees](https://nakamoto.com/merkle-trees/)\
-[Bitcoin UTXO](https://mirror.xyz/0xaFaBa30769374EA0F971300dE79c62Bf94B464d5/Yetu-6pZkbQCOpsBxswn\_7dGUZDxoBU8NrOQIZScwpg)
+[Bitcoin UTXO](https://unchained.com/blog/what-is-a-utxo-bitcoin/)
 
 ### Taproot transactions <a href="#docs-internal-guid-4d5379eb-7fff-d82b-c5fe-6c905a4ecb5e" id="docs-internal-guid-4d5379eb-7fff-d82b-c5fe-6c905a4ecb5e"></a>
 

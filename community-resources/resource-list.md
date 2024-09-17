@@ -22,7 +22,6 @@ description: >-
 * [Blixt Wallet](https://blixtwallet.github.io) ([Github](https://github.com/hsjoberg/blixt-wallet)) - available in Google Play and for iOS
 * [Breez](https://breez.technology) ([Github](https://github.com/breez/breezmobile)) - available in Google Play and for iOS
 * [Electrum](https://electrum.org) ([Github](https://github.com/spesmilo/electrum)) - available for Linux, OSX, Windows and Android
-* [Mash](https://app.mash.com/wallet) - available for all browsers
 * [Mutiny](https://app.mutinywallet.com/) ([Github](https://github.com/MutinyWallet/)) -  available for all browsers
 * [Muun](https://muun.com) ([Github](https://github.com/muun)) - available on Google Play and the Apple AppStore
 * [Open Bitcoin Wallet](https://f-droid.org/en/packages/wtf.nbd.obw/) ([Github](https://github.com/nbd-wtf/obw)) - available in F-Droid
@@ -37,7 +36,6 @@ description: >-
 * [Strike](https://strike.me) - available in Google Play, the Apple AppStore and Chrome
 * [Wallet of Satoshi](https://walletofsatoshi.com) - available in Google Play and the Apple AppStore
 * [Bottlepay](https://bottlepay.com) - available in Google Play and the Apple AppStore
-* [Mash](https://getmash.com/wallet) - lightning wallet that integrates directly into sites, apps and launching shortly in browser extension, mobile app form.
 * [Alby](https://getalby.com/) ([Github](https://github.com/getAlby/lightning-browser-extension)) - connect various wallet interfaces to this browser extension for web-native payments. And login with lightning. Available for Firefox, Chrome, Brave and others
 
 ### Lightning node interfaces
@@ -48,7 +46,6 @@ description: >-
 ## Explorers <a href="#docs-internal-guid-c8a6648f-7fff-39eb-c8cc-47fadeadad71" id="docs-internal-guid-c8a6648f-7fff-39eb-c8cc-47fadeadad71"></a>
 
 * [1ML](https://1ml.com) - Lightning network and node statistics
-* [ACINQ](https://explorer.acinq.co) - Geographical distribution of Lightning nodes
 * [Amboss](https://amboss.space) - Detailed information on channels and fee rates
 * [Cheese Robot](https://t.me/cheeserobot) - Telegram bot with Lightning Network explorer capabilities
 * [Lightning Terminal](https://terminal.lightning.engineering) - Evaluating channels and peers
@@ -66,8 +63,6 @@ description: >-
 * [Sphinx Relay](https://github.com/stakwork/sphinx-relay) - e2e encrypted group chat enabled by a Node.js wrapper around lnd
 * [Thunderhub](https://github.com/apotdevin/thunderhub) - node management via a NextJS server handling a backend Graphql server and frontend React App
 * [TLV shop](https://github.com/joostjager/tlvshop.com) - webshop with no browser, shopping cart, checkout page, nor credit card required
-* [LightningStamp](https://lightningstamp.bitcoinproof.org) - create timestamped proofs of existence for your files (OpentimeStamps or Chainpoint)
-* [Mash](https://getmash.com) - monetize your apps by integrating an open consumer lightning wallet, paywalls, and payment faciliation mechanisms with a few snippets of code
 * [sms4sats](https://sms4sats.com) - send text messages and receive sms for online services on the web and via API
 * [lightsats](https://lightsats.com) - Onboard newbies with lightning tips
 * [LNURL Auth For WordPress](https://wordpress.org/plugins/lnurl-auth/) - Login to WordPress with Bitcoin Lightning
@@ -86,17 +81,15 @@ description: >-
 * [ln-service](https://github.com/alexbosworth/ln-service) - Node.js REST interface to lnd
 * [LNbits](https://github.com/lnbits/lnbits) - Simple Python server that provides an account system, extension framework, and more on top of lnd
 * [lndhub](https://github.com/BlueWallet/LndHub) - Wrapper for lnd that provides separate accounts for users sharing a node
-* [lsat-js](https://github.com/Tierion/lsat-js) - A javascript library for working with LSATs
+* [lsat-js](https://github.com/Tierion/lsat-js) - A javascript library for working with L402s
 * [Polar](https://github.com/jamaljsr/polar) - One-click Bitcoin Lightning networks for local app development and testing
 * [WebLN](https://webln.dev/#/) - A library for secure communication between Lightning apps and user nodes
-* [Dazaar](https://dazaar.com) - A library to sell data over a P2P network.
 * [rebalance-lnd](https://github.com/C-Otto/rebalance-lnd) Python script for circular rebalancing in LND
 * [Faraday](https://github.com/lightninglabs/faraday) - A suite of tools built to help node operators and businesses run lnd, the leading implementation of the Lightning Network
 
 ## Wikis, Guides & Resources <a href="#docs-internal-guid-8bae6cd2-7fff-ce99-f185-1c89fff98fef" id="docs-internal-guid-8bae6cd2-7fff-ce99-f185-1c89fff98fef"></a>
 
 * Alby's [WebLN Guide](https://www.webln.guide/introduction/welcome)
-* Lightning Network Wiki [ION](https://wiki.ion.radar.tech)
 * Ben Congdon's[ Awesome Lightning Network](https://github.com/bcongdon/awesome-lightning-network)
 * Electric Capital's[ Lightning Ecosystem Repository](https://github.com/electric-capital/crypto-ecosystems/blob/master/data/ecosystems/l/lightning.toml)
 * Jameson Lopp's[ Lightning Network Resources](https://www.lopp.net/lightning-information.html)
@@ -106,8 +99,6 @@ description: >-
 
 * [Bitfinex Pay](https://pay.bitfinex.com)
 * [Coingate](https://coingate.com)
-* [Globee](https://globee.com)
-* [LNPay](https://lnpay.co)
 * [OpenNode](https://www.opennode.com)
 * [BTCPayServer](https://docs.btcpayserver.org)
 * [LNBits](https://lnbits.com/)
@@ -116,26 +107,21 @@ description: >-
 ## Exchanges & Brokerages <a href="#docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364" id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
 
 * [Azteco](https://azte.co)
+* [Binance](https://www.binance.com)
 * [Bipa](https://bipa.app)
 * [Bitaroo](https://www.bitaroo.com.au)
 * [Bitfinex](https://www.bitfinex.com)
 * [Boltz](https://boltz.exchange)
-* [Buda](https://www.buda.com)
+* [Coinbase](https://www.coinbase.com)
 * [Coincorner](https://www.coincorner.com)
-* [Fastbitcoins](https://fastbitcoins.com)
 * [FixedFloat](https://fixedfloat.com)
-* [Kollider](https://kollider.xyz)
 * [Kraken](https://www.kraken.com/)
 * [LNMarkets](https://lnmarkets.com)
 * [LOFT](https://loft.trade)
 * [Mt Pelerin](https://www.mtpelerin.com/buy-bitcoin-lightning)
 * [NiceHash](https://www.nicehash.com)
-* [OKCoin](https://www.okcoin.com)
-* [OKEX](https://www.okex.com)
+* [OKX](https://www.okx.com/)
 * [River Financial](https://river.com)
-* [The Rock Trading](https://www.therocktrading.com)
 * [Strike](https://strike.me)
 * [Southxchange](https://main.southxchange.com)
 * [VBTC](https://vbtc.exchange)
-
-[Something missing? Fill out this form to let us know or have your project included!](https://docs.google.com/forms/d/e/1FAIpQLSdT6kP3oUzd6xWytkDcflU9byHcp8nP9IyYntm\_6wa9Cw6qqg/viewform)

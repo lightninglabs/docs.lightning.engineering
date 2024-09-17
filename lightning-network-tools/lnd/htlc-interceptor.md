@@ -294,14 +294,14 @@ func (i *interceptor) htlcReceiveLoop(ctx context.Context,
 
 ### lndclient: <a href="#docs-internal-guid-2da6c1a6-7fff-42f2-0550-ed59e63444dd" id="docs-internal-guid-2da6c1a6-7fff-42f2-0550-ed59e63444dd"></a>
 
-[https://github.com/lightninglabs/lndclient/blob/master/router\_client.go#L58](https://github.com/lightninglabs/lndclient/blob/master/router\_client.go#L58)
+[https://github.com/lightninglabs/lndclient/blob/master/router\_client.go#L58](https://github.com/lightninglabs/lndclient/blob/fb7026e398a92971a829c4a48adbafa2bb3b964c/router\_client.go#L289C1-L357C2)
 
 ```go
 // InterceptedHtlc contains information about a htlc that was intercepted in
 // lnd's switch.
 type InterceptedHtlc struct {
 	// IncomingCircuitKey is lnd's unique identfier for the incoming htlc.
-	IncomingCircuitKey channeldb.CircuitKey
+	IncomingCircuitKey invpkg.CircuitKey
 
 	// Hash is the payment hash for the htlc. This may not be unique for
 	// MPP htlcs.
@@ -323,6 +323,13 @@ type InterceptedHtlc struct {
 	// Since lnd has non-strict forwarding, this may not be the channel that
 	// the htlc ends up being forwarded on.
 	OutgoingChannelID lnwire.ShortChannelID
+
+	// CustomRecords holds the custom TLV records that were added to the
+	// payment.
+	CustomRecords map[uint64][]byte
+
+	// OnionBlob is the onion blob for the next hop.
+	OnionBlob []byte
 }
 
 // HtlcInterceptHandler is a function signature for handling code for htlc

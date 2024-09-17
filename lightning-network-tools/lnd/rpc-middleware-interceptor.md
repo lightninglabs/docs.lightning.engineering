@@ -136,7 +136,7 @@ func (s *InterceptorService) Intercept(ctx context.Context,
 
 ### lndclient:
 
-[https://github.com/lightninglabs/lndclient/blob/master/lightning\_client.go#L256](https://github.com/lightninglabs/lndclient/blob/master/lightning\_client.go#L256)
+[https://github.com/lightninglabs/lndclient/blob/master/lightning\_client.go](https://github.com/lightninglabs/lndclient/blob/master/lightning\_client.go)
 
 ```go
 	// RegisterRPCMiddleware adds a new gRPC middleware to the interceptor

@@ -2,7 +2,7 @@
 description: Aperture is an implementation of L402s as a reverse HTTP proxy.
 ---
 
-# ⚒ Get Aperture
+# ⚒️ Get Aperture
 
 Aperture is a reverse proxy that acts as a payment and authentication gateway for Lightning Network powered APIs. It can handle gRPC requests over HTTP/2 as well as REST over HTTP/1 and 2.
 
@@ -39,7 +39,7 @@ A demonstration of L402 can be found at [https://lsat-playground-bucko.vercel.ap
 
 Here you can go through the process of minting a Macaroon, turning it into an L402, restricting and validating it as well as see code snippets.
 
-[See how the client interceptor is coded in Aperture](https://github.com/lightninglabs/aperture/blob/master/lsat/client\_interceptor.go)
+[See how the client interceptor is coded in Aperture](https://github.com/lightninglabs/aperture/blob/master/l402/client\_interceptor.go)
 
 {% embed url="https://www.youtube.com/watch?t=22815s&v=LlTCipHKTCs" %}
 Watch: Using Aperture

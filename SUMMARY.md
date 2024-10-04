@@ -61,6 +61,7 @@
   * [Macaroons](lightning-network-tools/lnd/macaroons.md)
   * [Configuring Watchtowers](lightning-network-tools/lnd/watchtower.md)
   * [Pathfinding](lightning-network-tools/lnd/pathfinding.md)
+  * [Blinded Paths](lightning-network-tools/lnd/blinded-paths.md)
   * [Key Import](docs/lnd/key\_import.md)
   * [Secure Your Lightning Network Node](lightning-network-tools/lnd/secure-your-lightning-network-node.md)
   * [Configuration of a Routing Node](lightning-network-tools/lnd/optimal-configuration-of-a-routing-node.md)

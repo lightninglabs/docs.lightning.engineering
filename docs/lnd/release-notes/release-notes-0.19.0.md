@@ -36,6 +36,10 @@
   feature-bit](https://github.com/lightningnetwork/lnd/pull/9143) for invoices 
   containing blinded paths.
 
+* [Fix a bug](https://github.com/lightningnetwork/lnd/pull/9137) that prevented
+  a graceful shutdown of LND during the main chain backend sync check in certain
+  cases.
+
 # New Features
 ## Functional Enhancements
 ## RPC Additions
@@ -72,6 +76,10 @@
 
 * Log rotation can now use ZSTD 
 
+* [A new method](https://github.com/lightningnetwork/lnd/pull/9195)
+  `AssertTxnsNotInMempool` has been added to `lntest` package to allow batch
+  exclusion check in itest.
+
 # Technical and Architectural Updates
 ## BOLT Spec Updates
 
@@ -103,4 +111,5 @@
 * CharlieZKSmith
 * Elle Mouton
 * Pins
+* Viktor Tigerström
 * Ziggie

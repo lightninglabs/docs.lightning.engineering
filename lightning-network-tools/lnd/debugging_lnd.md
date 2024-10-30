@@ -73,7 +73,7 @@ Subsystems:
 
 `lnd` has a built-in feature which allows you to capture profiling data at runtime using [pprof](https://golang.org/pkg/runtime/pprof/), a profiler for Go. The profiler has negligible performance overhead during normal operations (unless you have explicitly enabled CPU profiling).
 
-To enable this ability, start `lnd` with the `--profile` option using a free port.
+To enable this ability, start `lnd` with the `--profile` option using a free port or add `profile=9736` to your `lnd.conf`.
 
 ```
 ⛰  lnd --profile=9736
@@ -84,4 +84,38 @@ Now, with `lnd` running, you can use the pprof endpoint on port 9736 to collect 
 ```
 ⛰  curl http://localhost:9736/debug/pprof/goroutine?debug=1
 ...
+```
+
+#### CPU Profile
+
+A CPU profile can be used to analyze LND's CPU usage. You can specify the time duration as a query parameter.
+
+```
+⛰ curl http://localhost:9736/debug/pprof/profile?seconds=10 > cpu.prof
+```
+
+#### **Goroutine profile**
+
+The goroutine profile is very useful when analyzing deadlocks and lock contention.
+
+```
+⛰ curl http://localhost:9736/debug/pprof/goroutine?debug=2 > goroutine.prof
+```
+
+#### **Heap profile**
+
+The heap profile is useful to analyze memory allocations.
+
+```
+⛰ curl http://localhost:9736/debug/pprof/heap > heap.prof
+```
+
+#### **Visualizing the profile dumps**
+
+It can be hard to make sense of the profile dumps by just looking at them. The Golang ecosystem provides tools to analyze those profile dumps either via the terminal or by visualizing them. One of the tools is `go tool pprof`.
+
+Assuming the profile was fetched via `curl` as in the examples above a nice svg visualization can be generated for the cpu profile like this:
+
+```
+⛰ go tool pprof -svg cpu.prof > cpu.svg
 ```

@@ -15,9 +15,33 @@ Sample`tapd.conf` file:
 `allow-public-stats=true`\
 `universe.public-access=rw`
 
+You can verify whether your universe is accepting proofs with the command `tapcli universe federation config info`
+
+```
+{
+    "global_sync_configs": [
+        {
+            "proof_type": "PROOF_TYPE_ISSUANCE",
+            "allow_sync_insert": true,
+            "allow_sync_export": true
+        },
+        {
+            "proof_type": "PROOF_TYPE_TRANSFER",
+            "allow_sync_insert": true,
+            "allow_sync_export": true
+        }
+    ],
+    "asset_sync_configs": []
+}
+```
+
+You can change the configuration from the CLI using `tapcli universe federation config global --proof_type issuance --allow_insert true` and `--proof_type transfer`
+
 ## The default universe
 
 By default, your `tapd` will connect to the default universe, for instance `testnet.universe.lightning.finance:10029` for testnet, or `universe.lightning.finance:10029` on mainnet.
+
+When running `litd` in integrated mode, your universe may also be available at port `:8443`
 
 The contents of the default universe are also available via a public API:
 

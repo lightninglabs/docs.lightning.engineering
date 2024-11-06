@@ -8,6 +8,8 @@ description: >-
 
 When sending Taproot Assets over the Lightning Network, an Edge Node is needed. This Edge Node receives the Taproot Asset in the channel with the direct user and swaps it for bitcoin. As the swap rate between Taproot Assets and bitcoin likely fluctuates, the user may make a Request for Quote to the Edge Node before generating a Lightning Network invoice or initiating a payment.
 
+This request is made using BOLT 01 messages over an existing encrypted and authenticated BOLT 08 connection. The connection already exists because it is used for establishing and coordinating the Taproot Asset Channel in a way very similiar to normal Lightning channels. For more information about connection and messaging, see the [Last Mile Routing](https://github.com/Roasbeef/blips/blob/tap-blip/blip-tap.md#last-mile-routing) section of [Taproot Asset Channels bLIP](https://github.com/Roasbeef/blips/blob/tap-blip/blip-tap.md).
+
 [Learn more: Edge Nodes](../../the-lightning-network/taproot-assets/edge-nodes.md)
 
 The Request for Quote contains a rate and an expiration time, which allows the sender to decide whether they want to complete the payment and craft a route to the intended recipient.

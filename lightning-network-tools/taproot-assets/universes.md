@@ -4,13 +4,19 @@ description: Learn how to run a universe and connect to other universes.
 
 # Universes
 
+## What are universes?
+
+The Taproot Assets protocol strives to minimize the data that needs to be stored publicly in the bitcoin blockchain. This is done by design in order to increase bitcoin's scalability, improve privacy, and reduce the cost of using Taproot Assets. However, some of the proof data that is not stored on the bitcoin blockchain needs to be used by those interacting with Taproot Assets. Universes are a datastore that allows users to publish proofs that are generated and allows others to fetch the proofs that they need to validate. For more information see <a href="#docs-internal-guid-81622115-7fff-548d-5594-a7c4b43b97b3" id="docs-internal-guid-81622115-7fff-548d-5594-a7c4b43b97b3"></a> .
+
+
 ## Running a universe <a href="#docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f" id="docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f"></a>
 
-Running a universe is as simple as running `tapd` and amending your configuration file. To run a universe, set your instance to listen on the RPC port (10029) and ensure this port is open on your machine. Being publicly reachable is not a requirement for a universe, however. Your universe may only serve resources on a private network, or be otherwise restricted.
+Running a universe is as simple as running `tapd` and amending your configuration file. To run a universe, set your instance to listen on the gRPC TCP port (10029) and/or REST TCP port (8089). If necessary, ensure this port is open on your machine's firewall. Being publicly reachable is not a requirement for a universe, however. Your universe may only serve resources on a private network, or be otherwise restricted. Note, public universe RPC calls use the same gRPC and REST TCP ports as all other `tapd` RPC calls, the public universe RPC calls just don't require authentication with a macaroon to receive a response.
 
 Sample`tapd.conf` file:
 
 `rpclisten=0.0.0.0:10029`\
+`restlisten=0.0.0.0:8089`\
 `allow-public-uni-proof-courier=true`\
 `allow-public-stats=true`\
 `universe.public-access=rw`
@@ -43,7 +49,7 @@ By default, your `tapd` will connect to the default universe, for instance `test
 
 When running `litd` in integrated mode, your universe may also be available at port `:8443`
 
-The contents of the default universe are also available via a public API:
+The contents of the default universe are also available via a public REST API:
 
 {% embed url="https://universe.lightning.finance/v1/taproot-assets/universe/roots" %}
 

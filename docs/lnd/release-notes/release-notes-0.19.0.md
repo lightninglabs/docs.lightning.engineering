@@ -39,6 +39,11 @@
 * [Fix a bug](https://github.com/lightningnetwork/lnd/pull/9137) that prevented
   a graceful shutdown of LND during the main chain backend sync check in certain
   cases.
+  
+* [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/9068) where dust
+  htlcs although not being able to be resolved onchain were not canceled
+  back before the commitment tx was confirmed causing potentially force closes
+  of the incoming channel.
 
 # New Features
 ## Functional Enhancements
@@ -100,6 +105,10 @@
     * `lncli abandonchannel` (`Lightning.AbandonChannel` RPC)
     * `lncli restorechanbackup` (`Lightning.RestoreChannelBackups` RPC)
     * `lncli verifychanbackup` (`Lightning.VerifyChanBackup` RPC)
+* The `ForwardInterceptor`'s `MODIFY` option will
+  [merge](https://github.com/lightningnetwork/lnd/pull/9240) any custom
+  range TLVs provided with the existing set of records on the HTLC,
+  overwriting any conflicting values with those supplied by the API.
 
 ## lncli Updates
 
@@ -134,6 +143,11 @@
   these options have also been increased from max 3 log files to 10 and from 
   max 10 MB to 20 MB. 
  
+* [Deprecate `dust-threshold`
+config option](https://github.com/lightningnetwork/lnd/pull/9182) and introduce
+a new option `channel-max-fee-exposure` which is unambiguous in its description.
+The underlying functionality between those two options remain the same.
+
 ## Breaking Changes
 ## Performance Improvements
 

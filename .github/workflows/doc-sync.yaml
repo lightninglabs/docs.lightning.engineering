@@ -42,6 +42,10 @@ jobs:
             org: lightninglabs
             src: docs
             dest: docs/pool
+          - repo: taproot-assets
+            org: lightninglabs
+            src: docs
+            dest: docs/taproot-assets
 
     steps:
       - name: Checkout docs.lightning.engineering repo

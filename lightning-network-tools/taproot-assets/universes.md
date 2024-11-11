@@ -6,11 +6,11 @@ description: Learn how to run a universe and connect to other universes.
 
 In the context of Taproot Assets, a universe is a service that acts as a repository for publicly minted assets. It contains knowledge of assets, mints, metadata, public transfers and their proofs. A universe is required for users to fetch data necessary to validate transfers, and may be public or private.
 
-Anyone may run a universe, or use one or multiple universes provided by others, such as Lightning Labs. In addition to universes, mailboxes are used to transfer proofs from sender to receiver. For help with running your own mailbox, please refer to [the Aperture guides](../aperture/).
+Anyone may run a universe, or use one or multiple universes provided by others, such as Lightning Labs.
 
 ## Running a universe <a href="#docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f" id="docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f"></a>
 
-Running a universe is as simple as running `tapd` and amending your configuration file. You may run a universe over RPC or REST. By default, `tapd` is expected to listen on port (`10029`), so ensure this port is open on your machine if you would like others to connect to you. Being publicly reachable is not a requirement for a universe, however. Your universe may only serve resources on a private network, or be otherwise restricted.
+Running a universe is as simple as running `tapd` and amending your configuration file. You may run a universe over RPC or REST. By default, `tapd` is expected to listen on gRPC TCP port `10029` and REST TCP port `8089` , so ensure this port is open on your machine if you would like others to connect to you. Being publicly reachable is not a requirement for a universe, however. Your universe may only serve resources on a private network, or be otherwise restricted.
 
 When running `tapd` as part of `litd`, you may also use port `8443` or define your own port. For example, as the REST universe is also usable through a browser over HTTPS, you may configure it over port `443` or set up a proxy.
 
@@ -48,7 +48,7 @@ You can change the configuration from the CLI using `tapcli universe federation 
 
 By default, your `tapd` will connect to the default universe, for instance `testnet.universe.lightning.finance:10029` for testnet, or `universe.lightning.finance:10029` on mainnet.
 
-The contents of the default universe are also available via a public API:
+The contents of the default universe are also available via a public REST API:
 
 {% embed url="https://universe.lightning.finance/v1/taproot-assets/universe/roots" %}
 
@@ -82,10 +82,10 @@ To configure your `tapd` to regularly sync to other asset IDs or group keys, you
 
 ## The Universe APIs
 
-A Taproot Asset Universe is available over [gRPC](https://lightning.engineering/api-docs/api/taproot-assets/#grpc) and [REST](https://lightning.engineering/api-docs/api/taproot-assets/#rest). You may run your own universe or interact with a public universe. Public universes are unauthenticated, the macaroon checks are skipped.
+A Taproot Asset Universe is available over [gRPC](https://lightning.engineering/api-docs/api/taproot-assets/#grpc) and [REST](https://lightning.engineering/api-docs/api/taproot-assets/#rest) on the default ports. You may run your own universe or interact with a public universe. Public universes are unauthenticated, the macaroon checks are skipped.
 
-For instance, when making a transfer, the proofs may be pushed to one or multiple universes using the REST Api. This requires the asset ID, the leaf key index and script key.
+For instance, when making a transfer, the [proofs may be pushed](https://lightning.engineering/api-docs/api/taproot-assets/universe/insert-proof) to one or multiple universes using the REST API. This requires the asset ID, the leaf key index and script key.
 
 `/v1/taproot-assets/universe/proofs/asset-id/{key.id.asset_id_str}/{key.leaf_key.op.hash_str}/{key.leaf_key.op.index}/{key.leaf_key.script_key_str}`
 
-A detailed list of all available fields as well as code examples can be found under the [Taproot Assets API documentation.](https://lightning.engineering/api-docs/api/taproot-assets/universe/insert-proof)
+A detailed list of all available fields as well as code examples can be found under the [Taproot Assets Universe API](https://lightning.engineering/api-docs/category/universe-service) documentation.

@@ -313,7 +313,7 @@ To send the asset, run the command below from the tapd instance of the sender. T
 
 ```
 
-You will notice the transaction id (`bd311ca4dbd68c6717ed4656efe7beb9ff843abe50bf58aaf3b25325c0f098aa`) has two inputs. One input is the newly minted asset (easily identifiable by its 1000 sat amount), while the other is from LND’s internal wallet. This second input is used to pay the onchain fees.
+You will notice the testnet3 transaction id (`bd311ca4dbd68c6717ed4656efe7beb9ff843abe50bf58aaf3b25325c0f098aa`) has two inputs. One input is the newly minted asset (easily identifiable by its 1000 sat amount), while the other is from LND’s internal wallet. This second input is used to pay the onchain fees. The output from `tapcli` as seen above will only show the one input and two outputs that hold the Taproot Assets.
 
 There are three outputs. Two outputs of 1000 satoshis each and the change output of LND’s internal wallet. The two 1000 satoshi inputs anchor the proofs of the sender and receiver. Even when the sender spends all of their assets, such an output is still created to carry proof of the transfer.
 

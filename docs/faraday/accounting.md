@@ -4,7 +4,7 @@ These reports are formatted using the [Harmony Reporting Standard](https://githu
 This document provides a description of the entries in these reports. 
 
 ## Bitcoin Backend
-It is strongly recommended that Faraday is run with a connection to a Bitcoin node when these reports are generated. This is required to lookup fee entries for channel close transactions and sweep fees. If a connection to a bitcoin node is not provided, warnings will be logged for the transactions that do not have fee entries. 
+It is strongly recommended that Faraday is run with a connection to a Bitcon node when these reports are generated. This is required to lookup fee entries for channel close transactions and sweep fees. If a connection to a bitcoin node is not provided, warnings will be logged for the transactions that do not have fee entries. 
 
 ## Common Fields
 For brevity, the following fields which have the same meaning for each entry will be omitted: 

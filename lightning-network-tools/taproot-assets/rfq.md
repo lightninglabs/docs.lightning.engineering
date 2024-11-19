@@ -38,3 +38,7 @@ A basic price oracle has been implemented as part of the Taproot Assets code bas
 
 [Fork it: Taproot Assets Oracle Demo](https://github.com/lightninglabs/taproot-assets/tree/d70bccd2714a3f808e070a080c510cf396a11284/docs/examples/basic-price-oracle)
 
+
+
+{% embed url="https://docs.google.com/spreadsheets/d/1JliJd9WfnW2cohrQjyHZf-5WFn97Q8TaSWjB4ZidF8k/edit" fullWidth="false" %}
+

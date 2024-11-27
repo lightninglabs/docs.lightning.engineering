@@ -331,7 +331,7 @@ Tapping into Taproot Assets #7: Send from the CLI
 
 Burning assets works by sending assets to a provably unspendable address.
 
-tapcli assets burn --asset\_id b9ae86f52dcbdee7ea78e86b26320819c44c2f4f8a91b9c055ca0af4c4d1b22b --amount 50
+`tapcli assets burn --asset_id b9ae86f52dcbdee7ea78e86b26320819c44c2f4f8a91b9c055ca0af4c4d1b22b --amount 50`
 
 ```
 Please confirm destructive action.

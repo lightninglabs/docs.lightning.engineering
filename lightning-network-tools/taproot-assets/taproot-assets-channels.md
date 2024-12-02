@@ -37,11 +37,11 @@ With litd integrated mode, all applications are running as part of the litd bina
 
 However, when opening, closing, or maintaining Taproot Assets channels or making Taproot Assets payments, we will use `litcli`.
 
-Unless you are running `litd` on mainnet, you will have to specify the network you are running on as well as the appropriate macaroon path every time you invoke `litcli`.
+Unless you are running `litd` on any other network than mainnet, you will have to specify the network you are running every time you invoke `litcli`.
 
 For example:
 
-`litcli --network=testnet --macaroonpath=~/.lnd/data/chain/bitcoin/testnet/admin.macaroon status`
+`litcli --network=testnet status`
 
 In all following example commands, this detail is omitted for simplicity.
 

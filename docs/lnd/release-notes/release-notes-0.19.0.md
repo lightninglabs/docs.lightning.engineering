@@ -107,6 +107,10 @@
 * The `lncli wallet fundpsbt` command now has a [`--max_fee_ratio` argument to
   specify the max fees to output amounts ratio.](https://github.com/lightningnetwork/lnd/pull/8600)
 
+* [`updatechanpolicy`](https://github.com/lightningnetwork/lnd/pull/8805) will
+  now update the channel policy if the edge was not found in the graph
+  database if the `create_missing_edge` flag is set.
+
 # Improvements
 ## Functional Updates
 
@@ -216,6 +220,11 @@ The underlying functionality between those two options remain the same.
   store](https://github.com/lightningnetwork/lnd/pull/9001) so that results are 
   namespaced. All existing results are written to the "default" namespace.
 
+* [Remove global application level lock for
+  Postgres](https://github.com/lightningnetwork/lnd/pull/9242) so multiple DB
+  transactions can run at once, increasing efficiency. Includes several bugfixes
+  to allow this to work properly.
+
 ## Code Health
 
 * A code refactor that [moves all the graph related DB code out of the 
@@ -239,6 +248,7 @@ The underlying functionality between those two options remain the same.
 # Contributors (Alphabetical Order)
 
 * Abdullahi Yunus
+* Alex Akselrod
 * Animesh Bilthare
 * Boris Nagaev
 * Carla Kirk-Cohen
@@ -246,6 +256,7 @@ The underlying functionality between those two options remain the same.
 * Elle Mouton
 * George Tsagkarelis
 * hieblmi
+* Jesse de Wit
 * Keagan McClelland
 * Oliver Gugger
 * Pins

@@ -124,6 +124,18 @@
 
 * LND updates channel.backup file at shutdown time.
 
+* A new subsystem `chainio` is
+  [introduced](https://github.com/lightningnetwork/lnd/pull/9315) to make sure
+  the subsystems are in sync with their current best block. Previously, when
+  resolving a force close channel, the sweeping of HTLCs may be delayed for one
+  or two blocks due to block heights not in sync in the relevant subsystems
+  (`ChainArbitrator`, `UtxoSweeper` and `TxPublisher`), causing a slight
+  inaccuracy when deciding the sweeping feerate and urgency. With `chainio`,
+  this is now fixed as these subsystems now share the same view on the best
+  block. Check
+  [here](https://github.com/lightningnetwork/lnd/blob/master/chainio/README.md)
+  to learn more.
+
 ## RPC Updates
 
 * Some RPCs that previously just returned an empty response message now at least
@@ -208,6 +220,10 @@ The underlying functionality between those two options remain the same.
 * LND [uses](https://github.com/lightningnetwork/lnd/pull/9257) the feerate
   estimator provided by bitcoind or btcd in regtest and simnet modes instead of
   static fee estimator if feeurl is not provided.
+
+* The integration tests CI have been optimized to run faster and all flakes are
+  now documented and
+  [fixed](https://github.com/lightningnetwork/lnd/pull/9368).
 
 ## Database
 

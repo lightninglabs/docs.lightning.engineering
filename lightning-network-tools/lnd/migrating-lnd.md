@@ -12,6 +12,8 @@ Do NOT use this guide if you have experienced a fatal error.
 
 Do NOT run two LND instances with the same seed or public key.
 
+Do NOT restart the old instance after the migration.
+
 [Read: LND disaster recovery](disaster-recovery.md)
 
 ## When to migrate LND
@@ -34,7 +36,7 @@ It is not advised to migrate between different operating systems, as the file st
 
 ## Migrating LND
 
-To begin our migration, we first shut down our old LND node gracefully. Use the command `lncli stop` and wait for the process to shut down completely, for example by observing the logs.
+To begin our migration, we first shut down our old LND node gracefully (never turn it on again!). Use the command `lncli stop` and wait for the process to shut down completely, for example by observing the logs.
 
 Unless otherwise specified in your `lnd.conf` file (check if unsure), all the data necessary for your migration is in your `~/.lnd` directory.
 
@@ -59,4 +61,4 @@ Unless your node’s IP address, domain or onion address will not change, you wi
 
 To complete our migration, we will start up LND and unlock our wallet with the usual password. You may observe your logs and verify that all channels and funds are present with `lncli getinfo`, `lncli walletbalance` and `lncli channelbalance`.
 
-Once you successfully start LND on your new machine, delete the lnd directory on the old platform. Under no circumstances should two nodes with the same public key be run at the same time, as this will cause your channels to close and its funds possibly forfeited.
+Once you successfully start LND on your new machine, **delete the lnd directory on the old platform** and never start the old instance up ever again. Under no circumstances should two nodes with the same public key be run at the same time, as this will cause your channels to close and its funds possibly forfeited.

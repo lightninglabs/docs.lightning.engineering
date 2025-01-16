@@ -44,6 +44,12 @@ To continue the migration, you should move all data from this directory to the n
 
 Logs and the data directory can also be split up, either by defining them in the configuration file, or at startup with `--datdir=` and `--logdir=`
 
+## Migrating Litd
+
+If you have funds in a [Loop Address](../loop/static-loop-in-addresses.md) or Pool Account, you will also have to migrate the `~/.loop` and `~/.pool` directories. To preserve [LNC](../lightning-terminal/lightning-node-connect.md) sessions and other data, you are advised to migrate the `~/.lit` directory as well.
+
+Migrating these directories is not as sensitive as the LND base directory, and it may be done separately from LND, regardless of whether LND and Litd run as the same process or not.
+
 ## Checking your configuration file
 
 Now that you are running LND on a different machine, some variables might have changed and need to be amended for LND to smoothly connect. Some areas of concern/for review are:

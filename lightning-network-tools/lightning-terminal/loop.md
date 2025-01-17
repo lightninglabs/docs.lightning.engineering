@@ -66,7 +66,7 @@ Once both parties have received their funds, the Loop is complete.
 
 ### Autoloop
 
-Autoloops can only be configured for specific peers. After moving the slider on a channel, select Autoloop to configure your recurring swap.
+Autoloops can be configured for specific peers or your node as a whole. After moving the slider at the top, select Autoloop to configure your recurring swap. You may also move the slider on a specific channel.
 
 You can set a minimum Loop size. As a big portion of fees are onchain swaps, a higher minimum size can help making swaps more economical.
 
@@ -77,3 +77,7 @@ It is also possible to send Loop Outs to an external address, such as cold stora
 Finally, you'll get a chance to review your Autoloop.
 
 Once Autoloop has been configured, you should be able to see previous Loops and the current status under the channel for which it has been activated. Here you can also remove the Autoloop rule.
+
+
+
+<figure><img src="../../.gitbook/assets/Screenshot from 2025-01-17 17-45-19.png" alt=""><figcaption><p>Configure Autoloop Settings in Lightning Terminal</p></figcaption></figure>

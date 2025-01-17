@@ -20,6 +20,8 @@ If you don't want to bother with setting up specific rules for each of your chan
 
 This will automatically start dispatching loop-outs whenever you exceed total channel balance of 1M sats. Keep in mind that on first time use this will use the default budget parameters. If you wish to configure a custom budget you can find more info in the [Budget](autoloop.md#budget) section.
 
+Easy Autoloop is currently only available for Loop Out, meaning any amount above `--localbalancesat` is expected for Loop Out.
+
 ## Liquidity Rules
 
 At present, Autoloop can be configured to either acquire incoming liquidity using Loop Out, or acquire outgoing liquidity using loop in. It cannot support automated swaps in both directions. To set the type of swaps you would like to automatically dispatch, use:

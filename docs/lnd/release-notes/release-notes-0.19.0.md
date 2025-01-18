@@ -94,6 +94,10 @@
   are now [sorted](https://github.com/lightningnetwork/lnd/pull/9337) based on
   the `InvoiceHTLC.HtlcIndex`.
 
+* [routerrpc.SendPaymentV2](https://github.com/lightningnetwork/lnd/pull/9359)
+  RPC method now applies a default timeout of 60 seconds when the
+  `timeout_seconds` field is not set or is explicitly set to 0.
+
 ## lncli Additions
 
 * [A pre-generated macaroon root key can now be specified in `lncli create` and
@@ -170,6 +174,10 @@
   range TLVs provided with the existing set of records on the HTLC,
   overwriting any conflicting values with those supplied by the API.
 
+* [Make](https://github.com/lightningnetwork/lnd/pull/9405) the param
+`ProofMatureDelta` used in gossip to be configurable via
+`--gossip.announcement-conf`, with a default value of 6.
+
 ## lncli Updates
 
 ## Code Health
@@ -213,6 +221,7 @@
 config option](https://github.com/lightningnetwork/lnd/pull/9182) and introduce
 a new option `channel-max-fee-exposure` which is unambiguous in its description.
 The underlying functionality between those two options remain the same.
+
 
 ## Breaking Changes
 ## Performance Improvements

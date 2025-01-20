@@ -8,7 +8,23 @@ In the context of Taproot Assets, a universe is a service that acts as a reposit
 
 Anyone may run a universe, or use one or multiple universes provided by others, such as Lightning Labs.
 
-## Running a universe <a href="#docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f" id="docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f"></a>
+## Your local universe <a href="#docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f" id="docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f"></a>
+
+When running `tapd`, you will run a private universe by default. In this mode, all RPC calls to the universe require authentication using the tapd macaroon. To disable macaroon authentication for the `QueryProof and InsertProof` RPC calls, you may set the following configuration flag:
+
+```
+allow-public-uni-proof-courier=true
+```
+
+You may further open up your local universe to serve the `QueryAssetStats` , `UniverseStats` and `QueryEvents` RPC calls:
+
+```
+allow-public-stats=true
+```
+
+You may do this to operate a public universe, or make it easier for other applications to reach your API endpoints.
+
+## Running a public universe <a href="#docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f" id="docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f"></a>
 
 Running a universe is as simple as running `tapd` and amending your configuration file. You may run a universe over RPC or REST. By default, `tapd` is expected to listen on gRPC TCP port `10029` and REST TCP port `8089` , so ensure this port is open on your machine if you would like others to connect to you. Being publicly reachable is not a requirement for a universe, however. Your universe may only serve resources on a private network, or be otherwise restricted.
 

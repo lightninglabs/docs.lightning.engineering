@@ -1,81 +1,64 @@
-# How to use an external group key
+# How to use an external group key with a Ledger
 
 This document describes how we can mint an asset with a group key that is
 external to the `lnd` node/wallet that `tapd` is connected to.
 
-This theoretically means the key used to prove ownership of an asset group could
-be fully cold (stored in a hardware wallet only). But because at this time none
-of the popular hardware wallets support signing for a Taproot output with
-non-standard leaves in the Tapscript tree, we are going to use
-[`chantools`](https://github.com/lightninglabs/chantools) to create the
-signature.
-**Make sure to use the latest version (`v0.13.5`)!**
+This guide shows how to use a Ledger (in this example specifically a Leder
+Nano S with the latest firmware).
 
-`chantools` can be used completely offline on any computer, for example running
-off of a USB drive with the Tails operating system, to make sure no data is
-stored permanently on the device.
+## Step 1: Set up the Ledger device
 
-## Step 1 (optional): Create persistent wallet
+First, you need to set up the Ledger device. This only needs to be done once for
+a new device. If a device that already has a seed is being used, some steps can
+potentially be skipped.
 
-This step is purely for ease of use (during testing for example) and is fully
-optional, especially if the goal is to never store the seed on a device.
-If you want to use `chantools` without a persistent wallet, just don't specify
-the `--walletdbdir` flag for any of the later commands, which will cause the
-tool to ask for the full seed (and passphrase if available) instead. Make sure
-to use the `--bip39` flag instead though, otherwise `chantools` by default
-expects the seed to be in the `lnd`/`aezeed` format.
+1. Initialize the device with a seed, following the manufacturer's instructions.
+2. Using the "Ledger Live" software, make sure the device runs the latest
+   available firmware (`v1.3.1` at time of writing this).
+3. Using the "Ledger Live" software, make sure you install the "Bitcoin" app
+   or update it to the latest version (`v2.3.0` at time of writing this).
+4. If you plan to experiment on regtest or testnet first, you also need to
+   install the "Bitcoin Test" app with the same version (the "Ledger Live" app
+   needs to be changed to "developer mode" for test apps to appear).
+
+## Step 2: Install HWI and derive the xpub for the group key
+
+We will be using a
+[custom version](https://github.com/lightninglabs/HWI/tree/tapd-v0.6.0-cold-minting)
+of the [HWI](https://github.com/bitcoin-core/HWI) library to talk with the
+Ledger device from the command line.
 
 ```shell
-$ chantools --regtest createwallet --bip39 --walletdbdir /tmp
-
-2024-12-27 12:37:01.863 [INF] CHAN: chantools version v0.13.5 commit 
-Input your 12 to 24 word mnemonic separated by spaces: dismiss sugar enhance impose unique treat message party list throw blame field
-
-Input your cipher seed passphrase (press enter if your seed doesn't have a passphrase): 
-Please choose passphrase mode:
-  0 - Default BIP39
-  1 - Passphrase to hex
-  2 - Digital Bitbox (extra round of PBKDF2)
-
-Choice [default 0]: 0
-
-
-
-The wallet password is used to encrypt the wallet.db file itself and is unrelated to the seed.
-Input new wallet password: 
-Confirm new wallet password: 
-Wallet created successfully at /tmp
+$ git clone --branch tapd-v0.6.0-cold-minting https://github.com/lightninglabs/HWI.git
+$ cd HWI
 ```
 
-We're going to use the following example seed in all examples:
-`dismiss sugar enhance impose unique treat message party list throw blame field`
-
-## Step 2: Derive the `xpub` and master root key
-
-We'll need this information during the asset mint process later. Make sure to
-replace the path `m/86'/1'/0'` with `m/86'/0'/0'` on **mainnet**!
+Depending on your environment, you need to install the Python dependencies of
+the HWI application:
 
 ```shell
-$ chantools --regtest derivekey --walletdb /tmp/wallet.db --path "m/86'/1'/0'" --neuter
-
-2024-12-27 12:50:52.788 [INF] CHAN: chantools version v0.13.5 commit
-Input wallet password:
-
-Path:                           m/86'/1'/0'
-Network:                        regtest
-Master Fingerprint:             10608bb9
-Public key:                     039186e157f8b7a8a56fb5f4c0b679d8a883aa8f84f01420e6606b2b1be2ffdadb
-Extended public key (xpub):     tpubDD2EgfmrtDs51w46DHDa87yiwiidEYC3ECXXyFp72ESAt5SV661R19kGAMiQMPm8No438YmW5yeYLKUJYuDByAkJvfxA13n2u79ZeDvryHb
-Address:                        bcrt1quqynp6q9lusp48f0lx0sdt8ygaacfmdcqwccd4
-Legacy address:                 n1wYfdRFwi5123ELa37eeMX5KkxMSQWTos
-Taproot address:                bcrt1pymsfzl8rxxx6uq2a88pgtlatfn4ztwlaaxc9eh3hcnmf5d4ku85sq8ksaj
-Private key (WIF):              n/a
-Extended private key (xprv):    n/a
+$ python3 setup.py install # or 'poetry install' or 'pip3 install .'
 ```
 
-Alternative when not using a persistent wallet:
+Next, you need to unlock the device and open the "Bitcoin Test" (or "Bitcoin"
+for mainnet) on the device. Then the command below should return some JSON:
 ```shell
-$ chantools --regtest derivekey --bip39 --path "m/86'/1'/0'" --neuter
+$ ./hwi.py enumerate
+[{"type": "ledger", "model": "ledger_nano_s_plus", "label": null, "path": "5-3.2.2.1:1.0", "fingerprint": "e5bf06e8", "needs_pin_sent": false, "needs_passphrase_sent": false}]
+```
+
+With the above command we now know the device is in the correct state.
+Make sure to change the "path" variable in all future HWI commands with the one
+shown for your device, not the one from the example above.
+We'll need the value of "fingerprint" later when minting an asset.
+
+Now we can derive the xpub for the Taproot path. Make sure to replace the path
+`m/86h/1h/0'` with `m/86h/0h/0'` on **mainnet** (and remove the `--chain test`
+part from the command)!
+
+```shell
+./hwi.py --chain test -t ledger -d "5-3.2.2.1:1.0" getxpub m/86h/1h/0h                                                                       ─╯
+{"xpub": "tpubDDZhuaRUHh84uonNw5GiWiienwiAABcYKpoFSJkjs8nBvTDXNLuYj98yeyhjiHGRRMQZRFiBLvj6VFJdg5jHGNXDX8bcEZFcrzZE53xjSc6"}
 ```
 
 ## Step 3: Mint an asset
@@ -89,8 +72,8 @@ be incremented to derive/use a different key.
 
 ```shell
 $ tapcli assets mint --type normal --name usdt --supply 500000000 --new_grouped_asset \
-  --group_key_xpub tpubDD2EgfmrtDs51w46DHDa87yiwiidEYC3ECXXyFp72ESAt5SV661R19kGAMiQMPm8No438YmW5yeYLKUJYuDByAkJvfxA13n2u79ZeDvryHb \
-  --group_key_derivation_path "m/86'/1'/0'/0/0" --group_key_fingerprint 10608bb9
+  --group_key_xpub tpubDDZhuaRUHh84uonNw5GiWiienwiAABcYKpoFSJkjs8nBvTDXNLuYj98yeyhjiHGRRMQZRFiBLvj6VFJdg5jHGNXDX8bcEZFcrzZE53xjSc6 \
+  --group_key_derivation_path "m/86'/1'/0'/0/0" --group_key_fingerprint e5bf06e8
 
 {
     "pending_batch":  {
@@ -236,23 +219,22 @@ that is going to be signed in the next step to prove ownership of the group key.
 ## Step 5: Sign the group PSBT
 
 We now copy the `group_virtual_psbt` from the previous step and sign it with
-`chantools`:
+the HWI script (make sure to remove the `--chain test` for mainnet):
 
 ```shell
-$ chantools --regtest signpsbt --walletdb /tmp/wallet.db \
-  --psbt cHNidP8BAF4CAAAAATKZro+KSjqg4YQvE0bqBCbWuii3ekKAdufOGo57L8lwAAAAAAAAAAAAAQBlzR0AAAAAIlEgxoSpM86Pyu/bCRKhOc6/2TLXDGXnUnXn69FQqD8gw7cAAAAAAAEBKwBlzR0AAAAAIlEgqUflbsA2uA/P2qYe6qclsUox7koFCR3h1xkwh4+M1wQiBgOmVT/xqoux3JGzXh+EKPmebfw6ZuOZRa2cDCL//sZ3/xgQYIu5VgAAgAEAAIAAAACAAAAAAAAAAAAhFqZVP/Gqi7HckbNeH4Qo+Z5t/Dpm45lFrZwMIv/+xnf/GQAQYIu5VgAAgAEAAIAAAACAAAAAAAAAAAABFyCmVT/xqoux3JGzXh+EKPmebfw6ZuOZRa2cDCL//sZ3/wEYIJPs5O/ObTF+nst00b/CbC6ttDCA/ziqIQadyBN53v2NAAA=
-
-2024-12-27 13:45:06.344 [INF] CHAN: chantools version v0.13.5 commit 
-Input wallet password: 
-Successfully signed PSBT:
-
-cHNidP8BAF4CAAAAATKZro+KSjqg4YQvE0bqBCbWuii3ekKAdufOGo57L8lwAAAAAAAAAAAAAQBlzR0AAAAAIlEgxoSpM86Pyu/bCRKhOc6/2TLXDGXnUnXn69FQqD8gw7cAAAAAAAEBKwBlzR0AAAAAIlEgqUflbsA2uA/P2qYe6qclsUox7koFCR3h1xkwh4+M1wQBCEIBQAv/X4PJqGyO2YzL2uJgIK+gDFGCTIFkzAq29ThWcBuW5mFIc7aQX1CBtxHSXiF8/jn+F5sWeL0pve1ZKxY7L4EAAA==
+$ ./hwi.py --chain test -t ledger -d "5-3.2.2.1:1.0" signtx \
+  cHNidP8BAF4CAAAAATKZro+KSjqg4YQvE0bqBCbWuii3ekKAdufOGo57L8lwAAAAAAAAAAAAAQBlzR0AAAAAIlEgxoSpM86Pyu/bCRKhOc6/2TLXDGXnUnXn69FQqD8gw7cAAAAAAAEBKwBlzR0AAAAAIlEgqUflbsA2uA/P2qYe6qclsUox7koFCR3h1xkwh4+M1wQiBgOmVT/xqoux3JGzXh+EKPmebfw6ZuOZRa2cDCL//sZ3/xgQYIu5VgAAgAEAAIAAAACAAAAAAAAAAAAhFqZVP/Gqi7HckbNeH4Qo+Z5t/Dpm45lFrZwMIv/+xnf/GQAQYIu5VgAAgAEAAIAAAACAAAAAAAAAAAABFyCmVT/xqoux3JGzXh+EKPmebfw6ZuOZRa2cDCL//sZ3/wEYIJPs5O/ObTF+nst00b/CbC6ttDCA/ziqIQadyBN53v2NAAA=
+  
+{"psbt": "cHNidP8BAF4CAAAAAS8MN0redQjReGudiMzpiKf6ct1qMQl9icuuIjcZtSnYAAAAAAAAAAAAAQBlzR0AAAAAIlEglXtLW++uNjRdN9NB2aOsfLuJ844QeNqiQzpE8CZcHGoAAAAATwEENYfPAwAAAAAAAAAAagOaCdw2+wARrnK9pOPR46VRMtekL1E3mQz6DPkcNMgDagOaCdw2+wARrnK9pOPR46VRMtekL1E3mQz6DPkcNMgQAAAAAFYAAIABAACAAAAAgE8BBIiyHgPRfU1CgAAAAC3h3pSGuqHmKGgim3acdnIfRKCxP/sVHr6h9HtwZMD6AlrgAdQbK0B6qT3PBQKoDZ1ZUR1yWoNKH1ml05PGQ9n4EOW/BuhWAACAAQAAgAAAAIAAAQErAGXNHQAAAAAiUSCUQAq8agPlNkDnrfQQfNAGByNbTIq+mKxY52GRqK2yXSIGAqEj9s2g9LHZE2Mm2zYxPR3ZnOYrGnvCg6vAiNpay5LJGOW/BuhWAACAAQAAgAAAAIAAAAAAAAAAAAETQOTfRBGyQqNUTI7oSmr4peWAjMig1Uwk/XZvpypzSNMcH7/GCDWH4qunWb1ecsHplpkfZOXnKhqu0wnhMO+lSlkhFqEj9s2g9LHZE2Mm2zYxPR3ZnOYrGnvCg6vAiNpay5LJGQDlvwboVgAAgAEAAIAAAACAAAAAAAAAAAABFyChI/bNoPSx2RNjJts2MT0d2ZzmKxp7woOrwIjaWsuSyQEYIOWeffQlExiltUlKYws1t7IY4MVI+bnldZMwlsfcdQQQAAA=", "signed": true}
 ```
+
+If all goes well, the device should ask you to register/approve the policy, then
+sign the transaction.
 
 ## Step 6: Seal the batch with the signature
 
 ```shell
-$ tapcli assets mint seal --signed_group_psbt cHNidP8BAF4CAAAAATKZro+KSjqg4YQvE0bqBCbWuii3ekKAdufOGo57L8lwAAAAAAAAAAAAAQBlzR0AAAAAIlEgxoSpM86Pyu/bCRKhOc6/2TLXDGXnUnXn69FQqD8gw7cAAAAAAAEBKwBlzR0AAAAAIlEgqUflbsA2uA/P2qYe6qclsUox7koFCR3h1xkwh4+M1wQBCEIBQAv/X4PJqGyO2YzL2uJgIK+gDFGCTIFkzAq29ThWcBuW5mFIc7aQX1CBtxHSXiF8/jn+F5sWeL0pve1ZKxY7L4EAAA==
+$ tapcli assets mint seal --signed_group_psbt "cHNidP8BAF4CAAAAAS8MN0redQjReGudiMzpiKf6ct1qMQl9icuuIjcZtSnYAAAAAAAAAAAAAQBlzR0AAAAAIlEglXtLW++uNjRdN9NB2aOsfLuJ844QeNqiQzpE8CZcHGoAAAAATwEENYfPAwAAAAAAAAAAagOaCdw2+wARrnK9pOPR46VRMtekL1E3mQz6DPkcNMgDagOaCdw2+wARrnK9pOPR46VRMtekL1E3mQz6DPkcNMgQAAAAAFYAAIABAACAAAAAgE8BBIiyHgPRfU1CgAAAAC3h3pSGuqHmKGgim3acdnIfRKCxP/sVHr6h9HtwZMD6AlrgAdQbK0B6qT3PBQKoDZ1ZUR1yWoNKH1ml05PGQ9n4EOW/BuhWAACAAQAAgAAAAIAAAQErAGXNHQAAAAAiUSCUQAq8agPlNkDnrfQQfNAGByNbTIq+mKxY52GRqK2yXSIGAqEj9s2g9LHZE2Mm2zYxPR3ZnOYrGnvCg6vAiNpay5LJGOW/BuhWAACAAQAAgAAAAIAAAAAAAAAAAAETQOTfRBGyQqNUTI7oSmr4peWAjMig1Uwk/XZvpypzSNMcH7/GCDWH4qunWb1ecsHplpkfZOXnKhqu0wnhMO+lSlkhFqEj9s2g9LHZE2Mm2zYxPR3ZnOYrGnvCg6vAiNpay5LJGQDlvwboVgAAgAEAAIAAAACAAAAAAAAAAAABFyChI/bNoPSx2RNjJts2MT0d2ZzmKxp7woOrwIjaWsuSyQEYIOWeffQlExiltUlKYws1t7IY4MVI+bnldZMwlsfcdQQQAAA=
 
 {
     "batch":  {

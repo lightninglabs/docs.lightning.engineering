@@ -14,6 +14,12 @@ Running litd in integrated mode allows the user to run everything in a single bi
 
 If you have not run LND on this machine before, you will need to configure a Bitcoin backend. You may refer to the [Configuration section in our Run LND guide.](../lnd/run-lnd.md) If you intend to run with a Neutrino backend, no action needs to be taken in this step.
 
+
+
+{% embed url="https://www.youtube.com/watch?v=lopHP_nF0tE" %}
+Video: RUN LITD: Building a Node from Scratch
+{% endembed %}
+
 ### Configure litd <a href="#docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52" id="docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52"></a>
 
 To configure litd, we will first create the .lit directory and place a configuration file in it.

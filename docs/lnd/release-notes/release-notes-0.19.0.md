@@ -74,6 +74,10 @@
   This is a protocol gadget required for Dynamic Commitments and Splicing that
   will be added later.
 
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/9424) a case where the
+  initial historical sync may be blocked due to a race condition in handling the
+  syncer's internal state.
+
 ## Functional Enhancements
 * [Add ability](https://github.com/lightningnetwork/lnd/pull/8998) to paginate 
  wallet transactions.
@@ -260,6 +264,11 @@ The underlying functionality between those two options remain the same.
   transactions can run at once, increasing efficiency. Includes several bugfixes
   to allow this to work properly.
 
+* [Migrate KV invoices to
+  SQL](https://github.com/lightningnetwork/lnd/pull/8831) as part of a larger
+  effort to support SQL databases natively in LND.
+
+
 ## Code Health
 
 * A code refactor that [moves all the graph related DB code out of the 
@@ -288,6 +297,7 @@ The underlying functionality between those two options remain the same.
 
 * Abdullahi Yunus
 * Alex Akselrod
+* Andras Banki-Horvath
 * Animesh Bilthare
 * Boris Nagaev
 * Carla Kirk-Cohen

@@ -64,6 +64,10 @@
 * [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/9322) that caused
     estimateroutefee to ignore the default payment timeout.
 
+* [Fix a bug](https://github.com/lightningnetwork/lnd/pull/9474) where LND would
+  fail to persist (and hence, propagate) node announcements containing address 
+  types (such as a DNS hostname) unknown to LND.
+
 # New Features
 
 * [Support](https://github.com/lightningnetwork/lnd/pull/8390) for 
@@ -238,6 +242,9 @@ The underlying functionality between those two options remain the same.
 
 * [Golang was updated to
   `v1.22.11`](https://github.com/lightningnetwork/lnd/pull/9462). 
+
+* Various refactors to simplify the 
+  `graph.Builder` [1](https://github.com/lightningnetwork/lnd/pull/9476).
 
 ## Breaking Changes
 ## Performance Improvements

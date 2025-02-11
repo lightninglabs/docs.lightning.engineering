@@ -240,11 +240,17 @@ config option](https://github.com/lightningnetwork/lnd/pull/9182) and introduce
 a new option `channel-max-fee-exposure` which is unambiguous in its description.
 The underlying functionality between those two options remain the same.
 
+* [Abstraction of graph](https://github.com/lightningnetwork/lnd/pull/9480) 
+  access for autopilot. 
+
 * [Golang was updated to
   `v1.22.11`](https://github.com/lightningnetwork/lnd/pull/9462). 
 
-* Various refactors to simplify the 
-  `graph.Builder` [1](https://github.com/lightningnetwork/lnd/pull/9476).
+* Various refactors and preparations to simplify the 
+  `graph.Builder` and to move the funding tx validation to the gossiper.
+   [1](https://github.com/lightningnetwork/lnd/pull/9476)
+   [2](https://github.com/lightningnetwork/lnd/pull/9477)
+
 
 ## Breaking Changes
 ## Performance Improvements
@@ -328,6 +334,9 @@ The underlying functionality between those two options remain the same.
 * A minor [refactor](https://github.com/lightningnetwork/lnd/pull/9446) is done
   to the sweeper to improve code quality, with a renaming of the internal state
   (`Failed` -> `Fatal`) used by the inputs tracked in the sweeper.
+
+* A code refactor that [replaces min/max helpers with built-in min/max
+  functions](https://github.com/lightningnetwork/lnd/pull/9451).
 
 ## Tooling and Documentation
 

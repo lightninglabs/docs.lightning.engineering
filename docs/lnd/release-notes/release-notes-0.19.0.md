@@ -68,6 +68,11 @@
   fail to persist (and hence, propagate) node announcements containing address 
   types (such as a DNS hostname) unknown to LND.
 
+* [Fixed an edge case](https://github.com/lightningnetwork/lnd/pull/9150) where
+  the payment may become stuck if the invoice times out while the node
+  restarts, for details check [this
+  issue](https://github.com/lightningnetwork/lnd/issues/8975#issuecomment-2270528222).
+
 # New Features
 
 * [Support](https://github.com/lightningnetwork/lnd/pull/8390) for 
@@ -256,6 +261,11 @@ The underlying functionality between those two options remain the same.
 ## Performance Improvements
 
 * Log rotation can now use ZSTD
+
+* [Remove redundant 
+  iteration](https://github.com/lightningnetwork/lnd/pull/9496) over a node's 
+  persisted channels when updating the graph cache with a new node or node 
+  update.
 
 ## Deprecations
 

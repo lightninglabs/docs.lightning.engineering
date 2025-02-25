@@ -14,12 +14,28 @@ The Taproot Assets Daemon `tapd` implements the [Taproot Assets protocol](../../
 [first-steps.md](first-steps.md)
 {% endcontent-ref %}
 
+{% content-ref url="taproot-assets-channels.md" %}
+[taproot-assets-channels.md](taproot-assets-channels.md)
+{% endcontent-ref %}
+
+{% content-ref url="../../docs/taproot-assets/rfq-and-decimal-display.md" %}
+[rfq-and-decimal-display.md](../../docs/taproot-assets/rfq-and-decimal-display.md)
+{% endcontent-ref %}
+
+{% content-ref url="rfq.md" %}
+[rfq.md](rfq.md)
+{% endcontent-ref %}
+
 {% content-ref url="collectibles.md" %}
 [collectibles.md](collectibles.md)
 {% endcontent-ref %}
 
 {% content-ref url="universes.md" %}
 [universes.md](universes.md)
+{% endcontent-ref %}
+
+{% content-ref url="debugging-tapd.md" %}
+[debugging-tapd.md](debugging-tapd.md)
 {% endcontent-ref %}
 
 {% content-ref url="polar.md" %}

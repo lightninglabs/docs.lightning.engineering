@@ -58,7 +58,7 @@ You can verify whether your universe is accepting proofs with the command `tapcl
 }
 ```
 
-You can change the configuration from the CLI using `tapcli universe federation config global --proof_type issuance --allow_insert true` and `--proof_type transfer`
+You can change the configuration from the CLI using `tapcli universe federation config global --proof_type issuance --allow_insert true` and again with the `--proof_type transfer` flag
 
 ## The default universe
 

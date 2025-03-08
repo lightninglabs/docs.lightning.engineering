@@ -77,6 +77,11 @@
   restarts, for details check [this
   issue](https://github.com/lightningnetwork/lnd/issues/8975#issuecomment-2270528222).
 
+* [Fix a bug](https://github.com/lightningnetwork/lnd/pull/9573) where 
+  processing duplicate ChannelUpdates from different peers in quick succession 
+  could lead to our ChannelUpdate rate limiting logic being prematurely 
+  triggered.
+
 # New Features
 
 * [Support](https://github.com/lightningnetwork/lnd/pull/8390) for 
@@ -104,6 +109,11 @@
 ## Functional Enhancements
 * [Add ability](https://github.com/lightningnetwork/lnd/pull/8998) to paginate 
  wallet transactions.
+
+* [Make](https://github.com/lightningnetwork/lnd/pull/9562)
+  `MaxWaitNumBlocksFundingConf` configurable, allowing integration/development
+  tests to set a lower value for faster funding confirmation timeout while
+  keeping the default of 2016 blocks for production stability.
 
 ## RPC Additions
 

@@ -51,7 +51,7 @@ As there is currently no migration path between the SQLite and Postgres backends
 
 Run Taproot Assets with the command `tapd`. Specify how Taproot Assets can reach LND and what bitcoin network to run Taproot Assets with by passing it additional flags.
 
-`tapd --network=testnet --debuglevel=debug --lnd.host=localhost:10009 --lnd.macaroonpath=/.lnd/data/chain/bitcoin/testnet/admin.macaroon --lnd.tlspath=/.lnd/tls.cert --tapddir=~/.tapd --rpclisten=127.0.0.1:10029 --restlisten=127.0.0.1:8089`
+`tapd --network=signet --debuglevel=debug --lnd.host=localhost:10009 --lnd.macaroonpath=/home/ubuntu/.lnd/data/chain/bitcoin/signet/admin.macaroon --lnd.tlspath=/home/ubuntu/.lnd/tls.cert --tapddir=~/.tapd --rpclisten=127.0.0.1:10029 --restlisten=127.0.0.1:8089`
 
 You may run multiple tapd instances on the same machine, but you will also have to set up multiple LND instances. [Refer to this guide](../lnd/run-lnd.md) for how to set up multiple LND instances with a single Bitcoin backend using `rpcpolling`. When running multiple `tapd` instances on one machine, don’t forget to set an alternate Taproot Assets directory and API endpoints and specify these when calling `tapcli` as well.
 

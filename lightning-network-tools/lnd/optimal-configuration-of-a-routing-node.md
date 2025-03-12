@@ -191,6 +191,10 @@ Many cloud service providers include some basic DDoS protection in their product
 
 While experiencing a sudden large amount of traffic to your node, you may close your ports or even change IP address. You may only remain reachable via the Tor network, or not at all. Unless the entire network or your peers are under attack, you will still be able to make outgoing connections and keep your channels active.
 
+Qdisc is a linux traffic control, or network scheduling utility in Linux. It is enabled on many distributions by default and can help mitigate some DDoS attacks.
+
+`sudo tc qdisc replace dev wg0 root cake bandwidth 300mbit nat`
+
 ## Node management tools
 
 Node operators may make use of additional tools to monitor their node, manage liquidity, open and close channels as well as adjust channel fees.

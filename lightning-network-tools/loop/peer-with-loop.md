@@ -40,9 +40,13 @@ Your channel will become active after 6 confirmations.
 
 You can find the Loop node at `021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d@44.228.158.82:9735`
 
-### Testnet <a href="#docs-internal-guid-d9fa217c-7fff-5faa-c826-c2106b10dd06" id="docs-internal-guid-d9fa217c-7fff-5faa-c826-c2106b10dd06"></a>
+### Testnet3 <a href="#docs-internal-guid-d9fa217c-7fff-5faa-c826-c2106b10dd06" id="docs-internal-guid-d9fa217c-7fff-5faa-c826-c2106b10dd06"></a>
 
-You can find the Loop testnet node at `0200a7f20e51049363cb7f2a0865fe072464d469dca0ac34c954bb3d4b552b6e95@80.253.94.252:9736`
+You can find the Loop testnet3 node at `0200a7f20e51049363cb7f2a0865fe072464d469dca0ac34c954bb3d4b552b6e95@80.253.94.252:9736`
+
+### Signet
+
+You can find the Loop signet node at `022b9e44b3a8093d9512b61f5f83a72d5634201efc49718efd34f2ee851b3afa8e@50.112.25.211:9735`
 
 ## Loop In
 

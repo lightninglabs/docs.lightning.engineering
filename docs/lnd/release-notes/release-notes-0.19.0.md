@@ -88,6 +88,9 @@
 * [The aux bandwidth calculation was fixed for non-asset
   channels](https://github.com/lightningnetwork/lnd/pull/9502).
 
+* [Pass through](https://github.com/lightningnetwork/lnd/pull/9601) the unused
+  `MaxPeers` configuration variable for neutrino mode.
+
 # New Features
 
 * [Support](https://github.com/lightningnetwork/lnd/pull/8390) for 
@@ -236,6 +239,12 @@
 
 ## lncli Updates
 
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/9605) a case where
+  inaccurate error message is displayed. Previously, when the `lnd` is built
+  without with a given RPC service yet the `cli` does, running a command to
+  access the RPC server would give an error saying the wallet is encrypted. This
+  is now fixed to show specifically which RPC server is missing.
+
 ## Code Health
 
 * [Add retry logic](https://github.com/lightningnetwork/lnd/pull/8381) for
@@ -368,6 +377,10 @@ The underlying functionality between those two options remain the same.
   ](https://github.com/lightningnetwork/lnd/pull/9438) tombstone after native 
   SQL migration.
 
+* [Rename of skip migration
+  flag](https://github.com/lightningnetwork/lnd/pull/9606/) for future
+  compatibility.
+
 ## Code Health
 
 * A code refactor that [moves all the graph related DB code out of the 
@@ -409,6 +422,7 @@ The underlying functionality between those two options remain the same.
 * Abdullahi Yunus
 * Andras Banki-Horvath
 * Animesh Bilthare
+* bitromortac
 * Boris Nagaev
 * Carla Kirk-Cohen
 * CharlieZKSmith

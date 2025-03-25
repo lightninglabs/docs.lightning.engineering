@@ -68,6 +68,10 @@
   `estimateroutefee` to assume probing an LSP when given an invoice with a route 
   hint containing a public channel to the destination.
 
+* [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/9634) that caused
+  lnd to crash due to a nil pointer dereference when `estimateroutefee` is
+  called for a payment request that contains a zero amount.
+
 * [Fix a bug](https://github.com/lightningnetwork/lnd/pull/9474) where LND would
   fail to persist (and hence, propagate) node announcements containing address 
   types (such as a DNS hostname) unknown to LND.
@@ -230,6 +234,9 @@ close transaction.
 * [The server](https://github.com/lightningnetwork/lnd/pull/9458) now allocates
  restricted slots for certain peers. This is configured by --num-restricted-slots.
 
+* [The bitcoin `testnet4` test network is now also
+  supported](https://github.com/lightningnetwork/lnd/pull/9620).
+
 ## RPC Updates
 
 * Some RPCs that previously just returned an empty response message now at least
@@ -271,6 +278,10 @@ close transaction.
   without with a given RPC service yet the `cli` does, running a command to
   access the RPC server would give an error saying the wallet is encrypted. This
   is now fixed to show specifically which RPC server is missing.
+
+* [Enhanced](https://github.com/lightningnetwork/lnd/pull/9558)  
+  `listchaintxns` command with improved input validation, robust error handling,
+  tests, and updated documentation.
 
 ## Code Health
 
@@ -461,6 +472,7 @@ The underlying functionality between those two options remain the same.
 * Oliver Gugger
 * Olaoluwa Osuntokun
 * Pins
+* kornpow
 * Viktor Tigerström
 * Yong Yu
 * Ziggie

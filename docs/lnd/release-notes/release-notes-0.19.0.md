@@ -94,9 +94,18 @@
 
 * [Pass through](https://github.com/lightningnetwork/lnd/pull/9601) the unused
   `MaxPeers` configuration variable for neutrino mode.
+  
+* [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/9543) where
+  the payment might have been failed more than once and therefore overwriting
+  the failure reason and notifying the `SubscribeAllPayments` subscribers more
+  than once.
 
 * [Fixed](https://github.com/lightningnetwork/lnd/pull/9609) a bug that may
   cause `listunspent` to give inaccurate wallet UTXOs.
+
+* [Fixed](https://github.com/lightningnetwork/lnd/pull/9626) a bug where a
+keysend payment would not fail properly and only resolve after restart. Now
+keysend payment validation is stricter.
 
 # New Features
 
@@ -237,6 +246,8 @@ close transaction.
 * [The bitcoin `testnet4` test network is now also
   supported](https://github.com/lightningnetwork/lnd/pull/9620).
 
+* [remove x/exp/maps dependency](https://github.com/lightningnetwork/lnd/pull/9621)
+
 ## RPC Updates
 
 * Some RPCs that previously just returned an empty response message now at least
@@ -332,6 +343,11 @@ The underlying functionality between those two options remain the same.
     - [Abstract autopilot access](https://github.com/lightningnetwork/lnd/pull/9480)
     - [Abstract invoicerpc server access](https://github.com/lightningnetwork/lnd/pull/9516)
     - [Refactor to hide DB transactions](https://github.com/lightningnetwork/lnd/pull/9513)
+    - Move the [graph cache out of the graph
+      CRUD](https://github.com/lightningnetwork/lnd/pull/9544) layer.
+    - Move [topology
+      subscription](https://github.com/lightningnetwork/lnd/pull/9577) and
+      notification handling from the graph.Builder to the ChannelGraph.
 
 * [Golang was updated to
   `v1.22.11`](https://github.com/lightningnetwork/lnd/pull/9462). 
@@ -343,6 +359,13 @@ The underlying functionality between those two options remain the same.
 
 ## Breaking Changes
 ## Performance Improvements
+
+* Users can now [limit the total amount of
+bandwidth](https://github.com/lightningnetwork/lnd/pull/9607) that will be allocated to
+outbound gossip traffic via two new args: `--gossip.msg-rate-bytes` and
+`--gossip.msg-rate-burst`. The burst value should be set to the largest amount
+of bytes that can be transmitted in a go without rate limiting, and the rate to
+the on going rate we'll permit.
 
 * Log rotation can now use ZSTD
 
@@ -458,21 +481,53 @@ The underlying functionality between those two options remain the same.
 # Contributors (Alphabetical Order)
 
 * Abdullahi Yunus
-* Andras Banki-Horvath
+* Alex Akselrod
+* alingse
+* András Bánki-Horváth
 * Animesh Bilthare
 * bitromortac
 * Boris Nagaev
+* Calvin Zachman
 * Carla Kirk-Cohen
 * CharlieZKSmith
+* chloefeal
+* chuangjinglu
 * Elle Mouton
+* Eng Zer Jun
+* Eugene Siegel
+* feelancer21
+* ffranr
+* fuyangpengqi
 * George Tsagkarelis
+* Gijs van Dam
+* Gustavo Stingelin
 * hieblmi
+* Jesse de Wit
+* jike
+* JoeGruff
+* Jonathan Harvey-Buschel
 * Keagan McClelland
-* Nishant Bansal
-* Oliver Gugger
-* Olaoluwa Osuntokun
-* Pins
 * kornpow
+* Leonhard Weese
+* longhutianjie
+* Matt Morehouse
+* Mohamed Awnallah
+* myxmaster
+* Nishant Bansal
+* Olaoluwa Osuntokun
+* Oliver Gugger
+* Oren
+* peicuiping
+* Pins
+* planetBoy
+* sputn1ck
+* Suheb
+* thirdkeyword
+* tlindi
 * Viktor Tigerström
+* w3irdrobot
+* wizard
+* xixishidibei
 * Yong Yu
+* z017
 * Ziggie

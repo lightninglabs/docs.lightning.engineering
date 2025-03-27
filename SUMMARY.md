@@ -142,6 +142,7 @@
   * [RFQ](lightning-network-tools/taproot-assets/rfq.md)
   * [Collectibles](lightning-network-tools/taproot-assets/collectibles.md)
   * [Universes](lightning-network-tools/taproot-assets/universes.md)
+  * [Asset Loop](lightning-network-tools/taproot-assets/asset-loop.md)
   * [Debugging Tapd](lightning-network-tools/taproot-assets/debugging-tapd.md)
   * [Multisignature](lightning-network-tools/taproot-assets/multisignature.md)
   * [Minting Assets With an External Signer](lightning-network-tools/taproot-assets/minting-assets-with-an-external-signer.md)

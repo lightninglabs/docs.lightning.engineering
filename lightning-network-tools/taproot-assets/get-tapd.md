@@ -47,6 +47,16 @@ Within the `tapd.conf` file you can permanently set your variables, such as dire
 
 As there is currently no migration path between the SQLite and Postgres backends, the backend needs to be configured when `tapd` is first initialized.
 
+### Signet and Regtest
+
+Lightning Labs currently does not provide a Taproot Asset Universe on Signet. In addition to [disabling the autopilot](../lightning-terminal/run-litd.md#docs-internal-guid-59891e79-7fff-362e-d160-3ba75a10db52), users will have to [configure a local or alternative universe](universes.md). To properly close channels, both peers will have to configure the same proof courier as well. In the `lit.conf`:
+
+`taproot-assets.proofcourieraddr=universerpc://universe.signet.laisee.org:8443`
+
+Using the command line:
+
+`tapcli universe federation add --universe_host universe.signet.laisee.org:8443`
+
 ## Running tapd: <a href="#docs-internal-guid-ebf73e49-7fff-b5ed-44ff-b9b0953c6082" id="docs-internal-guid-ebf73e49-7fff-b5ed-44ff-b9b0953c6082"></a>
 
 Run Taproot Assets with the command `tapd`. Specify how Taproot Assets can reach LND and what bitcoin network to run Taproot Assets with by passing it additional flags.

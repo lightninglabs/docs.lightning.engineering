@@ -88,9 +88,9 @@ For example:
 
 [Learn: Command Line Interface](command-line-interface.md)
 
-## Regtest and Simnet
+## Regtest and Signet
 
-To run `litd` on regtest or simnet, the autopilot has to be disabled.
+To run `litd` on regtest or signet, the autopilot has to be disabled.
 
 `autopilot.disable=true`
 

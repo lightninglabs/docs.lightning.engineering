@@ -455,6 +455,9 @@ the on going rate we'll permit.
   flag](https://github.com/lightningnetwork/lnd/pull/9606/) for future
   compatibility.
 
+* [Establish a base DB version even if it is not yet
+  tracked](https://github.com/lightningnetwork/lnd/pull/9647).
+
 ## Code Health
 
 * A code refactor that [moves all the graph related DB code out of the 
@@ -479,6 +482,9 @@ the on going rate we'll permit.
 * [Unified](https://github.com/lightningnetwork/lnd/pull/9447) the monitoring
   inputs spending logic in the sweeper so it can properly handle missing inputs
   and recover from restart.
+
+* A code refactor to [use maps.Copy instead of manually copying map
+   elements](https://github.com/lightningnetwork/lnd/pull/9630).
 
 
 ## Tooling and Documentation

@@ -6,7 +6,7 @@ description: >-
 
 # lnd.conf
 
-The LND configuration file is found in your LND directory, typically in \~/.lnd
+The LND configuration file is found in your LND directory, typically in `~/.lnd`
 
 A sample configuration file [can be found here](https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf) or in your local copy of the LND source code. This file exists purely for illustrative purposes, and do not serve as a template for an ["ideal"](optimal-configuration-of-a-routing-node.md) node.
 
@@ -44,11 +44,14 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; Rotated logs are compressed in place.
 ; logdir=~/.lnd/logs
 
-; Number of logfiles that the log rotation should keep. Setting it to 0 disables deletion of old log files.
-; maxlogfiles=3
+; DEPRECATED: Use logging.file.max-files instead.
+; Number of logfiles that the log rotation should keep. Setting it to 0 disables
+; deletion of old log files.
+; maxlogfiles=10
 ;
+; DEPRECATED: Use logging.file.max-file-size instead.
 ; Max log file size in MB before it is rotated.
-; maxlogfilesize=10
+; maxlogfilesize=20
 
 ; Time after which an RPCAcceptor will time out and return false if
 ; it hasn't yet received a response.
@@ -277,24 +280,31 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; Example:
 ;   debuglevel=debug,PEER=info
 
-; Write CPU profile to the specified file.
+; DEPRECATED: Use pprof.cpuprofile instead. Write CPU profile to the specified 
+; file.
 ; cpuprofile=
 
-; Enable HTTP profiling on given port -- NOTE port must be between 1024 and
-; 65536. The profile can be access at: http://localhost:<PORT>/debug/pprof/.
+; DEPRECATED: Use pprof.profile instead.Enable HTTP profiling on given port 
+; -- NOTE port must be between 1024 and 65536. The profile can be access at:
+; http://localhost:<PORT>/debug/pprof/. You can also provide it as host:port to
+; enable profiling for remote debugging. For example 0.0.0.0:<PORT> to enable
+; profiling for all interfaces on the given port.
 ; profile=
 
-; Enable a blocking profile to be obtained from the profiling port. A blocking
-; profile can show where goroutines are blocking (stuck on mutexes, I/O, etc).
-; This takes a value from 0 to 1, with 0 turning off the setting, and 1 sampling
-; every blocking event (it's a rate value).
+; DEPRECATED: Use pprof.blockingprofile instead. Enable a blocking profile to be
+; obtained from the profiling port. A blocking profile can show where goroutines
+; are blocking (stuck on mutexes, I/O, etc). This takes a value from 0 to 1,
+; with 0 turning off the setting, and 1 sampling every blocking event (it's a
+; rate value).
 ; blockingprofile=0
 
-; Enable a mutex profile to be obtained from the profiling port. A mutex 
-; profile can show where goroutines are blocked on mutexes, and which mutexes
-; have high contention.  This takes a value from 0 to 1, with 0 turning off the
-; setting, and 1 sampling every mutex event (it's a rate value).
+; DEPRECATED: Use pprof.mutexprofile instead. Enable a mutex profile to be 
+; obtained from the profiling port. A mutex profile can show where goroutines 
+; are blocked on mutexes, and which mutexes have high contention. This takes a
+; value from 0 to 1, with 0 turning off the setting, and 1 sampling every mutex
+; event (it's a rate value).
 ; mutexprofile=0
+
 
 ; DEPRECATED: Allows the rpcserver to intentionally disconnect from peers with
 ; open channels. THIS FLAG WILL BE REMOVED IN 0.10.0.
@@ -313,15 +323,19 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; Example:
 ;   backupfilepath=~/.lnd/data/chain/bitcoin/mainnet/channel.backup
 
+; When false (default), old channel backups are archived to a designated location.
+; When true, old backups are simply replaced.
+; no-backup-archive=false
+
 ; The maximum capacity of the block cache in bytes. Increasing this will result
 ; in more blocks being kept in memory but will increase performance when the
 ; same block is required multiple times.
 ; The default value below is 20 MB (1024 * 1024 * 20)
 ; blockcachesize=20971520
 
-; Optional URL for external fee estimation. If no URL is specified, the method
-; for fee estimation will depend on the chosen backend and network. Must be set
-; for neutrino on mainnet.
+; DEPRECATED: Use 'fee.url' option. Optional URL for external fee estimation.
+; If no URL is specified, the method for fee estimation will depend on the
+; chosen backend and network. Must be set for neutrino on mainnet.
 ; Default:
 ;   feeurl=
 ; Example:
@@ -452,6 +466,13 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; If true, all HTLCs will be held until they are handled by an interceptor
 ; requireinterceptor=false
 
+; If true, lnd will also allow setting positive inbound fees. By default, lnd
+; only allows to set negative inbound fees (an inbound "discount") to remain
+; backwards compatible with senders whose implementations do not yet support
+; inbound fees. Therefore, you should ONLY set this setting if you know what you
+; are doing. [experimental]
+; accept-positive-inbound-fees=false
+
 ; If true, will apply a randomized staggering between 0s and 30s when
 ; reconnecting to persistent peers on startup. The first 10 reconnections will be
 ; attempted instantly, regardless of the flag's value
@@ -471,10 +492,32 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; propagation 
 ; max-commit-fee-rate-anchors=10
 
-; A threshold defining the maximum amount of dust a given channel can have
-; after which forwarding and sending dust HTLC's to and from the channel will
-; fail. This amount is expressed in satoshis.
-; dust-threshold=500000
+; DEPRECATED: This value will be deprecated please use the new setting 
+; "channel-max-fee-exposure". This value is equivalent to the new fee exposure
+; limit but was removed because the name was ambigious.
+; dust-threshold=
+
+; This value replaces the old 'dust-threshold' setting and defines the maximum
+; amount of satoshis that a channel pays in fees in case the commitment 
+; transaction is broadcasted. This is enforced in both directions either when
+; we are the channel intiator hence paying the fees but also applies to the 
+; channel fee if we are NOT the channel initiator. It is
+; important to note that every HTLC adds fees to the channel state. Non-dust 
+; HTLCs add just a new output onto the commitment transaction whereas dust 
+; HTLCs are completely attributed the commitment fee. So this limit can also 
+; influence adding new HTLCs onto the state. When the limit is reached we won't 
+; allow any new HTLCs onto the channel state (outgoing and incoming). So 
+; choosing a right limit here must be done with caution. Moreover this is a 
+; limit for all channels universally meaning there is no difference made due to
+; the channel size. So it is recommended to use the default value. However if
+; you have a very small channel average size you might want to reduce this 
+; value.
+; WARNING: Setting this value too low might cause force closes because the 
+; lightning protocol has no way to roll back a channel state when your peer 
+; proposes a channel update which exceeds this limit. There are only two options 
+; to resolve this situation, either increasing the limit or one side force 
+; closes the channel.
+; channel-max-fee-exposure=500000
 
 ; If true, lnd will abort committing a migration if it would otherwise have been
 ; successful. This leaves the database unmodified, and still compatible with the
@@ -533,6 +576,29 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; intelligence services.
 ; color=#3399FF
 
+; The maximum duration that the server will wait before timing out reading
+; the headers of an HTTP request.
+; http-header-timeout=5s
+
+; The number of restricted slots the server will allocate for peers.
+; num-restricted-slots=30
+
+[fee]
+
+; Optional URL for external fee estimation. If no URL is specified, the method
+; for fee estimation will depend on the chosen backend and network. Must be set
+; for neutrino on mainnet.
+; Default:
+;   fee.url=
+; Example:
+;   fee.url=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json
+
+; The minimum interval in which fees will be updated from the specified fee URL.
+; fee.min-update-timeout=5m
+
+; The maximum interval in which fees will be updated from the specified fee URL.
+; fee.max-update-timeout=20m
+
 
 [prometheus]
 
@@ -568,6 +634,9 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 
 ; Use Bitcoin's test network.
 ; bitcoin.testnet=false
+;
+; Use Bitcoin's 4th version test network.
+; bitcoin.testnet4=false
 ;
 ; Use Bitcoin's simulation test network
 ; bitcoin.simnet=false
@@ -788,9 +857,7 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; neutrino.connect=
 
 ; Max number of inbound and outbound peers.
-;
-; NOTE: This value is currently unused.
-; neutrino.maxpeers=
+; neutrino.maxpeers=8
 
 ; Add a peer to connect with at startup.
 ; neutrino.addpeer=
@@ -805,10 +872,6 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ;
 ; NOTE: This value is currently unused.
 ; neutrino.banthreshold=
-
-; DEPRECATED: Use top level 'feeurl' option. Optional URL for fee estimation. If
-; a URL is not specified, static fees will be used for estimation.
-; neutrino.feeurl=
 
 ; Optional filter header in height:hash format to assert the state of neutrino's
 ; filter header chain on startup. If the assertion does not hold, then the
@@ -950,6 +1013,51 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; Instructs lnd to encrypt the private key using the wallet's seed.
 ; tor.encryptkey=false
 
+[logging]
+
+; Whether to exclude the current build's commit hash from log lines. Note that
+; the commit hash will not currently show up in all LND log lines as this new
+; feature will take a few versions to propagate through the codebase.
+; logging.no-commit-hash=false
+
+; Disable logging to stdout and stderror.
+; logging.console.disable=false
+
+; Don't add timestamps to logs written to stdout and stderr.
+; logging.console.no-timestamps=false
+
+; Include the log call-site in the log line written to stdout
+; and stderr. Options include 'off', 'short' and 'long'.
+; Default:
+;   logging.console.call-site=off
+; Example:
+;   logging.console.call-site=short
+
+; Disable logging to the standard LND log file.
+; logging.file.disable=false
+
+; Number of log files that the log rotation should keep. Setting
+; it to 0 disables deletion of old log files.
+; logging.file.max-files=10
+
+; Max log file size in MB before it is rotated.
+; logging.file.max-file-size=20
+
+; Compression algorithm to use when rotating logs.
+; Default:
+;   logging.file.compressor=gzip
+; Example:
+;   logging.file.compressor=zstd
+
+; Don't add timestamps to logs written to the standard LND log file.
+; logging.file.no-timestamps=false
+
+; Include the log call-site in the log line written the standard LND
+; log file. Options include 'off', 'short' and 'long'.
+; Default:
+;   logging.file.call-site=off
+; Example:
+;   logging.file.call-site=short
 
 [watchtower]
 
@@ -1120,6 +1228,24 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; checks. This value must be >= 1m.
 ; healthcheck.remotesigner.interval=1m
 
+; The number of times we should attempt to check the node's leader status
+; before gracefully shutting down. Set this value to 0 to disable this health 
+; check.
+; healthcheck.leader.attempts=1
+
+; The amount of time after the leader check times out due to unanswered RPC.
+; This value must be >= 1s.
+; healthcheck.leader.timeout=5s
+
+; The amount of time we should backoff between failed attempts of leader checks.
+; This value must be >= 1s.
+; healthcheck.leader.backoff=5s
+
+; The amount of time we should wait between leader checks. 
+; This value must be >= 1m.
+; healthcheck.leader.interval=1m
+
+
 
 [signrpc]
 
@@ -1212,6 +1338,13 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; failures in channels. 
 ; routerrpc.bimodal.decaytime=168h
 
+; If set, the router will send `Payment_INITIATED` for new payments, otherwise
+; `Payment_In_FLIGHT` will be sent for compatibility concerns.
+; routerrpc.usestatusinitiated=false
+
+; Defines the maximum duration that the probing fee estimation is allowed to
+; take.
+; routerrpc.fee-estimation-timeout=1m
 
 [workers]
 
@@ -1279,9 +1412,57 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; closing.
 ; protocol.no-any-segwit=false
 
+; Set to disable querying our peers for the timestamps of announcement
+; messages and to disable responding to such queries
+; protocol.no-timestamp-query-option=false
 
 ; Set to enable support for the experimental taproot channel type.
 ; protocol.simple-taproot-chans=false
+
+; Set to enable support for the experimental taproot overlay channel type.
+; protocol.simple-taproot-overlay-chans=false
+
+; Set to disable blinded route forwarding.
+; protocol.no-route-blinding=false
+
+; Set to disable experimental endorsement signaling.
+; protocol.no-experimental-endorsement=false
+
+; Set to disable support for RBF based coop close.
+; protocol.rbf-coop-close=false
+
+; Set to handle messages of a particular type that falls outside of the
+; custom message number range (i.e. 513 is onion messages). Note that you can
+; set this option as many times as you want to support more than one custom
+; message type.
+; Default:
+;   protocol.custom-message=
+; Example:
+;   protocol.custom-message=513
+
+; Specifies feature bits — numbers defined in BOLT 9 — to advertise in the
+; node's init message. Note that you can set this option as many times as you
+; want to support more than one feature bit.
+; Default:
+;   protocol.custom-init=
+; Example:
+;   protocol.custom-init=39
+
+; Specifies custom feature bits — numbers defined in BOLT 9 — to advertise in
+; the node's announcement message. Note that you can set this option as many
+; times as you want to support more than one feature bit.
+; Default:
+;   protocol.custom-nodeann=
+; Example:
+;   protocol.custom-nodeann=39
+
+; Specifies custom feature bits — numbers defined in BOLT 9 — to advertise in
+; the node's invoices. Note that you can set this option as many times as you
+; want to support more than one feature bit.
+; Default:
+;   protocol.custom-invoice=
+; Example:
+;   protocol.custom-invoice=39
 
 [db]
 
@@ -1310,10 +1491,19 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; the future.
 ; db.no-rev-log-amt-data=false
 
+; If set to true, native SQL will be used instead of KV emulation for tables
+; that support it already. Note: this is an experimental feature, use at your
+; own risk.
+; db.use-native-sql=false
+
+; If set to true, the KV to native SQL migration will be skipped. Note that
+; this option is intended for users who experience non-resolvable migration
+; errors.
+; db.skip-native-sql-migration=false
 
 [etcd]
 
-; Etcd database host.
+; Etcd database host. Supports multiple hosts separated by a comma.
 ; Default:
 ;   db.etcd.host=
 ; Example:
@@ -1405,6 +1595,9 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; Example:
 ;   db.postgres.maxconnections=
 
+; Whether to skip executing schema migrations.
+; db.postgres.skipmigrations=false
+
 
 [sqlite]
 
@@ -1429,6 +1622,8 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ;   db.sqlite.pragmaoptions=auto_vacuum=incremental
 ;   db.sqlite.pragmaoptions=temp_store=MEMORY
 
+; Whether to skip executing schema migrations.
+; db.sqlite.skipmigrations=false
 
 [bolt]
 
@@ -1471,7 +1666,7 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 
 ; The session TTL in seconds after which a new leader is elected if the old
 ; leader is shut down, crashed or becomes unreachable.
-; cluster.leader-session-ttl=60
+; cluster.leader-session-ttl=90
 
 
 [rpcmiddleware]
@@ -1562,6 +1757,19 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; be broadcast quickly.
 ; gossip.sub-batch-delay=5s
 
+; The number of confirmations required before processing channel announcements.
+; gossip.announcement-conf=6
+
+; The allotted bandwidth rate expressed in bytes/second that will be allocated
+; towards outbound gossip messages. Realized rates above this value will be 
+; throttled. This value is shared across all peers.
+; gossip.msg-rate-bytes=102400
+
+; The amount of bytes of gossip messages that can be sent at a given time. This
+; is used as the amount of tokens in the token bucket algorithm. This value
+; MUST be set to something about 65 KB, otherwise a single max sized message
+; can never be sent.
+; gossip.msg-burst-bytes=204800
 
 [invoices]
 
@@ -1583,7 +1791,6 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; enough to prevent force closes.
 ; invoices.holdexpirydelta=12
 
-
 [routing]
 
 ; DEPRECATED: This is now turned on by default for Neutrino (use
@@ -1597,11 +1804,46 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; seen as being live from it's PoV.
 ; routing.strictgraphpruning=false
 
+; The minimum number of real (non-dummy) blinded hops to select for a blinded
+; path. This doesn't include our node, so if the maximum is 1, then the
+; shortest paths will contain our node along with an introduction node hop.
+; routing.blinding.min-num-real-hops=1
+
+; The number of hops to include in a blinded path. This does not include
+; our node, so if is is 1, then the path will at least contain our node along
+; with an introduction node hop. If it is 0, then it will use this node as
+; the introduction node. This number must be greater than or equal to the
+; the number of real hops (invoices.blinding.min-num-real-hops). Any paths
+; shorter than this number will be padded with dummy hops.
+; routing.blinding.num-hops=2
+
+; The maximum number of blinded paths to select and add to an invoice.
+; routing.blinding.max-num-paths=3
+
+; The amount by which to increase certain policy values of hops on a blinded
+; path in order to add a probing buffer. The higher this multiplier, the more
+; buffer is added to the policy values of hops along a blinded path meaning
+; that if they were to increase their policy values before the blinded path
+; expires, the better the chances that the path would still be valid meaning
+; that the path is less prone to probing attacks. However, if the multiplier
+; is too high, the resulting buffered fees might be too much for the payer.
+; routing.blinding.policy-increase-multiplier=1.1
+
+; The amount by which to decrease certain policy values of hops on a blinded
+; path in order to add a probing buffer. The lower this multiplier, the more
+; buffer is added to the policy values of hops along a blinded path meaning
+; that if they were to increase their policy values before the blinded path
+; expires, the better the chances that the path would still be valid meaning
+; that the path is less prone to probing attacks. However, since this value
+; is being applied to the MaxHTLC value of the route, the lower it is, the
+; lower payment amount will need to be.
+; routing.blinding.policy-decrease-multiplier=0.9
 
 [sweeper]
 
-; Duration of the sweep batch window. The sweep is held back during the batch
-; window to allow more inputs to be added and thereby lower the fee per input.
+; DEPRECATED: Duration of the sweep batch window. The sweep is held back during
+; the batch window to allow more inputs to be added and thereby lower the fee
+; per input.
 ; sweeper.batchwindowduration=30s
 
 ; The max fee rate in sat/vb which can be used when sweeping funds. Setting
@@ -1609,6 +1851,57 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; causing HTLCs to expire hence potentially losing funds.
 ; sweeper.maxfeerate=1000
 
+; The conf target to use when sweeping non-time-sensitive outputs. This is
+; useful for sweeping outputs that are not time-sensitive, and can be swept at
+; a lower fee rate.
+; sweeper.nodeadlineconftarget=1008
+
+
+; An optional config group that's used for the automatic sweep fee estimation.
+; The Budget config gives options to limits ones fee exposure when sweeping
+; unilateral close outputs and the fee rate calculated from budgets is capped
+; at sweeper.maxfeerate. Check the budget config options for more details.
+; sweeper.budget=
+
+[sweeper.budget]
+
+; The amount in satoshis to allocate as the budget to pay fees when sweeping
+; the to_local output. If set, the budget calculated using the ratio (if set)
+; will be capped at this value.
+; sweeper.budget.tolocal=
+
+; The ratio of the value in to_local output to allocate as the budget to pay
+; fees when sweeping it.
+; sweeper.budget.tolocalratio=0.5
+
+; The amount in satoshis to allocate as the budget to pay fees when CPFPing a
+; force close tx using the anchor output. If set, the budget calculated using
+; the ratio (if set) will be capped at this value.
+; sweeper.budget.anchorcpfp=
+
+; The ratio of a special value to allocate as the budget to pay fees when 
+; CPFPing a force close tx using the anchor output. The special value is the
+; sum of all time-sensitive HTLCs on this commitment subtracted by their
+; budgets.
+; sweeper.budget.anchorcpfpratio=0.5
+
+; The amount in satoshis to allocate as the budget to pay fees when sweeping a
+; time-sensitive (first-level) HTLC. If set, the budget calculated using the
+; ratio (if set) will be capped at this value.
+; sweeper.budget.deadlinehtlc=
+
+; The ratio of the value in a time-sensitive (first-level) HTLC to allocate as
+; the budget to pay fees when sweeping it.
+; sweeper.budget.deadlinehtlcratio=0.5
+
+; The amount in satoshis to allocate as the budget to pay fees when sweeping a
+; non-time-sensitive (second-level) HTLC. If set, the budget calculated using
+; the ratio (if set) will be capped at this value.
+; sweeper.budget.nodeadlinehtlc=
+
+; The ratio of the value in a non-time-sensitive (second-level) HTLC to
+; allocate as the budget to pay fees when sweeping it.
+; sweeper.budget.nodeadlinehtlcratio=0.5
 
 [htlcswitch]
 
@@ -1636,6 +1929,38 @@ A sample configuration file [can be found here](https://github.com/lightningnetw
 ; no active gRPC streams. This might be useful to keep the underlying HTTP/2
 ; connection open for future requests.
 ; grpc.client-allow-ping-without-stream=false
+
+
+[pprof]
+
+; Enable HTTP profiling on given port -- NOTE port must be between 1024 and
+; 65536. The profile can be access at: http://localhost:<PORT>/debug/pprof/.
+; You can also provide it as host:port to enable profiling for remote debugging.
+; For example 0.0.0.0:<PORT> to enable profiling for all interfaces on the given
+; port. The built-in profiler has minimal overhead, so it is recommended to
+; enable it.
+; pprof.profile=
+
+; Write CPU profile to the specified file. This should only be used for 
+; debugging because compared to running a pprof server this will record the cpu
+; profile constantly from the start of the program until the shutdown.
+; pprof.cpuprofile=
+
+; Enable a blocking profile to be obtained from the profiling port. A blocking
+; profile can show where goroutines are blocking (stuck on mutexes, I/O, etc).
+; This takes a value from 0 to 1, with 0 turning off the setting, and 1 sampling
+; every blocking event (it's a rate value). The blocking profile has high 
+; overhead and is off by default even when running the pprof server. It should
+; only be used for debugging.
+; pprof.blockingprofile=0
+
+; Enable a mutex profile to be obtained from the profiling port. A mutex 
+; profile can show where goroutines are blocked on mutexes, and which mutexes
+; have high contention.  This takes a value from 0 to 1, with 0 turning off the
+; setting, and 1 sampling every mutex event (it's a rate value). The mutex
+; profile has high overhead and is off by default even when running the pprof
+; server. It should only be used for debugging.
+; pprof.mutexprofile=0
 
 ```
 {% endcode %}

@@ -83,6 +83,53 @@ Increasing the payments expiration grace period will allow for longer time to wa
 
 `payments-expiration-grace-period=1h # (default: 0s)`
 
+### Database configuration
+
+LND requires a database to store information about transactions, invoices, channels, macaroons and all kinds of other information to operate safely. By default, LND runs with bbolt. In the future, SQLite will take over as the default. Both are embedded databases, meaning they do not need additional software or configuration, but work out of the box as part of LND and can be migrated easily.
+
+LND Databases:
+
+* bbolt\*
+* etcd\*
+* **SQLite**
+* **Postgres**
+
+Backends marked with (\*) will be phased out with future versions. Migration scripts will be made available to help migrate data from legacy backends (bbolt/etcd) for the existing nodes.
+
+Default:
+
+`db.backend=bolt`
+
+Alternative options:
+
+`db.backend=etcd`
+
+`db.backend=postgres`
+
+`db.backend=sqlite`
+
+LND users with SQLite or Postgres backends can enable a performance-enhancing "native SQL schema" via configuration. This option was available for new nodes since v0.18.0, and existing nodes can be configured to use it starting with v0.19.0.
+
+`db.use-native-sql=true`
+
+### Database migration
+
+In the context of LND’s development path, database migrations have two components. First, the move backend from bbolt/etcd to SQLite/Postgres. Second, the move from kvdb to native SQL data structures.
+
+#### Move backend
+
+The switch to SQLite/Postgres is made possible with the lndinit [migration script](https://github.com/lightninglabs/lndinit/blob/migrate-db/docs/data-migration.md). This tool migrates LND bbolt databases to either SQLite or Postgres, preserving the key-value (kvdb) data structure. Use this tool if you are looking to migrate your LND backend from bbolt to SQLite.
+
+**Caution**: Migrating to Postgres using this tool is currently not recommended. The key-value schema can lead to poor performance in Postgres, especially for older nodes with large amounts of Payment and Invoice data. Performance issues on Postgres will be addressed in future releases with additional data store migration to native SQL schema.
+
+If you have migrated to Postgres and would like to optimize performance, have a look at [these config recommendations](https://gist.github.com/djkazic/526fa3e032aea9578997f88b45b91fb9).
+
+#### Move to native SQL data structure
+
+Starting with version 0.19, LND will perform automatic migrations from kvdb to native SQL for users on SQLite/Postgres backend. The migration process will create tables in the backend and move the data from the existing kv schema to the new tables at startup time.
+
+To trigger this migration, simply set `db.use-native-sql=true` and restart your node. This migration can be abandoned by setting `db.skip-native-sql-migration=true` but this option should only be set if you are encountering errors during the migration process.
+
 ### Rebalancing
 
 While rebalancing is not strictly necessary for a competitive routing node, it can be useful to push liquidity in or out of certain channels that way, especially when the potential earnings on that channel are higher than the cost to rebalance.

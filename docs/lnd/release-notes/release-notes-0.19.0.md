@@ -101,7 +101,8 @@
   than once.
 
 * [Fixed](https://github.com/lightningnetwork/lnd/pull/9609) a bug that may
-  cause `listunspent` to give inaccurate wallet UTXOs.
+  cause `listunspent` to give inaccurate wallet UTXOs and
+  [`locked_balance`](https://github.com/lightningnetwork/lnd/pull/9693).
 
 * [Fixed](https://github.com/lightningnetwork/lnd/pull/9626) a bug where a
 keysend payment would not fail properly and only resolve after restart. Now
@@ -301,6 +302,9 @@ close transaction.
   `lnrpc.HTLC`. This field is used to indicate whether a given HTLC has been
   locked in by the remote peer.
 
+* [Allow custom lock ID and
+  duration in FundPsbt](https://github.com/lightningnetwork/lnd/pull/9724) RPC.
+
 ## lncli Updates
 
 * [Fixed](https://github.com/lightningnetwork/lnd/pull/9605) a case where
@@ -375,6 +379,10 @@ The underlying functionality between those two options remain the same.
    [1](https://github.com/lightningnetwork/lnd/pull/9476)
    [2](https://github.com/lightningnetwork/lnd/pull/9477)
    [3](https://github.com/lightningnetwork/lnd/pull/9478).
+
+* [CI has been updated to build against
+  `bitcoind 29.0`](https://github.com/lightningnetwork/lnd/pull/9628) to ensure
+  compatibility.
 
 ## Breaking Changes
 ## Performance Improvements

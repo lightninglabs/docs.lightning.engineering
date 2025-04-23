@@ -12,7 +12,7 @@ Typically, unannounced channels are between a client (the wallet of an end-user,
 
 In the context of Taproot Assets, an Edge node is a specialized routing node with multiple public Bitcoin channels to the Lightning Network, and unannounced Taproot Assets channels with their clients. They may have multiple channels per client, for example to facilitate the transfer of multiple asset types.
 
-What makes an Edge node different to an ordinary routing node or Lightning Service Provider is the ability to swap the Taproot Asset into BTC or vice versa, and route the value of the payment over the greater Lightning Network.
+What makes an Edge node different to an ordinary routing node is the ability to swap the Taproot Asset into BTC or vice versa, and route the value of the payment over the greater Lightning Network.
 
 This enables a Taproot Assets-aware Lightning wallet to hold a Taproot Asset, but pay to any Bolt 11/12 Lightning invoice, LNURL or Lightning address. It also allows this wallet to receive Taproot Assets for any payment made by any existing Lightning wallet.
 

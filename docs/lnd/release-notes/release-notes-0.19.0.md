@@ -118,6 +118,10 @@ keysend payment validation is stricter.
 * [Fixed](https://github.com/lightningnetwork/lnd/pull/9746) a possible panic
 when running LND with an aux component injected (custom channels).
 
+* [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/9750): if a Taproot
+  address is added to LND using the `ImportTapscript` RPC, LND previously failed
+  to perform a cooperative close to that address.
+
 # New Features
 
 * Add support for [archiving channel backup](https://github.com/lightningnetwork/lnd/pull/9232)
@@ -307,6 +311,10 @@ close transaction.
 
 * [Allow custom lock ID and
   duration in FundPsbt](https://github.com/lightningnetwork/lnd/pull/9724) RPC.
+ 
+* Expand the [lnrpc.RPCMiddlewareRequest](https://github.com/lightningnetwork/lnd/pull/9739) 
+  to include any [gRPC metadata](https://grpc.io/docs/guides/metadata) pairs 
+  that are passed to the initial request via the `context.Context`.
 
 ## lncli Updates
 

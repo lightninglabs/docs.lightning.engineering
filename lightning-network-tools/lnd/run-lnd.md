@@ -2,7 +2,7 @@
 description: Learn how to install LND on your machine, configure it and keep it up to date.
 ---
 
-# 🛠 Get Started
+# 🛠️ Get Started
 
 The Lightning Network Daemon is a full implementation of a Lightning Network node. The Lightning Network and its specification are rapidly evolving, and so is LND. Use this guide to install LND from the binaries, source or docker and keep it up to date with new releases.
 
@@ -72,7 +72,7 @@ You can find the latest version of Golang [on its official website](https://gola
 
 `sudo tar -C /usr/local -xzf go[version].linux-[platform].tar.gz`
 
-To permanently include this new directory in your path, add the following lines to your `.bashrc` file and open a new terminal window to activate it.
+To permanently include this new directory in your path, add the following lines to your `.bashrc` file and run `. .bashrc` to activate it.
 
 `export PATH=$PATH:/usr/local/go/bin`\
 `export GOPATH=~/go`\

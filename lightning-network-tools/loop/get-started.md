@@ -29,3 +29,9 @@ You can compile Loop from source. This requires Golang. Instructions for how to 
 ## Configuration
 
 By default, the `loopd.conf` is placed in `~/.loop/mainnet/` If you are starting `loopd` on another network (e.g. `loopd --network=signet`), the configuration file is expected in the relevant directory (e.g. `~/.loop/signet`). You may also pass a custom directory with the `--configfile=` flag.
+
+#### External Loopd
+
+You may run `loopd` on a separate machine and network as LND. You may have to first configure LND to listen on external IPs with `lnd.rpclisten=0.0.0.0:10009`, add your LND machine's IP address(es) to the TLS certificate with `tlsextraip=`, delete your existing `tls.key` and `tls.cert` and restart LND to regenerate the certificates.
+
+In your `loopd.conf`, define the LND host (`lnd.host=<ip>:10009`), copy the LND admin macaroon and TLS certificate over and specify their path with `lnd.macaroonpath=/path/to/admin.macaroon` and `lnd.tlspath=/path/to/tls.cert`

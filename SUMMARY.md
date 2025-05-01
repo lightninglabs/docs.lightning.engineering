@@ -74,7 +74,6 @@
   * [Sweeper](lightning-network-tools/lnd/sweeper.md)
   * [Debugging LND](lightning-network-tools/lnd/debugging_lnd.md)
   * [Fuzzing LND](lightning-network-tools/lnd/fuzz.md)
-  * [LND and etcd](lightning-network-tools/lnd/etcd.md)
   * [LND API documentation](https://lightning.engineering/api-docs/api/lnd/)
   * [Channel Acceptor](lightning-network-tools/lnd/channel-acceptor.md)
   * [RPC Middleware Interceptor](lightning-network-tools/lnd/rpc-middleware-interceptor.md)

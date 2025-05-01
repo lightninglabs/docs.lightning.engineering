@@ -59,7 +59,7 @@ LND's API documentation
 {% endcontent-ref %}
 
 {% content-ref url="../../docs/lnd/key_import.md" %}
-[key\_import.md](../../docs/lnd/key\_import.md)
+[key\_import.md](../../docs/lnd/key_import.md)
 {% endcontent-ref %}
 
 {% content-ref url="secure-your-lightning-network-node.md" %}
@@ -75,7 +75,7 @@ LND's API documentation
 {% endcontent-ref %}
 
 {% content-ref url="configuring_tor.md" %}
-[configuring\_tor.md](configuring\_tor.md)
+[configuring\_tor.md](configuring_tor.md)
 {% endcontent-ref %}
 
 {% content-ref url="enable-neutrino-mode-in-bitcoin-core.md" %}
@@ -87,15 +87,15 @@ LND's API documentation
 {% endcontent-ref %}
 
 {% content-ref url="debugging_lnd.md" %}
-[debugging\_lnd.md](debugging\_lnd.md)
+[debugging\_lnd.md](debugging_lnd.md)
 {% endcontent-ref %}
 
 {% content-ref url="fuzz.md" %}
 [fuzz.md](fuzz.md)
 {% endcontent-ref %}
 
-{% content-ref url="etcd.md" %}
-[etcd.md](etcd.md)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 {% content-ref url="channel-acceptor.md" %}
@@ -107,11 +107,11 @@ LND's API documentation
 {% endcontent-ref %}
 
 {% content-ref url="../../docs/lnd/leader_election.md" %}
-[leader\_election.md](../../docs/lnd/leader\_election.md)
+[leader\_election.md](../../docs/lnd/leader_election.md)
 {% endcontent-ref %}
 
 {% content-ref url="nat_traversal.md" %}
-[nat\_traversal.md](nat\_traversal.md)
+[nat\_traversal.md](nat_traversal.md)
 {% endcontent-ref %}
 
 {% content-ref url="recovery-planning-for-failure.md" %}

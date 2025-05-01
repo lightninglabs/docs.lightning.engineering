@@ -12,13 +12,15 @@ There are many ways to contribute to the project, as a user, developer, entrepre
 
 ## Contribute as a user
 
+{% hint style="success" %}
 Thank you for running LND! We are always attentive to our users’ needs and rely on users to report bugs and share their use cases.
+{% endhint %}
 
 To be effective in providing user feedback, you should be prepared to provide extensive logs (e.g. debug mode) as well as profiling data. Detailed logs and profiles help us troubleshoot bugs more effectively.
 
-[Read more: Debugging LND](debugging\_lnd.md)
+[Read more: Debugging LND](debugging_lnd.md)
 
-We appreciate any extensive testing, especially in environments like testnet. As a user, you can contribute to LND by applying patches in your testing environment, running a testnet node, and by upgrading to release candidates early and often. Running Release Candidates as when it's published and publishing bug reports is a great way to contribute towards improving the quality of the releases. Although it’s recommended to run RC on testnet nodes only.
+We appreciate any extensive testing, especially in environments like signet. As a user, you can contribute to LND by applying patches in your testing environment, running a signet node, and by upgrading to release candidates early and often. Running Release Candidates as when it's published and publishing bug reports is a great way to contribute towards improving the quality of the releases. Although it’s recommended to run RC on signet nodes only.
 
 You may also contribute to the development process below by applying patches and testing new features and pull requests before they are released.
 
@@ -36,7 +38,7 @@ To effectively contribute code, it helps to
 * Possess domain specific knowledge in the field you are contributing to
 * Have a strong appetite to review code, in addition to developing&#x20;
 
-[Must read: Code contribution guidelines](https://github.com/lightningnetwork/lnd/blob/master/docs/code\_contribution\_guidelines.md)
+[Must read: Code contribution guidelines](https://github.com/lightningnetwork/lnd/blob/master/docs/code_contribution_guidelines.md)
 
 The LND issue log provides a good starting point for opportunities. Filter issues with flags like ‘good first issue’, ‘up for grabs’ or ‘beginner’ to find a convenient starting point.
 

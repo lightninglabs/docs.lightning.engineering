@@ -6,7 +6,9 @@ description: Learn how to recover your funds in the event of a catastrophic fail
 
 Use this guide as a last resort if you have lost access to your node or are unable to start LND due to a fatal error. Before using this guide, carefully examine your logs, [upgrade LND](run-lnd.md#part-4-upgrade-lnd) to the latest release and conduct a thorough analysis of the problem.
 
+{% hint style="warning" %}
 Following this guide will close all your channels. Your funds will become available on-chain with varying speed.
+{% endhint %}
 
 ## **1. Recover as much data as you can**
 
@@ -56,7 +58,7 @@ Once complete, you will be able to check your on-chain wallet balance with `lncl
 
 ### **B) Static channel backup**
 
-\-> Don’t have a SCB file for your node? Skip to the next step.
+-> Don’t have a SCB file for your node? Skip to the next step.
 
 In this step, we will invoke the `channel.backup` file. Make sure your node is synced to chain and graph before continuing. You can check the latest status with the command `lncli getinfo`. We can place it in a separate directory and call it with the command `lncli restorechanbackup --multi_file /path/to/file/channel.backup`
 
@@ -70,7 +72,7 @@ If some channels do not close after this period, but you believe the peers are o
 
 ### **C) Force-closing all other channels**
 
-\-> Don’t have the channel database? Skip to the next step.
+-> Don’t have the channel database? Skip to the next step.
 
 If any of our peers do not support SCB, are permanently unavailable or suffered from a catastrophic failure themselves, we will have to initiate the force-close transaction.
 

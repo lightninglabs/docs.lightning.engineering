@@ -34,6 +34,10 @@ The Taproot Assets Daemon `tapd` implements the [Taproot Assets protocol](../../
 [universes.md](universes.md)
 {% endcontent-ref %}
 
+{% content-ref url="asset-loop.md" %}
+[asset-loop.md](asset-loop.md)
+{% endcontent-ref %}
+
 {% content-ref url="debugging-tapd.md" %}
 [debugging-tapd.md](debugging-tapd.md)
 {% endcontent-ref %}

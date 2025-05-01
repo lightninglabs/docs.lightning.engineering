@@ -18,11 +18,13 @@ The process of recovering your node (e.g. from a hardware failure) is different 
 
 ## Hardware
 
-LND is very read and write intensive and, as such, may wear out your storage medium faster than other software, and be more sensitive to even small hardware errors. LND should not be run on a SD card (Secure Digital). SSDs (Solid-state drives) are preferable over HDDs (Hard disk drives).
+LND is very read and write intensive and, as such, may wear out your storage medium faster than other software, and be more sensitive to even small hardware errors. LND should not be run on an SD card (Secure Digital). SSDs (Solid-state drives) are preferable over HDDs (Hard disk drives).
 
 If you decide to deploy your Lightning node in the cloud, choose a reputable provider known for reliable hardware and uptime. You may use RAID (Redundant Array of Independent Disks) to mitigate failures.
 
+{% hint style="info" %}
 **If your Lightning node is going to run on a device you physically control, invest in a high-quality SSD and consider setting up RAID.**
+{% endhint %}
 
 [Also read: Secure Your Lightning Network Node](secure-your-lightning-network-node.md)
 
@@ -30,7 +32,9 @@ If you decide to deploy your Lightning node in the cloud, choose a reputable pro
 
 The key to your Lightning node is generated with `lncli create` when you first start up your node. This seed phrase consists of 24 English words and can be used to derive your node’s public key as well as the Bitcoin private keys of all your on-chain funds. Using only this key, you will be able to recover all on-chain funds in your LND wallet as well as all funds from channels your peers force close on you after your node goes offline.
 
+{% hint style="info" %}
 **Keep your aezeed securely backed up, ideally on a piece of paper or in encrypted storage, for example in your password manager.**
+{% endhint %}
 
 ## Static channel backups (SCB)
 
@@ -40,13 +44,17 @@ A static channel backup exists for each channel we maintain. It contains informa
 
 To obtain our SCBs, we can use the channel.backup file found in `.lnd/data/chain/bitcoin/channel.backup`. This file contains all backups for all our currently existing channels and it is updated every time we or somebody else opens a new channel. We can also obtain the SCB for a specific channel with the command `lncli exportchanbackup --chan_point <channel point>`
 
+{% hint style="info" %}
 **Keep a copy of your channel.backup file on a separate machine and update it whenever a new channel is opened between your node and a peer.**
+{% endhint %}
 
 ## Channel Database
 
 The `channel.db` file found in `.lnd/graph/mainnet` contains important additional information about our channels. We cannot recover from it directly and will need help from additional advanced tools, but the information derived from it can be helpful in recovering funds from channels where peers are not reachable.
 
+{% hint style="info" %}
 **Back up this file regularly, but do not rely on it for recovery.**
+{% endhint %}
 
 [Learn how to recover your funds.](disaster-recovery.md)
 
@@ -56,7 +64,7 @@ As part of our preparation for the unexpected, we might want to close zombie cha
 
 Generally, if we have a channel with a peer that we don’t expect to come back online, we should close this channel. Older channels for which a SCB does not exist or channels with peers that do not support this feature may also be worth closing.
 
-\[[Manage liquidity in the Lightning Network.](../../the-lightning-network/liquidity/manage-liquidity.md)]
+[Manage liquidity in the Lightning Network.](../../the-lightning-network/liquidity/manage-liquidity.md)
 
 ## Be #craeful not #reckless
 

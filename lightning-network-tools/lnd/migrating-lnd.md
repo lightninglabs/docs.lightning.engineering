@@ -8,11 +8,15 @@ Use this guide if you want to move your node to a different machine or location.
 
 ### When NOT to migrate LND
 
-Do NOT use this guide if you have experienced a fatal error.
+{% hint style="danger" %}
+Do NOT use this guide if you have experienced a fatal error.\
 
-Do NOT run two LND instances with the same seed or public key.
 
-Do NOT restart the old instance after the migration.
+Do NOT run two LND instances with the same seed or public key.\
+
+
+Do NOT restart an old instance after migration.
+{% endhint %}
 
 [Read: LND disaster recovery](disaster-recovery.md)
 
@@ -22,7 +26,9 @@ There are lots of reasons why you might want to migrate your Lightning Node. You
 
 If you have experienced a fatal error and would like to recover your Lightning node, do not use this guide. Regardless, it is good to read the article “[Planning for failure](recovery-planning-for-failure.md)” to learn how to best prepare for any recovery scenarios.
 
+{% hint style="warning" %}
 Read through this entire document before you begin your migration.
+{% endhint %}
 
 ## Prepare your new machine
 
@@ -32,11 +38,11 @@ It is not advised to migrate between different operating systems, as the file st
 * Installing and syncing your choice of Bitcoin node, unless you use Neutrino
 * Install and set up Tor, if desired
 * [Install LND](run-lnd.md)
-* Install auxiliary services, such as [Loop](../loop/), [Pool](../pool/) or [Faraday](../faraday/)
+* Install auxiliary services, such as [Litd](../lightning-terminal/),  [Loop](../loop/), [Pool](../pool/) or [Faraday](../faraday/)
 
 ## Migrating LND
 
-To begin our migration, we first shut down our old LND node gracefully (never turn it on again!). Use the command `lncli stop` and wait for the process to shut down completely, for example by observing the logs.
+To begin our migration, we first shut down our old LND node gracefully (**never turn it on again!**). Use the command `lncli stop` and wait for the process to shut down completely, for example by observing the logs.
 
 Unless otherwise specified in your `lnd.conf` file (check if unsure), all the data necessary for your migration is in your `~/.lnd` directory.
 

@@ -20,7 +20,9 @@ Depending on our preferences and requirements, we may choose a lower fee or high
 
 There are multiple mechanisms through which we can increase the fee of our transaction and jump ahead of the queue. This might be necessary when making payments that require a confirmation to be considered settled, or to safely regard an incoming transaction as final.
 
+{% hint style="info" %}
 **Channel openings need to be confirmed within two weeks of their initiation**, otherwise your peer may disregard the new channel, and you will have to perform a unilateral close to recover your funds.
+{% endhint %}
 
 ## On-chain transactions <a href="#docs-internal-guid-831ef4d5-7fff-f468-7a2f-a4204595b0ed" id="docs-internal-guid-831ef4d5-7fff-f468-7a2f-a4204595b0ed"></a>
 

@@ -144,7 +144,9 @@ Tapping into Taproot Assets #5: Mint from the CLI
 
 Assets that were minted with the flag `--new_grouped_asset` do not have a fixed supply. A new batch of this asset can be minted later in a way that the two assets are considered of the same asset group, and therefore fungible.
 
-**Note: At the moment it is not possible to spend two assets with different asset IDs, even if they belong to the same asset group.**
+{% hint style="info" %}
+**At the moment it is not possible to spend two assets with different asset IDs, even if they belong to the same asset group.**
+{% endhint %}
 
 To increase the supply of such an asset, we will need its tweaked\_group\_key.
 

@@ -54,13 +54,15 @@ The command `lncli feereport` will output a list of all your channels and your f
 
 `lncli feereport`
 
-&#x20;       `{`\
-&#x20;           `"chan_id": "743145615608774656",`\
-&#x20;           `"channel_point": "2b91c69a05082d05d7135b41806cc34303837ea10383d1ac3eef77969f98d16e:0",`\
-&#x20;           `"base_fee_msat": "1000",`\
-&#x20;           `"fee_per_mil": "500",`\
-&#x20;           `"fee_rate": 0.0005`\
-&#x20;       `}`
+```
+        {
+            "chan_id": "743145615608774656",
+            "channel_point": "2b91c69a05082d05d7135b41806cc34303837ea10383d1ac3eef77969f98d16e:0",
+            "base_fee_msat": "1000",
+            "fee_per_mil": "500",
+            "fee_rate": 0.0005
+        }
+```
 
 The output above means that for each payment you are pushing through this channel, you are charging 1000 milli-satoshis (1 satoshi) plus 500 satoshis per million. A 1 milllion satoshis large HTLC for example would yield you 501 satoshi.
 
@@ -70,32 +72,34 @@ Example usage:
 
 `lncli getchaninfo 743145615608774656`
 
-`{`\
-&#x20;   `"channel_id": "743145615608774656",`\
-&#x20;   `"chan_point": "2b91c69a05082d05d7135b41806cc34303837ea10383d1ac3eef77969f98d16e:0",`\
-&#x20;   `"last_update": 1616482074,`\
-&#x20;   `"node1_pub": "021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d",`\
-&#x20;   `"node2_pub": "032d5a4b5a6a344ca15f6284e3e149f4716a1af782ffbb0194e0dadc077051acf0",`\
-&#x20;   `"capacity": "16777215",`\
-&#x20;   `"node1_policy": {`\
-&#x20;       `"time_lock_delta": 40,`\
-&#x20;       `"min_htlc": "1000",`\
-&#x20;       `"fee_base_msat": "1000",`\
-&#x20;       `"fee_rate_milli_msat": "500",`\
-&#x20;       `"disabled": false,`\
-&#x20;       `"max_htlc_msat": "16609443000",`\
-&#x20;       `"last_update": 1616480497`\
-&#x20;   `},`\
-&#x20; `"node2_policy": {`\
-&#x20;       `"time_lock_delta": 40,`\
-&#x20;       `"min_htlc": "1000",`\
-&#x20;       `"fee_base_msat": "1000",`\
-&#x20;       `"fee_rate_milli_msat": "1000",`\
-&#x20;       `"disabled": false,`\
-&#x20;       `"max_htlc_msat": "16609443000",`\
-&#x20;       `"last_update": 1616482074`\
-&#x20;   `}`\
-`}`
+```
+{
+    "channel_id": "743145615608774656",
+    "chan_point": "2b91c69a05082d05d7135b41806cc34303837ea10383d1ac3eef77969f98d16e:0",
+    "last_update": 1616482074,
+    "node1_pub": "021c97a90a411ff2b10dc2a8e32de2f29d2fa49d41bfbb52bd416e460db0747d0d",
+    "node2_pub": "032d5a4b5a6a344ca15f6284e3e149f4716a1af782ffbb0194e0dadc077051acf0",
+    "capacity": "16777215",
+    "node1_policy": {
+        "time_lock_delta": 40,
+        "min_htlc": "1000",
+        "fee_base_msat": "1000",
+        "fee_rate_milli_msat": "500",
+        "disabled": false,
+        "max_htlc_msat": "16609443000",
+        "last_update": 1616480497
+    },
+  "node2_policy": {
+        "time_lock_delta": 40,
+        "min_htlc": "1000",
+        "fee_base_msat": "1000",
+        "fee_rate_milli_msat": "1000",
+        "disabled": false,
+        "max_htlc_msat": "16609443000",
+        "last_update": 1616482074
+    }
+}
+```
 
 The output above tells you that while both sides of this channel charge 1000 milli-satoshis per forwarded payment, the fee rate of node 1 is only half of that of node 2. The smallest payment this channel can route in either way is 1000 milli-satoshis, and each HTLC has to be claimed within 40 blocks before it has to be settled on chain.
 

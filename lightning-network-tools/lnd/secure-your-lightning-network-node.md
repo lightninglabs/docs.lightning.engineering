@@ -40,7 +40,11 @@ When creating your wallet with `lncli create`, you are given a 24 word long "aez
 
 You may write your seed phrase, in its correct order, on a piece of paper and store it somewhere securely. Alternatively, you may store it in encrypted storage elsewhere, such as your password manager.
 
+{% hint style="danger" %}
 Never run two separate LND nodes with the same seed!
+{% endhint %}
+
+[When migrating an LND node, please refer to the Migrating LND Guide.](migrating-lnd.md)
 
 Your private key is contained in your node's `wallet.db`. This wallet database and the macaroon database are encrypted with the password chosen when initializing the wallet using `lncli create`. If you lose your wallet password, you may recreate the wallet and macaroon database using the seed.
 

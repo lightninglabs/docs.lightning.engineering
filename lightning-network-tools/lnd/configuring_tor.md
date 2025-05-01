@@ -14,13 +14,15 @@ With widespread usage of Onion Services within the network, concerns about the d
 
 Before following the remainder of this documentation, you should ensure that you already have Tor installed locally. **If you want to run v3 Onion Services, make sure that you run at least version 0.3.3.6.** Official instructions to install the latest release of Tor can be found [here](https://www.torproject.org/docs/tor-doc-unix.html.en).
 
-**NOTE**: This documentation covers how to ensure that `lnd`'s _Lightning protocol traffic_ is tunneled over Tor. Users must ensure that when also running a Bitcoin full-node, that it is also proxying all traffic over Tor. If using the `neutrino` backend for `lnd`, then it will automatically also default to Tor usage if active within `lnd`.
+{% hint style="info" %}
+This documentation covers how to ensure that `lnd`'s _Lightning protocol traffic_ is tunneled over Tor. Users must ensure that when also running a Bitcoin full-node, that it is also proxying all traffic over Tor. If using the `neutrino` backend for `lnd`, then it will automatically also default to Tor usage if active within `lnd`.
+{% endhint %}
 
 ## Getting Started
 
 First, you'll want to run `tor` locally before starting up `lnd`. Depending on how you installed Tor, you'll find the configuration file at `/usr/local/etc/tor/torrc`. Here's an example configuration file that we'll be using for the remainder of the tutorial:
 
-```text
+```
 SOCKSPort 9050
 Log notice stdout
 ControlPort 9051
@@ -29,7 +31,7 @@ CookieAuthentication 1
 
 With the configuration file created, you'll then want to start the Tor daemon:
 
-```text
+```
 ⛰  tor
 Feb 05 17:02:06.501 [notice] Tor 0.3.1.8 (git-ad5027f7dc790624) running on Darwin with Libevent 2.1.8-stable, OpenSSL 1.0.2l, Zlib 1.2.8, Liblzma N/A, and Libzstd N/A.
 Feb 05 17:02:06.502 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning
@@ -40,7 +42,7 @@ Feb 05 17:02:06.506 [notice] Opening Control listener on 127.0.0.1:9051
 
 Once the `tor` daemon has started and it has finished bootstrapping, you'll see this in the logs:
 
-```text
+```
 Feb 05 17:02:06.000 [notice] Bootstrapped 0%: Starting
 Feb 05 17:02:07.000 [notice] Starting with guard context "default"
 Feb 05 17:02:07.000 [notice] Bootstrapped 80%: Connecting to the Tor network
@@ -52,7 +54,7 @@ Feb 05 17:02:11.000 [notice] Bootstrapped 100%: Done
 
 This indicates the daemon is fully bootstrapped and ready to proxy connections. At this point, we can now start `lnd` with the relevant arguments:
 
-```text
+```
 ⛰  ./lnd -h
 
 <snip>
@@ -78,11 +80,11 @@ Inbound connections are possible due to `lnd` automatically creating an onion se
 
 Most of these arguments have defaults, so as long as they apply to you, routing all outbound and inbound connections through Tor can simply be done with either v2 or v3 onion services:
 
-```text
+```
 ⛰  ./lnd --tor.active --tor.v2
 ```
 
-```text
+```
 ⛰  ./lnd --tor.active --tor.v3
 ```
 
@@ -90,7 +92,7 @@ See [Listening for Inbound Connections](configuring_tor.md#listening-for-inbound
 
 Outbound support only can also be used with:
 
-```text
+```
 ⛰  ./lnd --tor.active
 ```
 
@@ -102,39 +104,37 @@ Our support for Tor also has an additional privacy enhancing modified: stream is
 
 Activating stream isolation is very straightforward, we only require the specification of an additional argument:
 
-```text
+```
 ⛰  ./lnd --tor.active --tor.streamisolation
 ```
 
 ## Authentication
 
-In order for `lnd` to communicate with the Tor daemon securely, it must first establish an authenticated connection. `lnd` supports the following Tor control authentication methods \(arguably, from most to least secure\):
+In order for `lnd` to communicate with the Tor daemon securely, it must first establish an authenticated connection. `lnd` supports the following Tor control authentication methods (arguably, from most to least secure):
 
-* `SAFECOOKIE`: This authentication method relies on a cookie created and
+*   `SAFECOOKIE`: This authentication method relies on a cookie created and
 
-  stored by the Tor daemon and is the default assuming the Tor daemon supports
+    stored by the Tor daemon and is the default assuming the Tor daemon supports
 
-  it by specifying `CookieAuthentication 1` in its configuration file.
+    it by specifying `CookieAuthentication 1` in its configuration file.
+*   `HASHEDPASSWORD`: This authentication method is stateless as it relies on a
 
-* `HASHEDPASSWORD`: This authentication method is stateless as it relies on a
+    password hash scheme and may be useful if the Tor daemon is operating under a
 
-  password hash scheme and may be useful if the Tor daemon is operating under a
+    separate host from the `lnd` node. The password hash can be obtained through
 
-  separate host from the `lnd` node. The password hash can be obtained through
+    the Tor daemon with `tor --hash-password PASSWORD`, which should then be
 
-  the Tor daemon with `tor --hash-password PASSWORD`, which should then be
+    specified in Tor's configuration file with \`HashedControlPassword
 
-  specified in Tor's configuration file with \`HashedControlPassword
+    PASSWORD\_HASH`. Finally, to use it within`lnd`, the`--tor.password\` flag
 
-  PASSWORD\_HASH`. Finally, to use it within`lnd`, the`--tor.password\` flag
+    should be provided with the corresponding password.
+*   `NULL`: To bypass any authentication at all, this scheme can be used instead.
 
-  should be provided with the corresponding password.
+    It doesn't require any additional flags to `lnd` or configuration options to
 
-* `NULL`: To bypass any authentication at all, this scheme can be used instead.
-
-  It doesn't require any additional flags to `lnd` or configuration options to
-
-  the Tor daemon.
+    the Tor daemon.
 
 ## Listening for Inbound Connections
 
@@ -144,9 +144,8 @@ Both types can be created and used automatically by `lnd`. Specifying which type
 
 For example, v3 onion services can be used with the following flags:
 
-```text
+```
 ⛰  ./lnd --tor.active --tor.v3 --listen=localhost
 ```
 
 This will automatically create a hidden service for your node to use to listen for inbound connections and advertise itself to the network. The onion service's private key is saved to a file named `v2_onion_private_key` or `v3_onion_private_key` depending on the type of onion service used in `lnd`'s base directory. This will allow `lnd` to recreate the same hidden service upon restart. If you wish to generate a new onion service, you can simply delete this file. The path to this private key file can also be modified with the `--tor.privatekeypath` argument.
-

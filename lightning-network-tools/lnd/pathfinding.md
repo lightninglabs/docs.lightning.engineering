@@ -14,41 +14,47 @@ The core of LND’s pathfinding mechanism is mission control (mc). This is where
 
 `lncli getmccfg`
 
-`{`\
-`"config": {`\
-`     `~~`"half_life_seconds": "3600",`~~\
-&#x20;    ~~`"hop_probability": 0.6,`~~\
-&#x20;    ~~`"weight": 0.5,`~~\
-`     `**`"maximum_payment_results": 1000,`**\
-&#x20;    **`"minimum_failure_relax_interval": "60",`**\
-&#x20;    `"Model": "APRIORI",`\
-&#x20;    `"apriori": {`\
-&#x20;        `"half_life_seconds": "3600",`\
-&#x20;        `"hop_probability": 0.6,`\
-&#x20;        `"weight": 0.5,`\
-&#x20;        `"capacity_fraction": 0.9999`\
-&#x20;    `}`\
-`}`\
-`}`
+```
+{
+"config": {
+     "half_life_seconds": "3600",
+     "hop_probability": 0.6,
+     "weight": 0.5,
+     "maximum_payment_results": 1000,
+     "minimum_failure_relax_interval": "60",
+     "Model": "APRIORI",
+     "apriori": {
+         "half_life_seconds": "3600",
+         "hop_probability": 0.6,
+         "weight": 0.5,
+         "capacity_fraction": 0.9999
+     }
+}
+}
+```
 
-Note: Half life, hop probability and weight are deprecated and marked with ~~strikethrough~~ here, while payment results and the failure relax interval are most relevant to mission control.
+{% hint style="info" %}
+Half life, hop probability and weight are deprecated and marked with ~~strikethrough~~ here, while payment results and the failure relax interval are most relevant to mission control.
+{% endhint %}
 
 Mission control keeps a record of node id pairs through which payments have been attempted. This allows the data to be useful for cases where nodes have multiple channels between each other. For each pair, it records the timestamp and amount of the last successful or failed payment attempted through this connection.
 
 `lncli querymc`
 
-&#x20;    `{`\
-&#x20;        `"node_from":  035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226",`\
-&#x20;        `"node_to": 03676f530adb4df9f7f4981a8fb216571f2ce36c34cbefe77815c33d5aec4f2638",`\
-&#x20;        `"history": {`\
-&#x20;            `"fail_time": "0",`\
-&#x20;            `"fail_amt_sat": "0",`\
-&#x20;            `"fail_amt_msat": "0",`\
-&#x20;            `"success_time": "1652150758",`\
-&#x20;            `"success_amt_sat": "1211490",`\
-&#x20;            `"success_amt_msat": "1211490000"`\
-&#x20;        `}`\
-&#x20;    `}`
+```
+     {
+         "node_from":  035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226",
+         "node_to": 03676f530adb4df9f7f4981a8fb216571f2ce36c34cbefe77815c33d5aec4f2638",
+         "history": {
+             "fail_time": "0",
+             "fail_amt_sat": "0",
+             "fail_amt_msat": "0",
+             "success_time": "1652150758",
+             "success_amt_sat": "1211490",
+             "success_amt_msat": "1211490000"
+         }
+     }
+```
 
 LND makes a tradeoff between likelihood that a route succeeds, and the cost of sending through that route. This trade-off can be tuned by the attempt cost proportionality factors and is expressed in terms of fees. Only the most recent payment is considered for the probability metric.
 

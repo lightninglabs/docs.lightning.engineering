@@ -24,14 +24,16 @@ Once you have restarted your node, you should be able to see your watchtower’s
 
 Your watchtower has its own public key. If you have [configured Tor](quick-tor-setup.md), the command above will also return your tower’s unique onion. If the above command cannot be found (No help topic for 'tower'), you may have to make sure LND is [compiled](run-lnd.md) with the `watchtowerrpc` flag.
 
-`{`\
-`"pubkey": "02f1158dd65fb7dad3d8274e39edcb8c03ff639365884ced2f143372b5fb050bc1",`\
-`"listeners": [`\
-&#x20;    `"[::]:9911"`\
-`],`\
-`"uris": [   "02f1158dd65fb7dad3d8274e39edcb8c03ff639365884ced2f143372b5fb050bc1@ddoi7crm7rhj2eyztcsv6iprclrxhmsquhaswef3xphhu2fin726w7ad.onion:9911"`\
-`]`\
-`}`
+```
+{
+"pubkey": "02f1158dd65fb7dad3d8274e39edcb8c03ff639365884ced2f143372b5fb050bc1",
+"listeners": [
+     "[::]:9911"
+],
+"uris": [   "02f1158dd65fb7dad3d8274e39edcb8c03ff639365884ced2f143372b5fb050bc1@ddoi7crm7rhj2eyztcsv6iprclrxhmsquhaswef3xphhu2fin726w7ad.onion:9911"
+]
+}
+```
 
 ## Connect your node to a watchtower <a href="#docs-internal-guid-fe75e876-7fff-0569-2962-e0636fcb66c2" id="docs-internal-guid-fe75e876-7fff-0569-2962-e0636fcb66c2"></a>
 

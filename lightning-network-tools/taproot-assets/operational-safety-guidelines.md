@@ -6,7 +6,9 @@ description: Keep yourself and your Taproot Assets safe
 
 As of version `v0.3.0-alpha`, Taproot Assets can be used on Bitcoin's `mainnet` network. That means in any version after `v0.3.0` there won't be any breaking changes and any assets minted with that version should be future-proof. But signaling readiness for `mainnet` does NOT mean that there won't be any bugs or that all planned safety and backup measures are fully in place yet.
 
-**That means, special care must be taken to avoid loss of funds (both assets and BTC)!**
+{% hint style="warning" %}
+**Special care must be taken to avoid loss of funds (both assets and BTC)!**
+{% endhint %}
 
 ### How to avoid loss of funds (short version, tl;dr) <a href="#user-content-how-to-avoid-loss-of-funds-short-version-tldr" id="user-content-how-to-avoid-loss-of-funds-short-version-tldr"></a>
 

@@ -120,7 +120,9 @@ In the context of LND’s development path, database migrations have two compone
 
 The switch to SQLite/Postgres is made possible with the lndinit [migration script](https://github.com/lightninglabs/lndinit/blob/migrate-db/docs/data-migration.md). This tool migrates LND bbolt databases to either SQLite or Postgres, preserving the key-value (kvdb) data structure. Use this tool if you are looking to migrate your LND backend from bbolt to SQLite.
 
-**Caution**: Migrating to Postgres using this tool is currently not recommended. The key-value schema can lead to poor performance in Postgres, especially for older nodes with large amounts of Payment and Invoice data. Performance issues on Postgres will be addressed in future releases with additional data store migration to native SQL schema.
+{% hint style="info" %}
+Migrating to Postgres using this tool is currently not recommended. The key-value schema can lead to poor performance in Postgres, especially for older nodes with large amounts of Payment and Invoice data. Performance issues on Postgres will be addressed in future releases with additional data store migration to native SQL schema.
+{% endhint %}
 
 If you have migrated to Postgres and would like to optimize performance, have a look at [these config recommendations](https://gist.github.com/djkazic/526fa3e032aea9578997f88b45b91fb9).
 

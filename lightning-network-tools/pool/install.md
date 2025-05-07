@@ -1,4 +1,8 @@
-# 🛠 Installation
+---
+description: Install Pool from source or using the binaries.
+---
+
+# 🛠️ Installation
 
 ## Installation
 
@@ -20,11 +24,11 @@ To build both the `poold` and `pool` binaries from the source code, at least the
 
 To download the code, compile and install it, the following commands can then be run:
 
-```
-$ git clone https://github.com/lightninglabs/pool
-$ cd pool
-$ make install
-```
+`git clone https://github.com/lightninglabs/pool`
+
+`cd pool`
+
+`make install`
 
 This will install the binaries into your `$GOPATH/bin` directory.
 
@@ -34,9 +38,7 @@ Lightning Pool needs to be connected to an `lnd` node version `v0.11.1-beta` or 
 
 [Installing `lnd` from source](https://github.com/lightningnetwork/lnd/blob/master/docs/INSTALL.md#installing-lnd) is also possible but needs to be done **with all sub-server build flags enabled**:
 
-```
-$ make install tags="signrpc walletrpc chainrpc invoicesrpc"
-```
+`make install tags="signrpc walletrpc chainrpc invoicesrpc"`
 
 ### Running `poold`
 

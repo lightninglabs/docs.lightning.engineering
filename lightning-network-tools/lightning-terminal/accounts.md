@@ -19,7 +19,9 @@ How to make use of accounts for your existing application:
 
 As litd is used to create and manage accounts, access to a new account can be granted using a [Lightning Node Connect](lightning-node-connect.md) pairing phrase, removing the need for the LND node to be directly accessible from the web.
 
+{% hint style="info" %}
 At this point, it is not possible to pay invoices between two accounts using the same LND node.
+{% endhint %}
 
 ## Features <a href="#docs-internal-guid-4dd1448a-7fff-b044-815c-f042b0885742" id="docs-internal-guid-4dd1448a-7fff-b044-815c-f042b0885742"></a>
 
@@ -70,22 +72,24 @@ The permissions of the macaroon can be inspected with lncli:
 
 `lncli printmacaroon --macaroon_file /tmp/user.macaroon`
 
-`{`\
-&#x20;    `"version": 2,`\
-&#x20;    `"location": "lnd",`\
-&#x20;    `"root_key_id": "0",`\
-&#x20;    `"permissions": [`\
-&#x20;            `"info:read",`\
-&#x20;            `"invoices:read",`\
-&#x20;            `"invoices:write",`\
-&#x20;            `"offchain:read",`\
-&#x20;            `"offchain:write",`\
-&#x20;            `"onchain:read"`\
-&#x20;    `],`\
-&#x20;    `"caveats": [`\
-&#x20;            `"lnd-custom account d64dbc31b28edf66"`\
-&#x20;    `]`\
-`}`
+```
+{
+     "version": 2,
+     "location": "lnd",
+     "root_key_id": "0",
+     "permissions": [
+             "info:read",
+             "invoices:read",
+             "invoices:write",
+             "offchain:read",
+             "offchain:write",
+             "onchain:read"
+     ],
+     "caveats": [
+             "lnd-custom account d64dbc31b28edf66"
+     ]
+}
+```
 
 ## Create an LNC session <a href="#docs-internal-guid-ab4cf5c6-7fff-a5cd-6b10-9e8cca0c543e" id="docs-internal-guid-ab4cf5c6-7fff-a5cd-6b10-9e8cca0c543e"></a>
 

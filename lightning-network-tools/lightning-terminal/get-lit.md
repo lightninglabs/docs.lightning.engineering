@@ -12,9 +12,11 @@ You can point litd at your existing LND, Loop or Pool installation, or you can r
 
 ## Install litd <a href="#docs-internal-guid-18156f91-7fff-a79f-e732-17a8c366357e" id="docs-internal-guid-18156f91-7fff-a79f-e732-17a8c366357e"></a>
 
+You can install litd from source or via the provided binary.
 
-
-You can install litd from source or via the provided binary. If you are running LND as part of a software bundle like Umbrel, litd might already be installed on your node.
+{% hint style="info" %}
+If you are running LND as part of a software bundle like Umbrel, litd might already be installed on your node.
+{% endhint %}
 
 [Continue here: Connect to Terminal](connect.md)
 

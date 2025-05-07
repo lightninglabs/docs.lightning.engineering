@@ -20,31 +20,23 @@ The `lnd` node must have at least one active channel and **must be able to pay a
 
 If `lnd` is configured with the default values and is running on the same machine, `poold` will be able to connect to it automatically and can be started by simply running:
 
-```
-$ poold
-```
+`poold`
 
 If you're using Lightning Terminal then you can just run `litd` instead:
 
-```
-$ litd
-```
+`litd`
 
 ## Create an account
 
 Creating an account has two parameters: the size of the account, and the expiry of an account. The funds for the account will be pulled from your `lnd` wallet. Create an account by running the following command:
 
-```
-$ pool accounts new --amt=50000000 --expiry_height=1773394 --conf_target=6
-```
+`pool accounts new --amt=50000000 --expiry_height=1773394 --conf_target=6`
 
 Once at least 3 blocks have passed (in the alpha), the account will be confirmed and ready for use:
 
 Run the following command to view account details:
 
-```
-$ pool accounts list
-```
+`pool accounts list`
 
 ## Submit an order
 
@@ -52,9 +44,7 @@ There are two types of orders in the current version of Pool: asks, and bids. Yo
 
 To submit a bid:
 
-```
-$ pool orders submit bid
-```
+`pool orders submit bid`
 
 Be sure to add the following flags:
 
@@ -66,9 +56,7 @@ Be sure to add the following flags:
 
 We can then check out the order we just placed with the following command:
 
-```
-$ pool orders list
-```
+`pool orders list`
 
 ## Matched Orders
 

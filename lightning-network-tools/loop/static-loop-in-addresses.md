@@ -29,7 +29,9 @@ To increase chain efficiency and reduce costs, the service will now request the 
 
 The user may also request a withdrawal from their Loop In Address any time before its expiration.
 
-> ⚠️Do not delete your L402 token, as this is used to identify you to the service. If the L402 token is lost, the only way to exit the contract is to wait for the timeout to pass.⚠️
+{% hint style="warning" %}
+Do not delete your L402 token, as this is used to identify you to the service. If the L402 token is lost, the only way to exit the contract is to wait for the timeout to pass.
+{% endhint %}
 
 ## Create a static Loop In Address <a href="#docs-internal-guid-1eab9bca-7fff-e6b8-0708-10e49e4d18f1" id="docs-internal-guid-1eab9bca-7fff-e6b8-0708-10e49e4d18f1"></a>
 

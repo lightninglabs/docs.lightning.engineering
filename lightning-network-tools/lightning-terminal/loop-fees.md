@@ -19,7 +19,7 @@ A Loop Out allows you to trade your off-chain balance for on-chain bitcoin. Ther
 
 Loop will give us an estimate over the fees we are expected to pay before we confirm our swap. These fees depend on transaction size and current demand for on-chain payments and fall into three categories:
 
-**LSAT**: When you perform your first Loop your node will purchase an [LSAT](../../the-lightning-network/l402/). This LSAT does not expire and costs 1 satoshi.
+**L402**: When you perform your first Loop your node will purchase an [L402](../../the-lightning-network/l402/). This L402 does not expire and costs 1 satoshi.
 
 **Estimated on-chain fee**: This is the fee you are expected to pay in miners fees to claim your bitcoin from the [HTLC address](../../the-lightning-network/multihop-payments/understanding-submarine-swaps.md#3.-claim-bitcoin-from-the-smart-contract) into your personal wallet. This fee is calculated based on current on-chain fee conditions and may be higher if by the time the Loop Out concludes the mempool is significantly more congested. Larger transaction sizes do not increase this fee, but faster desired confirmation times do.
 
@@ -29,7 +29,7 @@ Loop will give us an estimate over the fees we are expected to pay before we con
 
 In the below example we expect to pay a fee of 1,312 satoshis to swap 300,000 satoshis to our on-chain wallet.
 
-![Inspect your estimated fees](../../.gitbook/assets/review\_loop\_out.png)
+![Inspect your estimated fees](../../.gitbook/assets/review_loop_out.png)
 
 ### Actual fees <a href="#docs-internal-guid-95da1b08-7fff-ddac-9e0c-bec46c57b9fb" id="docs-internal-guid-95da1b08-7fff-ddac-9e0c-bec46c57b9fb"></a>
 
@@ -43,7 +43,7 @@ After we have performed our swap, we can calculate the total fees we paid in the
 
 **Loop fee**: We can calculate the fee paid to Loop by subtracting our desired Loop Out amount from the total we sent to Loop. In the below case we paid 500 sat in fees to Loop
 
-![Actual fees can be inspected under History](../../.gitbook/assets/actual\_loop\_out.png)
+![Actual fees can be inspected under History](../../.gitbook/assets/actual_loop_out.png)
 
 ## Loop In <a href="#docs-internal-guid-0991dd2d-7fff-96e4-f1c3-74577b32a6e2" id="docs-internal-guid-0991dd2d-7fff-96e4-f1c3-74577b32a6e2"></a>
 
@@ -57,7 +57,7 @@ Similar to the above, we will receive an estimate of our fees before we confirm 
 
 **Loop service fee**: This is the fee that Loop will take from our swap. It includes the on-chain fees to sweep the HTLC and the off-chain fees for Loop’s payment to you.
 
-![Inspect your estimated fees](../../.gitbook/assets/review\_loop\_in.png)
+![Inspect your estimated fees](../../.gitbook/assets/review_loop_in.png)
 
 ### Actual fees <a href="#docs-internal-guid-a21ba5c6-7fff-809c-80f1-f996ac790234" id="docs-internal-guid-a21ba5c6-7fff-809c-80f1-f996ac790234"></a>
 
@@ -69,4 +69,4 @@ After our swap is complete, we can inspect the total fees we paid.
 
 **Loop service fee**: We can calculate this fee by subtracting the satoshis we received in our off-chain payment from the swap amount. In our example we paid 1,456 sats in fees. This fee includes the off-chain fees paid by Loop to deliver our payment to our node, the miners fee paid by Loop to sweep the HTLC and the Loop fee.
 
-![actual fees can be inspected uner History](../../.gitbook/assets/actual\_loop\_in.png)
+![actual fees can be inspected uner History](../../.gitbook/assets/actual_loop_in.png)

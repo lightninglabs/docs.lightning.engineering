@@ -4,7 +4,7 @@ description: >-
   confirmed on the bitcoin blockchain.
 ---
 
-# Zero-confirmation channels
+# Zero-confirmation Channels
 
 A zero-confirmation channel (or “zero-conf” channel) is a Lightning Network payment channel that can send/receive immediately after the channel opening transaction is published, before the funding transaction is included in a block.
 
@@ -45,39 +45,41 @@ Your trader key (`--acct_key`) can be obtained with the command `pool accounts l
 
 Once the submitted bid is matched with an appropriate ask your new peer will open a channel to you with the requested balance on your side.
 
-&#x20;   `"bids": [`\
-&#x20;      `{`\
-&#x20;          `"details": {`\
-&#x20;              `"trader_key": 03d0043f745e7994bd335b81bdc7c2bd8431e5a2ebf1ad78d7b73c73ea29d9e917",`\
-&#x20;              `"rate_fixed": 4960,`\
-&#x20;              `"amt": "100000",`\
-&#x20;              `"max_batch_fee_rate_sat_per_kw": "25000",`\
-&#x20;              `"order_nonce": "6e12d00a6c23d97b017d1acf1c3a0f00866684e52787273294e2cae9b241a4ca",`\
-&#x20;              `"state": "ORDER_SUBMITTED",`\
-&#x20;              `"units": 1,`\
-&#x20;              `"units_unfulfilled": 1,`\
-&#x20;              `"reserved_value_sat": "118525",`\
-&#x20;              `"creation_timestamp_ns": "1668110217242286068",`\
-&#x20;              `"events": [`\
-&#x20;              `],`\
-&#x20;              `"min_units_match": 1,`\
-&#x20;              `"channel_type": "ORDER_CHANNEL_TYPE_SCRIPT_ENFORCED",`\
-&#x20;              `"allowed_node_ids": [`\
-&#x20;              `],`\
-&#x20;              `"not_allowed_node_ids": [`\
-&#x20;              `],`\
-&#x20;              `"auction_type": "AUCTION_TYPE_BTC_OUTBOUND_LIQUIDITY",`\
-&#x20;              `"is_public": true`\
-&#x20;          `},`\
-&#x20;          `"lease_duration_blocks": 2016,`\
-&#x20;          `"version": 5,`\
-&#x20;          `"min_node_tier": "TIER_1",`\
-&#x20;          `"self_chan_balance": "100000",`\
-&#x20;          `"sidecar_ticket": "",`\
-&#x20;          `"unannounced_channel": false,`\
-&#x20;          `"zero_conf_channel": true`\
-&#x20;      `}`\
-&#x20;   `]`
+```
+    "bids": [
+       {
+           "details": {
+               "trader_key": 03d0043f745e7994bd335b81bdc7c2bd8431e5a2ebf1ad78d7b73c73ea29d9e917",
+               "rate_fixed": 4960,
+               "amt": "100000",
+               "max_batch_fee_rate_sat_per_kw": "25000",
+               "order_nonce": "6e12d00a6c23d97b017d1acf1c3a0f00866684e52787273294e2cae9b241a4ca",
+               "state": "ORDER_SUBMITTED",
+               "units": 1,
+               "units_unfulfilled": 1,
+               "reserved_value_sat": "118525",
+               "creation_timestamp_ns": "1668110217242286068",
+               "events": [
+               ],
+               "min_units_match": 1,
+               "channel_type": "ORDER_CHANNEL_TYPE_SCRIPT_ENFORCED",
+               "allowed_node_ids": [
+               ],
+               "not_allowed_node_ids": [
+               ],
+               "auction_type": "AUCTION_TYPE_BTC_OUTBOUND_LIQUIDITY",
+               "is_public": true
+           },
+           "lease_duration_blocks": 2016,
+           "version": 5,
+           "min_node_tier": "TIER_1",
+           "self_chan_balance": "100000",
+           "sidecar_ticket": "",
+           "unannounced_channel": false,
+           "zero_conf_channel": true
+       }
+    ]
+```
 
 ## Sell zero-confirmation channels through Pool
 
@@ -110,46 +112,52 @@ Pool can be used to buy zero-confirmation channels. This is the fastest way for 
 
 Executing this command will place a bid for a channel in the Pool marketplace. Once it is matched with an ask your new peer will open the channel to you.
 
-`-- Order Details --`\
-`Bid Amount: 0.01 BTC`\
-`Bid Duration: 2016`\
-`Total Premium (paid to maker): 0.00000999 BTC`\
-`Rate Fixed: 496`\
-`Rate Per Block: 0.000000496 (0.0000496%)`\
-`Execution Fee:  0.00001001 BTC`\
-`Max batch fee rate: 100 sat/vByte`\
-`Max chain fee: 0.0016325 BTC`\
-`Is public: true`\
-`Confirm order (yes/no): yes`\
-`{`\
-&#x20;   `"accepted_order_nonce": "a46ae15ecadae7e3e11cea7f2c3f9f8bb96a80fa7064fcbf7be5bcbab8d78543",`\
-&#x20;   `"updated_sidecar_ticket": ""`\
-`}`
+```
+-- Order Details --
+Bid Amount: 0.01 BTC
+Bid Duration: 2016
+Total Premium (paid to maker): 0.00000999 BTC
+Rate Fixed: 496
+Rate Per Block: 0.000000496 (0.0000496%)
+Execution Fee:  0.00001001 BTC
+Max batch fee rate: 100 sat/vByte
+Max chain fee: 0.0016325 BTC
+Is public: true
+Confirm order (yes/no): yes
+{
+    "accepted_order_nonce": "a46ae15ecadae7e3e11cea7f2c3f9f8bb96a80fa7064fcbf7be5bcbab8d78543",
+    "updated_sidecar_ticket": ""
+}
+```
 
 ## Buy zero-confirmation sidecar channels through Pool <a href="#docs-internal-guid-e8ba0c4b-7fff-22a6-a0a2-ddef8134a33e" id="docs-internal-guid-e8ba0c4b-7fff-22a6-a0a2-ddef8134a33e"></a>
 
-Pool can be used to buy [sidecar channels](sidecar\_channels.md) for third parties. This can be a capital effective way of onboarding your users, for instance when distributing a self-hosted payment processor or node. Sidecar channels can also be an attractive tool for those reselling Pool’s liquidity to the public.
+Pool can be used to buy [sidecar channels](sidecar_channels.md) for third parties. This can be a capital effective way of onboarding your users, for instance when distributing a self-hosted payment processor or node. Sidecar channels can also be an attractive tool for those reselling Pool’s liquidity to the public.
 
 `pool sidecar offer --amt 100000 --min_chan_amt 100000 --interest_rate_percent 0.5 --zero_conf_channel --channel_type script-enforced --auto --acct_key <your trader key>`
 
-`-- Order Details --`\
-`Bid Amount: 0.001 BTC`\
-`Bid Duration: 2016`\
-`Total Premium (paid to maker): 0.00000999 BTC`\
-`Rate Fixed: 4960`\
-`Rate Per Block: 0.000004960 (0.0004960%)`\
-`Execution Fee:  0.00000101 BTC`\
-`Max batch fee rate: 100 sat/vByte`\
-`Max chain fee: 0.00016325 BTC`\
-`Is public: true`\
-`Confirm order (yes/no): yes`
+```
+-- Order Details --
+Bid Amount: 0.001 BTC
+Bid Duration: 2016
+Total Premium (paid to maker): 0.00000999 BTC
+Rate Fixed: 4960
+Rate Per Block: 0.000004960 (0.0004960%)
+Execution Fee:  0.00000101 BTC
+Max batch fee rate: 100 sat/vByte
+Max chain fee: 0.00016325 BTC
+Is public: true
+Confirm order (yes/no): yes
+```
 
 This will return a sidecar ticket which can be passed on to the recipient of the channel for redemption.
 
-`{`\
-&#x20;   `"ticket":`\
-`"sidecar187dAVSfEDAwHfcyTqEZxcnSNrKMLkq4mXAbmNaM9FH5xNgbjk2MzdFdwewkzQoUJjaeog6dCxCiF6QhV8yHtnZPLY6eb4LCprvMnUkLHWx6VbaFpH3uBypKrdnaMQwNbkWBXJV4MBagA2Xmevg5SWebckHWdzeYssBCDvg3ewXYDbP3kJR6gCbGA4pBJi52UTKK1VoRyYwFvUXo2RZnVoxNK3CDf51xXfXcje87FSGbBN2g8uyhuJGn6pLG69nD6g3Au"`\
-`}`
+```
+{
+    "ticket":
+"sidecar187dAVSfEDAwHfcyTqEZxcnSNrKMLkq4mXAbmNaM9FH5xNgbjk2MzdFdwewkzQoUJjaeog6dCxCiF6QhV8yHtnZPLY6eb4LCprvMnUkLHWx6VbaFpH3uBypKrdnaMQwNbkWBXJV4MBagA2Xmevg5SWebckHWdzeYssBCDvg3ewXYDbP3kJR6gCbGA4pBJi52UTKK1VoRyYwFvUXo2RZnVoxNK3CDf51xXfXcje87FSGbBN2g8uyhuJGn6pLG69nD6g3Au"
+}
+```
 
 ## Register a zero-confirmation sidecar channel <a href="#docs-internal-guid-365816a1-7fff-3648-8bc6-058cf80e2f55" id="docs-internal-guid-365816a1-7fff-3648-8bc6-058cf80e2f55"></a>
 

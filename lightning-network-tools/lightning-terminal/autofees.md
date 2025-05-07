@@ -34,8 +34,9 @@ To improve privacy around data sharing, channel ids, channel points and node pub
 
 The privacy mapper can be interacted with manually through `litcli` for debugging purposes. `litcli privacy` can convert both strings and uint64 to the pseudo counter part and back.
 
-| Note: Enabling Autofees will set your channels’ [CLTV delta](../../the-lightning-network/multihop-payments/timelocks.md) to 100. |
-| -------------------------------------------------------------------------------------------------------------------------------- |
+{% hint style="warning" %}
+Enabling Autofees will set your channels’ [CLTV delta](../../the-lightning-network/multihop-payments/timelocks.md) to 100.
+{% endhint %}
 
 ## Configuration <a href="#docs-internal-guid-df361fd3-7fff-7d3f-4ce1-669733ea2856" id="docs-internal-guid-df361fd3-7fff-7d3f-4ce1-669733ea2856"></a>
 

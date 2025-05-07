@@ -14,6 +14,18 @@ Through Terminal, you can easily, securely and privately manage your Lightning n
 [get-lit.md](get-lit.md)
 {% endcontent-ref %}
 
+{% content-ref url="run-litd.md" %}
+[run-litd.md](run-litd.md)
+{% endcontent-ref %}
+
+{% content-ref url="integrating-litd.md" %}
+[integrating-litd.md](integrating-litd.md)
+{% endcontent-ref %}
+
+{% content-ref url="speedrun.md" %}
+[speedrun.md](speedrun.md)
+{% endcontent-ref %}
+
 {% content-ref url="connect.md" %}
 [connect.md](connect.md)
 {% endcontent-ref %}
@@ -22,8 +34,16 @@ Through Terminal, you can easily, securely and privately manage your Lightning n
 [recommended-channels.md](recommended-channels.md)
 {% endcontent-ref %}
 
+{% content-ref url="ranking.md" %}
+[ranking.md](ranking.md)
+{% endcontent-ref %}
+
 {% content-ref url="health-checks.md" %}
 [health-checks.md](health-checks.md)
+{% endcontent-ref %}
+
+{% content-ref url="../../the-lightning-network/liquidity/" %}
+[liquidity](../../the-lightning-network/liquidity/)
 {% endcontent-ref %}
 
 {% content-ref url="opening-channels.md" %}
@@ -34,8 +54,24 @@ Through Terminal, you can easily, securely and privately manage your Lightning n
 [channel-liquidity.md](channel-liquidity.md)
 {% endcontent-ref %}
 
+{% content-ref url="autofees.md" %}
+[autofees.md](autofees.md)
+{% endcontent-ref %}
+
+{% content-ref url="autoopen.md" %}
+[autoopen.md](autoopen.md)
+{% endcontent-ref %}
+
+{% content-ref url="accounts.md" %}
+[accounts.md](accounts.md)
+{% endcontent-ref %}
+
 {% content-ref url="loop.md" %}
 [loop.md](loop.md)
+{% endcontent-ref %}
+
+{% content-ref url="loop-fees.md" %}
+[loop-fees.md](loop-fees.md)
 {% endcontent-ref %}
 
 {% content-ref url="pool.md" %}
@@ -54,6 +90,18 @@ Through Terminal, you can easily, securely and privately manage your Lightning n
 [lightning-node-connect.md](lightning-node-connect.md)
 {% endcontent-ref %}
 
+{% content-ref url="lnc-npm.md" %}
+[lnc-npm.md](lnc-npm.md)
+{% endcontent-ref %}
+
 {% content-ref url="privacy-and-security.md" %}
 [privacy-and-security.md](privacy-and-security.md)
+{% endcontent-ref %}
+
+{% content-ref url="privacy.md" %}
+[privacy.md](privacy.md)
+{% endcontent-ref %}
+
+{% content-ref url="tos.md" %}
+[tos.md](tos.md)
 {% endcontent-ref %}

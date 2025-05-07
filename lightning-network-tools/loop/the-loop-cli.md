@@ -14,8 +14,6 @@ We can start by requesting the latest Loop terms. The command `loop terms` shoul
 
 You can also use the command `loop getparams` to see current fees, prepaid amounts and [autoloop](autoloop.md) settings.
 
-
-
 ### Loop In fees
 
 We can also use the command `loop quote in 500000` to get a more precise quote for how much a swap would cost. For Loop In, we are making an on-chain transaction, for which we will have to pay the on-chain transaction fees. If we have enough satoshis in our on-chain LND wallet, Loop can give us a good estimate of these transaction fees as well. Either way, we can Loop In from our internal or external Bitcoin wallet.
@@ -61,12 +59,14 @@ We can initiate a Loop Out with a transaction as follows:
 
 We are being presented with a detailed fee overview before we begin the swap:
 
-`Estimated on-chain sweep fee:        7372 sat`\
-`Max on-chain sweep fee:            737200 sat`\
-`Max off-chain swap routing fee:       2500 sat`\
-`Max no show penalty (prepay):       30000 sat`\
-`Max off-chain prepay routing fee:      610 sat`\
-`Max swap fee:                        3260 sat`
+```
+Estimated on-chain sweep fee:        7372 sat
+Max on-chain sweep fee:            737200 sat
+Max off-chain swap routing fee:       2500 sat
+Max no show penalty (prepay):       30000 sat
+Max off-chain prepay routing fee:      610 sat
+Max swap fee:                        3260 sat
+```
 
 The estimated on-chain sweep fee is the payment required to sweep the Bitcoin once the Loop server has made its on-chain transaction to the HTLC smart contract. This transaction is made first, before we make our Lightning transaction, and the smart contract acts as a trustless arbiter. If we fail for whatever reason to make our Lightning payment to Loop, the server will be able to claim these funds back for itself, and charge us a penalty fee.
 

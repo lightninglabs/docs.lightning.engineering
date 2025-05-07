@@ -34,7 +34,9 @@ Use a reputable and robust browser that ideally updates itself regularly. Be car
 
 Be vigilant of phishing attacks directing you to sites attempting to steal your pairing phrase before you have connected yourself. Ideally, bookmark the page in your browser and only navigate to it using the bookmark bar.
 
+{% hint style="warning" %}
 Choose a strong and unique password for Terminal, for example one created using your password manager.
+{% endhint %}
 
 ## Other applications
 

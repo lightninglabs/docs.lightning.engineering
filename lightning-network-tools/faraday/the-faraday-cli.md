@@ -10,57 +10,59 @@ As soon as Faraday is running, you will be able to make use of frcli. Depending 
 
 The reports Faraday generates can sometimes appear intimidating, especially if your node has a large number of older channels which have already seen plenty of activity.
 
-The command `frcli insights` gives us a list of all our channels with detailed information about each of them. LND tracks the uptime of each channel since your last restart. Thus, you will be able to see the `uptime_ratio` calculated as part of the output. You can see the age of the channel measured in blocks (confirmations), the total fees earned through this channel, as well as various metrics that can help you compare the activity of your channels.\
+The command `frcli insights` gives us a list of all our channels with detailed information about each of them. LND tracks the uptime of each channel since your last restart. Thus, you will be able to see the `uptime_ratio` calculated as part of the output. You can see the age of the channel measured in blocks (confirmations), the total fees earned through this channel, as well as various metrics that can help you compare the activity of your channels.
 
-
-`{`     ` "chan_point": "d77dcaccc8db72cf90b48e8d51b9e153f5854ac38d56cd5c496a798406d2d1b4:0",`\
-`       "monitored_seconds": 23531,`\
-`       "uptime_seconds": 23526,`\
-`       "volume_incoming_msat": 103615746,`\
-`       "volume_outgoing_msat": 46662747,`\
-`       "fees_earned_msat": 624,`\
-`       "confirmations": 980,`\
-`       "uptime_ratio": 0.9997875143427819,`\
-`       "revenue_per_conf_msat": 0.636734693877551,`\
-`       "volume_per_conf_msat": 153345.40102040817,`\
-`       "incoming_vol_per_conf_msat": 105730.3530612245,`\
-`       "outgoing_vol_per_conf_msat": 47615.04795918367`\
-`    }`
+```
+{      "chan_point": "d77dcaccc8db72cf90b48e8d51b9e153f5854ac38d56cd5c496a798406d2d1b4:0",
+       "monitored_seconds": 23531,
+       "uptime_seconds": 23526,
+       "volume_incoming_msat": 103615746,
+       "volume_outgoing_msat": 46662747,
+       "fees_earned_msat": 624,
+       "confirmations": 980,
+       "uptime_ratio": 0.9997875143427819,
+       "revenue_per_conf_msat": 0.636734693877551,
+       "volume_per_conf_msat": 153345.40102040817,
+       "incoming_vol_per_conf_msat": 105730.3530612245,
+       "outgoing_vol_per_conf_msat": 47615.04795918367
+    }
+```
 
 ### More detail with revenue reports
 
-The command frcli revenue will give us more detail. For each channel we can get pair reports, which shows in detail where capital is coming from and going as it passes through our node.\
+The command frcli revenue will give us more detail. For each channel we can get pair reports, which shows in detail where capital is coming from and going as it passes through our node.
 
-
-`{`\
-`            "target_channel": "b0fe65328fd6b42163c26ce39e3e9752e65fe26a096240387a6b3927834f0756:1",`\
-`            "pair_reports": {`\
-`                "513204def516e5e8ad07539cc45da4c769a6a3e15d041740eda4ea549b92880f:0": {`\
-`                    "amount_outgoing_msat": "51007151",`\
-`                    "fees_outgoing_msat": "1051",`\
-`                    "amount_incoming_msat": "0",`\
-`                    "fees_incoming_msat": "0"`\
-`                },`\
-`                "6a3db67a5131cb9dea3fef7789a0e3fc4a9a45533e11dda5fda02b58e44b640f:1": {`\
-`                    "amount_outgoing_msat": "1275345969",`\
-`                    "fees_outgoing_msat": "3274",`\
-`                    "amount_incoming_msat": "0",`\
-`                    "fees_incoming_msat": "0"`\
-`                },`\
-`                "ba3564949f71aeeac45ef30b4fde0c9f229c4458cc6a794838dfa653f2f38e99:1": {`\
-`                    "amount_outgoing_msat": "21235584",`\
-`                    "fees_outgoing_msat": "1021",`\
-`                    "amount_incoming_msat": "0",`\
-`                    "fees_incoming_msat": "0"`\
-`                },`\
-`                "ccdb1a6165fa89a5aa965f4ca0ae843a2c6c2ea03382521787eda131410eb3e4:1": {`\
-`                    "amount_outgoing_msat": "688761000",`\
-`                    "fees_outgoing_msat": "2688",`\
-`                    "amount_incoming_msat": "0",`\
-`                    "fees_incoming_msat": "0"`\
-`                }`\
-`            }`\
-`}`
+```
+{
+            "target_channel": "b0fe65328fd6b42163c26ce39e3e9752e65fe26a096240387a6b3927834f0756:1",
+            "pair_reports": {
+                "513204def516e5e8ad07539cc45da4c769a6a3e15d041740eda4ea549b92880f:0": {
+                    "amount_outgoing_msat": "51007151",
+                    "fees_outgoing_msat": "1051",
+                    "amount_incoming_msat": "0",
+                    "fees_incoming_msat": "0"
+                },
+                "6a3db67a5131cb9dea3fef7789a0e3fc4a9a45533e11dda5fda02b58e44b640f:1": {
+                    "amount_outgoing_msat": "1275345969",
+                    "fees_outgoing_msat": "3274",
+                    "amount_incoming_msat": "0",
+                    "fees_incoming_msat": "0"
+                },
+                "ba3564949f71aeeac45ef30b4fde0c9f229c4458cc6a794838dfa653f2f38e99:1": {
+                    "amount_outgoing_msat": "21235584",
+                    "fees_outgoing_msat": "1021",
+                    "amount_incoming_msat": "0",
+                    "fees_incoming_msat": "0"
+                },
+                "ccdb1a6165fa89a5aa965f4ca0ae843a2c6c2ea03382521787eda131410eb3e4:1": {
+                    "amount_outgoing_msat": "688761000",
+                    "fees_outgoing_msat": "2688",
+                    "amount_incoming_msat": "0",
+                    "fees_incoming_msat": "0"
+                }
+            }
+}
+```
 
 For each channel, you can see how many milli-satoshi (msat) were routed to and from each peer. This can help you assess how capital is flowing through the network to and from your node with highest granularity.
 
@@ -105,14 +107,16 @@ Next, we will use this information to obtain a report on the channel from Farada
 
 `frcli closereport 4fc297d20fa41d62ccb2acecf2ed6cc0b1ce3c6f274c6cb661e0e97bb65a640f 1`
 
-`{`\
-`    "channel_point": "4fc297d20fa41d62ccb2acecf2ed6cc0b1ce3c6f274c6cb661e0e97bb65a640f:1",`\
-`    "channel_initiator": true,`\
-`    "close_type": "Cooperative",`\
-`    "close_txid": "8f1be0671113423fa19546fae5456b824728a415afd800e759e38bb34794cd1b",`\
-`    "open_fee": "305",`\
-`    "close_fee": "1812"`\
-`}`
+```
+{
+    "channel_point": "4fc297d20fa41d62ccb2acecf2ed6cc0b1ce3c6f274c6cb661e0e97bb65a640f:1",
+    "channel_initiator": true,
+    "close_type": "Cooperative",
+    "close_txid": "8f1be0671113423fa19546fae5456b824728a415afd800e759e38bb34794cd1b",
+    "open_fee": "305",
+    "close_fee": "1812"
+}
+```
 
 ### Get the full picture
 

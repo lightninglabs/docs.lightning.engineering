@@ -2,13 +2,13 @@
 
 Now that we have orders submitted, how does the rest of the auction actually work? As mentioned above, Pool conducts a _discrete_ batch auction every 10 minutes. This is distinct from regular continuous exchanges in that orders are only cleared every 10 minutes. Orders are also sealed-bid, meaning that other traders in the venue are unable to see what others have bid. On top of this, we utilize a uniform-clearing price algorithm to give all traders in the batch the _same_ interest rate. This is the same mechanism used by the U.S Treasury for its bonds, and is intended to promote fairness as your order will only be matched with a price better than your initial ask/bid.
 
-Note that it's possible that after the 10 minutes interval has passed a market can't be made \(supply and demand didn't cross\). In this case, nothing happens, and we just wait for the next batch to come across.
+Note that it's possible that after the 10 minutes interval has passed a market can't be made (supply and demand didn't cross). In this case, nothing happens, and we just wait for the next batch to come across.
 
 ### Matchmaking
 
 The first stage in batch execution is the matchmaking that is done by the auctioneer. Before actual matchmaking is performed, the auctioneer looks at the current fee climate and decides what fee rate should be used for the final Batch Execution Transaction, in order for the transaction to confirm in a timely manner. All orders that have their `max_batch_fee_rate` set to a value lower than the chosen fee rate are ignored from the auction this time around, but will be reconsidered if the fee climate changes before the next auction. This allows traders with a low time preference to submit orders that will stay around on the order book and only be considered for matchmaking in times of low chain fees.
 
-Now that the transaction fee rate has been chosen, all orders still on the order book are considered, and the auctioneer matches asks with bids that pay at least the desired rate. The unsigned Batch Execution Transaction \(BET\) is assembled and presented to all traders that had their orders matched, along with information about the node they matched with.
+Now that the transaction fee rate has been chosen, all orders still on the order book are considered, and the auctioneer matches asks with bids that pay at least the desired rate. The unsigned Batch Execution Transaction (BET) is assembled and presented to all traders that had their orders matched, along with information about the node they matched with.
 
 ### Batch Signing
 
@@ -26,7 +26,7 @@ When all participating traders have signed their inputs in the Batch Execution T
 
 ## Batched Uniform-Price Clearing
 
-To illustrate how the uniform price clearing works consider the following example. Let's say I want to buy 100 million satoshis \(1 BTC, 1000 units\), for 2 weeks \(2016 blocks\) at a price of 5% \(using high numbers to make it easy to follow\). However, the _market clearing price_ \(where the supply+demand curves cross\) is actually 1%. In this case I bid _more_ than the market clearing price, but end up paying that price, as it's the best price that was possible in that market.
+To illustrate how the uniform price clearing works consider the following example. Let's say I want to buy 100 million satoshis (1 BTC, 1000 units), for 2 weeks (2016 blocks) at a price of 5% (using high numbers to make it easy to follow). However, the _market clearing price_ (where the supply+demand curves cross) is actually 1%. In this case I bid _more_ than the market clearing price, but end up paying that price, as it's the best price that was possible in that market.
 
 A simple rule of thumb for bids and asks is as follows:
 
@@ -39,8 +39,8 @@ The `pool auction` sub-command houses a number of useful commands to explore the
 
 One can browse the latest cleared batch using the `pool auction snapshot` command:
 
-```text
-🏔 pool auction snapshot 
+```
+pool auction snapshot 
 {
         "version": 0,
         "batch_id": "02a25623c6ebb497758d7f0bfbe8b06785f3e14364b4da689be5fe0f2dfbaec4ba",
@@ -76,16 +76,16 @@ Note that the `pool auction snapshot` command can be used to determine the past 
 
 The command also accept a target `batch_id` as well. Here we can use the `prev_batch_id` to examine the _prior_ batch, similar to traversing a link-listed/blockchain:
 
-```text
-🏔 pool auction snapshot --batch_id=03687baa3c7414e800ddba37edacb3281999739303b7290a69bd457f428ecd9b2c
+```
+pool auction snapshot --batch_id=03687baa3c7414e800ddba37edacb3281999739303b7290a69bd457f428ecd9b2c
 ```
 
 ## Fees
 
 There are various fees paid and accumulated during a successful batch execution. The easiest way to get an overview of the total impact of fees on ones account is to run
 
-```text
-🏔 pool auction leases
+```
+pool auction leases
 {
         "leases": [
                 {
@@ -132,4 +132,3 @@ Here you can see a summary of all matches you've been part of and that resulted 
 In the last example in the list above, the trader this time around bought a channel of 1,200,000 sats, and paid a premium of 11999 to the seller. Also this time around the trader paid an execution fee and chain fee, resulting in a total cost of 11999+1201+165 = 13365 sats.
 
 Finally, a total tally of fees earned and paid is given. The command takes optional account and batch id arguments in case you want to filter the leases returned.
-

@@ -10,4 +10,28 @@ Lightning Loop uses submarine swaps to transact non-custodially, meaning that Lo
 
 Loop uses [L402s](../../the-lightning-network/l402/l402.md) for authentication.
 
+{% content-ref url="get-started.md" %}
+[get-started.md](get-started.md)
+{% endcontent-ref %}
+
+{% content-ref url="the-loop-cli.md" %}
+[the-loop-cli.md](the-loop-cli.md)
+{% endcontent-ref %}
+
+{% content-ref url="autoloop.md" %}
+[autoloop.md](autoloop.md)
+{% endcontent-ref %}
+
+{% content-ref url="static-loop-in-addresses.md" %}
+[static-loop-in-addresses.md](static-loop-in-addresses.md)
+{% endcontent-ref %}
+
+{% content-ref url="instant-loop-outs.md" %}
+[instant-loop-outs.md](instant-loop-outs.md)
+{% endcontent-ref %}
+
+{% content-ref url="peer-with-loop.md" %}
+[peer-with-loop.md](peer-with-loop.md)
+{% endcontent-ref %}
+
 {% embed url="https://lightning.engineering/api-docs/api/loop/" %}

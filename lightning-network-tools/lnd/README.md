@@ -106,8 +106,8 @@ LND's API documentation
 [rpc-middleware-interceptor.md](rpc-middleware-interceptor.md)
 {% endcontent-ref %}
 
-{% content-ref url="../../docs/lnd/leader_election.md" %}
-[leader\_election.md](../../docs/lnd/leader_election.md)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 {% content-ref url="nat_traversal.md" %}

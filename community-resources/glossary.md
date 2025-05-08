@@ -146,7 +146,7 @@ Check Lock-time Verify is a functionality in Bitcoin that allows us to lock Bitc
 
 Clustering allows us to use multiple [LND](glossary.md#the-lightning-network-daemon) nodes to form a cluster, in which we can delegate specific tasks such as managing invoices or maintaining channels for performance or security purposes.
 
-[Read more: LND clustering](../docs/lnd/leader\_election.md)
+[Read more: LND clustering](broken-reference)
 
 ## Commitment <a href="#docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776" id="docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776"></a>
 
@@ -562,7 +562,7 @@ A shard is a splinter of glass. In the context of the Lightning Network, a shard
 
 A sidecar channel refers to a channel purchased on [Lightning Pool](glossary.md#pool) for a third party. Sidecar channels allow an auction participant to buy channels for others, for example mobile wallets that are not participating in the auction process directly.
 
-[Read more: Sidecar channels](../lightning-network-tools/pool/sidecar\_channels.md)
+[Read more: Sidecar channels](../lightning-network-tools/pool/sidecar_channels.md)
 
 ## Sidecar ticket
 
@@ -580,7 +580,7 @@ A Sparse Merkle Tree (SMT) is a data structure that, in addition to a normal [Me
 
 Sphinx is the name of the protocol by which the Lightning Network implements [onion routing](glossary.md#onion-routing).
 
-[Further reading: Sphinx research paper](https://www.researchgate.net/publication/336890138\_Sphinx\_A\_Transport\_Protocol\_for\_High-Speed\_and\_Lossy\_Mobile\_Networks)
+[Further reading: Sphinx research paper](https://www.researchgate.net/publication/336890138_Sphinx_A_Transport_Protocol_for_High-Speed_and_Lossy_Mobile_Networks)
 
 ## Submarine swap
 
@@ -642,7 +642,7 @@ Unspent transaction outputs (unspent utxos) are funds available [on-chain](gloss
 
 A wallet that is aware of balances and transactions, but does not possess the keys necessary to spend them. A watch-only wallet can create unsigned [PSBTs](glossary.md#partially-signed-bitcoin-transactions) which are then signed by the wallet holding the keys.
 
-[Read more: Key import](../docs/lnd/key\_import.md)
+[Read more: Key import](../docs/lnd/key_import.md)
 
 ## Watchtower
 

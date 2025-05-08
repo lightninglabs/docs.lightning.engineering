@@ -36,6 +36,14 @@ An Edge node may both open Taproot Asset channels and accept them. It will adver
 
 [Read more: Opening Taproot Asset channels](taproot-assets-channels.md)
 
+## RFQ
+
+{% hint style="success" %}
+All litd nodes are able to use RFQ to communicate rates
+{% endhint %}
+
+Rates are communicated to peers directly via a process called “Request for Quote (RFQ)”. The gRPC API allows any Taproot Assets node to request quotes and use them when constructing payment routes. The RFQ process is typically between the user and a price oracle.
+
 ## The Oracle
 
 {% hint style="warning" %}
@@ -45,14 +53,6 @@ This functionality  requires external software
 In the same way a routing node will set the rates at which it is willing to forward payments, an Edge node will set rates for each asset. These rates however may change far more frequently and are not broadcast as part of regular gossip announcements.
 
 The oracle is software that aggregates or determines the rates, either based on an order book, reference rates or public order books. The oracle may determine a single rate on top of which the Edge node charges a fee, or separate bid and ask rates, separated by a spread.
-
-## RFQ
-
-{% hint style="warning" %}
-This functionality requires external software
-{% endhint %}
-
-Rates are communicated to peers directly via a process called “Request for Quote (RFQ)”. The gRPC API allows any Taproot Assets node to request quotes and use them when constructing payment routes. The RFQ process may be the same as the Oracle.
 
 [Read more: RFQ](become-an-edge-node.md#rfq)
 

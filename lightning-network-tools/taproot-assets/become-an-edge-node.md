@@ -22,7 +22,7 @@ Building an Edge node requires both outgoing and incoming liquidity with the gre
 This functionality is provided by tapd
 {% endhint %}
 
-The decision of what assets an Edge node is willing to route depends on nthe asset’s acceptance, liquidity and spreads. An Edge node could be affiliated directly with an issuer, but mostly likely acquires the assets on the open market.
+The decision of what assets an Edge node is willing to route depends on the asset’s acceptance, liquidity and spreads. An Edge node could be affiliated directly with an issuer, but mostly likely acquires the assets on the open market.
 
 [Read more: Minting and sending Taproot Assets onchain](../pool/first-steps.md)
 

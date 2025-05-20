@@ -10,7 +10,7 @@ description: >-
 
 When running `tapd` as part of `litd` ([integrated mode](../lightning-terminal/integrating-litd.md)), you will need to specify that you are connecting to the `litd` process when executing `tapcli` commands from the command line interface. This has to include the `tls.cert` and port `8443`. Unless you are running on mainnet, the network has to be specified as well.
 
-`tapcli --tlscertpath ~/.lit/tls.cert --rpcserver=localhost:8443 --network=testnet assets list`
+`tapcli --tlscertpath ~/.lit/tls.cert --rpcserver=localhost:8443 --network=signet assets list`
 
 Future sample commands will omit these details for simplicity.
 
@@ -50,52 +50,50 @@ This will add your asset to a minting queue called a batch, which allows multipl
 
 You will be given a `batch_txid`, which will have to be included in a block before you can spend your newly created assets. You can also inspect the newly created asset(s) by calling the command
 
-`tapcli assets list --show_unconfirmed_mints`
+`tapcli assets list --show_unconfirmed_mints`&#x20;
 
 ```json
-    	{
-        	"version": "ASSET_VERSION_V0",
-        	"asset_genesis": {
-            	"genesis_point": "357e113296993b79b98f7dbf1f86166377cc07e4099d64b6c59dbea66c1db9d0:1",
-            	"name": "beefbux",
-            	"meta_hash": "1b206639244dae9875be0db3babd9c326e9ffe319f9a913c56b765c8e80b6299",
-            	"asset_id": "b9ae86f52dcbdee7ea78e86b26320819c44c2f4f8a91b9c055ca0af4c4d1b22b",
-            	"asset_type": "NORMAL",
-            	"output_index": 0
-        	},
-        	"amount": "1000000",
-        	"lock_time": 0,
-        	"relative_lock_time": 0,
-        	"script_version": 0,
-        	"script_key": "02699e225abed4f8fd746d4888984278a7a57f63a0c542df04eac22ed9f1db5e25",
-        	"script_key_is_local": true,
-        	"asset_group": {
-            	"raw_group_key": "034ec8be86f4ee8e1afcd6b18efb828319ab9a1ec69254bfdae8e07689461c8257",
-            	"tweaked_group_key": "025234364112f83ea7ee8e35f061d625df82ee07e443835107947e3bb53e8e9bfc",
-            	"asset_witness": "014027a12fcaefb594be606056e48f9fd5bdf9c0100fdc82d6753172c641a880059e2c1fdfdb85217999408bf5dff8498f7a5ecc0fda8cbda98fc589b1349b5d5c06",
-            	"tapscript_root": ""
-        	},
-        	"chain_anchor": {
-            	"anchor_tx": "02000000000101d0b91d6ca6be9dc5b6649d09e407cc776316861fbf7d8fb9793b999632117e3501000000000000000002e80300000000000022512028a7b14f59e3094b596528399f2d06f5e0ebfbd09296b05859f3ae4e4344fde54eed090200000000225120ec77e0c605f8c7a8bab47843daad6a0ddddbd7b46dceffee6a5a0623db0a90d60140661a4c8a27e5abb9376518e462f8f586a5af2141d114a2cbd45422ae243df2f8d63a3f36624bb55bcedb388432eb60683e60e9f43de7d094f9005e350b3bd08f00000000",
-            	"anchor_block_hash": "00000000ccaac8ee1d015fe5036080c5062cd2a8fd36d336df8742738a9cf537",
-            	"anchor_outpoint": "183274b98657bb37012369cac96d9923ddeca67239eb651a52dada975c9d94a5:0",
-            	"internal_key": "02a64259f5878d7db1681041f5d0ff9313b4e9dc57e358bdc8a1da3f4d212e488d",
-            	"merkle_root": "4785adef0150d57ad473fa9ea312e258dd7663de9e844c2e503b3f47f010db3a",
-            	"tapscript_sibling": "",
-            	"block_height": 0
-        	},
-        	"prev_witnesses": [],
-        	"is_spent": false,
-        	"lease_owner": "",
-        	"lease_expiry": "0",
-        	"is_burn": false,
-        	"script_key_declared_known": false,
-        	"script_key_has_script_path": false,
-        	"decimal_display": {
-            	"decimal_display": 3
-        	}
-    	}
-
+        {
+            "version": "ASSET_VERSION_V0",
+            "asset_genesis": {
+                "genesis_point": "4b93a1f07e0bb8a7184f863844033459dd69f45293d6a233170feb529eac13e5:0",
+                "name": "beefbux",
+                "meta_hash": "76cc761e50db8f655449ec7e5ff60be23ce45611ed362aed2242b8e265fc672f",
+                "asset_id": "322b2858648b05e60d424320599b6f1e64b50e1028e42f5707572c21054c95c9",
+                "asset_type": "NORMAL",
+                "output_index": 0
+            },
+            "amount": "1000000000000",
+            "lock_time": 0,
+            "relative_lock_time": 0,
+            "script_version": 0,
+            "script_key": "02d4f510511e3847e653ab00117f045370a7713c288aa82a8319f3ae8eea76581c",
+            "script_key_is_local": true,
+            "asset_group": {
+                "raw_group_key": "0355748322584bcf5c8e19b7617b53ef595b4fec2d5002e7248586a9a347002b40",
+                "tweaked_group_key": "03dc4493748649194848033dbb95975fb6e4e5722528308f65a0246c39cefa047a",
+                "asset_witness": "01400341437de835de2f71bdf64f51ca9011060291c80c121a2692636e8011438eb7109e96853b1b6187c479808c538d23fd89e54e777014b0cbbeaeeaad4f93c3fb",
+                "tapscript_root": ""
+            },
+            "chain_anchor": {
+                "anchor_tx": "02000000000101e513ac9e52eb0f1733a2d69352f469dd5934034438864f18a7b80b7ef0a1934b00000000000000000002e8030000000000002251204a00de62399e03079991f367d3ce61aab63cb2462c6aa6e810564c118e60d9fad84d220000000000225120eff3512a06c6dd4ccdaea11992e5bd1b217f6fdcd2ae1cbb107d82e0a63b23760140cb79015ba98a2881cf55cf15d4744ab451e7e03aaf7ec8e40bebaccf55f9d8dd466cfcb963a86b4daf4b014cae392269aad6d101b6655a8e5e26dd92d1f5780400000000",
+                "anchor_block_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+                "anchor_outpoint": "1fe097512f60ee6d120797919040f0a27a3dc416ce7a1856294db9351f3c9ca4:0",
+                "internal_key": "0225c3102e51864c0e18ad30e65ac16e22867e2ded1eca02b613f678bfacd0e3c5",
+                "merkle_root": "295c1787fdddf6dba941a5ac9d936ce44bebaeab394b9d4f35eb9ac42d893502",
+                "tapscript_sibling": "",
+                "block_height": 0
+            },
+            "prev_witnesses": [],
+            "is_spent": false,
+            "lease_owner": "",
+            "lease_expiry": "0",
+            "is_burn": false,
+            "script_key_declared_known": true,
+            "script_key_has_script_path": false,
+            "decimal_display": {
+                "decimal_display": 6
+            }
 ```
 
 The output of this command can be explained as follows:
@@ -143,10 +141,6 @@ Tapping into Taproot Assets #5: Mint from the CLI
 ## Minting asset groups <a href="#docs-internal-guid-3bcd56b4-7fff-bfc0-8abd-da4246828716" id="docs-internal-guid-3bcd56b4-7fff-bfc0-8abd-da4246828716"></a>
 
 Assets that were minted with the flag `--new_grouped_asset` do not have a fixed supply. A new batch of this asset can be minted later in a way that the two assets are considered of the same asset group, and therefore fungible.
-
-{% hint style="info" %}
-**At the moment it is not possible to spend two assets with different asset IDs, even if they belong to the same asset group.**
-{% endhint %}
 
 To increase the supply of such an asset, we will need its tweaked\_group\_key.
 

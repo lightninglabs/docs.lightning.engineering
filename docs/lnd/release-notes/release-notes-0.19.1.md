@@ -20,6 +20,10 @@
 
 # Bug Fixes
 
+* [Fix a serialisation bug](https://github.com/lightningnetwork/lnd/pull/9856) 
+  that would occur when an attempt was made to write a backup file for a channel 
+  peer that has advertised an address that we do not yet know how to parse. 
+
 # New Features
 
 ## Functional Enhancements
@@ -28,20 +32,8 @@
 
 ## lncli Additions
 
-* [`lncli sendpayment` and `lncli queryroutes` now support the
-  `--route_hints` flag](https://github.com/lightningnetwork/lnd/pull/9721) to
-  support routing through private channels.
-
 # Improvements
 ## Functional Updates
-
-* Graph Store SQL implementation and migration project:
-  * Introduce an [abstract graph 
-    store](https://github.com/lightningnetwork/lnd/pull/9791) interface. 
-  * Start [validating](https://github.com/lightningnetwork/lnd/pull/9787) that 
-    byte blobs at the end of gossip messages are valid TLV streams.
-  * Various [preparations](https://github.com/lightningnetwork/lnd/pull/9692) 
-    of the graph code before the SQL implementation is added.
 
 ## RPC Updates
 
@@ -84,3 +76,5 @@
 ## Tooling and Documentation
 
 # Contributors (Alphabetical Order)
+
+* Elle Mouton

@@ -20,7 +20,7 @@
 
 # Bug Fixes
 
-* [Fix a serialisation bug](https://github.com/lightningnetwork/lnd/pull/9856) 
+- [Fix a serialisation bug](https://github.com/lightningnetwork/lnd/pull/9856) 
   that would occur when an attempt was made to write a backup file for a channel 
   peer that has advertised an address that we do not yet know how to parse. 
 
@@ -31,9 +31,15 @@
   peer would not disconnect properly when both peers supported the new
   "rbf-coop-close" feature leaving the peer connection in a borked state.
 
+- Fixed [a case](https://github.com/lightningnetwork/lnd/pull/9890) where LND
+  would crash because of misaligned of a data struct on 32 bit systems.
+
 # New Features
 
 ## Functional Enhancements
+
+- [Increase](https://github.com/lightningnetwork/lnd/pull/9875) gossip sync
+  buffer to take the pressure of the read handler.
 
 ## RPC Additions
 

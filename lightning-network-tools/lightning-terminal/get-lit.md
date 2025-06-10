@@ -41,8 +41,8 @@ You can now execute the program from its location, or place it where the system 
 #### Prerequisites <a href="#docs-internal-guid-eb4075c6-7fff-64f4-e6ec-e91cb4ece7bf" id="docs-internal-guid-eb4075c6-7fff-64f4-e6ec-e91cb4ece7bf"></a>
 
 1. You will need Go version 1.19 or higher. If you compiled LND from source this should already be installed on your system. [You can find detailed instructions here.](../lnd/run-lnd.md)
-2. You will need nodejs. [You can download and install it here](https://nodejs.org/en/download/). Most conveniently, you can install it with snap install node
-3. You will need yarn. [You can download it here](https://classic.yarnpkg.com/en/docs/install). Most conveniently, you can install it with npm install --global yarn
+2. You will need nodejs. [You can download and install it here](https://nodejs.org/en/download/). Most conveniently, you can install it with `snap install node`
+3. You will need yarn. [You can download it here](https://classic.yarnpkg.com/en/docs/install). Most conveniently, you can install it with `npm install --global yarn`
 
 #### Install litd <a href="#docs-internal-guid-c4edd295-7fff-ba4b-6d1f-7582ba048646" id="docs-internal-guid-c4edd295-7fff-ba4b-6d1f-7582ba048646"></a>
 

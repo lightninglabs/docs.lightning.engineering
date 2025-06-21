@@ -41,6 +41,10 @@
 
 ## Functional Updates
 
+- [Improved](https://github.com/lightningnetwork/lnd/pull/9880) the connection
+  restriction logic enforced by `accessman`. In addition, the restriction placed
+  on outbound connections is now lifted.
+
 ## RPC Updates
 
 ## lncli Updates
@@ -50,6 +54,11 @@
 ## Breaking Changes
 
 ## Performance Improvements
+
+- The replay protection is
+[optimized](https://github.com/lightningnetwork/lnd/pull/9929) to use less disk
+space such that the `sphinxreplay.db` or the `decayedlogdb_kv` table will grow
+much more slowly.
 
 ## Deprecations
 
@@ -66,5 +75,4 @@
 ## Tooling and Documentation
 
 # Contributors (Alphabetical Order)
-
 * Yong Yu

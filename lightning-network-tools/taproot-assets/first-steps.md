@@ -199,7 +199,7 @@ Upon successful sync, information about existing assets should be retrieved, alo
 
 ## Generating Taproot Assets addresses <a href="#docs-internal-guid-b63629f3-7fff-ba71-770c-b7d5f5eac736" id="docs-internal-guid-b63629f3-7fff-ba71-770c-b7d5f5eac736"></a>
 
-As soon as your minted assets have one confirmation on the blockchain, you are able to send them. To send assets, you will need the recipient’s Taproot Assets address. This Taproot Assets address is specific to an asset and amount, so to generate an address, the recipient needs to know an asset’s asset\_id, as well as be synced to the issuer’s universe. Taproot Assets address reuse should be avoided.
+As soon as your minted assets have one confirmation on the blockchain, you are able to send them. To send assets, you will need the recipient’s Taproot Assets address. This Taproot Assets address is specific to an asset and amount, so to generate an address, the recipient needs to know an asset’s `asset_id`, as well as be synced to the issuer’s universe. Taproot Assets address reuse should be avoided.
 
 When generating a Taproot Assets address, the receiver will create their expected Merkle trees, and tweak a Taproot key with it. The resulting key is converted to a Taproot address, where the receiver waits for an incoming transaction.
 

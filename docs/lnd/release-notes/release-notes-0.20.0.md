@@ -85,6 +85,8 @@ circuit. The indices are only available for forwarding events saved after v0.20.
     * [3](https://github.com/lightningnetwork/lnd/pull/9887)
     * [4](https://github.com/lightningnetwork/lnd/pull/9931)
     * [5](https://github.com/lightningnetwork/lnd/pull/9935)
+    * [6](https://github.com/lightningnetwork/lnd/pull/9936)
+    * [7](https://github.com/lightningnetwork/lnd/pull/9937)
 
 ## RPC Updates
 
@@ -124,6 +126,13 @@ circuit. The indices are only available for forwarding events saved after v0.20.
   instead of extracting it from the TLV stream at various call-sites.
 
 ## Testing
+
+* Previously, automatic peer bootstrapping was disabled for simnet, signet and
+  regtest networks even if the `--nobootstrap` flag was not set. This automatic
+  disabling has now been 
+  [removed](https://github.com/lightningnetwork/lnd/pull/9967) meaning that any 
+  test network scripts that rely on bootstrapping being disabled will need to 
+  explicitly define the `--nobootstrap` flag.
 
 ## Database
 

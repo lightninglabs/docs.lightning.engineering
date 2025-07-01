@@ -99,6 +99,10 @@ circuit. The indices are only available for forwarding events saved after v0.20.
 
 ## Code Health
 
+- [Increase itest coverage](https://github.com/lightningnetwork/lnd/pull/9990)
+for payments. Now the payment address is mandatory for the writer and
+reader of a payment request.
+
 ## Breaking Changes
 ## Performance Improvements
 
@@ -130,6 +134,9 @@ circuit. The indices are only available for forwarding events saved after v0.20.
   `channel_update` message and handle it explicitly throughout the code base 
   instead of extracting it from the TLV stream at various call-sites.
 
+* [Require invoices to include a payment address or blinded paths](https://github.com/lightningnetwork/lnd/pull/9752) 
+  to comply with updated BOLT 11 specifications before sending payments.
+
 ## Testing
 
 * Previously, automatic peer bootstrapping was disabled for simnet, signet and
@@ -152,6 +159,8 @@ circuit. The indices are only available for forwarding events saved after v0.20.
 * Abdulkbk
 * Boris Nagaev
 * Elle Mouton
+* Erick Cestari
 * Funyug
 * Mohamed Awnallah
 * Pins
+* Ziggie

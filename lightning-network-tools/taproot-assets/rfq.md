@@ -12,6 +12,10 @@ This request is made using [BOLT 01](https://github.com/lightning/bolts/blob/mas
 
 [Learn more: Edge Nodes](../../the-lightning-network/taproot-assets/edge-nodes.md)
 
+{% embed url="https://www.youtube.com/watch?v=m0BSUqNZT_U" %}
+Video: Running a Taproot Assets Price Oracle
+{% endembed %}
+
 The Request for Quote contains a rate and an expiration time, which allows the sender to decide whether they want to complete the payment and craft a route to the intended recipient.
 
 Similarly when receiving Taproot Assets over the Lightning Network, RFQ is used by the recipient to generate a satoshi-denominated Lightning invoice.

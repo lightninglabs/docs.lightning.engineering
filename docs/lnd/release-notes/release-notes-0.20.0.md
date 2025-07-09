@@ -26,6 +26,9 @@
   announcement remains unchanged until the new one is fully signed and
   validated.
 
+- Fixed [shutdown deadlock](https://github.com/lightningnetwork/lnd/pull/10042)
+  when we fail starting up LND before we startup the chanbackup sub-server.
+
 # New Features
 
 ## Functional Enhancements
@@ -92,6 +95,8 @@ circuit. The indices are only available for forwarding events saved after v0.20.
     * [9](https://github.com/lightningnetwork/lnd/pull/9939)
     * [10](https://github.com/lightningnetwork/lnd/pull/9971)
     * [11](https://github.com/lightningnetwork/lnd/pull/9972)
+  * Add graph SQL migration logic:
+    * [1](https://github.com/lightningnetwork/lnd/pull/10036)
 
 ## RPC Updates
 * Previously the `RoutingPolicy` would return the inbound fee record in its
@@ -108,6 +113,9 @@ circuit. The indices are only available for forwarding events saved after v0.20.
 - [Increase itest coverage](https://github.com/lightningnetwork/lnd/pull/9990)
 for payments. Now the payment address is mandatory for the writer and
 reader of a payment request.
+
+- [Refactored](https://github.com/lightningnetwork/lnd/pull/10018) `channelLink`
+  to improve readability and maintainability of the code.
 
 ## Breaking Changes
 ## Performance Improvements

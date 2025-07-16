@@ -10,7 +10,7 @@ Anyone may run a universe, or use one or multiple universes provided by others, 
 
 ## Your local universe <a href="#docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f" id="docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f"></a>
 
-When running `tapd`, you will run a private universe by default. In this mode, all RPC calls to the universe require authentication using the tapd macaroon. To disable macaroon authentication for the `QueryProof and InsertProof` RPC calls, you may set the following configuration flag:
+When running `tapd`, you will run a private universe by default. In this mode, all RPC calls to the universe require authentication using the tapd macaroon. To disable macaroon authentication for the `QueryProof` and `InsertProof` RPC calls, you may set the following configuration flag:
 
 ```
 allow-public-uni-proof-courier=true
@@ -76,7 +76,7 @@ You may also make use of the UI available through Lightning Terminal
 
 By default, your tapd instance will connect to a default universe. You can manually add additional universes to sync to and from, called a federation. You can see this federation with `tapcli universe federation list`.
 
-If you would like to add a universe to this federation, you can do this on with `tapcli universe federation add --universe_host <universe_ip:port>`
+If you would like to add a universe to this federation, you can do this with `tapcli universe federation add --universe_host <universe_ip:port>`
 
 Similarly, you can remove universes from this federation with `tapcli universe federation del --universe_host <universe_ip>:port`
 
@@ -86,7 +86,7 @@ Tapping into Taproot Assets #4: Join a Universe Federation
 
 ## Syncing to a universe
 
-By default, your `tapd` will sync to universes which have configured in your local federation, and only for assets which you either hold or have created a taproot address for. You may also manually sync specific asset IDs or group keys.
+By default, your `tapd` will sync to universes you have configured in your local federation, and only for assets which you either hold or have created a taproot address for. You may also manually sync specific asset IDs or group keys.
 
 `tapcli universe sync --universe_host <universe_ip:port> --group_key <group key>`
 
@@ -98,7 +98,7 @@ To configure your `tapd` to regularly sync to other asset IDs or group keys, you
 
 ## The Universe APIs
 
-A Taproot Asset Universe is available over [gRPC](https://lightning.engineering/api-docs/api/taproot-assets/#grpc) and [REST](https://lightning.engineering/api-docs/api/taproot-assets/#rest) on the default ports. You may run your own universe or interact with a public universe. Public universes are unauthenticated, the macaroon checks are skipped.
+A Taproot Asset Universe is available over [gRPC](https://lightning.engineering/api-docs/api/taproot-assets/#grpc) and [REST](https://lightning.engineering/api-docs/api/taproot-assets/#rest) on the default ports. You may run your own universe or interact with a public universe. Public universes are unauthenticated; the macaroon checks are skipped.
 
 For instance, when making a transfer, the [proofs may be pushed](https://lightning.engineering/api-docs/api/taproot-assets/universe/insert-proof) to one or multiple universes using the REST API. This requires the asset ID, the leaf key index and script key.
 

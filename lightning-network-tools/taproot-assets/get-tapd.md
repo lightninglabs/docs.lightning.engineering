@@ -6,7 +6,7 @@ description: >-
 
 # Get Started
 
-## #Craeful <a href="#docs-internal-guid-f9af6317-7fff-eeb2-2957-b358d3da86da" id="docs-internal-guid-f9af6317-7fff-eeb2-2957-b358d3da86da"></a>
+## #Careful <a href="#docs-internal-guid-f9af6317-7fff-eeb2-2957-b358d3da86da" id="docs-internal-guid-f9af6317-7fff-eeb2-2957-b358d3da86da"></a>
 
 {% hint style="info" %}
 Taproot Assets is alpha software. Use it on mainnet at your own risk!

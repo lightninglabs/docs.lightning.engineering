@@ -36,6 +36,6 @@ There are multiple keys relevant to transfer Taproot Assets.
 
 While it is technically possible to keep either the Bitcoin key or the Asset Script key on a dedicated air-gapped or signing device, there is currently no mechanism equipped for that.
 
-A special case is that of pocket universes, where the Bitcoin key is held by a service, while the Asset Script key is held by the user. This allows for the efficient batching of potentially millions of asset transfers in a single Bitcoin transaction. The service does however not control the assets of the users and cannot move them independently.
+A special case is that of pocket universes, where the Bitcoin key is held by a service, while the Asset Script key is held by the user. This allows for the efficient batching of potentially millions of asset transfers in a single Bitcoin transaction. However, the service does not control the assets of the users and cannot move them independently.
 
 [FAQ: What is a pocket universe](../../the-lightning-network/taproot-assets/faq.md)

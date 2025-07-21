@@ -267,8 +267,10 @@ Lightning Terminal is a tool suite developed by Lightning Labs. The web interfac
 If you are observing fluctuations in your peer count, otherwise stable peers repeatedly disconnecting or connecting or excessive bandwidth usage, you may experience an issue in how gossip messages are handled.
 
 You may reconfigure the following values in your `lnd.conf`:\
-`gossip.msg-rate-bytes=1024000`\
-`gossip.msg-burst-bytes=2048000`\
+`gossip.msg-rate-bytes=524288`\
+`gossip.msg-burst-bytes=1048576`\
+`gossip.filter-concurrency=10`\
+`num-restricted-slots=200`
 
-
-Details can be found in [pull request 10096](https://github.com/lightningnetwork/lnd/pull/10096).
+[To understand gossip rate limiting better you may refer to this in-depth guide.](https://github.com/Roasbeef/lnd/blob/c9afe0058541cb7a270176e6ec85daab8bd4674f/docs/gossip_rate_limiting.md)\
+Details can also be found in [pull request 10096](https://github.com/lightningnetwork/lnd/pull/10096) and [10097](https://github.com/lightningnetwork/lnd/pull/10097).

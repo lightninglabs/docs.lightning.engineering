@@ -269,7 +269,6 @@ If you are observing fluctuations in your peer count, otherwise stable peers rep
 You may reconfigure the following values in your `lnd.conf`:\
 `gossip.msg-rate-bytes=524288`\
 `gossip.msg-burst-bytes=1048576`\
-`gossip.filter-concurrency=10`\
 `num-restricted-slots=200`
 
 [To understand gossip rate limiting better you may refer to this in-depth guide.](https://github.com/Roasbeef/lnd/blob/c9afe0058541cb7a270176e6ec85daab8bd4674f/docs/gossip_rate_limiting.md)\

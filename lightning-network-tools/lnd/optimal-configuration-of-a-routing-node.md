@@ -261,3 +261,14 @@ Lightning Terminal is a tool suite developed by Lightning Labs. The web interfac
 ### LNDg
 
 [LNDg](https://github.com/cryptosharks131/lndg) is a GUI to analyze LND data and automate tasks such as rebalancing channels.
+
+## LND 0.19.2
+
+If you are observing fluctuations in your peer count, otherwise stable peers repeatedly disconnecting or connecting or excessive bandwidth usage, you may experience an issue in how gossip messages are handled.
+
+You may reconfigure the following values in your `lnd.conf`:\
+`gossip.msg-rate-bytes=1024000`\
+`gossip.msg-burst-bytes=2048000`\
+
+
+Details can be found in [pull request 10096](https://github.com/lightningnetwork/lnd/pull/10096).

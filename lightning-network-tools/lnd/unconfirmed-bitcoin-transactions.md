@@ -79,11 +79,25 @@ In case the above fails, (e.g. `the passed output does not belong to the wallet`
 
 When closing channels, we differentiate between cooperative closes of active channels, and unilateral closes, or force closes, of inactive channels.
 
+### CPFP
+
 For **cooperative closures**, we can use the `lncli wallet bumpfee` command in a similar way as above. We will need to identify the output of the closing transaction that belongs to our wallet using a block explorer. This means the command can only be run if you had at least some balance in this channel.
 
 In the case of a **force close**, we can use the command `lncli wallet bumpclosefee` to create a CPFP transaction that spends the outputs of our channel closure transaction. You will only be able to make use of this command if it was created as an anchor channel. To run the command successfully, you will need to specify the [channel point](../../community-resources/glossary.md#channel-point) of the channel that is being force closed.
 
 To bump any commitment transaction, LND will apply new logic starting from version 0.18. LND will consider the value of the transaction, eventual deadlines and queue the sweep for the next batch. To bump the transaction right away, the `--immediate` flag can be used. Budget and deadline can be overriden with the `--budget` and `--conf_target` flags.
+
+### RBF
+
+Starting from LND 0.19, it is possible to bump the transaction cooperatively closing a channel using replace-by-fee (RBF). The feature has to be enabled by both peers using the `protocol.rbf-coop-close=true` flag and only applies to channels opened after the flag was applied.
+
+When channels of this type are closed, the closing party always pays for the closing transaction, regardless of which peer initiated the channel open. Each time the fee of the closing transaction is bumped, the party initiating the fee increase pays the full fee.
+
+To bump the close transaction of a channel, simply apply the `lncli closechannel` command again with a higher fee or lower confirmation target.
+
+{% hint style="warning" %}
+As of now, this feature is incompatible with simple taproot channels.
+{% endhint %}
 
 ## Sweeper
 

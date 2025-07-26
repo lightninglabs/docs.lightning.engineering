@@ -14,7 +14,7 @@ Tapping into Taproot Assets #2: Prototype with Polar
 
 ## Prerequisites
 
-Before you can get started with Lightning Polar, you will need Docker. On Windows and Mac OS you can use [Docker Desktop](https://www.docker.com/products/docker-desktop/), while on Linux it is recommended to run [Docker Engine](https://docs.docker.com/engine/install/#server).
+Before you can get started with Lightning Polar, you will need Docker. On Windows and Mac OS, you can use [Docker Desktop](https://www.docker.com/products/docker-desktop/), while on Linux it is recommended to run [Docker Engine](https://docs.docker.com/engine/install/#server).
 
 ## Download Lightning Polar
 
@@ -24,7 +24,7 @@ You can [download Lightning Polar](https://lightningpolar.com/) from the officia
 
 Run polar by executing it on your machine. This will launch the Polar user interface from where you can launch a new network.
 
-For the purpose of this guide, we are going to set up two Litd nodes, each with their own Bitcoin Core backend. One Litd node (Alice) acts as the user, the other (Edgar) acts as the edge node. The edge node is connected to a CLN, Eclair and LND node, representing the broader Lightning Network.
+For the purpose of this guide, we are going to set up two Litd nodes, each with their own Bitcoin Core backend. One Litd node (Alice) acts as the user; the other (Edgar) acts as the edge node. The edge node is connected to a CLN, Eclair and LND node, representing the broader Lightning Network.
 
 <figure><img src="../../.gitbook/assets/Screenshot from 2024-08-22 17-17-37.png" alt=""><figcaption><p>Sample Lightning Network to test edge node configuration.</p></figcaption></figure>
 
@@ -40,9 +40,9 @@ We can then go ahead and mint this batch with `tapcli assets mint batches finali
 
 Don't forget to mine a few blocks to get the transaction confirmed!
 
-Before we can use this asset to open a channel we will have to sync the asset to Alice' node. The easiest way to do that is to use the Polar UI by "creating an Asset address," then "sync assets from Edgar's node." Don't forget to click on "generate" to make sure the synchronization process is completed.
+Before we can use this asset to open a channel, we will have to sync the asset to Alice's node. The easiest way to do that is to use the Polar UI by "creating an Asset address," then "sync assets from Edgar's node." Don't forget to click on "generate" to make sure the synchronization process is completed.
 
-To open Taproot Asset channels we can use the command below. Don't forget to substitute the node key for Alice's key, and the asset ID for the asset you minted above.
+To open Taproot Asset channels, we can use the command below. Don't forget to substitute the node key for Alice's key and the asset ID for the asset you minted above.
 
 `litcli --macaroonpath ~/.lnd/data/chain/bitcoin/regtest/admin.macaroon ln fundchannel --node_key 03d30bdaa3f44dd0a5ae7ed7cb1ad1c0ddd13b8db979b719cd963b65508815c4f1 --asset_amount 1000000 --asset_id b7e048c449feebb898138f1a7f340cc210ab2a04304b5595f20715a8a6e0ba34 --sat_per_vbyte 10`
 

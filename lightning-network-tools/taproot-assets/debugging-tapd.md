@@ -33,7 +33,7 @@ You can use the following to increase the number of log files and their maximum 
 
 ## Profiling
 
-A go profile helps determine the state of a go program. You can enable profiling with at any port:
+A go profile helps determine the state of a go program. You can enable profiling at any port:
 
 `lnd.profile=9736`
 

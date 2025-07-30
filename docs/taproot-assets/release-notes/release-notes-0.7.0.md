@@ -47,6 +47,13 @@
   migration](https://github.com/lightninglabs/taproot-assets/pull/1612) was
   added that retroactively inserts all burned assets into that table.
 
+- Sending a payment now supports multi-rfq. This new feature allows for multiple
+  quotes to be used in order to carry out a payment. With multiple quotes, we
+  can use liquidity that is spread across different channels and also use
+  multiple rates. See
+  [related PR](https://github.com/lightninglabs/taproot-assets/pull/1613) for
+  more info.
+
 ## RPC Additions
 
 - The [price oracle RPC calls now have an intent, optional peer ID and metadata
@@ -65,8 +72,15 @@
   when requesting quotes. The field can contain optional user or authentication
   information that helps the price oracle to decide on the optimal price rate to
   return.
+- [Rename](https://github.com/lightninglabs/taproot-assets/pull/1682) the
+  `MintAsset` RPC message field from `universe_commitments` to
+  `enable_supply_commitments`.
 
 ## tapcli Additions
+
+- [Rename](https://github.com/lightninglabs/taproot-assets/pull/1682) the mint
+  asset command flag from `--universe_commitments` to
+  `--enable_supply_commitments` for consistency with the updated terminology.
 
 # Improvements
 

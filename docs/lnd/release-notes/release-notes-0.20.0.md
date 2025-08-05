@@ -29,6 +29,10 @@
 - Fixed [shutdown deadlock](https://github.com/lightningnetwork/lnd/pull/10042)
   when we fail starting up LND before we startup the chanbackup sub-server.
 
+- Fixed BOLT-11 invoice parsing behavior: [now errors](
+  https://github.com/lightningnetwork/lnd/pull/9993) are returned when receiving
+  empty route hints or a non-UTF-8-encoded description.
+
 - [Fixed](https://github.com/lightningnetwork/lnd/pull/10027) an issue where
   known TLV fields were incorrectly encoded into the `ExtraData` field of
   messages in the dynamic commitment set.
@@ -44,6 +48,10 @@
 # New Features
 
 ## Functional Enhancements
+
+* RPCs `walletrpc.EstimateFee` and `walletrpc.FundPsbt` now
+   [allow](https://github.com/lightningnetwork/lnd/pull/10087)
+  `conf_target=1`. Previously they required `conf_target >= 2`.
 
 ## RPC Additions
 * When querying [`ForwardingEvents`](https://github.com/lightningnetwork/lnd/pull/9813)

@@ -62,7 +62,7 @@ You can change the configuration from the CLI using `tapcli universe federation 
 
 ## The default universe
 
-By default, your `tapd` will connect to the default universe, for instance `testnet.universe.lightning.finance:10029` for testnet, or `universe.lightning.finance:10029` on mainnet.
+By default, your `tapd` will connect to the default universe, for instance `signet.universe.lightning.finance:10029` for signet, or `universe.lightning.finance:10029` on mainnet.
 
 The contents of the default universe are also available via a public REST API:
 
@@ -74,7 +74,7 @@ You may also make use of the UI available through Lightning Terminal
 
 ## Federations
 
-By default, your tapd instance will connect to a default universe. You can manually add additional universes to sync to and from, called a federation. You can see this federation with `tapcli universe federation list`.
+A federation is a list of universes you connect to. At first, your federation consists only of the default universe. You can manually add additional universes to sync to and from to your federation. You can see this federation with `tapcli universe federation list`.
 
 If you would like to add a universe to this federation, you can do this on with `tapcli universe federation add --universe_host <universe_ip:port>`
 

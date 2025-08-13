@@ -74,9 +74,11 @@ You may also make use of the UI available through Lightning Terminal
 
 ## Federations
 
-A federation is a list of universes you connect to. At first, your federation consists only of the default universe. You can manually add additional universes to sync to and from to your federation. You can see this federation with `tapcli universe federation list`.
+A federation is a list of universes your `tapd` node connect to. You can see this federation with `tapcli universe federation list`.
 
-If you would like to add a universe to this federation, you can do this on with `tapcli universe federation add --universe_host <universe_ip:port>`
+At first, your federation consists only of the default universe (mentioned above). If you don't want to use the default universe, set `universe.no-default-federation=true` in `tapd.conf` so that it isn't automatically added to your federation list.
+
+You can manually add additional universes to your federation that your `tapd` node pushes to and pulls from. You can do this on with `tapcli universe federation add --universe_host <universe_ip:port>`
 
 Similarly, you can remove universes from this federation with `tapcli universe federation del --universe_host <universe_ip>:port`
 

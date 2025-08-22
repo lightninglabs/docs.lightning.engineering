@@ -26,6 +26,16 @@
 - [An integration test flake was
   fixed](https://github.com/lightninglabs/taproot-assets/pull/1651).
 
+- Fixed two send related bugs that would lead to either a `invalid transfer 
+  asset witness` or `unable to fund address send: error funding packet: unable 
+  to list eligible coins: unable to query commitments: mismatch of managed utxo
+  and constructed tap commitment root` error when sending assets.
+  The [PR that fixed the two
+  bugs](https://github.com/lightninglabs/taproot-assets/pull/1741) also
+  optimized sending to V2 TAP addresses by removing the need for creating
+  tombstone outputs on a full-value send (by using interactive transfers for V2
+  addresses).
+
 # New Features
 
 ## Functional Enhancements
@@ -80,6 +90,15 @@
   nullifies it upon settlement. This is currently hidden behind the dev build
   tag and also needs to be toggled on via the `channel.noop-htlcs` configuration
   option.
+
+- [Two new configuration values were added to improve privacy when using public
+  or untrusted third-party price
+  oracles](https://github.com/lightninglabs/taproot-assets/pull/1677):
+  `experimental.rfq.sendpricehint` controls whether a price hint is queried
+  from the local price oracle and sent to the peer when requesting a price
+  quote (opt-in, default `false`). `experimental.rfq.priceoraclesendpeerid`
+  controls whether the peer's identity public key is sent to the local price
+  oracle when querying asset price rates.
 
 ## RPC Additions
 

@@ -36,6 +36,17 @@
   tombstone outputs on a full-value send (by using interactive transfers for V2
   addresses).
 
+- [Updated](https://github.com/lightninglabs/taproot-assets/pull/1774) 
+  `BuyOrderRequest` and `SellOrderRequest` proto docs to mark `peer_pub_key` as
+  required. Previously, the field was incorrectly documented as optional.
+  This change corrects the documentation to match the current implementation.
+
+- [Invoice tolerance calculations were fixed to properly account for per-HTLC
+  conversion errors](https://github.com/lightninglabs/taproot-assets/pull/1673).
+  This improves the accuracy of asset payment acceptance by correctly modeling
+  rounding errors that accumulate when converting between asset units and
+  millisatoshis across multiple HTLCs.
+
 # New Features
 
 ## Functional Enhancements
@@ -53,6 +64,7 @@
    - https://github.com/lightninglabs/taproot-assets/pull/1554
    - https://github.com/lightninglabs/taproot-assets/pull/1587
    - https://github.com/lightninglabs/taproot-assets/pull/1716
+   - https://github.com/lightninglabs/taproot-assets/pull/1675
 
 - A new [address version 2 was introduced that supports grouped assets and
   custom (sender-defined)

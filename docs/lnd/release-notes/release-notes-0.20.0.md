@@ -42,6 +42,10 @@
   send unnecessary `channel_announcement` and `node_announcement` messages when
   replying to a `gossip_timestamp_filter` query.
 
+- [Fixed](https://github.com/lightningnetwork/lnd/pull/10189) a case in the
+  sweeper where some outputs would not be resolved due to an error string
+  mismatch.
+
 # New Features
  
 * Use persisted [nodeannouncement](https://github.com/lightningnetwork/lnd/pull/8825) 
@@ -152,22 +156,22 @@ circuit. The indices are only available for forwarding events saved after v0.20.
   * Only [fetch required 
     fields](https://github.com/lightningnetwork/lnd/pull/9923) during graph 
     cache population. 
-  * Add graph schemas, queries and CRUD:
-    * [1](https://github.com/lightningnetwork/lnd/pull/9866)
-    * [2](https://github.com/lightningnetwork/lnd/pull/9869)
-    * [3](https://github.com/lightningnetwork/lnd/pull/9887)
-    * [4](https://github.com/lightningnetwork/lnd/pull/9931)
-    * [5](https://github.com/lightningnetwork/lnd/pull/9935)
-    * [6](https://github.com/lightningnetwork/lnd/pull/9936)
-    * [7](https://github.com/lightningnetwork/lnd/pull/9937)
-    * [8](https://github.com/lightningnetwork/lnd/pull/9938)
-    * [9](https://github.com/lightningnetwork/lnd/pull/9939)
-    * [10](https://github.com/lightningnetwork/lnd/pull/9971)
-    * [11](https://github.com/lightningnetwork/lnd/pull/9972)
+  * Add graph schemas, queries and CRUD: 
+   [[1](https://github.com/lightningnetwork/lnd/pull/9866),
+    [2](https://github.com/lightningnetwork/lnd/pull/9869),
+    [3](https://github.com/lightningnetwork/lnd/pull/9887),
+    [4](https://github.com/lightningnetwork/lnd/pull/9931),
+    [5](https://github.com/lightningnetwork/lnd/pull/9935),
+    [6](https://github.com/lightningnetwork/lnd/pull/9936),
+    [7](https://github.com/lightningnetwork/lnd/pull/9937),
+    [8](https://github.com/lightningnetwork/lnd/pull/9938),
+    [9](https://github.com/lightningnetwork/lnd/pull/9939),
+    [10](https://github.com/lightningnetwork/lnd/pull/9971),
+    [11](https://github.com/lightningnetwork/lnd/pull/9972)]
   * Add graph SQL migration logic:
-    * [1](https://github.com/lightningnetwork/lnd/pull/10036)
-    * [2](https://github.com/lightningnetwork/lnd/pull/10050)
-    * [3](https://github.com/lightningnetwork/lnd/pull/10038)
+    [[1](https://github.com/lightningnetwork/lnd/pull/10036),
+     [2](https://github.com/lightningnetwork/lnd/pull/10050),
+     [3](https://github.com/lightningnetwork/lnd/pull/10038)]
 
 ## RPC Updates
 * Previously the `RoutingPolicy` would return the inbound fee record in its

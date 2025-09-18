@@ -144,7 +144,7 @@ Assets that were minted with the flag `--new_grouped_asset` do not have a fixed 
 
 To increase the supply of such an asset, we will need its tweaked\_group\_key.
 
-`tapcli assets mint --type normal --name beefbux --supply 100000 --decimal_display 3 --meta_type json --grouped_asset --group_key 025234364112f83ea7ee8e35f061d625df82ee07e443835107947e3bb53e8e9bfc`
+`tapcli assets mint --type normal --name beefbux --supply 100000 --decimal_display 3 --grouped_asset --group_key 025234364112f83ea7ee8e35f061d625df82ee07e443835107947e3bb53e8e9bfc`
 
 We again have to publish the new mint transaction with:
 

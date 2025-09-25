@@ -191,7 +191,7 @@ Taproot Assets uses universes to communicate information about which assets exis
 
 Your node will sync with the universe whenever you create a new Taproot Assets address with an unknown asset ID, or when specifically instructed to. This requires an asset ID or a group key.
 
-On regtest and signet you will have to also [run a universe locally](universes.md). On testnet, you can use `testnet.universe.lightning.finance:10029.`
+On regtest and signet you will have to also [run a universe locally](universes.md). On signet, you can use `signet.universe.lightning.finance:10029.`
 
 `tapcli universe sync --universe_host universe.lightning.finance:10029 --group_key 025234364112f83ea7ee8e35f061d625df82ee07e443835107947e3bb53e8e9bfc`
 

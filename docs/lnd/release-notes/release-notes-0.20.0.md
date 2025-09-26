@@ -62,6 +62,12 @@ a certain amount of msats.
 - Added support for [P2TR Fallback Addresses](
   https://github.com/lightningnetwork/lnd/pull/9975) in BOLT-11 invoices.
 
+- A new experimental RPC endpoint
+  [XFindBaseLocalChanAlias](https://github.com/lightningnetwork/lnd/pull/10133)
+  was added for looking up the base scid for an scid alias. Aliases that were
+  manually created via the `XAddLocalChanAliases` endpoint will get lost on
+  restart.
+
 ## Functional Enhancements
 * [Add](https://github.com/lightningnetwork/lnd/pull/9677)
   `ConfirmationsUntilActive` and `ConfirmationHeight` field to the
@@ -75,6 +81,11 @@ a certain amount of msats.
 * RPCs `walletrpc.EstimateFee` and `walletrpc.FundPsbt` now
    [allow](https://github.com/lightningnetwork/lnd/pull/10087)
   `conf_target=1`. Previously they required `conf_target >= 2`.
+
+* A new AuxComponent was added named AuxChannelNegotiator. This component aids
+  with custom data communication for aux channels, by injecting and handling
+  data in channel related wire messages. See
+  [PR](https://github.com/lightningnetwork/lnd/pull/10182) for more info.
 
 ## RPC Additions
 * When querying [`ForwardingEvents`](https://github.com/lightningnetwork/lnd/pull/9813)

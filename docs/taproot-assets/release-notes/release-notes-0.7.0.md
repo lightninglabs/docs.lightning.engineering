@@ -53,6 +53,16 @@
   requiring a fully initialized AuxSweeper, allowing sweep operations to proceed
   during server startup.
 
+- [Ensure that tapd won't start if the latest db migration errors and sets the
+  db to a dirty state for sqlite database
+  backends](https://github.com/lightninglabs/taproot-assets/pull/1826).
+  If the latest migration errors and sets the db to a dirty state, startup of
+  tapd will now be prevented for all database backend types. Previously, this
+  safeguard did not work correctly for SQLite backends if the most recent
+  migration failed. Tapd could then still start even though the database was
+  dirty. This issue has been resolved, and the behavior is now consistent across
+  all database backend types.
+
 # New Features
 
 ## Functional Enhancements
@@ -178,6 +188,15 @@
   is now accessible without authentication when the universe server is  
   configured with public read access. This matches the behavior of the  
   existing FetchSupplyCommit RPC endpoint.
+
+- [PR#1839](https://github.com/lightninglabs/taproot-assets/pull/1839) The
+  `FetchSupplyLeaves` and `FetchSupplyCommit` RPC endpoints now
+  include a new `block_headers` field. This field is a map from block
+  height to a `SupplyLeafBlockHeader` message, which provides the block
+  header timestamp (in seconds since the Unix epoch) and the 32-byte
+  block header hash. This allows clients to obtain block timing and hash
+  information directly from the RPC response without performing separate
+  blockchain queries.
 
 ## tapcli Additions
 

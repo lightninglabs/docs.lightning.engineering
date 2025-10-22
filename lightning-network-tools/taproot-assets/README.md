@@ -18,8 +18,8 @@ The Taproot Assets Daemon `tapd` implements the [Taproot Assets protocol](../../
 [taproot-assets-channels.md](taproot-assets-channels.md)
 {% endcontent-ref %}
 
-{% content-ref url="../../docs/taproot-assets/rfq-and-decimal-display.md" %}
-[rfq-and-decimal-display.md](../../docs/taproot-assets/rfq-and-decimal-display.md)
+{% content-ref url="decimal-display.md" %}
+[decimal-display.md](decimal-display.md)
 {% endcontent-ref %}
 
 {% content-ref url="rfq.md" %}

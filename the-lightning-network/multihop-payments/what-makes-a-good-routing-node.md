@@ -4,7 +4,7 @@ description: >-
   provide five basic functions.
 ---
 
-# ⭐ What Makes a Good Routing Node
+# What Makes a Good Routing Node
 
 Every channel in the network has a total capacity, limited by the amount of bitcoin committed at its creation. This balance can be held by either side of the channel, impacting its ability to pass on payments. The total capacity is the sum of the local capacity of each channel peer, or the local and remote capacity of your channel.
 

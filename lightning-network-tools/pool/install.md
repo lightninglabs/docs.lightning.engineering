@@ -2,7 +2,7 @@
 description: Install Pool from source or using the binaries.
 ---
 
-# 🛠️ Installation
+# Installation
 
 ## Installation
 

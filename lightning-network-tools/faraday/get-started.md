@@ -2,7 +2,7 @@
 description: Install and run faraday and frcli
 ---
 
-# 🛠 Get Started
+# Get Started
 
 ## Installation <a href="#docs-internal-guid-83e367ac-7fff-1ea9-0a8d-a1444b90286f" id="docs-internal-guid-83e367ac-7fff-1ea9-0a8d-a1444b90286f"></a>
 

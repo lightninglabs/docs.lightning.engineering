@@ -2,7 +2,7 @@
 description: Learn how to install LND on your machine, configure it and keep it up to date.
 ---
 
-# 🛠️ Get Started
+# Get Started
 
 The Lightning Network Daemon is a full implementation of a Lightning Network node. The Lightning Network and its specification are rapidly evolving, and so is LND. Use this guide to install LND from the binaries, source or docker and keep it up to date with new releases.
 

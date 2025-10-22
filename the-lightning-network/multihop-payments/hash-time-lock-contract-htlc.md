@@ -4,7 +4,7 @@ description: >-
   are formed to create secure multi-hop transactions.
 ---
 
-# ⭐ Hashed Timelock Contract (HTLC)
+# Hashed Timelock Contract (HTLC)
 
 Hashed Timelock Contracts (HTLCs) are the centerpiece of any Lightning transaction. While your Lightning Network channel is a 2-of-2 multisignature address with funds on the bitcoin blockchain, a HTLC is an output of an unconfirmed transaction to a separate “smart contract” address with the following properties:
 
@@ -19,13 +19,13 @@ Ideally, this transaction never needs to be committed onto the blockchain. Inste
 
 ## **1) The commitment transaction**
 
-![](../../.gitbook/assets/htlc\_01.png)
+![](../../.gitbook/assets/htlc_01.png)
 
-The commitment transaction of a regular payment channel can be visualized as above. It contains a single input. This input represents the channel point, or transaction ID of the channel. The transaction referenced by this input is recorded on the blockchain and can only be spent with a transaction signed both by Bob and Alice. The commitment transaction is signed by both Alice and Bob, and spends the channel balance (10 BTC) according to their channel balances, in this case 9 BTC to Alice  and 1 BTC to Bob.
+The commitment transaction of a regular payment channel can be visualized as above. It contains a single input. This input represents the channel point, or transaction ID of the channel. The transaction referenced by this input is recorded on the blockchain and can only be spent with a transaction signed both by Bob and Alice. The commitment transaction is signed by both Alice and Bob, and spends the channel balance (10 BTC) according to their channel balances, in this case 9 BTC to Alice and 1 BTC to Bob.
 
 ## **2) A HTLC is created**
 
-![](../../.gitbook/assets/htlc\_02.png)
+![](../../.gitbook/assets/htlc_02.png)
 
 Alice is now presented with an invoice over 1 BTC. She creates a new commitment transaction that reduces her balance to 8 BTC, while keeping Bob’s balance at 1 BTC. A new output over 1 BTC is created. This output is the HTLC, and follows the rules of a HTLC as outlined above. The script of this address might look like this:
 
@@ -43,7 +43,7 @@ Depending on the route chosen, Bob might now forward this HTLC by creating a new
 
 ## 3) A HTLC is consolidated
 
-![](../../.gitbook/assets/htlc\_03.png)
+![](../../.gitbook/assets/htlc_03.png)
 
 Once the recipient of the 1 BTC payment sees a commitment transaction with a 1 BTC HTLC made to the hash of the preimage, they can safely reveal the preimage. Now, the HTLC can be consolidated back into the channel balance. In this case, Bob will create a new commitment transaction that removes the HTLC output and instead adds its balance to his channel balance. Alice, aware that Bob knows the preimage and could claim the HTLC on-chain, has an interest in co-signing this new commitment transaction. The payment cycle is complete.
 

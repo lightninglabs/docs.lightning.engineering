@@ -4,7 +4,7 @@ description: >-
   and how you can optimize your node's liquidity.
 ---
 
-# ⭐ Understanding Liquidity
+# Understanding Liquidity
 
 In the context of the Lightning Network, liquidity refers to the ability to move funds between participants on the network. Correctly defining and [managing liquidity](manage-liquidity.md) can be complex on the Lightning Network, but this complexity is rewarded by the more fluid movement of value in comparison to other systems or networks.
 

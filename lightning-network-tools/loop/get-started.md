@@ -2,7 +2,7 @@
 description: Install Loopd from source or the binaries
 ---
 
-# 🛠️ Get Started
+# Get Started
 
 ## Install Loop <a href="#docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5" id="docs-internal-guid-a15d1019-7fff-cd65-8961-f4145a3bd0d5"></a>
 

@@ -1,4 +1,4 @@
-# 📋 Protocol Specification
+# Protocol Specification
 
 ## Introduction <a href="#introduction" id="introduction"></a>
 

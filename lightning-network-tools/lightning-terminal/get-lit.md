@@ -4,7 +4,7 @@ description: >-
   LND installation, or move an existing system to litd.
 ---
 
-# 🛠️ Get litd
+# Get litd
 
 Litd gives your node access to features such as LND Accounts or LNC while bundling LND with Loop, Pool, Faraday, and Taproot Assets.
 

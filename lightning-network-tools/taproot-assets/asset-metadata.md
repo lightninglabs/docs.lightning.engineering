@@ -20,7 +20,7 @@ The total supply of your asset. This will include the decimal places. An asset w
 **Decimal display**\
 The number of decimal places your asset will have. Two decimal places would allow only for cents, while six decimal places would allow for micro-units. Too few decimal places can result in rounding errors when transferring assets over the Lightning Network. You can choose up to 12 decimal places.
 
-[Learn more: Decimal displays](decimal-display.md)
+[Learn more: Decimal display](decimal-display.md)
 
 **Grouped Asset**\
 For grouped assets the total supply can later be inflated, while ungrouped assets have a permanently fixed supply.

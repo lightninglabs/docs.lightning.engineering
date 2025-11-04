@@ -11,7 +11,7 @@ A static Loop In Address is the timeout address that holds the funds to a new ty
 
 1. Lower onchain fees: Fees may be set more conservatively, as their inclusion in a block is not time sensitive.
 2. Instant liquidity deployment: A Loop In from a static address no longer requires confirmations, allowing for capital to be deployed offchain instantly at low cost.
-3. Flexible amounts: You may deposit any amount in multiple transactions to your address, and Loop In all or any combination of your deposits.  In the future you may Loop In fractions of your deposit as well.
+3. Flexible amounts: You may deposit any amount in multiple transactions to your address, and Loop In all or any combination of your deposits. In the future you may Loop In fractions of your deposit as well.
 4. Change your mind: You may withdraw your onchain funds from a Loop In Address at any time. This allows you to use such an address in lieu of your primary hot wallet without losing control of your funds.
 5. Send change to static addresses: To avoid small UTXOs in your wallet, you may send change to a Loop In Address. Channels may also be cooperatively closed directly into a Loop In Address.
 
@@ -64,7 +64,7 @@ The command `listunspent` will show you all the Loop In Address deposits that ar
 }
 ```
 
-Similarly, `loop static listdeposits` will show you all available and completed Loop In actions with sufficient confirmations. A deposit will show up in this list once it has six confirmations on the Bitcoin blockchain. Withdrawn or expired deposits, completed Loop Ins, as well as various error messages will also appear here.&#x20;
+Similarly, `loop static listdeposits` will show you all available and completed Loop In actions with sufficient confirmations. A deposit will show up in this list once it has six confirmations on the Bitcoin blockchain. Withdrawn or expired deposits, completed Loop Ins, as well as various error messages will also appear here.
 
 ```
 {
@@ -90,9 +90,9 @@ Similarly, `loop static listdeposits` will show you all available and completed 
 
 ```
 
-You are also able to use your static Loop In Address as a regular onchain wallet. As any static address deposit is just a pay-to-taproot output, transactions from these addresses are not more or less expensive than transactions from your internal LND wallet. The command `loop static withdraw` allows you to spend all or specific UTXOs to a specified address.
+You are also able to use your static Loop In Address as a regular onchain wallet. As any static address deposit is just a pay-to-taproot output, transactions from these addresses are not more or less expensive than transactions from your internal LND wallet. The command `loop static withdraw` allows you to spend any amounts to a specified address.
 
-You can perform the swap into your Lightning channel balance with `loop static in`. You will be able to select which UTXOs to swap and optionally which channel you wish the payment to arrive in.
+You can perform the swap into your Lightning channel balance with `loop static in`. You will be able to select which UTXOs to swap, how much to swap and optionally which channel you wish the payment to arrive in.
 
 ```
 {
@@ -156,4 +156,4 @@ The command `loop static summary` will show you the number of deposits, the time
 }
 ```
 
-At this point in time only one static Loop In Address is available per user, and each UTXO has to be swapped in its entirety. Loop will expand its offerings in the future to allow for multiple static addresses and partial swaps.
+At this point in time only one static Loop In Address is available per user. Loop will expand its offerings in the future to allow for multiple static addresses and channel opens.

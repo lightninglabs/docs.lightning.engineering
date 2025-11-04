@@ -118,7 +118,7 @@ In the context of LND’s development path, database migrations have two compone
 
 #### Move backend
 
-The switch to SQLite/Postgres is made possible with the lndinit [migration script](https://github.com/lightninglabs/lndinit/blob/migrate-db/docs/data-migration.md). This tool migrates LND bbolt databases to either SQLite or Postgres, preserving the key-value (kvdb) data structure. Use this tool if you are looking to migrate your LND backend from bbolt to SQLite.
+The switch to SQLite/Postgres is made possible with the lndinit [migration script](https://github.com/lightninglabs/lndinit/blob/main/docs/data-migration.md). This tool migrates LND bbolt databases to either SQLite or Postgres, preserving the key-value (kvdb) data structure. Use this tool if you are looking to migrate your LND backend from bbolt to SQLite.
 
 {% hint style="info" %}
 Migrating to Postgres using this tool is currently not recommended. The key-value schema can lead to poor performance in Postgres, especially for older nodes with large amounts of Payment and Invoice data. Performance issues on Postgres will be addressed in future releases with additional data store migration to native SQL schema.
@@ -163,7 +163,7 @@ When performing in a high fee environment, these settings may help reduce the ov
 
 `coin-selection-strategy=largest # (default: random)`
 
-Setting the fee estimate mode to economical and increasing the target confirmations for onchain transactions can also help save on fees, but with the risk that some transactions may not confirm in time, requiring more manual monitoring and eventual intervention.&#x20;
+Setting the fee estimate mode to economical and increasing the target confirmations for onchain transactions can also help save on fees, but with the risk that some transactions may not confirm in time, requiring more manual monitoring and eventual intervention.
 
 `bitcoind.estimatemode=ECONOMICAL # (default: CONSERVATIVE)`\
 `coop-close-target-confs=1000`

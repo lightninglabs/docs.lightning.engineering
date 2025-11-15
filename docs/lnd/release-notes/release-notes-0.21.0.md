@@ -21,6 +21,11 @@
 
 # Bug Fixes
 
+- Chain notifier RPCs now [return the gRPC `Unavailable`
+  status](https://github.com/lightningnetwork/lnd/pull/10352) while the
+  sub-server is still starting. This allows clients to reliably detect the
+  transient condition and retry without brittle string matching.
+
 # New Features
 
 - Basic Support for [onion messaging forwarding](https://github.com/lightningnetwork/lnd/pull/9868) 
@@ -36,6 +41,12 @@
 
 # Improvements
 ## Functional Updates
+
+* [Added support](https://github.com/lightningnetwork/lnd/pull/9432) for the
+  `upfront-shutdown-address` configuration in `lnd.conf`, allowing users to
+  specify an address for cooperative channel closures where funds will be sent.
+  This applies to both funders and fundees, with the ability to override the
+  value during channel opening or acceptance.
 
 ## RPC Updates
 
@@ -64,4 +75,6 @@
 
 # Contributors (Alphabetical Order)
 
+* Boris Nagaev
 * Elle Mouton
+* Nishant Bansal

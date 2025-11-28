@@ -70,6 +70,11 @@ BTCPay contains an installation script for litd, which makes it easy to include 
    `BTCPAYGEN_ADDITIONAL_FRAGMENTS="$BTCPAYGEN_ADDITIONAL_FRAGMENTS;opt-add-lightning-terminal"`\
    `. btcpay-setup.sh -i`
 3. You can now find litd under Server Settings > Services
+4. To interact with `litd` and its subservers through the command line, first enter the docker container of your BTCPay instance:\
+   `docker exec -it generated_lnd_lit_1 bash`
+5. Then, specify the TLS path and RPC port for your commands, e.g.:\
+   `loop --tlscertpath /root/.lit/tls.cert --rpcserver localhost:8443 getinfo`\
+   `litcli --tlscertpath /root/.lit/tls.cert --rpcserver localhost:8443 status`\
+   `tapcli --tlscertpath /root/.lit/tls.cert --rpcserver localhost:8443 getinfo`
 
 [Continue here: Connect to Terminal](connect.md)
-

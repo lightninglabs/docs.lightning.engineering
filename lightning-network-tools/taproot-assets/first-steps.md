@@ -193,7 +193,7 @@ To generate such an address, only the group key is required.
 
 #### Non-interactive Taproot Assets addresses
 
-Non-interactive Taproot Assets addresses arespecific to an asset and amount, so to generate an address, the recipient needs to know an asset’s asset\_id, as well as be synced to the issuer’s universe. Reuse of non-interactive Taproot Assets address reuse should be avoided. This type of transfer is ideal when the asset ID is known and the amount is fixed. The recipient does not need to be online during the transfer.
+Non-interactive Taproot Assets addresses are specific to an asset and amount, so to generate an address, the recipient needs to know an asset’s `asset_id`, as well as be synced to the issuer’s universe. Reuse of non-interactive Taproot Assets addresses should be avoided. This type of transfer is ideal when the asset ID is known and the amount is fixed. The recipient does not need to be online during the transfer.
 
 `tapcli addrs new --asset_id b9ae86f52dcbdee7ea78e86b26320819c44c2f4f8a91b9c055ca0af4c4d1b22b --amt 21`
 
@@ -201,7 +201,7 @@ Non-interactive Taproot Assets addresses arespecific to an asset and amount, so 
 
 #### Interactive Taproot Assets transactions <a href="#docs-internal-guid-18439dd9-7fff-260c-8c17-b1a80524770f" id="docs-internal-guid-18439dd9-7fff-260c-8c17-b1a80524770f"></a>
 
-To send the asset in the interactive flow, the sender can then use the tapcli assets send command, using the generated taproot asset address and the amount, separated by a colon. For this type of send, address reuse is acceptable or even encouraged, but both the sender and the receiver are expected to be online simultaneously.
+To send the asset in the interactive flow, the sender can then use the `tapcli assets send` command, using the generated Taproot Asset address and the amount, separated by a colon. For this type of send, address reuse is acceptable or even encouraged, but both the sender and the receiver are expected to be online simultaneously.
 
 `tapcli assets send --addr_with_amount taptb1qqqsyqspqqzjzq58tnjqndv85ejkx4mrn5ye4k0tpquk6r074zfs5308gtyp6m78sgrzzqaaxepdtxjlytle39tjem4mh88hyg7jxpwrn3nkq7mdt95hpw0rpyyzzqcf0vcytzhvhy5mze28ye4zzrm5c38av735md2382zmzxc07zfzcs9qzqqv8ash2argd4skjmrzdauzkatwd9mx2unnv4e8qce69uhhx6t8dejhgtn4de5hvetjwdjjumrfva58gmnfdenjuenfdeskucm98g6rgvc8ar5ce:100`
 
@@ -237,7 +237,7 @@ To send the asset in the interactive flow, the sender can then use the tapcli as
 
 #### Non-interactive Taproot Assets transactions <a href="#docs-internal-guid-30a129a3-7fff-2f33-f0c1-921bb94b13ba" id="docs-internal-guid-30a129a3-7fff-2f33-f0c1-921bb94b13ba"></a>
 
-To send the asset to a non-interactive Taproot Asset address, run the command below from the tapd instance of the sender. This will generate the appropriate Merkle trees for the recipient and their change outputs, sign the Taproot Assets transaction with their internal Taproot Assets key and publish the Bitcoin transaction. Note that you cannot send unconfirmed assets.
+To send the asset to a non-interactive Taproot Asset address, run the command below from the `tapd` instance of the sender. This will generate the appropriate Merkle trees for the recipient and their change outputs, sign the Taproot Assets transaction with their internal Taproot Assets key and publish the Bitcoin transaction. Note that you cannot send unconfirmed assets.
 
 `tapcli assets send --addr taptb1qqqszqspqqzzpwdwsm6jmj77ul4836rtyceqsxwyfsh5lz53h8q9tjs27nzdrv3tq5ssy535xeq397p75lhgud0sv8tzthuzacr7gsur2yregl3mk5lgaxluqcss9z9grekhnm97ymknzptz6zptw22cn54u3tdwqphnl5kwthqafzyapqss8zlu9rqjndpjjxa7xue6csqg7l6u7r8vw2hpw8v23mmdckktqhlzpgq32rpkw4hxjan9wfek2unsvvaz7tm5v4ehgmn9wsh82mnfwejhyum99ekxjemgw3hxjmn89enxjmnpde3k2w33xqcrywgs04lws --sat_per_vbyte 16`
 
@@ -245,7 +245,7 @@ You’ll also be able to inspect this address again anytime with the command `ta
 
 Once the transaction is confirmed on the Bitcoin Blockchain the sender will attempt to make the proofs available to the recipient via an [end-to-end encrypted mailbox](../lightning-terminal/lightning-node-connect.md), similar to Lightning Node Connect (LNC).
 
-By default, this mailbox is set to your default universe, but you can [run your own mailbox through aperture](../aperture/mailbox.md) and configure tapd to use it by specifying the `--hashmailcourier.addr=` flag at startup.
+By default, this mailbox is set to your default universe, but you can [run your own mailbox through aperture](../aperture/mailbox.md) and configure `tapd` to use it by specifying the `--hashmailcourier.addr=` flag at startup.
 
 {% embed url="https://www.youtube.com/watch?v=o30AiqbsYhw" %}
 Tapping into Taproot Assets #7: Send from the CLI

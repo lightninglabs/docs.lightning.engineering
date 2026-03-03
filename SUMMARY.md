@@ -36,6 +36,7 @@
   * [Macaroons](the-lightning-network/l402/macaroons.md)
   * [L402](the-lightning-network/l402/l402.md)
   * [Protocol Specification](the-lightning-network/l402/protocol-specification.md)
+  * [L402 Quickstart](the-lightning-network/l402/l402-quickstart.md)
   * [Implementations and Links](the-lightning-network/l402/implementations-and-links.md)
 * [Taproot Assets](the-lightning-network/taproot-assets/README.md)
   * [Taproot Assets Protocol](the-lightning-network/taproot-assets/taproot-assets-protocol.md)

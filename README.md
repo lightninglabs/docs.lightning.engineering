@@ -7,12 +7,6 @@ description: >-
 
 # Welcome to the Builder's Guide to the LND Galaxy!
 
-
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
 Start here if the terms "payment channel" and "hash time-locked contract" are foreign to you.
 
 {% content-ref url="lightning-network-tools/lnd/" %}
@@ -49,18 +43,6 @@ Taproot Assets is a protocol for issuing assets on the bitcoin blockchain that c
 [l402.md](the-lightning-network/l402/l402.md)
 {% endcontent-ref %}
 
-Lightning Service Authentication Tokens cleverly combine the capabilities of macaroons with that of a Lightning payment, making it easy to charge satoshis for API requests.
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-We have you covered if you're starting with your first LAPP or running a professional service and want to leverage best practices when it comes to APIs, channel backups, key management, et al.
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-If you're looking for inspiration, we've included a sampling of community projects for you to look to. We hope you add whatever you build to this page!
+L402 tokens cleverly combine the capabilities of macaroons with that of a Lightning payment, making it easy to charge satoshis for API requests.
 
 Additional external resources include our [Developer Slack](https://lightning.engineering/slack.html), [Github organization](https://github.com/lightninglabs), and [API documentation, including LND, Loop, Pool, Faraday & Taproot Assets](https://lightning.engineering/api-docs/).

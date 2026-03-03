@@ -126,7 +126,7 @@ A channel that is always online and able to route payments in both directions is
 
 Chantools is a channel and fund recovery tool for -> Lightning nodes written by Oliver Gugger.
 
-[Further reading: Chantools source repository](https://github.com/guggero/chantools)&#x20;
+[Further reading: Chantools source repository](https://github.com/guggero/chantools)
 
 ## Circular Rebalance
 
@@ -146,7 +146,7 @@ Check Lock-time Verify is a functionality in Bitcoin that allows us to lock Bitc
 
 Clustering allows us to use multiple [LND](glossary.md#the-lightning-network-daemon) nodes to form a cluster, in which we can delegate specific tasks such as managing invoices or maintaining channels for performance or security purposes.
 
-[Read more: LND clustering](broken-reference)
+[Read more: LND clustering](broken-reference/)
 
 ## Commitment <a href="#docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776" id="docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776"></a>
 
@@ -192,7 +192,7 @@ Eltoo (from L2) is a proposed upgrade to the Lightning Network, enabling new fun
 
 An explorer is software or a service that lets you inspect transactions, nodes, and network metrics. There are explorers focusing mainly on on-chain data as well as Lightning Network explorers.
 
-[Read more: Community Resources](broken-reference)
+[Read more: Community Resources](broken-reference/)
 
 ## Faraday
 
@@ -508,7 +508,7 @@ Probing is the act of attempting payments through the Lightning Network without 
 
 ## PTLC <a href="#docs-internal-guid-f7f705f0-7fff-5ce7-0536-1425d31c86d4" id="docs-internal-guid-f7f705f0-7fff-5ce7-0536-1425d31c86d4"></a>
 
-Point Time-locked Contracts (PTLCs) are a proposed improvement on [HTLCs](glossary.md#hash-time-lock-contract). It uses homomorphic one-way functions instead of hashes. When using PTLCs, there is no single [preimage](glossary.md#preimage) across a [payment route](glossary.md#route), but instead each hop calculates its own secret.  Using unique secrets per hop reduces the ability of an intermediary to trace the route a payment takes in the Lightning Network.
+Point Time-locked Contracts (PTLCs) are a proposed improvement on [HTLCs](glossary.md#hash-time-lock-contract). It uses homomorphic one-way functions instead of hashes. When using PTLCs, there is no single [preimage](glossary.md#preimage) across a [payment route](glossary.md#route), but instead each hop calculates its own secret. Using unique secrets per hop reduces the ability of an intermediary to trace the route a payment takes in the Lightning Network.
 
 ## Public key
 
@@ -574,7 +574,7 @@ A Sparse Merkle Sum tree (SMST) combines the properties of a -> Sparse Merkle tr
 
 ## Sparse Merkle Tree <a href="#docs-internal-guid-3885545f-7fff-a51b-405a-54b62b6131d5" id="docs-internal-guid-3885545f-7fff-a51b-405a-54b62b6131d5"></a>
 
-A Sparse Merkle Tree (SMT) is a data structure that, in addition to a normal [Merkle-tree's](glossary.md#docs-internal-guid-43b3bcf6-7fff-bef3-8e7d-b1830f39b88b) ability to produce inclusion proofs, is able to provide non-inclusion proofs. This is achieved by placing an object at a [leaf](glossary.md#docs-internal-guid-008d8ad9-7fff-b03b-3f77-c851c431877d) location defined by the binary expression of the SHA256 digest of that data.  Each bit, of the digest, expresses the left-right traversal in a binary tree to locate the object.  When the contents of many of the leaves are empty, many of the branches are null, leading to efficient computation during SMT generation and modification.
+A Sparse Merkle Tree (SMT) is a data structure that, in addition to a normal [Merkle-tree's](glossary.md#docs-internal-guid-43b3bcf6-7fff-bef3-8e7d-b1830f39b88b) ability to produce inclusion proofs, is able to provide non-inclusion proofs. This is achieved by placing an object at a [leaf](glossary.md#docs-internal-guid-008d8ad9-7fff-b03b-3f77-c851c431877d) location defined by the binary expression of the SHA256 digest of that data. Each bit, of the digest, expresses the left-right traversal in a binary tree to locate the object. When the contents of many of the leaves are empty, many of the branches are null, leading to efficient computation during SMT generation and modification.
 
 ## Sphinx
 
@@ -642,7 +642,7 @@ Unspent transaction outputs (unspent utxos) are funds available [on-chain](gloss
 
 A wallet that is aware of balances and transactions, but does not possess the keys necessary to spend them. A watch-only wallet can create unsigned [PSBTs](glossary.md#partially-signed-bitcoin-transactions) which are then signed by the wallet holding the keys.
 
-[Read more: Key import](../docs/lnd/key_import.md)
+[Read more: Key import](../lightning-network-tools/lnd/key_import.md)
 
 ## Watchtower
 

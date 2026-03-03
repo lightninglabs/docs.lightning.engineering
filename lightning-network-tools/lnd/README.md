@@ -22,8 +22,8 @@ LND's API documentation
 [first-steps-with-lnd.md](first-steps-with-lnd.md)
 {% endcontent-ref %}
 
-{% content-ref url="../../docs/lnd/wallet.md" %}
-[wallet.md](../../docs/lnd/wallet.md)
+{% content-ref url="wallet.md" %}
+[wallet.md](wallet.md)
 {% endcontent-ref %}
 
 {% content-ref url="payments.md" %}
@@ -58,16 +58,16 @@ LND's API documentation
 [watchtower.md](watchtower.md)
 {% endcontent-ref %}
 
-{% content-ref url="../../docs/lnd/key_import.md" %}
-[key\_import.md](../../docs/lnd/key_import.md)
+{% content-ref url="key_import.md" %}
+[key\_import.md](key_import.md)
 {% endcontent-ref %}
 
 {% content-ref url="secure-your-lightning-network-node.md" %}
 [secure-your-lightning-network-node.md](secure-your-lightning-network-node.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="broken-reference/" %}
+[broken-reference](broken-reference/)
 {% endcontent-ref %}
 
 {% content-ref url="quick-tor-setup.md" %}
@@ -94,8 +94,8 @@ LND's API documentation
 [fuzz.md](fuzz.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="broken-reference/" %}
+[broken-reference](broken-reference/)
 {% endcontent-ref %}
 
 {% content-ref url="channel-acceptor.md" %}
@@ -106,8 +106,8 @@ LND's API documentation
 [rpc-middleware-interceptor.md](rpc-middleware-interceptor.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="broken-reference/" %}
+[broken-reference](broken-reference/)
 {% endcontent-ref %}
 
 {% content-ref url="nat_traversal.md" %}

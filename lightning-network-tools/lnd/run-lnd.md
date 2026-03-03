@@ -41,12 +41,14 @@ You can find up-to-date releases of binaries for various operating systems and a
 **Verification:**\
 Each release is signed by multiple developers. You may find their keys in the [LND repository here](https://github.com/lightningnetwork/lnd/tree/master/scripts/keys). Import these keys and verify the signatures.
 
-`gpg –import key.asc`\
-`gpg --verify manifest-beta.sig manifest-beta.txt`
+`gpg --import key.asc`\
+`gpg --verify manifest-v[latest]-beta.txt.sig manifest-v[latest]-beta.txt`
 
 Lastly, you will compare the hash of the .tar.gz file with the hash listed in the manifest.
 
-`sha256sum lnd.tar.gz`
+`echo "$(cat manifest-v[latest version].txt)" | sha256sum -c --ignore-missing`
+
+The output should print "OK" for each matching sum.
 
 **Unpack:**\
 Unpack the compressed tarball to retrieve the binaries.
@@ -96,14 +98,21 @@ Congratulations, you have successfully installed LND using the binary release. [
 
 For those familiar with Docker, or those interested in easily running a variety of software alongside each other, the Docker installation is a convenient and quick way to get started with lightning.
 
-To install LND via Docker you will need docker, make and bash on your system. You can install lnd with the following commands:
+To install LND via Docker you will need docker, make and bash on your system. You can build lnd with the following commands:
 
 `git clone https://github.com/lightningnetwork/lnd`\
 `cd lnd`\
 `git checkout <latest-release>`\
-`make docker-release tag=<latest-release>`
+`docker build --build-arg checkout=<latest-release> -t lnd:<latest-release> .`
 
-You are now able to find the images in the directory `/lnd` for your use. Congratulations, you have successfully installed LND using the docker. [Jump to Configuring LND](run-lnd.md#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17).
+You can now run the container with `docker run -d --name lnd -v ~/.lnd:/root/.lnd -p 9735:9735 -p 10009:10009 lnd:v0.20.0-beta`<br>
+
+You may also install LND using the images provided through dockerhub:
+
+`docker pull lightninglabs/lnd:<latest release>`\
+`docker run lightninglabs/lnd [command-line options]`
+
+[Jump to Configuring LND](run-lnd.md#docs-internal-guid-5ec077cf-7fff-8995-7975-30492f03ed17).
 
 ### Installing LND using third-party scripts
 
@@ -144,8 +153,6 @@ Your btcd backend needs RPC enabled.
 
 `rpcuser=[any username]`\
 `rpcpass=[any unique password of your choosing]`
-
-
 
 ### Configuring LND <a href="#docs-internal-guid-1c142120-7fff-1b35-7b66-af56937af371" id="docs-internal-guid-1c142120-7fff-1b35-7b66-af56937af371"></a>
 

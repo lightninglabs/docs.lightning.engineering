@@ -55,4 +55,6 @@ You should now be able to download or access the gated resource.
 
 As a server, you will need an L402 proxy, such as [Aperture](../../lightning-network-tools/aperture/). This proxy will need a connection to a Lightning Network node or service to generate invoices. Whether an L402 is valid can be verified using only the root key of the macaroon, without checking with the node whether the payment was received.
 
-[get-aperture.md](../../lightning-network-tools/aperture/get-aperture.md "mention")
+{% content-ref url="../../lightning-network-tools/aperture/get-aperture.md" %}
+[get-aperture.md](../../lightning-network-tools/aperture/get-aperture.md)
+{% endcontent-ref %}

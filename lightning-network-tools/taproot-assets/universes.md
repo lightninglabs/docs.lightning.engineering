@@ -10,7 +10,7 @@ Anyone may run a universe, or use one or multiple universes provided by others, 
 
 ## Your local universe <a href="#docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f" id="docs-internal-guid-a793947b-7fff-5e06-ddbf-f64bd25da85f"></a>
 
-When running `tapd`, you will run a private universe by default. In this mode, all RPC calls to the universe require authentication using the tapd macaroon. To disable macaroon authentication for the `QueryProof and InsertProof` RPC calls, you may set the following configuration flag:
+When running `tapd`, you will run a private universe by default. In this mode, all RPC calls to the universe require authentication using the tapd macaroon. To disable macaroon authentication for the `QueryProof` and `InsertProof` RPC calls, you may set the following configuration flag:
 
 ```
 allow-public-uni-proof-courier=true

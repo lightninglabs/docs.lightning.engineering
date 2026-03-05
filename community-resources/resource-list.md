@@ -9,7 +9,7 @@ description: >-
 ## Lightning Nodes <a href="#docs-internal-guid-7210ac49-7fff-7899-6ea7-d8acfa68cd8e" id="docs-internal-guid-7210ac49-7fff-7899-6ea7-d8acfa68cd8e"></a>
 
 * [LND](https://github.com/lightningnetwork/lnd) - developed in Go by Lightning Labs
-* [c-Lightning](https://github.com/ElementsProject/lightning) - developed in C by Blockstream
+* [Core Lightning](https://github.com/ElementsProject/lightning) - developed in C by Blockstream
 * [eclair](https://github.com/ACINQ/eclair) - developed in Scala by ACINQ
 * [Electrum](https://electrum.org) - developed in Python by Thomas Voegtlin
 * [Rust Lightning](https://github.com/rust-bitcoin/rust-lightning) - developed in Rust
@@ -22,7 +22,7 @@ description: >-
 * [Blixt Wallet](https://blixtwallet.github.io) ([Github](https://github.com/hsjoberg/blixt-wallet)) - available in Google Play and for iOS
 * [Breez](https://breez.technology) ([Github](https://github.com/breez/breezmobile)) - available in Google Play and for iOS
 * [Electrum](https://electrum.org) ([Github](https://github.com/spesmilo/electrum)) - available for Linux, OSX, Windows and Android
-* [Mutiny](https://app.mutinywallet.com/) ([Github](https://github.com/MutinyWallet/)) -  available for all browsers
+* [Mutiny](https://app.mutinywallet.com/) ([Github](https://github.com/MutinyWallet/)) - available for all browsers
 * [Muun](https://muun.com) ([Github](https://github.com/muun)) - available on Google Play and the Apple AppStore
 * [Open Bitcoin Wallet](https://f-droid.org/en/packages/wtf.nbd.obw/) ([Github](https://github.com/nbd-wtf/obw)) - available in F-Droid
 * [Phoenix](https://phoenix.acinq.co) ([Github](https://github.com/ACINQ/phoenix)) - available on Google Play and the Apple AppStore

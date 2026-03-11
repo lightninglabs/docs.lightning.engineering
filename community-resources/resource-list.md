@@ -56,7 +56,6 @@ description: >-
 
 * [Boltwall](https://github.com/Tierion/boltwall) - paywall and authentication using LSATs built with Node.js and Typescript
 * [Lightning Faucet](https://github.com/lightninglabs/lightning-faucet) - opens a payment channel with the target user
-* [Lightning Memory](https://github.com/singularityjason/lightning-memory) - An open-source MCP server that gives AI agents persistent memory for the Lightning economy
 * [Lightning Terminal](https://terminal.lightning.engineering/#/) - a browser-based interface for managing channel liquidity
 * [LNBig Server](https://github.com/LNBIG-COM/lnbig-server) - lnbig autopilot and rebalancing engin[e](https://github.com/apotdevin/thunderhub)
 * [Ride the Lightning](https://github.com/Ride-The-Lightning/RTL) - node management via Node.js

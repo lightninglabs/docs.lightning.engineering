@@ -632,7 +632,7 @@ A unique asset is an asset that is not divisible, and cannot be exchanged for an
 
 ## Universe <a href="#docs-internal-guid-ed1dfbe4-7fff-b3c7-6199-85713fa053a6" id="docs-internal-guid-ed1dfbe4-7fff-b3c7-6199-85713fa053a6"></a>
 
-A universe is a repository for [Taproot Assets](../lightning-network-tools/taproot-assets/universes.md). It serves information such as metadata and proofs to prospective and existing users and holders of such assets.
+A universe is a repository for [Taro](glossary.md#docs-internal-guid-7cc2614e-7fff-6a58-76d9-4f295cc1a60e) assets. It serves information such as metadata and proofs to prospective and existing users and holders of such assets.
 
 ## Unspent Transaction Outputs
 

@@ -11,12 +11,6 @@ description: >-
 
 It primarily helps users understand how capital is flowing through their node, which is useful to help identify underperforming or drained channels and where to deploy capital most efficiently.
 
-{% content-ref url="get-started.md" %}
-[get-started.md](get-started.md)
-{% endcontent-ref %}
+[get-started.md](get-started.md "mention")
 
-{% content-ref url="the-faraday-cli.md" %}
-[the-faraday-cli.md](the-faraday-cli.md)
-{% endcontent-ref %}
-
-{% embed url="https://lightning.engineering/api-docs/api/faraday/" %}
+[the-faraday-cli.md](the-faraday-cli.md "mention")

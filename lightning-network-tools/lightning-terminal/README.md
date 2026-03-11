@@ -105,5 +105,3 @@ Through Terminal, you can easily, securely and privately manage your Lightning n
 {% content-ref url="tos.md" %}
 [tos.md](tos.md)
 {% endcontent-ref %}
-
-{% embed url="https://lightning.engineering/api-docs/api/lit/" %}

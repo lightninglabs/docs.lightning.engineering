@@ -167,10 +167,6 @@ Now we can check our groups. They are ordered by their tweaked group key.
 
 To inspect your balances, run `tapcli assets balance`. To show the cumulative balance across asset groups, run `tapcli assets balance --by_group`
 
-{% hint style="info" %}
-The asset\_id is only known once the onchain transaction minting the asset has been created, as it is generated using the genesis ouput, the first input to the minting transaction. This ensures the asset\_id's uniqueness.
-{% endhint %}
-
 ## Synchronizing with a universe <a href="#docs-internal-guid-d7bd6e05-7fff-a92f-5b1d-a845abe07e3c" id="docs-internal-guid-d7bd6e05-7fff-a92f-5b1d-a845abe07e3c"></a>
 
 Taproot Assets uses universes to communicate information about which assets exist and where in the blockchain they are anchored. A universe can be thought of as a virtual mempool, an explorer, or a repository.

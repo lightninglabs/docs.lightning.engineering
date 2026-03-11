@@ -4,7 +4,7 @@ description: '"That''s planning for failure, Morty. Even dumber than regular pla
 
 # Recovery: Planning for Failure
 
-In order to achieve near-instant and cheap Bitcoin payments, the Lightning Network makes some tradeoffs in comparison to the Bitcoin base layer. One of those tradeoffs is that its security model is more complex.&#x20;
+In order to achieve near-instant and cheap Bitcoin payments, the Lightning Network makes some tradeoffs in comparison to the Bitcoin base layer. One of those tradeoffs is that its security model is more complex.
 
 To protect yourself from loss of funds or significant downtime, it is important to plan ahead for the unexpected.
 
@@ -68,4 +68,4 @@ Generally, if we have a channel with a peer that we don’t expect to come back 
 
 ## Be #craeful not #reckless
 
-The Lightning Network offers a multitude of options to recover from failure. LND continues to improve and eliminate bugs that might lead to a fatal node failure. If you encounter a bug, [file an issue](https://github.com/lightningnetwork/lnd/issues/) or contact us through[ Slack](https://lightning.engineering/slack.html),[ Discord](https://discord.gg/9u83Jxeu), and [Twitter](https://x.com/lightning/)!
+The Lightning Network offers a multitude of options to recover from failure. LND continues to improve and eliminate bugs that might lead to a fatal node failure. If you encounter a bug, [file an issue](https://github.com/lightningnetwork/lnd/issues/) or contact us through[ Slack](https://lightning.engineering/slack.html) and [Twitter](https://x.com/lightning/)!

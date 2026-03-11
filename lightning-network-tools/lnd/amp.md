@@ -20,13 +20,13 @@ Atomic Multi-path payments differ from existing Multi-path Payments (MPP) in tha
 
 In a regular Lightning payment, the payee generates a preimage and transmits its hash as part of the invoice. The Hash Time-lock Contract (HTLC) pays to this hash, and to claim their payment, the payee reveals the preimage, allowing everyone along the route to finalize the payment.
 
-In previous keysend payments, the sender generates the preimage and encrypts it in the onion payload of the payment, allowing the recipient to reveal it to claim their payment. Using AMP, the sender creates a single preimage, to which random values are added for each shard. The recipient is able to compute the original preimage using a XOR operation, meaning they are only able to claim the payment once all HTLCs are locked in, requiring them to claim the payment in full.&#x20;
+In previous keysend payments, the sender generates the preimage and encrypts it in the onion payload of the payment, allowing the recipient to reveal it to claim their payment. Using AMP, the sender creates a single preimage, to which random values are added for each shard. The recipient is able to compute the original preimage using a XOR operation, meaning they are only able to claim the payment once all HTLCs are locked in, requiring them to claim the payment in full.
 
 For a shard of size two this can be simplified as follows, with k being the preimage, and r being a random number:
 
 `* shard_1 = k ^ r`\
 `* shard_2 = r`\
-`shard_1 xor shard_2 = k ^ r ^ r  = k`
+`shard_1 xor shard_2 = k ^ r ^ r = k`
 
 The information necessary for the recipient node to generate the correct preimages and reveal them to claim their payments is passed on in encrypted form as part of the Onion TLV (Type Length Value). This removes the need for additional interaction between the payer and the payee beyond transmitting a node public key or an invoice.
 
@@ -40,7 +40,7 @@ To be able to make and send Atomic Multi-path Payments, you will need to upgrade
 
 If you want to be able to receive spontaneous AMPs, you will need to set `accept-amp=1` in your `lnd.conf` file before starting your upgraded node.
 
-You will be able to pay other AMP-enabled nodes with the command&#x20;
+You will be able to pay other AMP-enabled nodes with the command
 
 `lncli sendpayment --amt <amount> --dest <recipient’s public key> --amp`
 
@@ -54,13 +54,11 @@ Example usage:
 
 `lncli addinvoice --amt <amount in satoshis> --memo=’my first amp’ --amp`
 
-`lncli payinvoice --pay_req <the amp invoice created by the receiver>`
+`lncli payinvoice --pay_req <the amp invoice created by the receiver> --amp`
 
 `lncli sendpayment --amt <amount in satoshis> --dest <public key of receiver> --amp`
 
 `lncli payinvoice --pay_req <the amp invoice created by the receiver> --pay_addr <the sha256 hash of a random number>`
-
-`lncli payinvoice --pay_req <the amp invoice created by the receiver> --amp-reuse`
 
 ## Example: Generate a static donation QR code for your node
 

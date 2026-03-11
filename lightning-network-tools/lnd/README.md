@@ -66,10 +66,6 @@ LND's API documentation
 [secure-your-lightning-network-node.md](secure-your-lightning-network-node.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference/" %}
-[broken-reference](broken-reference/)
-{% endcontent-ref %}
-
 {% content-ref url="quick-tor-setup.md" %}
 [quick-tor-setup.md](quick-tor-setup.md)
 {% endcontent-ref %}
@@ -94,20 +90,12 @@ LND's API documentation
 [fuzz.md](fuzz.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference/" %}
-[broken-reference](broken-reference/)
-{% endcontent-ref %}
-
 {% content-ref url="channel-acceptor.md" %}
 [channel-acceptor.md](channel-acceptor.md)
 {% endcontent-ref %}
 
 {% content-ref url="rpc-middleware-interceptor.md" %}
 [rpc-middleware-interceptor.md](rpc-middleware-interceptor.md)
-{% endcontent-ref %}
-
-{% content-ref url="broken-reference/" %}
-[broken-reference](broken-reference/)
 {% endcontent-ref %}
 
 {% content-ref url="nat_traversal.md" %}
@@ -125,3 +113,5 @@ LND's API documentation
 {% content-ref url="disaster-recovery.md" %}
 [disaster-recovery.md](disaster-recovery.md)
 {% endcontent-ref %}
+
+{% embed url="https://lightning.engineering/api-docs/api/lnd/" %}

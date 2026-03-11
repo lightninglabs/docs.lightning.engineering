@@ -49,3 +49,5 @@ The Taproot Assets Daemon `tapd` implements the [Taproot Assets protocol](../../
 {% content-ref url="operational-safety-guidelines.md" %}
 [operational-safety-guidelines.md](operational-safety-guidelines.md)
 {% endcontent-ref %}
+
+{% embed url="https://lightning.engineering/api-docs/api/taproot-assets/" %}

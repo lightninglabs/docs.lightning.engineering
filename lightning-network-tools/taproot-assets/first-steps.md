@@ -167,6 +167,10 @@ Now we can check our groups. They are ordered by their tweaked group key.
 
 To inspect your balances, run `tapcli assets balance`. To show the cumulative balance across asset groups, run `tapcli assets balance --by_group`
 
+{% hint style="info" %}
+The asset\_id is only known once the onchain transaction minting the asset has been created, as it is generated using the genesis ouput, the first input to the minting transaction. This ensures the asset\_id's uniqueness.
+{% endhint %}
+
 ## Synchronizing with a universe <a href="#docs-internal-guid-d7bd6e05-7fff-a92f-5b1d-a845abe07e3c" id="docs-internal-guid-d7bd6e05-7fff-a92f-5b1d-a845abe07e3c"></a>
 
 Taproot Assets uses universes to communicate information about which assets exist and where in the blockchain they are anchored. A universe can be thought of as a virtual mempool, an explorer, or a repository.
@@ -183,7 +187,7 @@ Upon successful sync, information about existing assets should be retrieved, alo
 
 As soon as your minted assets have one confirmation on the blockchain, you are able to transfer them. You will first need the recipient’s Taproot Assets address. This address can either be interactive or non-interactive.
 
-#### Interactive Taproot Assets addresses  <a href="#docs-internal-guid-5eaf86ff-7fff-7c5f-fab8-1ef9e6931c07" id="docs-internal-guid-5eaf86ff-7fff-7c5f-fab8-1ef9e6931c07"></a>
+#### Interactive Taproot Assets addresses <a href="#docs-internal-guid-5eaf86ff-7fff-7c5f-fab8-1ef9e6931c07" id="docs-internal-guid-5eaf86ff-7fff-7c5f-fab8-1ef9e6931c07"></a>
 
 In situations where the asset ID is not known, for instance grouped assets, when the requested amount is flexible or a Taproot Assets address is meant to be reusable, interactive Taproot Assets addresses are preferable. The sender and recipient have to be both online to negotiate the transaction, although the final transaction may be submitted to the blockchain only at a later point.
 

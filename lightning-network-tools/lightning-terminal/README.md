@@ -4,7 +4,7 @@ description: Lightning Terminal is a web-based dashboard for Lightning Labs prod
 
 # Lightning Terminal
 
-Through Terminal, you can easily, securely and privately manage your Lightning node remotely, perform Loops, and buy and sell channels on Pool. With Terminal, you can always monitor your [node’s health](health-checks.md), channels, and balances no matter where you are. Terminal allows you to open channels, and rebalance your liquidity.&#x20;
+Through Terminal, you can easily, securely and privately manage your Lightning node remotely, perform Loops, and buy and sell channels on Pool. With Terminal, you can always monitor your [node’s health](health-checks.md), channels, and balances no matter where you are. Terminal allows you to open channels, and rebalance your liquidity.
 
 {% content-ref url="introduction.md" %}
 [introduction.md](introduction.md)
@@ -105,3 +105,5 @@ Through Terminal, you can easily, securely and privately manage your Lightning n
 {% content-ref url="tos.md" %}
 [tos.md](tos.md)
 {% endcontent-ref %}
+
+{% embed url="https://lightning.engineering/api-docs/api/lit/" %}

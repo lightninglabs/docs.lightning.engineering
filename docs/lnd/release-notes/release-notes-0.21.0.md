@@ -85,6 +85,14 @@
 
 ## Functional Enhancements
 
+* [Added reorg protection for channel
+  closes](https://github.com/lightningnetwork/lnd/pull/10331). Previously,
+  channel closes were considered final immediately on spend detection with no
+  confirmation waiting. Now, all channel closes require between 3 and 6
+  confirmations, scaled linearly with channel capacity up to the maximum
+  non-wumbo channel size (~0.168 BTC), with wumbo channels always requiring
+  6 confirmations.
+
 ## RPC Additions
 
 * [Added support for coordinator-based MuSig2 signing
@@ -150,6 +158,15 @@
 
 ## Breaking Changes
 
+* [Increased MinCLTVDelta from 18 to
+  24](https://github.com/lightningnetwork/lnd/pull/10331) to provide a larger
+  safety margin above the `DefaultFinalCltvRejectDelta` (19 blocks). This
+  affects users who create invoices with custom `cltv_expiry_delta` values
+  between 18-23, which will now require a minimum of 24. The default value of
+  80 blocks for invoice creation remains unchanged, so most users will not be
+  affected. Existing invoices created before the upgrade will continue to work
+  normally.
+
 * The [`GetDebugInfo`](https://github.com/lightningnetwork/lnd/pull/10613) RPC
   no longer returns log file content by default. Clients that rely on the `log`
   field must now explicitly set `include_log` to `true` in the request. The
@@ -176,6 +193,17 @@
     that duplicated UNIQUE constraints or were never used as query filters.
 
 ## Deprecations
+
+### ⚠️ **Warning:** Deprecated fields in `lnrpc.Hop` will be removed in release version **0.22**
+
+  The following deprecated fields in the [`lnrpc.Hop`](https://lightning.engineering/api-docs/api/lnd/lightning/send-to-route-sync/#lnrpchop)
+  message will be removed:
+
+  | Field | Deprecated Since | Replacement |
+  |-------|------------------|-------------|
+  | `chan_capacity` | 0.7.1 | None |
+  | `amt_to_forward` | 0.7.1 | `amt_to_forward_msat` |
+  | `fee` | 0.7.1 | `fee_msat` |
 
 ### ⚠️ **Warning:** The deprecated fee rate option `--sat_per_byte` will be removed in release version **0.22**
 
@@ -247,6 +275,12 @@
     migration](https://github.com/lightningnetwork/lnd/pull/10485) with
     comprehensive tests. The migration is currently dev-only, compiled behind
     the `test_db_postgres`, `test_db_sqlite`, or `test_native_sql` build tags.
+  * Various [SQL payment store
+    improvements](https://github.com/lightningnetwork/lnd/pull/10535):
+    optimize schema indexes, improve query performance for payment filtering
+    and failed attempt cleanup, fix cross-database timestamp handling, add
+    `omit_hops` option to `ListPayments` to reduce response size, and increase
+    the default SQLite cache size.
 
 
 ## Code Health

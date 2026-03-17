@@ -116,6 +116,10 @@
 # Improvements
 ## Functional Updates
 
+* [Allow multiple read-only RPC middleware
+  interceptors](https://github.com/lightningnetwork/lnd/pull/10611) to be
+  registered simultaneously.
+
 * [Added support](https://github.com/lightningnetwork/lnd/pull/9432) for the
   `upfront-shutdown-address` configuration in `lnd.conf`, allowing users to
   specify an address for cooperative channel closures where funds will be sent.
@@ -281,6 +285,11 @@
     and failed attempt cleanup, fix cross-database timestamp handling, add
     `omit_hops` option to `ListPayments` to reduce response size, and increase
     the default SQLite cache size.
+  * The [SQL payments migration is promoted to production
+    code](https://github.com/lightningnetwork/lnd/pull/10627). Previously the
+    migration was hidden behind the `test_native_sql` build tag; it is now
+    compiled into mainline builds and available to all users who have the
+    `native-sql` setting enabled.
 
 
 ## Code Health

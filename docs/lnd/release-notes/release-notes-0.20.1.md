@@ -48,6 +48,19 @@
   in the mission control store. Now we skip over potential errors and also
   delete them from the store.
 
+* [Fixed an issue](https://github.com/lightningnetwork/lnd/pull/10399) where the
+  TLS manager would fail to start if only one of the TLS pair files (certificate
+  or key) existed. The manager now correctly regenerates both files when either
+  is missing, preventing "file not found" errors on startup.
+
+* [Fixed race conditions](https://github.com/lightningnetwork/lnd/pull/10433) in
+  the channel graph database. The `Node.PubKey()` and
+  `ChannelEdgeInfo.NodeKey1/NodeKey2()` methods had check-then-act races when
+  caching parsed public keys. Additionally, `DisconnectBlockAtHeight` was
+  accessing the reject and channel caches without proper locking. The caching
+  has been removed from the public key parsing methods, and proper mutex
+  protection has been added to the cache access in `DisconnectBlockAtHeight`.
+
 * [Fix potential sql tx exhaustion 
   issue](https://github.com/lightningnetwork/lnd/pull/10428) in LND which might
   happen when running postgres with a limited number of connections configured.
@@ -68,6 +81,12 @@
   graph database due to a format change in how channel features are serialized.
   The fix adds automatic format detection to handle both legacy (raw feature
   bits) and new (length-prefixed) formats.
+
+* [Fixed a shutdown
+  deadlock](https://github.com/lightningnetwork/lnd/pull/10540) in the gossiper.
+  Certain gossip messages could cause multiple error messages to be sent on a
+  channel that was only expected to be used for a single message. The erring
+  goroutine would block on the second send, leading to a deadlock at shutdown.
 
 # New Features
 
@@ -139,5 +158,6 @@
 
 * Abdulkbk
 * bitromortac
+* Matt Morehouse
 * Olaoluwa Osuntokun
 * Ziggie

@@ -76,6 +76,15 @@
 
 ## RPC Additions
 
+* The `WaitingCloseChannel` response in `PendingChannels` now includes two
+  new fields via [#10509](https://github.com/lightningnetwork/lnd/pull/10509):
+  `blocks_til_close_confirmed`, showing the remaining confirmations until a
+  closed channel is considered fully resolved, and `close_height`, the block
+  height at which the closing transaction was first confirmed. These build on
+  the reorg-safe confirmation logic introduced in
+  [#10331](https://github.com/lightningnetwork/lnd/pull/10331), where the
+  required number of confirmations scales with channel capacity.
+
 * [Added support for coordinator-based MuSig2 signing
   patterns](https://github.com/lightningnetwork/lnd/pull/10436) with two new
   RPCs: `MuSig2RegisterCombinedNonce` allows registering a pre-aggregated

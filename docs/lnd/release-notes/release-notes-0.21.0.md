@@ -233,6 +233,11 @@
   invalid lengths, including roundtrip tests for Fee, Musig2Nonce,
   ShortChannelID and Vertex records.
 
+* [Added a bitcoind-backed miner backend to `lntest`](https://github.com/lightningnetwork/lnd/pull/10481).
+  Integration tests can now select the miner backend independently from the
+  chain backend, and CI now covers the `backend=bitcoind
+  minerbackend=bitcoind` path.
+
 ## Database
 
 * Freeze the [graph SQL migration 

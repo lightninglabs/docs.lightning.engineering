@@ -102,6 +102,10 @@
 
 * The `estimatefee` command now supports the `--utxos` flag to specify explicit
   inputs for fee estimation.
+* The `walletrpc.SignPsbt` now has a [corresponding `lncli wallet psbt sign`
+  command, and can be used to sign a
+  PSBT](https://github.com/lightningnetwork/lnd/pull/10659).
+  
 
 # Improvements
 ## Functional Updates

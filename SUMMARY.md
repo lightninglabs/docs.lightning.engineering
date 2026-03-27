@@ -73,6 +73,7 @@
   * [Partially Signed Bitcoin Transactions](lightning-network-tools/lnd/psbt.md)
   * [Bulk onchain actions with PSBTs](lightning-network-tools/lnd/bulk-psbt.md)
   * [Sweeper](lightning-network-tools/lnd/sweeper.md)
+  * [Probing with EstimateRouteFee](lightning-network-tools/lnd/probing-with-estimateroutefee.md)
   * [Debugging LND](lightning-network-tools/lnd/debugging_lnd.md)
   * [Fuzzing LND](lightning-network-tools/lnd/fuzz.md)
   * [LND API documentation](https://lightning.engineering/api-docs/api/lnd/)

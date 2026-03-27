@@ -136,7 +136,7 @@ From there, we are going to have to copy and rename them for aperture:
 
 ### Start Aperture
 
-We are now going to start aperture with:
+We are now going to start Aperture with:
 
 `aperture`
 

@@ -155,6 +155,7 @@
 * [Aperture](lightning-network-tools/aperture/README.md)
   * [Get Aperture](lightning-network-tools/aperture/get-aperture.md)
   * [Step by Step](lightning-network-tools/aperture/step-by-step.md)
+  * [Admin Services](lightning-network-tools/aperture/admin-services.md)
   * [LNC Backend](lightning-network-tools/aperture/lnc-backend.md)
   * [LNC Mailbox](lightning-network-tools/aperture/mailbox.md)
   * [Pricing](lightning-network-tools/aperture/pricing.md)

@@ -56,6 +56,20 @@
   transitions during startup, avoiding lost unlocks during slow database
   initialization.
 
+* [Fixed handling of BOLT 1 pings requesting 65532 or more pong
+  bytes](https://github.com/lightningnetwork/lnd/pull/10674). LND now ignores
+  these valid no-reply pings instead of disconnecting peers, restoring
+  compatibility with implementations that pad `channel_reestablish` messages
+  with them.
+ 
+* [Fixed `FundingPKScript` to honor the taproot feature bit on v1 channel
+  edges](https://github.com/lightningnetwork/lnd/pull/10672). Private taproot
+  channels stored as v1 gossip objects with the taproot staging feature bit
+  were having their funding scripts incorrectly reconstructed as legacy P2WSH
+  multisig. This affected read paths such as `ChannelView`, which rebuilds
+  the chain watch filter on restart. This was a pre-existing bug since
+  private taproot channels were first introduced.
+
 # New Features
 
 - [Basic Support](https://github.com/lightningnetwork/lnd/pull/9868) for onion
@@ -73,6 +87,17 @@
   confirmations, scaled linearly with channel capacity up to the maximum
   non-wumbo channel size (~0.168 BTC), with wumbo channels always requiring
   6 confirmations.
+
+* [Added taproot channel support for RBF cooperative
+  close](https://github.com/lightningnetwork/lnd/pull/10063). The new RBF-based
+  cooperative close protocol (enabled with `--protocol.rbf-coop-close`) now
+  fully supports simple taproot channels. This includes MuSig2 partial signature
+  handling with the JIT (just-in-time) nonce pattern, where closer nonces are
+  bundled with signatures in `ClosingComplete` and closee nonces are rotated via
+  `NextCloseeNonce` in `ClosingSig` for each RBF iteration. The implementation
+  prevents nonce reuse across RBF rounds by storing the `MusigPartialSig` in the
+  protocol state machine and invalidating nonces after each signing round
+  completes.
 
 ## RPC Additions
 

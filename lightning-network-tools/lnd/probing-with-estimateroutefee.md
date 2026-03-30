@@ -26,9 +26,9 @@ For nodes with public channels, EstimateRouteFee works using only the destinatio
 
 When failure\_reason is anything other than FAILURE\_REASON\_NONE, no usable route was found within the timeout. The fee fields are zero and should be ignored.
 
-The --timeout flag determines how long LND keeps trying alternative routes before giving up. The default is 60 seconds. For interactive UIs where users are waiting, 15–30 seconds is a reasonable trade-off. If an in-flight HTLC gets stuck, it may take longer than the timeout to resolve; cancelling the RPC call does not cancel the probe.
+The `--timeout` flag determines how long LND keeps trying to find a route before giving up. The default is 60 seconds. For interactive UIs where users are waiting, 15–30 seconds is a reasonable trade-off. If an in-flight HTLC gets stuck, it may take longer than the timeout to resolve. Cancelling the RPC call does not cancel the probe.
 
-The routing\_fee\_msat is a lower bound and may increase if channel policies or liquidity conditions change between the probe and the actual payment.
+The `routing_fee_msat` is a lower bound and may increase if channel policies or liquidity conditions change between the probe and the actual payment.
 
 ### Common Failure Codes
 
@@ -36,11 +36,11 @@ Commonly encountered codes include:
 
 `FAILURE_REASON_NONE`: Probe succeeded\
 `FAILURE_REASON_NO_ROUTE`:  No path found, likely due to insufficient liquidity or unknown route\
-`FAILURE_REASON_TIMEOUT`: The probe timed out before finding a route| `FAILURE_REASON_INSUFFICIENT_BALANCE`: Your node doesn't have enough balance to probe
+`FAILURE_REASON_TIMEOUT`: The probe timed out before finding a route`FAILURE_REASON_INSUFFICIENT_BALANCE`: Your node doesn't have enough balance to probe
 
 ### Permissions
 
-EstimateRouteFee requires only the `offchain:read` macaroon permission. It does not require `offchain:write` because — while it does send HTLCs onto the network — those HTLCs cannot be settled and do not result in actual fund transfers.
+EstimateRouteFee requires only the `offchain:read` macaroon permission. It does not require `offchain:write` because while it does send HTLCs onto the network those HTLCs cannot be settled and do not result in actual fund transfers.
 
 To generate a macaroon specifically used for probing, run:
 

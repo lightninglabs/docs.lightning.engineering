@@ -17,7 +17,7 @@ Macaroons can include their own permissions. When presented, the API endpoint ca
 Furthermore, Macaroons can be attenuated by the user with their own restrictions. This allows to delegate permissions and functions in a safe way.
 
 {% embed url="https://www.youtube.com/watch?v=CGBZO5n_SUg" %}
-[Watch: Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud](https://www.youtube.com/watch?v=CGBZO5n\_SUg)
+[Watch: Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud](https://www.youtube.com/watch?v=CGBZO5n_SUg)
 {% endembed %}
 
 Today, Macaroons are used extensively in Lightning Labs products. Together with preimages obtained through Lightning Network payments, Macaroons form the basis of L402, which are used by Lightning Pool and Lightning Loop to authenticate users.
@@ -35,8 +35,6 @@ At its most basic level, we can turn a cookie (`id12345678id`) into a Macaroon p
 | HMAC(secret;4c4ab7a4f7a9) |
 
 More commonly, we will set a location, for instance `api.domain.com` and a publicly visible identifier, such as `your macaroon` in addition to our cookie.
-
-[Also read: Hacking Distributed: My first Macaroon](https://hackingdistributed.com/2014/05/21/my-first-macaroon/)
 
 | id12345678id,api.domain.com,your macaroon              |
 | ------------------------------------------------------ |
@@ -56,13 +54,13 @@ Such a chain of caveats can be almost endlessly extended.
 Example of a Lightning Loop Macaroon:
 
 `identifier:`\
-&#x20;   `version = 0`\
-&#x20;   `user_id = fed74b3ef24820f440601eff5bfb42bef4d615c4948cec8aca3cb15bd23f1013`\
-&#x20;   `payment_hash = 163102a9c88fa4ec9ac9937b6f070bc3e27249a81ad7a05f398ac5d7d16f7bea`\
+`version = 0`\
+`user_id = fed74b3ef24820f440601eff5bfb42bef4d615c4948cec8aca3cb15bd23f1013`\
+`payment_hash = 163102a9c88fa4ec9ac9937b6f070bc3e27249a81ad7a05f398ac5d7d16f7bea`\
 `caveats:`\
-&#x20;   `services = lightning_loop:0`\
-&#x20;   `lightning_loop_capabilities = loop_out,loop_in`\
-&#x20;   `loop_out_monthly_volume_sats = 200000000`
+`services = lightning_loop:0`\
+`lightning_loop_capabilities = loop_out,loop_in`\
+`loop_out_monthly_volume_sats = 200000000`
 
 ### Delegation
 

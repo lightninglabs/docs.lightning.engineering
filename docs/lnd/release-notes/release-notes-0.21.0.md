@@ -101,6 +101,12 @@
 
 ## RPC Additions
 
+* [Added `DeleteForwardingHistory`
+  RPC](https://github.com/lightningnetwork/lnd/pull/10666) to the router
+  sub-server, allowing operators to selectively purge old forwarding events from
+  the database. Deletion requires the target cutoff timestamp to be at least 1
+  hour in the past, preventing accidental removal of recent data.
+
 * The `WaitingCloseChannel` response in `PendingChannels` now includes two
   new fields via [#10509](https://github.com/lightningnetwork/lnd/pull/10509):
   `blocks_til_close_confirmed`, showing the remaining confirmations until a
@@ -222,6 +228,16 @@
     targeting uniquely-constrained columns. Also drop four redundant indexes
     that duplicated UNIQUE constraints or were never used as query filters.
 
+* [Optimize the v1 node horizon
+    query](https://github.com/lightningnetwork/lnd/pull/10692). Split the
+    `GetNodesByLastUpdateRange` query into separate all-nodes and public-only
+    variants, removing a dynamic `COALESCE`/`OR` branch that defeated the query
+    planner. The public-only `EXISTS` check is rewritten as two direct index
+    probes instead of `node_id_1 OR node_id_2`. Supporting indexes are upgraded
+    to composite keys matching the full query shapes. On SQLite, the hot
+    public-only path sees a ~42% speedup; on the previous code it could stall
+    for minutes.
+
 ## Deprecations
 
 ### ⚠️ **Warning:** Deprecated fields in `lnrpc.Hop` will be removed in release version **0.22**
@@ -286,6 +302,12 @@
     [4](https://github.com/lightningnetwork/lnd/pull/10542),
     [5](https://github.com/lightningnetwork/lnd/pull/10572),
     [6](https://github.com/lightningnetwork/lnd/pull/10582).
+* [Version the graph horizon queries (`NodeUpdatesInHorizon`,
+  `ChanUpdatesInHorizon`)](https://github.com/lightningnetwork/lnd/pull/10691)
+  to support both v1 (time-based) and v2 (block-height-based) gossip ranges.
+  The v1 end-time bound is corrected from inclusive to exclusive to match the
+  BOLT 07 `gossip_timestamp_filter` spec. New SQL queries and composite indexes
+  are added for efficient v2 block-height range scans.
 * Updated waiting proof persistence for gossip upgrades by introducing typed
   waiting proof keys and payloads, with a DB migration to rewrite legacy
   waiting proof records to the new key/value format

@@ -211,6 +211,14 @@
   is fully populated. This new behaviour can be opted out of via the new
   `--db.sync-graph-cache-load` option.
 
+* [Invoice pagination queries no longer use
+  `OFFSET`](https://github.com/lightningnetwork/lnd/pull/10700). The five
+  invoice filter queries previously used `LIMIT+OFFSET` for internal batching,
+  which requires the database to scan and discard all preceding rows on every
+  page. All pagination is now cursor-based (`WHERE id >= cursor`), making every
+  page an efficient primary-key range scan regardless of how deep into the
+  result set the query is.
+
 * [Replace the catch-all `FilterInvoices` SQL query with five focused,
   index-friendly queries](https://github.com/lightningnetwork/lnd/pull/10601)
   (`FetchPendingInvoices`, `FilterInvoicesBySettleIndex`,

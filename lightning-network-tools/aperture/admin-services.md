@@ -1,12 +1,12 @@
 ---
 description: >-
-  Several services bundled with Aperture allow you to manage and monitor your
-  gateway
+  Aperture bundles command line, MCP, and REST interfaces that let you manage
+  and monitor your gateway
 ---
 
 # Admin Services
 
-Aperture comes bundled with a Command Line Interface (CLI), an admin Application Programming Interface (API) over REST and gRPC, a dashboard and a Model Context Protocol (MCP) server. They can be used to retrieve information about the performance of the gateway and manage its pricing dynamically.
+Aperture comes bundled with a Command Line Interface (CLI), an admin Application Programming Interface (API) over REST and gRPC, a dashboard, and a Model Context Protocol (MCP) server. They can be used to retrieve information about the performance of the gateway and manage its pricing dynamically.
 
 ## Configuration
 

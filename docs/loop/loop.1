@@ -568,6 +568,12 @@ Loop in funds from static address deposits.
 \fB--last_hop\fP="": the pubkey of the last hop to use for this swap
 
 .PP
+\fB--max_swap_fee_ppm\fP="": the maximum swap fee expressed in parts per million of the swap amount. If set together with --max_swap_fee_sat the tighter cap is used. (default: 0)
+
+.PP
+\fB--max_swap_fee_sat\fP="": the maximum swap fee in satoshis. If set, the swap is rejected when the quoted fee exceeds this cap. The maximum allowed value is 10000000. On-chain fees for creating static deposits are unaffected. (default: 0)
+
+.PP
 \fB--payment_timeout\fP="": the maximum time in seconds that the server is allowed to take for the swap payment. The client can retry the swap with adjusted parameters after the payment timed out. (default: 0s)
 
 .PP

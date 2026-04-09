@@ -360,6 +360,10 @@
 
 ## Code Health
 
+* [Update taproot detection](https://github.com/lightningnetwork/lnd/pull/10683)
+  to accommodate buried activation (and modified RPC `getdeploymentinfo`
+  response) beginning in Bitcoin Core v32.
+
 ## Tooling and Documentation
 
 * [Added missing `lncli:` tags](https://github.com/lightningnetwork/lnd/pull/10658)
@@ -382,6 +386,7 @@
 * Erick Cestari
 * Gijs van Dam
 * hieblmi
+* Matthew Zipkin
 * Mohamed Awnallah
 * Nishant Bansal
 * Pins

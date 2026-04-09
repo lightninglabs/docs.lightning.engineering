@@ -165,20 +165,9 @@
   * [The Faraday CLI](lightning-network-tools/faraday/the-faraday-cli.md)
   * [Faraday API Documentation](https://lightning.engineering/api-docs/api/faraday/)
 
-## LAPPs
+## For Agents <a href="#agents" id="agents"></a>
 
-* [Guides](lapps/guides/README.md)
-  * [Use Polar to Build Your First LAPP](lapps/guides/polar-lapps/README.md)
-    * [Setup: Local Cluster with Polar](lapps/guides/polar-lapps/local-cluster-setup-with-polar.md)
-    * [Setup: Run the Completed App](lapps/guides/polar-lapps/run-the-completed-app.md)
-    * [Setup: Run the App Without LND](lapps/guides/polar-lapps/run-the-app-without-lnd.md)
-  * [Add Features](lapps/guides/add-features/README.md)
-    * [Feature 1: Connect to LND](lapps/guides/add-features/connect-to-lnd.md)
-    * [Feature 2: Display Node Alias and Balance](lapps/guides/add-features/display-node-alias-and-balance.md)
-    * [Feature 3: Sign and Verify Posts](lapps/guides/add-features/sign-and-verify-posts.md)
-    * [Feature 4: Modify Upvote Action](lapps/guides/add-features/modify-upvote-action.md)
-  * [Make Your own LNC-powered Application](lapps/guides/make-your-own-lnc-powered-application.md)
-* [Next Steps](lapps/next-steps.md)
+* [Resources for Agents](agents/resources-for-agents.md)
 
 ## Community Resources
 

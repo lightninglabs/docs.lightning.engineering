@@ -70,6 +70,13 @@
   the chain watch filter on restart. This was a pre-existing bug since
   private taproot channels were first introduced.
 
+* [Fixed a shutdown race in the 
+  channel link](https://github.com/lightningnetwork/lnd/pull/10719)
+  that could deadlock the invoice registry during concurrent peer disconnect.
+  The link now waits for `htlcManager` to fully exit before tearing down hodl
+  subscriptions and the hodl queue, preventing orphaned subscriptions from
+  blocking invoice resolution.
+
 # New Features
 
 - [Basic Support](https://github.com/lightningnetwork/lnd/pull/9868) for onion
@@ -316,6 +323,10 @@
   The v1 end-time bound is corrected from inclusive to exclusive to match the
   BOLT 07 `gossip_timestamp_filter` spec. New SQL queries and composite indexes
   are added for efficient v2 block-height range scans.
+* [Version `FilterKnownChanIDs` and fix `FetchChannelEdgesByID` zombie
+  fallback](https://github.com/lightningnetwork/lnd/pull/10717) so that gossip
+  channel filtering and zombie edge lookups use the correct gossip version
+  instead of hardcoding v1.
 * Updated waiting proof persistence for gossip upgrades by introducing typed
   waiting proof keys and payloads, with a DB migration to rewrite legacy
   waiting proof records to the new key/value format
@@ -377,6 +388,12 @@
   to Docker Compose V2, updating base images (btcd v0.25.0, Go 1.25.5), 
   and transitioning the documentation to focus on a more reliable "Simnet" 
   workflow while removing obsolete faucet references.
+
+* [Android Lndmobile 16 KB page size for native libraries](https://github.com/lightningnetwork/lnd/pull/10517)
+  The Android `Lndmobile.aar` build now passes `-Wl,-z,max-page-size=16384` to
+  the linker, keeping the generated native library compatible with newer
+  Android devices that use 16 KB memory pages while preserving compatibility
+  with existing 4 KB page-size devices.
 
 # Contributors (Alphabetical Order)
 

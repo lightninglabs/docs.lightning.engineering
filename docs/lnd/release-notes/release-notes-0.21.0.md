@@ -307,7 +307,15 @@
 
 ## Database
 
-* Freeze the [graph SQL migration 
+* [Prevent silent data corruption](https://github.com/lightningnetwork/lnd/pull/10684)
+  when reusing the same database across different Bitcoin networks. On first
+  startup the active network is persisted in a new `chain_params` table; on
+  every subsequent restart lnd compares the stored value against the configured
+  network and refuses to start if they differ, printing a clear error message
+  with remediation steps. This safeguard applies to both the PostgreSQL and
+  SQLite native-SQL backends when running with `--db.use-native-sql`.
+
+* Freeze the [graph SQL migration
   code](https://github.com/lightningnetwork/lnd/pull/10338) to prevent the 
   need for maintenance as the sqlc code evolves. 
 * Prepare the graph DB for handling gossip V2

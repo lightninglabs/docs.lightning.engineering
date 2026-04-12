@@ -383,6 +383,14 @@
   to accommodate buried activation (and modified RPC `getdeploymentinfo`
   response) beginning in Bitcoin Core v32.
 
+* [Migrated gossip result handling from `chan error` to
+  `actor.Future[error]`](https://github.com/lightningnetwork/lnd/pull/10589).
+  The three buffered-channel patterns in the discovery package are replaced
+  with idempotent promises, eliminating a class of latent deadlock bugs when a
+  deferred message copy was re-enqueued and processed a second time. A new
+  `lnutils.ContextFromQuit` helper bridges the existing `quit` channels to
+  `context.Context`, so all gossip awaits now respect shutdown uniformly.
+
 ## Tooling and Documentation
 
 * [Added missing `lncli:` tags](https://github.com/lightningnetwork/lnd/pull/10658)

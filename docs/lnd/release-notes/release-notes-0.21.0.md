@@ -116,6 +116,28 @@
   protocol state machine and invalidating nonces after each signing round
   completes.
 
+* [Added rate limiting and a channel-presence gate for incoming onion
+  messages](https://github.com/lightningnetwork/lnd/pull/10713). Two new
+  byte-denominated token-bucket limiters run at ingress — one per peer, one
+  global — so small onion messages pay proportionally less of the budget
+  than spec-max ones. Defaults are `0.5 Mbps` (512 Kbps, 256 KiB burst) per
+  peer and `5 Mbps` (5120 Kbps, 1600 KiB burst) globally, tunable via
+  `protocol.onion-msg-peer-kbps`,
+  `protocol.onion-msg-peer-burst-bytes`,
+  `protocol.onion-msg-global-kbps`, and
+  `protocol.onion-msg-global-burst-bytes`. Setting both the rate and the
+  burst of a given limiter to `0` disables it; setting only one to `0`, or
+  a burst smaller than a maximum-sized onion message, is rejected at
+  startup. Incoming onion messages from peers with no fully open channel
+  are also dropped at ingress as a Sybil-resistance layer; pending
+  channels are excluded. Operators who want to accept onion messages
+  from peers regardless of channel state can set
+  `protocol.onion-msg-relay-all=true` to skip the channel-presence gate;
+  the rate limiters still apply. See
+  [docs/onion_message_rate_limiting.md](../onion_message_rate_limiting.md)
+  for the adversary model, the layers, the defaults, and operator
+  recipes.
+
 ## RPC Additions
 
 * [Added `DeleteForwardingHistory`

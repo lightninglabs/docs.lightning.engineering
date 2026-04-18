@@ -16,6 +16,7 @@
     - [Testing](#testing)
     - [Database](#database)
     - [Code Health](#code-health)
+    - [Robustness](#robustness)
     - [Tooling and Documentation](#tooling-and-documentation)
 - [Contributors (Alphabetical Order)](#contributors)
 
@@ -422,6 +423,16 @@
   deferred message copy was re-enqueued and processed a second time. A new
   `lnutils.ContextFromQuit` helper bridges the existing `quit` channels to
   `context.Context`, so all gossip awaits now respect shutdown uniformly.
+
+## Robustness
+
+* [Drop onion messages that would cycle back to the sending
+  peer](https://github.com/lightningnetwork/lnd/pull/10754). When the
+  resolved next hop of an incoming onion message is the same peer that
+  delivered it, the message is now dropped instead of being forwarded
+  back over the connection it arrived on. This closes a trivial
+  traffic-amplification vector and covers both the direct next-node-ID
+  and SCID-resolved paths.
 
 ## Tooling and Documentation
 

@@ -456,15 +456,32 @@
 
 # Contributors (Alphabetical Order)
 
+* Abdulkbk
+* AbelLykens
+* ajaysehwal
+* Andras Banki-Horvath
 * bitromortac
 * Boris Nagaev
+* Calvin Zachman
+* Dario Anongba
 * Elle Mouton
+* elnosh
 * Erick Cestari
+* Euler-B
+* ffranr
+* George Tsagkarelis
 * Gijs van Dam
 * hieblmi
+* Liongrass
+* Matt Morehouse
 * Matthew Zipkin
 * Mohamed Awnallah
 * Nishant Bansal
+* Olaoluwa Osuntokun
+* Oliver Gugger
 * Pins
 * Suheb
+* ViktorT-11
+* Yash Bhutwala
+* Yong Yu
 * Ziggie

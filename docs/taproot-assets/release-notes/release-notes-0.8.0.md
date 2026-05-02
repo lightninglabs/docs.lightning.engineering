@@ -94,6 +94,10 @@
   fixes `DecodeAssetPayReq` so `GenesisInfo` is populated consistently,
   including group-key invoice decodes.
 
+* [PR#2115](https://github.com/lightninglabs/taproot-assets/pull/2115)
+  fixes a bug by which grouped assets could remain invisible to
+  ListGroups after import, remaining visible only in ListAssets.
+
 # New Features
 
 ## Functional Enhancements

@@ -330,6 +330,15 @@
   Add pagination support (offset, limit, direction) to the `ListAssets` RPC
   endpoint.
 
+- [PR#2122](https://github.com/lightninglabs/taproot-assets/pull/2122)
+  Add a `group_key` field to `TransferInput` and `TransferOutput`. Affects `ListTransfers` and the `transfer` field embedded in `SendEvent`.
+
+- [PR#2125](https://github.com/lightninglabs/taproot-assets/pull/2125)
+  Add an `asset_type` field to `TransferInput` and `TransferOutput`.
+  Affects `ListTransfers` and the `transfer` field embedded in
+  `SendEvent`, allowing clients to distinguish grouped fungible assets from
+  grouped collectible assets.
+
 ## tapcli Updates
 
 - [PR#1995](https://github.com/lightninglabs/taproot-assets/pull/1995)
@@ -452,4 +461,3 @@
 - [PR#2056](https://github.com/lightninglabs/taproot-assets/pull/2056)
   expands the example portfolio pilot with constraint enforcement,
   configurable fill caps, and live CoinGecko pricing.
-

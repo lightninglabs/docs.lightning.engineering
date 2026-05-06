@@ -98,6 +98,10 @@
   fixes a bug by which grouped assets could remain invisible to
   ListGroups after import, remaining visible only in ListAssets.
 
+* [PR#2100](https://github.com/lightninglabs/taproot-assets/pull/2100)
+  fixes inverted sort direction in `AssetRoots`, `AssetLeafKeys`, and
+  `QueryEvents` universe RPCs.
+
 # New Features
 
 ## Functional Enhancements
@@ -339,11 +343,30 @@
   `SendEvent`, allowing clients to distinguish grouped fungible assets from
   grouped collectible assets.
 
+- [PR#2126](https://github.com/lightninglabs/taproot-assets/pull/2126)
+  Add an `asset_type` field to `AssetBurn`. Affects `ListBurns`, allowing
+  clients to distinguish grouped fungible burns from grouped collectible
+  burns.
+
+- [PR#2100](https://github.com/lightninglabs/taproot-assets/pull/2100)
+  Add pagination support (offset, limit, direction) to the `AssetLeaves`
+  RPC endpoint, and add `MaxPageSize` validation to `AssetRoots`.
+  Standardize pagination validation across `AssetRoots`,
+  `AssetLeafKeys`, `AssetLeaves`, and `QueryAssetStats` via a shared
+  `validatePage` helper, and add a `has_more` field to all four
+  response types. Default `limit=0` to `MaxPageSize` instead of
+  `RequestPageSize`.
+
+
 ## tapcli Updates
 
 - [PR#1995](https://github.com/lightninglabs/taproot-assets/pull/1995)
   Add `--limit`, `--offset`, and `--direction` flags to `tapcli assets list`
   for pagination support. The direction defaults to descending order.
+
+- [PR#2100](https://github.com/lightninglabs/taproot-assets/pull/2100)
+  `tapcli universe leaves` now paginates automatically, fetching all
+  pages instead of silently truncating at 512 results.
 
 ## Config Changes
 

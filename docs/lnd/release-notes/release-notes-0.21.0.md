@@ -97,6 +97,10 @@
   for peer-to-peer communication.
 
 ## Functional Enhancements
+* Added [pathfinding support](https://github.com/lightningnetwork/lnd/pull/10612)
+  for routing onion messages. The router can now find paths through the channel 
+  graph specifically filtered for nodes that advertise support for onion
+  messaging (feature bit 38/39).
 
 * [Added reorg protection for channel
   closes](https://github.com/lightningnetwork/lnd/pull/10331). Previously,
@@ -260,6 +264,13 @@
   queries, but all read queries will be served from the database until the cache
   is fully populated. This new behaviour can be opted out of via the new
   `--db.sync-graph-cache-load` option.
+
+* Autopilot's graph-wide channel scoring traversal [no longer requests node
+  addresses](https://github.com/lightningnetwork/lnd/pull/10796) from the
+  graph backend, since the scoring code does not consume them. This removes
+  an unnecessary address batch-load on the SQL backend, and lets the kvdb
+  backend serve the traversal from the in-memory graph cache when it is
+  loaded.
 
 * [Invoice pagination queries no longer use
   `OFFSET`](https://github.com/lightningnetwork/lnd/pull/10700). The five

@@ -168,7 +168,7 @@
 ## For Agents <a href="#agents" id="agents"></a>
 
 * [Resources for Agents](agents/resources-for-agents/README.md)
-  * [Skill](agents/resources-for-agents/skill.md)
+  * [Skills](agents/resources-for-agents/skills.md)
 
 ## Community Resources
 

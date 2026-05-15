@@ -2,11 +2,13 @@
 description: Agentic skills that save you time and tokens
 ---
 
-# Skill
+# Skills
 
 We have compiled a list of agentic skills that may save you time and token when developing applications and features on Lightning Labs products.
 
 All of these guides can also be found in the `/skills` sub-directory of the raw [Builder's Guide on Github](https://github.com/lightninglabs/docs.lightning.engineering/).
+
+To make use of them, ideally place them in the `/skill` directory of your preferred agentic model, such as `~/.claude/skills`.
 
 #### LND
 

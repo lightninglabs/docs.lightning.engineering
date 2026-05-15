@@ -104,6 +104,7 @@
   * [Loop and Lightning Terminal](lightning-network-tools/lightning-terminal/loop.md)
   * [Loop Fees](lightning-network-tools/lightning-terminal/loop-fees.md)
   * [Pool and Lightning Terminal](lightning-network-tools/lightning-terminal/pool.md)
+  * [Testing on Signet](lightning-network-tools/lightning-terminal/testing-on-signet.md)
   * [Command Line Interface](lightning-network-tools/lightning-terminal/command-line-interface.md)
   * [Troubleshooting](lightning-network-tools/lightning-terminal/troubleshooting.md)
   * [Lightning Node Connect: Under the hood](lightning-network-tools/lightning-terminal/lightning-node-connect.md)

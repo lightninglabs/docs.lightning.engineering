@@ -22,6 +22,17 @@
 
 # Bug Fixes
 
+* The [remote-signer PSBT prep](https://github.com/lightningnetwork/lnd/pull/10815)
+  now accepts zero-value entries from a sign descriptor's
+  `PrevOutputFetcher` when populating `WitnessUtxo` on non-signed
+  inputs. This unblocks signing flows that reference virtual prev
+  outputs whose value is mandated to be zero, most notably BIP-322's
+  `to_spend` output (the prev of input 0 of every BIP-322 `to_sign`
+  transaction). Previously the prep stage silently skipped such
+  inputs and the resulting PSBT was rejected downstream by
+  `walletkit.SignPsbt` with `input (index=N) doesn't specify any
+  UTXO info`.
+
 * [Fixed `OpenChannel` with
   `fund_max`](https://github.com/lightningnetwork/lnd/pull/10488) to use the
   protocol-level maximum channel size instead of the user-configured
@@ -87,6 +98,10 @@
   auto-enable is also narrowed to skip taproot-overlay channels, since the
   RBF close state machine does not yet thread through the `AuxCloser` hook
   that overlay channels rely on to build aux-aware close transactions.
+
+* [Fixed `EstimateRouteFee`](https://github.com/lightningnetwork/lnd/pull/10771)
+  to use independent probe payment hashes when probing multiple LSPs, preventing
+  later probes from reusing the first probe's CLTV delta.
 
 # New Features
 

@@ -13,6 +13,7 @@
     - [Deprecations](#deprecations)
 - [Technical and Architectural Updates](#technical-and-architectural-updates)
     - [BOLT Spec Updates](#bolt-spec-updates)
+    - [BOLT 12 (Offers)](#bolt-12-offers)
     - [Testing](#testing)
     - [Database](#database)
     - [Code Health](#code-health)
@@ -33,6 +34,13 @@
   negotiation now remain in `ListChannels` (as inactive) until
   the close transaction is actually broadcast, and
   `WaitingCloseChannel.ClosingTx` is never empty.
+
+* [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/10890)
+  where `ListChannels` reported 100% `uptime` for channels whose peer
+  was offline. The channel fitness store assumed a peer was online when
+  it first started tracking it, but channels are loaded on startup
+  regardless of peer connectivity. Uptime is now seeded from the peer's
+  actual connection state.
 
 # New Features
 
@@ -77,6 +85,13 @@
   later in the reservation flow as a funder-balance-dust error; they now
   surface a clearer, spec-aligned error string up front.
 
+## BOLT 12 (Offers)
+
+* [Initial BOLT 12 Offer codec](https://github.com/lightningnetwork/lnd/pull/10789):
+  add a new `bolt12/` package with the BOLT 12 `offer` TLV codec and full
+  reader/writer validation, plus a typed `lnwire.BlindedPath` introduction-node
+  codec shared by HTLC routing and onion messaging.
+
 ## Testing
 
 ## Database
@@ -87,5 +102,6 @@
 
 # Contributors (Alphabetical Order)
 
+* bitromortac
 * Boris Nagaev
 * Erick Cestari

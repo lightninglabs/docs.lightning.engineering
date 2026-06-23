@@ -6,9 +6,9 @@ description: >-
 
 # RFQ
 
-When sending Taproot Assets over the Lightning Network, an Edge Node is needed. This Edge Node receives the Taproot Asset in the channel with the direct user and swaps it for bitcoin. As the swap rate between Taproot Assets and bitcoin likely fluctuates, the user may make a Request for Quote to the Edge Node before generating a Lightning Network invoice or initiating a payment.
+When sending Taproot Assets over the Lightning Network, an Edge Node is needed. This Edge Node receives the Taproot Asset in the channel with the direct user and swaps it for bitcoin. As the swap rate between Taproot Assets and bitcoin likely fluctuates, the user may make a Request for Quote (RFQ) to the Edge Node before generating a Lightning Network invoice or initiating a payment.
 
-This request is made using [BOLT 01](https://github.com/lightning/bolts/blob/master/01-messaging.md) messages over an existing encrypted and authenticated [BOLT 08](https://github.com/lightning/bolts/blob/master/08-transport.md) connection. The connection already exists because it is used for establishing and coordinating the Taproot Asset Channel in a way very similar to normal Lightning channels. For more information about connection and messaging, see the [Last Mile Routing](https://github.com/Roasbeef/blips/blob/tap-blip/blip-tap.md#last-mile-routing) section of [Taproot Asset Channels BLIP](https://github.com/Roasbeef/blips/blob/tap-blip/blip-tap.md).
+This request is made using [BOLT 01](https://github.com/lightning/bolts/blob/master/01-messaging.md) messages over an existing encrypted and authenticated [BOLT 08](https://github.com/lightning/bolts/blob/master/08-transport.md) connection. They are encoded as TLV records and delivered over LND's custom message channel. The message type namespace starts at `MsgTypeOffset` (which is `CustomTypeStart + 20116`, where `20116` encodes "tap". The connection already exists because it is used for establishing and coordinating the Taproot Asset Channel in a way very similar to normal Lightning channels. For more information about connection and messaging, see the [Last Mile Routing](https://github.com/Roasbeef/blips/blob/tap-blip/blip-tap.md#last-mile-routing) section of [Taproot Asset Channels BLIP](https://github.com/Roasbeef/blips/blob/tap-blip/blip-tap.md).
 
 [Learn more: Edge Nodes](../../the-lightning-network/taproot-assets/edge-nodes.md)
 
@@ -20,7 +20,17 @@ The Request for Quote contains a rate and an expiration time, which allows the s
 
 Similarly when receiving Taproot Assets over the Lightning Network, RFQ is used by the recipient to generate a satoshi-denominated Lightning invoice.
 
-## Testing configuration
+### Message Types
+
+There are three message types, each available in buy and sell variants:
+
+**Request** (`MsgTypeRequest`): Initiates negotiation. The user tells the edge node what asset and amounts are involved, and optionally proposes a rate hint.
+
+**Accept** (`MsgTypeAccept`): The edge node agrees to the proposed terms at a specific rate. The accept is Schnorr-signed over the message fields so neither party can modify the agreed rate later.
+
+**Reject** (`MsgTypeReject`): The edge node declines, with a machine-readable error code and human-readable message.
+
+## The Mock Oracle
 
 For testing purposes, tapd includes a mock oracle. This oracle allows the tester to set up a static exchange rate between Taproot Assets and bitcoin. When added to `lit.conf`, all Taproot Assets configuration options have to be pre-fixed with `taproot-assets.`
 
@@ -38,12 +48,22 @@ Both peers of a Taproot Assets channel may set up an RFQ oracle. Alternatively, 
 
 `taproot-assets.experimental.rfq.skipacceptquotepricecheck=true`
 
-## Oracle Demo
+## Sample Oracle
 
-A basic price oracle has been implemented as part of the Taproot Assets code base. It makes use of the QueryRateTick RPC method to return a rate tick for a given transaction type, subject asset and payment asset.
+For signet, a sample oracle is deployed at `tassandra.laisee.org` for asset group key `02db9c81b87830b73331e0f1f69271791f13a24848ceec9bd38e32383e384cc468`
 
-[Fork it: Taproot Assets Oracle Demo](https://github.com/lightninglabs/taproot-assets/tree/d70bccd2714a3f808e070a080c510cf396a11284/docs/examples/basic-price-oracle)
+It can be configured by adding only the following to your `lit.conf` (the sample oracle is not compatible with that of the mock oracle):
 
-{% embed url="https://docs.google.com/spreadsheets/d/1JliJd9WfnW2cohrQjyHZf-5WFn97Q8TaSWjB4ZidF8k/edit" fullWidth="false" %}
+`taproot-assets.experimental.rfq.priceoracleaddress=rfqrpc://tassandra.laisee.org:20590`
 
-[You may also make a copy of the above spreadsheet here.](https://docs.google.com/spreadsheets/d/1JliJd9WfnW2cohrQjyHZf-5WFn97Q8TaSWjB4ZidF8k/edit)
+For regtest, signet and testnet you may also deploy your own instance of [Tassandra](https://github.com/liongrass/tassandra).
+
+### Further reading
+
+For more information, find the following guides in the `taproot-assets/docs` repository:
+
+{% embed url="https://github.com/lightninglabs/taproot-assets/blob/main/docs/rfq.md" %}
+
+{% embed url="https://github.com/lightninglabs/taproot-assets/blob/main/docs/rfq-and-decimal-display.md" %}
+
+{% embed url="https://github.com/lightninglabs/taproot-assets/blob/main/docs/rfq_architecture.md" %}

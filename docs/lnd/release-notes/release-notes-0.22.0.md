@@ -53,12 +53,23 @@
   channels](https://github.com/lightningnetwork/lnd/pull/10501) via the new
   `outgoing_chan_ids` field in `RouteFeeRequest`.
 
+* A new
+  [`walletrpc.SubmitPackage`](https://github.com/lightningnetwork/lnd/pull/10900)
+  RPC submits a package of related transactions (parents first, child last) to
+  the chain backend via bitcoind's `submitpackage`, allowing a zero-fee v3/TRUC
+  parent to be accepted together with a fee-paying CPFP child.
+
 ## lncli Additions
 
 * The `estimateroutefee` command now supports [restricting fee estimates to
   specific first-hop outgoing
   channels](https://github.com/lightningnetwork/lnd/pull/10501) via the new
   `--outgoing_chan_id` flag.
+
+* A new
+  [`wallet submitpackage`](https://github.com/lightningnetwork/lnd/pull/10900)
+  command submits a package of hex-encoded transactions via the new
+  `SubmitPackage` RPC.
 
 # Improvements
 
@@ -91,6 +102,13 @@
   add a new `bolt12/` package with the BOLT 12 `offer` TLV codec and full
   reader/writer validation, plus a typed `lnwire.BlindedPath` introduction-node
   codec shared by HTLC routing and onion messaging.
+
+* [BOLT 12 invoice request
+  codec](https://github.com/lightningnetwork/lnd/pull/10832): add the
+  `invoice_request` TLV message to the `bolt12/` package with structural
+  reader/writer validation. This includes an observable RPC behavior change
+  in `SubscribeOnionMessages`, ensuring a nil reply path remains nil in the
+  RPC response rather than being emitted as an empty struct.
 
 ## Testing
 

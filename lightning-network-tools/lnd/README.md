@@ -66,8 +66,8 @@ LND's API documentation
 [secure-your-lightning-network-node.md](secure-your-lightning-network-node.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference/" %}
-[broken-reference](broken-reference/)
+{% content-ref url="../../docs/lnd/safety.md" %}
+[safety.md](../../docs/lnd/safety.md)
 {% endcontent-ref %}
 
 {% content-ref url="quick-tor-setup.md" %}
@@ -94,8 +94,8 @@ LND's API documentation
 [fuzz.md](fuzz.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference/" %}
-[broken-reference](broken-reference/)
+{% content-ref url="../../docs/lnd/etcd.md" %}
+[etcd.md](../../docs/lnd/etcd.md)
 {% endcontent-ref %}
 
 {% content-ref url="channel-acceptor.md" %}
@@ -106,8 +106,8 @@ LND's API documentation
 [rpc-middleware-interceptor.md](rpc-middleware-interceptor.md)
 {% endcontent-ref %}
 
-{% content-ref url="broken-reference/" %}
-[broken-reference](broken-reference/)
+{% content-ref url="../../docs/lnd/leader_election.md" %}
+[leader\_election.md](../../docs/lnd/leader_election.md)
 {% endcontent-ref %}
 
 {% content-ref url="nat_traversal.md" %}

@@ -146,7 +146,7 @@ Check Lock-time Verify is a functionality in Bitcoin that allows us to lock Bitc
 
 Clustering allows us to use multiple [LND](glossary.md#the-lightning-network-daemon) nodes to form a cluster, in which we can delegate specific tasks such as managing invoices or maintaining channels for performance or security purposes.
 
-[Read more: LND clustering](broken-reference/)
+[Read more: LND clustering](../docs/lnd/leader_election.md)
 
 ## Commitment <a href="#docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776" id="docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776"></a>
 

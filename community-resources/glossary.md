@@ -146,7 +146,7 @@ Check Lock-time Verify is a functionality in Bitcoin that allows us to lock Bitc
 
 Clustering allows us to use multiple [LND](glossary.md#the-lightning-network-daemon) nodes to form a cluster, in which we can delegate specific tasks such as managing invoices or maintaining channels for performance or security purposes.
 
-[Read more: LND clustering](broken-reference/)
+[Read more: LND clustering](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/community-resources/broken-reference/README.md)
 
 ## Commitment <a href="#docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776" id="docs-internal-guid-fc7665f8-7fff-4804-37ba-3f6dc9d9d776"></a>
 
@@ -192,7 +192,7 @@ Eltoo (from L2) is a proposed upgrade to the Lightning Network, enabling new fun
 
 An explorer is software or a service that lets you inspect transactions, nodes, and network metrics. There are explorers focusing mainly on on-chain data as well as Lightning Network explorers.
 
-[Read more: Community Resources](broken-reference/)
+[Read more: Community Resources](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/community-resources/broken-reference/README.md)
 
 ## Faraday
 

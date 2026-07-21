@@ -18,7 +18,7 @@ This will prompt for a wallet password, and optionally a cipher seed passphrase.
 
 `lnd` will then print a 24 word cipher seed mnemonic, which can be used to recover the wallet in case of data loss. The user should write this down and keep in a safe place.
 
-In case a node needs to be recovered from an existing seed, this can also be done through the `create` command. Please refer to the [recovery guide](../../docs/lnd/recovery.md) for more information about recovering a node.
+In case a node needs to be recovered from an existing seed, this can also be done through the `create` command. Please refer to the [recovery guide](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/docs/lnd/recovery.md) for more information about recovering a node.
 
 ## Unlocking a wallet
 

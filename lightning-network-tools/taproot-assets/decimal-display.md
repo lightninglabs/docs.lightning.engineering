@@ -343,7 +343,7 @@ Due to the fundamentally different roles of the price oracle for both parties, i
 
 ### Edge node
 
-Given that an edge node might want to implement their specific business logic and rules, no default implementation for a price oracle for edge nodes is provided. Edge node operators need to implement the RPC interface defined in `taprpc/priceoraclerpc` and point their `tapd` to use their custom implementation with the `experimental.rfq.priceoracleaddress=rfqrpc://<hostname>:<port>` configuration value. An example implementation of a price oracle server implementing that RPC interface with Golang can be found in [`docs/examples/basic-price-oracle`](../../docs/taproot-assets/examples/basic-price-oracle/).
+Given that an edge node might want to implement their specific business logic and rules, no default implementation for a price oracle for edge nodes is provided. Edge node operators need to implement the RPC interface defined in `taprpc/priceoraclerpc` and point their `tapd` to use their custom implementation with the `experimental.rfq.priceoracleaddress=rfqrpc://<hostname>:<port>` configuration value. An example implementation of a price oracle server implementing that RPC interface with Golang can be found in [`docs/examples/basic-price-oracle`](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/docs/taproot-assets/examples/basic-price-oracle/README.md).
 
 ### Wallet end user
 

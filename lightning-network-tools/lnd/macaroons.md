@@ -32,7 +32,7 @@ For instance, a macaroon that is only allowed to manage peers could be created w
 
 `lncli bakemacaroon peers:read peers:write`
 
-For even more granularity, it is possible to specify individual RPC calls.&#x20;
+For even more granularity, it is possible to specify individual RPC calls.
 
 `lncli bakemacaroon uri:/lnrpc.Lightning/GetInfo uri:/verrpc.Versioner/GetVersion`
 
@@ -115,7 +115,7 @@ A very simple example using `curl` may look something like this:
 curl --insecure --header "Grpc-Metadata-macaroon: $(xxd -ps -u -c 1000  $HOME/.lnd/data/chain/bitcoin/simnet/admin.macaroon)" https://localhost:8080/v1/getinfo
 ```
 
-Have a look at the [Java GRPC example](../../docs/lnd/grpc/java.md) for programmatic usage details.
+Have a look at the [Java GRPC example](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/docs/lnd/grpc/java.md) for programmatic usage details.
 
 ## Stateless initialization
 
@@ -184,7 +184,7 @@ Macaroons in LND may refer to one of seven actions: `onchain`, `address`, `messa
 
 ### Onchain
 
-&#x20;`/lnrpc.Lightning/SendCoins`\
+`/lnrpc.Lightning/SendCoins`\
 `/lnrpc.Lightning/ListUnspent`\
 `/lnrpc.Lightning/SendMany`\
 `/lnrpc.Lightning/OpenChannel`\

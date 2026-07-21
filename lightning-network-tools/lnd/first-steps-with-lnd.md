@@ -18,7 +18,7 @@ Once our bitcoin transaction is waiting to be confirmed, we can use the command 
 
 ## Open a channel <a href="#docs-internal-guid-cc7ef0e6-7fff-09d1-5425-d232ccb1735f" id="docs-internal-guid-cc7ef0e6-7fff-09d1-5425-d232ccb1735f"></a>
 
-To open a channel, we will first need to decide on a peer. You can use [Lightning Terminal](https://terminal.lightning.engineering/#/) or a [Lightning Network explorer](broken-reference) to find a peer.
+To open a channel, we will first need to decide on a peer. You can use [Lightning Terminal](https://terminal.lightning.engineering/#/) or a [Lightning Network explorer](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md) to find a peer.
 
 [Read more: Identifying Good Peers in the Lightning Network](../../the-lightning-network/the-gossip-network/identify-good-peers.md)
 

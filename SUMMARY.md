@@ -45,6 +45,7 @@
   * [Taproot Assets Trustless Swap](the-lightning-network/taproot-assets/trustless-swap.md)
   * [FAQ](the-lightning-network/taproot-assets/faq.md)
   * [Glossary](the-lightning-network/taproot-assets/glossary.md)
+* [Wavelength](the-lightning-network/wavelength.md)
 
 ## Lightning Network Tools
 
@@ -153,6 +154,10 @@
   * [Lightning Polar](lightning-network-tools/taproot-assets/polar.md)
   * [Operational Safety Guidelines](lightning-network-tools/taproot-assets/operational-safety-guidelines.md)
   * [Taproot Assets API Documentation](https://lightning.engineering/api-docs/api/taproot-assets/)
+* [Wavelength](lightning-network-tools/wavelength/README.md)
+  * [Get Started](lightning-network-tools/wavelength/get-started.md)
+  * [First Steps](lightning-network-tools/wavelength/first-steps.md)
+  * [API Documentation](https://wavelength.lightning.engineering/introduction/what-is-wavelength-sdk/)
 * [Aperture](lightning-network-tools/aperture/README.md)
   * [Get Aperture](lightning-network-tools/aperture/get-aperture.md)
   * [Step by Step](lightning-network-tools/aperture/step-by-step.md)

@@ -1,12 +1,12 @@
 # Privacy Policy
 
-Last modified: December 4, 2021
+Last modified: July 28, 2026
 
 **Introduction**
 
 Lightning Labs, Inc. (**"Company"** or **"We"**) respect your privacy and are committed to protecting it through our compliance with this policy.
 
-This policy describes the types of information we may collect from you or that you may provide when you visit the website [https://lightning.engineering](https://lightning.engineering/) including our Terminal, Loop, and Pool network access services (collectively, our "**Website**") and our practices for collecting, using, maintaining, protecting, and disclosing that information.
+This policy describes the types of information we may collect from you or that you may provide when you visit the website [https://lightning.engineering](https://lightning.engineering/) including our Terminal, Loop, Pool, and Node Assistant network access services (collectively, our "**Website**") and our practices for collecting, using, maintaining, protecting, and disclosing that information.
 
 This policy applies to information we collect:
 
@@ -29,7 +29,7 @@ Our Website is not intended for use by anyone under 18 years of age. No one unde
 
 We collect several types of information from and about users of our Website, including information:
 
-* By which you may be personally identified, such your IP address, an L402, public key address, and any other identifier by which you may be individually identified ("**personal information**");
+* By which you may be personally identified, such as your IP address, an L402, public key address, and any other identifier by which you may be individually identified ("**personal information**");
 * That is about you but individually does not identify you, such as usage statistics regarding encrypted web traffic between users and their Lightning Network nodes; and/or
 * About your internet connection, the equipment you use to access our Website, and other usage details.
 
@@ -46,6 +46,7 @@ The information we collect on or through our Website may include:
 * Information that you provide by filling in forms on our Website. We may also ask you for information when you report a problem with our Website.
 * Records and copies of your correspondence (including email addresses), if you contact us.
 * Your responses to surveys that we might ask you to complete for research purposes.
+* Chat messages and queries you submit through the Node Assistant feature, which are transmitted to our third-party AI service provider for processing. Node data accessed through this feature is obfuscated before transmission as described in Node Assistant and AI-Powered Features below.
 
 _Information We Collect Through Automatic Data Collection Technologies_
 
@@ -62,7 +63,7 @@ We may retain information we collect automatically or associate it with personal
 The technologies we use for this automatic data collection may include:
 
 * **Cookies (or browser cookies).** A cookie is a small file placed on the hard drive of your computer. You may refuse to accept browser cookies by activating the appropriate setting on your browser. However, if you select this setting you may be unable to access certain parts of our Website. Unless you have adjusted your browser setting so that it will refuse cookies, our system will issue cookies when you direct your browser to our Website.
-* **Web Beacons.** Pages of our the Website may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages and for other related website statistics (for example, recording the popularity of certain website content and verifying system and server integrity).
+* **Web Beacons.** Pages of our Website may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages and for other related website statistics (for example, recording the popularity of certain website content and verifying system and server integrity).
 * **Other methods of authentication.** We may also use other types of authentication tokens such as L402s or Macaroons. Macaroons are a flexible standard for API credentials which are already used by the Lightning Network Daemon as its default authentication mechanism. The L402 protocol allows a user to atomically purchase macaroons over the Lightning Network. We may use L402 for a range of business purposes including but not limited to A/B testing new features or UX changes.
 
 **Third-Party Use of Cookies and Other Tracking Technologies**
@@ -70,6 +71,24 @@ The technologies we use for this automatic data collection may include:
 Some content or applications, including advertisements, on the Website are served by third-parties, including advertisers, ad networks and servers, content providers, and application providers. These third parties, such as Google Analytics or Tag Manager, may use cookies alone or in conjunction with web beacons or other tracking technologies to collect information about you when you use our website. The information they collect may be associated with your personal information or they may collect information, including personal information, about your online activities over time and across different websites and other online services. They may use this information to provide you with interest-based (behavioral) advertising or other targeted content.
 
 We do not control these third parties' tracking technologies or how they may be used. If you have any questions about an advertisement or other targeted content, you should contact the responsible provider directly. For information about how you can opt out of receiving targeted advertising from many providers, see Choices About How We Use and Disclose Your Information.
+
+Node Assistant and AI-Powered Features
+
+Our Terminal Web application includes an AI-powered chat feature called Node Assistant, which allows you to interact with your Lightning node using natural language. Node Assistant is powered by Anthropic’s Claude API. When you use Node Assistant, the following data handling practices apply:
+
+Data Shared with Anthropic. When you send a chat message, your message text is transmitted through our server to Anthropic’s API for processing. If Node Assistant needs to access your node data to answer a question, that data is first processed through a privacy obfuscation pipeline that runs entirely in your browser before being sent to Anthropic. This pipeline replaces node public keys, channel IDs, transaction hashes, and other identifiers with randomized pseudonyms; approximates numeric amounts such as balances and fees by applying a variance of approximately five percent; and strips human-readable identifiers such as node aliases entirely. The obfuscation is always active and cannot be disabled. Anthropic also receives a static system prompt (containing no user-specific information) and schema-only tool definitions (containing no credentials or node data).
+
+What Anthropic Does Not Receive. Anthropic does not receive your real node public keys, real channel IDs, exact balances or fee amounts, exact timestamps, node aliases, or any credentials or authentication material.
+
+User-Authored Content. The privacy obfuscation pipeline protects data retrieved from your node, not the text you type. If you voluntarily include sensitive information in your chat messages (for example, by pasting a real public key), that information will be sent to Anthropic unmodified.
+
+Anthropic’s Data Retention. We maintain a zero-data-retention agreement with Anthropic for Node Assistant. Under this agreement, data submitted through the API is not stored by Anthropic after the response is returned, with two exceptions: Anthropic may retain data where required by law, and if a session is flagged for a usage policy violation, inputs and outputs may be retained for up to two years. Anthropic also retains user safety classifier results to enforce their usage policy. Anthropic may process data on servers located in the United States or other jurisdictions. Anthropic’s own privacy policy and terms of service govern data handling on their end.
+
+Local Storage. Your Node Assistant conversation history and privacy obfuscation mappings are stored only in your browser using local storage mechanisms (IndexedDB). This data does not leave your device and is not accessible to Lightning Labs. You may clear this data at any time through your browser settings.
+
+No Server-Side Persistence. Our server acts as a stateless proxy for Node Assistant. It does not write, log, or retain any chat messages, tool results, or conversation state. Server-side logging captures errors and operational metrics only, not message content.
+
+Opt-In Only. Node Assistant is an opt-in feature. You must affirmatively choose to enable it before any data is sent to Anthropic.
 
 **How We Use Your Information**
 
@@ -82,6 +101,7 @@ We use information that we collect about you or that you provide to us, includin
 * To allow you to participate in interactive features on our Website.
 * In any other way we may describe when you provide the information.
 * For any other purpose with your consent.
+* To power AI-assisted features, including Node Assistant, by transmitting your chat messages and obfuscated node data to our third-party AI service provider for processing.
 
 We may use the information we have collected from you to enable us to display advertisements to our advertisers' target audiences. Even though we do not disclose your personal information for these purposes without your consent, if you click on or otherwise interact with an advertisement, the advertiser may assume that you meet its target criteria.]
 
@@ -97,6 +117,7 @@ We may disclose personal information that we collect or you provide as described
 * To fulfill the purpose for which you provide it. For example, if you give us an email address to correspond with us regarding product support, we may disclose that email and its contents to third parties in responding to your communication.
 * For any other purpose disclosed by us when you provide the information.
 * With your consent.
+* To Anthropic, PBC, our third-party AI service provider, in connection with the Node Assistant feature. When you use Node Assistant, your chat messages and obfuscated node data are transmitted to Anthropic’s API for processing. Anthropic’s handling of this data is governed by our zero-data-retention agreement and Anthropic’s own privacy policy and terms of service. See Node Assistant and AI-Powered Features above for details on data obfuscation and retention.
 
 We may also disclose your personal information:
 
@@ -123,6 +144,8 @@ California's "Shine the Light" law (Civil Code Section § 1798.83) permits users
 **Data Security**
 
 We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. These measures include ensuring that Lightning Labs does not see information such as encrypted pairing phrases and cached node aliases and encrypting all traffic to our Website while in transit through us.
+
+For our Node Assistant feature, we employ a client-side privacy obfuscation pipeline that pseudonymizes identifiers, fuzzes numeric values, and strips human-readable labels before any node data leaves your browser.
 
 The safety and security of your information also depends on you. Where we have given you (or where you have chosen) a password for access to certain parts of our Website, for example where you generate an Encrypted Pairing Phrase, this is stored locally on your machine and you are responsible for keeping this information confidential. You should be vigilant of phishing attacks directing you to sites attempting to steal your pairing phrase before you have connected yourself. Ideally, you should bookmark Lightning Labs’ pages in your browser and only navigate to it using the bookmarks bar. YOU ARE PRINCIPALLY RESPONSIBLE FOR YOUR SECURITY AND THE SECURITY OF AUTHENTICATION CREDENTIALS STORED ON YOUR MACHINE.
 

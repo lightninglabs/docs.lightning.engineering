@@ -30,6 +30,11 @@
   decoding the last proof requires unknown asset metadata; it now
   returns `valid=false` as documented.
 
+* [PR#2231](https://github.com/lightninglabs/taproot-assets/pull/2231)
+  fixes a bug in which ListPayments returned every Lightning payment, aux
+  or otherwise. Non-asset payments are now excluded, as are the
+  same payments in SubscribePayments and TrackPayment.
+
 # New Features
 
 ## Functional Enhancements
@@ -43,6 +48,10 @@
 ## Functional Updates
 
 ## RPC Updates
+
+* [PR#2226](https://github.com/lightninglabs/taproot-assets/pull/2226)
+  lets `CommitVirtualPsbts` select the transition proof version and adds
+  BIP-371 tapscript sibling exclusion proofs for version 1 proofs.
 
 ## tapcli Updates
 

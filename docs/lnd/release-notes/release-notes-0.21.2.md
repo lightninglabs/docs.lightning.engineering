@@ -58,6 +58,21 @@
   and legacy payment paths, including keysend records and preimage-dependent
   settlement outcomes.
 
+* [Fixed a data race](https://github.com/lightningnetwork/lnd/pull/11019) in the
+  legacy cooperative close state machine, which was advanced from both the link
+  goroutine and the peer goroutine with nothing synchronizing the two. The link
+  now reports a flushed channel to the peer's channel manager instead of driving
+  the closer itself, so every step of a close runs on a single goroutine. The
+  same change has the RBF closer validate the remote party's delivery script in
+  all cases, rather than only when an upfront shutdown script was on record for
+  that peer, and rejects an absent script instead of treating it as nothing to
+  check.
+
+* Outgoing contest resolvers now [retain the corresponding incoming HTLC
+  expiry](https://github.com/lightningnetwork/lnd/pull/11032) when transitioning
+  to timeout resolution, allowing the sweeper to continue using an
+  expiry-aware confirmation target.
+
 # New Features
 
 ## Functional Enhancements
@@ -73,6 +88,10 @@
 # Improvements
 
 ## Functional Updates
+
+* [The HTLC forward interceptor now validates](https://github.com/lightningnetwork/lnd/pull/11028)
+  that derived auto-fail heights are within the supported range before they are
+  exposed through the interceptor API.
 
 ## RPC Updates
 

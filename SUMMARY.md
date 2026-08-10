@@ -157,6 +157,7 @@
 * [Wavelength](lightning-network-tools/wavelength/README.md)
   * [Get Started](lightning-network-tools/wavelength/get-started.md)
   * [First Steps](lightning-network-tools/wavelength/first-steps.md)
+  * [Unilateral Exit](lightning-network-tools/wavelength/unilateral-exit.md)
   * [API Documentation](https://wavelength.lightning.engineering/introduction/what-is-wavelength-sdk/)
 * [Aperture](lightning-network-tools/aperture/README.md)
   * [Get Aperture](lightning-network-tools/aperture/get-aperture.md)

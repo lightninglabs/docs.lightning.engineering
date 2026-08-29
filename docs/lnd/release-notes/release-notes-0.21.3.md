@@ -21,6 +21,15 @@
 
 # Bug Fixes
 
+* Peer connections [now rate limit inbound ping replies and bound outgoing
+  message queue growth](https://github.com/lightningnetwork/lnd/pull/11090),
+  preventing peer-controlled resource exhaustion.
+
+* Channel updates carrying [inbound fees now sign the same bytes that are
+  broadcast](https://github.com/lightningnetwork/lnd/pull/11090), preventing
+  remote signature failures. Forwarded updates also preserve unknown signed
+  TLV extensions.
+
 * Channel funding attempts [now return
   cleanly](https://github.com/lightningnetwork/lnd/pull/11035) when their
   pending wallet reservation is no longer present.
@@ -52,6 +61,10 @@
   the whole node: no new channel could be opened, and channels whose funding
   transaction confirmed stayed in the `channelReadySent` opening state forever,
   never added to the graph and never announced. Only a restart recovered.
+
+* [Fixed coop close fee baseline for channels with auxiliary close outputs](https://github.com/lightningnetwork/lnd/pull/10969)
+  by including extra outputs in initial fee estimation, preventing underpriced
+  taproot/custom channel cooperative closes from failing mempool acceptance.
 
 # New Features
 

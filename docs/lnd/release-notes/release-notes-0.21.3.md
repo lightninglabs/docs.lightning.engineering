@@ -21,6 +21,14 @@
 
 # Bug Fixes
 
+* [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/10782)
+  that could be encountered during co-op closes whereby
+  `ChanStatusCoopBroadcasted` was set before a close transaction
+  actually existed. As a side effect, channels in shutdown
+  negotiation now remain in `ListChannels` (as inactive) until
+  the close transaction is actually broadcast, and
+  `WaitingCloseChannel.ClosingTx` is never empty.
+
 * Peer connections [now rate limit inbound ping replies and bound outgoing
   message queue growth](https://github.com/lightningnetwork/lnd/pull/11090),
   preventing peer-controlled resource exhaustion.
@@ -66,6 +74,17 @@
   by including extra outputs in initial fee estimation, preventing underpriced
   taproot/custom channel cooperative closes from failing mempool acceptance.
 
+* [Fixed an issue](https://github.com/lightningnetwork/lnd/pull/11140) where the
+  incoming side of a forwarded dust HTLC could remain stuck.
+
+* [Fixed a panic](https://github.com/lightningnetwork/lnd/pull/11122) in the
+  REST WebSocket proxy, where a `Sec-Websocket-Protocol` header carrying an
+  allowed field name without the `+` delimiter caused an index out of range
+  while the header was being forwarded to the backend. The header is now parsed
+  as the comma separated list of sub protocols it is, so a bare protocol name
+  can also no longer pick up the value of an unrelated sub protocol in the same
+  list.
+
 # New Features
 
 ## Functional Enhancements
@@ -99,6 +118,12 @@
 
 ## Functional Updates
 
+* The REST WebSocket proxy now [bounds the size of incoming
+  messages](https://github.com/lightningnetwork/lnd/pull/11122) using
+  `MaxWsMsgSize`, the limit that was already applied to the responses it writes
+  back out. Oversized frames are rejected from their header rather than read in
+  full.
+
 ## RPC Updates
 
 ## lncli Updates
@@ -127,7 +152,10 @@
 
 # Contributors (Alphabetical Order)
 
+* Boris Nagaev
 * Elle Mouton
+* Gijs van Dam
+* Jared Tobin
 * LNBiG
 * Yong Yu
 * Ziggie

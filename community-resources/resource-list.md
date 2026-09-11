@@ -93,6 +93,7 @@ description: >-
 * Ben Congdon's[ Awesome Lightning Network](https://github.com/bcongdon/awesome-lightning-network)
 * Electric Capital's[ Lightning Ecosystem Repository](https://github.com/electric-capital/crypto-ecosystems/blob/master/data/ecosystems/l/lightning.toml)
 * Jameson Lopp's[ Lightning Network Resources](https://www.lopp.net/lightning-information.html)
+* LearnBitcoin's [Lightning Routing explainer](https://www.learnbitcoin.com/rabbit-hole/lightning-routing) - how pathfinding, onion routing, and multi-part payments work, with diagrams
 * opennoms[ Lightning Node Management book](https://openoms.gitbook.io/lightning-node-management/)
 
 ## Payment processors <a href="#docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c" id="docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c"></a>

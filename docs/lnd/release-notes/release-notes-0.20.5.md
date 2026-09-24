@@ -43,6 +43,21 @@
   failures](https://github.com/lightningnetwork/lnd/pull/11161), while
   preserving the recorded outcome for replayed HTLCs.
 
+* BOLT 11 invoice decoding [now
+  rejects](https://github.com/lightningnetwork/lnd/pull/11190) invoices that
+  contain more than one payment hash (`p`) field, including duplicate fields
+  with unsupported lengths. This is stricter than the current BOLT 11 text,
+  which tells a reader to use the first `p` field; the change is motivated by
+  [lightning/bolts#1357](https://github.com/lightning/bolts/pull/1357), and
+  is an interop consideration for any wallet emitting such invoices.
+
+* Breach retributions built from [legacy revocation log entries now skip
+  dust HTLCs without leaving blank entries
+  behind](https://github.com/lightningnetwork/lnd/pull/11223). HTLCs marked
+  as trimmed via their stored output index are also skipped, matching the
+  modern revocation log format, and the breach arbiter now skips and logs
+  any HTLC retribution with a nil sign descriptor output.
+
 # New Features
 
 ## Functional Enhancements
@@ -56,6 +71,10 @@
 ## Functional Updates
 
 ## RPC Updates
+
+* routerrpc HTLC event subscribers now receive specific failure details for
+  invoice-level validation failures, avoiding ambiguous `UNKNOWN` results.
+  [#10520](https://github.com/lightningnetwork/lnd/pull/10520)
 
 ## lncli Updates
 
@@ -89,6 +108,7 @@
 
 # Contributors (Alphabetical Order)
 
+* Dario Anongba Varela
 * elsirion
 * Gijs van Dam
 * Yong Yu

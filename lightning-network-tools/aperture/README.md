@@ -18,6 +18,18 @@ Aperture includes a Model Context Protocol (MCP) server that makes it convenient
 [get-aperture.md](get-aperture.md)
 {% endcontent-ref %}
 
+{% content-ref url="step-by-step.md" %}
+[step-by-step.md](step-by-step.md)
+{% endcontent-ref %}
+
+{% content-ref url="admin-services.md" %}
+[admin-services.md](admin-services.md)
+{% endcontent-ref %}
+
+{% content-ref url="machine-payments-protocol.md" %}
+[machine-payments-protocol.md](machine-payments-protocol.md)
+{% endcontent-ref %}
+
 {% content-ref url="lnc-backend.md" %}
 [lnc-backend.md](lnc-backend.md)
 {% endcontent-ref %}

@@ -14,3 +14,7 @@ Wavelength is a fully self-custodial settlement layer built on Bitcoin. It runs 
 [first-steps.md](first-steps.md)
 {% endcontent-ref %}
 
+{% content-ref url="unilateral-exit.md" %}
+[unilateral-exit.md](unilateral-exit.md)
+{% endcontent-ref %}
+

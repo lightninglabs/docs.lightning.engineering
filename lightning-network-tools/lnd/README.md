@@ -66,10 +66,6 @@ LND's API documentation
 [secure-your-lightning-network-node.md](secure-your-lightning-network-node.md)
 {% endcontent-ref %}
 
-{% content-ref url="https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md" %}
-[https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md)
-{% endcontent-ref %}
-
 {% content-ref url="quick-tor-setup.md" %}
 [quick-tor-setup.md](quick-tor-setup.md)
 {% endcontent-ref %}
@@ -94,20 +90,12 @@ LND's API documentation
 [fuzz.md](fuzz.md)
 {% endcontent-ref %}
 
-{% content-ref url="https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md" %}
-[https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md)
-{% endcontent-ref %}
-
 {% content-ref url="channel-acceptor.md" %}
 [channel-acceptor.md](channel-acceptor.md)
 {% endcontent-ref %}
 
 {% content-ref url="rpc-middleware-interceptor.md" %}
 [rpc-middleware-interceptor.md](rpc-middleware-interceptor.md)
-{% endcontent-ref %}
-
-{% content-ref url="https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md" %}
-[https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md](https://github.com/lightninglabs/docs.lightning.engineering/blob/master/lightning-network-tools/lnd/broken-reference/README.md)
 {% endcontent-ref %}
 
 {% content-ref url="nat_traversal.md" %}

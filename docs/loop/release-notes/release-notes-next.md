@@ -44,6 +44,31 @@
 
 #### Maintenance
 
+* Align the standalone `looprpc` module's OpenTelemetry SDK and OTLP trace
+  exporters at v1.45.0, matching the versions used by the root module.
+  Refresh the generated REST bindings and OpenAPI specification for the
+  required grpc-gateway upgrade.
+  [PR #1235](https://github.com/lightninglabs/loop/pull/1235)
+
+* Update the `looprpc` gRPC dependency to v1.83.2 and synchronize the
+  root module with its required dependencies.
+  [PR #1227](https://github.com/lightninglabs/loop/pull/1227)
+
+* Update the `swapserverrpc` gRPC dependency to v1.83.2 and synchronize
+  the root module with its required dependencies.
+  [PR #1226](https://github.com/lightninglabs/loop/pull/1226)
+
+* Update the OpenTelemetry OTLP gRPC trace exporter from v1.20.0 to
+  v1.45.0 and refresh its required dependencies.
+  [PR #1230](https://github.com/lightninglabs/loop/pull/1230)
+
+* Update the OpenTelemetry OTLP trace exporter from v1.29.0 to v1.45.0
+  and refresh its required dependencies.
+  [PR #1231](https://github.com/lightninglabs/loop/pull/1231)
+
+* Update the OpenTelemetry SDK and its related API modules to v1.45.0.
+  [PR #1232](https://github.com/lightninglabs/loop/pull/1232)
+
 * The Docker image build now verifies that every platform of the image index
   holds binaries for the architecture it advertises, and gives a release its
   tag only once that check has passed.

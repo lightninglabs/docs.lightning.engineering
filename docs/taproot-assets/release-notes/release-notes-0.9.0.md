@@ -180,6 +180,27 @@
   already checked against the proof; the outpoint now has to match the
   anchor outpoint of the proof as well.
 
+* [PR#2323](https://github.com/lightninglabs/taproot-assets/pull/2323)
+  fixes a bug in which a batch minting the anchor of a version 1 asset
+  group, such as one with an external group key, never finished if the
+  daemon restarted after the batch was committed but before it
+  confirmed. The group key read back from disk lacked its version and
+  custom tapscript root, so building the anchor's minting proof failed
+  with `group key reveal doesn't match group key` on every retry.
+
+* [PR#2334](https://github.com/lightninglabs/taproot-assets/pull/2334)
+  makes the auth mailbox answer a resent message with its original ID even
+  after the receiver has removed it. Removing a message deleted its row but
+  kept the claim on its outpoint, so a sender retrying after delivery was
+  refused with `tx merkle proof already exists`. As the proof courier resends
+  its send fragment before every proof upload, such a sender retried forever.
+  Removing a message now only discards its payload. Database migration 73
+  drops the outpoint claims already left without a message, so senders stuck
+  this way succeed on their next retry. Senders now send the fragment once,
+  after uploading all the proofs it announces, and receivers also remove a
+  message for a transfer they already completed instead of leaving it on the
+  server. No operator action is required.
+
 # New Features
 
 ## Functional Enhancements

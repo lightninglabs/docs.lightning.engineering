@@ -32,6 +32,19 @@
   invoice's `uint32` payinfo fields is skipped instead of being advertised
   with under-reported fees.
 
+* [Tightened the validation](https://github.com/lightningnetwork/lnd/pull/11068)
+  of auxiliary HTLC signatures on taproot overlay channels. Their count is now
+  checked against the number of HTLCs on the commitment, mirroring the check
+  that already exists for the BTC level signatures. A commitment that fails the
+  check is rejected as an invalid commitment, which force closes the channel.
+  This is a change in behaviour for one configuration in particular: a taproot
+  overlay channel whose peer runs `lnd` with no aux signer attached (`tapd`
+  stopped, or `lnd` started standalone). Such a peer's commitments used to be
+  accepted, leaving HTLCs on disk with an empty auxiliary signature that could
+  not be swept at force close time. They now force close the channel as soon as
+  a commitment carries an HTLC. Peers running an older `tapd` with the aux
+  signer attached are unaffected.
+
 * Bitcoind outbound peer health checks [now use](https://github.com/lightningnetwork/lnd/pull/10686)
   `getnetworkinfo.connections_out` instead of `getpeerinfo`. The same PR also
   [clarifies](https://github.com/lightningnetwork/lnd/issues/10568) the ZMQ
@@ -65,6 +78,18 @@
 * [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/11219) in the
   `NodeAnnouncement2` address decoders, where all decoded addresses aliased
   one scratch array and truncated records decoded without an error.
+
+* Taproot commitment signing and verification now [release transient MuSig2
+  signer sessions](https://github.com/lightningnetwork/lnd/pull/11246) once
+  the local node no longer needs them. Force-close and cooperative-close
+  signing continue to retain their sessions until signature combination, with
+  cooperative-close rounds releasing their session when the round completes
+  or is aborted.
+
+* [Fixed a bug](https://github.com/lightningnetwork/lnd/pull/11283) where an
+  invalid MuSig2 partial commitment signature on a taproot channel was
+  rejected without the commitment height and transaction attached, and
+  without sending those debug details to the remote peer.
 
 # New Features
 
@@ -226,8 +251,11 @@
 * bitromortac
 * Boris Nagaev
 * Erick Cestari
+* George Tsagkarelis
 * Jared Tobin
 * Kevin Cai
+* Nishant Bansal
 * Vandit Singh
 * Viktor Torstensson
+* Pins
 * s1ns3nz0

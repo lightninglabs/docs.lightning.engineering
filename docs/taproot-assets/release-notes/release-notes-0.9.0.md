@@ -220,6 +220,10 @@
   derived from the final sweep transaction. Fixes
   [#2205](https://github.com/lightninglabs/taproot-assets/issues/2205).
 
+* [PR#2338](https://github.com/lightninglabs/taproot-assets/pull/2338)
+  fixes database-backed MS-SMTs computing a wrong root after deleting a
+  key they did not hold.
+
 # New Features
 
 ## Functional Enhancements
@@ -449,6 +453,14 @@
   avoids deep-copying the split commitment proof when the VM validates
   a split asset, cutting the allocations of split validation by roughly
   three quarters.
+
+* [PR#2343](https://github.com/lightninglabs/taproot-assets/pull/2343)
+  serves the pages of `QueryAssetStats` from one cached result per
+  filter and sort. Each page previously ran the full stats query, which
+  computes the stats of every asset before applying the offset, so
+  paging through the stats of a large universe repeated that work once
+  per page. Assets with equal sort keys, and all assets when no sort is
+  given, are now ordered by asset ID.
 
 ## Deprecations
 

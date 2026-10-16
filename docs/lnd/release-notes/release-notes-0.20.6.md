@@ -21,6 +21,11 @@
 
 # Bug Fixes
 
+* Revocation processing now [orders its state-transition and key checks before
+  their corresponding bookkeeping updates](https://github.com/lightningnetwork/lnd/pull/11330).
+  The remote party's next revocation point now uses `fn.Option`, so callers
+  handle the optional state explicitly.
+
 * Taproot commitment signing and verification now [release transient MuSig2
   signer sessions](https://github.com/lightningnetwork/lnd/pull/11246) once
   the local node no longer needs them. Force-close and cooperative-close
@@ -33,6 +38,13 @@
   signatures](https://github.com/lightningnetwork/lnd/pull/11311) instead of
   failing validation because the KV and SQL stores use different empty byte
   slice representations.
+
+* Fee estimates returned by the external `--fee.url` API are [now clamped
+  to a ceiling](https://github.com/lightningnetwork/lnd/pull/11334) of
+  10,000 sat/vb (`chainfee.FeePerKwCeiling`). Previously the estimates were
+  only floor-clamped, so out-of-range values from the external API could
+  propagate into fee-sensitive wallet operations. The API's
+  `min_relay_feerate` is now clamped to the same bounds.
 
 # New Features
 

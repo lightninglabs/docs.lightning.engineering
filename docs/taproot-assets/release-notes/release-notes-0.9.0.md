@@ -21,6 +21,11 @@
 
 # Bug Fixes
 
+- [Asset hold invoices now preserve the requested final CLTV
+  delta](https://github.com/lightninglabs/taproot-assets/pull/2360) instead of
+  always using LND's default. A zero value still uses the configured default,
+  and LND rejects values outside its supported range.
+
 - [Forward-port the v0.8.5 proof upgrade](https://github.com/lightninglabs/taproot-assets/pull/2333)
   to the btcd-v2 development line: spender commitments, split-root evidence,
   asset identity checks, and network activation heights. Released spender
@@ -223,6 +228,10 @@
 * [PR#2338](https://github.com/lightninglabs/taproot-assets/pull/2338)
   fixes database-backed MS-SMTs computing a wrong root after deleting a
   key they did not hold.
+
+* [PR#2362](https://github.com/lightninglabs/taproot-assets/pull/2362)
+  makes asset hold invoices created with pre-existing RFQ route hints
+  carry those hints.
 
 # New Features
 

@@ -104,6 +104,7 @@ description: >-
 * [BTCPayServer](https://docs.btcpayserver.org)
 * [LNBits](https://lnbits.com/)
 * [Voltage](https://voltage.cloud) - Lightning Network node hosting platform
+* [OpenReceive](https://openreceive.org) - open-source Lightning checkout for web apps and stores, paid to your own wallet over NWC
 
 ## Exchanges & Brokerages <a href="#docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364" id="docs-internal-guid-61dc5aac-7fff-f33d-b971-9056f5f24364"></a>
 

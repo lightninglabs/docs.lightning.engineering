@@ -45,6 +45,10 @@
   always using LND's default. A zero value still uses the configured default,
   and LND rejects values outside its supported range.
 
+- [Confirm custom-anchor transfers spending external assets](https://github.com/lightninglabs/taproot-assets/pull/2353)
+  using their archived proofs, including after restart. External inputs remain
+  outside the wallet; only locally controlled outputs are added to its holdings.
+
 - [Importing an asset wallet
   backup](https://github.com/lightninglabs/taproot-assets/pull/2277) into a
   node whose database was wiped but whose proofs directory survived no longer
@@ -200,6 +204,14 @@
   certificate on its first start unless the contents of that directory
   are moved into `--letsencryptdir`.
 
+* [PR#2340](https://github.com/lightninglabs/taproot-assets/pull/2340)
+  makes a V1 group key reveal decode from its own record only, and
+  refuse unknown even types within it. Records that follow the reveal in
+  a proof are no longer consumed by it. Asset witnesses also compare by
+  the content of their witness stacks, so nil and empty stacks and
+  elements compare equal. The proof provenance backfill run during the
+  database upgrade logs and skips any stored proof it can't decode.
+
 # New Features
 
 ## Functional Enhancements
@@ -328,6 +340,13 @@
   the RFQ sell request and exposed to external portfolio pilots as
   `payment_swap_amount`. Zero means unset everywhere and the existing
   fields are unchanged.
+
+* [PR#2383](https://github.com/lightninglabs/taproot-assets/pull/2383)
+  adds a `sign_anchor_inputs` flag to `PublishAndLogTransfer`. With the
+  flag set, tapd signs and finalizes the anchor inputs of the transfer
+  that spend anchor outputs it owns, so a caller that funds the anchor
+  transaction itself only signs its own inputs. Every other input must
+  already be finalized.
 
 ## tapcli Updates
 

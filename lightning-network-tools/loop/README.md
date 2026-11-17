@@ -35,3 +35,10 @@ Loop uses [L402s](../../the-lightning-network/l402/l402.md) for authentication.
 {% endcontent-ref %}
 
 {% embed url="https://lightning.engineering/api-docs/api/loop/" %}
+
+## Testing on regtest
+
+For local development and integration testing, follow the
+[Loop regtest guide](https://github.com/lightninglabs/loop/tree/master/regtest).
+It includes a Docker Compose setup and examples of Loop Out, Loop In and
+static address swaps.

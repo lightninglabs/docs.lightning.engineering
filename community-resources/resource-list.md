@@ -95,6 +95,7 @@ description: >-
 * Jameson Lopp's[ Lightning Network Resources](https://www.lopp.net/lightning-information.html)
 * LearnBitcoin's [Lightning Routing explainer](https://www.learnbitcoin.com/rabbit-hole/lightning-routing) - how pathfinding, onion routing, and multi-part payments work, with diagrams
 * opennoms[ Lightning Node Management book](https://openoms.gitbook.io/lightning-node-management/)
+* [Sats for Bots](https://satsforbots.com) - curated directory of Lightning tools for AI agents (L402 clients and paywalls, wallets, MCP servers, paid APIs), with an agent-readable [llms.txt](https://satsforbots.com/llms.txt)
 
 ## Payment processors <a href="#docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c" id="docs-internal-guid-07197fd0-7fff-b137-101f-0144b1ab593c"></a>
 

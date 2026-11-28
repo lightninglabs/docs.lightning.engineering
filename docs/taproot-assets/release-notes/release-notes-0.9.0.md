@@ -21,6 +21,20 @@
 
 # Bug Fixes
 
+- [Force closes of asset channels with a plain BTC-only HTLC in flight are
+  now resolved](https://github.com/lightninglabs/taproot-assets/pull/2401).
+  Importing such a commitment transaction previously failed because no
+  exclusion proof was created for the plain HTLC output, leaving the channel
+  stuck in `waiting_close` with the balance unswept. tapd now records the
+  HTLC sets that lnd reports when fetching the aux leaves of a commitment
+  and derives exclusion proofs for plain HTLC outputs from them, so
+  restarting an affected node with the fixed version resolves the close. A
+  related commitment construction bug is also fixed: a BTC-only balance
+  exactly at the dust limit previously got no allocation even though lnd
+  keeps the output on chain, which failed the link and could push the peer
+  into such a force close in the first place. Co-op closes in the legacy
+  close flow likewise allocate a BTC-only output exactly at the dust limit.
+
 - [Taproot Assets daemons now disable MPTCP listeners by
   default](https://github.com/lightninglabs/taproot-assets/pull/2370), restoring
   plain TCP as the default transport and mitigating the demonstrated
@@ -277,6 +291,18 @@
   unless overridden. Operators should therefore expect new issuance
   and supply updates to become externally visible only after that
   threshold; lowering it reduces the corresponding re-org protection.
+
+* [PR#2321](https://github.com/lightninglabs/taproot-assets/pull/2321)
+  adds support for lnd's RBF cooperative close flow
+  (`option_simple_close`) to asset channels, so they no longer fall
+  back to the legacy close negotiation. Both parties can bump the fee
+  of the close transaction. The aux closer signs the asset outputs once
+  per close, in an order that doesn't depend on the fee, keeps them
+  across reconnects and restarts, and finalizes whichever close
+  transaction confirms. The flow is used with peers that signal the new
+  `rbf-coop-close` tap channel feature bit, other peers keep using the
+  legacy negotiation. Requires lnd with
+  [lightningnetwork/lnd#11279](https://github.com/lightningnetwork/lnd/pull/11279).
 
 - [`tapd` now keeps an encrypted asset wallet backup
   file](https://github.com/lightninglabs/taproot-assets/pull/2277)
